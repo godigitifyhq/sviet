@@ -31,8 +31,8 @@ export * from "./enums"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Programs
- * const programs = await prisma.program.findMany()
+ * // Fetch zero or more Users
+ * const users = await prisma.user.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -42,10 +42,25 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
+ * Model User
+ * 
+ */
+export type User = Prisma.UserModel
+/**
+ * Model AuthSession
+ * 
+ */
+export type AuthSession = Prisma.AuthSessionModel
+/**
  * Model Program
  * 
  */
 export type Program = Prisma.ProgramModel
+/**
+ * Model Intake
+ * 
+ */
+export type Intake = Prisma.IntakeModel
 /**
  * Model Lead
  * 
@@ -56,6 +71,36 @@ export type Lead = Prisma.LeadModel
  * 
  */
 export type Applicant = Prisma.ApplicantModel
+/**
+ * Model Application
+ * 
+ */
+export type Application = Prisma.ApplicationModel
+/**
+ * Model ApplicationFormData
+ * 
+ */
+export type ApplicationFormData = Prisma.ApplicationFormDataModel
+/**
+ * Model ApplicationStepProgress
+ * 
+ */
+export type ApplicationStepProgress = Prisma.ApplicationStepProgressModel
+/**
+ * Model Document
+ * 
+ */
+export type Document = Prisma.DocumentModel
+/**
+ * Model ApplicationStatusHistory
+ * 
+ */
+export type ApplicationStatusHistory = Prisma.ApplicationStatusHistoryModel
+/**
+ * Model ActivityLog
+ * 
+ */
+export type ActivityLog = Prisma.ActivityLogModel
 /**
  * Model Enrollment
  * 

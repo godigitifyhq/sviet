@@ -18,10 +18,25 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
+ * Model User
+ * 
+ */
+export type User = Prisma.UserModel
+/**
+ * Model AuthSession
+ * 
+ */
+export type AuthSession = Prisma.AuthSessionModel
+/**
  * Model Program
  * 
  */
 export type Program = Prisma.ProgramModel
+/**
+ * Model Intake
+ * 
+ */
+export type Intake = Prisma.IntakeModel
 /**
  * Model Lead
  * 
@@ -32,6 +47,36 @@ export type Lead = Prisma.LeadModel
  * 
  */
 export type Applicant = Prisma.ApplicantModel
+/**
+ * Model Application
+ * 
+ */
+export type Application = Prisma.ApplicationModel
+/**
+ * Model ApplicationFormData
+ * 
+ */
+export type ApplicationFormData = Prisma.ApplicationFormDataModel
+/**
+ * Model ApplicationStepProgress
+ * 
+ */
+export type ApplicationStepProgress = Prisma.ApplicationStepProgressModel
+/**
+ * Model Document
+ * 
+ */
+export type Document = Prisma.DocumentModel
+/**
+ * Model ApplicationStatusHistory
+ * 
+ */
+export type ApplicationStatusHistory = Prisma.ApplicationStatusHistoryModel
+/**
+ * Model ActivityLog
+ * 
+ */
+export type ActivityLog = Prisma.ActivityLogModel
 /**
  * Model Enrollment
  * 

@@ -502,10 +502,6 @@ export type EnumApplicationStatusFieldUpdateOperationsInput = {
   set?: $Enums.ApplicationStatus
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
-}
-
 export type ApplicantCreateNestedOneWithoutEnrollmentInput = {
   create?: Prisma.XOR<Prisma.ApplicantCreateWithoutEnrollmentInput, Prisma.ApplicantUncheckedCreateWithoutEnrollmentInput>
   connectOrCreate?: Prisma.ApplicantCreateOrConnectWithoutEnrollmentInput

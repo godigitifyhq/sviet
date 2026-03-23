@@ -9,12 +9,32 @@
 * 🟢 You can import this file directly.
 */
 
+export const UserRole = {
+  APPLICANT: 'APPLICANT',
+  COUNSELOR: 'COUNSELOR',
+  ADMIN: 'ADMIN',
+  SUPER_ADMIN: 'SUPER_ADMIN'
+} as const
+
+export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+
+
+export const UserStatus = {
+  ACTIVE: 'ACTIVE',
+  INVITED: 'INVITED',
+  SUSPENDED: 'SUSPENDED'
+} as const
+
+export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus]
+
+
 export const LeadSource = {
   WEBSITE: 'WEBSITE',
   PHONE: 'PHONE',
   REFERRAL: 'REFERRAL',
   EVENT: 'EVENT',
-  SOCIAL: 'SOCIAL'
+  SOCIAL: 'SOCIAL',
+  WALK_IN: 'WALK_IN'
 } as const
 
 export type LeadSource = (typeof LeadSource)[keyof typeof LeadSource]
@@ -22,9 +42,13 @@ export type LeadSource = (typeof LeadSource)[keyof typeof LeadSource]
 
 export const LeadStatus = {
   NEW: 'NEW',
+  ASSIGNED: 'ASSIGNED',
   CONTACTED: 'CONTACTED',
+  NURTURING: 'NURTURING',
   QUALIFIED: 'QUALIFIED',
-  DISQUALIFIED: 'DISQUALIFIED'
+  CONVERTED: 'CONVERTED',
+  DISQUALIFIED: 'DISQUALIFIED',
+  LOST: 'LOST'
 } as const
 
 export type LeadStatus = (typeof LeadStatus)[keyof typeof LeadStatus]
@@ -32,13 +56,71 @@ export type LeadStatus = (typeof LeadStatus)[keyof typeof LeadStatus]
 
 export const ApplicationStatus = {
   DRAFT: 'DRAFT',
+  IN_PROGRESS: 'IN_PROGRESS',
   SUBMITTED: 'SUBMITTED',
   UNDER_REVIEW: 'UNDER_REVIEW',
+  DOCS_PENDING: 'DOCS_PENDING',
+  INTERVIEW_SCHEDULED: 'INTERVIEW_SCHEDULED',
+  DECISION_PENDING: 'DECISION_PENDING',
   ACCEPTED: 'ACCEPTED',
-  REJECTED: 'REJECTED'
+  REJECTED: 'REJECTED',
+  WAITLISTED: 'WAITLISTED',
+  WITHDRAWN: 'WITHDRAWN'
 } as const
 
 export type ApplicationStatus = (typeof ApplicationStatus)[keyof typeof ApplicationStatus]
+
+
+export const ApplicationStepCode = {
+  PERSONAL_INFO: 'PERSONAL_INFO',
+  ACADEMICS: 'ACADEMICS',
+  PROGRAM_CHOICE: 'PROGRAM_CHOICE',
+  DOCUMENTS: 'DOCUMENTS',
+  ESSAYS: 'ESSAYS',
+  REVIEW_SUBMIT: 'REVIEW_SUBMIT'
+} as const
+
+export type ApplicationStepCode = (typeof ApplicationStepCode)[keyof typeof ApplicationStepCode]
+
+
+export const DocumentType = {
+  TRANSCRIPT: 'TRANSCRIPT',
+  ID_PROOF: 'ID_PROOF',
+  PHOTO: 'PHOTO',
+  ENTRANCE_SCORE: 'ENTRANCE_SCORE',
+  RECOMMENDATION: 'RECOMMENDATION',
+  ESSAY: 'ESSAY',
+  OTHER: 'OTHER'
+} as const
+
+export type DocumentType = (typeof DocumentType)[keyof typeof DocumentType]
+
+
+export const DocumentStatus = {
+  PENDING: 'PENDING',
+  VERIFIED: 'VERIFIED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type DocumentStatus = (typeof DocumentStatus)[keyof typeof DocumentStatus]
+
+
+export const ActivityActorType = {
+  USER: 'USER',
+  SYSTEM: 'SYSTEM'
+} as const
+
+export type ActivityActorType = (typeof ActivityActorType)[keyof typeof ActivityActorType]
+
+
+export const ActivityEntityType = {
+  USER: 'USER',
+  LEAD: 'LEAD',
+  APPLICATION: 'APPLICATION',
+  DOCUMENT: 'DOCUMENT'
+} as const
+
+export type ActivityEntityType = (typeof ActivityEntityType)[keyof typeof ActivityEntityType]
 
 
 export const EnrollmentStatus = {

@@ -254,6 +254,8 @@ export type ProgramWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Program"> | Date | string
   leads?: Prisma.LeadListRelationFilter
   applicants?: Prisma.ApplicantListRelationFilter
+  intakes?: Prisma.IntakeListRelationFilter
+  applications?: Prisma.ApplicationListRelationFilter
 }
 
 export type ProgramOrderByWithRelationInput = {
@@ -268,6 +270,8 @@ export type ProgramOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   leads?: Prisma.LeadOrderByRelationAggregateInput
   applicants?: Prisma.ApplicantOrderByRelationAggregateInput
+  intakes?: Prisma.IntakeOrderByRelationAggregateInput
+  applications?: Prisma.ApplicationOrderByRelationAggregateInput
 }
 
 export type ProgramWhereUniqueInput = Prisma.AtLeast<{
@@ -285,6 +289,8 @@ export type ProgramWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Program"> | Date | string
   leads?: Prisma.LeadListRelationFilter
   applicants?: Prisma.ApplicantListRelationFilter
+  intakes?: Prisma.IntakeListRelationFilter
+  applications?: Prisma.ApplicationListRelationFilter
 }, "id" | "slug">
 
 export type ProgramOrderByWithAggregationInput = {
@@ -331,6 +337,8 @@ export type ProgramCreateInput = {
   updatedAt?: Date | string
   leads?: Prisma.LeadCreateNestedManyWithoutIntendedProgramInput
   applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
+  intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUncheckedCreateInput = {
@@ -345,6 +353,8 @@ export type ProgramUncheckedCreateInput = {
   updatedAt?: Date | string
   leads?: Prisma.LeadUncheckedCreateNestedManyWithoutIntendedProgramInput
   applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
+  intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUpdateInput = {
@@ -359,6 +369,8 @@ export type ProgramUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leads?: Prisma.LeadUpdateManyWithoutIntendedProgramNestedInput
   applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
+  intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramUncheckedUpdateInput = {
@@ -373,6 +385,8 @@ export type ProgramUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leads?: Prisma.LeadUncheckedUpdateManyWithoutIntendedProgramNestedInput
   applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
+  intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramCreateManyInput = {
@@ -457,18 +471,14 @@ export type ProgramSumOrderByAggregateInput = {
   tuitionCents?: Prisma.SortOrder
 }
 
-export type ProgramNullableScalarRelationFilter = {
-  is?: Prisma.ProgramWhereInput | null
-  isNot?: Prisma.ProgramWhereInput | null
-}
-
 export type ProgramScalarRelationFilter = {
   is?: Prisma.ProgramWhereInput
   isNot?: Prisma.ProgramWhereInput
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
+export type ProgramNullableScalarRelationFilter = {
+  is?: Prisma.ProgramWhereInput | null
+  isNot?: Prisma.ProgramWhereInput | null
 }
 
 export type IntFieldUpdateOperationsInput = {
@@ -483,8 +493,18 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
+export type ProgramCreateNestedOneWithoutIntakesInput = {
+  create?: Prisma.XOR<Prisma.ProgramCreateWithoutIntakesInput, Prisma.ProgramUncheckedCreateWithoutIntakesInput>
+  connectOrCreate?: Prisma.ProgramCreateOrConnectWithoutIntakesInput
+  connect?: Prisma.ProgramWhereUniqueInput
+}
+
+export type ProgramUpdateOneRequiredWithoutIntakesNestedInput = {
+  create?: Prisma.XOR<Prisma.ProgramCreateWithoutIntakesInput, Prisma.ProgramUncheckedCreateWithoutIntakesInput>
+  connectOrCreate?: Prisma.ProgramCreateOrConnectWithoutIntakesInput
+  upsert?: Prisma.ProgramUpsertWithoutIntakesInput
+  connect?: Prisma.ProgramWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProgramUpdateToOneWithWhereWithoutIntakesInput, Prisma.ProgramUpdateWithoutIntakesInput>, Prisma.ProgramUncheckedUpdateWithoutIntakesInput>
 }
 
 export type ProgramCreateNestedOneWithoutLeadsInput = {
@@ -517,6 +537,96 @@ export type ProgramUpdateOneRequiredWithoutApplicantsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProgramUpdateToOneWithWhereWithoutApplicantsInput, Prisma.ProgramUpdateWithoutApplicantsInput>, Prisma.ProgramUncheckedUpdateWithoutApplicantsInput>
 }
 
+export type ProgramCreateNestedOneWithoutApplicationsInput = {
+  create?: Prisma.XOR<Prisma.ProgramCreateWithoutApplicationsInput, Prisma.ProgramUncheckedCreateWithoutApplicationsInput>
+  connectOrCreate?: Prisma.ProgramCreateOrConnectWithoutApplicationsInput
+  connect?: Prisma.ProgramWhereUniqueInput
+}
+
+export type ProgramUpdateOneRequiredWithoutApplicationsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProgramCreateWithoutApplicationsInput, Prisma.ProgramUncheckedCreateWithoutApplicationsInput>
+  connectOrCreate?: Prisma.ProgramCreateOrConnectWithoutApplicationsInput
+  upsert?: Prisma.ProgramUpsertWithoutApplicationsInput
+  connect?: Prisma.ProgramWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProgramUpdateToOneWithWhereWithoutApplicationsInput, Prisma.ProgramUpdateWithoutApplicationsInput>, Prisma.ProgramUncheckedUpdateWithoutApplicationsInput>
+}
+
+export type ProgramCreateWithoutIntakesInput = {
+  id?: string
+  slug: string
+  title: string
+  shortDescription: string
+  durationMonths: number
+  tuitionCents: number
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  leads?: Prisma.LeadCreateNestedManyWithoutIntendedProgramInput
+  applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
+}
+
+export type ProgramUncheckedCreateWithoutIntakesInput = {
+  id?: string
+  slug: string
+  title: string
+  shortDescription: string
+  durationMonths: number
+  tuitionCents: number
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  leads?: Prisma.LeadUncheckedCreateNestedManyWithoutIntendedProgramInput
+  applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
+}
+
+export type ProgramCreateOrConnectWithoutIntakesInput = {
+  where: Prisma.ProgramWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProgramCreateWithoutIntakesInput, Prisma.ProgramUncheckedCreateWithoutIntakesInput>
+}
+
+export type ProgramUpsertWithoutIntakesInput = {
+  update: Prisma.XOR<Prisma.ProgramUpdateWithoutIntakesInput, Prisma.ProgramUncheckedUpdateWithoutIntakesInput>
+  create: Prisma.XOR<Prisma.ProgramCreateWithoutIntakesInput, Prisma.ProgramUncheckedCreateWithoutIntakesInput>
+  where?: Prisma.ProgramWhereInput
+}
+
+export type ProgramUpdateToOneWithWhereWithoutIntakesInput = {
+  where?: Prisma.ProgramWhereInput
+  data: Prisma.XOR<Prisma.ProgramUpdateWithoutIntakesInput, Prisma.ProgramUncheckedUpdateWithoutIntakesInput>
+}
+
+export type ProgramUpdateWithoutIntakesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leads?: Prisma.LeadUpdateManyWithoutIntendedProgramNestedInput
+  applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
+}
+
+export type ProgramUncheckedUpdateWithoutIntakesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leads?: Prisma.LeadUncheckedUpdateManyWithoutIntendedProgramNestedInput
+  applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
+}
+
 export type ProgramCreateWithoutLeadsInput = {
   id?: string
   slug: string
@@ -528,6 +638,8 @@ export type ProgramCreateWithoutLeadsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
+  intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUncheckedCreateWithoutLeadsInput = {
@@ -541,6 +653,8 @@ export type ProgramUncheckedCreateWithoutLeadsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
+  intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramCreateOrConnectWithoutLeadsInput = {
@@ -570,6 +684,8 @@ export type ProgramUpdateWithoutLeadsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
+  intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramUncheckedUpdateWithoutLeadsInput = {
@@ -583,6 +699,8 @@ export type ProgramUncheckedUpdateWithoutLeadsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
+  intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramCreateWithoutApplicantsInput = {
@@ -596,6 +714,8 @@ export type ProgramCreateWithoutApplicantsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   leads?: Prisma.LeadCreateNestedManyWithoutIntendedProgramInput
+  intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUncheckedCreateWithoutApplicantsInput = {
@@ -609,6 +729,8 @@ export type ProgramUncheckedCreateWithoutApplicantsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   leads?: Prisma.LeadUncheckedCreateNestedManyWithoutIntendedProgramInput
+  intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramCreateOrConnectWithoutApplicantsInput = {
@@ -638,6 +760,8 @@ export type ProgramUpdateWithoutApplicantsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leads?: Prisma.LeadUpdateManyWithoutIntendedProgramNestedInput
+  intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramUncheckedUpdateWithoutApplicantsInput = {
@@ -651,6 +775,84 @@ export type ProgramUncheckedUpdateWithoutApplicantsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leads?: Prisma.LeadUncheckedUpdateManyWithoutIntendedProgramNestedInput
+  intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
+}
+
+export type ProgramCreateWithoutApplicationsInput = {
+  id?: string
+  slug: string
+  title: string
+  shortDescription: string
+  durationMonths: number
+  tuitionCents: number
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  leads?: Prisma.LeadCreateNestedManyWithoutIntendedProgramInput
+  applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
+  intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
+}
+
+export type ProgramUncheckedCreateWithoutApplicationsInput = {
+  id?: string
+  slug: string
+  title: string
+  shortDescription: string
+  durationMonths: number
+  tuitionCents: number
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  leads?: Prisma.LeadUncheckedCreateNestedManyWithoutIntendedProgramInput
+  applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
+  intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
+}
+
+export type ProgramCreateOrConnectWithoutApplicationsInput = {
+  where: Prisma.ProgramWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProgramCreateWithoutApplicationsInput, Prisma.ProgramUncheckedCreateWithoutApplicationsInput>
+}
+
+export type ProgramUpsertWithoutApplicationsInput = {
+  update: Prisma.XOR<Prisma.ProgramUpdateWithoutApplicationsInput, Prisma.ProgramUncheckedUpdateWithoutApplicationsInput>
+  create: Prisma.XOR<Prisma.ProgramCreateWithoutApplicationsInput, Prisma.ProgramUncheckedCreateWithoutApplicationsInput>
+  where?: Prisma.ProgramWhereInput
+}
+
+export type ProgramUpdateToOneWithWhereWithoutApplicationsInput = {
+  where?: Prisma.ProgramWhereInput
+  data: Prisma.XOR<Prisma.ProgramUpdateWithoutApplicationsInput, Prisma.ProgramUncheckedUpdateWithoutApplicationsInput>
+}
+
+export type ProgramUpdateWithoutApplicationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leads?: Prisma.LeadUpdateManyWithoutIntendedProgramNestedInput
+  applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
+  intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
+}
+
+export type ProgramUncheckedUpdateWithoutApplicationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leads?: Prisma.LeadUncheckedUpdateManyWithoutIntendedProgramNestedInput
+  applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
+  intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
 }
 
 
@@ -661,11 +863,15 @@ export type ProgramUncheckedUpdateWithoutApplicantsInput = {
 export type ProgramCountOutputType = {
   leads: number
   applicants: number
+  intakes: number
+  applications: number
 }
 
 export type ProgramCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   leads?: boolean | ProgramCountOutputTypeCountLeadsArgs
   applicants?: boolean | ProgramCountOutputTypeCountApplicantsArgs
+  intakes?: boolean | ProgramCountOutputTypeCountIntakesArgs
+  applications?: boolean | ProgramCountOutputTypeCountApplicationsArgs
 }
 
 /**
@@ -692,6 +898,20 @@ export type ProgramCountOutputTypeCountApplicantsArgs<ExtArgs extends runtime.Ty
   where?: Prisma.ApplicantWhereInput
 }
 
+/**
+ * ProgramCountOutputType without action
+ */
+export type ProgramCountOutputTypeCountIntakesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.IntakeWhereInput
+}
+
+/**
+ * ProgramCountOutputType without action
+ */
+export type ProgramCountOutputTypeCountApplicationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ApplicationWhereInput
+}
+
 
 export type ProgramSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -705,6 +925,8 @@ export type ProgramSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   updatedAt?: boolean
   leads?: boolean | Prisma.Program$leadsArgs<ExtArgs>
   applicants?: boolean | Prisma.Program$applicantsArgs<ExtArgs>
+  intakes?: boolean | Prisma.Program$intakesArgs<ExtArgs>
+  applications?: boolean | Prisma.Program$applicationsArgs<ExtArgs>
   _count?: boolean | Prisma.ProgramCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["program"]>
 
@@ -748,6 +970,8 @@ export type ProgramOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 export type ProgramInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   leads?: boolean | Prisma.Program$leadsArgs<ExtArgs>
   applicants?: boolean | Prisma.Program$applicantsArgs<ExtArgs>
+  intakes?: boolean | Prisma.Program$intakesArgs<ExtArgs>
+  applications?: boolean | Prisma.Program$applicationsArgs<ExtArgs>
   _count?: boolean | Prisma.ProgramCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProgramIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -758,6 +982,8 @@ export type $ProgramPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   objects: {
     leads: Prisma.$LeadPayload<ExtArgs>[]
     applicants: Prisma.$ApplicantPayload<ExtArgs>[]
+    intakes: Prisma.$IntakePayload<ExtArgs>[]
+    applications: Prisma.$ApplicationPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1165,6 +1391,8 @@ export interface Prisma__ProgramClient<T, Null = never, ExtArgs extends runtime.
   readonly [Symbol.toStringTag]: "PrismaPromise"
   leads<T extends Prisma.Program$leadsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Program$leadsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   applicants<T extends Prisma.Program$applicantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Program$applicantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApplicantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  intakes<T extends Prisma.Program$intakesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Program$intakesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$IntakePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  applications<T extends Prisma.Program$applicationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Program$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1641,6 +1869,54 @@ export type Program$applicantsArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.ApplicantScalarFieldEnum | Prisma.ApplicantScalarFieldEnum[]
+}
+
+/**
+ * Program.intakes
+ */
+export type Program$intakesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Intake
+   */
+  select?: Prisma.IntakeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Intake
+   */
+  omit?: Prisma.IntakeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.IntakeInclude<ExtArgs> | null
+  where?: Prisma.IntakeWhereInput
+  orderBy?: Prisma.IntakeOrderByWithRelationInput | Prisma.IntakeOrderByWithRelationInput[]
+  cursor?: Prisma.IntakeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.IntakeScalarFieldEnum | Prisma.IntakeScalarFieldEnum[]
+}
+
+/**
+ * Program.applications
+ */
+export type Program$applicationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Application
+   */
+  select?: Prisma.ApplicationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Application
+   */
+  omit?: Prisma.ApplicationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ApplicationInclude<ExtArgs> | null
+  where?: Prisma.ApplicationWhereInput
+  orderBy?: Prisma.ApplicationOrderByWithRelationInput | Prisma.ApplicationOrderByWithRelationInput[]
+  cursor?: Prisma.ApplicationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApplicationScalarFieldEnum | Prisma.ApplicationScalarFieldEnum[]
 }
 
 /**

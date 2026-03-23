@@ -51,9 +51,18 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  User: 'User',
+  AuthSession: 'AuthSession',
   Program: 'Program',
+  Intake: 'Intake',
   Lead: 'Lead',
   Applicant: 'Applicant',
+  Application: 'Application',
+  ApplicationFormData: 'ApplicationFormData',
+  ApplicationStepProgress: 'ApplicationStepProgress',
+  Document: 'Document',
+  ApplicationStatusHistory: 'ApplicationStatusHistory',
+  ActivityLog: 'ActivityLog',
   Enrollment: 'Enrollment',
   Event: 'Event',
   EventRegistration: 'EventRegistration',
@@ -77,6 +86,34 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const UserScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  phone: 'phone',
+  passwordHash: 'passwordHash',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  role: 'role',
+  status: 'status',
+  lastLoginAt: 'lastLoginAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const AuthSessionScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  userId: 'userId',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+} as const
+
+export type AuthSessionScalarFieldEnum = (typeof AuthSessionScalarFieldEnum)[keyof typeof AuthSessionScalarFieldEnum]
+
+
 export const ProgramScalarFieldEnum = {
   id: 'id',
   slug: 'slug',
@@ -92,6 +129,21 @@ export const ProgramScalarFieldEnum = {
 export type ProgramScalarFieldEnum = (typeof ProgramScalarFieldEnum)[keyof typeof ProgramScalarFieldEnum]
 
 
+export const IntakeScalarFieldEnum = {
+  id: 'id',
+  programId: 'programId',
+  termCode: 'termCode',
+  startsOn: 'startsOn',
+  endsOn: 'endsOn',
+  applicationDeadline: 'applicationDeadline',
+  isOpen: 'isOpen',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type IntakeScalarFieldEnum = (typeof IntakeScalarFieldEnum)[keyof typeof IntakeScalarFieldEnum]
+
+
 export const LeadScalarFieldEnum = {
   id: 'id',
   firstName: 'firstName',
@@ -101,7 +153,10 @@ export const LeadScalarFieldEnum = {
   source: 'source',
   status: 'status',
   intendedProgramId: 'intendedProgramId',
+  ownerCounselorId: 'ownerCounselorId',
   notes: 'notes',
+  nextFollowUpAt: 'nextFollowUpAt',
+  convertedAt: 'convertedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -122,6 +177,101 @@ export const ApplicantScalarFieldEnum = {
 } as const
 
 export type ApplicantScalarFieldEnum = (typeof ApplicantScalarFieldEnum)[keyof typeof ApplicantScalarFieldEnum]
+
+
+export const ApplicationScalarFieldEnum = {
+  id: 'id',
+  applicationNo: 'applicationNo',
+  applicantUserId: 'applicantUserId',
+  leadId: 'leadId',
+  programId: 'programId',
+  intakeId: 'intakeId',
+  assignedCounselorId: 'assignedCounselorId',
+  status: 'status',
+  submittedAt: 'submittedAt',
+  decidedAt: 'decidedAt',
+  version: 'version',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ApplicationScalarFieldEnum = (typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum]
+
+
+export const ApplicationFormDataScalarFieldEnum = {
+  applicationId: 'applicationId',
+  schemaVersion: 'schemaVersion',
+  lastSavedStep: 'lastSavedStep',
+  stepsData: 'stepsData',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ApplicationFormDataScalarFieldEnum = (typeof ApplicationFormDataScalarFieldEnum)[keyof typeof ApplicationFormDataScalarFieldEnum]
+
+
+export const ApplicationStepProgressScalarFieldEnum = {
+  id: 'id',
+  applicationId: 'applicationId',
+  stepCode: 'stepCode',
+  isCompleted: 'isCompleted',
+  completedAt: 'completedAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ApplicationStepProgressScalarFieldEnum = (typeof ApplicationStepProgressScalarFieldEnum)[keyof typeof ApplicationStepProgressScalarFieldEnum]
+
+
+export const DocumentScalarFieldEnum = {
+  id: 'id',
+  applicationId: 'applicationId',
+  applicantUserId: 'applicantUserId',
+  type: 'type',
+  status: 'status',
+  storageKey: 'storageKey',
+  originalFileName: 'originalFileName',
+  mimeType: 'mimeType',
+  sizeBytes: 'sizeBytes',
+  sha256: 'sha256',
+  uploadedByUserId: 'uploadedByUserId',
+  verifiedByUserId: 'verifiedByUserId',
+  verifiedAt: 'verifiedAt',
+  rejectionReason: 'rejectionReason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DocumentScalarFieldEnum = (typeof DocumentScalarFieldEnum)[keyof typeof DocumentScalarFieldEnum]
+
+
+export const ApplicationStatusHistoryScalarFieldEnum = {
+  id: 'id',
+  applicationId: 'applicationId',
+  fromStatus: 'fromStatus',
+  toStatus: 'toStatus',
+  changedByUserId: 'changedByUserId',
+  reason: 'reason',
+  metadata: 'metadata',
+  changedAt: 'changedAt'
+} as const
+
+export type ApplicationStatusHistoryScalarFieldEnum = (typeof ApplicationStatusHistoryScalarFieldEnum)[keyof typeof ApplicationStatusHistoryScalarFieldEnum]
+
+
+export const ActivityLogScalarFieldEnum = {
+  id: 'id',
+  occurredAt: 'occurredAt',
+  actorType: 'actorType',
+  actorUserId: 'actorUserId',
+  entityType: 'entityType',
+  entityId: 'entityId',
+  action: 'action',
+  metadata: 'metadata',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent'
+} as const
+
+export type ActivityLogScalarFieldEnum = (typeof ActivityLogScalarFieldEnum)[keyof typeof ActivityLogScalarFieldEnum]
 
 
 export const EnrollmentScalarFieldEnum = {
@@ -205,6 +355,21 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
 export const QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
@@ -219,4 +384,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
