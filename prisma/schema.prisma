@@ -1,0 +1,167 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum LeadSource {
+  WEBSITE
+  PHONE
+  REFERRAL
+  EVENT
+  SOCIAL
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  DISQUALIFIED
+}
+
+enum ApplicationStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  ACCEPTED
+  REJECTED
+}
+
+enum EnrollmentStatus {
+  ACTIVE
+  DEFERRED
+  COMPLETED
+  WITHDRAWN
+}
+
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum AnnouncementLevel {
+  INFO
+  SUCCESS
+  WARNING
+  CRITICAL
+}
+
+model Program {
+  id               String      @id @default(uuid())
+  slug             String      @unique
+  title            String
+  shortDescription String
+  durationMonths   Int
+  tuitionCents     Int
+  isActive         Boolean     @default(true)
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+  leads            Lead[]
+  applicants       Applicant[]
+}
+
+model Lead {
+  id                String      @id @default(uuid())
+  firstName         String
+  lastName          String
+  email             String      @unique
+  phone             String?
+  source            LeadSource
+  status            LeadStatus  @default(NEW)
+  intendedProgramId String?
+  notes             String?
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  intendedProgram   Program?    @relation(fields: [intendedProgramId], references: [id], onDelete: SetNull)
+  applicant         Applicant?
+}
+
+model Applicant {
+  id                String            @id @default(uuid())
+  leadId            String            @unique
+  programId         String
+  applicationStatus ApplicationStatus @default(DRAFT)
+  submittedAt       DateTime?
+  reviewedAt        DateTime?
+  reviewerNotes     String?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  lead              Lead              @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  program           Program           @relation(fields: [programId], references: [id], onDelete: Restrict)
+  enrollment        Enrollment?
+
+  @@index([programId, applicationStatus])
+}
+
+model Enrollment {
+  id                 String           @id @default(uuid())
+  applicantId        String           @unique
+  status             EnrollmentStatus @default(ACTIVE)
+  startTerm          String
+  expectedGradTerm   String?
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+  applicant          Applicant        @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+}
+
+model Event {
+  id            String              @id @default(uuid())
+  slug          String              @unique
+  title         String
+  summary       String
+  venue         String
+  startsAt      DateTime
+  endsAt        DateTime
+  capacity      Int
+  isPublished   Boolean             @default(false)
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+  registrations EventRegistration[]
+
+  @@index([startsAt])
+}
+
+model EventRegistration {
+  id        String   @id @default(uuid())
+  eventId   String
+  fullName  String
+  email     String
+  phone     String?
+  createdAt DateTime @default(now())
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([eventId, email])
+}
+
+model BlogPost {
+  id          String        @id @default(uuid())
+  slug        String        @unique
+  title       String
+  excerpt     String
+  content     String
+  authorName  String
+  status      ContentStatus @default(DRAFT)
+  publishedAt DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([status, publishedAt])
+}
+
+model Announcement {
+  id          String            @id @default(uuid())
+  title       String
+  body        String
+  level       AnnouncementLevel @default(INFO)
+  pinned      Boolean           @default(false)
+  publishFrom DateTime          @default(now())
+  publishTo   DateTime?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  @@index([pinned, publishFrom])
+}
