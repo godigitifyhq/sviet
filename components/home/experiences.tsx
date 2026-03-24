@@ -1,36 +1,89 @@
+import Image from "next/image";
+
+const rightColumnFeatures = [
+  {
+    title: "Leadership Development",
+    text: "Through leadership programs, workshops, and student-led initiatives, SVIET encourages students to take responsibility, manage teams, and develop decision-making capabilities.",
+  },
+  {
+    title: "Startup & Innovation Culture",
+    text: "SVIET promotes entrepreneurial thinking through innovation labs, startup mentorship, and project-based learning. Students are encouraged to transform ideas into real ventures.",
+  },
+];
+
 export function ExperiencesSection() {
   return (
-    <section className="bg-[#fff4ea] px-4 py-10 md:px-6 md:py-16">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2">
-        <div className="self-center">
-          <h2 className="text-3xl font-bold leading-tight text-foreground md:text-5xl">
-            Experiences That Shape Future
-          </h2>
-          <p className="mt-4 max-w-xl text-base font-medium leading-relaxed text-[#3d3d3d]">
-            From innovation challenges to community immersion, every experience is designed to build confidence,
-            creativity, and practical problem-solving in real contexts.
-          </p>
-          <button className="mt-6 w-full rounded-full bg-black px-6 py-3 text-sm font-bold text-white transition duration-200 hover:scale-105 sm:w-auto">
-            GET YOUR OWN STARTUP
-          </button>
+    <section className="bg-white">
+      <div className="mx-auto max-w-7xl px-6 pb-16">
+        <div className="flex flex-1 gap-4">
+          <div className="flex mt-6 justify-center items-center">
+            <Image
+              src="/assets/img/s60.png"
+              alt="uniques logo"
+              width={100}
+              height={10}
+              className=""
+            />
+          </div>
+
+        <div className="flex-1 flex mt-6 items-center">
+            <div className="mt-7  bg-[#F58634] flex-1 px-5 py-2.5 text-sm font-medium tracking-wide text-white">
+            Experiences That Shape Future Professionals
+          </div>
+        </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-6">
-          <img
-            src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1200&q=80"
-            alt="Students in workshop"
-            className="h-52 w-full rounded-xl object-cover"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
-            alt="Classroom collaboration"
-            className="h-52 w-full rounded-xl object-cover"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80"
-            alt="Presentation in hall"
-            className="col-span-2 h-64 w-full rounded-xl object-cover"
-          />
+        <div className="mt-8 grid gap-10 md:grid-cols-2">
+          <div className="space-y-6">
+            <article className="border border-gray-200 bg-white rounded-2xl p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
+              <h3 className="text-lg font-semibold text-foreground">
+                Industry Mentorship
+              </h3>
+              <p className="mt-2 text-sm text-gray-500">
+                Students receive guidance from experienced professionals who
+                share real-world insights, career advice, and industry trends.
+                Mentorship bridges the gap between academic learning and
+                professional expectations.
+              </p>
+            </article>
+
+            <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
+              <Image
+                width={1200}
+                height={1000}
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2200&q=80"
+                alt="Seminar hall with students"
+                className="h-55 w-full object-cover transition duration-200 hover:scale-105"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            {rightColumnFeatures.map((feature, index) => (
+              <article
+                key={feature.title}
+                className="border border-gray-200 bg-white rounded-2xl p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
+              >
+                <h3 className="text-lg font-semibold text-foreground">
+                  {feature.title}
+                </h3>
+                <p
+                  className={`mt-2 text-sm text-gray-500 ${index > 0 ? "border-t border-gray-100 pt-4" : ""}`}
+                >
+                  {feature.text}
+                </p>
+              </article>
+            ))}
+
+            <button className="w-full bg-black text-white px-6 py-3 rounded-full flex items-center justify-between transition duration-200 hover:bg-gray-900 sm:w-auto sm:min-w-[320px]">
+              <span className="text-sm font-semibold">
+                GET YOUR OWN STARTUP
+              </span>
+              <span aria-hidden="true" className="text-lg leading-none">
+                →
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </section>

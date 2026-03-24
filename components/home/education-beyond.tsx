@@ -1,55 +1,83 @@
-const features = [
+import Image from "next/image";
+
+const rightColumnFeatures = [
   {
-    title: "Industry Mentorship",
-    text: "Students learn directly from active professionals through real-world case sessions and domain guidance.",
+    title: "Leadership Development",
+    text: "Through leadership programs, workshops, and student-led initiatives, SVIET encourages students to take responsibility, manage teams, and develop decision-making capabilities.",
   },
   {
-    title: "Startup Incubation",
-    text: "The institute supports idea validation, product building, and launch strategies from day one.",
-  },
-  {
-    title: "Leadership Labs",
-    text: "Workshops and high-pressure simulations sharpen communication, ownership, and decision making.",
+    title: "Startup & Innovation Culture",
+    text: "SVIET promotes entrepreneurial thinking through innovation labs, startup mentorship, and project-based learning. Students are encouraged to transform ideas into real ventures.",
   },
 ];
 
 export function EducationBeyondSection() {
   return (
-    <section className="bg-white px-4 py-10 md:px-6 md:py-16">
-      <div className="mx-auto grid max-w-7xl gap-10">
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div>
-            <h2 className="text-3xl font-bold leading-tight text-foreground md:text-5xl">
-              Education Beyond Classroom
-            </h2>
-            <p className="mt-4 max-w-xl text-base font-medium leading-relaxed text-[#3b3b3b]">
-              SVIET builds future-ready professionals through hands-on exposure, entrepreneurship programs, and
-              leadership initiatives that go far beyond traditional academics.
-            </p>
+    <section className="bg-white">
+      <div className="mx-auto max-w-7xl px-6 py-16">
+        <h2 className="text-4xl font-bold tracking-tight text-foreground">Education Beyond The Classroom</h2>
+        <p className="mt-3 max-w-5xl text-gray-600 leading-relaxed">
+          Education at SVIET goes beyond traditional academics. Through the S60 program and a range of unique
+          experiential initiatives, students gain industry exposure, leadership skills, and real-world readiness long
+          before graduation.
+        </p>
+
+      <div className="flex flex-1 gap-4">
+       <div className="flex mt-6 justify-center items-center">
+         <Image
+          src="/assets/img/uniques_logo.png"
+          alt="uniques logo"
+          width={150}
+          height={100}
+          className=""
+        />
+       </div>
+    
+          <div className="mt-7 flex-1 bg-[#BA1F27] px-5 py-2.5 text-sm font-medium tracking-wide text-white">
+          The Leadership Development Program
+        </div>
+      </div>
+
+        <div className="mt-8 grid gap-10 md:grid-cols-2">
+          <div className="space-y-6">
+            <article className="border border-gray-200 bg-white rounded-2xl p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
+              <h3 className="text-lg font-semibold text-foreground">Industry Mentorship</h3>
+              <p className="mt-2 text-sm text-gray-500">
+                Students receive guidance from experienced professionals who share real-world insights, career advice,
+                and industry trends. Mentorship bridges the gap between academic learning and professional
+                expectations.
+              </p>
+            </article>
+
+            <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
+              <Image
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2200&q=80"
+                alt="Seminar hall with students"
+                width={1200}
+                height={400}
+                className="h-55 w-full object-cover transition duration-200 hover:scale-105"
+              />
+            </div>
           </div>
 
-          <div className="grid gap-6">
-            {features.map((feature) => (
+          <div className="space-y-6">
+            {rightColumnFeatures.map((feature, index) => (
               <article
                 key={feature.title}
-                className="rounded-xl border border-[#ececec] bg-white p-6 shadow-md transition duration-200 hover:shadow-lg"
+                className="border border-gray-200 bg-white rounded-2xl p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
               >
-                <h3 className="text-xl font-bold text-foreground">{feature.title}</h3>
-                <p className="mt-2 text-sm font-medium leading-relaxed text-[#4b4b4b]">{feature.text}</p>
+                <h3 className="text-lg font-semibold text-foreground">{feature.title}</h3>
+                <p className={`mt-2 text-sm text-gray-500 ${index > 0 ? "border-t border-gray-100 pt-4" : ""}`}>
+                  {feature.text}
+                </p>
               </article>
             ))}
-          </div>
-        </div>
 
-        <div className="grid gap-6">
-          <img
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2200&q=80"
-            alt="Seminar hall with students"
-            className="h-82.5 w-full rounded-xl object-cover"
-          />
-          <div>
-            <button className="w-full rounded-full bg-black px-6 py-3 text-sm font-bold text-white transition duration-200 hover:scale-105 sm:w-auto">
-              GET YOUR OWN STARTUP
+            <button className="w-full bg-black text-white px-6 py-3 rounded-full flex items-center justify-between transition duration-200 hover:bg-gray-900 sm:w-auto sm:min-w-[320px]">
+              <span className="text-sm font-semibold">GET YOUR OWN STARTUP</span>
+              <span aria-hidden="true" className="text-lg leading-none">
+                →
+              </span>
             </button>
           </div>
         </div>
