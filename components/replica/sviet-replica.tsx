@@ -625,8 +625,6 @@ function StudentsSpeakAndFormSection() {
 export function HomePageReplica() {
   return (
     <div className="bg-background text-[#111]">
-      <TopUtilityBar />
-      <MainNavbar />
       <HomeHero />
       <EducationBlocks />
       <PlacementStatsSection />
@@ -634,7 +632,6 @@ export function HomePageReplica() {
       <TestimonialsSection />
       <StudentsSpeakAndFormSection />
       <AdmissionFormSection />
-      <SiteFooter />
     </div>
   );
 }
@@ -642,12 +639,9 @@ export function HomePageReplica() {
 export function CampusLifePageReplica() {
   return (
     <div className="bg-background text-[#111]">
-      <TopUtilityBar />
-      <MainNavbar />
       <CampusHero />
       <CampusLifeSection />
       <EventsSpotlightSection />
-      <SiteFooter />
     </div>
   );
 }
@@ -655,8 +649,6 @@ export function CampusLifePageReplica() {
 export function EventsPageReplica() {
   return (
     <div className="bg-background text-[#111]">
-      <TopUtilityBar />
-      <MainNavbar />
       <section className="mx-auto mt-2 w-full max-w-300 px-3 md:px-5">
         <div
           className="relative h-82.5 overflow-hidden rounded-md bg-cover bg-center md:h-105"
@@ -799,7 +791,6 @@ export function EventsPageReplica() {
         </div>
       </section>
 
-      <SiteFooter />
     </div>
   );
 }
@@ -807,9 +798,6 @@ export function EventsPageReplica() {
 export function ProgramDetailPageReplica() {
   return (
     <div className="bg-background text-[#111]">
-      <TopUtilityBar />
-      <MainNavbar />
-
       <section className="mx-auto mt-5 w-full max-w-300 px-3 md:px-5">
         <div className="grid gap-6 lg:grid-cols-[1fr_340px]">
           <div>
@@ -1019,7 +1007,6 @@ export function ProgramDetailPageReplica() {
         </div>
       </section>
 
-      <SiteFooter />
     </div>
   );
 }

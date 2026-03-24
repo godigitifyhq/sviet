@@ -1,5 +1,5 @@
-import { HomePageReplica } from "@/components/replica/sviet-replica";
+import { HomePage } from "@/components/home/homepage";
 
-export default function HomePage() {
-  return <HomePageReplica />;
+export default function Page() {
+  return <HomePage />;
 }
