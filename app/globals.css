@@ -1,38 +1,20 @@
 @import "tailwindcss";
 
-:root {
-  --surface: #f5f3ea;
-  --surface-card: #fffdf6;
-  --ink-900: #1b1c1d;
-  --ink-700: #545454;
-  --line: #d9d2c2;
-  --accent: #f1c35b;
-  --accent-2: #6ca3b8;
-}
-
 @theme inline {
-  --color-background: var(--surface);
-  --color-foreground: var(--ink-900);
+  --color-background: #f6f6f6;
+  --color-foreground: #111111;
   --font-sans: var(--font-sans);
   --font-display: var(--font-display);
 }
 
 body {
   font-family: var(--font-sans), sans-serif;
-  background:
-    radial-gradient(circle at 0% 0%, color-mix(in oklab, var(--accent) 25%, transparent), transparent 35%),
-    radial-gradient(circle at 100% 0%, color-mix(in oklab, var(--accent-2) 25%, transparent), transparent 30%),
-    var(--surface);
+  margin: 0;
+  background: #f6f6f6;
 }
 
 h1,
 h2,
 h3 {
-  font-family: var(--font-display), serif;
-}
-
-.card {
-  border: 1px solid var(--line);
-  background: var(--surface-card);
-  border-radius: 1rem;
+  font-family: var(--font-display), sans-serif;
 }
