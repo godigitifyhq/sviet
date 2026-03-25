@@ -103,51 +103,127 @@ export function MainNavbar() {
 
 export function SiteFooter() {
   return (
-    <footer className="bg-black px-3 py-8 text-white md:px-5">
-      <div className="mx-auto grid w-full max-w-300 gap-8 md:grid-cols-[1fr_1fr_0.7fr]">
-        <div>
-          <p className="font-serif text-6xl leading-none">SVIET</p>
-          <p className="mt-3 max-w-sm text-sm text-white/70">
-            Swami Vivekanand Institute Of Engineering & Technology Promoted By Raghunath Rai Memorial Trust.
+    <footer className="bg-black text-white">
+      <div className="mx-auto max-w-[1280px] px-6 py-14">
+        <div className="mx-auto max-w-4xl text-center">
+          <h3 className="text-3xl font-semibold md:text-3xl">Shape Your Future with Us</h3>
+          <p className="mt-4 text-sm leading-relaxed text-white/80 md:text-md">
+            Discover limitless opportunities at SVIET, where innovation, learning, and industry connect.
           </p>
-          <p className="mt-3 text-sm text-white/70">Village: Pamaur Near Banur Tehsil Rajpura, Distt: Patiala</p>
-          <p className="mt-2 text-sm text-white/70">Admissions: +91 99882 33333</p>
-        </div>
-        <form className="space-y-2">
-          <p className="text-2xl font-semibold">Question us</p>
-          <input className="w-full rounded bg-[#131313] px-3 py-2 text-sm" placeholder="First Name" />
-          <input className="w-full rounded bg-[#131313] px-3 py-2 text-sm" placeholder="Course" />
-          <input className="w-full rounded bg-[#131313] px-3 py-2 text-sm" placeholder="Phone" />
-          <input className="w-full rounded bg-[#131313] px-3 py-2 text-sm" placeholder="Email" />
-          <button type="button" className="w-full rounded bg-white px-3 py-2 text-sm font-semibold text-black">
-            Get started
+          <p className="text-sm leading-relaxed text-white/80 md:text-md">
+            Take the first step towards your dreams. Explore our programs and get in touch to begin your journey with us.
+          </p>
+          <button
+            type="button"
+            className="mx-auto mt-8 inline-flex items-center gap-3 rounded-full bg-white px-5 py-2 text-sm font-medium text-black transition hover:bg-white/90"
+          >
+            Get in touch
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#f7941d] text-white">↗</span>
           </button>
-        </form>
-        <ul className="space-y-2 text-sm text-white/90">
-          {["About Us", "Careers", "FAQs", "Teams", "Contact Us"].map((item) => (
-            <li key={item} className="flex items-center justify-between border-b border-white/10 py-2">
-              <span>{item}</span>
-              <span>‹</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="mx-auto mt-6 flex w-full max-w-300 items-center gap-3 border-t border-white/10 pt-4 text-white/90">
-        <a href="#" aria-label="Facebook" className="rounded-full border border-white/20 p-2 transition hover:text-[#f7941d]">
-          <FaFacebookF />
-        </a>
-        <a href="#" aria-label="Instagram" className="rounded-full border border-white/20 p-2 transition hover:text-[#f7941d]">
-          <FaInstagram />
-        </a>
-        <a href="#" aria-label="LinkedIn" className="rounded-full border border-white/20 p-2 transition hover:text-[#f7941d]">
-          <FaLinkedinIn />
-        </a>
-        <a href="#" aria-label="YouTube" className="rounded-full border border-white/20 p-2 transition hover:text-[#f7941d]">
-          <FaYoutube />
-        </a>
-        <a href="#" aria-label="WhatsApp" className="rounded-full border border-white/20 p-2 transition hover:text-[#f7941d]">
-          <FaWhatsapp />
-        </a>
+        </div>
+
+        <div className="mt-14 border-t border-white/10 pt-14">
+          <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
+            <section>
+              <div className="flex items-center gap-3">
+                <Image src="/Logo.webp" alt="SVIET logo" width={120} height={40} className="h-8 w-auto md:h-10" />
+              </div>
+
+              <div className="mt-6 flex items-center gap-2">
+                <a href="#" aria-label="Facebook" className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25">
+                  <FaFacebookF />
+                </a>
+                <a href="#" aria-label="Instagram" className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25">
+                  <FaInstagram />
+                </a>
+                <a href="#" aria-label="LinkedIn" className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25">
+                  <FaLinkedinIn />
+                </a>
+                <a href="#" aria-label="X" className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-base font-semibold text-white transition hover:bg-white/25">
+                  X
+                </a>
+                <a href="#" aria-label="YouTube" className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25">
+                  <FaYoutube />
+                </a>
+              </div>
+
+              <div className="mt-8 space-y-6 text-sm leading-relaxed text-white/90">
+                <div>
+                  <p className="font-semibold uppercase tracking-wide">SVIET (PUNJAB)</p>
+                  <p>Chandigarh-Patiala National Highway, Punjab 140 401</p>
+                </div>
+                <div>
+                  <p className="font-semibold uppercase tracking-wide">Information Centre</p>
+                  <p>Unit No. A 201-202, Elante Mall Office Complex</p>
+                  <p>Industrial Area Phase 1, Chandigarh 160 002</p>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h4 className="text-lg font-semibold uppercase">Admissions</h4>
+              <ul className="mt-5 space-y-3 text-sm text-white/85">
+                {[
+                  "Downloadable Brochures",
+                  "Important Contact Numbers",
+                  "Application Form Sale Outlets",
+                  "Admission Procedure",
+                  "Fee Structure",
+                  "International Students",
+                  "Downloadable Forms & Formats",
+                  "FAQ",
+                ].map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section>
+              <h4 className="text-lg font-semibold uppercase">Important Info</h4>
+              <ul className="mt-5 space-y-3 text-sm text-white/85">
+                {[
+                  "Grievance Redressal",
+                  "NIRF Report",
+                  "University National Academic Depository (NAD) Cell",
+                  "UGC Mandatory Disclosures",
+                  "www.pmydisha2mci.co.in/",
+                  "Academic Bank of Credits (ABC)",
+                  "Request for Educational Verification",
+                  "RTI",
+                  "Agnipath Yojana",
+                ].map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section>
+              <h4 className="text-lg font-semibold uppercase">Explore</h4>
+              <ul className="mt-5 space-y-3 text-sm text-white/85">
+                {[
+                  "SVIET University, Punjab",
+                  "SVIET University, Himachal Pradesh",
+                  "SVIET International School",
+                  "SVIET Centre for Global Education",
+                  "Office of International Affairs",
+                  "Career Advancement Services",
+                  "Office of Student Affairs",
+                  "University Sports Board",
+                  "Blogs",
+                ].map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+          </div>
+        </div>
+
+        <div className="mt-12 border-t border-white/10 pt-5">
+          <div className="flex flex-col items-center justify-between gap-2 text-xs text-white/65 md:flex-row">
+           
+            <p>© {new Date().getFullYear()} SVIET. All rights reserved.</p>
+          </div>
+        </div>
       </div>
     </footer>
   );
