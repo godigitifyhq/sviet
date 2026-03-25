@@ -9,11 +9,20 @@ const NAV_ITEMS = [
   { label: "ABOUT", href: "#" },
   { label: "PROGRAMS", href: "/programs" },
   { label: "PLACEMENTS", href: "#" },
-  { label: "ADMISSIONS", href: "#" },
+  { label: "ADMISSIONS", href: "/admissions" },
   { label: "CAMPUS LIFE", href: "/campus-life" },
   { label: "EVENTS & SPOTLIGHT", href: "/events" },
   { label: "STUDENT PORTAL", href: "#" },
   { label: "CONTACT US", href: "#" },
+];
+
+const PROGRAM_DROPDOWN_ITEMS = [
+  { label: "Wanna Know Your Program?", href: "/program-finder" },
+  { label: "BTECH CSE", href: "/programs" },
+  { label: "BTECH ECE", href: "/programs" },
+  { label: "AGRICULTURE", href: "/programs" },
+  { label: "BBA", href: "/programs" },
+  { label: "MBA", href: "/programs" },
 ];
 
 const UTILITY_MESSAGES = [
@@ -91,9 +100,34 @@ export function MainNavbar() {
         </Link>
         <nav className="hidden items-center gap-5 text-[11px] font-semibold tracking-wide text-[#1b1b1b] lg:flex">
           {NAV_ITEMS.map((item) => (
-            <Link key={item.label} href={item.href} className="hover:text-[#f7941d]">
-              {item.label}
-            </Link>
+            item.label === "PROGRAMS" ? (
+              <div key={item.label} className="group relative">
+                <Link href={item.href} className="inline-flex items-center gap-1 hover:text-[#f7941d]">
+                  {item.label}
+                  <span className="text-[10px]">▾</span>
+                </Link>
+
+                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-70 -translate-x-1/2 rounded-2xl border border-neutral-200 bg-white p-3 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+                  <div className="space-y-1">
+                    {PROGRAM_DROPDOWN_ITEMS.map((dropdownItem, index) => (
+                      <Link
+                        key={dropdownItem.label}
+                        href={dropdownItem.href}
+                        className={`block rounded-xl px-3 py-2 text-[11px] font-semibold transition hover:bg-neutral-100 hover:text-[#f7941d] ${
+                          index === 0 ? "bg-[#f7941d]/10 text-[#f7941d]" : "text-[#1b1b1b]"
+                        }`}
+                      >
+                        {dropdownItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link key={item.label} href={item.href} className="hover:text-[#f7941d]">
+                {item.label}
+              </Link>
+            )
           ))}
         </nav>
       </div>
@@ -104,7 +138,7 @@ export function MainNavbar() {
 export function SiteFooter() {
   return (
     <footer className="bg-black text-white">
-      <div className="mx-auto max-w-[1280px] px-6 py-14">
+      <div className="mx-auto max-w-7xl px-6 py-14">
         <div className="mx-auto max-w-4xl text-center">
           <h3 className="text-3xl font-semibold md:text-3xl">Shape Your Future with Us</h3>
           <p className="mt-4 text-sm leading-relaxed text-white/80 md:text-md">
@@ -161,7 +195,11 @@ export function SiteFooter() {
             </section>
 
             <section>
-              <h4 className="text-lg font-semibold uppercase">Admissions</h4>
+              <h4 className="text-lg font-semibold uppercase">
+                <Link href="/admissions" className="hover:text-white">
+                  Admissions
+                </Link>
+              </h4>
               <ul className="mt-5 space-y-3 text-sm text-white/85">
                 {[
                   "Downloadable Brochures",
@@ -173,7 +211,15 @@ export function SiteFooter() {
                   "Downloadable Forms & Formats",
                   "FAQ",
                 ].map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item}>
+                    {item === "Admission Procedure" ? (
+                      <Link href="/admissions" className="hover:text-white">
+                        {item}
+                      </Link>
+                    ) : (
+                      item
+                    )}
+                  </li>
                 ))}
               </ul>
             </section>
