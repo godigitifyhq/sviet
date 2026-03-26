@@ -31,7 +31,7 @@ export default function RootLayout({
       <body className="min-h-full bg-background text-foreground">
         <TopUtilityBar />
         <MainNavbar />
-        <main>{children}</main>
+        <main className="bg-white">{children}</main>
         <SiteFooter />
       </body>
     </html>

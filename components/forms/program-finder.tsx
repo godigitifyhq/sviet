@@ -60,7 +60,7 @@ export function ProgramFinderForm() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="text-center">
           <motion.div
             animate={{ rotate: 360 }}
@@ -80,7 +80,7 @@ export function ProgramFinderForm() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-white">
       {/* Header */}
       <header className="py-8 px-4 border-b border-gray-200 bg-white">
         <div className="max-w-4xl mx-auto">
