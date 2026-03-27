@@ -1,5 +1,5 @@
-import { ProgramDetailPageReplica } from "@/components/replica/sviet-replica";
+import { ProgramDetailPage } from "@/components/programs/program-page";
 
 export default function ProgramsPage() {
-  return <ProgramDetailPageReplica />;
+  return <ProgramDetailPage />;
 }
