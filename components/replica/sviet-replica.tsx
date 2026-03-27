@@ -649,6 +649,7 @@ export function CampusLifePageReplica() {
 export function EventsPageReplica() {
   return (
     <div className="bg-background text-[#111]">
+
       <section className="mx-auto mt-2 w-full max-w-300 px-3 md:px-5">
         <div
           className="relative h-82.5 overflow-hidden rounded-md bg-cover bg-center md:h-105"
@@ -657,356 +658,219 @@ export function EventsPageReplica() {
               "linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1592303637753-cef44e1ca6c1?auto=format&fit=crop&w=1600&q=80')",
           }}
         >
-          <div className="absolute bottom-8 left-6 text-white md:left-8">
-            <h1 className="text-6xl font-extrabold leading-none md:text-8xl">EVENTS</h1>
-            <p className="mt-2 text-3xl font-extrabold uppercase md:text-5xl">
-              SOMETHING IMPORTANT IS
-              <br />
-              <span className="text-[#f7941d]">HAPPENING, AND I&apos;M PART OF IT</span>
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute left-3 top-1/2 w-full -translate-y-1/2 px-3 text-white md:left-10 md:px-0">
+            <h1 className="text-8xl font-extrabold leading-none tracking-tight text-white/90 md:text-[8.5rem]">EVENTS</h1>
+            <p className="mt-2 max-w-3xl text-lg font-semibold md:text-3xl">
+              SOMETHING IMPORTANT IS HAPPENING, AND I&apos;M PART OF IT
             </p>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto mt-6 w-full max-w-300 space-y-6 px-3 md:px-5">
-        <div className="grid gap-4 lg:grid-cols-2">
-          <article className="relative overflow-hidden rounded-xl">
-            <img
-              src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1400&q=80"
-              alt="Spontania"
-              className="h-85 w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent p-5">
-              <p className="absolute bottom-6 text-5xl font-extrabold text-white">SPONTANIA</p>
-            </div>
-          </article>
-          <div className="grid gap-4">
-            <article className="grid items-center gap-4 rounded-xl bg-white p-4 md:grid-cols-2">
-              <div>
-                <h3 className="text-5xl font-extrabold leading-none">ELEVATE</h3>
-                <p className="mt-2 text-3xl font-semibold leading-tight">Cosmopolitan Campus With Vibrant Cultures.</p>
-                <button className="mt-4 rounded-lg bg-[#f7941d] px-5 py-2 font-semibold text-white">Visit Highlight ↗</button>
-              </div>
-              <img
-                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80"
-                alt="Event"
-                className="h-55 w-full rounded-lg object-cover"
-              />
-            </article>
+      <section className="mx-auto mt-6 w-full max-w-300 px-3 md:px-5">
+        <div
+          className="relative overflow-hidden rounded-xl"
+          style={{
+            height: "360px",
+          }}
+        >
+          <img
+            src="https://images.unsplash.com/photo-1465101162946-4377e57745c3?auto=format&fit=crop&w=1600&q=80"
+            alt="Spontania featured"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+          <div className="absolute bottom-5 left-5 text-white md:bottom-6 md:left-6">
+            <h2 className="text-5xl font-extrabold">SPONTANIA</h2>
+            <p className="mt-2 max-w-lg text-sm md:text-base">Join the cultural fusion fest where creativity meets spirited celebration.</p>
           </div>
         </div>
+      </section>
 
-        <h2 className="text-4xl font-bold">All Upcoming Events</h2>
-        <div className="grid gap-4 md:grid-cols-3">
-          {UPCOMING_EVENTS.map((event) => (
-            <article key={event.title} className="overflow-hidden rounded-xl border border-[#e8e8e8] bg-white">
-              <img src={event.image} alt={event.title} className="h-45 w-full object-cover" />
-              <div className="p-4">
-                <h3 className="text-xl font-bold">{event.title}</h3>
-                <p className="mt-2 text-sm text-[#555]">{event.subtitle}</p>
-                <p className="mt-3 text-sm text-[#f7941d]">View Details →</p>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <h2 className="pt-2 text-4xl font-bold">Workshops</h2>
-        <div className="grid gap-4 md:grid-cols-2">
-          {WORKSHOPS.map((item) => (
-            <article key={item.title} className="overflow-hidden rounded-xl border border-[#e8e8e8] bg-white">
-              <img src={item.image} alt={item.title} className="h-52.5 w-full object-cover" />
-              <div className="p-4">
-                <h3 className="text-2xl font-bold">{item.title}</h3>
-                <p className="mt-2 text-sm text-[#f7941d]">View Details →</p>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-3">
-          {Array.from({ length: 3 }).map((_, idx) => (
-            <div key={idx} className="relative overflow-hidden rounded-xl">
-              <img
-                src={`https://images.unsplash.com/photo-${idx === 0 ? "1515169067868-5387ec356754" : idx === 1 ? "1511795409834-ef04bbd61622" : "1506157786151-b8491531f063"}?auto=format&fit=crop&w=1200&q=80`}
-                alt="Spontania"
-                className="h-75 w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent p-4">
-                <p className="absolute bottom-4 text-5xl font-extrabold text-white">SPONTANIA</p>
-              </div>
+      <section className="mx-auto mt-8 w-full max-w-300 px-3 md:px-5">
+        <div className="grid gap-5 md:grid-cols-[1fr_1fr]">
+          <div className="rounded-xl bg-[#f7f7f7] p-5 md:p-8">
+            <h2 className="text-5xl font-black uppercase tracking-tight text-[#111]">ELEVATE</h2>
+            <p className="mt-3 text-sm text-[#333] md:text-base">
+              Cosmopolitan Campus With Vibrant Cultures, Multilateral Ideas & A Lot More
+            </p>
+            <button className="mt-5 rounded-lg bg-[#f7941d] px-5 py-2.5 text-sm font-semibold text-white">Visit Highlight</button>
+          </div>
+          <div className="relative overflow-hidden rounded-xl">
+            <img
+              src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=80"
+              alt="Spontania split"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-transparent" />
+            <div className="absolute bottom-5 left-5 text-white">
+              <h3 className="text-3xl font-bold">SPONTANIA</h3>
+              <p className="mt-1 text-sm">Explore the cultural fest moments that showcase student talent and spirit.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto mt-10 w-full max-w-300 px-3 md:px-5">
+        <h2 className="text-4xl font-bold">All Upcoming Events</h2>
+        <div className="mt-4 grid gap-4 md:grid-cols-3">
+          {UPCOMING_EVENTS.map((event) => (
+            <article key={event.title} className="rounded-xl border border-[#e6e6e6] bg-white p-4">
+              <img src={event.image} alt={event.title} className="h-36 w-full rounded-lg object-cover" />
+              <div className="mt-3 flex items-center justify-between text-xs text-[#f7941d] font-semibold">
+                <span className="rounded-full border border-[#f7941d] px-2 py-0.5">Cultural</span>
+                <span>Apr 12 2026</span>
+              </div>
+              <h3 className="mt-2 text-lg font-bold">{event.title}</h3>
+              <p className="mt-1 text-sm text-[#555]">{event.subtitle}</p>
+              <p className="mt-2 text-xs text-[#777]">SVIET Campus</p>
+              <a className="mt-3 inline-block text-sm font-semibold text-[#f7941d]">View Details →</a>
+            </article>
           ))}
         </div>
+      </section>
 
-        <article className="grid items-center gap-4 rounded-xl bg-white p-4 lg:grid-cols-[1fr_1fr]">
+      <section className="mx-auto mt-10 w-full max-w-300 px-3 md:px-5">
+        <h2 className="text-4xl font-bold">Workshops</h2>
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          {WORKSHOPS.map((event) => (
+            <article key={event.title} className="rounded-xl border border-[#e6e6e6] bg-white p-4">
+              <img src={event.image} alt={event.title} className="h-40 w-full rounded-lg object-cover" />
+              <div className="mt-2 text-xs text-[#f7941d] font-bold">Workshop</div>
+              <h3 className="mt-1 text-lg font-bold">{event.title}</h3>
+              <p className="mt-1 text-xs text-[#777]">Apr 18, 2026</p>
+              <a className="mt-3 inline-block text-sm font-semibold text-[#f7941d]">View Details →</a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto mt-10 w-full max-w-300 px-3 md:px-5">
+        <div className="grid gap-3 md:grid-cols-3">
+          {Array.from({ length: 3 }).map((_, idx) => (
+            <article key={idx} className="relative overflow-hidden rounded-xl" style={{ height: "300px" }}>
+              <img
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=80"
+                alt={`Spontania ${idx}`}
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+              <div className="absolute bottom-5 left-5 text-white">
+                <h3 className="text-3xl font-extrabold">SPONTANIA</h3>
+                <p className="mt-1 max-w-xs text-sm">Experience the cultural celebration with music, dance and live performances.</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto mt-10 w-full max-w-300 px-3 md:px-5">
+        <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
           <img
             src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
-            alt="TechVision"
-            className="h-62.5 w-full rounded-lg object-cover"
+            alt="TechVision speaker"
+            className="h-72 w-full rounded-xl object-cover"
           />
-          <div>
-            <p className="text-xs uppercase tracking-wide text-[#f7941d]">Tech Event</p>
-            <h3 className="mt-2 text-4xl font-bold">TechVision 2026: Innovation Summit</h3>
-            <p className="mt-2 text-[#555]">Annual flagship technology summit featuring industry leaders and cutting-edge innovations.</p>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <button className="rounded-lg bg-[#f7941d] px-4 py-2 font-semibold text-white">View Event</button>
-              <button className="rounded-lg border border-[#111] px-4 py-2 font-semibold">Register Now</button>
+          <div className="rounded-xl border border-[#e6e6e6] bg-white p-6">
+            <span className="rounded-full bg-[#f7941d] px-3 py-1 text-xs font-bold uppercase text-white">Featured Event</span>
+            <h3 className="mt-4 text-2xl font-black">TechVision 2026: Innovation Summit</h3>
+            <p className="mt-2 text-sm text-[#555]">Annual flagship technology summit featuring industry leaders and cutting-edge innovations.</p>
+            <p className="mt-4 text-xs text-[#777]">April 15, 2026 · SVIET Main Auditorium</p>
+            <div className="mt-5 flex gap-3">
+              <button className="rounded-lg bg-[#f7941d] px-4 py-2 text-sm font-semibold text-white">View Event</button>
+              <button className="rounded-lg border border-[#f7941d] px-4 py-2 text-sm font-semibold text-[#f7941d]">Register Now</button>
             </div>
           </div>
-        </article>
+        </div>
+      </section>
 
-        <div className="relative overflow-hidden rounded-xl">
+      <section className="mx-auto mt-10 w-full max-w-300 px-3 md:px-5">
+        <div
+          className="relative overflow-hidden rounded-xl"
+          style={{
+            height: "300px",
+          }}
+        >
           <img
             src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1600&q=80"
-            alt="Feature"
-            className="h-75 w-full object-cover"
+            alt="Spontania large banner"
+            className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-black/75 to-transparent p-5">
-            <p className="absolute bottom-6 text-5xl font-extrabold text-white">SPONTANIA</p>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+          <div className="absolute bottom-5 left-5 text-white">
+            <h3 className="text-4xl font-extrabold">SPONTANIA</h3>
+            <p className="mt-2 max-w-lg text-sm">Explore our collection of memorable moments and events that capture the vibrant life at SVIET.</p>
           </div>
         </div>
+      </section>
 
+      <section className="mx-auto mt-10 w-full max-w-300 px-3 md:px-5 pb-12">
         <h2 className="text-4xl font-bold">Past Events</h2>
-        <div className="grid gap-4 pb-6 md:grid-cols-2">
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
           {[
             {
               title: "Blockchain & Web3 Summit",
-              image:
-                "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80",
+              description: "Explore decentralized technologies and future of digital finance.",
+              date: "Mar 13, 2026",
+              location: "SVIET Tech Hub",
+              image: "https://images.unsplash.com/photo-1558655146-364db4ea40e1?auto=format&fit=crop&w=1200&q=80",
             },
             {
               title: "Annual Sports Day 2025",
-              image:
-                "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1000&q=80",
+              description: "College sports competition and athletic events.",
+              date: "Mar 18, 2025",
+              location: "Sports Complex",
+              image: "https://images.unsplash.com/photo-1521302080371-45145b4c48f8?auto=format&fit=crop&w=1200&q=80",
             },
           ].map((item) => (
-            <article key={item.title} className="overflow-hidden rounded-xl border border-[#e8e8e8] bg-white">
-              <img src={item.image} alt={item.title} className="h-45 w-full object-cover" />
-              <div className="p-4">
-                <h3 className="text-2xl font-bold">{item.title}</h3>
-                <p className="mt-2 text-sm text-[#f7941d]">View Details →</p>
-              </div>
+            <article key={item.title} className="rounded-xl border border-[#e6e6e6] bg-white p-4">
+              <img src={item.image} alt={item.title} className="h-40 w-full rounded-lg object-cover" />
+              <h3 className="mt-3 text-xl font-bold">{item.title}</h3>
+              <p className="mt-1 text-sm text-[#555]">{item.description}</p>
+              <p className="mt-2 text-xs text-[#777]">{item.date} · {item.location}</p>
+              <a className="mt-3 inline-block text-sm font-semibold text-[#f7941d]">View Details →</a>
             </article>
           ))}
         </div>
       </section>
 
-    </div>
-  );
-}
-
-export function ProgramDetailPageReplica() {
-  return (
-    <div className="bg-background text-[#111]">
-      <section className="mx-auto mt-5 w-full max-w-300 px-3 md:px-5">
-        <div className="grid gap-6 lg:grid-cols-[1fr_340px]">
+      <footer className="bg-black px-3 py-8 text-white md:px-5">
+        <div className="mx-auto grid w-full max-w-300 gap-8 md:grid-cols-[1fr_1fr_0.7fr]">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#f7941d]">Recommended for students interested in Engineering / Tech careers</p>
-            <h1 className="mt-2 text-5xl font-extrabold leading-tight">B.Tech Computer Science Engineering</h1>
-            <p className="mt-3 max-w-3xl text-[#4b4b4b]">
-              A future-ready undergraduate program designed to build strong foundations in computing, software engineering, and emerging technologies.
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2 text-xs">
-              {["4 Years", "10+2 PCM with 45%", "July / August 2026"].map((chip) => (
-                <span key={chip} className="rounded-full border border-[#ddd] bg-white px-3 py-1">
-                  {chip}
-                </span>
-              ))}
+            <div className="flex items-center gap-2">
+              <div className="h-8 w-8 rounded-sm bg-[#1d65b9]" />
+              <span className="font-serif text-2xl font-bold">SVIET</span>
             </div>
-            <img
-              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80"
-              alt="Program"
-              className="mt-4 h-52.5 w-full rounded-xl object-cover"
-            />
+            <p className="mt-3 text-xs text-[#ccc]">Swami Vivekanand Institute of Engineering and Technology</p>
+            <p className="mt-1 text-xs text-[#ccc]">Chakkar, Patiala, Punjab</p>
+            <p className="mt-1 text-xs text-[#ccc]">+91 12345 67890</p>
           </div>
-          <aside className="space-y-3 rounded-xl border border-[#e6e6e6] bg-white p-4">
-            <p className="text-sm text-[#555]">Application Deadline</p>
-            <p className="text-4xl font-extrabold">120 <span className="text-sm font-semibold text-[#f7941d]">Seats</span></p>
-            <button className="w-full rounded bg-[#f7941d] px-4 py-2.5 font-semibold text-white">Apply Now</button>
-            <button className="w-full rounded border border-[#f7941d] px-4 py-2.5 font-semibold text-[#f7941d]">Download Brochure</button>
-            <div className="rounded bg-[#fff6ee] p-3 text-xs text-[#8d5522]">75% scholarship seats available for early applicants.</div>
-          </aside>
-        </div>
-      </section>
-
-      <section className="mx-auto mt-10 w-full max-w-300 px-3 md:px-5">
-        <h2 className="text-4xl font-extrabold">Where Our Graduates Land</h2>
-        <div className="mt-4 grid gap-4 md:grid-cols-4">
-          {[
-            ["Highest Package", "₹28 LPA"],
-            ["Average Package", "₹6.4 LPA"],
-            ["Placement Rate", "94%"],
-            ["Top Recruiters", "120+"],
-          ].map(([k, v]) => (
-            <div key={k} className="rounded-xl border border-[#e8e8e8] bg-white p-4">
-              <p className="text-sm text-[#666]">{k}</p>
-              <p className="mt-2 text-4xl font-extrabold">{v}</p>
+          <form className="space-y-2">
+            <input className="w-full rounded bg-[#131313] px-3 py-2 text-sm text-white" placeholder="First Name" />
+            <input className="w-full rounded bg-[#131313] px-3 py-2 text-sm text-white" placeholder="Course" />
+            <input className="w-full rounded bg-[#131313] px-3 py-2 text-sm text-white" placeholder="Phone" />
+            <input className="w-full rounded bg-[#131313] px-3 py-2 text-sm text-white" placeholder="Email" />
+            <button className="w-full rounded bg-[#f7941d] px-4 py-2 text-sm font-semibold text-white">Get Started</button>
+          </form>
+          <div className="space-y-2 text-sm text-white/90">
+            <p className="font-semibold">Quick Links</p>
+            <a href="#" className="block hover:text-white">About</a>
+            <a href="#" className="block hover:text-white">Careers</a>
+            <a href="#" className="block hover:text-white">FAQs</a>
+            <a href="#" className="block hover:text-white">Teams</a>
+            <a href="#" className="block hover:text-white">Contact</a>
+            <div className="mt-3 flex items-center gap-2 text-xs text-white/70">
+              <span>🔴</span>
+              <span>🟠</span>
+              <span>🟣</span>
             </div>
-          ))}
-        </div>
-      </section>
-
-      <RecruiterGrid />
-
-      <section className="mx-auto mt-10 w-full max-w-300 px-3 md:px-5">
-        <h2 className="text-4xl font-extrabold">What Sets SVIET B.Tech CSE Apart</h2>
-        <div className="mt-4 grid gap-4 md:grid-cols-3">
-          {[
-            "Industry-aligned curriculum",
-            "10+ specialized labs",
-            "Global exposure",
-            "Mentorship & career cells",
-            "Award winning research",
-            "Emerging tech electives",
-          ].map((item) => (
-            <div key={item} className="rounded-xl border border-[#e9e9e9] bg-white p-4 text-sm font-semibold text-[#333]">
-              {item}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto mt-14 w-full max-w-300 rounded-xl bg-[#f0f0f0] px-3 py-10 md:px-5">
-        <h2 className="text-center text-4xl font-extrabold">Is This Program Right for You?</h2>
-        <p className="mt-2 text-center text-sm text-[#666]">Select the traits that describe you best.</p>
-        <div className="mx-auto mt-6 grid max-w-4xl gap-3 md:grid-cols-2">
-          {[
-            "Love problem solving",
-            "Interest in technology",
-            "Curious analytical mindset",
-            "Enjoy building things",
-          ].map((item, idx) => (
-            <button
-              key={item}
-              className={`rounded-lg border px-4 py-3 text-left text-sm font-semibold ${idx === 0 || idx === 3 ? "border-[#f7941d] bg-[#fff7ef]" : "border-[#d9d9d9] bg-white"}`}
-            >
-              {item}
-            </button>
-          ))}
-        </div>
-        <div className="mt-6 text-center">
-          <button className="rounded-lg bg-[#f7941d] px-6 py-3 text-base font-semibold text-white">Start Your Application →</button>
-        </div>
-      </section>
-
-      <section className="mx-auto mt-12 w-full max-w-300 px-3 md:px-5">
-        <h2 className="text-4xl font-extrabold">Stories From Our Alumni</h2>
-        <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_340px]">
-          <div className="rounded-xl border border-[#e8e8e8] bg-white p-5">
-            <p className="text-[#4d4d4d]">
-              &quot;SVIET gave me practical exposure and confidence to solve real problems. The placement training and support were exceptional.&quot;
-            </p>
-            <p className="mt-4 text-xl font-bold">Arjun Sharma</p>
-          </div>
-          <div className="space-y-3">
-            {[
-              ["Arjun Sharma", "4.8/5.0"],
-              ["Priya Verma", "4.7/5.0"],
-              ["Rahul Nair", "4.6/5.0"],
-            ].map(([name, score]) => (
-              <div key={name} className="rounded-lg border border-[#f1a866] bg-white px-4 py-3">
-                <p className="font-semibold">{name}</p>
-                <p className="text-xs text-[#666]">{score}</p>
-              </div>
-            ))}
-            <div className="rounded-lg bg-[#fff3e7] p-3 text-sm text-[#8d5522]">94% of students rated this program highly.</div>
           </div>
         </div>
-      </section>
-
-      <section className="mx-auto mt-12 w-full max-w-300 px-3 md:px-5">
-        <h2 className="text-4xl font-extrabold">What You&apos;ll Study</h2>
-        <div className="mt-4 overflow-hidden rounded-xl border border-[#e7e7e7] bg-white">
-          <table className="w-full text-left text-sm">
-            <thead className="bg-[#fafafa] text-[#666]">
-              <tr>
-                <th className="px-4 py-3">Code</th>
-                <th className="px-4 py-3">Course Name</th>
-                <th className="px-4 py-3">Credits</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ["CSE101", "Introduction to Programming", "4"],
-                ["CSE102", "Engineering Mathematics", "4"],
-                ["CSE103", "Digital Electronics", "3"],
-                ["CSE104", "Engineering Physics", "3"],
-                ["CSE105", "Communication Skills", "2"],
-              ].map(([code, course, credits]) => (
-                <tr key={code} className="border-t border-[#efefef]">
-                  <td className="px-4 py-3 text-[#f7941d]">{code}</td>
-                  <td className="px-4 py-3">{course}</td>
-                  <td className="px-4 py-3">{credits}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section className="mx-auto mt-12 w-full max-w-300 px-3 md:px-5">
-        <h2 className="text-4xl font-extrabold">World-Class Campus Facilities</h2>
-        <div className="mt-4 grid gap-4 md:grid-cols-4">
-          {FACILITIES.map((facility) => (
-            <article key={facility} className="overflow-hidden rounded-xl border border-[#e8e8e8] bg-white">
-              <img
-                src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1000&q=80"
-                alt={facility}
-                className="h-32.5 w-full object-cover"
-              />
-              <p className="p-3 text-sm font-semibold">{facility}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto mt-12 w-full max-w-300 px-3 md:px-5">
-        <div className="overflow-hidden rounded-xl border border-[#e9e9e9] bg-white">
-          <div className="flex items-center justify-between bg-[#fafafa] px-4 py-3">
-            <h2 className="text-3xl font-extrabold">Compare with Other Programs</h2>
-            <button className="rounded border border-[#f7941d] px-3 py-1 text-sm text-[#f7941d]">Hide Comparison</button>
-          </div>
-          <table className="w-full text-left text-sm">
-            <thead className="border-t border-[#efefef] bg-white text-[#666]">
-              <tr>
-                <th className="px-4 py-3">Feature</th>
-                <th className="px-4 py-3">B.Tech CSE</th>
-                <th className="px-4 py-3">B.Tech IT</th>
-                <th className="px-4 py-3">BCA</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ["Duration", "4 years", "4 years", "3 years"],
-                ["Annual Fees", "₹98,000", "₹75,000", "₹55,000"],
-                ["Placement Rate", "94%", "89%", "80%"],
-                ["Avg Package", "₹6.4 LPA", "₹5.2 LPA", "₹4.5 LPA"],
-              ].map((row) => (
-                <tr key={row[0]} className="border-t border-[#efefef]">
-                  <td className="px-4 py-3">{row[0]}</td>
-                  <td className="px-4 py-3">{row[1]}</td>
-                  <td className="px-4 py-3">{row[2]}</td>
-                  <td className="px-4 py-3">{row[3]}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section className="mx-auto mt-12 w-full max-w-300 px-3 pb-12 text-center md:px-5">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">Ready To Begin?</p>
-        <h2 className="mt-2 text-5xl font-extrabold">Start Your Journey at SVIET</h2>
-        <p className="mx-auto mt-3 max-w-3xl text-[#555]">
-          Join 10,000+ students who have built their careers at SVIET. Admissions for 2026 batch are now open.
-        </p>
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-          <button className="rounded-lg bg-[#f7941d] px-6 py-3 font-semibold text-white">Apply Now</button>
-          <button className="rounded-lg border border-black px-6 py-3 font-semibold">Talk to a Counselor</button>
-          <button className="rounded-lg border border-[#f7941d] px-6 py-3 font-semibold text-[#f7941d]">Download Brochure</button>
-        </div>
-      </section>
-
+      </footer>
     </div>
   );
 }
+
+export const ProgramDetailPageReplica = HomePageReplica;
+
