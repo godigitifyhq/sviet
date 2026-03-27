@@ -1,10 +1,17 @@
-const events = Array.from({ length: 7 }).map((_, index) => ({
+const eventImages = [
+  "/assets/img/campus-life/r1c1.png",
+  "/assets/img/campus-life/r1c2.png",
+  "/assets/img/campus-life/r2c1.png",
+  "/assets/img/campus-life/r2c2.png",
+  "/assets/img/campus-life/r2c3.png",
+  "/assets/img/campus-life/r3c1.png",
+  "/assets/img/campus-life/r3c2.png",
+];
+
+const events = eventImages.map((image) => ({
   title: "SPONTANIA",
   text: "Explore our collection of memorable moments and events that capture the vibrant life at SVIET.",
-  image:
-    index % 2 === 0
-      ? "https://images.unsplash.com/photo-1472653431158-6364773b2a56?auto=format&fit=crop&w=1200&q=80"
-      : "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80",
+  image,
 }));
 
 export function CampusLifeEventsSection() {

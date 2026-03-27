@@ -21,7 +21,7 @@ export function CampusLifeHomeAwaySection() {
 
         <div className="overflow-hidden rounded-md">
           <img
-            src="https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?auto=format&fit=crop&w=1200&q=80"
+            src="/assets/img/campus-life/image1.png"
             alt="Campus entrance"
             className="h-[245px] w-full rounded-md object-cover md:h-[360px]"
           />

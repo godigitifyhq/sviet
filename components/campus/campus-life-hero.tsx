@@ -1,18 +1,23 @@
 import { FaArrowRight } from "react-icons/fa";
+import Image from "next/image";
+
+
+
 
 export function CampusLifeHeroSection() {
   return (
     <section className="mx-auto w-full max-w-[1280px] px-2 pt-2 md:px-5 md:pt-3">
       <div className="relative h-[310px] overflow-hidden md:h-[600px]">
-        <img
-          src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1800&q=80"
-          alt="Campus"
-          className="absolute inset-0 h-full w-full object-cover"
+        <Image
+          src='/assets/img/college/auditorium.png'
+          alt="Campus Auditorium"
+          fill
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/40 to-black/20" />
 
         <div className="absolute left-2 top-5 text-white md:left-6 md:top-8">
-          <h1 className="text-[62px] font-extrabold leading-[0.9] tracking-[1px] text-transparent bg-clip-text bg-gradient-to-b from-white via-[#ffffffc3] to-[#99999900]  md:text-[165px] md:tracking-[2px]">
+          <h1 className="text-[62px] font-extrabold leading-[0.9] tracking-[1px] text-transparent bg-clip-text bg-gradient-to-b from-white to-[#99999900]  md:text-[165px] md:tracking-[2px]">
             CAMPUS LIFE
           </h1>
           <h2 className="mt-24 text-[49px] font-extrabold leading-[0.82] md:text-[66px]">

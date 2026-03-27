@@ -31,7 +31,7 @@ export function CampusLifeTestimonialsSection() {
               </p>
               <div className="mt-4 flex items-center gap-3">
                 <img
-                  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&w=150&q=80"
+                  src="/assets/img/campus-life/image3.png"
                   alt="Avatar"
                   className="h-8 w-8 rounded-full object-cover"
                 />
@@ -42,8 +42,8 @@ export function CampusLifeTestimonialsSection() {
             <div className="overflow-hidden rounded-md">
               <img
                 src={idx === 0
-                  ? "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=80"
-                  : "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80"}
+                  ? "/assets/img/campus-life/image2.png"
+                  : "/assets/img/campus-life/image3.png"}
                 alt="Student speak"
                 className="h-[240px] w-full object-cover rounded-md md:h-[342px]"
               />

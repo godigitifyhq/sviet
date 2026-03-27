@@ -1,5 +1,5 @@
 const studentSpeak = {
-  image: "https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?auto=format&fit=crop&w=1400&q=80",
+  image: "/assets/img/campus-life/image4.png",
   body: "Great learning experience and the college provided me with practical exposure, faculty guidance and excellent support throughout my journey.",
   name: "Yash Khandelwal",
   avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&w=150&q=80",
