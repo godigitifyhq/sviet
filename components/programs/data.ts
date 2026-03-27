@@ -1,4 +1,4 @@
-export const PROGRAM_META_CHIPS = ["4 Years", "10+2 PCM with 45%", "July / August 2026"];
+export const PROGRAM_META_CHIPS = ["4 Years", "10+2 PCM with 45%", "July / August 2025"];
 
 export const PLACEMENT_OUTCOMES = [
   ["Highest Package", "₹28 LPA", "In the CSE Vertical"],
