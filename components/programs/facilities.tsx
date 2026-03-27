@@ -7,10 +7,10 @@ const FACILITY_ICONS = [Monitor, BookOpen, Monitor, FlaskConical] as const;
 
 export function ProgramFacilitiesSection() {
   return (
-    <section className="mx-auto mt-12 w-full max-w-300 px-3 md:px-5">
+    <section className="mx-auto mt-30 mb-15 w-full max-w-300 px-3 md:px-5">
       <p className="text-xs font-semibold tracking-[0.08em] text-[#f7941d] uppercase">Infrastructure</p>
-      <h2 className="text-4xl font-extrabold">World-Class Campus Facilities</h2>
-      <div className="mt-4 grid gap-4 md:grid-cols-4">
+      <h2 className="mt-2 text-4xl font-extrabold">World-Class Campus Facilities</h2>
+      <div className="mt-12 grid gap-4 md:grid-cols-4">
         {FACILITY_DETAILS.map(([facility, description], index) => {
           const Icon = FACILITY_ICONS[index];
 
@@ -23,7 +23,7 @@ export function ProgramFacilitiesSection() {
               height={520}
               className="h-32.5 w-full object-cover"
             />
-            <div className="p-3">
+            <div className="px-3 py-6">
               <div className="mb-1.5 flex items-center gap-2">
                 <Icon className="h-4 w-4 text-[#f7941d]" />
                 <p className="text-sm font-semibold">{facility}</p>
@@ -35,7 +35,7 @@ export function ProgramFacilitiesSection() {
         })}
       </div>
 
-      <div className="mt-5 flex flex-wrap gap-2.5">
+      <div className="mt-8 flex flex-wrap gap-2.5">
         {FACILITY_EXTRAS.map((item, index) => (
           <div key={item} className="inline-flex items-center gap-2 rounded-full border border-[#eaeaea] bg-[#fafafa] px-3 py-1.5 text-xs text-[#666]">
             {index === 0 && <Wifi className="h-3.5 w-3.5 text-[#f7941d]" />}

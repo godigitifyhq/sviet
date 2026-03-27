@@ -11,11 +11,11 @@ export function ProgramCurriculumSection() {
   const [activeYear, setActiveYear] = useState<keyof typeof CURRICULUM_BY_YEAR>("Year 1");
 
   return (
-    <section className="mx-auto mt-12 w-full max-w-300 px-3 md:px-5">
+    <section className="mx-auto mt-30 w-full max-w-300 px-3 md:px-5">
       <p className="text-xs font-semibold tracking-[0.08em] text-[#f7941d] uppercase">Curriculum</p>
-      <h2 className="text-4xl font-extrabold">What You&apos;ll Study</h2>
-      <p className="mt-1 text-sm text-[#555]">160 credits across 8 semesters · Updated to industry standards</p>
-      <div className="mt-4 inline-flex gap-1 rounded-xl border border-[#eaeaea] bg-[#f5f5f5] p-1">
+      <h2 className="mt-2 text-4xl font-extrabold">What You&apos;ll Study</h2>
+      <p className="mt-5 text-sm text-[#555]">160 credits across 8 semesters · Updated to industry standards</p>
+      <div className="mt-12 inline-flex gap-1 rounded-xl border border-[#eaeaea] bg-[#f5f5f5] p-1">
         {YEAR_TABS.map((tab) => (
           <button
             key={tab}
@@ -26,7 +26,7 @@ export function ProgramCurriculumSection() {
           </button>
         ))}
       </div>
-      <div className="mt-4 overflow-hidden rounded-xl border border-[#e7e7e7] bg-white">
+      <div className="mt-5 overflow-hidden rounded-xl border border-[#e7e7e7] bg-white">
         <table className="w-full text-left text-sm">
           <thead className="bg-[#fafafa] text-[#666]">
             <tr>
@@ -47,13 +47,13 @@ export function ProgramCurriculumSection() {
                     <span>{course}</span>
                   </div>
                 </td>
-                <td className="px-4 py-3">{credits}</td>
+                <td className="px-4 py-4">{credits}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <div className="mt-4 flex items-center justify-between text-xs text-[#777]">
+      <div className="mt-8 flex items-center justify-between text-xs text-[#777]">
         <p>Showing {CURRICULUM_BY_YEAR[activeYear].length} courses for {activeYear}</p>
         <a href="#" className="font-medium text-[#f7941d]">Download full syllabus →</a>
       </div>

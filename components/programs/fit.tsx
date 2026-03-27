@@ -4,15 +4,15 @@ import { FIT_TRAITS } from "@/components/programs/data";
 
 export function ProgramFitSection() {
   return (
-    <section className="mx-auto mt-14 w-full max-w-300 rounded-xl bg-[#f0f0f0] px-3 py-10 md:px-5">
+    <section className="mx-auto mt-30 mb-15 w-full max-w-300 rounded-xl bg-[#f0f0f0] px-3 py-15 md:px-5">
       <p className="text-center text-xs font-semibold tracking-[0.08em] text-[#f7941d] uppercase">Program Fit</p>
-      <h2 className="text-center text-4xl font-extrabold">Is This Program Right for You?</h2>
+      <h2 className="text-center mt-2 text-4xl font-extrabold">Is This Program Right for You?</h2>
       <p className="mt-2 text-center text-sm text-[#666]">Select the traits that describe you best.</p>
       <div className="mx-auto mt-6 grid max-w-4xl gap-3 md:grid-cols-2">
         {FIT_TRAITS.map((item, idx) => (
           <button
             key={item}
-            className={`flex items-center gap-2 rounded-lg border px-4 py-3 text-left text-sm font-semibold ${idx === 0 || idx === 3 ? "border-[#f7941d] bg-[#fff7ef] text-[#f7941d]" : "border-[#d9d9d9] bg-white text-[#555]"}`}
+            className={`flex items-center gap-2 rounded-lg border px-4 py-4 text-left text-sm font-semibold ${idx === 0 || idx === 3 ? "border-[#f7941d] bg-[#fff7ef] text-[#f7941d]" : "border-[#d9d9d9] bg-white text-[#555]"}`}
           >
             <span>{idx === 0 ? "🧩" : idx === 1 ? "💻" : idx === 2 ? "📊" : "🔧"}</span>
             <span className="flex-1">{item}</span>

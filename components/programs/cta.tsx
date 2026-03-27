@@ -1,6 +1,6 @@
 export function ProgramCtaSection() {
   return (
-    <section className="mx-auto mt-12 w-full max-w-300 px-3 pb-12 text-center md:px-5">
+    <section className="mx-auto mt-30 mb-15 w-full max-w-300 px-3 pb-12 text-center md:px-5">
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">Ready To Begin?</p>
       <h2 className="mt-2 text-5xl font-extrabold">Start Your Journey at SVIET</h2>
       <p className="mx-auto mt-3 max-w-3xl text-[#555]">

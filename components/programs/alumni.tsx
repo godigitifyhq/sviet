@@ -5,11 +5,11 @@ import { ALUMNI_LIST } from "@/components/programs/data";
 
 export function ProgramAlumniSection() {
   return (
-    <section className="mx-auto mt-12 w-full max-w-300 px-3 md:px-5">
+    <section className="mx-auto mt-30 mb-15 w-full max-w-300 px-3 md:px-5">
       <p className="text-xs font-semibold tracking-[0.08em] text-[#f7941d] uppercase">Student Success</p>
-      <h2 className="text-4xl font-extrabold">Stories From Our Alumni</h2>
+      <h2 className="mt-2 text-4xl font-extrabold">Stories From Our Alumni</h2>
       <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_340px]">
-        <div className="rounded-xl border border-[#e8e8e8] bg-white p-5">
+        <div className="rounded-xl border border-[#e8e8e8] bg-white px-5 py-8 grid gap-3">
           <Quote className="h-6 w-6 text-[#f7941d]/30" />
           <p className="text-[#4d4d4d]">
             &quot;SVIET gave me practical exposure and confidence to solve real problems. The placement training and support were exceptional.&quot;
@@ -26,7 +26,7 @@ export function ProgramAlumniSection() {
             </div>
           </div>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-6">
           {ALUMNI_LIST.map(([name, company], index) => (
             <div key={name} className={`flex items-center gap-3 rounded-lg px-4 py-3 ${index === 0 ? "border border-[#f1a866] bg-[#fff4ec]" : "border border-[#e9e9e9] bg-white"}`}>
               <Image

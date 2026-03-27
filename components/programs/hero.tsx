@@ -4,13 +4,11 @@ import { PROGRAM_META_CHIPS } from "@/components/programs/data";
 
 export function ProgramHeroSection() {
   return (
-    <section className="mx-auto mt-5 w-full max-w-300 px-3 md:px-5">
+    <section className="mx-auto mt-15 mb-15 w-full max-w-300 px-3 md:px-5">
       <div className="grid gap-6 lg:grid-cols-[1fr_340px]">
-        <div>
-          <p className="text-[11px] text-[#f7941d]">Recommended for students interested in Engineering / Tech Careers</p>
-          <p className="text-xs font-semibold uppercase tracking-wide text-[#f7941d]">
-            PROGRAM OVERVIEW
-          </p>
+        <div className="grid gap-6">
+          <p className="text-[11px] text-[#f7941d] ">Recommended for students interested in Engineering / Tech Careers</p>
+         
           <h1 className="mt-2 text-5xl font-extrabold leading-tight">B.Tech Computer Science Engineering</h1>
           <p className="mt-3 max-w-3xl text-[#4b4b4b]">
             A future-ready undergraduate program designed to build strong foundations in computing, software engineering, and emerging technologies.
@@ -33,13 +31,13 @@ export function ProgramHeroSection() {
 
         <aside className="space-y-3 rounded-xl border border-[#e6e6e6] bg-white p-4">
           <p className="text-sm text-[#555]">Applications</p>
-          <p className="text-4xl font-extrabold">
-            120 <span className="text-sm font-semibold text-[#f7941d]">Filling Fast</span>
+          <p className="text-6xl font-extrabold">
+            120 <span className="text-sm font-semibold text-[#f7941d] mb-10">Filling Fast</span>
           </p>
           <button className="w-full rounded bg-[#f7941d] px-4 py-2.5 font-semibold text-white">Apply Now</button>
           <button className="w-full rounded border border-[#f7941d] px-4 py-2.5 font-semibold text-[#f7941d]">Download Brochure</button>
           <button className="w-full rounded border border-[#e6e6e6] px-4 py-2.5 font-semibold text-[#555]">Enquire</button>
-          <div className="space-y-1.5 border-t border-[#eaeaea] pt-3 text-xs">
+          <div className="space-y-5 pb-5 border-t border-[#eaeaea] pt-7 mt-3 text-xs">
             <div className="flex items-center justify-between">
               <span className="text-[#888]">Duration</span>
               <span className="font-medium text-[#222]">4 Years (8 Semesters)</span>

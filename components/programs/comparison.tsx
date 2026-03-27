@@ -2,27 +2,25 @@ import { COMPARISON_ROWS } from "@/components/programs/data";
 
 export function ProgramComparisonSection() {
   return (
-    <section className="mx-auto mt-12 w-full max-w-300 px-3 md:px-5">
+    <section className="mx-auto mt-30 w-full max-w-300 px-3 md:px-5">
       <p className="text-xs font-semibold tracking-[0.08em] text-[#f7941d] uppercase">Program Comparison</p>
-      <div className="overflow-hidden rounded-xl border border-[#e9e9e9] bg-white">
-        <div className="flex items-center justify-between bg-[#fafafa] px-4 py-3">
-          <h2 className="text-3xl font-extrabold">Compare with Other Programs</h2>
-          <button className="rounded border border-[#f7941d] px-3 py-1 text-sm text-[#f7941d]">Hide Comparison</button>
-        </div>
+       <h2 className="mt-2 text-4xl font-extrabold">Compare with Other Programs</h2>
+      <div className="overflow-hidden mt-10 rounded-xl border border-[#e9e9e9] bg-white">
+        
         <table className="w-full text-left text-sm">
-          <thead className="border-t border-[#efefef] bg-white text-[#666]">
+          <thead className="border-t py-8 border-[#efefef] bg-white text-[#666]">
             <tr>
-              <th className="px-4 py-3">Feature</th>
-              <th className="px-4 py-3">B.Tech CSE</th>
-              <th className="px-4 py-3">B.Tech ECE</th>
-              <th className="px-4 py-3">B.Tech ME</th>
-              <th className="px-4 py-3">BCA</th>
+              <th className="px-4 py-3 bg-[#f7941d] text-white ">Feature</th>
+              <th className="px-4 py-3 bg-[#f7941d] text-white ">B.Tech CSE</th>
+              <th className="px-4 py-3 bg-[#f7941d] text-white ">B.Tech ECE</th>
+              <th className="px-4 py-3 bg-[#f7941d] text-white ">B.Tech ME</th>
+              <th className="px-4 py-3 bg-[#f7941d] text-white ">BCA</th>
             </tr>
           </thead>
           <tbody>
             {COMPARISON_ROWS.map((row) => (
               <tr key={row[0]} className="border-t border-[#efefef]">
-                <td className="px-4 py-3">{row[0]}</td>
+                <td className="px-4 py-5">{row[0]}</td>
                 <td className="px-4 py-3 font-semibold">{row[1]}</td>
                 <td className="px-4 py-3">{row[2]}</td>
                 <td className="px-4 py-3">{row[3]}</td>
@@ -32,7 +30,7 @@ export function ProgramComparisonSection() {
           </tbody>
         </table>
       </div>
-      <p className="mt-3 text-xs text-[#999]">* Data based on 2023-24 placements. Fees subject to revision.</p>
+      <p className="mt-6 text-xs text-[#999]">* Data based on 2023-24 placements. Fees subject to revision.</p>
     </section>
   );
 }
