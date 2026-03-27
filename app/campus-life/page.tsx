@@ -1,5 +1,5 @@
-import { CampusLifePageReplica } from "@/components/replica/sviet-replica";
+import { CampusLifeExactPage } from "@/components/replica/campus-life-page";
 
 export default function CampusLifePage() {
-  return <CampusLifePageReplica />;
+  return <CampusLifeExactPage />;
 }
