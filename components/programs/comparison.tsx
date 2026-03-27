@@ -3,6 +3,7 @@ import { COMPARISON_ROWS } from "@/components/programs/data";
 export function ProgramComparisonSection() {
   return (
     <section className="mx-auto mt-12 w-full max-w-300 px-3 md:px-5">
+      <p className="text-xs font-semibold tracking-[0.08em] text-[#f7941d] uppercase">Program Comparison</p>
       <div className="overflow-hidden rounded-xl border border-[#e9e9e9] bg-white">
         <div className="flex items-center justify-between bg-[#fafafa] px-4 py-3">
           <h2 className="text-3xl font-extrabold">Compare with Other Programs</h2>
@@ -13,7 +14,8 @@ export function ProgramComparisonSection() {
             <tr>
               <th className="px-4 py-3">Feature</th>
               <th className="px-4 py-3">B.Tech CSE</th>
-              <th className="px-4 py-3">B.Tech IT</th>
+              <th className="px-4 py-3">B.Tech ECE</th>
+              <th className="px-4 py-3">B.Tech ME</th>
               <th className="px-4 py-3">BCA</th>
             </tr>
           </thead>
@@ -21,14 +23,16 @@ export function ProgramComparisonSection() {
             {COMPARISON_ROWS.map((row) => (
               <tr key={row[0]} className="border-t border-[#efefef]">
                 <td className="px-4 py-3">{row[0]}</td>
-                <td className="px-4 py-3">{row[1]}</td>
+                <td className="px-4 py-3 font-semibold">{row[1]}</td>
                 <td className="px-4 py-3">{row[2]}</td>
                 <td className="px-4 py-3">{row[3]}</td>
+                <td className="px-4 py-3">{row[4]}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      <p className="mt-3 text-xs text-[#999]">* Data based on 2023-24 placements. Fees subject to revision.</p>
     </section>
   );
 }
