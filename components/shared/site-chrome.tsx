@@ -2,18 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaChevronLeft, FaChevronRight, FaFacebookF, FaInstagram, FaLinkedinIn, FaPhoneAlt, FaWhatsapp, FaYoutube } from "react-icons/fa";
+import { FaBars, FaChevronLeft, FaChevronRight, FaFacebookF, FaInstagram, FaLinkedinIn, FaPhoneAlt, FaTimes, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
 const NAV_ITEMS = [
-  { label: "ABOUT", href: "#" },
   { label: "PROGRAMS", href: "/programs" },
-  { label: "PLACEMENTS", href: "#" },
+  { label: "PLACEMENTS", href: "/placements" },
+  { label: "RESEARCH", href: "/research" },
   { label: "ADMISSIONS", href: "/admissions" },
   { label: "CAMPUS LIFE", href: "/campus-life" },
   { label: "EVENTS & SPOTLIGHT", href: "/events" },
-  { label: "STUDENT PORTAL", href: "#" },
-  { label: "CONTACT US", href: "#" },
+  { label: "STUDENT PORTAL", href: "https://uj.servergi.com:8079/ISIMSVIET/login", target: "_blank" },
+  { label: "CONTACT US", href: "/contact" },
 ];
 
 const PROGRAM_DROPDOWN_ITEMS = [
@@ -92,12 +92,37 @@ export function TopUtilityBar() {
 }
 
 export function MainNavbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileProgramsOpen, setIsMobileProgramsOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setIsMobileProgramsOpen(false);
+  };
+
+  const toggleMobilePrograms = () => {
+    setIsMobileProgramsOpen((prev) => !prev);
+  };
+
   return (
     <header className="sticky top-0 z-30 border-b border-neutral-200 bg-white">
       <div className="mx-auto flex w-full max-w-300 items-center justify-between px-3 py-3 md:px-5">
         <Link href="/" className="flex items-center">
           <Image src="/Logo.webp" alt="SVIET logo" width={180} height={56} className="h-10 w-auto md:h-12" priority />
         </Link>
+        <button
+          type="button"
+          onClick={toggleMobileMenu}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-300 text-[#1b1b1b] transition hover:bg-neutral-100 lg:hidden"
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-controls="mobile-main-menu"
+        >
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
         <nav className="hidden items-center gap-5 text-[11px] font-semibold tracking-wide text-[#1b1b1b] lg:flex">
           {NAV_ITEMS.map((item) => (
             item.label === "PROGRAMS" ? (
@@ -124,13 +149,64 @@ export function MainNavbar() {
                 </div>
               </div>
             ) : (
-              <Link key={item.label} href={item.href} className="hover:text-[#f7941d]">
+                  <Link key={item.label} href={item.href} className="hover:text-[#f7941d]" target={item.target} rel={item.target === "_blank" ? "noopener noreferrer" : undefined}>
                 {item.label}
               </Link>
             )
           ))}
         </nav>
       </div>
+
+      {isMobileMenuOpen ? (
+        <div id="mobile-main-menu" className="absolute left-0 top-full z-40 w-full border-t border-neutral-200 bg-white/98 shadow-lg backdrop-blur-sm lg:hidden">
+          <div className="mx-auto w-full max-w-300 px-4 py-4">
+            <nav className="space-y-1 text-sm font-semibold text-[#1b1b1b]">
+              {NAV_ITEMS.map((item) => (
+                item.label === "PROGRAMS" ? (
+                  <div key="mobile-programs-dropdown" className="rounded-lg border border-neutral-200 p-1">
+                    <button
+                      type="button"
+                      onClick={toggleMobilePrograms}
+                      className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left transition hover:bg-neutral-100 hover:text-[#f7941d]"
+                    >
+                      <span>{item.label}</span>
+                      <span className={`text-xs transition ${isMobileProgramsOpen ? "rotate-180" : "rotate-0"}`}>▾</span>
+                    </button>
+
+                    {isMobileProgramsOpen ? (
+                      <div className="mt-1 space-y-1 px-2 pb-2">
+                        {PROGRAM_DROPDOWN_ITEMS.map((programItem, index) => (
+                          <Link
+                            key={`mobile-program-${programItem.label}`}
+                            href={programItem.href}
+                            onClick={closeMobileMenu}
+                            className={`block rounded-lg px-3 py-2 text-sm transition hover:bg-neutral-100 hover:text-[#f7941d] ${
+                              index === 0 ? "bg-[#f7941d]/10 text-[#f7941d]" : "text-[#1b1b1b]"
+                            }`}
+                          >
+                            {programItem.label}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                ) : (
+                  <Link
+                    key={`mobile-${item.label}`}
+                    href={item.href}
+                    onClick={closeMobileMenu}
+                    className="block rounded-lg px-3 py-2 transition hover:bg-neutral-100 hover:text-[#f7941d]"
+                    target={item.target}
+                    rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              ))}
+            </nav>
+          </div>
+        </div>
+      ) : null}
     </header>
   );
 }
@@ -255,9 +331,18 @@ export function SiteFooter() {
                   "Career Advancement Services",
                   "Office of Student Affairs",
                   "University Sports Board",
+                  "Research",
                   "Blogs",
                 ].map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item}>
+                    {item === "Research" ? (
+                      <Link href="/research" className="hover:text-white">
+                        {item}
+                      </Link>
+                    ) : (
+                      item
+                    )}
+                  </li>
                 ))}
               </ul>
             </section>

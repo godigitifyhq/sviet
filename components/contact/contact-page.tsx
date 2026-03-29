@@ -1,0 +1,304 @@
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+
+const containerClass = "mx-auto max-w-[1280px] px-6";
+const inputClass = "w-full rounded-lg bg-gray-100 px-4 py-3 text-sm text-gray-700 outline-none";
+const primaryButtonClass = "rounded-full bg-black px-6 py-3  font-semibold transition hover:bg-gray-900";
+
+const campusLocations = [
+  {
+    name: "Punjab Campus",
+    address: "Chandigarh-Patiala National Highway, Punjab 140 401",
+    phone: "+91-1762-508005",
+  },
+  {
+    name: "Information Centre",
+    address: "Unit No. A 201-202, Elante Mall Office Complex, Industrial Area Phase 1, Chandigarh 160 002",
+    phone: "+91-172-521-9900",
+  },
+];
+
+const faqItems = [
+  {
+    question: "What are the admission requirements?",
+    answer: "Candidates must have 12th pass or equivalent with a minimum 50% aggregate. Entrance exam scores and merit-based selection are required.",
+  },
+  {
+    question: "What is the average placement package?",
+    answer: "Our average placement package is ₹12+ LPA with over 350+ companies recruiting from SVIET annually.",
+  },
+  {
+    question: "Do you offer scholarships?",
+    answer: "Yes, SVIET offers merit-based scholarships and financial aid for eligible candidates. Contact our admissions team for more details.",
+  },
+  {
+    question: "What programs are available?",
+    answer: "We offer BTECH, BBA, MBA, Agriculture, Pharmacy, and various other undergraduate and postgraduate programs.",
+  },
+  {
+    question: "How can I apply online?",
+    answer: "Visit our admissions page to fill out the application form online. You'll receive confirmation and further instructions via email.",
+  },
+];
+
+export function ContactPageComponent() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setFormData({ name: "", phone: "", email: "", message: "" });
+      alert("Message sent successfully! We'll get back to you soon.");
+    }, 1000);
+  };
+
+  return (
+    <>
+      {/* SECTION 1: HERO */}
+      <section className="relative h-96 overflow-hidden md:h-[500px]">
+        <Image
+          src="/assets/img/college/main_gate.png"
+          alt="SVIET campus"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className={`${containerClass} relative h-full flex items-center`}>
+          <div className="max-w-2xl">
+            <h1 className="text-5xl font-bold text-white">GET IN TOUCH</h1>
+            <p className="mt-6 max-w-md text-lg text-white/90">
+              Have questions? We&apos;re here to help. Reach out to us through any of the channels below.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2: CONTACT FORM + INFO */}
+      <section className={`${containerClass} py-16`}>
+        <div className="grid gap-10 md:grid-cols-2">
+          {/* LEFT: FORM */}
+          <div>
+            <h2 className="text-4xl font-bold text-gray-900">Send us a Message</h2>
+            <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
+              <div>
+                <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="John Doe"
+                  required
+                  className={inputClass}
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="you@example.com"
+                  required
+                  className={inputClass}
+                />
+              </div>
+              <div>
+                <label htmlFor="phone" className="block text-sm font-semibold text-gray-900 mb-2">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="+91-XXXX-XXXX-XX"
+                  className={inputClass}
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder="Tell us how we can help..."
+                  rows={5}
+                  required
+                  className={inputClass}
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`${primaryButtonClass} w-full md:w-auto disabled:opacity-50`}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </button>
+            </form>
+          </div>
+
+          {/* RIGHT: CONTACT DETAILS */}
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-semibold text-gray-900">Contact Information</h3>
+            </div>
+
+            <div className="space-y-6">
+              <div>
+                <h4 className="font-semibold text-gray-900">Phone</h4>
+                <p className="mt-2 text-gray-600">+91-1762-508005</p>
+                <p className="text-gray-600">+91-172-521-9900</p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-gray-900">Email</h4>
+                <p className="mt-2 text-gray-600">admissions@sviet.ac.in</p>
+                <p className="text-gray-600">info@sviet.ac.in</p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-gray-900">Office Hours</h4>
+                <p className="mt-2 text-gray-600">Monday - Friday: 09:00 AM - 06:00 PM</p>
+                <p className="text-gray-600">Saturday: 10:00 AM - 04:00 PM</p>
+                <p className="text-gray-600">Sunday: Closed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: QUICK ACTION CARDS */}
+      <section className={`${containerClass} py-16`}>
+        <div className="mb-12 text-center">
+          <h2 className="text-4xl font-bold text-gray-900">Quick Contact Options</h2>
+        </div>
+        <div className="grid gap-8 md:grid-cols-3">
+          {/* Card 1: Call */}
+          <div className="rounded-2xl border border-gray-100 p-8 text-center transition hover:border-gray-300">
+            <div className="mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
+              <FaPhone className="text-2xl text-gray-900" />
+            </div>
+            <h3 className="text-2xl font-semibold text-gray-900">Call Us</h3>
+            <p className="mt-3 text-gray-600">Speak directly with our admissions team</p>
+            <a href="tel:+911762508005" className="mt-4 inline-block text-black font-semibold hover:text-gray-700">
+              +91-1762-508005
+            </a>
+          </div>
+
+          {/* Card 2: Email */}
+          <div className="rounded-2xl border border-gray-100 p-8 text-center transition hover:border-gray-300">
+            <div className="mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
+              <FaEnvelope className="text-2xl text-gray-900" />
+            </div>
+            <h3 className="text-2xl font-semibold text-gray-900">Email Us</h3>
+            <p className="mt-3 text-gray-600">We&apos;ll respond within 24 hours</p>
+            <a href="mailto:admissions@sviet.ac.in" className="mt-4 inline-block text-black font-semibold hover:text-gray-700">
+              admissions@sviet.ac.in
+            </a>
+          </div>
+
+          {/* Card 3: Visit */}
+          <div className="rounded-2xl border border-gray-100 p-8 text-center transition hover:border-gray-300">
+            <div className="mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
+              <FaMapMarkerAlt className="text-2xl text-gray-900" />
+            </div>
+            <h3 className="text-2xl font-semibold text-gray-900">Visit Campus</h3>
+            <p className="mt-3 text-gray-600">Schedule a campus visit today</p>
+            <button className="mt-4 font-semibold text-black hover:text-gray-700">
+              Schedule Visit →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: CAMPUS LOCATIONS */}
+      <section className={`${containerClass} py-16`}>
+        <div className="mb-12">
+          <h2 className="text-4xl font-bold text-gray-900">Our Campuses</h2>
+        </div>
+        <div className="grid gap-10 md:grid-cols-2">
+          {campusLocations.map((location, index) => (
+            <div key={index} className="rounded-2xl border border-gray-100 p-8">
+              <h3 className="text-2xl font-semibold text-gray-900">{location.name}</h3>
+              <p className="mt-4 text-gray-600">{location.address}</p>
+              <p className="mt-2 font-semibold text-gray-900">{location.phone}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 5: MAP EMBED */}
+      <section className="py-16">
+        <div className="relative h-96 w-full overflow-hidden rounded-2xl md:h-[500px]">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3426.1234567890123!2d76.8234567!3d31.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390f1234567890ab%3A0x1234567890abcdef!2sSVIET%20Punjab!5e0!3m2!1sen!2sin!4v1234567890123"
+            width="100%"
+            height="100%"
+            style={{ border: 0, position: "absolute", top: 0, left: 0 }}
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="SVIET Campus Location"
+          />
+        </div>
+      </section>
+
+      {/* SECTION 6: FAQ */}
+      <section className={`${containerClass} py-16`}>
+        <div className="mb-12">
+          <h2 className="text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>
+          <p className="mt-4 text-gray-600">Can&apos;t find what you&apos;re looking for? Check our FAQ section.</p>
+        </div>
+        <div className="space-y-6">
+          {faqItems.map((item, index) => (
+            <div key={index} className="rounded-2xl border border-gray-100 p-6">
+              <h3 className="font-semibold text-gray-900">{item.question}</h3>
+              <p className="mt-3 text-gray-600">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 7: CTA */}
+      <section className={`${containerClass} py-16`}>
+        <div className="rounded-2xl bg-gray-900 px-8 py-12 text-center md:py-16">
+          <h2 className="text-4xl font-bold text-white">Ready to Apply?</h2>
+          <p className="mt-4 text-white/80">Join thousands of students at SVIET and start your journey to success.</p>
+          <button className={`${primaryButtonClass} mt-8 bg-white hover:text-white hover:bg-gray-100`}>
+            Start Your Application
+          </button>
+        </div>
+      </section>
+    </>
+  );
+}

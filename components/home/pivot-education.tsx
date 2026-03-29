@@ -13,6 +13,7 @@ export function PivotEducationSection() {
             height={100}
             width={200}
             alt="pivot_education"
+            style={{ width: "auto" }}
           />
           <h3 className="font-bold mt-5">
             Global Recognition for Excellence in Education!
@@ -35,6 +36,7 @@ export function PivotEducationSection() {
           width={500}
           height={550}
           className="mx-auto"
+          style={{ width: "auto" }}
         />
       </div>
       <div className="">
@@ -51,6 +53,7 @@ export function PivotEducationSection() {
             width={180}
             height={100}
             alt="elets"
+            style={{ width: "auto" }}
           />
         </div>
       </div>

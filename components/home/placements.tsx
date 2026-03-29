@@ -45,6 +45,7 @@ export function PlacementsSection() {
                 height={64}
                 width={180}
                 className="h-14 w-auto max-w-45 object-contain grayscale transition duration-200 hover:grayscale-0 md:h-16"
+                style={{ width: "auto" }}
               />
             </div>
           ))}

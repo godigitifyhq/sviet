@@ -182,7 +182,7 @@ export function RankingBannerSection() {
                 </div>
 
                 {/* Main Gradient Banner */}
-                <div className="relative min-h-[260px] overflow-hidden rounded-2xl bg-linear-to-r from-[#7f1d1d] via-[#dc2626] to-[#1e1b4b] md:min-h-[320px]">
+                <div className="relative min-h-[260px] overflow-hidden rounded-2xl bg-linear-to-r from-[#000000] via-[#dc2626] to-[#1e1b4b] md:min-h-[320px]">
                   <div className="flex h-full items-center justify-between px-8 md:px-12">
                     {/* Left Content */}
                     <div className="flex-1">

@@ -105,7 +105,13 @@ export function StudentTestimonialsSection() {
                 <article key={slideIndex} className="flex min-w-full flex-col gap-6 lg:flex-row">
                   <div className="w-full overflow-hidden rounded-2xl lg:w-[45%]">
                     <div className="relative h-[320px] w-full">
-                      <Image src={slide.image} alt={slide.imageTitle} fill className="object-cover" />
+                      <Image
+                        src={slide.image}
+                        alt={slide.imageTitle}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 45vw"
+                        className="object-cover"
+                      />
                       <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
                       <div className="absolute bottom-0 left-0 p-5 text-white">
                         <p className="text-xl font-semibold">{slide.imageTitle}</p>

@@ -6,8 +6,8 @@ import Image from "next/image";
 
 export function CampusLifeHeroSection() {
   return (
-    <section className="mx-auto w-full max-w-[1280px] px-2 pt-2 md:px-5 md:pt-3">
-      <div className="relative h-[310px] overflow-hidden md:h-[600px]">
+    <section className="mx-auto w-full max-w-[1280px] px-2 pt-2 ] md:px-5 md:pt-3">
+      <div className="relative h-[510px]  overflow-hidden   rounded-[15px] md:h-[600px]">
         <Image
           src='/assets/img/college/auditorium.png'
           alt="Campus Auditorium"
@@ -16,11 +16,11 @@ export function CampusLifeHeroSection() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/40 to-black/20" />
 
-        <div className="absolute left-2 top-5 text-white md:left-6 md:top-8">
-          <h1 className="text-[62px] font-extrabold leading-[0.9] tracking-[1px] text-transparent bg-clip-text bg-gradient-to-b from-white to-[#99999900]  md:text-[165px] md:tracking-[2px]">
+        <div className="absolute left-2 top-10 text-white md:left-6 md:top-8">
+          <h1 className="text-[82px] font-extrabold leading-[0.9] tracking-[1px] text-transparent bg-clip-text bg-gradient-to-b from-white to-[#99999900]  md:text-[165px] md:tracking-[2px]">
             CAMPUS LIFE
           </h1>
-          <h2 className="mt-24 text-[49px] font-extrabold leading-[0.82] md:text-[66px]">
+          <h2 className="md:mt-24 mt-10 text-[30px] font-extrabold leading-[0.82] md:text-[66px]">
             PIONEERING
             <br />
             <span className="inline-block text-[#f7941d] mt-3">POSSIBILITIES</span>
@@ -28,7 +28,7 @@ export function CampusLifeHeroSection() {
           <p className="mt-2 text-xl font-semibold md:text-[30px]">Research & Innovation</p>
         </div>
 
-        <div className="absolute bottom-4 right-2 max-w-[280px] text-white md:bottom-28 md:right-6 md:max-w-[420px]">
+        <div className="absolute bottom-12 right-auto ml-2 max-w-[280px] text-white md:bottom-28 md:right-6 md:max-w-[420px]">
           <p className="text-sm leading-tight md:text-[32px] md:leading-[1.12]">
             Technology Enhanced Experimental Learning With Advance Learning Centers & Labs.
           </p>

@@ -169,7 +169,7 @@ export default function AdmissionsPage() {
   return (
     <div className="bg-white">
       <section className="relative min-h-140  overflow-hidden">
-        <Image src="/assets/img/college/auditorium.png" alt="Admissions" fill className="object-cover" priority />
+        <Image src="/assets/img/college/auditorium.png" alt="Admissions" fill sizes="100vw" className="object-cover" priority />
         <div className="absolute inset-0 " />
 
         <div className={`relative flex h-full flex-col mt-14 py-16 ${containerClass}`}>

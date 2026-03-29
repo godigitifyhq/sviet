@@ -99,6 +99,7 @@ export function HeroSection() {
                 src="/assets/img/college/main_gate.png"
                 alt="SVIET campus main gate"
                 fill
+                sizes="(max-width: 768px) 100vw, 1280px"
                 className={`absolute inset-0 object-cover transition-opacity duration-500 ${
                   activeSlide === index ? "opacity-100" : "opacity-0"
                 }`}
@@ -115,6 +116,7 @@ export function HeroSection() {
                   width={360}
                   height={470}
                   className="object-contain"
+                  style={{ width: "auto" }}
                 />
                 <div className="absolute bottom-14 left-3 flex items-center gap-3 rounded-xl bg-white px-3 py-2 text-foreground shadow-md">
                   <Image
@@ -123,6 +125,7 @@ export function HeroSection() {
                     width={82}
                     height={32}
                     className="h-7 w-auto"
+                    style={{ width: "auto" }}
                   />
                   <div>
                     <p className="text-sm font-bold">{HERO_SLIDES[activeSlide].studentName}</p>

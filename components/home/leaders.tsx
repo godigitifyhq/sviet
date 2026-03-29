@@ -58,7 +58,7 @@ export function DistinguishedLeadersSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             The Distinguished: Leaders, Visionaries And Changemakers
           </h2>
-          <Image src={'/assets/img/line_vector.png'} className="mt-[-12]" alt="Line Vector" height={3} width={100} />
+          <Image src={'/assets/img/line_vector.png'} className="mt-[-12]" alt="Line Vector" height={3} width={100} style={{ width: "auto" }} />
           <p className="text-gray-600 max-w-3xl text-sm md:text-base leading-relaxed">
             Meet the visionary leaders and changemakers who inspire innovation and drive positive transformation in their industries.
           </p>

@@ -23,6 +23,7 @@ export function ExperiencesSection() {
               width={100}
               height={10}
               className=""
+              style={{ width: "auto" }}
             />
           </div>
 

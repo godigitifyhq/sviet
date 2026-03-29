@@ -67,7 +67,7 @@ export function ScholarshipSection() {
             <h2 className="text-center text-3xl font-bold text-black md:text-right md:text-4xl">
               Check Your Scholarship Eligibility
             </h2>
-          <Image src={'/assets/img/line_vector.png'} className="mr-0 ml-auto" width={300} height={200} alt="line" />
+          <Image src={'/assets/img/line_vector.png'} className="mr-0 ml-auto" width={300} height={200} alt="line" style={{ width: "auto" }} />
             <div className="w-full overflow-hidden rounded-2xl">
               <Image
                 src="/assets/img/college/scholarship.png"
