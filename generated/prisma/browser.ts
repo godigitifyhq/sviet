@@ -102,3 +102,23 @@ export type BlogPost = Prisma.BlogPostModel
  * 
  */
 export type Announcement = Prisma.AnnouncementModel
+/**
+ * Model LeadNote
+ * 
+ */
+export type LeadNote = Prisma.LeadNoteModel
+/**
+ * Model ScholarshipInquiry
+ * 
+ */
+export type ScholarshipInquiry = Prisma.ScholarshipInquiryModel
+/**
+ * Model ProgramFinderSubmission
+ * 
+ */
+export type ProgramFinderSubmission = Prisma.ProgramFinderSubmissionModel
+/**
+ * Model ContactEnquiry
+ * 
+ */
+export type ContactEnquiry = Prisma.ContactEnquiryModel

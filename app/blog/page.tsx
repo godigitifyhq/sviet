@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
+
 import { listPublishedBlogPosts } from "@/lib/dal/cms";
+
+export const metadata: Metadata = {
+  title: "Blog | SVIET",
+  description: "Latest news, research insights, and stories from SVIET campus.",
+};
 
 export default async function BlogPage() {
   const posts = await listPublishedBlogPosts();

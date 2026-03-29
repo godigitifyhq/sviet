@@ -41,6 +41,11 @@ export type ProgramMinAggregateOutputType = {
   slug: string | null
   title: string | null
   shortDescription: string | null
+  department: string | null
+  mode: string | null
+  fullDescription: string | null
+  eligibility: string | null
+  isFeatured: boolean | null
   durationMonths: number | null
   tuitionCents: number | null
   isActive: boolean | null
@@ -53,6 +58,11 @@ export type ProgramMaxAggregateOutputType = {
   slug: string | null
   title: string | null
   shortDescription: string | null
+  department: string | null
+  mode: string | null
+  fullDescription: string | null
+  eligibility: string | null
+  isFeatured: boolean | null
   durationMonths: number | null
   tuitionCents: number | null
   isActive: boolean | null
@@ -65,6 +75,16 @@ export type ProgramCountAggregateOutputType = {
   slug: number
   title: number
   shortDescription: number
+  department: number
+  mode: number
+  fullDescription: number
+  highlights: number
+  eligibility: number
+  curriculum: number
+  outcomes: number
+  facilities: number
+  faqs: number
+  isFeatured: number
   durationMonths: number
   tuitionCents: number
   isActive: number
@@ -89,6 +109,11 @@ export type ProgramMinAggregateInputType = {
   slug?: true
   title?: true
   shortDescription?: true
+  department?: true
+  mode?: true
+  fullDescription?: true
+  eligibility?: true
+  isFeatured?: true
   durationMonths?: true
   tuitionCents?: true
   isActive?: true
@@ -101,6 +126,11 @@ export type ProgramMaxAggregateInputType = {
   slug?: true
   title?: true
   shortDescription?: true
+  department?: true
+  mode?: true
+  fullDescription?: true
+  eligibility?: true
+  isFeatured?: true
   durationMonths?: true
   tuitionCents?: true
   isActive?: true
@@ -113,6 +143,16 @@ export type ProgramCountAggregateInputType = {
   slug?: true
   title?: true
   shortDescription?: true
+  department?: true
+  mode?: true
+  fullDescription?: true
+  highlights?: true
+  eligibility?: true
+  curriculum?: true
+  outcomes?: true
+  facilities?: true
+  faqs?: true
+  isFeatured?: true
   durationMonths?: true
   tuitionCents?: true
   isActive?: true
@@ -212,6 +252,16 @@ export type ProgramGroupByOutputType = {
   slug: string
   title: string
   shortDescription: string
+  department: string | null
+  mode: string | null
+  fullDescription: string | null
+  highlights: string[]
+  eligibility: string | null
+  curriculum: runtime.JsonValue | null
+  outcomes: string[]
+  facilities: string[]
+  faqs: runtime.JsonValue | null
+  isFeatured: boolean
   durationMonths: number
   tuitionCents: number
   isActive: boolean
@@ -247,6 +297,16 @@ export type ProgramWhereInput = {
   slug?: Prisma.StringFilter<"Program"> | string
   title?: Prisma.StringFilter<"Program"> | string
   shortDescription?: Prisma.StringFilter<"Program"> | string
+  department?: Prisma.StringNullableFilter<"Program"> | string | null
+  mode?: Prisma.StringNullableFilter<"Program"> | string | null
+  fullDescription?: Prisma.StringNullableFilter<"Program"> | string | null
+  highlights?: Prisma.StringNullableListFilter<"Program">
+  eligibility?: Prisma.StringNullableFilter<"Program"> | string | null
+  curriculum?: Prisma.JsonNullableFilter<"Program">
+  outcomes?: Prisma.StringNullableListFilter<"Program">
+  facilities?: Prisma.StringNullableListFilter<"Program">
+  faqs?: Prisma.JsonNullableFilter<"Program">
+  isFeatured?: Prisma.BoolFilter<"Program"> | boolean
   durationMonths?: Prisma.IntFilter<"Program"> | number
   tuitionCents?: Prisma.IntFilter<"Program"> | number
   isActive?: Prisma.BoolFilter<"Program"> | boolean
@@ -256,6 +316,7 @@ export type ProgramWhereInput = {
   applicants?: Prisma.ApplicantListRelationFilter
   intakes?: Prisma.IntakeListRelationFilter
   applications?: Prisma.ApplicationListRelationFilter
+  scholarshipInquiries?: Prisma.ScholarshipInquiryListRelationFilter
 }
 
 export type ProgramOrderByWithRelationInput = {
@@ -263,6 +324,16 @@ export type ProgramOrderByWithRelationInput = {
   slug?: Prisma.SortOrder
   title?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
+  department?: Prisma.SortOrderInput | Prisma.SortOrder
+  mode?: Prisma.SortOrderInput | Prisma.SortOrder
+  fullDescription?: Prisma.SortOrderInput | Prisma.SortOrder
+  highlights?: Prisma.SortOrder
+  eligibility?: Prisma.SortOrderInput | Prisma.SortOrder
+  curriculum?: Prisma.SortOrderInput | Prisma.SortOrder
+  outcomes?: Prisma.SortOrder
+  facilities?: Prisma.SortOrder
+  faqs?: Prisma.SortOrderInput | Prisma.SortOrder
+  isFeatured?: Prisma.SortOrder
   durationMonths?: Prisma.SortOrder
   tuitionCents?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
@@ -272,6 +343,7 @@ export type ProgramOrderByWithRelationInput = {
   applicants?: Prisma.ApplicantOrderByRelationAggregateInput
   intakes?: Prisma.IntakeOrderByRelationAggregateInput
   applications?: Prisma.ApplicationOrderByRelationAggregateInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryOrderByRelationAggregateInput
 }
 
 export type ProgramWhereUniqueInput = Prisma.AtLeast<{
@@ -282,6 +354,16 @@ export type ProgramWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ProgramWhereInput | Prisma.ProgramWhereInput[]
   title?: Prisma.StringFilter<"Program"> | string
   shortDescription?: Prisma.StringFilter<"Program"> | string
+  department?: Prisma.StringNullableFilter<"Program"> | string | null
+  mode?: Prisma.StringNullableFilter<"Program"> | string | null
+  fullDescription?: Prisma.StringNullableFilter<"Program"> | string | null
+  highlights?: Prisma.StringNullableListFilter<"Program">
+  eligibility?: Prisma.StringNullableFilter<"Program"> | string | null
+  curriculum?: Prisma.JsonNullableFilter<"Program">
+  outcomes?: Prisma.StringNullableListFilter<"Program">
+  facilities?: Prisma.StringNullableListFilter<"Program">
+  faqs?: Prisma.JsonNullableFilter<"Program">
+  isFeatured?: Prisma.BoolFilter<"Program"> | boolean
   durationMonths?: Prisma.IntFilter<"Program"> | number
   tuitionCents?: Prisma.IntFilter<"Program"> | number
   isActive?: Prisma.BoolFilter<"Program"> | boolean
@@ -291,6 +373,7 @@ export type ProgramWhereUniqueInput = Prisma.AtLeast<{
   applicants?: Prisma.ApplicantListRelationFilter
   intakes?: Prisma.IntakeListRelationFilter
   applications?: Prisma.ApplicationListRelationFilter
+  scholarshipInquiries?: Prisma.ScholarshipInquiryListRelationFilter
 }, "id" | "slug">
 
 export type ProgramOrderByWithAggregationInput = {
@@ -298,6 +381,16 @@ export type ProgramOrderByWithAggregationInput = {
   slug?: Prisma.SortOrder
   title?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
+  department?: Prisma.SortOrderInput | Prisma.SortOrder
+  mode?: Prisma.SortOrderInput | Prisma.SortOrder
+  fullDescription?: Prisma.SortOrderInput | Prisma.SortOrder
+  highlights?: Prisma.SortOrder
+  eligibility?: Prisma.SortOrderInput | Prisma.SortOrder
+  curriculum?: Prisma.SortOrderInput | Prisma.SortOrder
+  outcomes?: Prisma.SortOrder
+  facilities?: Prisma.SortOrder
+  faqs?: Prisma.SortOrderInput | Prisma.SortOrder
+  isFeatured?: Prisma.SortOrder
   durationMonths?: Prisma.SortOrder
   tuitionCents?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
@@ -318,6 +411,16 @@ export type ProgramScalarWhereWithAggregatesInput = {
   slug?: Prisma.StringWithAggregatesFilter<"Program"> | string
   title?: Prisma.StringWithAggregatesFilter<"Program"> | string
   shortDescription?: Prisma.StringWithAggregatesFilter<"Program"> | string
+  department?: Prisma.StringNullableWithAggregatesFilter<"Program"> | string | null
+  mode?: Prisma.StringNullableWithAggregatesFilter<"Program"> | string | null
+  fullDescription?: Prisma.StringNullableWithAggregatesFilter<"Program"> | string | null
+  highlights?: Prisma.StringNullableListFilter<"Program">
+  eligibility?: Prisma.StringNullableWithAggregatesFilter<"Program"> | string | null
+  curriculum?: Prisma.JsonNullableWithAggregatesFilter<"Program">
+  outcomes?: Prisma.StringNullableListFilter<"Program">
+  facilities?: Prisma.StringNullableListFilter<"Program">
+  faqs?: Prisma.JsonNullableWithAggregatesFilter<"Program">
+  isFeatured?: Prisma.BoolWithAggregatesFilter<"Program"> | boolean
   durationMonths?: Prisma.IntWithAggregatesFilter<"Program"> | number
   tuitionCents?: Prisma.IntWithAggregatesFilter<"Program"> | number
   isActive?: Prisma.BoolWithAggregatesFilter<"Program"> | boolean
@@ -330,6 +433,16 @@ export type ProgramCreateInput = {
   slug: string
   title: string
   shortDescription: string
+  department?: string | null
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.ProgramCreatehighlightsInput | string[]
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramCreateoutcomesInput | string[]
+  facilities?: Prisma.ProgramCreatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
   tuitionCents: number
   isActive?: boolean
@@ -339,6 +452,7 @@ export type ProgramCreateInput = {
   applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
   intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUncheckedCreateInput = {
@@ -346,6 +460,16 @@ export type ProgramUncheckedCreateInput = {
   slug: string
   title: string
   shortDescription: string
+  department?: string | null
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.ProgramCreatehighlightsInput | string[]
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramCreateoutcomesInput | string[]
+  facilities?: Prisma.ProgramCreatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
   tuitionCents: number
   isActive?: boolean
@@ -355,6 +479,7 @@ export type ProgramUncheckedCreateInput = {
   applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
   intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUpdateInput = {
@@ -362,6 +487,16 @@ export type ProgramUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.ProgramUpdatehighlightsInput | string[]
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramUpdateoutcomesInput | string[]
+  facilities?: Prisma.ProgramUpdatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -371,6 +506,7 @@ export type ProgramUpdateInput = {
   applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
   intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramUncheckedUpdateInput = {
@@ -378,6 +514,16 @@ export type ProgramUncheckedUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.ProgramUpdatehighlightsInput | string[]
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramUpdateoutcomesInput | string[]
+  facilities?: Prisma.ProgramUpdatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -387,6 +533,7 @@ export type ProgramUncheckedUpdateInput = {
   applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
   intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramCreateManyInput = {
@@ -394,6 +541,16 @@ export type ProgramCreateManyInput = {
   slug: string
   title: string
   shortDescription: string
+  department?: string | null
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.ProgramCreatehighlightsInput | string[]
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramCreateoutcomesInput | string[]
+  facilities?: Prisma.ProgramCreatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
   tuitionCents: number
   isActive?: boolean
@@ -406,6 +563,16 @@ export type ProgramUpdateManyMutationInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.ProgramUpdatehighlightsInput | string[]
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramUpdateoutcomesInput | string[]
+  facilities?: Prisma.ProgramUpdatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -418,6 +585,16 @@ export type ProgramUncheckedUpdateManyInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.ProgramUpdatehighlightsInput | string[]
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramUpdateoutcomesInput | string[]
+  facilities?: Prisma.ProgramUpdatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -425,11 +602,29 @@ export type ProgramUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type StringNullableListFilter<$PrismaModel = never> = {
+  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
+  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
+  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
+}
+
 export type ProgramCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   title?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
+  department?: Prisma.SortOrder
+  mode?: Prisma.SortOrder
+  fullDescription?: Prisma.SortOrder
+  highlights?: Prisma.SortOrder
+  eligibility?: Prisma.SortOrder
+  curriculum?: Prisma.SortOrder
+  outcomes?: Prisma.SortOrder
+  facilities?: Prisma.SortOrder
+  faqs?: Prisma.SortOrder
+  isFeatured?: Prisma.SortOrder
   durationMonths?: Prisma.SortOrder
   tuitionCents?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
@@ -447,6 +642,11 @@ export type ProgramMaxOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   title?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
+  department?: Prisma.SortOrder
+  mode?: Prisma.SortOrder
+  fullDescription?: Prisma.SortOrder
+  eligibility?: Prisma.SortOrder
+  isFeatured?: Prisma.SortOrder
   durationMonths?: Prisma.SortOrder
   tuitionCents?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
@@ -459,6 +659,11 @@ export type ProgramMinOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   title?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
+  department?: Prisma.SortOrder
+  mode?: Prisma.SortOrder
+  fullDescription?: Prisma.SortOrder
+  eligibility?: Prisma.SortOrder
+  isFeatured?: Prisma.SortOrder
   durationMonths?: Prisma.SortOrder
   tuitionCents?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
@@ -481,16 +686,43 @@ export type ProgramNullableScalarRelationFilter = {
   isNot?: Prisma.ProgramWhereInput | null
 }
 
+export type ProgramCreatehighlightsInput = {
+  set: string[]
+}
+
+export type ProgramCreateoutcomesInput = {
+  set: string[]
+}
+
+export type ProgramCreatefacilitiesInput = {
+  set: string[]
+}
+
+export type ProgramUpdatehighlightsInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type ProgramUpdateoutcomesInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type ProgramUpdatefacilitiesInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
+}
+
 export type IntFieldUpdateOperationsInput = {
   set?: number
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
-}
-
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
 }
 
 export type ProgramCreateNestedOneWithoutIntakesInput = {
@@ -551,11 +783,37 @@ export type ProgramUpdateOneRequiredWithoutApplicationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProgramUpdateToOneWithWhereWithoutApplicationsInput, Prisma.ProgramUpdateWithoutApplicationsInput>, Prisma.ProgramUncheckedUpdateWithoutApplicationsInput>
 }
 
+export type ProgramCreateNestedOneWithoutScholarshipInquiriesInput = {
+  create?: Prisma.XOR<Prisma.ProgramCreateWithoutScholarshipInquiriesInput, Prisma.ProgramUncheckedCreateWithoutScholarshipInquiriesInput>
+  connectOrCreate?: Prisma.ProgramCreateOrConnectWithoutScholarshipInquiriesInput
+  connect?: Prisma.ProgramWhereUniqueInput
+}
+
+export type ProgramUpdateOneWithoutScholarshipInquiriesNestedInput = {
+  create?: Prisma.XOR<Prisma.ProgramCreateWithoutScholarshipInquiriesInput, Prisma.ProgramUncheckedCreateWithoutScholarshipInquiriesInput>
+  connectOrCreate?: Prisma.ProgramCreateOrConnectWithoutScholarshipInquiriesInput
+  upsert?: Prisma.ProgramUpsertWithoutScholarshipInquiriesInput
+  disconnect?: Prisma.ProgramWhereInput | boolean
+  delete?: Prisma.ProgramWhereInput | boolean
+  connect?: Prisma.ProgramWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProgramUpdateToOneWithWhereWithoutScholarshipInquiriesInput, Prisma.ProgramUpdateWithoutScholarshipInquiriesInput>, Prisma.ProgramUncheckedUpdateWithoutScholarshipInquiriesInput>
+}
+
 export type ProgramCreateWithoutIntakesInput = {
   id?: string
   slug: string
   title: string
   shortDescription: string
+  department?: string | null
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.ProgramCreatehighlightsInput | string[]
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramCreateoutcomesInput | string[]
+  facilities?: Prisma.ProgramCreatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
   tuitionCents: number
   isActive?: boolean
@@ -564,6 +822,7 @@ export type ProgramCreateWithoutIntakesInput = {
   leads?: Prisma.LeadCreateNestedManyWithoutIntendedProgramInput
   applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUncheckedCreateWithoutIntakesInput = {
@@ -571,6 +830,16 @@ export type ProgramUncheckedCreateWithoutIntakesInput = {
   slug: string
   title: string
   shortDescription: string
+  department?: string | null
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.ProgramCreatehighlightsInput | string[]
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramCreateoutcomesInput | string[]
+  facilities?: Prisma.ProgramCreatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
   tuitionCents: number
   isActive?: boolean
@@ -579,6 +848,7 @@ export type ProgramUncheckedCreateWithoutIntakesInput = {
   leads?: Prisma.LeadUncheckedCreateNestedManyWithoutIntendedProgramInput
   applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramCreateOrConnectWithoutIntakesInput = {
@@ -602,6 +872,16 @@ export type ProgramUpdateWithoutIntakesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.ProgramUpdatehighlightsInput | string[]
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramUpdateoutcomesInput | string[]
+  facilities?: Prisma.ProgramUpdatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -610,6 +890,7 @@ export type ProgramUpdateWithoutIntakesInput = {
   leads?: Prisma.LeadUpdateManyWithoutIntendedProgramNestedInput
   applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramUncheckedUpdateWithoutIntakesInput = {
@@ -617,6 +898,16 @@ export type ProgramUncheckedUpdateWithoutIntakesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.ProgramUpdatehighlightsInput | string[]
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramUpdateoutcomesInput | string[]
+  facilities?: Prisma.ProgramUpdatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -625,6 +916,7 @@ export type ProgramUncheckedUpdateWithoutIntakesInput = {
   leads?: Prisma.LeadUncheckedUpdateManyWithoutIntendedProgramNestedInput
   applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramCreateWithoutLeadsInput = {
@@ -632,6 +924,16 @@ export type ProgramCreateWithoutLeadsInput = {
   slug: string
   title: string
   shortDescription: string
+  department?: string | null
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.ProgramCreatehighlightsInput | string[]
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramCreateoutcomesInput | string[]
+  facilities?: Prisma.ProgramCreatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
   tuitionCents: number
   isActive?: boolean
@@ -640,6 +942,7 @@ export type ProgramCreateWithoutLeadsInput = {
   applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
   intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUncheckedCreateWithoutLeadsInput = {
@@ -647,6 +950,16 @@ export type ProgramUncheckedCreateWithoutLeadsInput = {
   slug: string
   title: string
   shortDescription: string
+  department?: string | null
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.ProgramCreatehighlightsInput | string[]
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramCreateoutcomesInput | string[]
+  facilities?: Prisma.ProgramCreatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
   tuitionCents: number
   isActive?: boolean
@@ -655,6 +968,7 @@ export type ProgramUncheckedCreateWithoutLeadsInput = {
   applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
   intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramCreateOrConnectWithoutLeadsInput = {
@@ -678,6 +992,16 @@ export type ProgramUpdateWithoutLeadsInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.ProgramUpdatehighlightsInput | string[]
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramUpdateoutcomesInput | string[]
+  facilities?: Prisma.ProgramUpdatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -686,6 +1010,7 @@ export type ProgramUpdateWithoutLeadsInput = {
   applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
   intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramUncheckedUpdateWithoutLeadsInput = {
@@ -693,6 +1018,16 @@ export type ProgramUncheckedUpdateWithoutLeadsInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.ProgramUpdatehighlightsInput | string[]
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramUpdateoutcomesInput | string[]
+  facilities?: Prisma.ProgramUpdatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -701,6 +1036,7 @@ export type ProgramUncheckedUpdateWithoutLeadsInput = {
   applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
   intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramCreateWithoutApplicantsInput = {
@@ -708,6 +1044,16 @@ export type ProgramCreateWithoutApplicantsInput = {
   slug: string
   title: string
   shortDescription: string
+  department?: string | null
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.ProgramCreatehighlightsInput | string[]
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramCreateoutcomesInput | string[]
+  facilities?: Prisma.ProgramCreatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
   tuitionCents: number
   isActive?: boolean
@@ -716,6 +1062,7 @@ export type ProgramCreateWithoutApplicantsInput = {
   leads?: Prisma.LeadCreateNestedManyWithoutIntendedProgramInput
   intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUncheckedCreateWithoutApplicantsInput = {
@@ -723,6 +1070,16 @@ export type ProgramUncheckedCreateWithoutApplicantsInput = {
   slug: string
   title: string
   shortDescription: string
+  department?: string | null
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.ProgramCreatehighlightsInput | string[]
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramCreateoutcomesInput | string[]
+  facilities?: Prisma.ProgramCreatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
   tuitionCents: number
   isActive?: boolean
@@ -731,6 +1088,7 @@ export type ProgramUncheckedCreateWithoutApplicantsInput = {
   leads?: Prisma.LeadUncheckedCreateNestedManyWithoutIntendedProgramInput
   intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramCreateOrConnectWithoutApplicantsInput = {
@@ -754,6 +1112,16 @@ export type ProgramUpdateWithoutApplicantsInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.ProgramUpdatehighlightsInput | string[]
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramUpdateoutcomesInput | string[]
+  facilities?: Prisma.ProgramUpdatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -762,6 +1130,7 @@ export type ProgramUpdateWithoutApplicantsInput = {
   leads?: Prisma.LeadUpdateManyWithoutIntendedProgramNestedInput
   intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramUncheckedUpdateWithoutApplicantsInput = {
@@ -769,6 +1138,16 @@ export type ProgramUncheckedUpdateWithoutApplicantsInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.ProgramUpdatehighlightsInput | string[]
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramUpdateoutcomesInput | string[]
+  facilities?: Prisma.ProgramUpdatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -777,6 +1156,7 @@ export type ProgramUncheckedUpdateWithoutApplicantsInput = {
   leads?: Prisma.LeadUncheckedUpdateManyWithoutIntendedProgramNestedInput
   intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramCreateWithoutApplicationsInput = {
@@ -784,6 +1164,16 @@ export type ProgramCreateWithoutApplicationsInput = {
   slug: string
   title: string
   shortDescription: string
+  department?: string | null
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.ProgramCreatehighlightsInput | string[]
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramCreateoutcomesInput | string[]
+  facilities?: Prisma.ProgramCreatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
   tuitionCents: number
   isActive?: boolean
@@ -792,6 +1182,7 @@ export type ProgramCreateWithoutApplicationsInput = {
   leads?: Prisma.LeadCreateNestedManyWithoutIntendedProgramInput
   applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
   intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUncheckedCreateWithoutApplicationsInput = {
@@ -799,6 +1190,16 @@ export type ProgramUncheckedCreateWithoutApplicationsInput = {
   slug: string
   title: string
   shortDescription: string
+  department?: string | null
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.ProgramCreatehighlightsInput | string[]
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramCreateoutcomesInput | string[]
+  facilities?: Prisma.ProgramCreatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
   tuitionCents: number
   isActive?: boolean
@@ -807,6 +1208,7 @@ export type ProgramUncheckedCreateWithoutApplicationsInput = {
   leads?: Prisma.LeadUncheckedCreateNestedManyWithoutIntendedProgramInput
   applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
   intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramCreateOrConnectWithoutApplicationsInput = {
@@ -830,6 +1232,16 @@ export type ProgramUpdateWithoutApplicationsInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.ProgramUpdatehighlightsInput | string[]
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramUpdateoutcomesInput | string[]
+  facilities?: Prisma.ProgramUpdatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -838,6 +1250,7 @@ export type ProgramUpdateWithoutApplicationsInput = {
   leads?: Prisma.LeadUpdateManyWithoutIntendedProgramNestedInput
   applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
   intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramUncheckedUpdateWithoutApplicationsInput = {
@@ -845,6 +1258,16 @@ export type ProgramUncheckedUpdateWithoutApplicationsInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.ProgramUpdatehighlightsInput | string[]
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramUpdateoutcomesInput | string[]
+  facilities?: Prisma.ProgramUpdatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -853,6 +1276,127 @@ export type ProgramUncheckedUpdateWithoutApplicationsInput = {
   leads?: Prisma.LeadUncheckedUpdateManyWithoutIntendedProgramNestedInput
   applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
   intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedUpdateManyWithoutProgramNestedInput
+}
+
+export type ProgramCreateWithoutScholarshipInquiriesInput = {
+  id?: string
+  slug: string
+  title: string
+  shortDescription: string
+  department?: string | null
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.ProgramCreatehighlightsInput | string[]
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramCreateoutcomesInput | string[]
+  facilities?: Prisma.ProgramCreatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
+  durationMonths: number
+  tuitionCents: number
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  leads?: Prisma.LeadCreateNestedManyWithoutIntendedProgramInput
+  applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
+  intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
+}
+
+export type ProgramUncheckedCreateWithoutScholarshipInquiriesInput = {
+  id?: string
+  slug: string
+  title: string
+  shortDescription: string
+  department?: string | null
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.ProgramCreatehighlightsInput | string[]
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramCreateoutcomesInput | string[]
+  facilities?: Prisma.ProgramCreatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
+  durationMonths: number
+  tuitionCents: number
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  leads?: Prisma.LeadUncheckedCreateNestedManyWithoutIntendedProgramInput
+  applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
+  intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
+}
+
+export type ProgramCreateOrConnectWithoutScholarshipInquiriesInput = {
+  where: Prisma.ProgramWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProgramCreateWithoutScholarshipInquiriesInput, Prisma.ProgramUncheckedCreateWithoutScholarshipInquiriesInput>
+}
+
+export type ProgramUpsertWithoutScholarshipInquiriesInput = {
+  update: Prisma.XOR<Prisma.ProgramUpdateWithoutScholarshipInquiriesInput, Prisma.ProgramUncheckedUpdateWithoutScholarshipInquiriesInput>
+  create: Prisma.XOR<Prisma.ProgramCreateWithoutScholarshipInquiriesInput, Prisma.ProgramUncheckedCreateWithoutScholarshipInquiriesInput>
+  where?: Prisma.ProgramWhereInput
+}
+
+export type ProgramUpdateToOneWithWhereWithoutScholarshipInquiriesInput = {
+  where?: Prisma.ProgramWhereInput
+  data: Prisma.XOR<Prisma.ProgramUpdateWithoutScholarshipInquiriesInput, Prisma.ProgramUncheckedUpdateWithoutScholarshipInquiriesInput>
+}
+
+export type ProgramUpdateWithoutScholarshipInquiriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.ProgramUpdatehighlightsInput | string[]
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramUpdateoutcomesInput | string[]
+  facilities?: Prisma.ProgramUpdatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leads?: Prisma.LeadUpdateManyWithoutIntendedProgramNestedInput
+  applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
+  intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
+}
+
+export type ProgramUncheckedUpdateWithoutScholarshipInquiriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.ProgramUpdatehighlightsInput | string[]
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.ProgramUpdateoutcomesInput | string[]
+  facilities?: Prisma.ProgramUpdatefacilitiesInput | string[]
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leads?: Prisma.LeadUncheckedUpdateManyWithoutIntendedProgramNestedInput
+  applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
+  intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
 }
 
 
@@ -865,6 +1409,7 @@ export type ProgramCountOutputType = {
   applicants: number
   intakes: number
   applications: number
+  scholarshipInquiries: number
 }
 
 export type ProgramCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -872,6 +1417,7 @@ export type ProgramCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   applicants?: boolean | ProgramCountOutputTypeCountApplicantsArgs
   intakes?: boolean | ProgramCountOutputTypeCountIntakesArgs
   applications?: boolean | ProgramCountOutputTypeCountApplicationsArgs
+  scholarshipInquiries?: boolean | ProgramCountOutputTypeCountScholarshipInquiriesArgs
 }
 
 /**
@@ -912,12 +1458,29 @@ export type ProgramCountOutputTypeCountApplicationsArgs<ExtArgs extends runtime.
   where?: Prisma.ApplicationWhereInput
 }
 
+/**
+ * ProgramCountOutputType without action
+ */
+export type ProgramCountOutputTypeCountScholarshipInquiriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ScholarshipInquiryWhereInput
+}
+
 
 export type ProgramSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   slug?: boolean
   title?: boolean
   shortDescription?: boolean
+  department?: boolean
+  mode?: boolean
+  fullDescription?: boolean
+  highlights?: boolean
+  eligibility?: boolean
+  curriculum?: boolean
+  outcomes?: boolean
+  facilities?: boolean
+  faqs?: boolean
+  isFeatured?: boolean
   durationMonths?: boolean
   tuitionCents?: boolean
   isActive?: boolean
@@ -927,6 +1490,7 @@ export type ProgramSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   applicants?: boolean | Prisma.Program$applicantsArgs<ExtArgs>
   intakes?: boolean | Prisma.Program$intakesArgs<ExtArgs>
   applications?: boolean | Prisma.Program$applicationsArgs<ExtArgs>
+  scholarshipInquiries?: boolean | Prisma.Program$scholarshipInquiriesArgs<ExtArgs>
   _count?: boolean | Prisma.ProgramCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["program"]>
 
@@ -935,6 +1499,16 @@ export type ProgramSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   slug?: boolean
   title?: boolean
   shortDescription?: boolean
+  department?: boolean
+  mode?: boolean
+  fullDescription?: boolean
+  highlights?: boolean
+  eligibility?: boolean
+  curriculum?: boolean
+  outcomes?: boolean
+  facilities?: boolean
+  faqs?: boolean
+  isFeatured?: boolean
   durationMonths?: boolean
   tuitionCents?: boolean
   isActive?: boolean
@@ -947,6 +1521,16 @@ export type ProgramSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   slug?: boolean
   title?: boolean
   shortDescription?: boolean
+  department?: boolean
+  mode?: boolean
+  fullDescription?: boolean
+  highlights?: boolean
+  eligibility?: boolean
+  curriculum?: boolean
+  outcomes?: boolean
+  facilities?: boolean
+  faqs?: boolean
+  isFeatured?: boolean
   durationMonths?: boolean
   tuitionCents?: boolean
   isActive?: boolean
@@ -959,6 +1543,16 @@ export type ProgramSelectScalar = {
   slug?: boolean
   title?: boolean
   shortDescription?: boolean
+  department?: boolean
+  mode?: boolean
+  fullDescription?: boolean
+  highlights?: boolean
+  eligibility?: boolean
+  curriculum?: boolean
+  outcomes?: boolean
+  facilities?: boolean
+  faqs?: boolean
+  isFeatured?: boolean
   durationMonths?: boolean
   tuitionCents?: boolean
   isActive?: boolean
@@ -966,12 +1560,13 @@ export type ProgramSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ProgramOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "title" | "shortDescription" | "durationMonths" | "tuitionCents" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["program"]>
+export type ProgramOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "title" | "shortDescription" | "department" | "mode" | "fullDescription" | "highlights" | "eligibility" | "curriculum" | "outcomes" | "facilities" | "faqs" | "isFeatured" | "durationMonths" | "tuitionCents" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["program"]>
 export type ProgramInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   leads?: boolean | Prisma.Program$leadsArgs<ExtArgs>
   applicants?: boolean | Prisma.Program$applicantsArgs<ExtArgs>
   intakes?: boolean | Prisma.Program$intakesArgs<ExtArgs>
   applications?: boolean | Prisma.Program$applicationsArgs<ExtArgs>
+  scholarshipInquiries?: boolean | Prisma.Program$scholarshipInquiriesArgs<ExtArgs>
   _count?: boolean | Prisma.ProgramCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProgramIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -984,12 +1579,23 @@ export type $ProgramPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     applicants: Prisma.$ApplicantPayload<ExtArgs>[]
     intakes: Prisma.$IntakePayload<ExtArgs>[]
     applications: Prisma.$ApplicationPayload<ExtArgs>[]
+    scholarshipInquiries: Prisma.$ScholarshipInquiryPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     slug: string
     title: string
     shortDescription: string
+    department: string | null
+    mode: string | null
+    fullDescription: string | null
+    highlights: string[]
+    eligibility: string | null
+    curriculum: runtime.JsonValue | null
+    outcomes: string[]
+    facilities: string[]
+    faqs: runtime.JsonValue | null
+    isFeatured: boolean
     durationMonths: number
     tuitionCents: number
     isActive: boolean
@@ -1393,6 +1999,7 @@ export interface Prisma__ProgramClient<T, Null = never, ExtArgs extends runtime.
   applicants<T extends Prisma.Program$applicantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Program$applicantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApplicantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   intakes<T extends Prisma.Program$intakesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Program$intakesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$IntakePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   applications<T extends Prisma.Program$applicationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Program$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  scholarshipInquiries<T extends Prisma.Program$scholarshipInquiriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Program$scholarshipInquiriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ScholarshipInquiryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1426,6 +2033,16 @@ export interface ProgramFieldRefs {
   readonly slug: Prisma.FieldRef<"Program", 'String'>
   readonly title: Prisma.FieldRef<"Program", 'String'>
   readonly shortDescription: Prisma.FieldRef<"Program", 'String'>
+  readonly department: Prisma.FieldRef<"Program", 'String'>
+  readonly mode: Prisma.FieldRef<"Program", 'String'>
+  readonly fullDescription: Prisma.FieldRef<"Program", 'String'>
+  readonly highlights: Prisma.FieldRef<"Program", 'String[]'>
+  readonly eligibility: Prisma.FieldRef<"Program", 'String'>
+  readonly curriculum: Prisma.FieldRef<"Program", 'Json'>
+  readonly outcomes: Prisma.FieldRef<"Program", 'String[]'>
+  readonly facilities: Prisma.FieldRef<"Program", 'String[]'>
+  readonly faqs: Prisma.FieldRef<"Program", 'Json'>
+  readonly isFeatured: Prisma.FieldRef<"Program", 'Boolean'>
   readonly durationMonths: Prisma.FieldRef<"Program", 'Int'>
   readonly tuitionCents: Prisma.FieldRef<"Program", 'Int'>
   readonly isActive: Prisma.FieldRef<"Program", 'Boolean'>
@@ -1917,6 +2534,30 @@ export type Program$applicationsArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.ApplicationScalarFieldEnum | Prisma.ApplicationScalarFieldEnum[]
+}
+
+/**
+ * Program.scholarshipInquiries
+ */
+export type Program$scholarshipInquiriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ScholarshipInquiry
+   */
+  select?: Prisma.ScholarshipInquirySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ScholarshipInquiry
+   */
+  omit?: Prisma.ScholarshipInquiryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ScholarshipInquiryInclude<ExtArgs> | null
+  where?: Prisma.ScholarshipInquiryWhereInput
+  orderBy?: Prisma.ScholarshipInquiryOrderByWithRelationInput | Prisma.ScholarshipInquiryOrderByWithRelationInput[]
+  cursor?: Prisma.ScholarshipInquiryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ScholarshipInquiryScalarFieldEnum | Prisma.ScholarshipInquiryScalarFieldEnum[]
 }
 
 /**

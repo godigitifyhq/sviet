@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 
 export function CampusLifeHomeAwaySection() {
@@ -20,9 +21,11 @@ export function CampusLifeHomeAwaySection() {
         </div>
 
         <div className="overflow-hidden rounded-md">
-          <img
+          <Image
             src="/assets/img/campus-life/image1.png"
             alt="Campus entrance"
+            width={1200}
+            height={800}
             className="h-[245px] w-full rounded-md object-cover md:h-[360px]"
           />
         </div>

@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
+import { postJson } from "@/lib/form-utils";
+
 const HERO_SLIDES = [
   {
     heading: "Launch Your Career With Industry-Ready Degrees",
@@ -37,13 +39,62 @@ const HERO_SLIDES = [
   },
 ];
 
+type ApplyFormState = {
+  fullName: string;
+  email: string;
+  phone: string;
+  course: string;
+};
+
+type ApplyFormErrors = Partial<Record<keyof ApplyFormState, string>>;
+
+const initialApplyForm: ApplyFormState = {
+  fullName: "",
+  email: "",
+  phone: "",
+  course: "",
+};
+
+const indianMobilePattern = /^[6-9]\d{9}$/;
+
+function splitFullName(fullName: string) {
+  const parts = fullName.trim().split(/\s+/).filter(Boolean);
+  const firstName = parts[0] ?? "";
+  const lastName = parts.slice(1).join(" ") || ".";
+
+  return { firstName, lastName };
+}
+
 export function HeroSection() {
   const [isApplyOpen, setIsApplyOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [applyForm, setApplyForm] = useState<ApplyFormState>(initialApplyForm);
+  const [applyErrors, setApplyErrors] = useState<ApplyFormErrors>({});
+  const [applyLoading, setApplyLoading] = useState(false);
+  const [applyError, setApplyError] = useState("");
+  const [applySuccess, setApplySuccess] = useState(false);
   const panelRef = useRef<HTMLDivElement | null>(null);
 
+  const resetApplyPanelState = () => {
+    setApplyForm(initialApplyForm);
+    setApplyErrors({});
+    setApplyLoading(false);
+    setApplyError("");
+    setApplySuccess(false);
+  };
+
+  const closeApplyPanel = () => {
+    setIsApplyOpen(false);
+    resetApplyPanelState();
+  };
+
   const toggleApplyPanel = () => {
-    setIsApplyOpen((prev) => !prev);
+    if (isApplyOpen) {
+      closeApplyPanel();
+      return;
+    }
+
+    setIsApplyOpen(true);
   };
 
   const showPreviousSlide = () => {
@@ -69,13 +120,13 @@ export function HeroSection() {
       }
 
       if (!panelRef.current.contains(event.target as Node)) {
-        setIsApplyOpen(false);
+        closeApplyPanel();
       }
     };
 
     const onEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsApplyOpen(false);
+        closeApplyPanel();
       }
     };
 
@@ -87,6 +138,73 @@ export function HeroSection() {
       document.removeEventListener("keydown", onEscape);
     };
   }, [isApplyOpen]);
+
+  const handleApplyFormChange = (field: keyof ApplyFormState, value: string) => {
+    setApplyForm((prev) => ({ ...prev, [field]: value }));
+    setApplyErrors((prev) => ({ ...prev, [field]: "" }));
+    setApplyError("");
+  };
+
+  const validateApplyForm = () => {
+    const nextErrors: ApplyFormErrors = {};
+
+    if (!applyForm.fullName.trim()) {
+      nextErrors.fullName = "Full name is required.";
+    }
+
+    if (!applyForm.email.trim()) {
+      nextErrors.email = "Email is required.";
+    }
+
+    if (!applyForm.phone.trim()) {
+      nextErrors.phone = "Phone number is required.";
+    } else if (!indianMobilePattern.test(applyForm.phone.trim())) {
+      nextErrors.phone = "Enter a valid Indian mobile number.";
+    }
+
+    if (!applyForm.course.trim()) {
+      nextErrors.course = "Please choose a program.";
+    }
+
+    setApplyErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
+  };
+
+  const handleApplySubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!validateApplyForm()) {
+      return;
+    }
+
+    setApplyLoading(true);
+    setApplyError("");
+
+    try {
+      const { firstName, lastName } = splitFullName(applyForm.fullName);
+
+      const response = await postJson<{ leadId: string; message: string }>("/api/leads/apply", {
+        firstName,
+        lastName,
+        email: applyForm.email.trim(),
+        phone: applyForm.phone.trim(),
+        course: applyForm.course,
+      });
+
+      const isSuccessful = response.success === true || (response as { ok?: boolean }).ok === true;
+
+      if (!isSuccessful) {
+        setApplyError(response.error?.message ?? "Unable to submit right now. Please try again.");
+        return;
+      }
+
+      setApplySuccess(true);
+    } catch {
+      setApplyError("Unable to submit right now. Please try again.");
+    } finally {
+      setApplyLoading(false);
+    }
+  };
 
   return (
     <>
@@ -220,43 +338,71 @@ export function HeroSection() {
         >
           <div className="flex items-center justify-between border-b border-[#e8e8e8] pb-3">
             <h3 className="text-xl font-bold text-foreground">Apply Now</h3>
-            <button type="button" onClick={toggleApplyPanel} className="text-sm font-semibold text-[#666666]">
+            <button type="button" onClick={closeApplyPanel} className="text-sm font-semibold text-[#666666]">
               Close
             </button>
           </div>
 
-          <form className="mt-5 grid gap-4">
-            <input
-              type="text"
-              placeholder="Full Name"
-              className="rounded-xl border border-[#e4e4e4] px-4 py-3 text-sm font-medium outline-none transition focus:border-[#F97316]"
-            />
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="rounded-xl border border-[#e4e4e4] px-4 py-3 text-sm font-medium outline-none transition focus:border-[#F97316]"
-            />
-            <input
-              type="tel"
-              placeholder="Phone Number"
-              className="rounded-xl border border-[#e4e4e4] px-4 py-3 text-sm font-medium outline-none transition focus:border-[#F97316]"
-            />
-            <select
-              aria-label="Choose Program"
-              className="rounded-xl border border-[#e4e4e4] bg-white px-4 py-3 text-sm font-medium outline-none transition focus:border-[#F97316]"
-            >
-              <option>Choose Program</option>
-              <option>B.Tech CSE</option>
-              <option>MBA</option>
-              <option>BCA</option>
-            </select>
-            <button
-              type="button"
-              className="rounded-full bg-[#F97316] px-6 py-3 text-sm font-bold text-white transition duration-200 hover:scale-105"
-            >
-              Submit Application
-            </button>
-          </form>
+          {applySuccess ? (
+            <div className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-medium text-emerald-700">
+              ✓ Application received! Our team will contact you within 24 hours.
+            </div>
+          ) : (
+            <form className="mt-5 grid gap-4" onSubmit={handleApplySubmit}>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  value={applyForm.fullName}
+                  onChange={(event) => handleApplyFormChange("fullName", event.target.value)}
+                  className="rounded-xl border border-[#e4e4e4] px-4 py-3 text-sm font-medium outline-none transition focus:border-[#F97316]"
+                />
+                {applyErrors.fullName ? <p className="mt-1 text-xs text-red-600">{applyErrors.fullName}</p> : null}
+              </div>
+              <div>
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  value={applyForm.email}
+                  onChange={(event) => handleApplyFormChange("email", event.target.value)}
+                  className="rounded-xl border border-[#e4e4e4] px-4 py-3 text-sm font-medium outline-none transition focus:border-[#F97316]"
+                />
+                {applyErrors.email ? <p className="mt-1 text-xs text-red-600">{applyErrors.email}</p> : null}
+              </div>
+              <div>
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                  value={applyForm.phone}
+                  onChange={(event) => handleApplyFormChange("phone", event.target.value)}
+                  className="rounded-xl border border-[#e4e4e4] px-4 py-3 text-sm font-medium outline-none transition focus:border-[#F97316]"
+                />
+                {applyErrors.phone ? <p className="mt-1 text-xs text-red-600">{applyErrors.phone}</p> : null}
+              </div>
+              <div>
+                <select
+                  aria-label="Choose Program"
+                  value={applyForm.course}
+                  onChange={(event) => handleApplyFormChange("course", event.target.value)}
+                  className="rounded-xl border border-[#e4e4e4] bg-white px-4 py-3 text-sm font-medium outline-none transition focus:border-[#F97316]"
+                >
+                  <option value="">Choose Program</option>
+                  <option value="B.Tech CSE">B.Tech CSE</option>
+                  <option value="MBA">MBA</option>
+                  <option value="BCA">BCA</option>
+                </select>
+                {applyErrors.course ? <p className="mt-1 text-xs text-red-600">{applyErrors.course}</p> : null}
+              </div>
+              <button
+                type="submit"
+                disabled={applyLoading}
+                className="rounded-full bg-[#F97316] px-6 py-3 text-sm font-bold text-white transition duration-200 hover:scale-105 disabled:opacity-60"
+              >
+                {applyLoading ? "Submitting..." : "Submit Application"}
+              </button>
+              {applyError ? <p className="text-sm text-red-600">{applyError}</p> : null}
+            </form>
+          )}
         </div>
       </div>
     </>

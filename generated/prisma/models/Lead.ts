@@ -20,8 +20,18 @@ export type LeadModel = runtime.Types.Result.DefaultSelection<Prisma.$LeadPayloa
 
 export type AggregateLead = {
   _count: LeadCountAggregateOutputType | null
+  _avg: LeadAvgAggregateOutputType | null
+  _sum: LeadSumAggregateOutputType | null
   _min: LeadMinAggregateOutputType | null
   _max: LeadMaxAggregateOutputType | null
+}
+
+export type LeadAvgAggregateOutputType = {
+  aiScore: number | null
+}
+
+export type LeadSumAggregateOutputType = {
+  aiScore: number | null
 }
 
 export type LeadMinAggregateOutputType = {
@@ -34,7 +44,7 @@ export type LeadMinAggregateOutputType = {
   status: $Enums.LeadStatus | null
   intendedProgramId: string | null
   ownerCounselorId: string | null
-  notes: string | null
+  aiScore: number | null
   nextFollowUpAt: Date | null
   convertedAt: Date | null
   createdAt: Date | null
@@ -51,7 +61,7 @@ export type LeadMaxAggregateOutputType = {
   status: $Enums.LeadStatus | null
   intendedProgramId: string | null
   ownerCounselorId: string | null
-  notes: string | null
+  aiScore: number | null
   nextFollowUpAt: Date | null
   convertedAt: Date | null
   createdAt: Date | null
@@ -68,7 +78,7 @@ export type LeadCountAggregateOutputType = {
   status: number
   intendedProgramId: number
   ownerCounselorId: number
-  notes: number
+  aiScore: number
   nextFollowUpAt: number
   convertedAt: number
   createdAt: number
@@ -76,6 +86,14 @@ export type LeadCountAggregateOutputType = {
   _all: number
 }
 
+
+export type LeadAvgAggregateInputType = {
+  aiScore?: true
+}
+
+export type LeadSumAggregateInputType = {
+  aiScore?: true
+}
 
 export type LeadMinAggregateInputType = {
   id?: true
@@ -87,7 +105,7 @@ export type LeadMinAggregateInputType = {
   status?: true
   intendedProgramId?: true
   ownerCounselorId?: true
-  notes?: true
+  aiScore?: true
   nextFollowUpAt?: true
   convertedAt?: true
   createdAt?: true
@@ -104,7 +122,7 @@ export type LeadMaxAggregateInputType = {
   status?: true
   intendedProgramId?: true
   ownerCounselorId?: true
-  notes?: true
+  aiScore?: true
   nextFollowUpAt?: true
   convertedAt?: true
   createdAt?: true
@@ -121,7 +139,7 @@ export type LeadCountAggregateInputType = {
   status?: true
   intendedProgramId?: true
   ownerCounselorId?: true
-  notes?: true
+  aiScore?: true
   nextFollowUpAt?: true
   convertedAt?: true
   createdAt?: true
@@ -167,6 +185,18 @@ export type LeadAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: LeadAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: LeadSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: LeadMinAggregateInputType
@@ -197,6 +227,8 @@ export type LeadGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   _count?: LeadCountAggregateInputType | true
+  _avg?: LeadAvgAggregateInputType
+  _sum?: LeadSumAggregateInputType
   _min?: LeadMinAggregateInputType
   _max?: LeadMaxAggregateInputType
 }
@@ -211,12 +243,14 @@ export type LeadGroupByOutputType = {
   status: $Enums.LeadStatus
   intendedProgramId: string | null
   ownerCounselorId: string | null
-  notes: string | null
+  aiScore: number | null
   nextFollowUpAt: Date | null
   convertedAt: Date | null
   createdAt: Date
   updatedAt: Date
   _count: LeadCountAggregateOutputType | null
+  _avg: LeadAvgAggregateOutputType | null
+  _sum: LeadSumAggregateOutputType | null
   _min: LeadMinAggregateOutputType | null
   _max: LeadMaxAggregateOutputType | null
 }
@@ -249,11 +283,15 @@ export type LeadWhereInput = {
   status?: Prisma.EnumLeadStatusFilter<"Lead"> | $Enums.LeadStatus
   intendedProgramId?: Prisma.StringNullableFilter<"Lead"> | string | null
   ownerCounselorId?: Prisma.StringNullableFilter<"Lead"> | string | null
-  notes?: Prisma.StringNullableFilter<"Lead"> | string | null
+  aiScore?: Prisma.IntNullableFilter<"Lead"> | number | null
   nextFollowUpAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
   convertedAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Lead"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Lead"> | Date | string
+  notes?: Prisma.LeadNoteListRelationFilter
+  scholarship?: Prisma.XOR<Prisma.ScholarshipInquiryNullableScalarRelationFilter, Prisma.ScholarshipInquiryWhereInput> | null
+  programFinder?: Prisma.XOR<Prisma.ProgramFinderSubmissionNullableScalarRelationFilter, Prisma.ProgramFinderSubmissionWhereInput> | null
+  contactEnquiry?: Prisma.XOR<Prisma.ContactEnquiryNullableScalarRelationFilter, Prisma.ContactEnquiryWhereInput> | null
   intendedProgram?: Prisma.XOR<Prisma.ProgramNullableScalarRelationFilter, Prisma.ProgramWhereInput> | null
   ownerCounselor?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   applicant?: Prisma.XOR<Prisma.ApplicantNullableScalarRelationFilter, Prisma.ApplicantWhereInput> | null
@@ -270,11 +308,15 @@ export type LeadOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   intendedProgramId?: Prisma.SortOrderInput | Prisma.SortOrder
   ownerCounselorId?: Prisma.SortOrderInput | Prisma.SortOrder
-  notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  aiScore?: Prisma.SortOrderInput | Prisma.SortOrder
   nextFollowUpAt?: Prisma.SortOrderInput | Prisma.SortOrder
   convertedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  notes?: Prisma.LeadNoteOrderByRelationAggregateInput
+  scholarship?: Prisma.ScholarshipInquiryOrderByWithRelationInput
+  programFinder?: Prisma.ProgramFinderSubmissionOrderByWithRelationInput
+  contactEnquiry?: Prisma.ContactEnquiryOrderByWithRelationInput
   intendedProgram?: Prisma.ProgramOrderByWithRelationInput
   ownerCounselor?: Prisma.UserOrderByWithRelationInput
   applicant?: Prisma.ApplicantOrderByWithRelationInput
@@ -294,11 +336,15 @@ export type LeadWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumLeadStatusFilter<"Lead"> | $Enums.LeadStatus
   intendedProgramId?: Prisma.StringNullableFilter<"Lead"> | string | null
   ownerCounselorId?: Prisma.StringNullableFilter<"Lead"> | string | null
-  notes?: Prisma.StringNullableFilter<"Lead"> | string | null
+  aiScore?: Prisma.IntNullableFilter<"Lead"> | number | null
   nextFollowUpAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
   convertedAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Lead"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Lead"> | Date | string
+  notes?: Prisma.LeadNoteListRelationFilter
+  scholarship?: Prisma.XOR<Prisma.ScholarshipInquiryNullableScalarRelationFilter, Prisma.ScholarshipInquiryWhereInput> | null
+  programFinder?: Prisma.XOR<Prisma.ProgramFinderSubmissionNullableScalarRelationFilter, Prisma.ProgramFinderSubmissionWhereInput> | null
+  contactEnquiry?: Prisma.XOR<Prisma.ContactEnquiryNullableScalarRelationFilter, Prisma.ContactEnquiryWhereInput> | null
   intendedProgram?: Prisma.XOR<Prisma.ProgramNullableScalarRelationFilter, Prisma.ProgramWhereInput> | null
   ownerCounselor?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   applicant?: Prisma.XOR<Prisma.ApplicantNullableScalarRelationFilter, Prisma.ApplicantWhereInput> | null
@@ -315,14 +361,16 @@ export type LeadOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   intendedProgramId?: Prisma.SortOrderInput | Prisma.SortOrder
   ownerCounselorId?: Prisma.SortOrderInput | Prisma.SortOrder
-  notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  aiScore?: Prisma.SortOrderInput | Prisma.SortOrder
   nextFollowUpAt?: Prisma.SortOrderInput | Prisma.SortOrder
   convertedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.LeadCountOrderByAggregateInput
+  _avg?: Prisma.LeadAvgOrderByAggregateInput
   _max?: Prisma.LeadMaxOrderByAggregateInput
   _min?: Prisma.LeadMinOrderByAggregateInput
+  _sum?: Prisma.LeadSumOrderByAggregateInput
 }
 
 export type LeadScalarWhereWithAggregatesInput = {
@@ -338,7 +386,7 @@ export type LeadScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumLeadStatusWithAggregatesFilter<"Lead"> | $Enums.LeadStatus
   intendedProgramId?: Prisma.StringNullableWithAggregatesFilter<"Lead"> | string | null
   ownerCounselorId?: Prisma.StringNullableWithAggregatesFilter<"Lead"> | string | null
-  notes?: Prisma.StringNullableWithAggregatesFilter<"Lead"> | string | null
+  aiScore?: Prisma.IntNullableWithAggregatesFilter<"Lead"> | number | null
   nextFollowUpAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Lead"> | Date | string | null
   convertedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Lead"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Lead"> | Date | string
@@ -353,11 +401,15 @@ export type LeadCreateInput = {
   phone?: string | null
   source: $Enums.LeadSource
   status?: $Enums.LeadStatus
-  notes?: string | null
+  aiScore?: number | null
   nextFollowUpAt?: Date | string | null
   convertedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  notes?: Prisma.LeadNoteCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
   intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
   ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
   applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
@@ -374,11 +426,15 @@ export type LeadUncheckedCreateInput = {
   status?: $Enums.LeadStatus
   intendedProgramId?: string | null
   ownerCounselorId?: string | null
-  notes?: string | null
+  aiScore?: number | null
   nextFollowUpAt?: Date | string | null
   convertedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  notes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
   applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
 }
@@ -391,11 +447,15 @@ export type LeadUpdateInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
   intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
   ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
   applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
@@ -412,11 +472,15 @@ export type LeadUncheckedUpdateInput = {
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
   intendedProgramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ownerCounselorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUncheckedUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
   applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
 }
@@ -431,7 +495,7 @@ export type LeadCreateManyInput = {
   status?: $Enums.LeadStatus
   intendedProgramId?: string | null
   ownerCounselorId?: string | null
-  notes?: string | null
+  aiScore?: number | null
   nextFollowUpAt?: Date | string | null
   convertedAt?: Date | string | null
   createdAt?: Date | string
@@ -446,7 +510,7 @@ export type LeadUpdateManyMutationInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -463,7 +527,7 @@ export type LeadUncheckedUpdateManyInput = {
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
   intendedProgramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ownerCounselorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -490,11 +554,15 @@ export type LeadCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   intendedProgramId?: Prisma.SortOrder
   ownerCounselorId?: Prisma.SortOrder
-  notes?: Prisma.SortOrder
+  aiScore?: Prisma.SortOrder
   nextFollowUpAt?: Prisma.SortOrder
   convertedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type LeadAvgOrderByAggregateInput = {
+  aiScore?: Prisma.SortOrder
 }
 
 export type LeadMaxOrderByAggregateInput = {
@@ -507,7 +575,7 @@ export type LeadMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   intendedProgramId?: Prisma.SortOrder
   ownerCounselorId?: Prisma.SortOrder
-  notes?: Prisma.SortOrder
+  aiScore?: Prisma.SortOrder
   nextFollowUpAt?: Prisma.SortOrder
   convertedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -524,11 +592,15 @@ export type LeadMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   intendedProgramId?: Prisma.SortOrder
   ownerCounselorId?: Prisma.SortOrder
-  notes?: Prisma.SortOrder
+  aiScore?: Prisma.SortOrder
   nextFollowUpAt?: Prisma.SortOrder
   convertedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type LeadSumOrderByAggregateInput = {
+  aiScore?: Prisma.SortOrder
 }
 
 export type LeadScalarRelationFilter = {
@@ -633,6 +705,14 @@ export type EnumLeadStatusFieldUpdateOperationsInput = {
   set?: $Enums.LeadStatus
 }
 
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type LeadCreateNestedOneWithoutApplicantInput = {
   create?: Prisma.XOR<Prisma.LeadCreateWithoutApplicantInput, Prisma.LeadUncheckedCreateWithoutApplicantInput>
   connectOrCreate?: Prisma.LeadCreateOrConnectWithoutApplicantInput
@@ -663,6 +743,62 @@ export type LeadUpdateOneWithoutApplicationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.LeadUpdateToOneWithWhereWithoutApplicationsInput, Prisma.LeadUpdateWithoutApplicationsInput>, Prisma.LeadUncheckedUpdateWithoutApplicationsInput>
 }
 
+export type LeadCreateNestedOneWithoutNotesInput = {
+  create?: Prisma.XOR<Prisma.LeadCreateWithoutNotesInput, Prisma.LeadUncheckedCreateWithoutNotesInput>
+  connectOrCreate?: Prisma.LeadCreateOrConnectWithoutNotesInput
+  connect?: Prisma.LeadWhereUniqueInput
+}
+
+export type LeadUpdateOneRequiredWithoutNotesNestedInput = {
+  create?: Prisma.XOR<Prisma.LeadCreateWithoutNotesInput, Prisma.LeadUncheckedCreateWithoutNotesInput>
+  connectOrCreate?: Prisma.LeadCreateOrConnectWithoutNotesInput
+  upsert?: Prisma.LeadUpsertWithoutNotesInput
+  connect?: Prisma.LeadWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.LeadUpdateToOneWithWhereWithoutNotesInput, Prisma.LeadUpdateWithoutNotesInput>, Prisma.LeadUncheckedUpdateWithoutNotesInput>
+}
+
+export type LeadCreateNestedOneWithoutScholarshipInput = {
+  create?: Prisma.XOR<Prisma.LeadCreateWithoutScholarshipInput, Prisma.LeadUncheckedCreateWithoutScholarshipInput>
+  connectOrCreate?: Prisma.LeadCreateOrConnectWithoutScholarshipInput
+  connect?: Prisma.LeadWhereUniqueInput
+}
+
+export type LeadUpdateOneRequiredWithoutScholarshipNestedInput = {
+  create?: Prisma.XOR<Prisma.LeadCreateWithoutScholarshipInput, Prisma.LeadUncheckedCreateWithoutScholarshipInput>
+  connectOrCreate?: Prisma.LeadCreateOrConnectWithoutScholarshipInput
+  upsert?: Prisma.LeadUpsertWithoutScholarshipInput
+  connect?: Prisma.LeadWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.LeadUpdateToOneWithWhereWithoutScholarshipInput, Prisma.LeadUpdateWithoutScholarshipInput>, Prisma.LeadUncheckedUpdateWithoutScholarshipInput>
+}
+
+export type LeadCreateNestedOneWithoutProgramFinderInput = {
+  create?: Prisma.XOR<Prisma.LeadCreateWithoutProgramFinderInput, Prisma.LeadUncheckedCreateWithoutProgramFinderInput>
+  connectOrCreate?: Prisma.LeadCreateOrConnectWithoutProgramFinderInput
+  connect?: Prisma.LeadWhereUniqueInput
+}
+
+export type LeadUpdateOneRequiredWithoutProgramFinderNestedInput = {
+  create?: Prisma.XOR<Prisma.LeadCreateWithoutProgramFinderInput, Prisma.LeadUncheckedCreateWithoutProgramFinderInput>
+  connectOrCreate?: Prisma.LeadCreateOrConnectWithoutProgramFinderInput
+  upsert?: Prisma.LeadUpsertWithoutProgramFinderInput
+  connect?: Prisma.LeadWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.LeadUpdateToOneWithWhereWithoutProgramFinderInput, Prisma.LeadUpdateWithoutProgramFinderInput>, Prisma.LeadUncheckedUpdateWithoutProgramFinderInput>
+}
+
+export type LeadCreateNestedOneWithoutContactEnquiryInput = {
+  create?: Prisma.XOR<Prisma.LeadCreateWithoutContactEnquiryInput, Prisma.LeadUncheckedCreateWithoutContactEnquiryInput>
+  connectOrCreate?: Prisma.LeadCreateOrConnectWithoutContactEnquiryInput
+  connect?: Prisma.LeadWhereUniqueInput
+}
+
+export type LeadUpdateOneRequiredWithoutContactEnquiryNestedInput = {
+  create?: Prisma.XOR<Prisma.LeadCreateWithoutContactEnquiryInput, Prisma.LeadUncheckedCreateWithoutContactEnquiryInput>
+  connectOrCreate?: Prisma.LeadCreateOrConnectWithoutContactEnquiryInput
+  upsert?: Prisma.LeadUpsertWithoutContactEnquiryInput
+  connect?: Prisma.LeadWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.LeadUpdateToOneWithWhereWithoutContactEnquiryInput, Prisma.LeadUpdateWithoutContactEnquiryInput>, Prisma.LeadUncheckedUpdateWithoutContactEnquiryInput>
+}
+
 export type LeadCreateWithoutOwnerCounselorInput = {
   id?: string
   firstName: string
@@ -671,11 +807,15 @@ export type LeadCreateWithoutOwnerCounselorInput = {
   phone?: string | null
   source: $Enums.LeadSource
   status?: $Enums.LeadStatus
-  notes?: string | null
+  aiScore?: number | null
   nextFollowUpAt?: Date | string | null
   convertedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  notes?: Prisma.LeadNoteCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
   intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
   applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutLeadInput
@@ -690,11 +830,15 @@ export type LeadUncheckedCreateWithoutOwnerCounselorInput = {
   source: $Enums.LeadSource
   status?: $Enums.LeadStatus
   intendedProgramId?: string | null
-  notes?: string | null
+  aiScore?: number | null
   nextFollowUpAt?: Date | string | null
   convertedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  notes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
   applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
 }
@@ -738,7 +882,7 @@ export type LeadScalarWhereInput = {
   status?: Prisma.EnumLeadStatusFilter<"Lead"> | $Enums.LeadStatus
   intendedProgramId?: Prisma.StringNullableFilter<"Lead"> | string | null
   ownerCounselorId?: Prisma.StringNullableFilter<"Lead"> | string | null
-  notes?: Prisma.StringNullableFilter<"Lead"> | string | null
+  aiScore?: Prisma.IntNullableFilter<"Lead"> | number | null
   nextFollowUpAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
   convertedAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Lead"> | Date | string
@@ -753,11 +897,15 @@ export type LeadCreateWithoutIntendedProgramInput = {
   phone?: string | null
   source: $Enums.LeadSource
   status?: $Enums.LeadStatus
-  notes?: string | null
+  aiScore?: number | null
   nextFollowUpAt?: Date | string | null
   convertedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  notes?: Prisma.LeadNoteCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
   ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
   applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutLeadInput
@@ -772,11 +920,15 @@ export type LeadUncheckedCreateWithoutIntendedProgramInput = {
   source: $Enums.LeadSource
   status?: $Enums.LeadStatus
   ownerCounselorId?: string | null
-  notes?: string | null
+  aiScore?: number | null
   nextFollowUpAt?: Date | string | null
   convertedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  notes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
   applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
 }
@@ -815,11 +967,15 @@ export type LeadCreateWithoutApplicantInput = {
   phone?: string | null
   source: $Enums.LeadSource
   status?: $Enums.LeadStatus
-  notes?: string | null
+  aiScore?: number | null
   nextFollowUpAt?: Date | string | null
   convertedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  notes?: Prisma.LeadNoteCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
   intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
   ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutLeadInput
@@ -835,11 +991,15 @@ export type LeadUncheckedCreateWithoutApplicantInput = {
   status?: $Enums.LeadStatus
   intendedProgramId?: string | null
   ownerCounselorId?: string | null
-  notes?: string | null
+  aiScore?: number | null
   nextFollowUpAt?: Date | string | null
   convertedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  notes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
 }
 
@@ -867,11 +1027,15 @@ export type LeadUpdateWithoutApplicantInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
   intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
   ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutLeadNestedInput
@@ -887,11 +1051,15 @@ export type LeadUncheckedUpdateWithoutApplicantInput = {
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
   intendedProgramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ownerCounselorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUncheckedUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
 }
 
@@ -903,11 +1071,15 @@ export type LeadCreateWithoutApplicationsInput = {
   phone?: string | null
   source: $Enums.LeadSource
   status?: $Enums.LeadStatus
-  notes?: string | null
+  aiScore?: number | null
   nextFollowUpAt?: Date | string | null
   convertedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  notes?: Prisma.LeadNoteCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
   intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
   ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
   applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
@@ -923,11 +1095,15 @@ export type LeadUncheckedCreateWithoutApplicationsInput = {
   status?: $Enums.LeadStatus
   intendedProgramId?: string | null
   ownerCounselorId?: string | null
-  notes?: string | null
+  aiScore?: number | null
   nextFollowUpAt?: Date | string | null
   convertedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  notes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
   applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
 }
 
@@ -955,11 +1131,15 @@ export type LeadUpdateWithoutApplicationsInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
   intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
   ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
   applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
@@ -975,12 +1155,432 @@ export type LeadUncheckedUpdateWithoutApplicationsInput = {
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
   intendedProgramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ownerCounselorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUncheckedUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
   applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
+}
+
+export type LeadCreateWithoutNotesInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  email: string
+  phone?: string | null
+  source: $Enums.LeadSource
+  status?: $Enums.LeadStatus
+  aiScore?: number | null
+  nextFollowUpAt?: Date | string | null
+  convertedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
+  intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
+  ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
+  applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutLeadInput
+}
+
+export type LeadUncheckedCreateWithoutNotesInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  email: string
+  phone?: string | null
+  source: $Enums.LeadSource
+  status?: $Enums.LeadStatus
+  intendedProgramId?: string | null
+  ownerCounselorId?: string | null
+  aiScore?: number | null
+  nextFollowUpAt?: Date | string | null
+  convertedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
+  applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
+}
+
+export type LeadCreateOrConnectWithoutNotesInput = {
+  where: Prisma.LeadWhereUniqueInput
+  create: Prisma.XOR<Prisma.LeadCreateWithoutNotesInput, Prisma.LeadUncheckedCreateWithoutNotesInput>
+}
+
+export type LeadUpsertWithoutNotesInput = {
+  update: Prisma.XOR<Prisma.LeadUpdateWithoutNotesInput, Prisma.LeadUncheckedUpdateWithoutNotesInput>
+  create: Prisma.XOR<Prisma.LeadCreateWithoutNotesInput, Prisma.LeadUncheckedCreateWithoutNotesInput>
+  where?: Prisma.LeadWhereInput
+}
+
+export type LeadUpdateToOneWithWhereWithoutNotesInput = {
+  where?: Prisma.LeadWhereInput
+  data: Prisma.XOR<Prisma.LeadUpdateWithoutNotesInput, Prisma.LeadUncheckedUpdateWithoutNotesInput>
+}
+
+export type LeadUpdateWithoutNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
+  status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
+  intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
+  ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
+  applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutLeadNestedInput
+}
+
+export type LeadUncheckedUpdateWithoutNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
+  status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  intendedProgramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ownerCounselorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
+  applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
+}
+
+export type LeadCreateWithoutScholarshipInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  email: string
+  phone?: string | null
+  source: $Enums.LeadSource
+  status?: $Enums.LeadStatus
+  aiScore?: number | null
+  nextFollowUpAt?: Date | string | null
+  convertedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notes?: Prisma.LeadNoteCreateNestedManyWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
+  intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
+  ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
+  applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutLeadInput
+}
+
+export type LeadUncheckedCreateWithoutScholarshipInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  email: string
+  phone?: string | null
+  source: $Enums.LeadSource
+  status?: $Enums.LeadStatus
+  intendedProgramId?: string | null
+  ownerCounselorId?: string | null
+  aiScore?: number | null
+  nextFollowUpAt?: Date | string | null
+  convertedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
+  applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
+}
+
+export type LeadCreateOrConnectWithoutScholarshipInput = {
+  where: Prisma.LeadWhereUniqueInput
+  create: Prisma.XOR<Prisma.LeadCreateWithoutScholarshipInput, Prisma.LeadUncheckedCreateWithoutScholarshipInput>
+}
+
+export type LeadUpsertWithoutScholarshipInput = {
+  update: Prisma.XOR<Prisma.LeadUpdateWithoutScholarshipInput, Prisma.LeadUncheckedUpdateWithoutScholarshipInput>
+  create: Prisma.XOR<Prisma.LeadCreateWithoutScholarshipInput, Prisma.LeadUncheckedCreateWithoutScholarshipInput>
+  where?: Prisma.LeadWhereInput
+}
+
+export type LeadUpdateToOneWithWhereWithoutScholarshipInput = {
+  where?: Prisma.LeadWhereInput
+  data: Prisma.XOR<Prisma.LeadUpdateWithoutScholarshipInput, Prisma.LeadUncheckedUpdateWithoutScholarshipInput>
+}
+
+export type LeadUpdateWithoutScholarshipInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
+  status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUpdateManyWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
+  intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
+  ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
+  applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutLeadNestedInput
+}
+
+export type LeadUncheckedUpdateWithoutScholarshipInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
+  status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  intendedProgramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ownerCounselorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUncheckedUpdateManyWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
+  applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
+}
+
+export type LeadCreateWithoutProgramFinderInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  email: string
+  phone?: string | null
+  source: $Enums.LeadSource
+  status?: $Enums.LeadStatus
+  aiScore?: number | null
+  nextFollowUpAt?: Date | string | null
+  convertedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notes?: Prisma.LeadNoteCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
+  intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
+  ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
+  applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutLeadInput
+}
+
+export type LeadUncheckedCreateWithoutProgramFinderInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  email: string
+  phone?: string | null
+  source: $Enums.LeadSource
+  status?: $Enums.LeadStatus
+  intendedProgramId?: string | null
+  ownerCounselorId?: string | null
+  aiScore?: number | null
+  nextFollowUpAt?: Date | string | null
+  convertedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
+  applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
+}
+
+export type LeadCreateOrConnectWithoutProgramFinderInput = {
+  where: Prisma.LeadWhereUniqueInput
+  create: Prisma.XOR<Prisma.LeadCreateWithoutProgramFinderInput, Prisma.LeadUncheckedCreateWithoutProgramFinderInput>
+}
+
+export type LeadUpsertWithoutProgramFinderInput = {
+  update: Prisma.XOR<Prisma.LeadUpdateWithoutProgramFinderInput, Prisma.LeadUncheckedUpdateWithoutProgramFinderInput>
+  create: Prisma.XOR<Prisma.LeadCreateWithoutProgramFinderInput, Prisma.LeadUncheckedCreateWithoutProgramFinderInput>
+  where?: Prisma.LeadWhereInput
+}
+
+export type LeadUpdateToOneWithWhereWithoutProgramFinderInput = {
+  where?: Prisma.LeadWhereInput
+  data: Prisma.XOR<Prisma.LeadUpdateWithoutProgramFinderInput, Prisma.LeadUncheckedUpdateWithoutProgramFinderInput>
+}
+
+export type LeadUpdateWithoutProgramFinderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
+  status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
+  intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
+  ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
+  applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutLeadNestedInput
+}
+
+export type LeadUncheckedUpdateWithoutProgramFinderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
+  status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  intendedProgramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ownerCounselorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUncheckedUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
+  applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
+}
+
+export type LeadCreateWithoutContactEnquiryInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  email: string
+  phone?: string | null
+  source: $Enums.LeadSource
+  status?: $Enums.LeadStatus
+  aiScore?: number | null
+  nextFollowUpAt?: Date | string | null
+  convertedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notes?: Prisma.LeadNoteCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
+  intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
+  ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
+  applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutLeadInput
+}
+
+export type LeadUncheckedCreateWithoutContactEnquiryInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  email: string
+  phone?: string | null
+  source: $Enums.LeadSource
+  status?: $Enums.LeadStatus
+  intendedProgramId?: string | null
+  ownerCounselorId?: string | null
+  aiScore?: number | null
+  nextFollowUpAt?: Date | string | null
+  convertedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
+  applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
+}
+
+export type LeadCreateOrConnectWithoutContactEnquiryInput = {
+  where: Prisma.LeadWhereUniqueInput
+  create: Prisma.XOR<Prisma.LeadCreateWithoutContactEnquiryInput, Prisma.LeadUncheckedCreateWithoutContactEnquiryInput>
+}
+
+export type LeadUpsertWithoutContactEnquiryInput = {
+  update: Prisma.XOR<Prisma.LeadUpdateWithoutContactEnquiryInput, Prisma.LeadUncheckedUpdateWithoutContactEnquiryInput>
+  create: Prisma.XOR<Prisma.LeadCreateWithoutContactEnquiryInput, Prisma.LeadUncheckedCreateWithoutContactEnquiryInput>
+  where?: Prisma.LeadWhereInput
+}
+
+export type LeadUpdateToOneWithWhereWithoutContactEnquiryInput = {
+  where?: Prisma.LeadWhereInput
+  data: Prisma.XOR<Prisma.LeadUpdateWithoutContactEnquiryInput, Prisma.LeadUncheckedUpdateWithoutContactEnquiryInput>
+}
+
+export type LeadUpdateWithoutContactEnquiryInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
+  status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
+  intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
+  ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
+  applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutLeadNestedInput
+}
+
+export type LeadUncheckedUpdateWithoutContactEnquiryInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
+  status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  intendedProgramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ownerCounselorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUncheckedUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
+  applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
 }
 
 export type LeadCreateManyOwnerCounselorInput = {
@@ -992,7 +1592,7 @@ export type LeadCreateManyOwnerCounselorInput = {
   source: $Enums.LeadSource
   status?: $Enums.LeadStatus
   intendedProgramId?: string | null
-  notes?: string | null
+  aiScore?: number | null
   nextFollowUpAt?: Date | string | null
   convertedAt?: Date | string | null
   createdAt?: Date | string
@@ -1007,11 +1607,15 @@ export type LeadUpdateWithoutOwnerCounselorInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
   intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
   applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutLeadNestedInput
@@ -1026,11 +1630,15 @@ export type LeadUncheckedUpdateWithoutOwnerCounselorInput = {
   source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
   intendedProgramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUncheckedUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
   applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
 }
@@ -1044,7 +1652,7 @@ export type LeadUncheckedUpdateManyWithoutOwnerCounselorInput = {
   source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
   intendedProgramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1060,7 +1668,7 @@ export type LeadCreateManyIntendedProgramInput = {
   source: $Enums.LeadSource
   status?: $Enums.LeadStatus
   ownerCounselorId?: string | null
-  notes?: string | null
+  aiScore?: number | null
   nextFollowUpAt?: Date | string | null
   convertedAt?: Date | string | null
   createdAt?: Date | string
@@ -1075,11 +1683,15 @@ export type LeadUpdateWithoutIntendedProgramInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
   ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
   applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutLeadNestedInput
@@ -1094,11 +1706,15 @@ export type LeadUncheckedUpdateWithoutIntendedProgramInput = {
   source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
   ownerCounselorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUncheckedUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
   applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
 }
@@ -1112,7 +1728,7 @@ export type LeadUncheckedUpdateManyWithoutIntendedProgramInput = {
   source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
   ownerCounselorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1125,10 +1741,12 @@ export type LeadUncheckedUpdateManyWithoutIntendedProgramInput = {
  */
 
 export type LeadCountOutputType = {
+  notes: number
   applications: number
 }
 
 export type LeadCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  notes?: boolean | LeadCountOutputTypeCountNotesArgs
   applications?: boolean | LeadCountOutputTypeCountApplicationsArgs
 }
 
@@ -1140,6 +1758,13 @@ export type LeadCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
    * Select specific fields to fetch from the LeadCountOutputType
    */
   select?: Prisma.LeadCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * LeadCountOutputType without action
+ */
+export type LeadCountOutputTypeCountNotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LeadNoteWhereInput
 }
 
 /**
@@ -1160,11 +1785,15 @@ export type LeadSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   status?: boolean
   intendedProgramId?: boolean
   ownerCounselorId?: boolean
-  notes?: boolean
+  aiScore?: boolean
   nextFollowUpAt?: boolean
   convertedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  notes?: boolean | Prisma.Lead$notesArgs<ExtArgs>
+  scholarship?: boolean | Prisma.Lead$scholarshipArgs<ExtArgs>
+  programFinder?: boolean | Prisma.Lead$programFinderArgs<ExtArgs>
+  contactEnquiry?: boolean | Prisma.Lead$contactEnquiryArgs<ExtArgs>
   intendedProgram?: boolean | Prisma.Lead$intendedProgramArgs<ExtArgs>
   ownerCounselor?: boolean | Prisma.Lead$ownerCounselorArgs<ExtArgs>
   applicant?: boolean | Prisma.Lead$applicantArgs<ExtArgs>
@@ -1182,7 +1811,7 @@ export type LeadSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   status?: boolean
   intendedProgramId?: boolean
   ownerCounselorId?: boolean
-  notes?: boolean
+  aiScore?: boolean
   nextFollowUpAt?: boolean
   convertedAt?: boolean
   createdAt?: boolean
@@ -1201,7 +1830,7 @@ export type LeadSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   status?: boolean
   intendedProgramId?: boolean
   ownerCounselorId?: boolean
-  notes?: boolean
+  aiScore?: boolean
   nextFollowUpAt?: boolean
   convertedAt?: boolean
   createdAt?: boolean
@@ -1220,15 +1849,19 @@ export type LeadSelectScalar = {
   status?: boolean
   intendedProgramId?: boolean
   ownerCounselorId?: boolean
-  notes?: boolean
+  aiScore?: boolean
   nextFollowUpAt?: boolean
   convertedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type LeadOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "phone" | "source" | "status" | "intendedProgramId" | "ownerCounselorId" | "notes" | "nextFollowUpAt" | "convertedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["lead"]>
+export type LeadOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "phone" | "source" | "status" | "intendedProgramId" | "ownerCounselorId" | "aiScore" | "nextFollowUpAt" | "convertedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["lead"]>
 export type LeadInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  notes?: boolean | Prisma.Lead$notesArgs<ExtArgs>
+  scholarship?: boolean | Prisma.Lead$scholarshipArgs<ExtArgs>
+  programFinder?: boolean | Prisma.Lead$programFinderArgs<ExtArgs>
+  contactEnquiry?: boolean | Prisma.Lead$contactEnquiryArgs<ExtArgs>
   intendedProgram?: boolean | Prisma.Lead$intendedProgramArgs<ExtArgs>
   ownerCounselor?: boolean | Prisma.Lead$ownerCounselorArgs<ExtArgs>
   applicant?: boolean | Prisma.Lead$applicantArgs<ExtArgs>
@@ -1247,6 +1880,10 @@ export type LeadIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $LeadPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Lead"
   objects: {
+    notes: Prisma.$LeadNotePayload<ExtArgs>[]
+    scholarship: Prisma.$ScholarshipInquiryPayload<ExtArgs> | null
+    programFinder: Prisma.$ProgramFinderSubmissionPayload<ExtArgs> | null
+    contactEnquiry: Prisma.$ContactEnquiryPayload<ExtArgs> | null
     intendedProgram: Prisma.$ProgramPayload<ExtArgs> | null
     ownerCounselor: Prisma.$UserPayload<ExtArgs> | null
     applicant: Prisma.$ApplicantPayload<ExtArgs> | null
@@ -1262,7 +1899,7 @@ export type $LeadPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     status: $Enums.LeadStatus
     intendedProgramId: string | null
     ownerCounselorId: string | null
-    notes: string | null
+    aiScore: number | null
     nextFollowUpAt: Date | null
     convertedAt: Date | null
     createdAt: Date
@@ -1661,6 +2298,10 @@ readonly fields: LeadFieldRefs;
  */
 export interface Prisma__LeadClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  notes<T extends Prisma.Lead$notesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Lead$notesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeadNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  scholarship<T extends Prisma.Lead$scholarshipArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Lead$scholarshipArgs<ExtArgs>>): Prisma.Prisma__ScholarshipInquiryClient<runtime.Types.Result.GetResult<Prisma.$ScholarshipInquiryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  programFinder<T extends Prisma.Lead$programFinderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Lead$programFinderArgs<ExtArgs>>): Prisma.Prisma__ProgramFinderSubmissionClient<runtime.Types.Result.GetResult<Prisma.$ProgramFinderSubmissionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  contactEnquiry<T extends Prisma.Lead$contactEnquiryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Lead$contactEnquiryArgs<ExtArgs>>): Prisma.Prisma__ContactEnquiryClient<runtime.Types.Result.GetResult<Prisma.$ContactEnquiryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   intendedProgram<T extends Prisma.Lead$intendedProgramArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Lead$intendedProgramArgs<ExtArgs>>): Prisma.Prisma__ProgramClient<runtime.Types.Result.GetResult<Prisma.$ProgramPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   ownerCounselor<T extends Prisma.Lead$ownerCounselorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Lead$ownerCounselorArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   applicant<T extends Prisma.Lead$applicantArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Lead$applicantArgs<ExtArgs>>): Prisma.Prisma__ApplicantClient<runtime.Types.Result.GetResult<Prisma.$ApplicantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -1703,7 +2344,7 @@ export interface LeadFieldRefs {
   readonly status: Prisma.FieldRef<"Lead", 'LeadStatus'>
   readonly intendedProgramId: Prisma.FieldRef<"Lead", 'String'>
   readonly ownerCounselorId: Prisma.FieldRef<"Lead", 'String'>
-  readonly notes: Prisma.FieldRef<"Lead", 'String'>
+  readonly aiScore: Prisma.FieldRef<"Lead", 'Int'>
   readonly nextFollowUpAt: Prisma.FieldRef<"Lead", 'DateTime'>
   readonly convertedAt: Prisma.FieldRef<"Lead", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Lead", 'DateTime'>
@@ -2106,6 +2747,87 @@ export type LeadDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Limit how many Leads to delete.
    */
   limit?: number
+}
+
+/**
+ * Lead.notes
+ */
+export type Lead$notesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the LeadNote
+   */
+  select?: Prisma.LeadNoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the LeadNote
+   */
+  omit?: Prisma.LeadNoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LeadNoteInclude<ExtArgs> | null
+  where?: Prisma.LeadNoteWhereInput
+  orderBy?: Prisma.LeadNoteOrderByWithRelationInput | Prisma.LeadNoteOrderByWithRelationInput[]
+  cursor?: Prisma.LeadNoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LeadNoteScalarFieldEnum | Prisma.LeadNoteScalarFieldEnum[]
+}
+
+/**
+ * Lead.scholarship
+ */
+export type Lead$scholarshipArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ScholarshipInquiry
+   */
+  select?: Prisma.ScholarshipInquirySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ScholarshipInquiry
+   */
+  omit?: Prisma.ScholarshipInquiryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ScholarshipInquiryInclude<ExtArgs> | null
+  where?: Prisma.ScholarshipInquiryWhereInput
+}
+
+/**
+ * Lead.programFinder
+ */
+export type Lead$programFinderArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProgramFinderSubmission
+   */
+  select?: Prisma.ProgramFinderSubmissionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProgramFinderSubmission
+   */
+  omit?: Prisma.ProgramFinderSubmissionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProgramFinderSubmissionInclude<ExtArgs> | null
+  where?: Prisma.ProgramFinderSubmissionWhereInput
+}
+
+/**
+ * Lead.contactEnquiry
+ */
+export type Lead$contactEnquiryArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ContactEnquiry
+   */
+  select?: Prisma.ContactEnquirySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ContactEnquiry
+   */
+  omit?: Prisma.ContactEnquiryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactEnquiryInclude<ExtArgs> | null
+  where?: Prisma.ContactEnquiryWhereInput
 }
 
 /**

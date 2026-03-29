@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const RECRUITER_LOGOS = [
   { name: "Deloitte", src: "https://1000logos.net/wp-content/uploads/2016/10/Deloitte-logo.png" },
   { name: "Amazon", src: "https://1000logos.net/wp-content/uploads/2021/05/Amazon-Logo-768x230.png" },
@@ -20,9 +22,11 @@ export function ProgramRecruitersSection() {
             key={company.name}
             className="flex min-h-24 items-center justify-center border border-[#efefef] px-4 py-7 "
           >
-            <img
+            <Image
               src={company.src}
               alt={company.name}
+              width={220}
+              height={80}
               className="h-10 max-h-12 max-w-full object-contain filter grayscale opacity-95"
             />
           </div>

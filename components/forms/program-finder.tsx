@@ -2,21 +2,134 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft, Sparkles } from 'lucide-react';
+
+import { postJson } from '@/lib/form-utils';
 import { StepOne } from './program-finder-steps/step-one';
 import { StepTwo } from './program-finder-steps/step-two';
 import { StepThree } from './program-finder-steps/step-three';
 import { StepFour } from './program-finder-steps/step-four';
-import { Results, type UserSelections } from './program-finder-steps/results';
+import { Results, type ProgramRecommendation, type UserSelections } from './program-finder-steps/results';
 import { ProgressBar } from './program-finder-steps/progress-bar';
-import { Sparkles } from 'lucide-react';
 
-const TOTAL_STEPS = 4;
+const TOTAL_STEPS = 5;
+const indianMobilePattern = /^[6-9]\d{9}$/;
+
+type ContactStepState = {
+  fullName: string;
+  email: string;
+  phone: string;
+};
+
+type ContactStepErrors = Partial<Record<keyof ContactStepState, string>>;
+
+const initialContactState: ContactStepState = {
+  fullName: '',
+  email: '',
+  phone: '',
+};
+
+function splitFullName(fullName: string) {
+  const parts = fullName.trim().split(/\s+/).filter(Boolean);
+  const firstName = parts[0] ?? '';
+  const lastName = parts.slice(1).join(' ') || '.';
+
+  return { firstName, lastName };
+}
+
+type ContactCaptureStepProps = {
+  values: ContactStepState;
+  errors: ContactStepErrors;
+  submitError: string;
+  loading: boolean;
+  onChange: (field: keyof ContactStepState, value: string) => void;
+  onBack: () => void;
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+};
+
+function ContactCaptureStep({
+  values,
+  errors,
+  submitError,
+  loading,
+  onChange,
+  onBack,
+  onSubmit,
+}: ContactCaptureStepProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -50 }}
+      transition={{ duration: 0.4 }}
+    >
+      <button
+        onClick={onBack}
+        className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-8 group"
+      >
+        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+        <span className="text-sm">Back</span>
+      </button>
+
+      <h2 className="text-lg md:text-xl font-light mb-3 text-gray-900">Almost there! Where should we send your results?</h2>
+      <p className="text-sm text-gray-600 mb-10">Enter your contact details to get your personalized program matches.</p>
+
+      <form className="max-w-3xl grid gap-4" onSubmit={onSubmit}>
+        <div>
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={values.fullName}
+            onChange={(event) => onChange('fullName', event.target.value)}
+            className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium outline-none transition focus:border-[#FF6A00]"
+          />
+          {errors.fullName ? <p className="mt-1 text-xs text-red-600">{errors.fullName}</p> : null}
+        </div>
+
+        <div>
+          <input
+            type="email"
+            placeholder="Email Address"
+            value={values.email}
+            onChange={(event) => onChange('email', event.target.value)}
+            className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium outline-none transition focus:border-[#FF6A00]"
+          />
+          {errors.email ? <p className="mt-1 text-xs text-red-600">{errors.email}</p> : null}
+        </div>
+
+        <div>
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            value={values.phone}
+            onChange={(event) => onChange('phone', event.target.value)}
+            className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium outline-none transition focus:border-[#FF6A00]"
+          />
+          {errors.phone ? <p className="mt-1 text-xs text-red-600">{errors.phone}</p> : null}
+        </div>
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="mt-4 w-full rounded-xl bg-[#FF6A00] py-3 text-sm font-medium text-white transition hover:bg-[#E55A00] disabled:opacity-60 md:w-auto md:px-8"
+        >
+          {loading ? 'Getting Matches...' : 'Get My Program Matches'}
+        </button>
+        {submitError ? <p className="text-sm text-red-600">{submitError}</p> : null}
+      </form>
+    </motion.div>
+  );
+}
 
 export function ProgramFinderForm() {
   const [currentStep, setCurrentStep] = useState(0);
   const [selections, setSelections] = useState<UserSelections>({});
+  const [contactInfo, setContactInfo] = useState<ContactStepState>(initialContactState);
+  const [contactErrors, setContactErrors] = useState<ContactStepErrors>({});
   const [showResults, setShowResults] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [recommendations, setRecommendations] = useState<ProgramRecommendation[]>([]);
 
   const handleSelection = (key: keyof UserSelections, value: string) => {
     setSelections((prev) => ({ ...prev, [key]: value }));
@@ -25,12 +138,6 @@ export function ProgramFinderForm() {
   const nextStep = () => {
     if (currentStep < TOTAL_STEPS - 1) {
       setCurrentStep((prev) => prev + 1);
-    } else {
-      setIsLoading(true);
-      setTimeout(() => {
-        setIsLoading(false);
-        setShowResults(true);
-      }, 1500);
     }
   };
 
@@ -41,20 +148,95 @@ export function ProgramFinderForm() {
   };
 
   const skip = () => {
-    if (currentStep === TOTAL_STEPS - 1) {
-      setIsLoading(true);
-      setTimeout(() => {
-        setIsLoading(false);
-        setShowResults(true);
-      }, 1500);
+    if (currentStep === 3) {
+      setCurrentStep(4);
     } else {
       nextStep();
+    }
+  };
+
+  const handleContactInfoChange = (field: keyof ContactStepState, value: string) => {
+    setContactInfo((prev) => ({ ...prev, [field]: value }));
+    setContactErrors((prev) => ({ ...prev, [field]: '' }));
+    setSubmitError('');
+  };
+
+  const validateContactInfo = () => {
+    const nextErrors: ContactStepErrors = {};
+
+    if (!contactInfo.fullName.trim()) {
+      nextErrors.fullName = 'Full name is required.';
+    }
+
+    if (!contactInfo.email.trim()) {
+      nextErrors.email = 'Email is required.';
+    }
+
+    if (!contactInfo.phone.trim()) {
+      nextErrors.phone = 'Phone number is required.';
+    } else if (!indianMobilePattern.test(contactInfo.phone.trim())) {
+      nextErrors.phone = 'Enter a valid Indian mobile number.';
+    }
+
+    setContactErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
+  };
+
+  const handleGetMatches = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!validateContactInfo()) {
+      return;
+    }
+
+    if (!selections.interest) {
+      setSubmitError('Please complete interest selection before submitting.');
+      return;
+    }
+
+    setIsLoading(true);
+    setSubmitError('');
+
+    try {
+      const { firstName, lastName } = splitFullName(contactInfo.fullName);
+      const response = await postJson<{ leadId: string; recommendations: ProgramRecommendation[] }>(
+        '/api/leads/program-finder',
+        {
+          firstName,
+          lastName,
+          email: contactInfo.email.trim(),
+          phone: contactInfo.phone.trim(),
+          interests: [selections.interest],
+          careers: selections.career ? [selections.career] : [],
+          academicPreference: selections.academicPreference,
+          preferredMode: selections.location,
+          budgetRange: selections.budget,
+        },
+      );
+
+      const isSuccessful = response.success === true || (response as { ok?: boolean }).ok === true;
+      if (!isSuccessful) {
+        setSubmitError(response.error?.message ?? 'Unable to fetch your matches right now.');
+        return;
+      }
+
+      setRecommendations(response.data?.recommendations ?? []);
+      setShowResults(true);
+    } catch {
+      setSubmitError('Unable to fetch your matches right now.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const restart = () => {
     setCurrentStep(0);
     setSelections({});
+    setContactInfo(initialContactState);
+    setContactErrors({});
+    setSubmitError('');
+    setRecommendations([]);
+    setIsLoading(false);
     setShowResults(false);
   };
 
@@ -76,7 +258,7 @@ export function ProgramFinderForm() {
   }
 
   if (showResults) {
-    return <Results selections={selections} onRestart={restart} />;
+    return <Results selections={selections} recommendations={recommendations} onRestart={restart} />;
   }
 
   return (
@@ -149,6 +331,18 @@ export function ProgramFinderForm() {
                 onNext={nextStep}
                 onBack={prevStep}
                 onSkip={skip}
+              />
+            )}
+            {currentStep === 4 && (
+              <ContactCaptureStep
+                key="step-5"
+                values={contactInfo}
+                errors={contactErrors}
+                submitError={submitError}
+                loading={isLoading}
+                onChange={handleContactInfoChange}
+                onBack={prevStep}
+                onSubmit={handleGetMatches}
               />
             )}
           </AnimatePresence>

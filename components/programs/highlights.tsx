@@ -4,14 +4,28 @@ import { PROGRAM_HIGHLIGHTS } from "@/components/programs/data";
 
 const HIGHLIGHT_ICONS = [Code2, FlaskConical, Globe, Users, Trophy, Cpu] as const;
 
-export function ProgramHighlightsSection() {
+type ProgramHighlightsSectionProps = {
+  highlights: string[];
+};
+
+function normalizeHighlights(highlights: string[]) {
+  if (highlights.length === 0) {
+    return PROGRAM_HIGHLIGHTS;
+  }
+
+  return highlights.map((highlight) => [highlight, ""] as const);
+}
+
+export function ProgramHighlightsSection({ highlights }: ProgramHighlightsSectionProps) {
+  const normalizedHighlights = normalizeHighlights(highlights);
+
   return (
     <section className="mx-auto mt-30 mb-15 w-full max-w-300 px-3 md:px-5">
       <p className="text-xs font-semibold tracking-[0.08em] text-[#f7941d] uppercase">Why Choose This Program</p>
       <h2 className="mt-2 text-4xl font-extrabold">What Sets SVIET B.Tech CSE Apart</h2>
       <div className="mt-4 grid gap-4 md:grid-cols-3">
-        {PROGRAM_HIGHLIGHTS.map(([title, description], index) => {
-          const Icon = HIGHLIGHT_ICONS[index];
+        {normalizedHighlights.map(([title, description], index) => {
+          const Icon = HIGHLIGHT_ICONS[index % HIGHLIGHT_ICONS.length];
 
           return (
           <div key={title} className="rounded-xl border border-[#e9e9e9] bg-white px-4 py-8">
@@ -19,7 +33,7 @@ export function ProgramHighlightsSection() {
               <Icon className="h-4 w-4 text-[#f7941d]" />
             </div>
             <p className=" text-sm font-semibold text-[#333]">{title}</p>
-            <p className="mt-1.5 text-xs text-[#666]">{description}</p>
+            {description ? <p className="mt-1.5 text-xs text-[#666]">{description}</p> : null}
           </div>
           );
         })}

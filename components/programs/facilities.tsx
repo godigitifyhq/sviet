@@ -5,14 +5,28 @@ import { FACILITY_DETAILS, FACILITY_EXTRAS } from "@/components/programs/data";
 
 const FACILITY_ICONS = [Monitor, BookOpen, Monitor, FlaskConical] as const;
 
-export function ProgramFacilitiesSection() {
+type ProgramFacilitiesSectionProps = {
+  facilities: string[];
+};
+
+function normalizeFacilities(facilities: string[]) {
+  if (facilities.length === 0) {
+    return FACILITY_DETAILS;
+  }
+
+  return facilities.map((facility) => [facility, "Modern infrastructure that supports practical learning and career readiness."] as const);
+}
+
+export function ProgramFacilitiesSection({ facilities }: ProgramFacilitiesSectionProps) {
+  const normalizedFacilities = normalizeFacilities(facilities);
+
   return (
     <section className="mx-auto mt-30 mb-15 w-full max-w-300 px-3 md:px-5">
       <p className="text-xs font-semibold tracking-[0.08em] text-[#f7941d] uppercase">Infrastructure</p>
       <h2 className="mt-2 text-4xl font-extrabold">World-Class Campus Facilities</h2>
       <div className="mt-12 grid gap-4 md:grid-cols-4">
-        {FACILITY_DETAILS.map(([facility, description], index) => {
-          const Icon = FACILITY_ICONS[index];
+        {normalizedFacilities.map(([facility, description], index) => {
+          const Icon = FACILITY_ICONS[index % FACILITY_ICONS.length];
 
           return (
           <article key={facility} className="overflow-hidden rounded-xl border border-[#e8e8e8] bg-white">

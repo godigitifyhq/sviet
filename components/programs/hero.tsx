@@ -2,19 +2,65 @@ import Image from "next/image";
 
 import { PROGRAM_META_CHIPS } from "@/components/programs/data";
 
-export function ProgramHeroSection() {
+type ProgramHeroSectionProps = {
+  title: string;
+  department?: string | null;
+  durationMonths: number;
+  tuitionCents: number;
+  mode?: string | null;
+  shortDescription: string;
+};
+
+function formatMode(mode?: string | null) {
+  if (!mode) {
+    return null;
+  }
+
+  return mode
+    .toLowerCase()
+    .split("_")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+function formatCurrency(valueInCents: number) {
+  return `₹${(valueInCents / 100).toLocaleString("en-IN")}`;
+}
+
+function formatDuration(durationMonths: number) {
+  const years = durationMonths / 12;
+  if (Number.isInteger(years)) {
+    return `${years} Years`;
+  }
+
+  return `${years.toFixed(1)} Years`;
+}
+
+export function ProgramHeroSection({
+  title,
+  department,
+  durationMonths,
+  tuitionCents,
+  mode,
+  shortDescription,
+}: ProgramHeroSectionProps) {
+  const dynamicChips = [formatDuration(durationMonths), formatCurrency(tuitionCents), formatMode(mode)]
+    .filter((chip): chip is string => Boolean(chip));
+
+  const chips = dynamicChips.length > 0 ? dynamicChips : PROGRAM_META_CHIPS;
+
   return (
     <section className="mx-auto mt-15 mb-15 w-full max-w-300 px-3 md:px-5">
       <div className="grid gap-6 lg:grid-cols-[1fr_340px]">
         <div className="grid gap-6">
-          <p className="text-[11px] text-[#f7941d] ">Recommended for students interested in Engineering / Tech Careers</p>
-         
-          <h1 className="mt-2 text-5xl font-extrabold leading-tight">B.Tech Computer Science Engineering</h1>
-          <p className="mt-3 max-w-3xl text-[#4b4b4b]">
-            A future-ready undergraduate program designed to build strong foundations in computing, software engineering, and emerging technologies.
+          <p className="text-[11px] text-[#f7941d] ">
+            Recommended for students interested in {department ?? "Engineering / Tech Careers"}
           </p>
+         
+          <h1 className="mt-2 text-5xl font-extrabold leading-tight">{title}</h1>
+          <p className="mt-3 max-w-3xl text-[#4b4b4b]">{shortDescription}</p>
           <div className="mt-4 flex flex-wrap gap-2 text-xs">
-            {PROGRAM_META_CHIPS.map((chip) => (
+            {chips.map((chip) => (
               <span key={chip} className="rounded-full border border-[#ddd] bg-white px-3 py-1">
                 {chip}
               </span>
@@ -40,11 +86,11 @@ export function ProgramHeroSection() {
           <div className="space-y-5 pb-5 border-t border-[#eaeaea] pt-7 mt-3 text-xs">
             <div className="flex items-center justify-between">
               <span className="text-[#888]">Duration</span>
-              <span className="font-medium text-[#222]">4 Years (8 Semesters)</span>
+              <span className="font-medium text-[#222]">{formatDuration(durationMonths)}</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-[#888]">Fees</span>
-              <span className="font-medium text-[#222]">₹80,000 / Year</span>
+              <span className="font-medium text-[#222]">{formatCurrency(tuitionCents)} / Year</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-[#888]">Affiliation</span>

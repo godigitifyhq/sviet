@@ -21,12 +21,18 @@ enum UserStatus {
 }
 
 enum LeadSource {
-  WEBSITE
+  APPLY_NOW
+  SCHOLARSHIP_CHECK
+  PROGRAM_FINDER
+  CONTACT_ENQUIRY
+  EVENT_REGISTRATION
+  CAMPUS_VISIT
   PHONE
   REFERRAL
-  EVENT
-  SOCIAL
   WALK_IN
+  SOCIAL
+  WEBSITE
+  EVENT
 }
 
 enum LeadStatus {
@@ -129,6 +135,8 @@ model User {
   applicantDocuments      Document[]                 @relation("DocumentApplicant")
   uploadedDocuments       Document[]                 @relation("DocumentUploadedBy")
   verifiedDocuments       Document[]                 @relation("DocumentVerifiedBy")
+  leadNotes               LeadNote[]                 @relation("LeadNoteAuthor")
+  contactReplies          ContactEnquiry[]           @relation("ContactEnquiryRepliedBy")
   sessions                AuthSession[]
   statusChanges           ApplicationStatusHistory[] @relation("StatusChangedBy")
   activityLogs            ActivityLog[]              @relation("ActivityActor")
@@ -153,6 +161,16 @@ model Program {
   slug             String      @unique
   title            String
   shortDescription String
+  department       String?
+  mode             String?
+  fullDescription  String?
+  highlights       String[]
+  eligibility      String?
+  curriculum       Json?       @db.JsonB
+  outcomes         String[]
+  facilities       String[]
+  faqs             Json?       @db.JsonB
+  isFeatured       Boolean     @default(false)
   durationMonths   Int
   tuitionCents     Int
   isActive         Boolean     @default(true)
@@ -162,6 +180,7 @@ model Program {
   applicants       Applicant[]
   intakes          Intake[]
   applications     Application[]
+  scholarshipInquiries ScholarshipInquiry[]
 }
 
 model Intake {
@@ -191,7 +210,11 @@ model Lead {
   status            LeadStatus  @default(NEW)
   intendedProgramId String?
   ownerCounselorId  String?
-  notes             String?
+  notes             LeadNote[]
+  aiScore           Int?
+  scholarship       ScholarshipInquiry?
+  programFinder     ProgramFinderSubmission?
+  contactEnquiry    ContactEnquiry?
   nextFollowUpAt    DateTime?
   convertedAt       DateTime?
   createdAt         DateTime    @default(now())
@@ -405,4 +428,55 @@ model Announcement {
   updatedAt   DateTime          @updatedAt
 
   @@index([pinned, publishFrom])
+}
+
+model LeadNote {
+  id        String   @id @default(uuid())
+  leadId    String
+  authorId  String?
+  body      String
+  createdAt DateTime @default(now())
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  author    User?    @relation("LeadNoteAuthor", fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@index([leadId, createdAt])
+}
+
+model ScholarshipInquiry {
+  id                String   @id @default(uuid())
+  leadId            String   @unique
+  programId         String?
+  familyIncomeLPA   Float
+  academicScore     Float
+  category          String
+  eligibilityResult Json?    @db.JsonB
+  aiScore           Int?
+  createdAt         DateTime @default(now())
+  lead              Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  program           Program? @relation(fields: [programId], references: [id], onDelete: SetNull)
+}
+
+model ProgramFinderSubmission {
+  id                  String   @id @default(uuid())
+  leadId              String   @unique
+  interests           String[]
+  careers             String[]
+  academicPreference  String?
+  preferredMode       String?
+  budgetRange         String?
+  recommendedPrograms Json?    @db.JsonB
+  createdAt           DateTime @default(now())
+  lead                Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+}
+
+model ContactEnquiry {
+  id          String    @id @default(uuid())
+  leadId      String    @unique
+  subject     String
+  message     String
+  repliedAt   DateTime?
+  repliedById String?
+  createdAt   DateTime  @default(now())
+  lead        Lead      @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  repliedBy   User?     @relation("ContactEnquiryRepliedBy", fields: [repliedById], references: [id], onDelete: SetNull)
 }

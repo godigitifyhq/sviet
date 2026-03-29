@@ -1,5 +1,6 @@
 import "server-only";
 
+import { Prisma } from "@/generated/prisma/client";
 import { prisma } from "@/lib/db";
 import { log } from "@/services/logger";
 
@@ -23,7 +24,7 @@ export async function recordActivity(input: RecordActivityInput) {
         entityType: input.entityType,
         entityId: input.entityId,
         action: input.action,
-        metadata: input.metadata,
+        metadata: input.metadata as Prisma.InputJsonObject | undefined,
         ipAddress: input.ipAddress,
         userAgent: input.userAgent,
       },

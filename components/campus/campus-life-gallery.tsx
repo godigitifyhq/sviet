@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function CampusLifeGallerySection() {
   return (
     <section className="mt-15 mb-15 mx-auto w-full max-w-[1280px] px-2 pt-6 md:px-5 md:pt-8">
@@ -9,25 +11,33 @@ export function CampusLifeGallerySection() {
       </div>
 
       <div className="mt-15 grid grid-cols-2 gap-2 md:gap-3">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80"
-          alt="Gallery"
+          alt="Gallery highlight"
+          width={1200}
+          height={800}
           className="h-[130px] w-full rounded-md object-cover md:h-[400px]"
         />
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80"
-          alt="Gallery"
+          alt="Gallery highlight"
+          width={1200}
+          height={800}
           className="h-[130px] w-full rounded-md object-cover md:h-[400px]"
         />
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1200&q=80"
-          alt="Gallery"
+          alt="Gallery highlight"
+          width={1200}
+          height={800}
           className="h-[130px] w-full rounded-md object-cover md:h-[400px]"
         />
         <div className="relative overflow-hidden rounded-md">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe?auto=format&fit=crop&w=1200&q=80"
-            alt="Gallery"
+            alt="Gallery highlight"
+            width={1200}
+            height={800}
             className="h-[130px] w-full object-cover md:h-[400px]"
           />
           <div className="absolute inset-0 bg-black/35" />

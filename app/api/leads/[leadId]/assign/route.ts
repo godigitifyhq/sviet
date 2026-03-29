@@ -10,7 +10,7 @@ type RouteContext = {
   params: Promise<{ leadId: string }>;
 };
 
-export async function POST(request: NextRequest, context: RouteContext) {
+async function handleAssignLead(request: NextRequest, context: RouteContext) {
   return withApiHandler(async () => {
     const user = await requireAuthUser(request);
     assertHasRole(user.role, ["ADMIN", "SUPER_ADMIN"]);
@@ -20,4 +20,12 @@ export async function POST(request: NextRequest, context: RouteContext) {
 
     return assignLead(leadId, payload.counselorId, user);
   });
+}
+
+export async function POST(request: NextRequest, context: RouteContext) {
+  return handleAssignLead(request, context);
+}
+
+export async function PATCH(request: NextRequest, context: RouteContext) {
+  return handleAssignLead(request, context);
 }

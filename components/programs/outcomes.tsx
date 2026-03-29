@@ -4,7 +4,25 @@ import { PLACEMENT_OUTCOMES } from "@/components/programs/data";
 
 const STAT_ICONS = [TrendingUp, Award, Briefcase, Building2] as const;
 
-export function ProgramOutcomesSection() {
+type ProgramOutcomesSectionProps = {
+  outcomes: string[];
+};
+
+function normalizeOutcomes(outcomes: string[]) {
+  if (outcomes.length === 0) {
+    return PLACEMENT_OUTCOMES;
+  }
+
+  return outcomes.map((outcome, index) => [
+    `Career Path ${index + 1}`,
+    outcome,
+    "Potential outcome for program graduates",
+  ] as const);
+}
+
+export function ProgramOutcomesSection({ outcomes }: ProgramOutcomesSectionProps) {
+  const normalizedOutcomes = normalizeOutcomes(outcomes);
+
   return (
     <section className="mx-auto mt-30 mb-15 w-full max-w-300 px-3 md:px-5">
       <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
@@ -17,8 +35,8 @@ export function ProgramOutcomesSection() {
         </div>
       </div>
       <div className="mt-15 grid gap-4 md:grid-cols-4">
-        {PLACEMENT_OUTCOMES.map(([label, value, description], index) => {
-          const Icon = STAT_ICONS[index];
+        {normalizedOutcomes.map(([label, value, description], index) => {
+          const Icon = STAT_ICONS[index % STAT_ICONS.length];
 
           return (
           <div key={label} className="rounded-xl border border-[#e8e8e8] bg-white p-4">

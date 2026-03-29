@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
+import { postJson } from "@/lib/form-utils";
+
 const containerClass = "mx-auto max-w-[1280px] px-6";
 const inputClass = "w-full rounded-lg bg-gray-100 px-4 py-3 text-sm text-gray-700 outline-none";
 const primaryButtonClass = "rounded-full bg-black px-6 py-3  font-semibold transition hover:bg-gray-900";
@@ -44,29 +46,100 @@ const faqItems = [
   },
 ];
 
+type ContactFormErrors = Partial<Record<"name" | "email" | "phone" | "subject" | "message", string>>;
+
+const indianMobilePattern = /^[6-9]\d{9}$/;
+
+function splitFullName(name: string) {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  const firstName = parts[0] ?? "";
+  const lastName = parts.slice(1).join(" ") || ".";
+
+  return { firstName, lastName };
+}
+
 export function ContactPageComponent() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
+    subject: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errors, setErrors] = useState<ContactFormErrors>({});
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+    setSubmitError("");
+  };
+
+  const validateForm = () => {
+    const nextErrors: ContactFormErrors = {};
+
+    if (!formData.name.trim()) {
+      nextErrors.name = "Full name is required.";
+    }
+
+    if (!formData.email.trim()) {
+      nextErrors.email = "Email is required.";
+    }
+
+    if (!formData.phone.trim()) {
+      nextErrors.phone = "Phone number is required.";
+    } else if (!indianMobilePattern.test(formData.phone.trim())) {
+      nextErrors.phone = "Enter a valid Indian mobile number.";
+    }
+
+    if (!formData.subject.trim()) {
+      nextErrors.subject = "Subject is required.";
+    }
+
+    if (!formData.message.trim()) {
+      nextErrors.message = "Message is required.";
+    }
+
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
+    setSubmitError("");
+
+    try {
+      const { firstName, lastName } = splitFullName(formData.name);
+      const response = await postJson<{ leadId: string; message: string }>("/api/leads/contact", {
+        firstName,
+        lastName,
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        subject: formData.subject.trim(),
+        message: formData.message.trim(),
+      });
+
+      const isSuccessful = response.success === true || (response as { ok?: boolean }).ok === true;
+      if (!isSuccessful) {
+        setSubmitError(response.error?.message ?? "Unable to send your message right now.");
+        return;
+      }
+
+      setIsSuccess(true);
+    } catch {
+      setSubmitError("Unable to send your message right now.");
+    } finally {
       setIsSubmitting(false);
-      setFormData({ name: "", phone: "", email: "", message: "" });
-      alert("Message sent successfully! We'll get back to you soon.");
-    }, 1000);
+    }
   };
 
   return (
@@ -97,74 +170,101 @@ export function ContactPageComponent() {
           {/* LEFT: FORM */}
           <div>
             <h2 className="text-4xl font-bold text-gray-900">Send us a Message</h2>
-            <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="John Doe"
-                  required
-                  className={inputClass}
-                />
+            {isSuccess ? (
+              <div className="mt-8 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 text-emerald-700">
+                ✓ Message sent! We&apos;ll get back to you within 24 hours.
               </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="you@example.com"
-                  required
-                  className={inputClass}
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="block text-sm font-semibold text-gray-900 mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  placeholder="+91-XXXX-XXXX-XX"
-                  className={inputClass}
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  placeholder="Tell us how we can help..."
-                  rows={5}
-                  required
-                  className={inputClass}
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`${primaryButtonClass} w-full md:w-auto disabled:opacity-50`}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
-            </form>
+            ) : (
+              <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="John Doe"
+                    required
+                    className={inputClass}
+                  />
+                  {errors.name ? <p className="mt-1 text-xs text-red-600">{errors.name}</p> : null}
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="you@example.com"
+                    required
+                    className={inputClass}
+                  />
+                  {errors.email ? <p className="mt-1 text-xs text-red-600">{errors.email}</p> : null}
+                </div>
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-semibold text-gray-900 mb-2">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    placeholder="How can we help?"
+                    required
+                    className={inputClass}
+                  />
+                  {errors.subject ? <p className="mt-1 text-xs text-red-600">{errors.subject}</p> : null}
+                </div>
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-900 mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder="+91-XXXX-XXXX-XX"
+                    className={inputClass}
+                  />
+                  {errors.phone ? <p className="mt-1 text-xs text-red-600">{errors.phone}</p> : null}
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    placeholder="Tell us how we can help..."
+                    rows={5}
+                    required
+                    className={inputClass}
+                  />
+                  {errors.message ? <p className="mt-1 text-xs text-red-600">{errors.message}</p> : null}
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`${primaryButtonClass} w-full md:w-auto disabled:opacity-50`}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </button>
+                {submitError ? <p className="text-sm text-red-600">{submitError}</p> : null}
+              </form>
+            )}
           </div>
 
           {/* RIGHT: CONTACT DETAILS */}
