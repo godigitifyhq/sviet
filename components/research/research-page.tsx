@@ -1,32 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Cell,
-  Legend,
-  Line,
-  LineChart,
-  Pie,
-  PieChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
-import { FaBookOpen, FaFlask, FaGlobe, FaHandshake, FaIndustry, FaLaptopCode, FaMicroscope, FaTools } from "react-icons/fa";
+import { FaBookOpen, FaFlask, FaHandshake, FaIndustry, FaLaptopCode, FaMicroscope, FaTools } from "react-icons/fa";
 
 const containerClass = "mx-auto max-w-[1280px] px-6";
 const sectionClass = "py-20";
 
+const hero = {
+  title: "Research & Innovation at SVIET",
+  subtitle: "Where Ideas Transform into Real-World Impact",
+  description:
+    "Research at SVIET is not just academic-it is a culture of innovation, experimentation, and real-world problem solving.",
+};
+
 const stats = [
-  { value: "2000+", label: "Publications" },
-  { value: "300+", label: "Patents" },
-  { value: "150+", label: "Sponsored Projects" },
-  { value: "50+", label: "Collaborations" },
-  { value: "35+", label: "Research Labs" },
+  { value: "620", label: "Research Publications" },
+  { value: "47", label: "Technology Transfers" },
+  { value: "89", label: "Patents Filed" },
 ];
 
 const researchDomains = [
@@ -41,9 +31,9 @@ const researchDomains = [
     icon: FaMicroscope,
   },
   {
-    title: "Green Energy",
-    description: "Renewable systems, smart grids, and efficient energy solutions.",
-    icon: FaGlobe,
+    title: "Civil Engineering",
+    description: "Applied civil research focused on resilient infrastructure and sustainable construction.",
+    icon: FaTools,
   },
   {
     title: "Materials Research",
@@ -62,118 +52,203 @@ const researchDomains = [
   },
 ];
 
-const hallOfFame = [
-  { name: "Dr. Ananya Sharma", role: "Dean, Research & Innovation", image: "/assets/img/students/moon_mandal.png" },
-  { name: "Dr. R. K. Verma", role: "Professor, AI Systems", image: "/assets/img/students/moon_mandal.png" },
-  { name: "Dr. Meera Saini", role: "Director, Biotech Labs", image: "/assets/img/students/moon_mandal.png" },
-  { name: "Dr. Karan Joshi", role: "Lead, Energy Research", image: "/assets/img/students/moon_mandal.png" },
-];
-
-const growthData = [
-  { year: "2021", publications: 240, patents: 28 },
-  { year: "2022", publications: 320, patents: 41 },
-  { year: "2023", publications: 430, patents: 56 },
-  { year: "2024", publications: 510, patents: 72 },
-  { year: "2025", publications: 620, patents: 89 },
-];
-
-const domainData = [
-  { domain: "Computing", projects: 46 },
-  { domain: "Biotech", projects: 29 },
-  { domain: "Energy", projects: 34 },
-  { domain: "Materials", projects: 21 },
-  { domain: "Management", projects: 19 },
-];
-
-const distributionData = [
-  { name: "Government Grants", value: 42 },
-  { name: "Industry Funding", value: 31 },
-  { name: "International", value: 17 },
-  { name: "Internal", value: 10 },
-];
-
-const sponsoredProjects = [
+const rdCommittee = [
   {
-    title: "AI-Assisted Precision Farming",
-    description: "Decision support model for crop monitoring and yield optimization across North India.",
-    image: "/assets/img/college/main_gate.png",
+    name: "Dr. Neeraj Kumar",
+    department: "Business Administration",
+    designation: "Research Coordinator",
   },
   {
-    title: "Battery Safety & Diagnostics",
-    description: "High reliability battery analytics for EV systems in collaboration with industry partners.",
-    image: "/assets/img/college/main_gate.png",
+    name: "Dr. Indu Batra",
+    department: "Applied Sciences",
+    designation: "Member",
   },
   {
-    title: "Smart Health Screening",
-    description: "Low-cost biomedical signal platform for preventive diagnostics in rural communities.",
-    image: "/assets/img/college/main_gate.png",
+    name: "Dr. Manpreet Kaur",
+    department: "Business Administration",
+    designation: "Member",
   },
+  {
+    name: "Mr. Kaushik Bharti",
+    department: "Mechanical Engineering",
+    designation: "Member",
+  },
+  {
+    name: "Mr. Manish",
+    department: "Computer Applications",
+    designation: "Member",
+  },
+  {
+    name: "Ms. Suvidha",
+    department: "Computer Science & Engineering",
+    designation: "Member",
+  },
+];
+
+const innovativeProjects = [
+  {
+    title: "Electric Bike Created by SVIET Student",
+    description:
+      "Mohd. Jawaad Khan (Electrical Engg. 7th Sem) launched a prototype electric bike, expected to be available on Paytm, Flipkart and Amazon.",
+  },
+  {
+    title: "Electric Car 'SVIET VOLTA'",
+    description:
+      "An eco-friendly electric car innovation where SVIET acts as seed funding agency and venture capitalist.",
+  },
+  {
+    title: "IIT Ropar Achievement",
+    description:
+      "Civil Engineering students secured 4th position among 30 teams on 'Green Buildings'.",
+  },
+  {
+    title: "Auto Dispenser for Hand Sanitizer",
+    description: "Developed by a second-year student during COVID.",
+  },
+  {
+    title: "Mini Refrigerator",
+    description: "Designed by Mechanical Engineering students.",
+  },
+  {
+    title: "Voice Control Robot",
+    description: "Robot designed with voice command capability.",
+  },
+  {
+    title: "Multi-Nozzle Pesticide Sprayer",
+    description: "Agricultural solution designed by students.",
+  },
+];
+
+const publications = [
+  { title: "Improve Performance in WSN using Modified CSMA/CD", author: "Mr. Ishant Premi", year: "2018-19", issn: "0025-0422" },
+  { title: "Improve Performance in WSN using Modified CSMA/CD", author: "Ms. Roop Shikha", year: "2018-19", issn: "0025-0422" },
+  { title: "IRIS Detection using Image Processing", author: "Ms. Vandana", year: "2018-19", issn: "0025-0422" },
+  { title: "IRIS Detection using Image Processing", author: "Ms. Nisha", year: "2018-19", issn: "0025-0422" },
+  { title: "R.O.L.S.H", author: "Mr. Ankur Gill", year: "2018-19", issn: "0025-0422" },
+  { title: "R.O.L.S.H", author: "Mr. Supinderjit Singh", year: "2018-19", issn: "0025-0422" },
+  { title: "Wireless Sensor Network Throughput", author: "Ms. Roop Sikha", year: "2018-19", issn: "0025-0422" },
+  { title: "Wireless Sensor Network Throughput", author: "Mr. Ishant Premi", year: "2018-19", issn: "0025-0422" },
+  { title: "Nanometrology Study", author: "Mr. Kapil Munjal", year: "2018-19", issn: "0378-4568" },
+  { title: "Efficient Algorithm for WSN", author: "Ms. Manju Bala Goel", year: "2018-19", issn: "0378-4568" },
+  { title: "Plant Maintenance Analysis", author: "Ms. Sakshi Sharma", year: "2018-19", issn: "0378-4568" },
+  { title: "Plant Maintenance Analysis", author: "Ms. Akanksha Pathania", year: "2018-19", issn: "0378-4568" },
+  { title: "Delay in Residential Projects", author: "Ms. Sakshi Sharma", year: "2018-19", issn: "0378-4568" },
+  { title: "Delay in Residential Projects", author: "Ms. Saneha", year: "2018-19", issn: "0378-4568" },
+  { title: "Material Management Challenges", author: "Mr. Dhiraj Parkash Dhiman", year: "2018-19", issn: "0378-4568" },
+  { title: "Material Management Challenges", author: "Mr. Prince Chawla", year: "2018-19", issn: "0378-4568" },
+  { title: "Cost of Production", author: "Mr. Gurpreet Singh", year: "2018-19", issn: "0378-4568" },
+  { title: "Cost of Production", author: "Mr. Aman Gupta", year: "2018-19", issn: "0378-4568" },
+  { title: "Engineering Materials", author: "Mr. Kapil Munjal", year: "2018-19", issn: "0378-4568" },
+  { title: "Heat Transfer", author: "Mr. Harneet Singh", year: "2018-19", issn: "0378-4568" },
+];
+
+const patents = [
+  { applicationNo: "440565-001", title: "Brick Mortor Laying Tool" },
+  { applicationNo: "440566-001", title: "Smart Socket" },
+  { applicationNo: "440567-001", title: "Bread Slicer" },
+  { applicationNo: "440568-001", title: "Medicine Dispensing Device" },
+  { applicationNo: "440569-001", title: "Digital Multi Meter" },
+  { applicationNo: "440570-001", title: "Ergonomic Workstation Desk" },
+  { applicationNo: "440571-001", title: "Screw Driver cum Wrench" },
+  { applicationNo: "440572-001", title: "Spraying Robot" },
+  { applicationNo: "440573-001", title: "Food Delivery Robot" },
+  { applicationNo: "440574-001", title: "Temperature Gradient Incubation System" },
+  { applicationNo: "202411099894", title: "Self-Healing Cement" },
+  { applicationNo: "202411099896", title: "Biodegradable Food Packaging" },
+  { applicationNo: "202411099895", title: "Electrochromic Device" },
+  { applicationNo: "202411099898", title: "Air-Purifying Paint" },
+  { applicationNo: "202411099897", title: "Plastic Recycling System" },
+  { applicationNo: "202411099128", title: "Ground Stability Detection System" },
+  { applicationNo: "202411099129", title: "Solar Vehicle Climate Control" },
+  { applicationNo: "202411099132", title: "AI Thermal Management System" },
+  { applicationNo: "202411099130", title: "Nano-Encapsulated Pesticide" },
+  { applicationNo: "202411099131", title: "AI Waste Sorting System" },
+];
+
+const booksMeta = {
+  title: "Books & Edited Chapters",
+  total: 50,
+  year: "2022-23",
+};
+
+const booksAndChapters = [
+  { srNo: 1, title: "Handbook on Big Data and Machine Learning", author: "Ms. Vandana", type: "Book", isbn: "978-93-5515-732-4" },
+  { srNo: 2, title: "Artificial Intelligence in Cyber Security", author: "Ms. Vandana", type: "Book", isbn: "978-93-5515-908-3" },
+  { srNo: 3, title: "8086 Microprocessor and Interfacing", author: "Ms. Roop Shikha", type: "Book", isbn: "978-93-87393-74-5" },
+  { srNo: 4, title: "8086 Microprocessor and Interfacing", author: "Mr. Manik Dhiman", type: "Book", isbn: "978-93-87393-74-5" },
+  { srNo: 5, title: "Introduction to Microprocessors", author: "Ms. Yukti Gupta", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 6, title: "Introduction to Microprocessors", author: "Ms. Roop Shikha", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 7, title: "Types of Computers", author: "Ms. Vandana", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 8, title: "Types of Computers", author: "Ms. Nisha", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 9, title: "Microprocessor Evolution and Types", author: "Mr. Manik Dhiman", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 10, title: "Microprocessor Evolution and Types", author: "Dr. Indu Batra", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 11, title: "8086 Internal Architecture", author: "Ms. Roop Shikha", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 12, title: "8086 Internal Architecture", author: "Dr. Shashi Jawla", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 13, title: "Microprocessor - 8086 Addressing Modes", author: "Ms. Neha Garg", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 14, title: "Microprocessor - 8086 Addressing Modes", author: "Ms. Sujata Tondon", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 15, title: "Data Transfer and Arithmetic Instructions of 8086", author: "Ms. Ritika Mishra", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 16, title: "Data Transfer and Arithmetic Instructions of 8086", author: "Mr. Vikas Zandu", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 17, title: "Logical, String Manipulation, Control Transfer and Processor Control Instructions", author: "Ms. Kulbir Kaur", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 18, title: "Logical, String Manipulation, Control Transfer and Processor Control Instructions", author: "Ms. Saneha", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 19, title: "Assembler Directives of the 8086 Microprocessor", author: "Ms. Komal Sood", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 20, title: "Assembler Directives of the 8086 Microprocessor", author: "Mr. Rajat Gupta", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 21, title: "Introduction to Assembly Language Programming", author: "Ms. Kulbir Kaur", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 22, title: "Introduction to Assembly Language Programming", author: "Mr. Hardeep Singh", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 23, title: "Assembly Language Programming", author: "Ms. Tanika Thakur", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 24, title: "Assembly Language Programming", author: "Mr. Navdeep Randhawa", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 25, title: "Pin Diagram and Description of 8086 Microprocessor", author: "Ms. Yashu", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 26, title: "Pin Diagram and Description of 8086 Microprocessor", author: "Dr. Pertik Garg", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 27, title: "Minimum Mode Configuration of 8086 Microprocessor (Min Mode)", author: "Ms. Kiran Bala", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 28, title: "Minimum Mode Configuration of 8086 Microprocessor (Min Mode)", author: "Ms. Komal Dhiman", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 29, title: "Maximum Mode Configuration of 8086 Microprocessor (Max Mode)", author: "Mr. Ishant Premi", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 30, title: "Maximum Mode Configuration of 8086 Microprocessor (Max Mode)", author: "Ms. Tanika Thakur", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 31, title: "Bus Timings for Minimum Mode and Maximum Mode", author: "Ms. Komal Dhiman", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 32, title: "Bus Timings for Minimum Mode and Maximum Mode", author: "Mr. Ishant Premi", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 33, title: "Interrupts in 8086 Microprocessor", author: "Dr. Pertik Garg", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 34, title: "Interrupts in 8086 Microprocessor", author: "Ms. Vandana", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 35, title: "8254 - Programmable Timer/Counter", author: "Mr. Navdeep Randhawa", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 36, title: "8254 - Programmable Timer/Counter", author: "Mr. Manik Dhiman", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 37, title: "8259- Priority Interrupt Controller", author: "Mr. Hardeep Singh", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 38, title: "8259- Priority Interrupt Controller", author: "Ms. Roop Shikha", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 39, title: "Pin Configuration of 8259 PIC", author: "Mr. Harjinder Singh", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 40, title: "Pin Configuration of 8259 PIC", author: "Ms. Neha Garg", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 41, title: "8255 Microprocessor: Architecture and Working", author: "Ms. Saneha", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 42, title: "8255 Microprocessor: Architecture and Working", author: "Ms. Yukti Gupta", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 43, title: "Pin Diagram of 8255 PPI", author: "Mr. Vikas Zandu", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 44, title: "Pin Diagram of 8255 PPI", author: "Ms. Kulbir Kaur", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 45, title: "Keyboard/Display Controller- 8279", author: "Ms. Sujata Tondon", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 46, title: "Keyboard/Display Controller- 8279", author: "Ms. Komal Dhiman", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 47, title: "Interfacing 8279 with 8086 Processor", author: "Dr. Shashi Jawla", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 48, title: "Interfacing 8279 with 8086 Processor", author: "Mr. Manik Dhiman", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 49, title: "8086 Microprocessor Interfacing with DAC", author: "Dr. Indu Batra", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  { srNo: 50, title: "8086 Microprocessor Interfacing with DAC", author: "Ms. Tanika Thakur", type: "Book Chapter", isbn: "978-93-87393-74-5" },
 ];
 
 const infrastructure = [
-  {
-    title: "Central Instrumentation Facility",
-    description: "High-end analytical instruments supporting multi-disciplinary experimentation.",
-    image: "/assets/img/college/main_gate.png",
-  },
-  {
-    title: "Innovation Prototyping Lab",
-    description: "Fabrication, electronics, and rapid prototyping for student and faculty projects.",
-    image: "/assets/img/college/main_gate.png",
-  },
-  {
-    title: "High Performance Computing Cluster",
-    description: "Compute-intensive environment for simulation, AI, and data-driven research.",
-    image: "/assets/img/college/main_gate.png",
-  },
+  "Central Instrumentation Facility",
+  "Innovation Prototyping Lab",
+  "High Performance Computing Cluster",
 ];
 
-const collaborations = [
-  "Google",
-  "EMC",
-  "Infosys",
-  "TCS",
-  "Wipro",
-  "Deloitte",
-];
+const collaborations = ["Google", "DRDO", "Infosys", "TCS", "Wipro"];
 
 const services = [
   {
     title: "IPR & Patent Support",
-    description: "End-to-end mentoring for disclosure drafting, filing, and prosecution support.",
+    description: "Support for ideation, filing, and protection of institutional innovations.",
     icon: FaBookOpen,
   },
   {
     title: "Industry Consultancy",
-    description: "Applied problem-solving through faculty-led consulting and testing engagements.",
+    description: "Consultancy support to solve practical industry problems through applied research.",
     icon: FaTools,
   },
   {
     title: "Conferences & Workshops",
-    description: "Focused forums for research dissemination, collaboration, and skill advancement.",
+    description: "Regular events that connect academia, industry, and emerging research themes.",
     icon: FaHandshake,
   },
 ];
-
-const publicationOutcome = [
-  {
-    title: "Indexed Publications",
-    description: "Strong year-on-year growth in Scopus and Web of Science indexed journals.",
-    value: "620",
-  },
-  {
-    title: "Technology Transfers",
-    description: "Research translated into products and process improvements with partner industries.",
-    value: "47",
-  },
-  {
-    title: "Patents Filed",
-    description: "Steady pipeline of protected innovations across engineering and life sciences.",
-    value: "89",
-  },
-];
-
-const PIE_COLORS = ["#111827", "#f7941d", "#4b5563", "#9ca3af"];
 
 export function ResearchPageComponent() {
   return (
@@ -187,21 +262,21 @@ export function ResearchPageComponent() {
           sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/65 to-black/45" />
+        <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/65 to-black/45" />
         <div className="absolute -left-20 top-16 h-60 w-60 rounded-full bg-[#f7941d]/25 blur-3xl" />
         <div className="absolute -right-16 bottom-10 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
         <div className={`${containerClass} relative grid gap-10 md:grid-cols-2 md:items-center`}>
           <div>
             <p className="inline-flex rounded-full border border-white/30 bg-white/10 px-4 py-1 text-sm font-semibold tracking-wide text-white/90">
-              SVIET Research
+              {hero.subtitle}
             </p>
-            <h1 className="text-5xl font-bold text-white">Research & Innovation at SVIET</h1>
+            <h1 className="text-5xl font-bold text-white">{hero.title}</h1>
             <p className="mt-6 max-w-xl text-base text-white/90">
-              We cultivate a research ecosystem that blends rigorous inquiry, practical impact, and interdisciplinary collaboration to address contemporary global challenges.
+              {hero.description}
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <button className="rounded-full bg-[#f7941d] px-6 py-3 font-semibold text-white transition hover:bg-[#df850f]">Explore Projects</button>
-              <button className="rounded-full border border-white/40 bg-white/10 px-6 py-3 font-semibold text-white transition hover:bg-white/20">Partner With Us</button>
+              <a href="#projects" className="rounded-full bg-[#f7941d] px-6 py-3 font-semibold text-white transition hover:bg-[#df850f]">Explore Projects</a>
+              <a href="#committee" className="rounded-full border border-white/40 bg-white/10 px-6 py-3 font-semibold text-white transition hover:bg-white/20">Meet R&D Committee</a>
             </div>
           </div>
           <div className="justify-self-start rounded-2xl border border-white/30 bg-white/15 p-6 backdrop-blur-md md:justify-self-end">
@@ -214,9 +289,9 @@ export function ResearchPageComponent() {
       </section>
 
       <section className={`${sectionClass} ${containerClass}`}>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {stats.map((item) => (
-            <article key={item.label} className="rounded-2xl border border-gray-200 bg-gradient-to-b from-white to-gray-50 p-8 text-center transition duration-300 hover:-translate-y-1 hover:border-[#f7941d]/40">
+            <article key={item.label} className="rounded-2xl border border-gray-200 bg-linear-to-b from-white to-gray-50 p-8 text-center transition duration-300 hover:-translate-y-1 hover:border-[#f7941d]/40">
               <p className="text-4xl font-bold text-gray-900">{item.value}</p>
               <p className="mt-2 text-base text-gray-600">{item.label}</p>
             </article>
@@ -230,7 +305,7 @@ export function ResearchPageComponent() {
           <h2 className="text-4xl font-bold text-gray-900">About Research at SVIET</h2>
           <p className="mt-4 text-lg text-gray-700">A research ecosystem built for societal and industrial impact.</p>
           <p className="mt-6 text-base text-gray-600">
-            SVIET advances discovery through funded projects, high-quality publications, and translational outcomes that serve industry and society. Our research framework emphasizes ethics, reproducibility, and measurable impact while empowering faculty and students with modern tools, mentorship, and collaborative networks.
+            At our college, research is not just an academic requirement-it is a way of thinking, questioning, and innovating. We believe that true learning extends beyond textbooks, and we foster a culture where faculty and students collaborate to create practical, sustainable, and high-impact solutions for real-world challenges.
           </p>
         </div>
       </section>
@@ -249,108 +324,30 @@ export function ResearchPageComponent() {
         </div>
       </section>
 
-      <section className={`${sectionClass} ${containerClass}`}>
-        <h2 className="text-4xl font-bold text-gray-900">Hall of Fame</h2>
-        <p className="mt-4 text-lg text-gray-700">Recognizing researchers shaping the institution&apos;s innovation culture.</p>
-        <div className="mt-10 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-          {hallOfFame.map((person) => (
-            <article key={person.name} className="rounded-2xl border border-gray-100 bg-white p-4 transition hover:border-[#f7941d]/40">
-              <div className="relative h-88 overflow-hidden rounded-xl bg-gray-100">
-                <Image
-                  src={person.image}
-                  alt={person.name}
-                  fill
-                  className="object-cover grayscale transition duration-500 hover:scale-105 hover:grayscale-0"
-                  sizes="(max-width: 1024px) 50vw, 25vw"
-                />
-              </div>
-              <h3 className="mt-4 text-2xl font-semibold text-gray-900">{person.name}</h3>
-              <p className="mt-2 text-base text-gray-600">{person.role}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-gray-50 py-20">
+      <section id="committee" className="bg-gray-50 py-20">
         <div className={containerClass}>
-          <h2 className="text-4xl font-bold text-gray-900">Research Insights</h2>
-          <p className="mt-4 text-lg text-gray-700">Evidence-led trends in publications, projects, and research funding.</p>
-          <div className="mt-10 grid gap-10 lg:grid-cols-2">
-          <article className="rounded-2xl border border-gray-100 bg-white p-6">
-            <h3 className="text-2xl font-semibold text-gray-900">Publication & Patent Growth</h3>
-            <div className="mt-8 h-72">
-              <div className="mx-auto h-full w-full max-w-[600px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={growthData} margin={{ top: 20, right: 20, left: 20, bottom: 10 }}>
-                  <CartesianGrid stroke="transparent" />
-                  <XAxis dataKey="year" stroke="#6b7280" />
-                  <YAxis stroke="#6b7280" />
-                  <Tooltip />
-                  <Legend />
-                  <Line type="monotone" dataKey="publications" stroke="#111" strokeWidth={2} />
-                  <Line type="monotone" dataKey="patents" stroke="#111" strokeWidth={2} strokeDasharray="6 4" />
-                </LineChart>
-              </ResponsiveContainer>
-              </div>
-            </div>
-          </article>
-
-          <article className="rounded-2xl border border-gray-100 bg-white p-6">
-            <h3 className="text-2xl font-semibold text-gray-900">Domain-Wise Projects</h3>
-            <div className="mt-8 h-72">
-              <div className="mx-auto h-full w-full max-w-[600px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={domainData} margin={{ top: 20, right: 20, left: 20, bottom: 10 }}>
-                  <CartesianGrid stroke="transparent" />
-                  <XAxis dataKey="domain" stroke="#6b7280" />
-                  <YAxis stroke="#6b7280" />
-                  <Tooltip />
-                  <Bar dataKey="projects" fill="#111" stroke="#111" strokeWidth={2} />
-                </BarChart>
-              </ResponsiveContainer>
-              </div>
-            </div>
-          </article>
-
-          <article className="rounded-2xl border border-gray-100 bg-white p-6 lg:col-span-2">
-            <h3 className="text-2xl font-semibold text-gray-900">Funding Distribution</h3>
-            <div className="mt-8 h-80">
-              <div className="mx-auto h-full w-full max-w-[600px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie data={distributionData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} label stroke="#111" strokeWidth={2}>
-                    {distributionData.map((entry) => (
-                      <Cell key={entry.name} fill={PIE_COLORS[distributionData.indexOf(entry)]} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                  <Legend />
-                </PieChart>
-              </ResponsiveContainer>
-              </div>
-            </div>
-          </article>
+          <h2 className="text-4xl font-bold text-gray-900">R&D Committee</h2>
+          <p className="mt-4 text-lg text-gray-700">Leadership and members guiding the institute&apos;s research direction.</p>
+          <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {rdCommittee.map((member) => (
+              <article key={member.name} className="rounded-2xl border border-gray-100 bg-white p-6">
+                <h3 className="text-2xl font-semibold text-gray-900">{member.name}</h3>
+                <p className="mt-3 text-base text-gray-700">{member.department}</p>
+                <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-[#f7941d]">{member.designation}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-black py-20">
+      <section id="projects" className="bg-black py-20">
         <div className={containerClass}>
-          <h2 className="text-4xl font-bold text-white">Sponsored Projects</h2>
-          <p className="mt-4 text-lg text-white/85">High-impact projects funded by government and industry partners.</p>
+          <h2 className="text-4xl font-bold text-white">Innovative Projects</h2>
+          <p className="mt-4 text-lg text-white/85">Student and faculty innovations addressing practical and societal needs.</p>
           <div className="mt-10 grid gap-10 md:grid-cols-3">
-            {sponsoredProjects.map((project, index) => (
-              <article key={project.title} className={`rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-sm transition hover:bg-white/10 ${index < 2 ? "md:border-r" : ""}`}>
-                <div className="relative h-44 overflow-hidden rounded-xl">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-                <h3 className="mt-4 text-2xl font-semibold text-white">{project.title}</h3>
+            {innovativeProjects.map((project) => (
+              <article key={project.title} className="rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm transition hover:bg-white/10">
+                <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
                 <p className="mt-3 text-base text-white/85">{project.description}</p>
               </article>
             ))}
@@ -359,24 +356,40 @@ export function ResearchPageComponent() {
       </section>
 
       <section className={`${sectionClass} ${containerClass}`}>
-        <h2 className="text-4xl font-bold text-gray-900">Infrastructure & Facilities</h2>
-        <p className="mt-4 text-lg text-gray-700">State-of-the-art spaces enabling interdisciplinary research and prototyping.</p>
-        <div className="mt-10 space-y-12">
-          {infrastructure.map((item, index) => (
-            <article key={item.title} className="grid gap-10 rounded-2xl border border-gray-100 bg-white p-6 md:grid-cols-2 md:items-center">
-              <div className={`relative h-64 overflow-hidden rounded-2xl ${index % 2 === 1 ? "md:order-2" : ""}`}>
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold text-gray-900">{item.title}</h3>
-                <p className="mt-4 text-base text-gray-600">{item.description}</p>
-              </div>
+        <h2 className="text-4xl font-bold text-gray-900">Research Publications</h2>
+        <p className="mt-4 text-lg text-gray-700">Selected list of publications contributed by SVIET researchers.</p>
+        <div className="mt-10 overflow-x-auto rounded-2xl border border-gray-100 bg-white">
+          <table className="min-w-full text-left">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-4 py-3 text-sm font-semibold text-gray-700">Title</th>
+                <th className="px-4 py-3 text-sm font-semibold text-gray-700">Author</th>
+                <th className="px-4 py-3 text-sm font-semibold text-gray-700">Year</th>
+                <th className="px-4 py-3 text-sm font-semibold text-gray-700">ISSN</th>
+              </tr>
+            </thead>
+            <tbody>
+              {publications.map((publication) => (
+                <tr key={`${publication.title}-${publication.author}`} className="border-t border-gray-100">
+                  <td className="px-4 py-3 text-sm text-gray-700">{publication.title}</td>
+                  <td className="px-4 py-3 text-sm text-gray-700">{publication.author}</td>
+                  <td className="px-4 py-3 text-sm text-gray-700">{publication.year}</td>
+                  <td className="px-4 py-3 text-sm text-gray-700">{publication.issn}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className={`${sectionClass} ${containerClass}`}>
+        <h2 className="text-4xl font-bold text-gray-900">Patents</h2>
+        <p className="mt-4 text-lg text-gray-700">Patent applications filed across engineering and technology domains.</p>
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {patents.map((patent) => (
+            <article key={patent.applicationNo} className="rounded-2xl border border-gray-100 bg-white p-5">
+              <p className="text-sm font-semibold uppercase tracking-wide text-[#f7941d]">Application No. {patent.applicationNo}</p>
+              <h3 className="mt-3 text-2xl font-semibold text-gray-900">{patent.title}</h3>
             </article>
           ))}
         </div>
@@ -393,23 +406,48 @@ export function ResearchPageComponent() {
       </section>
 
       <section className={`${sectionClass} ${containerClass}`}>
-        <div className="grid gap-10 md:grid-cols-2 md:items-center">
-          <div className="relative h-80 overflow-hidden rounded-2xl border border-gray-100">
-            <Image
-              src="/assets/img/college/main_gate.png"
-              alt="Academic resources"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+        <div className="grid gap-10 md:grid-cols-2">
+          <div>
+            <h2 className="text-4xl font-bold text-gray-900">Infrastructure & Facilities</h2>
+            <p className="mt-4 text-lg text-gray-700">Core research infrastructure supporting advanced experimentation and prototyping.</p>
+            <div className="mt-8 space-y-4">
+              {infrastructure.map((facility) => (
+                <article key={facility} className="rounded-xl border border-gray-100 bg-white p-4">
+                  <h3 className="text-xl font-semibold text-gray-900">{facility}</h3>
+                </article>
+              ))}
+            </div>
           </div>
           <div>
-            <h2 className="text-4xl font-bold text-gray-900">Academic Resources</h2>
-            <p className="mt-4 text-lg text-gray-700">Comprehensive digital and mentoring support for impactful scholarship.</p>
-            <p className="mt-6 text-base text-gray-600">
-              Our researchers access e-journals, indexed databases, high-quality repositories, and dedicated mentoring cells to accelerate publication quality, reproducibility, and interdisciplinary excellence.
+            <h2 className="text-4xl font-bold text-gray-900">Books & Edited Chapters</h2>
+            <p className="mt-4 text-lg text-gray-700">
+              {booksMeta.title} ({booksMeta.year})
             </p>
-            <button className="mt-8 rounded-full bg-black px-6 py-3 font-semibold text-white transition hover:bg-[#f7941d]">View Resources</button>
+            <p className="mt-2 text-base text-gray-600">Total count: {booksMeta.total}</p>
+            <div className="mt-8 max-h-105 overflow-auto rounded-2xl border border-gray-100 bg-white">
+              <table className="min-w-full text-left">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-4 py-3 text-sm font-semibold text-gray-700">Sr.</th>
+                    <th className="px-4 py-3 text-sm font-semibold text-gray-700">Title</th>
+                    <th className="px-4 py-3 text-sm font-semibold text-gray-700">Author</th>
+                    <th className="px-4 py-3 text-sm font-semibold text-gray-700">Type</th>
+                    <th className="px-4 py-3 text-sm font-semibold text-gray-700">ISBN</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {booksAndChapters.map((book) => (
+                    <tr key={book.srNo} className="border-t border-gray-100">
+                      <td className="px-4 py-3 text-sm text-gray-700">{book.srNo}</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">{book.title}</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">{book.author}</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">{book.type}</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">{book.isbn}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
@@ -428,17 +466,17 @@ export function ResearchPageComponent() {
         </div>
       </section>
 
-      <section className={`${sectionClass} ${containerClass}`}>
-        <h2 className="text-4xl font-bold text-gray-900">Publications & Outcomes</h2>
-        <p className="mt-4 text-lg text-gray-700">Measured outcomes reflecting quality, translation, and intellectual contribution.</p>
-        <div className="mt-10 grid gap-10 md:grid-cols-3">
-          {publicationOutcome.map((item) => (
-            <article key={item.title} className="rounded-2xl border border-gray-100 bg-gradient-to-b from-white to-gray-50 p-6">
-              <p className="text-4xl font-bold text-gray-900">{item.value}</p>
-              <h3 className="mt-4 text-2xl font-semibold text-gray-900">{item.title}</h3>
-              <p className="mt-3 text-base text-gray-600">{item.description}</p>
-            </article>
-          ))}
+      <section className="bg-black py-20">
+        <div className={containerClass}>
+          <h2 className="text-4xl font-bold text-white">Shape Your Future with Us</h2>
+          <p className="mt-4 max-w-2xl text-lg text-white/85">
+            Join a campus where research, innovation, and entrepreneurship are part of everyday learning.
+          </p>
+          <div className="mt-8">
+            <a href="/admissions" className="inline-flex rounded-full bg-[#f7941d] px-6 py-3 font-semibold text-white transition hover:bg-[#df850f]">
+              Apply Now
+            </a>
+          </div>
         </div>
       </section>
     </>
