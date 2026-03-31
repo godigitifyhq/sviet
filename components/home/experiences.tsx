@@ -1,13 +1,21 @@
 import Image from "next/image";
 
-const rightColumnFeatures = [
+const experiences = [
   {
-    title: "Leadership Development",
-    text: "Through leadership programs, workshops, and student-led initiatives, SVIET encourages students to take responsibility, manage teams, and develop decision-making capabilities.",
+    title: "Spontania - Annual Cultural Fest",
+    description: "North India's biggest college cultural festival with 10,000+ participants, celebrity performances, and Rs1 Crore+ prize pool",
   },
   {
-    title: "Startup & Innovation Culture",
-    text: "SVIET promotes entrepreneurial thinking through innovation labs, startup mentorship, and project-based learning. Students are encouraged to transform ideas into real ventures.",
+    title: "Sports & Athletics",
+    description: "Multi-sport facilities including cricket ground, basketball courts, gym, and swimming pool. Annual sports meet with inter-college competitions",
+  },
+  {
+    title: "NCC & NSS Programs",
+    description: "Active NCC unit and NSS wing conducting community service, camps, and social initiatives across Punjab",
+  },
+  {
+    title: "Student Clubs & Societies",
+    description: "50+ active clubs spanning robotics, coding, debate, music, photography, and social entrepreneurship",
   },
 ];
 
@@ -60,7 +68,7 @@ export function ExperiencesSection() {
           </div>
 
           <div className="space-y-6">
-            {rightColumnFeatures.map((feature, index) => (
+            {experiences.map((feature, index) => (
               <article
                 key={feature.title}
                 className="border border-gray-200 bg-white rounded-2xl p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
@@ -71,7 +79,7 @@ export function ExperiencesSection() {
                 <p
                   className={`mt-2 text-sm text-gray-500 ${index > 0 ? "border-t border-gray-100 pt-4" : ""}`}
                 >
-                  {feature.text}
+                  {feature.description}
                 </p>
               </article>
             ))}

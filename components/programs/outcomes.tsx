@@ -8,20 +8,26 @@ type ProgramOutcomesSectionProps = {
   outcomes: string[];
 };
 
+type OutcomeItem = {
+  label: string;
+  value: string;
+  description: string;
+};
+
 function normalizeOutcomes(outcomes: string[]) {
   if (outcomes.length === 0) {
     return PLACEMENT_OUTCOMES;
   }
 
-  return outcomes.map((outcome, index) => [
-    `Career Path ${index + 1}`,
-    outcome,
-    "Potential outcome for program graduates",
-  ] as const);
+  return outcomes.map((outcome, index) => ({
+    label: `Career Path ${index + 1}`,
+    value: outcome,
+    description: "Potential outcome for program graduates",
+  }));
 }
 
 export function ProgramOutcomesSection({ outcomes }: ProgramOutcomesSectionProps) {
-  const normalizedOutcomes = normalizeOutcomes(outcomes);
+  const normalizedOutcomes: readonly OutcomeItem[] = normalizeOutcomes(outcomes);
 
   return (
     <section className="mx-auto mt-30 mb-15 w-full max-w-300 px-3 md:px-5">
@@ -35,7 +41,7 @@ export function ProgramOutcomesSection({ outcomes }: ProgramOutcomesSectionProps
         </div>
       </div>
       <div className="mt-15 grid gap-4 md:grid-cols-4">
-        {normalizedOutcomes.map(([label, value, description], index) => {
+        {normalizedOutcomes.map(({ label, value, description }, index) => {
           const Icon = STAT_ICONS[index % STAT_ICONS.length];
 
           return (

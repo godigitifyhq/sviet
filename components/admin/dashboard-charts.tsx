@@ -101,7 +101,7 @@ export function DashboardCharts({ bySource, byStatus }: DashboardChartsProps) {
               <XAxis dataKey="name" tick={{ fontSize: 12 }} interval={0} angle={-20} textAnchor="end" height={70} />
               <YAxis allowDecimals={false} />
               <Tooltip />
-              <Bar dataKey="count" radius={[8, 8, 0, 0]}>
+              <Bar dataKey="count">
                 {sourceData.map((entry) => (
                   <Cell key={entry.name} fill={entry.color} />
                 ))}

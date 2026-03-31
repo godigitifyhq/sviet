@@ -1,13 +1,15 @@
 import { motion } from 'framer-motion';
-import { Laptop, TrendingUp, BarChart3, Users, Wrench, GraduationCap, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 const careers = [
-  { id: 'software-developer', label: 'Software Developer', icon: Laptop, desc: 'Build apps and systems' },
-  { id: 'entrepreneur', label: 'Entrepreneur', icon: TrendingUp, desc: 'Start your own venture' },
-  { id: 'data-analyst', label: 'Data Analyst', icon: BarChart3, desc: 'Work with data insights' },
-  { id: 'product-manager', label: 'Product Manager', icon: Users, desc: 'Lead product strategy' },
-  { id: 'engineer', label: 'Design/Mechanical Engineer', icon: Wrench, desc: 'Create solutions' },
-  { id: 'researcher', label: 'Researcher / Academic', icon: GraduationCap, desc: 'Explore and innovate' },
+  { id: "software-engineer", label: "Software Engineer / Developer", icon: "💻" },
+  { id: "entrepreneur", label: "Entrepreneur / Startup Founder", icon: "🚀" },
+  { id: "manager", label: "Business Manager / MBA Professional", icon: "📈" },
+  { id: "researcher", label: "Researcher / Scientist", icon: "🔬" },
+  { id: "doctor-pharma", label: "Pharmaceutical / Healthcare Professional", icon: "💊" },
+  { id: "hotelier", label: "Hospitality & Tourism Professional", icon: "🏨" },
+  { id: "legal", label: "Lawyer / Legal Professional", icon: "⚖️" },
+  { id: "educator", label: "Teacher / Educator", icon: "📚" },
 ];
 
 interface StepTwoProps {
@@ -43,7 +45,6 @@ export function StepTwo({ selected, onSelect, onNext, onBack }: StepTwoProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {careers.map((career, index) => {
-          const Icon = career.icon;
           const isSelected = selected === career.id;
 
           return (
@@ -71,11 +72,10 @@ export function StepTwo({ selected, onSelect, onNext, onBack }: StepTwoProps) {
                       : 'bg-gray-100 text-gray-700 group-hover:bg-[#FF6A00]/10'
                   }`}
                 >
-                  <Icon className="w-5 h-5" />
+                  <span className="text-xl leading-none">{career.icon}</span>
                 </div>
 
                 <h3 className="font-medium mb-1 text-gray-900">{career.label}</h3>
-                <p className="text-sm text-gray-600">{career.desc}</p>
 
                 {isSelected && (
                   <motion.div

@@ -2,6 +2,48 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Clock, IndianRupee, RefreshCw, TrendingUp } from 'lucide-react';
 
+const programMap: Record<string, { title: string; duration: string; department: string; slug: string }[]> = {
+  engineering: [
+    { title: "B.Tech Computer Science Engineering", duration: "4 Years", department: "Engineering", slug: "btech-cse" },
+    { title: "B.Tech Artificial Intelligence", duration: "4 Years", department: "Engineering", slug: "btech-ai" },
+    { title: "B.Tech Electronics & Communication", duration: "4 Years", department: "Engineering", slug: "btech-ece" },
+    { title: "B.Tech Mechanical Engineering", duration: "4 Years", department: "Engineering", slug: "btech-me" },
+    { title: "B.Tech Civil Engineering", duration: "4 Years", department: "Engineering", slug: "btech-civil" },
+  ],
+  management: [
+    { title: "MBA", duration: "2 Years", department: "Business Studies", slug: "mba" },
+    { title: "BBA", duration: "3 Years", department: "Business Studies", slug: "bba" },
+    { title: "B.Com Honours", duration: "3 Years", department: "Business Studies", slug: "bcom" },
+  ],
+  pharmacy: [
+    { title: "B.Pharm", duration: "4 Years", department: "Pharmacy", slug: "bpharm" },
+    { title: "Pharm.D", duration: "6 Years", department: "Pharmacy", slug: "pharmd" },
+    { title: "M.Pharm", duration: "2 Years", department: "Pharmacy", slug: "mpharm" },
+  ],
+  computer: [
+    { title: "BCA", duration: "3 Years", department: "Computer Applications", slug: "bca" },
+    { title: "MCA", duration: "2 Years", department: "Computer Applications", slug: "mca" },
+    { title: "B.Sc Information Technology", duration: "3 Years", department: "Computer Applications", slug: "bsc-it" },
+  ],
+  hospitality: [
+    { title: "BHMCT", duration: "4 Years", department: "Hotel Management", slug: "bhmct" },
+    { title: "B.Voc in Hospitality", duration: "3 Years", department: "Hotel Management", slug: "bvoc-hospitality" },
+  ],
+  law: [
+    { title: "Bachelor of Law (LLB)", duration: "3 Years", department: "Law", slug: "llb" },
+    { title: "BA + LLB", duration: "5 Years", department: "Law", slug: "ba-llb" },
+  ],
+  education: [
+    { title: "B.Ed", duration: "2 Years", department: "Education", slug: "bed" },
+    { title: "B.A.", duration: "3 Years", department: "Arts", slug: "ba" },
+  ],
+  paramedical: [
+    { title: "B.Sc Physiotherapy", duration: "4.5 Years", department: "Paramedical", slug: "bsc-physiotherapy" },
+    { title: "B.Sc Medical Laboratory Science", duration: "4 Years", department: "Paramedical", slug: "bsc-mls" },
+    { title: "B.Sc Radio Imaging Technology", duration: "4 Years", department: "Paramedical", slug: "bsc-rit" },
+  ],
+};
+
 export interface UserSelections {
   interest?: string;
   career?: string;
@@ -18,6 +60,11 @@ export interface ProgramRecommendation {
   durationMonths: number;
   tuitionCents: number;
 }
+
+type DisplayRecommendation = ProgramRecommendation & {
+  duration?: string;
+  department?: string;
+};
 
 interface ResultsProps {
   selections: UserSelections;
@@ -50,6 +97,19 @@ function formatDuration(durationMonths: number) {
 }
 
 export function Results({ selections, recommendations, onRestart }: ResultsProps) {
+  const fallbackRecommendations: DisplayRecommendation[] = (programMap[selections.interest ?? ""] ?? []).map((program, index) => ({
+    id: `${program.slug}-${index}`,
+    slug: program.slug,
+    title: program.title,
+    shortDescription: `${program.department} program at SVIET`,
+    durationMonths: 0,
+    tuitionCents: 0,
+    duration: program.duration,
+    department: program.department,
+  }));
+
+  const displayRecommendations: DisplayRecommendation[] = recommendations.length > 0 ? recommendations : fallbackRecommendations;
+
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="min-h-screen bg-gray-50">
       <div className="border-b border-gray-200 bg-white">
@@ -66,7 +126,7 @@ export function Results({ selections, recommendations, onRestart }: ResultsProps
 
             <h1 className="text-2xl md:text-3xl font-light mb-4 text-gray-900">Your Recommended Programs</h1>
             <p className="text-sm text-gray-600 max-w-2xl">
-              Based on your selections, we&apos;ve found {recommendations.length} programs that match your goals.
+              Based on your selections, we&apos;ve found {displayRecommendations.length} programs that match your goals.
             </p>
           </motion.div>
         </div>
@@ -87,13 +147,13 @@ export function Results({ selections, recommendations, onRestart }: ResultsProps
           </p>
         </motion.div>
 
-        {recommendations.length === 0 ? (
+        {displayRecommendations.length === 0 ? (
           <div className="rounded-2xl border border-gray-200 bg-white p-8 text-center text-gray-600">
             No recommendations are available right now. Please try again.
           </div>
         ) : (
           <div className="space-y-6">
-            {recommendations.map((program, index) => (
+            {displayRecommendations.map((program, index) => (
               <motion.div
                 key={program.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -112,7 +172,7 @@ export function Results({ selections, recommendations, onRestart }: ResultsProps
                       <Clock className="w-5 h-5 text-[#FF6A00] shrink-0 mt-1" />
                       <div>
                         <p className="text-sm text-gray-600">Duration</p>
-                        <p className="font-medium text-gray-900">{formatDuration(program.durationMonths)}</p>
+                        <p className="font-medium text-gray-900">{program.duration ?? formatDuration(program.durationMonths)}</p>
                       </div>
                     </div>
 
@@ -120,7 +180,7 @@ export function Results({ selections, recommendations, onRestart }: ResultsProps
                       <IndianRupee className="w-5 h-5 text-[#FF6A00] shrink-0 mt-1" />
                       <div>
                         <p className="text-sm text-gray-600">Fees</p>
-                        <p className="font-medium text-gray-900">{formatTuitionFromCents(program.tuitionCents)}</p>
+                        <p className="font-medium text-gray-900">{program.tuitionCents > 0 ? formatTuitionFromCents(program.tuitionCents) : 'Contact Admissions'}</p>
                       </div>
                     </div>
                   </div>

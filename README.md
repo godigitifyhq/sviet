@@ -1,111 +1,116 @@
-# SVIET Website and Admissions Platform
+# SVIET Website (Next.js)
 
-SVIET is a Next.js 16 App Router application with:
+SVIET is the official admissions and marketing web platform for Swami Vivekanand Institute of Engineering & Technology. It includes a public college website, lead capture flows, program discovery, and an admin CRM for counselors.
 
-- Public marketing pages
-- Lead capture APIs (apply, scholarship, program finder, contact)
-- Program catalog APIs and dynamic program pages
-- Admin CRM views and APIs
-- Optional AI admissions counsellor chat
+## Tech Stack
 
-## Stack
-
-- Next.js 16.2.1
-- React 19
-- TypeScript
+- Next.js 16 (App Router)
+- React 19 + TypeScript
 - Prisma 7 + PostgreSQL
 - Zod validation
+- Tailwind CSS 4
+- Vitest
 
-## Local Setup
+## Prerequisites
 
-1. Install dependencies:
+- Node.js 20.9+
+- npm 10+
+- PostgreSQL 14+
+
+## Setup
+
+1. Install dependencies.
 
 ```bash
 npm install
 ```
 
-2. Create env file:
+2. Copy environment template.
 
 ```bash
 cp .env.example .env
 ```
 
-3. Set required values in `.env`:
-
-- `DATABASE_URL` (required)
-- `ADMIN_ACCESS_TOKEN` (required for admin token checks)
-- `OPENAI_API_KEY` (optional, required only for AI chat)
-
-4. Generate Prisma client:
+3. Run database migrations.
 
 ```bash
-npm run prisma:generate
+npx prisma migrate dev
 ```
 
-5. Run migrations:
-
-```bash
-npm run prisma:migrate
-```
-
-6. Seed programs (optional but recommended for local/dev):
+4. Seed local data.
 
 ```bash
 npm run prisma:seed
 ```
 
-7. Start development server:
+5. Start development server.
 
 ```bash
 npm run dev
 ```
 
-## Scripts
+## Key Routes
 
-- `npm run dev` starts dev server
-- `npm run build` creates production build
-- `npm run start` starts production server
-- `npm run lint` runs ESLint
-- `npm run test` runs Vitest
-- `npm run test:run` runs Vitest with coverage
-- `npm run prisma:generate` regenerates Prisma client
-- `npm run prisma:migrate` runs Prisma migrations in dev
-- `npm run prisma:studio` opens Prisma Studio
-- `npm run prisma:seed` seeds baseline program data
+### Public Site
 
-## API Notes
+- `/` - Home
+- `/about` - About SVIET
+- `/programs` - Program listing
+- `/programs/[slug]` - Program details
+- `/admissions` - Admissions info
+- `/program-finder` - Program recommendation flow
+- `/placements` - Placement highlights
+- `/campus-life` - Campus life content
+- `/events` - Events listing
+- `/contact` - Contact form
 
-- Public lead endpoints are protected by in-memory IP rate limiting at 5 requests/hour per IP.
-- When rate-limited, endpoints return `429` with `Retry-After` header.
-- AI chat endpoint returns `503` when `OPENAI_API_KEY` is missing.
+### Admin CRM
 
-## Production Deployment Checklist
+- `/admin/login` - CRM login
+- `/admin` - Dashboard
+- `/admin/leads` - Lead list
+- `/admin/leads/[id]` - Lead detail, notes, status, assignment
 
-1. Set production environment variables:
+## Environment Variables
 
-- `DATABASE_URL`
-- `ADMIN_ACCESS_TOKEN`
-- `OPENAI_API_KEY` (optional)
+| Name | Required | Description |
+| --- | --- | --- |
+| `DATABASE_URL` | Yes | Primary PostgreSQL connection used by Prisma Client. |
+| `DIRECT_URL` | Recommended | Direct DB URL for Prisma migrate/introspection workflows. |
+| `JWT_SECRET` | Recommended | Secret for token signing in JWT-based integrations. |
+| `ADMIN_ACCESS_TOKEN` | Yes | Token used by admin guard utilities and operational admin checks. |
+| `OPENAI_API_KEY` | No | Enables AI admissions chat endpoint; if missing, API returns 503. |
+| `NEXT_PUBLIC_APP_URL` | Yes | Canonical public app URL used by metadata and links. |
 
-2. Install and build:
+## Deployment (Vercel)
+
+1. Push repository to GitHub.
+2. Import the project in Vercel.
+3. Add all variables from `.env.example` in Vercel Project Settings.
+4. Set build command to `npm run build` and install command to `npm install`.
+5. Deploy and run post-deploy migration command against production DB.
+6. Validate public pages, `/api/programs`, lead APIs, sitemap, robots, and admin login.
+
+## Admin Access (First User)
+
+You must create at least one active admin or counselor user in the `User` table before CRM login will work.
+
+Option 1: Prisma Studio
+
+1. Run `npx prisma studio`.
+2. Open `User` table and create a row with:
+	- `email`: valid admin email
+	- `firstName`, `lastName`
+	- `role`: `ADMIN` (or `SUPER_ADMIN`)
+	- `status`: `ACTIVE`
+	- `passwordHash`: generated hash value (see command below)
+
+Generate a compatible password hash:
 
 ```bash
-npm ci
-npm run prisma:generate
-npm run build
+node -e "const { randomBytes, scryptSync } = require('node:crypto'); const p='ChangeMe123!'; const s=randomBytes(16); const h=scryptSync(p,s,64); console.log(`scrypt$${s.toString('hex')}$${h.toString('hex')}`);"
 ```
 
-3. Apply migrations in target environment.
+Option 2: Direct SQL insert
 
-4. Start app:
-
-```bash
-npm run start
-```
-
-5. Verify:
-
-- Public pages load
-- Public lead POST endpoints respond and rate limit after threshold
-- Admin login and CRM APIs are protected
-- AI chat responds (or cleanly returns `503` when key is unset)
+Insert into `"User"` with `role='ADMIN'`, `status='ACTIVE'`, and a valid `passwordHash` in the same `scrypt$<salt>$<hash>` format.

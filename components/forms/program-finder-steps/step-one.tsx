@@ -1,13 +1,15 @@
 import { motion } from 'framer-motion';
-import { Code, Briefcase, Palette, FlaskConical, Heart, Building2, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 const interests = [
-  { id: 'engineering', label: 'Engineering & Technology', icon: Code, color: '#FF6A00' },
-  { id: 'business', label: 'Business & Management', icon: Briefcase, color: '#FF6A00' },
-  { id: 'design', label: 'Design & Creative Arts', icon: Palette, color: '#FF6A00' },
-  { id: 'science', label: 'Science & Research', icon: FlaskConical, color: '#FF6A00' },
-  { id: 'healthcare', label: 'Healthcare & Medicine', icon: Heart, color: '#FF6A00' },
-  { id: 'agriculture', label: 'Agriculture & Environmental', icon: Building2, color: '#FF6A00' },
+  { id: "engineering", label: "Engineering & Technology", icon: "⚙️" },
+  { id: "management", label: "Business & Management", icon: "📊" },
+  { id: "pharmacy", label: "Pharmacy & Health Sciences", icon: "💊" },
+  { id: "computer", label: "Computer Applications & IT", icon: "💻" },
+  { id: "hospitality", label: "Hotel Management & Hospitality", icon: "🏨" },
+  { id: "law", label: "Law & Legal Studies", icon: "⚖️" },
+  { id: "education", label: "Education & Arts", icon: "🎓" },
+  { id: "paramedical", label: "Paramedical & Allied Health", icon: "🏥" },
 ];
 
 interface StepOneProps {
@@ -34,7 +36,6 @@ export function StepOne({ selected, onSelect, onNext }: StepOneProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {interests.map((interest, index) => {
-          const Icon = interest.icon;
           const isSelected = selected === interest.id;
 
           return (
@@ -57,8 +58,7 @@ export function StepOne({ selected, onSelect, onNext }: StepOneProps) {
                   isSelected ? 'opacity-20' : ''
                 }`}
                 style={{
-                  // Dynamic radial gradient based on interest color - necessary for dynamic styling
-                  background: `radial-gradient(circle at center, ${interest.color}40, transparent 70%)`,
+                  background: 'radial-gradient(circle at center, #FF6A0040, transparent 70%)',
                 } as React.CSSProperties}
               />
 
@@ -71,7 +71,7 @@ export function StepOne({ selected, onSelect, onNext }: StepOneProps) {
                         : 'bg-gray-100 text-gray-700 group-hover:bg-[#FF6A00]/10'
                     }`}
                   >
-                    <Icon className="w-6 h-6" />
+                    <span className="text-xl leading-none">{interest.icon}</span>
                   </div>
                   <ChevronRight
                     className={`w-5 h-5 transition-all duration-300 ${

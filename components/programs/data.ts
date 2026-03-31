@@ -1,21 +1,53 @@
 export const PROGRAM_META_CHIPS = ["4 Years", "10+2 PCM with 45%", "July / August 2025"];
 
 export const PLACEMENT_OUTCOMES = [
-  ["Highest Package", "₹28 LPA", "In the CSE Vertical"],
-  ["Average Package", "₹6.4 LPA", "+18% vs last year"],
-  ["Placement Rate", "94%", "B.Tech CSE batch 2024"],
-  ["Top Recruiters", "120+", "Top MNCs & startups"],
+  { label: "Highest Package", value: "45 LPA", description: "Across marquee recruiters" },
+  { label: "Placement Rate", value: "95%+", description: "Consistent campus outcomes" },
+  { label: "Companies Visited", value: "500+", description: "National and multinational recruiters" },
+  { label: "Students Placed", value: "2000+", description: "Placed annually across domains" },
 ] as const;
 
-export const RECRUITERS = ["Deloitte.", "amazon", "wipro", "Infosys", "tcs", "Calvin Klein", "Dabur", "mamy's"];
+export const RECRUITERS = [
+  { name: "Amazon", src: "/assets/img/companies/amazon.png" },
+  { name: "TCS", src: "/assets/img/companies/tcs.png" },
+  { name: "Infosys", src: "/assets/img/companies/infosys.png" },
+  { name: "Wipro", src: "/assets/img/companies/wipro.png" },
+  { name: "Deloitte", src: "/assets/img/companies/deloitte.png" },
+  { name: "Dabur", src: "/assets/img/companies/dabur.png" },
+  { name: "JIO Digital", src: "/assets/img/companies/jio_digital.png" },
+  { name: "Mamsys", src: "/assets/img/companies/mamsys.png" },
+  { name: "Calvin", src: "/assets/img/companies/calvin.png" },
+] as const;
 
 export const PROGRAM_HIGHLIGHTS = [
-  ["Industry-Aligned Curriculum", "Updated every semester in collaboration with industry partners to reflect real-world tech requirements."],
-  ["10+ Specialized Labs", "From AI & ML labs to IoT and Embedded Systems with hands-on learning from day one."],
-  ["Global Exposure", "MoUs with international universities for exchanges, internships, and global certifications."],
-  ["Mentorship & Career Cells", "Dedicated placement cell with 1-on-1 mentoring, mock interviews, and resume building workshops."],
-  ["Award-Winning Research", "Student projects presented at national and international conferences with patents filed."],
-  ["Emerging Tech Electives", "Specialization tracks in AI/ML, Blockchain, Cybersecurity, Cloud, and Data Science."],
+  {
+    title: "Industry-Aligned Curriculum",
+    description: "Curriculum designed with practical exposure, coding rigor, and project-based learning.",
+  },
+  {
+    title: "Advanced Labs & Infrastructure",
+    description: "Well-equipped labs for computing, electronics, innovation, and interdisciplinary practice.",
+  },
+  {
+    title: "Expert Faculty Mentorship",
+    description: "Learn from experienced faculty focused on concept clarity and career readiness.",
+  },
+  {
+    title: "Strong Placement Support",
+    description: "Structured training, mock interviews, and recruiter engagement for job outcomes.",
+  },
+  {
+    title: "Internships & Live Projects",
+    description: "Hands-on project work and internship opportunities with industry exposure.",
+  },
+  {
+    title: "Holistic Student Development",
+    description: "Balanced academic, cultural, and leadership activities to build confident graduates.",
+  },
+  {
+    title: "Research & Innovation Culture",
+    description: "Encouragement for idea incubation, research initiatives, and problem-solving mindset.",
+  },
 ];
 
 export const FIT_TRAITS = [
@@ -26,9 +58,11 @@ export const FIT_TRAITS = [
 ];
 
 export const ALUMNI_LIST = [
-  ["Arjun Sharma", "Infosys • ₹6.8 LPA"],
-  ["Priya Verma", "TCS • ₹7.2 LPA"],
-  ["Rahul Nair", "Amazon • ₹18 LPA"],
+  { name: "Rahul Sharma", company: "TCS", package: "₹7.8 LPA" },
+  { name: "Priya Singh", company: "Dabur", package: "₹9.2 LPA" },
+  { name: "Arjun Mehta", company: "Maruti Suzuki", package: "₹8.6 LPA" },
+  { name: "Neha Gupta", company: "Cipla", package: "₹6.8 LPA" },
+  { name: "Vikram Patel", company: "Infosys BPM", package: "₹6.4 LPA" },
 ] as const;
 
 export const CURRICULUM_ROWS = [

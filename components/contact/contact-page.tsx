@@ -12,37 +12,46 @@ const primaryButtonClass = "rounded-full bg-black px-6 py-3  font-semibold trans
 
 const campusLocations = [
   {
-    name: "Punjab Campus",
-    address: "Chandigarh-Patiala National Highway, Punjab 140 401",
-    phone: "+91-1762-508005",
+    name: "Main Campus - Banur",
+    address: "Village Ramnagar, Near Banur, Tehsil Rajpura, District Patiala, Punjab - 140601",
+    phone: "+91-94652-33333",
+    tollFree: "1800-120-1200",
+    email: "admission@sviet.ac.in",
+    mapUrl: "https://maps.google.com/?q=Swami+Vivekanand+Institute+Banur+Punjab",
   },
   {
-    name: "Information Centre",
-    address: "Unit No. A 201-202, Elante Mall Office Complex, Industrial Area Phase 1, Chandigarh 160 002",
-    phone: "+91-172-521-9900",
+    name: "Admissions Office",
+    address: "Admin Block, SVIET Campus, Banur, Punjab",
+    phone: "+91-94652-33333",
+    email: "admission@sviet.ac.in",
+    timings: "Mon-Sat: 9:00 AM - 5:00 PM",
   },
 ];
 
 const faqItems = [
   {
-    question: "What are the admission requirements?",
-    answer: "Candidates must have 12th pass or equivalent with a minimum 50% aggregate. Entrance exam scores and merit-based selection are required.",
+    question: "What is the admission procedure at SVIET?",
+    answer: "Applications can be submitted online at admission.sviet.ac.in or directly at the campus. After submission, shortlisted candidates are called for counselling and document verification.",
   },
   {
-    question: "What is the average placement package?",
-    answer: "Our average placement package is ₹12+ LPA with over 350+ companies recruiting from SVIET annually.",
+    question: "What programs does SVIET offer?",
+    answer: "SVIET offers 50+ programs across Engineering, Management, Pharmacy, Computer Applications, Hotel Management, Law, Education, Paramedical, and more.",
   },
   {
-    question: "Do you offer scholarships?",
-    answer: "Yes, SVIET offers merit-based scholarships and financial aid for eligible candidates. Contact our admissions team for more details.",
+    question: "Is hostel facility available?",
+    answer: "Yes, separate hostel facilities are available for boys and girls with all modern amenities including Wi-Fi, mess, laundry, and 24/7 security.",
   },
   {
-    question: "What programs are available?",
-    answer: "We offer BTECH, BBA, MBA, Agriculture, Pharmacy, and various other undergraduate and postgraduate programs.",
+    question: "What is the scholarship policy?",
+    answer: "SVIET offers RNR scholarships based on merit and financial need. Scholarships range from partial to 100% fee waiver. Check eligibility using the scholarship checker on our website.",
   },
   {
-    question: "How can I apply online?",
-    answer: "Visit our admissions page to fill out the application form online. You'll receive confirmation and further instructions via email.",
+    question: "What is the placement record?",
+    answer: "SVIET has a near 100% placement record with a highest package of 45 LPA. 500+ companies visit campus annually including Amazon, TCS, Infosys, Wipro, and Deloitte.",
+  },
+  {
+    question: "Is SVIET NAAC accredited?",
+    answer: "Yes, SVIET is NBA and NAAC accredited. SVIET was ranked 104 in NIRF 2021. The institution is approved by AICTE, PCI, and INC.",
   },
 ];
 
@@ -276,20 +285,19 @@ export function ContactPageComponent() {
             <div className="space-y-6">
               <div>
                 <h4 className="font-semibold text-gray-900">Phone</h4>
-                <p className="mt-2 text-gray-600">+91-1762-508005</p>
-                <p className="text-gray-600">+91-172-521-9900</p>
+                <p className="mt-2 text-gray-600">+91-94652-33333</p>
+                <p className="text-gray-600">1800-120-1200</p>
               </div>
 
               <div>
                 <h4 className="font-semibold text-gray-900">Email</h4>
-                <p className="mt-2 text-gray-600">admissions@sviet.ac.in</p>
+                <p className="mt-2 text-gray-600">admission@sviet.ac.in</p>
                 <p className="text-gray-600">info@sviet.ac.in</p>
               </div>
 
               <div>
                 <h4 className="font-semibold text-gray-900">Office Hours</h4>
-                <p className="mt-2 text-gray-600">Monday - Friday: 09:00 AM - 06:00 PM</p>
-                <p className="text-gray-600">Saturday: 10:00 AM - 04:00 PM</p>
+                <p className="mt-2 text-gray-600">Monday - Saturday: 09:00 AM - 05:00 PM</p>
                 <p className="text-gray-600">Sunday: Closed</p>
               </div>
             </div>
@@ -311,7 +319,7 @@ export function ContactPageComponent() {
             <h3 className="text-2xl font-semibold text-gray-900">Call Us</h3>
             <p className="mt-3 text-gray-600">Speak directly with our admissions team</p>
             <a href="tel:+911762508005" className="mt-4 inline-block text-black font-semibold hover:text-gray-700">
-              +91-1762-508005
+              +91-94652-33333
             </a>
           </div>
 
@@ -322,8 +330,8 @@ export function ContactPageComponent() {
             </div>
             <h3 className="text-2xl font-semibold text-gray-900">Email Us</h3>
             <p className="mt-3 text-gray-600">We&apos;ll respond within 24 hours</p>
-            <a href="mailto:admissions@sviet.ac.in" className="mt-4 inline-block text-black font-semibold hover:text-gray-700">
-              admissions@sviet.ac.in
+            <a href="mailto:admission@sviet.ac.in" className="mt-4 inline-block text-black font-semibold hover:text-gray-700">
+              admission@sviet.ac.in
             </a>
           </div>
 
@@ -352,6 +360,9 @@ export function ContactPageComponent() {
               <h3 className="text-2xl font-semibold text-gray-900">{location.name}</h3>
               <p className="mt-4 text-gray-600">{location.address}</p>
               <p className="mt-2 font-semibold text-gray-900">{location.phone}</p>
+              {location.tollFree ? <p className="mt-2 font-semibold text-gray-900">{location.tollFree}</p> : null}
+              {location.email ? <p className="mt-2 text-gray-600">{location.email}</p> : null}
+              {location.timings ? <p className="mt-2 text-gray-600">{location.timings}</p> : null}
             </div>
           ))}
         </div>

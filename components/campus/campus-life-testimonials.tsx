@@ -1,15 +1,35 @@
+import Image from "next/image";
+
 const testimonials = [
   {
-    heading: "Students Speak",
-    body:
-      "Outstanding experience and the college provided me with the opportunities I needed. Truly outstanding and really transformed my educational journey.",
-    name: "Yash Khandelwal",
+    name: "Rahul Sharma",
+    program: "B.Tech CSE, 2023",
+    company: "Software Engineer at TCS",
+    quote: "SVIET gave me the technical foundation and placement support that launched my career. The faculty mentorship here is exceptional.",
   },
   {
-    heading: "Students Speak",
-    body:
-      "Great learning experience and the college provided me with practical exposure, faculty support and a vibrant academic culture.",
-    name: "Yash Khandelwal",
+    name: "Priya Singh",
+    program: "MBA, 2022",
+    company: "Marketing Manager at Dabur",
+    quote: "The industry exposure at SVIET is unmatched. From live case studies to corporate internships, every experience prepared me for the real world.",
+  },
+  {
+    name: "Arjun Mehta",
+    program: "B.Tech ME, 2023",
+    company: "Engineer at Maruti Suzuki",
+    quote: "The hands-on lab experience and placement cell at SVIET helped me land my dream job. I'm proud to be a SVIET alumnus.",
+  },
+  {
+    name: "Neha Gupta",
+    program: "B.Pharm, 2022",
+    company: "Medical Representative at Cipla",
+    quote: "The pharmacy department at SVIET has world-class labs and amazing faculty. The practical training prepared me completely for my role.",
+  },
+  {
+    name: "Vikram Patel",
+    program: "BCA, 2023",
+    company: "Web Developer at Infosys BPM",
+    quote: "From coding bootcamps to hackathons, SVIET kept pushing us to grow. The placement support was incredible.",
   },
 ];
 
@@ -25,14 +45,18 @@ export function CampusLifeTestimonialsSection() {
         {testimonials.map((item, idx) => (
           <div key={`${item.name}-${idx}`} className="grid gap-4 md:grid-cols-[1fr_1fr] md:gap-6">
             <article className="rounded-md bg-[#f2f2f2] p-4 md:p-6">
-              <p className="text-[16px] font-bold text-[#f7941d] md:text-[18px]">{item.heading}</p>
+              <p className="text-[16px] font-bold text-[#f7941d] md:text-[18px]">Students Speak</p>
               <p className="mt-2 text-[12px] leading-[1.5] text-[#2a2a2a] md:text-[15px] md:leading-[1.6]">
-                {item.body}
+                {item.quote}
               </p>
+              <p className="mt-2 text-[12px] text-[#2a2a2a] md:text-[14px]">{item.program}</p>
+              <p className="text-[12px] text-[#2a2a2a] md:text-[14px]">{item.company}</p>
               <div className="mt-4 flex items-center gap-3">
-                <img
+                <Image
                   src="/assets/img/campus-life/image3.png"
                   alt="Avatar"
+                  width={64}
+                  height={64}
                   className="h-8 w-8 rounded-full object-cover"
                 />
                 <p className="text-[16px] font-semibold text-[#111] md:text-[18px]">{item.name}</p>
@@ -40,11 +64,13 @@ export function CampusLifeTestimonialsSection() {
             </article>
 
             <div className="overflow-hidden rounded-md">
-              <img
+              <Image
                 src={idx === 0
                   ? "/assets/img/campus-life/image2.png"
                   : "/assets/img/campus-life/image3.png"}
                 alt="Student speak"
+                width={1200}
+                height={800}
                 className="h-[240px] w-full object-cover rounded-md md:h-[342px]"
               />
             </div>

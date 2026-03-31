@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const studentSpeak = {
   image: "/assets/img/campus-life/image4.png",
   body: "Great learning experience and the college provided me with practical exposure, faculty guidance and excellent support throughout my journey.",
@@ -9,9 +11,11 @@ export function CampusLifeStudentSpeakSection() {
   return (
     <section className="mx-auto w-full max-w-[1280px] px-2 pt-8 md:px-5 md:pt-12">
       <div className="grid items-center gap-5 md:grid-cols-[1fr_1fr] md:gap-10">
-        <img
+        <Image
           src={studentSpeak.image}
           alt="Auditorium"
+          width={1200}
+          height={800}
           className="h-[260px] w-full rounded-md object-cover md:h-[350px]"
         />
 
@@ -21,9 +25,11 @@ export function CampusLifeStudentSpeakSection() {
             {studentSpeak.body}
           </p>
           <div className="mt-4 flex items-center justify-end gap-3">
-            <img
+            <Image
               src={studentSpeak.avatar}
               alt="Avatar"
+              width={64}
+              height={64}
               className="h-8 w-8 rounded-full object-cover"
             />
             <p className="text-right text-[20px] font-semibold text-[#111] md:text-[26px]">{studentSpeak.name}</p>

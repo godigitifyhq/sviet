@@ -9,27 +9,15 @@ import "swiper/css/pagination";
 const leaders = [
   {
     name: "Aman Gupta",
-    role: "Co-Founder And CMO Of boAt",
-    description: "The special guest at SVIET's 'Elevate 2.0 – Launching Future 2025' event in September 2025.",
+    role: "Co-Founder, boAt",
     image: "/assets/img/college/aman_gupta.png",
+    quote: "Build products that solve real problems",
   },
   {
-    name: "Ashneer",
-    role: "Co-Founder Of BharatPe",
-    description: "A guest speaker at the Swami Vivekanand Institute Of Engineering & Technology (SVIET), Chandigarh, for their 'Elevate 2024'.",
-    image: "/assets/img/college/Ashneer_groveer.png",
-  },
-  {
-    name: "Aman Gupta",
-    role: "Co-Founder And CMO Of boAt",
-    description: "The special guest at SVIET's 'Elevate 2.0 – Launching Future 2025' event in September 2025.",
-    image: "/assets/img/college/aman_gupta.png",
-  },
-  {
-    name: "Ashneer",
-    role: "Co-Founder Of BharatPe",
-    description: "A guest speaker at the Swami Vivekanand Institute Of Engineering & Technology (SVIET), Chandigarh, for their 'Elevate 2024'.",
-    image: "/assets/img/college/Ashneer_groveer.png",
+    name: "Ashneer Grover",
+    role: "Co-Founder, BharatPe",
+    image: "/assets/img/college/ashneer_groveer.png",
+    quote: "Entrepreneurship is about creating value at scale",
   },
 ];
 
@@ -105,7 +93,7 @@ export function DistinguishedLeadersSection() {
                       <span className="mt-2 inline-block md:ml-[-16px] md:pl-9 bg-gray-800 px-4 py-1.5 text-xs font-medium text-white">
                         {leader.role}
                       </span>
-                      <p className="mt-4 text-sm leading-relaxed md:pl-6 text-gray-600">{leader.description}</p>
+                      <p className="mt-4 text-sm leading-relaxed md:pl-6 text-gray-600">{leader.quote}</p>
                     </div>
                     <button className="mt-8 flex w-full justify-center gap-2 bg-black px-5 py-3 text-sm font-medium text-white transition hover:bg-gray-900 md:mt-6 md:w-auto md:justify-start md:pl-6">
                       Check Event

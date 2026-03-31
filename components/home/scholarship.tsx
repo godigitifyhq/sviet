@@ -224,8 +224,13 @@ export function ScholarshipSection() {
                   Selection text
                 </option>
                 <option value="btech">B.Tech</option>
+                <option value="mtech">M.Tech</option>
                 <option value="mba">MBA</option>
+                <option value="bca">BCA</option>
                 <option value="mca">MCA</option>
+                <option value="bpharm">B.Pharm</option>
+                <option value="bba">BBA</option>
+                <option value="bhmct">BHMCT</option>
                 <option value="polytechnic">Polytechnic</option>
               </select>
               {errors.course ? <p className="-mt-2 text-xs text-red-600">{errors.course}</p> : null}
@@ -304,8 +309,14 @@ export function ScholarshipSection() {
 
           <div className="flex flex-col gap-4">
             <h2 className="text-center text-3xl font-bold text-black md:text-right md:text-4xl">
-              Check Your Scholarship Eligibility
+              RNR Scholarship - Rewarding Merit & Need
             </h2>
+            <p className="text-center text-sm text-gray-600 md:text-right">
+              SVIET offers need-cum-merit scholarships to deserving students. Check your eligibility in 60 seconds.
+            </p>
+            <p className="text-center text-sm font-semibold text-gray-900 md:text-right">
+              Up to 100% fee waiver | 500+ scholarships awarded annually
+            </p>
           <Image src={'/assets/img/line_vector.png'} className="mr-0 ml-auto" width={300} height={200} alt="line" style={{ width: "auto" }} />
             <div className="w-full overflow-hidden rounded-2xl">
               <Image

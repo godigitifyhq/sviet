@@ -20,11 +20,18 @@ h3 {
 }
 
 :root {
-  --radius-standard: 15px;
+  --radius-standard: 0px;
 }
 
 button {
   border-radius: var(--radius-standard) !important;
+}
+
+/* Global hard reset: no rounded corners anywhere in the UI. */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
 }
 
 .rounded,
@@ -35,4 +42,12 @@ button {
 .rounded-2xl,
 .rounded-3xl {
   border-radius: var(--radius-standard) !important;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

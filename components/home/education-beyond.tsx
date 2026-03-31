@@ -1,13 +1,21 @@
 import Image from "next/image";
 
-const rightColumnFeatures = [
+const features = [
   {
-    title: "Leadership Development",
-    text: "Through leadership programs, workshops, and student-led initiatives, SVIET encourages students to take responsibility, manage teams, and develop decision-making capabilities.",
+    title: "Innovation & Entrepreneurship Cell",
+    description: "IIC-recognized cell supporting student startups with mentorship, seed funding, and incubation support",
   },
   {
-    title: "Startup & Innovation Culture",
-    text: "SVIET promotes entrepreneurial thinking through innovation labs, startup mentorship, and project-based learning. Students are encouraged to transform ideas into real ventures.",
+    title: "International Exposure",
+    description: "Tie-ups with international universities for student exchange, dual degrees, and global internships",
+  },
+  {
+    title: "Industry-Integrated Learning",
+    description: "Live projects, industry visits, and guest lectures from Fortune 500 professionals",
+  },
+  {
+    title: "Research & Development",
+    description: "State-of-the-art research labs with funded projects across engineering, pharmacy, and management",
   },
 ];
 
@@ -62,14 +70,14 @@ export function EducationBeyondSection() {
           </div>
 
           <div className="space-y-6">
-            {rightColumnFeatures.map((feature, index) => (
+            {features.map((feature, index) => (
               <article
                 key={feature.title}
                 className="border border-gray-200 bg-white rounded-2xl p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
               >
                 <h3 className="text-lg font-semibold text-foreground">{feature.title}</h3>
                 <p className={`mt-2 text-sm text-gray-500 ${index > 0 ? "border-t border-gray-100 pt-4" : ""}`}>
-                  {feature.text}
+                  {feature.description}
                 </p>
               </article>
             ))}

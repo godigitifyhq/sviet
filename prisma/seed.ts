@@ -38,7 +38,7 @@ const PROGRAMS: ProgramSeedInput[] = [
     slug: "btech-cse",
     title: "B.Tech Computer Science & Engineering",
     shortDescription:
-      "Industry-focused CSE program with specializations in AI, ML, and Cloud Computing",
+      "Future-ready engineering program with strong coding foundations, AI exposure, and placement-focused training.",
     department: "Engineering",
     durationMonths: 48,
     tuitionCents: 12000000,
@@ -99,7 +99,7 @@ const PROGRAMS: ProgramSeedInput[] = [
     slug: "mba",
     title: "Master of Business Administration",
     shortDescription:
-      "Two-year MBA with specializations in Marketing, Finance, HR, and Operations",
+      "Industry-integrated MBA focused on leadership, strategy, and real-world business decision making.",
     department: "Management",
     durationMonths: 24,
     tuitionCents: 8000000,
@@ -164,7 +164,7 @@ const PROGRAMS: ProgramSeedInput[] = [
     slug: "bca",
     title: "Bachelor of Computer Applications",
     shortDescription:
-      "Three-year BCA program focused on software development and modern web technologies",
+      "Application-oriented computing degree with practical training in software, web, and emerging technologies.",
     department: "Computer Applications",
     durationMonths: 36,
     tuitionCents: 6000000,
@@ -212,6 +212,121 @@ const PROGRAMS: ProgramSeedInput[] = [
         q: "Can I pursue MCA after BCA?",
         a: "Yes, BCA graduates are eligible for direct MCA admission",
       },
+    ],
+  },
+  {
+    slug: "btech-ai",
+    title: "B.Tech Artificial Intelligence & Machine Learning",
+    shortDescription:
+      "Specialized B.Tech program in AI and ML with hands-on labs, projects, and industry-aligned curriculum.",
+    department: "Engineering",
+    durationMonths: 48,
+    tuitionCents: 12500000,
+    mode: "OFFLINE",
+    isActive: true,
+    isFeatured: true,
+    fullDescription:
+      "The B.Tech AI & ML program builds deep technical expertise in data science, machine learning, and intelligent systems. Students gain practical exposure through labs, projects, and mentorship from experienced faculty.",
+    highlights: [
+      "AI and ML Focused Curriculum",
+      "Real-World Project Experience",
+      "Placement Preparation and Mentorship",
+      "Modern Computing Labs",
+      "Industry Interaction Sessions",
+    ],
+    eligibility:
+      "10+2 with Physics, Chemistry, Mathematics. Minimum 60% aggregate. Valid JEE score preferred.",
+    outcomes: [
+      "Machine Learning Engineer",
+      "Data Analyst",
+      "AI Developer",
+      "NLP Engineer",
+      "Research Associate",
+    ],
+    facilities: ["AI Lab", "Data Science Lab", "Innovation Centre", "Digital Library"],
+    curriculum: {
+      "Year 1": ["Engineering Mathematics", "Programming Fundamentals", "Digital Electronics", "Communication Skills"],
+      "Year 2": ["Data Structures", "Probability & Statistics", "Database Systems", "Computer Networks"],
+      "Year 3": ["Machine Learning", "Deep Learning", "Data Mining", "Minor Project"],
+      "Year 4": ["Advanced AI Electives", "Major Project", "Industry Internship", "Professional Ethics"],
+    },
+    faqs: [
+      { q: "Is coding experience required before admission?", a: "No, foundational coding is taught from the first semester." },
+    ],
+  },
+  {
+    slug: "bba",
+    title: "Bachelor of Business Administration",
+    shortDescription:
+      "Career-focused management program covering finance, marketing, operations, and entrepreneurial skills.",
+    department: "Management",
+    durationMonths: 36,
+    tuitionCents: 6500000,
+    mode: "OFFLINE",
+    isActive: true,
+    isFeatured: false,
+    fullDescription:
+      "BBA at SVIET develops strong business fundamentals with practical case-based learning, communication training, and exposure to contemporary management practices.",
+    highlights: [
+      "Industry-Relevant Business Curriculum",
+      "Case Study and Presentation Training",
+      "Personality and Communication Development",
+      "Internship Support",
+    ],
+    eligibility: "10+2 in any stream with minimum 50% aggregate.",
+    outcomes: [
+      "Business Development Executive",
+      "Marketing Associate",
+      "Operations Executive",
+      "HR Executive",
+      "Entrepreneur",
+    ],
+    facilities: ["Management Labs", "Seminar Hall", "Digital Library", "Incubation Support"],
+    curriculum: {
+      "Year 1": ["Principles of Management", "Business Communication", "Microeconomics", "Accounting Basics"],
+      "Year 2": ["Marketing Management", "Financial Management", "Human Resource Management", "Business Statistics"],
+      "Year 3": ["Strategic Management", "Entrepreneurship", "Project Work", "Industry Internship"],
+    },
+    faqs: [
+      { q: "Can BBA students pursue MBA later?", a: "Yes, BBA provides an excellent foundation for MBA and related postgraduate programs." },
+    ],
+  },
+  {
+    slug: "bpharm",
+    title: "Bachelor of Pharmacy",
+    shortDescription:
+      "Comprehensive pharmacy program with strong laboratory practice, clinical orientation, and industry readiness.",
+    department: "Pharmacy",
+    durationMonths: 48,
+    tuitionCents: 9000000,
+    mode: "OFFLINE",
+    isActive: true,
+    isFeatured: false,
+    fullDescription:
+      "The B.Pharm program at SVIET combines pharmaceutical sciences, practical lab training, and patient-focused learning to prepare students for healthcare and pharma careers.",
+    highlights: [
+      "Modern Pharmaceutical Laboratories",
+      "Experienced Faculty and Mentorship",
+      "Hospital and Industry Exposure",
+      "Regulatory and Clinical Orientation",
+    ],
+    eligibility: "10+2 with Physics, Chemistry, and Biology/Mathematics. Minimum 50% aggregate.",
+    outcomes: [
+      "Pharmacist",
+      "Quality Control Analyst",
+      "Medical Representative",
+      "Clinical Research Associate",
+      "Drug Safety Associate",
+    ],
+    facilities: ["Pharmaceutics Lab", "Pharmacology Lab", "Medicinal Chemistry Lab", "Digital Library"],
+    curriculum: {
+      "Year 1": ["Human Anatomy and Physiology", "Pharmaceutics", "Pharmaceutical Analysis", "Communication Skills"],
+      "Year 2": ["Pathophysiology", "Pharmaceutical Organic Chemistry", "Pharmacology", "Biochemistry"],
+      "Year 3": ["Medicinal Chemistry", "Pharmaceutical Microbiology", "Pharmacognosy", "Industrial Pharmacy"],
+      "Year 4": ["Clinical Pharmacy", "Pharmacy Practice", "Project Work", "Hospital Training"],
+    },
+    faqs: [
+      { q: "Is practical training included in B.Pharm?", a: "Yes, the program includes extensive lab work and practical exposure." },
     ],
   },
 ];

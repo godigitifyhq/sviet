@@ -8,23 +8,28 @@ type ProgramHighlightsSectionProps = {
   highlights: string[];
 };
 
+type HighlightItem = {
+  title: string;
+  description: string;
+};
+
 function normalizeHighlights(highlights: string[]) {
   if (highlights.length === 0) {
     return PROGRAM_HIGHLIGHTS;
   }
 
-  return highlights.map((highlight) => [highlight, ""] as const);
+  return highlights.map((highlight) => ({ title: highlight, description: "" }));
 }
 
 export function ProgramHighlightsSection({ highlights }: ProgramHighlightsSectionProps) {
-  const normalizedHighlights = normalizeHighlights(highlights);
+  const normalizedHighlights: readonly HighlightItem[] = normalizeHighlights(highlights);
 
   return (
     <section className="mx-auto mt-30 mb-15 w-full max-w-300 px-3 md:px-5">
       <p className="text-xs font-semibold tracking-[0.08em] text-[#f7941d] uppercase">Why Choose This Program</p>
       <h2 className="mt-2 text-4xl font-extrabold">What Sets SVIET B.Tech CSE Apart</h2>
       <div className="mt-4 grid gap-4 md:grid-cols-3">
-        {normalizedHighlights.map(([title, description], index) => {
+        {normalizedHighlights.map(({ title, description }, index) => {
           const Icon = HIGHLIGHT_ICONS[index % HIGHLIGHT_ICONS.length];
 
           return (

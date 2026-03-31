@@ -1,8 +1,6 @@
 import { convertToModelMessages, streamText, type UIMessage } from "ai";
 import { openai } from "@ai-sdk/openai";
-import { NextRequest } from "next/server";
-
-import { env } from "@/lib/env";
+import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "edge";
 
@@ -44,13 +42,13 @@ async function loadProgramContext(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  if (!env.OPENAI_API_KEY) {
-    return Response.json(
+  if (!process.env.OPENAI_API_KEY) {
+    return NextResponse.json(
       {
         success: false,
         error: {
           code: "SERVICE_UNAVAILABLE",
-          message: "AI counsellor is temporarily unavailable.",
+          message: "AI chat is not configured",
         },
       },
       { status: 503 },

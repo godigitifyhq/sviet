@@ -1,41 +1,39 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import { postJson } from "@/lib/form-utils";
 
 const HERO_SLIDES = [
   {
-    heading: "Launch Your Career With Industry-Ready Degrees",
-    studentName: "Moon Mandal",
-    role: "Placed - Product Analyst",
-    stats: [
-      { value: "3,000+", label: "Offers" },
-      { value: "350+", label: "Companies" },
-      { value: "12,000+", label: "Students" },
-    ],
+    heading: "Nurturing Excellence\nSince 2004",
+    subheading: "A Legacy of Quality Education",
+    studentImage: "/assets/img/students/moon_mandal.png",
+    studentImageAlt: "Moon Mandal",
+    stat1: { value: "20+", label: "Years of Excellence" },
+    stat2: { value: "104", label: "NIRF Ranking 2021" },
+    stat3: { value: "10,000+", label: "Alumni Worldwide" },
   },
   {
-    heading: "Build Skills That Top Recruiters Demand",
-    studentName: "Moon Mandal",
-    role: "Placed - Product Analyst",
-    stats: [
-      { value: "95%", label: "Placement Support" },
-      { value: "120+", label: "Hiring Partners" },
-      { value: "24/7", label: "Mentorship" },
-    ],
+    heading: "Where Innovation\nMeets Industry",
+    subheading: "Chart Your Engineering Journey at SVIET",
+    studentImage: "/assets/img/students/image (1).png",
+    studentImageAlt: "SVIET student",
+    stat1: { value: "45 LPA", label: "Highest Package" },
+    stat2: { value: "500+", label: "Recruiting Companies" },
+    stat3: { value: "100%", label: "Placement Assistance" },
   },
   {
-    heading: "From Campus To Career, We Prepare You End-to-End",
-    studentName: "Moon Mandal",
-    role: "Placed - Product Analyst",
-    stats: [
-      { value: "50+", label: "Labs" },
-      { value: "30+", label: "Specializations" },
-      { value: "1", label: "Career Mission" },
-    ],
+    heading: "Ranked Among\nTop Institutions",
+    subheading: "North India's Premier Group of Institutes",
+    studentImage: "/assets/img/students/image (2).png",
+    studentImageAlt: "Moon Mandal",
+    stat1: { value: "10+", label: "Institutions" },
+    stat2: { value: "50+", label: "Programs Offered" },
+    stat3: { value: "25,000+", label: "Students Enrolled" },
   },
 ];
 
@@ -75,18 +73,18 @@ export function HeroSection() {
   const [applySuccess, setApplySuccess] = useState(false);
   const panelRef = useRef<HTMLDivElement | null>(null);
 
-  const resetApplyPanelState = () => {
+  const resetApplyPanelState = useCallback(() => {
     setApplyForm(initialApplyForm);
     setApplyErrors({});
     setApplyLoading(false);
     setApplyError("");
     setApplySuccess(false);
-  };
+  }, []);
 
-  const closeApplyPanel = () => {
+  const closeApplyPanel = useCallback(() => {
     setIsApplyOpen(false);
     resetApplyPanelState();
-  };
+  }, [resetApplyPanelState]);
 
   const toggleApplyPanel = () => {
     if (isApplyOpen) {
@@ -137,7 +135,7 @@ export function HeroSection() {
       document.removeEventListener("mousedown", onMouseDown);
       document.removeEventListener("keydown", onEscape);
     };
-  }, [isApplyOpen]);
+  }, [isApplyOpen, closeApplyPanel]);
 
   const handleApplyFormChange = (field: keyof ApplyFormState, value: string) => {
     setApplyForm((prev) => ({ ...prev, [field]: value }));
@@ -208,8 +206,8 @@ export function HeroSection() {
 
   return (
     <>
-      <section className="px-4 py-10 md:px-6 md:py-16">
-        <div className="mx-auto max-w-7xl">
+      <section className="px-4 py-10 md:px-6 md:py-2">
+        <div className="mx-auto ">
           <div className="relative h-140 overflow-hidden rounded-2xl md:h-150">
             {HERO_SLIDES.map((slide, index) => (
               <Image
@@ -226,17 +224,16 @@ export function HeroSection() {
             ))}
             <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/90 to-black/90" />
 
-            <div className="relative grid h-full items-center gap-6 px-5  text-white md:grid-cols-[0.45fr_0.55fr] md:px-12">
-              <div className="relative mx-auto  hidden h-full w-full max-w-90 items-end justify-center md:flex">
+            <div className="relative grid h-full items-center gap-6 px-5  text-white md:grid-cols-[0.50fr_0.50fr] md:px-12">
+              <div className="relative mx-auto  hidden h-full w-full max-w-165 items-end justify-center md:flex">
                 <Image
-                  src="/assets/img/students/moon_mandal.png"
-                  alt="Moon Mandal"
-                  width={360}
-                  height={470}
-                  className="object-contain"
-                  style={{ width: "auto" }}
+                  src={HERO_SLIDES[activeSlide].studentImage}
+                  alt={HERO_SLIDES[activeSlide].studentImageAlt}
+                  width={660}
+                  height={862}
+                  className="h-auto w-full object-contain"
                 />
-                <div className="absolute bottom-14 left-3 flex items-center gap-3 rounded-xl bg-white px-3 py-2 text-foreground shadow-md">
+                <div className="absolute bottom-28 left-3 flex items-center gap-3 rounded-xl bg-white px-3 py-2 text-foreground shadow-md">
                   <Image
                     src="/assets/img/companies/jio_digital.png"
                     alt="Jio Digital logo"
@@ -246,22 +243,22 @@ export function HeroSection() {
                     style={{ width: "auto" }}
                   />
                   <div>
-                    <p className="text-sm font-bold">{HERO_SLIDES[activeSlide].studentName}</p>
-                    <p className="text-xs font-medium text-[#555555]">{HERO_SLIDES[activeSlide].role}</p>
+                    <p className="text-sm font-bold">{HERO_SLIDES[activeSlide].subheading}</p>
+                    <p className="text-xs font-medium text-[#555555]">SVIET</p>
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-7 text-center md:text-left">
-                <h1 className="mx-auto max-w-xl text-4xl font-bold leading-tight md:mx-0 md:text-5xl">
+              <div className="space-y-10 text-center md:flex md:h-full md:flex-col md:justify-center md:text-left">
+                <h1 className="mx-auto min-h-22 max-w-xl whitespace-pre-line text-4xl font-bold leading-tight md:mx-0 md:min-h-30 md:text-5xl">
                   {HERO_SLIDES[activeSlide].heading}
                 </h1>
 
-                <div className="mx-auto grid max-w-md grid-cols-3 gap-4 md:mx-0 md:gap-6">
-                  {HERO_SLIDES[activeSlide].stats.map((item) => (
+                <div className="mx-auto grid max-w-xl grid-cols-3 gap-4 md:mx-0 md:gap-6">
+                  {[HERO_SLIDES[activeSlide].stat1, HERO_SLIDES[activeSlide].stat2, HERO_SLIDES[activeSlide].stat3].map((item) => (
                     <div key={item.label}>
                       <p className="text-3xl font-bold md:text-4xl">{item.value}</p>
-                      <p className="mt-1 text-xs font-medium text-white/85 md:text-sm">{item.label}</p>
+                      <p className="mt-1 min-h-8 text-xs font-medium text-white/85 md:text-sm">{item.label}</p>
                     </div>
                   ))}
                 </div>
@@ -274,9 +271,12 @@ export function HeroSection() {
                   >
                     Apply Now
                   </button>
-                  <button className="w-full rounded-full border border-white/70 px-6 py-3 text-sm font-bold transition duration-200 hover:scale-105 sm:w-auto">
+                  <Link
+                    href="/contact"
+                    className="w-full rounded-full border border-white/70 px-6 py-3 text-sm font-bold transition duration-200 hover:scale-105 sm:w-auto"
+                  >
                     Talk to Counselor
-                  </button>
+                  </Link>
                 </div>
 
                 <div className="flex items-center justify-center gap-3 md:justify-start">

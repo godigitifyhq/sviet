@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 type NavItem = {
@@ -108,9 +109,11 @@ function HomeHero() {
       >
         <div className="grid h-full grid-cols-1 items-end gap-4 p-4 text-white md:grid-cols-[0.48fr_0.52fr] md:p-8">
           <div className="relative flex h-full items-end justify-start">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
               alt="Student"
+              width={900}
+              height={1200}
               className="h-72 w-64 rounded-xl object-cover md:h-80 md:w-72"
             />
             <div className="absolute left-2 top-4 rounded bg-black/35 px-3 py-2 text-xs font-semibold backdrop-blur-sm">
@@ -296,9 +299,11 @@ function ProgramFinderSection() {
 function PlacementStatsSection() {
   return (
     <section className="mx-auto mt-12 w-full max-w-300 px-3 md:px-5">
-      <img
+      <Image
         src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=80"
         alt="Placement banner"
+        width={1600}
+        height={600}
         className="h-19 w-full rounded-md object-cover md:h-30"
       />
       <div className="mt-8 grid grid-cols-3 gap-4 border-b border-[#ececec] pb-8 text-center">
@@ -349,9 +354,11 @@ function CampusLifeSection() {
           </p>
           <button className="mt-5 rounded-lg bg-[#f7941d] px-6 py-3 text-lg font-semibold text-white">Video Tour ↗</button>
         </div>
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80"
           alt="Campus building"
+          width={1200}
+          height={900}
           className="h-75 w-full rounded-lg object-cover md:h-95"
         />
       </div>
@@ -375,14 +382,18 @@ function CampusLifeSection() {
           </div>
         </div>
         <div className="grid gap-4">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
             alt="Student speaking"
+            width={1200}
+            height={900}
             className="h-70 w-full rounded-lg object-cover"
           />
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80"
             alt="Award event"
+            width={1200}
+            height={900}
             className="h-70 w-full rounded-lg object-cover"
           />
         </div>
@@ -409,24 +420,32 @@ function EventsSpotlightSection() {
       </div>
 
       <div className="mt-4 grid gap-3 md:grid-cols-2">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80"
           alt="Gallery image"
+          width={1200}
+          height={900}
           className="h-65 w-full rounded-lg object-cover"
         />
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80"
           alt="Gallery image"
+          width={1200}
+          height={900}
           className="h-65 w-full rounded-lg object-cover"
         />
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1200&q=80"
           alt="Gallery image"
+          width={1200}
+          height={900}
           className="h-65 w-full rounded-lg object-cover"
         />
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe?auto=format&fit=crop&w=1200&q=80"
           alt="Gallery image"
+          width={1200}
+          height={900}
           className="h-65 w-full rounded-lg object-cover"
         />
       </div>
@@ -435,9 +454,11 @@ function EventsSpotlightSection() {
       <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {Array.from({ length: 6 }).map((_, idx) => (
           <div key={idx} className="relative overflow-hidden rounded-lg">
-            <img
+            <Image
               src={`https://images.unsplash.com/photo-${idx % 2 === 0 ? "1533174072545-7a4b6ad7a6c3" : "1511795409834-ef04bbd61622"}?auto=format&fit=crop&w=1200&q=80`}
               alt="Event"
+              width={1200}
+              height={800}
               className="h-60 w-full object-cover"
             />
             <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent p-4">
@@ -462,9 +483,11 @@ function TestimonialsSection() {
       <div className="mt-5 grid gap-4 md:grid-cols-2">
         {["Aman Gupta", "Ashneer"].map((name, idx) => (
           <div key={name} className="overflow-hidden rounded-xl bg-[#f3f3f3] p-3">
-            <img
+            <Image
               src={`https://images.unsplash.com/photo-${idx === 0 ? "1500648767791-00dcc994a43e" : "1507003211169-0a1dd7228f2d"}?auto=format&fit=crop&w=1200&q=80`}
               alt={name}
+              width={1200}
+              height={900}
               className="h-62.5 w-full rounded-lg object-cover"
             />
             <div className="mt-3 flex items-center justify-between">
@@ -491,9 +514,11 @@ function AdmissionFormSection() {
             Check Now
           </button>
         </form>
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1400&q=80"
           alt="Scholarship students"
+          width={1400}
+          height={700}
           className="h-45 w-full rounded-xl object-cover md:h-55"
         />
       </div>
@@ -564,9 +589,11 @@ function EducationBlocks() {
       <div className="mt-4 overflow-hidden rounded-md border border-[#efefef]">
         <div className="bg-[#f7941d] px-4 py-2 text-sm font-semibold text-white">Experiences That Shape Future Professionals</div>
         <div className="grid gap-4 bg-white p-4 md:grid-cols-[1fr_1fr_auto]">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80"
             alt="Lecture"
+            width={900}
+            height={600}
             className="h-36 w-full rounded object-cover"
           />
           <div className="text-sm text-[#444]">
@@ -576,9 +603,11 @@ function EducationBlocks() {
           <button className="h-fit rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white">GET YOUR OWN STARTUP ↗</button>
         </div>
       </div>
-      <img
+      <Image
         src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80"
         alt="Ranking banner"
+        width={1600}
+        height={700}
         className="mt-5 h-55 w-full rounded-xl object-cover"
       />
     </section>
@@ -590,9 +619,11 @@ function StudentsSpeakAndFormSection() {
     <section className="mx-auto mt-10 w-full max-w-300 px-3 md:px-5">
       <div className="grid gap-5 lg:grid-cols-[1fr_1fr]">
         <div className="grid grid-cols-[0.55fr_0.45fr] gap-3 rounded-xl bg-[#f1f1f1] p-3">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80"
             alt="Student"
+            width={1000}
+            height={1400}
             className="h-77.5 w-full rounded-lg object-cover"
           />
           <div className="space-y-3">
@@ -675,9 +706,11 @@ export function EventsPageReplica() {
             height: "360px",
           }}
         >
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1465101162946-4377e57745c3?auto=format&fit=crop&w=1600&q=80"
             alt="Spontania featured"
+            width={1600}
+            height={900}
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -698,9 +731,11 @@ export function EventsPageReplica() {
             <button className="mt-5 rounded-lg bg-[#f7941d] px-5 py-2.5 text-sm font-semibold text-white">Visit Highlight</button>
           </div>
           <div className="relative overflow-hidden rounded-xl">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=80"
               alt="Spontania split"
+              width={1600}
+              height={900}
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-transparent" />
@@ -717,7 +752,7 @@ export function EventsPageReplica() {
         <div className="mt-4 grid gap-4 md:grid-cols-3">
           {UPCOMING_EVENTS.map((event) => (
             <article key={event.title} className="rounded-xl border border-[#e6e6e6] bg-white p-4">
-              <img src={event.image} alt={event.title} className="h-36 w-full rounded-lg object-cover" />
+              <Image src={event.image} alt={event.title} width={1200} height={800} className="h-36 w-full rounded-lg object-cover" />
               <div className="mt-3 flex items-center justify-between text-xs text-[#f7941d] font-semibold">
                 <span className="rounded-full border border-[#f7941d] px-2 py-0.5">Cultural</span>
                 <span>Apr 12 2026</span>
@@ -736,7 +771,7 @@ export function EventsPageReplica() {
         <div className="mt-4 grid gap-4 md:grid-cols-2">
           {WORKSHOPS.map((event) => (
             <article key={event.title} className="rounded-xl border border-[#e6e6e6] bg-white p-4">
-              <img src={event.image} alt={event.title} className="h-40 w-full rounded-lg object-cover" />
+              <Image src={event.image} alt={event.title} width={1200} height={800} className="h-40 w-full rounded-lg object-cover" />
               <div className="mt-2 text-xs text-[#f7941d] font-bold">Workshop</div>
               <h3 className="mt-1 text-lg font-bold">{event.title}</h3>
               <p className="mt-1 text-xs text-[#777]">Apr 18, 2026</p>
@@ -750,9 +785,11 @@ export function EventsPageReplica() {
         <div className="grid gap-3 md:grid-cols-3">
           {Array.from({ length: 3 }).map((_, idx) => (
             <article key={idx} className="relative overflow-hidden rounded-xl" style={{ height: "300px" }}>
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=80"
                 alt={`Spontania ${idx}`}
+                width={1600}
+                height={900}
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
@@ -767,9 +804,11 @@ export function EventsPageReplica() {
 
       <section className="mx-auto mt-10 w-full max-w-300 px-3 md:px-5">
         <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
             alt="TechVision speaker"
+            width={1200}
+            height={900}
             className="h-72 w-full rounded-xl object-cover"
           />
           <div className="rounded-xl border border-[#e6e6e6] bg-white p-6">
@@ -792,9 +831,11 @@ export function EventsPageReplica() {
             height: "300px",
           }}
         >
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1600&q=80"
             alt="Spontania large banner"
+            width={1600}
+            height={900}
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
@@ -825,7 +866,7 @@ export function EventsPageReplica() {
             },
           ].map((item) => (
             <article key={item.title} className="rounded-xl border border-[#e6e6e6] bg-white p-4">
-              <img src={item.image} alt={item.title} className="h-40 w-full rounded-lg object-cover" />
+              <Image src={item.image} alt={item.title} width={1200} height={800} className="h-40 w-full rounded-lg object-cover" />
               <h3 className="mt-3 text-xl font-bold">{item.title}</h3>
               <p className="mt-1 text-sm text-[#555]">{item.description}</p>
               <p className="mt-2 text-xs text-[#777]">{item.date} · {item.location}</p>

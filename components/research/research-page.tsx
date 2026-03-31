@@ -305,7 +305,7 @@ export function ResearchPageComponent() {
                   <XAxis dataKey="domain" stroke="#6b7280" />
                   <YAxis stroke="#6b7280" />
                   <Tooltip />
-                  <Bar dataKey="projects" fill="#111" radius={[6, 6, 0, 0]} stroke="#111" strokeWidth={2} />
+                  <Bar dataKey="projects" fill="#111" stroke="#111" strokeWidth={2} />
                 </BarChart>
               </ResponsiveContainer>
               </div>

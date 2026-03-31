@@ -1,510 +1,296 @@
-"use client";
-
 import Image from "next/image";
-import { useState } from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-} from "recharts";
-import { FaPlay, FaStar } from "react-icons/fa";
 
-const placementChartData = [
-  { name: "CSE", value: 85 },
-  { name: "ECE", value: 60 },
-  { name: "ME", value: 70 },
-  { name: "MBA", value: 90 },
-  { name: "BBA", value: 65 },
-  { name: "HM", value: 50 },
-  { name: "Pharma", value: 55 },
+import { FAQAccordion } from "@/components/placements/faq-accordion";
+import { NewsCard } from "@/components/placements/news-card";
+import { RecruiterGrid } from "@/components/placements/recruiter-grid";
+import { SectionHeader } from "@/components/placements/section-header";
+import { SectionWrapper } from "@/components/placements/section-wrapper";
+import { StatCard } from "@/components/placements/stat-card";
+import { TestimonialCard } from "@/components/placements/testimonial-card";
+import { TestimonialCarousel } from "@/components/placements/testimonial-carousel";
+
+const HERO_STATS = [
+  { label: "Students Placed", value: "2000+" },
+  { label: "Highest Package", value: "Rs 10 LPA" },
+  { label: "Recruiters", value: "300+" },
 ];
 
-const recruiterData = [
-  { name: "Centum", value: 30 },
-  { name: "Grazitti", value: 25 },
-  { name: "Delhivery", value: 20 },
-  { name: "Others", value: 25 },
+const KEY_STATS = [
+  { value: "2000+", label: "Total Students Placed" },
+  { value: "300+", label: "Number of Recruiters" },
+  { value: "Rs 10 LPA", label: "Highest Package" },
+  { value: "Rs 4 LPA", label: "Average Package" },
 ];
 
-const COLORS = ["#111827", "#4f46e5", "#6366f1", "#c7d2fe"];
-
-const successStories = [
-  { id: 1, title: "Campus Placement Drive", company: "Tech Corp" },
-  { id: 2, title: "Student Interview Success", company: "TCS" },
-  { id: 3, title: "Career Transformation", company: "Infosys" },
-  { id: 4, title: "Internship to Offer", company: "Wipro" },
+const RECRUITERS = [
+  { name: "Infosys", logoSrc: "/assets/img/companies/infosys.png", logoAlt: "Infosys logo" },
+  { name: "TCS", logoSrc: "/assets/img/companies/tcs.png", logoAlt: "TCS logo" },
+  { name: "Wipro", logoSrc: "/assets/img/companies/wipro.png", logoAlt: "Wipro logo" },
+  { name: "Amazon", logoSrc: "/assets/img/companies/amazon.png", logoAlt: "Amazon logo" },
+  { name: "Deloitte", logoSrc: "/assets/img/companies/deloitte.png", logoAlt: "Deloitte logo" },
+  { name: "Jio Digital", logoSrc: "/assets/img/companies/jio_digital.png", logoAlt: "Jio Digital logo" },
+  { name: "Mamsys", logoSrc: "/assets/img/companies/mamsys.png", logoAlt: "Mamsys logo" },
+  { name: "Dabur", logoSrc: "/assets/img/companies/dabur.png", logoAlt: "Dabur logo" },
 ];
 
-const updates = [
+const STUDENT_TESTIMONIALS = [
   {
-    id: 1,
-    image: "/assets/img/college/main_gate.png",
-    title: "New Placement Record",
-    description: "SVIET achieves 100% placement for Class of 2024",
+    imageSrc: "/assets/img/students/moon_mandal.png",
+    imageAlt: "Student placed at Infosys",
+    name: "Moon Mandal",
+    subtitle: "B.Tech CSE",
+    company: "Infosys",
+    quote:
+      "SVIET's placement team guided me from resume preparation to interview readiness and helped me secure the right opportunity.",
   },
   {
-    id: 2,
-    image: "/assets/img/college/auditorium.png",
-    title: "Highest Package Awarded",
-    description: "Student receives 45 LPA from a top tech company",
+    imageSrc: "/assets/img/students/moon_mandal.png",
+    imageAlt: "Student placed at TCS",
+    name: "Nikhil Arora",
+    subtitle: "B.Tech CSE",
+    company: "TCS",
+    quote:
+      "Mock interviews and technical bootcamps gave me the confidence to perform well during the campus recruitment process.",
   },
   {
-    id: 3,
-    image: "/assets/img/college/scholarship.png",
-    title: "Global Recruiting Fair",
-    description: "100+ international companies participate",
-  },
-];
-
-const testimonials = [
-  {
-    id: 1,
-    name: "Priya Sharma",
-    role: "Software Engineer at Google",
-    company: "Google",
-    text: "SVIET's mentor support and practical curriculum prepared me perfectly for corporate challenges.",
-    rating: 5,
+    imageSrc: "/assets/img/students/moon_mandal.png",
+    imageAlt: "Student placed at Wipro",
+    name: "Ritika Sharma",
+    subtitle: "BCA",
+    company: "Wipro",
+    quote:
+      "The structured training plan improved my communication and problem-solving skills before placement season began.",
   },
   {
-    id: 2,
-    name: "Arjun Verma",
-    role: "Product Manager at Amazon",
-    company: "Amazon",
-    text: "The placement cell went above and beyond to ensure every student got interview opportunities.",
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: "Neha Gupta",
-    role: "Data Analyst at Deloitte",
+    imageSrc: "/assets/img/students/moon_mandal.png",
+    imageAlt: "Student placed at Deloitte",
+    name: "Aman Verma",
+    subtitle: "MBA",
     company: "Deloitte",
-    text: "The internship programs at SVIET are industry-aligned and truly valuable.",
-    rating: 5,
+    quote:
+      "Industry workshops and domain mentoring prepared me for case discussions and final interviews.",
+  },
+];
+
+const PLACEMENT_NEWS = [
+  {
+    imageSrc: "/assets/img/college/auditorium.png",
+    imageAlt: "Placement drive at SVIET auditorium",
+    title: "Mega Placement Drive 2026",
+    description: "Leading recruiters conducted multi-profile hiring across technology, management, and analytics roles.",
+  },
+  {
+    imageSrc: "/assets/img/college/main_gate.png",
+    imageAlt: "SVIET campus placement update",
+    title: "Record Recruiter Participation",
+    description: "A growing employer network has expanded internship and full-time opportunities for final-year students.",
+  },
+  {
+    imageSrc: "/assets/img/college/scholarship.png",
+    imageAlt: "Training and placement workshop",
+    title: "Industry Readiness Workshop Series",
+    description: "Corporate experts led sessions on aptitude, coding rounds, communication, and interview success.",
+  },
+];
+
+const RECRUITER_TESTIMONIALS = [
+  {
+    imageSrc: "/assets/img/college/management/ankurgupta.jpg",
+    imageAlt: "Recruiter representative testimonial",
+    name: "Rahul Mehta",
+    subtitle: "Talent Acquisition Lead",
+    company: "Infosys",
+    quote: "SVIET students demonstrate strong fundamentals and excellent adaptability in corporate environments.",
+  },
+  {
+    imageSrc: "/assets/img/college/management/sahil-sir.jpg",
+    imageAlt: "Recruiter representative from TCS",
+    name: "Neha Bansal",
+    subtitle: "Campus Hiring Manager",
+    company: "TCS",
+    quote: "The institution's training quality and disciplined preparation make hiring from SVIET highly reliable.",
+  },
+  {
+    imageSrc: "/assets/img/college/management/shubham-sir..jpg",
+    imageAlt: "Recruiter representative from Wipro",
+    name: "Karan Sethi",
+    subtitle: "Human Resources Partner",
+    company: "Wipro",
+    quote: "SVIET has consistently provided candidates who are project-ready and aligned with industry expectations.",
+  },
+];
+
+const FAQ_ITEMS = [
+  {
+    question: "What is the placement process?",
+    answer:
+      "The placement process includes company outreach, eligibility screening, pre-placement talks, tests, interviews, and final offer rollouts coordinated by the training and placement cell.",
+  },
+  {
+    question: "Which companies visit campus?",
+    answer:
+      "SVIET hosts recruiters from IT, consulting, manufacturing, banking, and service sectors, including national and multinational organizations.",
+  },
+  {
+    question: "What is the average package?",
+    answer: "The average package is around Rs 4 LPA, with higher packages depending on role, domain, and student performance.",
+  },
+  {
+    question: "Are internships provided?",
+    answer:
+      "Yes, students receive internship support through industry partnerships, live projects, and campus-connect initiatives across departments.",
+  },
+  {
+    question: "How does training work?",
+    answer:
+      "Students undergo a structured training pipeline covering aptitude, coding and technical modules, communication, resume building, and mock interviews.",
   },
 ];
 
 export function PlacementsPageComponent() {
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
-
   return (
-    <div className="bg-white">
-      {/* SECTION 1: HERO */}
-      <section className="py-16">
-        <div className="mx-auto max-w-[1280px] px-6">
-          <div className="grid gap-10 md:grid-cols-2">
-            {/* LEFT */}
-            <div>
-              <h1 className="text-5xl font-bold leading-tight text-gray-900">
-                WHY PAY MORE WHEN YOU CAN ACHIEVE THIS IN LESS
-              </h1>
-              <p className="mt-6 text-lg text-gray-700">
-                Join thousands of students who have transformed their careers through SVIET&apos;s industry-aligned programs.
-              </p>
-
-              {/* Company Logos Grid */}
-              <div className="mt-10 grid grid-cols-2 gap-6 md:grid-cols-3">
-                <div className="relative h-12 w-full">
-                  <Image
-                    src="/assets/img/companies/amazon.png"
-                    alt="Amazon"
-                    fill
-                    className="object-contain grayscale"
-                  />
-                </div>
-                <div className="relative h-12 w-full">
-                  <Image
-                    src="/assets/img/companies/tcs.png"
-                    alt="TCS"
-                    fill
-                    className="object-contain grayscale"
-                  />
-                </div>
-                <div className="relative h-12 w-full">
-                  <Image
-                    src="/assets/img/companies/infosys.png"
-                    alt="Infosys"
-                    fill
-                    className="object-contain grayscale"
-                  />
-                </div>
-                <div className="relative h-12 w-full">
-                  <Image
-                    src="/assets/img/companies/wipro.png"
-                    alt="Wipro"
-                    fill
-                    className="object-contain grayscale"
-                  />
-                </div>
-                <div className="relative h-12 w-full">
-                  <Image
-                    src="/assets/img/companies/dabur.png"
-                    alt="Dabur"
-                    fill
-                    className="object-contain grayscale"
-                  />
-                </div>
-                <div className="relative h-12 w-full">
-                  <Image
-                    src="/assets/img/companies/jio_digital.png"
-                    alt="Jio Digital"
-                    fill
-                    className="object-contain grayscale"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT */}
-            <div className="flex items-center justify-center">
-              <div className="relative h-96 w-full overflow-hidden rounded-2xl">
-                <Image
-                  src="/assets/img/college/auditorium.png"
-                  alt="Student Success"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-black/40" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="rounded-full bg-white px-8 py-4 text-center">
-                    <p className="text-sm text-gray-600">Highest Package</p>
-                    <p className="text-4xl font-bold text-gray-900">45 LPA</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <main className="bg-white">
+      <SectionWrapper aria-labelledby="placements-hero-heading">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div>
+            <h1 id="placements-hero-heading" className="text-4xl font-bold text-gray-900 md:text-5xl">
+              Where ambition meets opportunity
+            </h1>
+            <p className="mt-5 text-base leading-relaxed text-gray-600">
+              At SVIET, we empower students with industry-ready skills and strong placement support.
+            </p>
           </div>
-        </div>
-      </section>
 
-      {/* SECTION 2: PLACEMENT STATS */}
-      <section className="bg-gray-50 py-16">
-        <div className="mx-auto max-w-[1280px] px-6">
-          <h2 className="text-4xl font-bold text-gray-900">Placement Statistics</h2>
-
-          <div className="mt-10 grid gap-10 md:grid-cols-3">
-            <div className="rounded-2xl border border-gray-100 bg-white p-6">
-              <p className="text-sm text-gray-500">Total Offers</p>
-              <p className="mt-2 text-5xl font-bold text-gray-900">3,000+</p>
-            </div>
-            <div className="rounded-2xl border border-gray-100 bg-white p-6">
-              <p className="text-sm text-gray-500">Dreams Fulfilled</p>
-              <p className="mt-2 text-5xl font-bold text-gray-900">12,000+</p>
-            </div>
-            <div className="rounded-2xl border border-gray-100 bg-white p-6">
-              <p className="text-sm text-gray-500">Companies</p>
-              <p className="mt-2 text-5xl font-bold text-gray-900">350+</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 3: BAR CHART */}
-      <section className="py-16">
-        <div className="mx-auto max-w-[1280px] px-6">
-          <h2 className="text-4xl font-bold text-gray-900">Placement by Department</h2>
-          <p className="mt-2 text-base text-gray-600">
-            Placement rates across different academic programs
-          </p>
-
-          <div className="mt-10 rounded-2xl border border-gray-100 bg-white p-6">
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={placementChartData}>
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="value" fill="#111827" radius={[4, 4, 0, 0]} width={20} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 4: TOP RECRUITERS + PIE CHART */}
-      <section className="bg-gray-50 py-16">
-        <div className="mx-auto max-w-[1280px] px-6">
-          <div className="grid gap-10 md:grid-cols-2">
-            {/* LEFT */}
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900">Our Top Recruiters</h2>
-              <p className="mt-4 text-base text-gray-600">
-                Leading companies across sectors actively recruit SVIET graduates.
-              </p>
-
-              <form className="mt-8 space-y-4">
-                <div>
-                  <label className="block text-sm text-gray-600">Email</label>
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
-                    className="mt-2 w-full rounded-lg bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-gray-900"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm text-gray-600">Message</label>
-                  <textarea
-                    placeholder="Tell us your interest"
-                    className="mt-2 w-full rounded-lg bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-gray-900"
-                    rows={4}
-                  />
-                </div>
-                <button className="w-full rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:bg-gray-900">
-                  Get Recruiter Details
-                </button>
-              </form>
-            </div>
-
-            {/* RIGHT - PIE CHART */}
-            <div className="flex items-center justify-center">
-              <div className="w-full rounded-2xl border border-gray-100 bg-white p-6">
-                <ResponsiveContainer width="100%" height={250}>
-                  <PieChart>
-                    <Pie
-                      data={recruiterData}
-                      dataKey="value"
-                      cx="50%"
-                      cy="50%"
-                      outerRadius={80}
-                      label
-                    >
-                      {recruiterData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index]} />
-                      ))}
-                    </Pie>
-                  </PieChart>
-                </ResponsiveContainer>
-                <div className="mt-4 space-y-2">
-                  {recruiterData.map((item, index) => (
-                    <div key={item.name} className="flex items-center gap-2">
-                      <div
-                        className="h-3 w-3 rounded-full"
-                        style={{ backgroundColor: COLORS[index] }}
-                      />
-                      <span className="text-sm text-gray-600">{item.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 5: SUCCESS STORIES */}
-      <section className="bg-gray-900 py-16 text-white">
-        <div className="mx-auto max-w-[1280px] px-6">
-          <h2 className="text-4xl font-bold">Student Success Stories</h2>
-          <p className="mt-2 text-base text-gray-400">
-            Watch real stories from graduates who achieved their dreams
-          </p>
-
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {successStories.map((story) => (
-              <div
-                key={story.id}
-                className="group relative overflow-hidden rounded-2xl"
-              >
-                <div className="aspect-video bg-gray-800" />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40 transition group-hover:bg-black/60">
-                  <button className="rounded-full bg-white p-4 text-gray-900 transition hover:scale-110">
-                    <FaPlay size={24} />
-                  </button>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
-                  <p className="text-sm text-gray-300">{story.company}</p>
-                  <p className="text-xl font-bold">{story.title}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 6: EMPLOYER TESTIMONIAL */}
-      <section className="py-16">
-        <div className="mx-auto max-w-[1280px] px-6">
-          <div className="grid gap-10 md:grid-cols-2 md:items-center">
-            {/* LEFT IMAGE */}
-            <div className="relative h-96 overflow-hidden rounded-2xl">
+          <div className="relative overflow-hidden rounded-lg border border-gray-200">
+            <div className="relative min-h-80">
               <Image
-                src="/assets/img/college/scholarship.png"
-                alt="Employer"
+                src="/assets/img/college/auditorium.png"
+                alt="SVIET placement support event"
                 fill
+                loading="lazy"
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
 
-            {/* RIGHT TEXT */}
-            <div>
-              <p className="inline-block rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white">
-                From Industry Leader
-              </p>
-              <h2 className="mt-4 text-4xl font-bold text-gray-900">
-                Why Companies Love Hiring from SVIET
-              </h2>
-              <p className="mt-6 text-lg text-gray-700">
-                &quot;The quality of talent at SVIET is exceptional. Graduates come well-prepared with both technical and soft skills. We&apos;ve built long-term partnerships that consistently deliver value.&quot;
-              </p>
-              <p className="mt-4 font-semibold text-gray-900">
-                — HR Director, Fortune 500 Company
-              </p>
-              <button className="mt-6 rounded-full bg-black px-6 py-3 font-semibold text-white transition hover:bg-gray-900">
-                Learn More
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 7: UPDATES GRID */}
-      <section className="bg-gray-50 py-16">
-        <div className="mx-auto max-w-[1280px] px-6">
-          <h2 className="text-4xl font-bold text-gray-900">Latest Updates</h2>
-
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {updates.map((update) => (
-              <div
-                key={update.id}
-                className="overflow-hidden rounded-2xl border border-gray-100 bg-white"
-              >
-                <div className="relative h-48 w-full">
-                  <Image
-                    src={update.image}
-                    alt={update.title}
-                    fill
-                    className="object-cover"
-                  />
+            <div className="grid grid-cols-3 border-t border-white/40 bg-[#a60f2d] px-4 py-3 text-center text-white">
+              {HERO_STATS.map((item) => (
+                <div key={item.label}>
+                  <p className="text-lg font-bold">{item.value}</p>
+                  <p className="text-xs uppercase tracking-wide text-red-100">{item.label}</p>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900">
-                    {update.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-gray-600">
-                    {update.description}
-                  </p>
-                  <button className="mt-4 text-sm font-semibold text-gray-900 hover:text-orange-500">
-                    Read More →
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 8: INDUSTRY LEARNING */}
-      <section className="py-16">
-        <div className="mx-auto max-w-[1280px] px-6">
-          <div className="grid gap-10 md:grid-cols-2 md:items-center">
-            {/* LEFT TEXT */}
-            <div>
-              <h3 className="text-sm font-bold uppercase tracking-wide text-orange-500">
-                Our Approach
-              </h3>
-              <h2 className="mt-4 text-4xl font-bold text-gray-900">
-                Industry-Aligned Learning
-              </h2>
-              <p className="mt-6 text-lg text-gray-700">
-                We work closely with industry partners to ensure curriculum meets real-world demands. Our students gain hands-on experience through internships, projects, and mentorship.
-              </p>
-              <ul className="mt-6 space-y-4">
-                {[
-                  "Real-world project exposure",
-                  "Industry mentor partnerships",
-                  "Mock interview sessions",
-                  "Skill certifications",
-                ].map((item) => (
-                  <li key={item} className="flex gap-3 text-base text-gray-700">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-gray-900" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* RIGHT IMAGE */}
-            <div className="relative h-96 overflow-hidden rounded-2xl">
-              <Image
-                src="/assets/img/college/global_recognition.png"
-                alt="Industry Learning"
-                fill
-                className="object-cover"
-              />
+              ))}
             </div>
           </div>
         </div>
-      </section>
+      </SectionWrapper>
 
-      {/* SECTION 9: TESTIMONIAL SLIDER */}
-      <section className="bg-gray-50 py-16">
-        <div className="mx-auto max-w-[1280px] px-6">
-          <h2 className="text-4xl font-bold text-gray-900">What Our Graduates Say</h2>
+      <SectionWrapper aria-labelledby="key-placement-stats-heading" className="border-t border-gray-100 bg-gray-50">
+        <SectionHeader id="key-placement-stats-heading" title="Key Placement Stats" />
 
-          <div className="mt-10 rounded-2xl border border-gray-100 bg-white p-8">
-            <div className="grid gap-10 md:grid-cols-[1fr_2fr]">
-              {/* Stats */}
-              <div className="space-y-6 border-r border-gray-200 pr-8">
-                {testimonials.map((testimonial, index) => (
-                  <button
-                    key={testimonial.id}
-                    onClick={() => setTestimonialIndex(index)}
-                    className={`w-full text-left transition ${
-                      testimonialIndex === index
-                        ? "text-gray-900"
-                        : "text-gray-500"
-                    }`}
-                  >
-                    <p className="font-semibold">{testimonial.name}</p>
-                    <p className="text-sm">{testimonial.company}</p>
-                  </button>
-                ))}
-              </div>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {KEY_STATS.map((item) => (
+            <StatCard key={item.label} value={item.value} label={item.label} />
+          ))}
+        </div>
+      </SectionWrapper>
 
-              {/* Testimonial */}
-              <div>
-                <div className="mb-4 flex gap-1">
-                  {[...Array(testimonials[testimonialIndex].rating)].map(
-                    (_, i) => (
-                      <FaStar
-                        key={i}
-                        size={16}
-                        className="text-yellow-400"
-                      />
-                    )
-                  )}
-                </div>
-                <p className="text-lg text-gray-700">
-                  &quot;{testimonials[testimonialIndex].text}&quot;
-                </p>
-                <p className="mt-6 font-semibold text-gray-900">
-                  {testimonials[testimonialIndex].name}
-                </p>
-                <p className="text-sm text-gray-600">
-                  {testimonials[testimonialIndex].role}
-                </p>
-              </div>
-            </div>
+      <SectionWrapper aria-labelledby="top-recruiters-heading">
+        <SectionHeader id="top-recruiters-heading" title="Top Recruiters" />
+        <RecruiterGrid recruiters={RECRUITERS} />
+      </SectionWrapper>
+
+      <SectionWrapper aria-labelledby="placement-highlight-heading" className="bg-gray-50">
+        <article className="grid gap-8 rounded-lg border border-gray-200 bg-white p-6 shadow-sm lg:grid-cols-2 lg:items-center">
+          <div className="relative aspect-4/3 overflow-hidden rounded-md border border-gray-200 bg-gray-100">
+            <Image
+              src="/assets/img/students/moon_mandal.png"
+              alt="SVIET student placement highlight"
+              fill
+              loading="lazy"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
           </div>
-        </div>
-      </section>
 
-      {/* CTA SECTION */}
-      <section className="bg-gray-900 py-16 text-white">
-        <div className="mx-auto max-w-[1280px] px-6 text-center">
-          <h2 className="text-4xl font-bold">Ready to Transform Your Career?</h2>
-          <p className="mt-4 text-lg text-gray-300">
-            Join SVIET and become part of our success story
-          </p>
-          <button className="mt-8 rounded-full bg-white px-8 py-3 font-semibold text-gray-900 transition hover:bg-gray-100">
-            Start Your Journey
-          </button>
+          <div>
+            <h2 id="placement-highlight-heading" className="text-3xl font-bold text-gray-900">
+              Placement Highlight
+            </h2>
+            <blockquote className="mt-5 border-l-2 border-gray-300 pl-4 text-lg leading-relaxed text-gray-700">
+              “We create skilled professionals that are remarkable much before they graduate.”
+            </blockquote>
+            <p className="mt-4 text-base font-semibold text-gray-900">Training &amp; Placement Cell</p>
+            <p className="text-sm text-gray-600">SVIET</p>
+          </div>
+        </article>
+      </SectionWrapper>
+
+      <SectionWrapper aria-labelledby="student-testimonials-heading">
+        <SectionHeader id="student-testimonials-heading" title="Student Testimonials" />
+        <TestimonialCarousel testimonials={STUDENT_TESTIMONIALS} />
+      </SectionWrapper>
+
+      <SectionWrapper aria-labelledby="placement-updates-heading" className="border-t border-gray-100 bg-gray-50">
+        <SectionHeader id="placement-updates-heading" title="Placement Updates" />
+
+        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {PLACEMENT_NEWS.map((item) => (
+            <NewsCard
+              key={item.title}
+              imageSrc={item.imageSrc}
+              imageAlt={item.imageAlt}
+              title={item.title}
+              description={item.description}
+            />
+          ))}
         </div>
-      </section>
-    </div>
+      </SectionWrapper>
+
+      <SectionWrapper aria-labelledby="industry-learning-heading">
+        <SectionHeader
+          id="industry-learning-heading"
+          title="Industry-based immersive learning"
+          description="SVIET follows an outcomes-focused training framework that combines foundational learning with placement-specific preparation across academic programs."
+        />
+
+        <ul className="mt-6 grid gap-3 text-sm text-gray-700 sm:grid-cols-2">
+          <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Soft skills training</li>
+          <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Mock interviews</li>
+          <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Resume building</li>
+          <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Industry workshops</li>
+        </ul>
+      </SectionWrapper>
+
+      <SectionWrapper aria-labelledby="recruiter-testimonials-heading" className="bg-[#a60f2d]">
+        <SectionHeader
+          id="recruiter-testimonials-heading"
+          title="Recruiter Testimonials"
+          titleClassName="text-white"
+          description="Industry partners share their experience of hiring SVIET graduates."
+          descriptionClassName="text-red-100"
+        />
+
+        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {RECRUITER_TESTIMONIALS.map((item) => (
+            <TestimonialCard
+              key={`${item.name}-${item.company}`}
+              imageSrc={item.imageSrc}
+              imageAlt={item.imageAlt}
+              name={item.name}
+              subtitle={item.subtitle}
+              company={item.company}
+              quote={item.quote}
+              className="border-white/30 bg-white text-gray-900"
+            />
+          ))}
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper aria-labelledby="placements-faq-heading" className="bg-gray-50">
+        <SectionHeader id="placements-faq-heading" title="FAQ" />
+        <FAQAccordion items={FAQ_ITEMS} />
+      </SectionWrapper>
+    </main>
   );
 }

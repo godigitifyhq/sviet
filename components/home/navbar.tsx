@@ -3,7 +3,16 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const links = ["About", "Programs", "Admissions", "Campus", "Careers", "Contact"];
+const links = [
+  { label: "About", href: "/about" },
+  { label: "Programs", href: "/programs" },
+  { label: "Placements", href: "/placements" },
+  { label: "Admissions", href: "/admissions" },
+  { label: "Campus Life", href: "/campus-life" },
+  { label: "Research", href: "/research" },
+  { label: "Events", href: "/events" },
+  { label: "Contact", href: "/contact" },
+];
 
 export function HomeNavbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -29,8 +38,8 @@ export function HomeNavbar() {
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-[#1f1f1f] lg:flex">
           {links.map((link) => (
-            <Link key={link} href="#" className="transition-colors duration-200 hover:text-[#F97316]">
-              {link}
+            <Link key={link.label} href={link.href} className="transition-colors duration-200 hover:text-[#F97316]">
+              {link.label}
             </Link>
           ))}
         </nav>
