@@ -3,11 +3,6 @@ import { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const programs = await prisma.program.findMany({
-    where: { isActive: true },
-    select: { slug: true, updatedAt: true },
-  });
-
   const staticRoutes = [
     "/",
     "/admissions",
@@ -26,12 +21,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === "/" ? 1 : 0.8,
   }));
 
-  const programRoutes = programs.map((program) => ({
-    url: `https://sviet.ac.in/programs/${program.slug}`,
-    lastModified: program.updatedAt,
-    changeFrequency: "monthly" as const,
-    priority: 0.9,
-  }));
+  let programRoutes: MetadataRoute.Sitemap = [];
+
+  try {
+    const programs = await prisma.program.findMany({
+      where: { isActive: true },
+      select: { slug: true, updatedAt: true },
+    });
+
+    programRoutes = programs.map((program) => ({
+      url: `https://sviet.ac.in/programs/${program.slug}`,
+      lastModified: program.updatedAt,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    }));
+  } catch (error) {
+    console.warn("Failed to fetch programs for sitemap:", error);
+  }
 
   return [...staticRoutes, ...programRoutes];
 }

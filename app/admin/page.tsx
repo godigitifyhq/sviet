@@ -6,6 +6,8 @@ import { AdminLayout } from "@/components/admin/admin-layout";
 import { StatCard } from "@/components/admin/stat-card";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { prisma } from "@/lib/db";
+export const dynamic = "force-dynamic";
+
 
 function getStartOfTodayUtc(now: Date) {
   return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));

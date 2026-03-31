@@ -33,21 +33,40 @@ function formatMode(mode?: string | null) {
 }
 
 export default async function ProgramsPage() {
-  const programs = await prisma.program.findMany({
-    where: { isActive: true },
-    orderBy: [{ isFeatured: "desc" }, { title: "asc" }],
-    select: {
-      id: true,
-      slug: true,
-      title: true,
-      shortDescription: true,
-      department: true,
-      durationMonths: true,
-      tuitionCents: true,
-      mode: true,
-      isFeatured: true,
-    },
-  });
+    type Program = {
+      id: string;
+      slug: string;
+      title: string;
+      shortDescription: string;
+      department: string | null;
+      durationMonths: number;
+      tuitionCents: number;
+      mode: string | null;
+      isFeatured: boolean;
+    };
+  let programs: Program[] = [];
+  let error: string | null = null;
+
+  try {
+    programs = await prisma.program.findMany({
+      where: { isActive: true },
+      orderBy: [{ isFeatured: "desc" }, { title: "asc" }],
+      select: {
+        id: true,
+        slug: true,
+        title: true,
+        shortDescription: true,
+        department: true,
+        durationMonths: true,
+        tuitionCents: true,
+        mode: true,
+        isFeatured: true,
+      },
+    });
+  } catch (err) {
+    console.warn("Failed to load programs from database:", err);
+    error = "Unable to load programs at this time.";
+  }
 
   const featuredPrograms = programs.filter((program) => program.isFeatured);
 

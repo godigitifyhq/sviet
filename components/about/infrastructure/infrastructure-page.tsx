@@ -185,7 +185,7 @@ export function InfrastructurePage() {
       <SectionWrapper aria-labelledby="campus-facilities-heading">
         <SectionHeader id="campus-facilities-heading" title="Explore SVIET’s Campus Facilities" />
 
-        <CategoryTabs categories={[...CATEGORY_TABS]} activeCategory={activeCategory} onCategoryChange={setActiveCategory} />
+        <CategoryTabs categories={[...CATEGORY_TABS]} activeCategory={activeCategory} onCategoryChange={(category) => setActiveCategory(category as typeof activeCategory)} />
 
         <ImageGrid items={filteredFacilities} />
       </SectionWrapper>

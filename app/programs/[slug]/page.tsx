@@ -5,6 +5,7 @@ import { ProgramDetailPage } from "@/components/programs/program-page";
 import { prisma } from "@/lib/prisma";
 
 export const revalidate = 3600;
+export const dynamicParams = true;
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -52,12 +53,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export async function generateStaticParams() {
-  const programs = await prisma.program.findMany({
-    where: { isActive: true },
-    select: { slug: true },
-  });
+  try {
+    const programs = await prisma.program.findMany({
+      where: { isActive: true },
+      select: { slug: true },
+    });
 
-  return programs.map((program) => ({ slug: program.slug }));
+    return programs.map((program) => ({ slug: program.slug }));
+  } catch (error) {
+    // If database is unavailable (e.g., during build), return empty array
+    // Pages will be generated on-demand with dynamicParams = true
+    console.warn("Failed to generate static params for programs:", error);
+    return [];
+  }
 }
 
 export default async function ProgramSlugPage({ params }: PageProps) {
