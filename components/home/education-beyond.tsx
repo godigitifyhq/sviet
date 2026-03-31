@@ -2,20 +2,20 @@ import Image from "next/image";
 
 const features = [
   {
-    title: "Innovation & Entrepreneurship Cell",
-    description: "IIC-recognized cell supporting student startups with mentorship, seed funding, and incubation support",
+    title: "Community Engagement",
+    description: "Bringing creators, learners, and leaders together through events, discussions, and continuous peer support.",
   },
   {
-    title: "International Exposure",
-    description: "Tie-ups with international universities for student exchange, dual degrees, and global internships",
+    title: "Volunteer Programs",
+    description: "Participate in meaningful initiatives that create local impact while building leadership and teamwork skills.",
   },
   {
-    title: "Industry-Integrated Learning",
-    description: "Live projects, industry visits, and guest lectures from Fortune 500 professionals",
+    title: "Inclusive Environment",
+    description: "A welcoming student-led space where everyone can learn, build, and grow regardless of background.",
   },
   {
-    title: "Research & Development",
-    description: "State-of-the-art research labs with funded projects across engineering, pharmacy, and management",
+    title: "Collaboration Opportunities",
+    description: "Work with peers, mentors, and partners on hands-on projects and practical solutions for real-world needs.",
   },
 ];
 
@@ -23,14 +23,14 @@ export function EducationBeyondSection() {
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <h2 className="text-4xl font-bold tracking-tight text-foreground">Education Beyond The Classroom</h2>
-        <p className="mt-3 max-w-5xl text-gray-600 leading-relaxed">
-          Education at SVIET goes beyond traditional academics. Through the S60 program and a range of unique
-          experiential initiatives, students gain industry exposure, leadership skills, and real-world readiness long
-          before graduation.
+        <h2 className="text-4xl font-bold tracking-tight text-foreground">The Uniques Community</h2>
+        <p className="mt-3 max-w-6xl text-gray-600 leading-relaxed">
+          The Uniques is a student-led community focused on helping learners bridge the gap between theory and
+          practice. Through workshops, study jams, hands-on projects, and mentorship, members build practical skills,
+          confidence, and career-ready experience.
         </p>
 
-      <div className="flex flex-1 gap-4">
+      <div className="flex flex-1 gap-4 mt-12">
        <div className="flex mt-6 justify-center items-center">
          <Image
           src="/assets/img/uniques_logo.png"
@@ -43,28 +43,28 @@ export function EducationBeyondSection() {
        </div>
     
           <div className="mt-7 flex-1 bg-[#BA1F27] px-5 py-2.5 text-sm font-medium tracking-wide text-white">
-          The Leadership Development Program
+          A Community of Creators, Dreamers & Doers
         </div>
       </div>
 
         <div className="mt-8 grid gap-10 md:grid-cols-2">
           <div className="space-y-6">
             <article className="border border-gray-200 bg-white rounded-2xl p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
-              <h3 className="text-lg font-semibold text-foreground">Industry Mentorship</h3>
+              <h3 className="text-lg font-semibold text-foreground">Learn, Build, and Grow Together</h3>
               <p className="mt-2 text-sm text-gray-500">
-                Students receive guidance from experienced professionals who share real-world insights, career advice,
-                and industry trends. Mentorship bridges the gap between academic learning and professional
-                expectations.
+                The community emphasizes practical growth through peer learning and expert-led guidance. Members
+                regularly collaborate on real projects, explore modern tech domains, and strengthen professional
+                readiness through continuous learning.
               </p>
             </article>
 
             <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
               <Image
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2200&q=80"
-                alt="Seminar hall with students"
+                src="https://www.theuniques.in/assets/uniques2-DxGvOalO.jpg"
+                alt="The Uniques workshop session"
                 width={1200}
                 height={400}
-                className="h-55 w-full object-cover transition duration-200 hover:scale-105"
+                className="h-55 w-full object-cover transition duration-200 "
               />
             </div>
           </div>
@@ -83,10 +83,11 @@ export function EducationBeyondSection() {
             ))}
 
             <button className="w-full bg-black text-white px-6 py-3 rounded-full flex items-center justify-between transition duration-200 hover:bg-gray-900 sm:w-auto sm:min-w-[320px]">
-              <span className="text-sm font-semibold">GET YOUR OWN STARTUP</span>
+              <a href="https://www.theuniques.in/" target="_blank" rel="noopener noreferrer">
+              <span className="text-sm font-semibold">KNOW MORE ABOUT UNIQUES COMMUNITY</span>
               <span aria-hidden="true" className="text-lg leading-none">
                 →
-              </span>
+              </span></a>
             </button>
           </div>
         </div>

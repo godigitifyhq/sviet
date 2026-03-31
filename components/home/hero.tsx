@@ -7,12 +7,37 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import { postJson } from "@/lib/form-utils";
 
-const HERO_SLIDES = [
+type HeroSlideStat = {
+  value: string;
+  label: string;
+};
+
+type HeroSlide = {
+  heading: string;
+  subheading: string;
+  studentImage: string;
+  studentImageAlt: string;
+  placementName: string;
+  placementCompany: string;
+  placementPackage: string;
+  placementCompanyLogo?: string;
+  placementCompanyLogoAlt?: string;
+  stat1: HeroSlideStat;
+  stat2: HeroSlideStat;
+  stat3: HeroSlideStat;
+};
+
+const HERO_SLIDES: HeroSlide[] = [
   {
     heading: "Nurturing Excellence\nSince 2004",
     subheading: "A Legacy of Quality Education",
     studentImage: "/assets/img/students/moon_mandal.png",
     studentImageAlt: "Moon Mandal",
+    placementName: "Moon Mandal",
+    placementCompany: "Jio Digital",
+    placementPackage: "11 LPA",
+    placementCompanyLogo: "/assets/img/companies/jio_digital.png",
+    placementCompanyLogoAlt: "Jio Digital logo",
     stat1: { value: "20+", label: "Years of Excellence" },
     stat2: { value: "104", label: "NIRF Ranking 2021" },
     stat3: { value: "10,000+", label: "Alumni Worldwide" },
@@ -22,6 +47,11 @@ const HERO_SLIDES = [
     subheading: "Chart Your Engineering Journey at SVIET",
     studentImage: "/assets/img/students/image (1).png",
     studentImageAlt: "SVIET student",
+    placementName: "Ankit Kumar",
+    placementCompany: "Rapido",
+    placementCompanyLogo: "/assets/img/companies/rapoido logo.png",
+    placementCompanyLogoAlt: "Rapido logo",
+    placementPackage: "27 LPA",
     stat1: { value: "45 LPA", label: "Highest Package" },
     stat2: { value: "500+", label: "Recruiting Companies" },
     stat3: { value: "100%", label: "Placement Assistance" },
@@ -30,7 +60,12 @@ const HERO_SLIDES = [
     heading: "Ranked Among\nTop Institutions",
     subheading: "North India's Premier Group of Institutes",
     studentImage: "/assets/img/students/image (2).png",
-    studentImageAlt: "Moon Mandal",
+    studentImageAlt: "Avinash Kumar",
+    placementName: "Avinash Kumar",
+    placementCompany: "Jio",
+    placementPackage: "50 LPA",
+    placementCompanyLogo: "/assets/img/companies/jio_digital.png",
+    placementCompanyLogoAlt: "Jio logo",
     stat1: { value: "10+", label: "Institutions" },
     stat2: { value: "50+", label: "Programs Offered" },
     stat3: { value: "25,000+", label: "Students Enrolled" },
@@ -204,6 +239,8 @@ export function HeroSection() {
     }
   };
 
+  const activeHeroSlide = HERO_SLIDES[activeSlide];
+
   return (
     <>
       <section className="px-4 py-10 md:px-6 md:py-2">
@@ -227,35 +264,43 @@ export function HeroSection() {
             <div className="relative grid h-full items-center gap-6 px-5  text-white md:grid-cols-[0.50fr_0.50fr] md:px-12">
               <div className="relative mx-auto  hidden h-full w-full max-w-165 items-end justify-center md:flex">
                 <Image
-                  src={HERO_SLIDES[activeSlide].studentImage}
-                  alt={HERO_SLIDES[activeSlide].studentImageAlt}
+                  src={activeHeroSlide.studentImage}
+                  alt={activeHeroSlide.studentImageAlt}
                   width={660}
                   height={862}
                   className="h-auto w-full object-contain"
                 />
                 <div className="absolute bottom-28 left-3 flex items-center gap-3 rounded-xl bg-white px-3 py-2 text-foreground shadow-md">
-                  <Image
-                    src="/assets/img/companies/jio_digital.png"
-                    alt="Jio Digital logo"
-                    width={82}
-                    height={32}
-                    className="h-7 w-auto"
-                    style={{ width: "auto" }}
-                  />
+                  {activeHeroSlide.placementCompanyLogo ? (
+                    <Image
+                      src={activeHeroSlide.placementCompanyLogo}
+                      alt={activeHeroSlide.placementCompanyLogoAlt ?? `${activeHeroSlide.placementCompany} logo`}
+                      width={82}
+                      height={32}
+                      className="h-7 w-auto"
+                      style={{ width: "auto" }}
+                    />
+                  ) : (
+                    <div className="rounded-md bg-[#f2f2f2] px-2 py-1 text-[11px] font-semibold text-[#333333]">
+                      {activeHeroSlide.placementCompany}
+                    </div>
+                  )}
                   <div>
-                    <p className="text-sm font-bold">{HERO_SLIDES[activeSlide].subheading}</p>
-                    <p className="text-xs font-medium text-[#555555]">SVIET</p>
+                    <p className="text-sm font-bold">{activeHeroSlide.placementName}</p>
+                    <p className="text-xs font-medium text-[#555555]">
+                      {activeHeroSlide.placementCompany} • {activeHeroSlide.placementPackage}
+                    </p>
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-10 text-center md:flex md:h-full md:flex-col md:justify-center md:text-left">
+              <div className="space-y-10 text-center md:flex md:h-full md:flex-col md:justify-start md:pt-26 md:text-left">
                 <h1 className="mx-auto min-h-22 max-w-xl whitespace-pre-line text-4xl font-bold leading-tight md:mx-0 md:min-h-30 md:text-5xl">
-                  {HERO_SLIDES[activeSlide].heading}
+                  {activeHeroSlide.heading}
                 </h1>
 
                 <div className="mx-auto grid max-w-xl grid-cols-3 gap-4 md:mx-0 md:gap-6">
-                  {[HERO_SLIDES[activeSlide].stat1, HERO_SLIDES[activeSlide].stat2, HERO_SLIDES[activeSlide].stat3].map((item) => (
+                  {[activeHeroSlide.stat1, activeHeroSlide.stat2, activeHeroSlide.stat3].map((item) => (
                     <div key={item.label}>
                       <p className="text-3xl font-bold md:text-4xl">{item.value}</p>
                       <p className="mt-1 min-h-8 text-xs font-medium text-white/85 md:text-sm">{item.label}</p>
