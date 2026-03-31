@@ -4,7 +4,7 @@ Complete reference for all SVIET API endpoints with curl examples for testing.
 
 ## Base URL
 
-**Staging**: `https://<staging-url>.vercel.app`  
+**Staging**: `https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/`  
 
 
 ## Authentication
@@ -20,7 +20,7 @@ Most admin/private endpoints require this header:
 ### Basic Health Check
 
 ```bash
-curl -X GET http://localhost:3000/api/programs
+curl -X GET https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/programs
 ```
 
 **Response**: 200 OK with programs list
@@ -32,7 +32,7 @@ curl -X GET http://localhost:3000/api/programs
 ### List All Programs
 
 ```bash
-curl -X GET http://localhost:3000/api/programs \
+curl -X GET https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/programs \
   -H "Content-Type: application/json"
 ```
 
@@ -51,7 +51,7 @@ curl -X GET http://localhost:3000/api/programs \
 ### Get Program by Slug
 
 ```bash
-curl -X GET http://localhost:3000/api/programs/cse \
+curl -X GET https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/programs/cse \
   -H "Content-Type: application/json"
 ```
 
@@ -74,7 +74,7 @@ curl -X GET http://localhost:3000/api/programs/cse \
 ### List All Leads
 
 ```bash
-curl -X GET http://localhost:3000/api/leads \
+curl -X GET https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/leads \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN" \
   -H "Content-Type: application/json"
 ```
@@ -87,7 +87,7 @@ curl -X GET http://localhost:3000/api/leads \
 
 **Example with filters**:
 ```bash
-curl -X GET "http://localhost:3000/api/leads?status=interested&program=cse&page=1&limit=10" \
+curl -X GET "https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/leads?status=interested&program=cse&page=1&limit=10" \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN"
 ```
 
@@ -114,7 +114,7 @@ curl -X GET "http://localhost:3000/api/leads?status=interested&program=cse&page=
 ### Create Lead (From Form)
 
 ```bash
-curl -X POST http://localhost:3000/api/leads \
+curl -X POST https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/leads \
   -H "Content-Type: application/json" \
   -d '{
     "name": "John Doe",
@@ -138,7 +138,7 @@ curl -X POST http://localhost:3000/api/leads \
 ### Get Lead Details
 
 ```bash
-curl -X GET http://localhost:3000/api/leads/lead-123 \
+curl -X GET https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/leads/lead-123 \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN"
 ```
 
@@ -158,7 +158,7 @@ curl -X GET http://localhost:3000/api/leads/lead-123 \
 ### Update Lead
 
 ```bash
-curl -X PATCH http://localhost:3000/api/leads/lead-123 \
+curl -X PATCH https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/leads/lead-123 \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -172,7 +172,7 @@ curl -X PATCH http://localhost:3000/api/leads/lead-123 \
 ### Delete Lead
 
 ```bash
-curl -X DELETE http://localhost:3000/api/leads/lead-123 \
+curl -X DELETE https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/leads/lead-123 \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN"
 ```
 
@@ -181,7 +181,7 @@ curl -X DELETE http://localhost:3000/api/leads/lead-123 \
 ### Assign Lead
 
 ```bash
-curl -X POST http://localhost:3000/api/leads/lead-123/assign \
+curl -X POST https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/leads/lead-123/assign \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -194,7 +194,7 @@ curl -X POST http://localhost:3000/api/leads/lead-123/assign \
 ### Update Lead Assignment
 
 ```bash
-curl -X PATCH http://localhost:3000/api/leads/lead-123/assign \
+curl -X PATCH https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/leads/lead-123/assign \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -206,7 +206,7 @@ curl -X PATCH http://localhost:3000/api/leads/lead-123/assign \
 ### Query Leads from Contact Form
 
 ```bash
-curl -X POST http://localhost:3000/api/leads/contact \
+curl -X POST https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/leads/contact \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Jane Smith",
@@ -221,7 +221,7 @@ curl -X POST http://localhost:3000/api/leads/contact \
 ### Program Finder Leads
 
 ```bash
-curl -X POST http://localhost:3000/api/leads/program-finder \
+curl -X POST https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/leads/program-finder \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Alex Johnson",
@@ -242,7 +242,7 @@ curl -X POST http://localhost:3000/api/leads/program-finder \
 ### List Applications
 
 ```bash
-curl -X GET http://localhost:3000/api/applications \
+curl -X GET https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/applications \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN" \
   -H "Content-Type: application/json"
 ```
@@ -254,14 +254,14 @@ curl -X GET http://localhost:3000/api/applications \
 - `limit`: results per page
 
 ```bash
-curl -X GET "http://localhost:3000/api/applications?status=submitted&program=cse" \
+curl -X GET "https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/applications?status=submitted&program=cse" \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN"
 ```
 
 ### Start New Application
 
 ```bash
-curl -X POST http://localhost:3000/api/applications \
+curl -X POST https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/applications \
   -H "Content-Type: application/json" \
   -d '{
     "leadId": "lead-123",
@@ -281,7 +281,7 @@ curl -X POST http://localhost:3000/api/applications \
 ### Update Application Step
 
 ```bash
-curl -X PATCH http://localhost:3000/api/applications/app-456/step \
+curl -X PATCH https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/applications/app-456/step \
   -H "Content-Type: application/json" \
   -d '{
     "step": 2,
@@ -297,7 +297,7 @@ curl -X PATCH http://localhost:3000/api/applications/app-456/step \
 ### Submit Application
 
 ```bash
-curl -X POST http://localhost:3000/api/applications/app-456/submit \
+curl -X POST https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/applications/app-456/submit \
   -H "Content-Type: application/json" \
   -d '{
     "enclosureNotes": "All documents submitted"
@@ -309,7 +309,7 @@ curl -X POST http://localhost:3000/api/applications/app-456/submit \
 ### Update Application Status
 
 ```bash
-curl -X PATCH http://localhost:3000/api/applications/app-456/status \
+curl -X PATCH https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/applications/app-456/status \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -328,7 +328,7 @@ curl -X PATCH http://localhost:3000/api/applications/app-456/status \
 
 ```bash
 # Using form data with file
-curl -X POST http://localhost:3000/api/documents \
+curl -X POST https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/documents \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN" \
   -F "file=@/path/to/document.pdf" \
   -F "applicationId=app-456" \
@@ -348,7 +348,7 @@ curl -X POST http://localhost:3000/api/documents \
 ### Review Document
 
 ```bash
-curl -X PATCH http://localhost:3000/api/documents/doc-789/review \
+curl -X PATCH https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/documents/doc-789/review \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -366,7 +366,7 @@ curl -X PATCH http://localhost:3000/api/documents/doc-789/review \
 ### Login
 
 ```bash
-curl -X POST http://localhost:3000/api/auth/login \
+curl -X POST https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{
     "email": "counselor@sviet.edu",
@@ -389,7 +389,7 @@ curl -X POST http://localhost:3000/api/auth/login \
 ### Get Current User
 
 ```bash
-curl -X GET http://localhost:3000/api/auth/me \
+curl -X GET https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/auth/me \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
@@ -406,7 +406,7 @@ curl -X GET http://localhost:3000/api/auth/me \
 ### Logout
 
 ```bash
-curl -X POST http://localhost:3000/api/auth/logout \
+curl -X POST https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/auth/logout \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
@@ -419,7 +419,7 @@ curl -X POST http://localhost:3000/api/auth/logout \
 ### Send Message to AI Counselor
 
 ```bash
-curl -X POST http://localhost:3000/api/ai/chat \
+curl -X POST https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/ai/chat \
   -H "Content-Type: application/json" \
   -d '{
     "message": "Tell me about CSE program",
@@ -444,7 +444,7 @@ curl -X POST http://localhost:3000/api/ai/chat \
 ### Get CRM Dashboard Stats
 
 ```bash
-curl -X GET http://localhost:3000/api/crm/stats \
+curl -X GET https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/crm/stats \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN"
 ```
 
@@ -461,7 +461,7 @@ curl -X GET http://localhost:3000/api/crm/stats \
 ### List CRM Staff
 
 ```bash
-curl -X GET http://localhost:3000/api/crm/staff \
+curl -X GET https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/crm/staff \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN"
 ```
 
@@ -481,21 +481,21 @@ curl -X GET http://localhost:3000/api/crm/staff \
 ### Get CRM Lead
 
 ```bash
-curl -X GET http://localhost:3000/api/crm/leads/lead-123 \
+curl -X GET https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/crm/leads/lead-123 \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN"
 ```
 
 ### List CRM Leads
 
 ```bash
-curl -X GET http://localhost:3000/api/crm/leads \
+curl -X GET https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/crm/leads \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN"
 ```
 
 ### Update CRM Lead Status
 
 ```bash
-curl -X PATCH http://localhost:3000/api/crm/leads/lead-123/status \
+curl -X PATCH https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/crm/leads/lead-123/status \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -507,7 +507,7 @@ curl -X PATCH http://localhost:3000/api/crm/leads/lead-123/status \
 ### Add Note to Lead
 
 ```bash
-curl -X POST http://localhost:3000/api/crm/leads/lead-123/notes \
+curl -X POST https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app/api/crm/leads/lead-123/notes \
   -H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -576,7 +576,7 @@ Save as `test-api.sh`:
 ```bash
 #!/bin/bash
 
-BASE_URL="http://localhost:3000"
+BASE_URL="https://sviet-itp0pg151-aryan-kambojs-projects-2c18c0ad.vercel.app"
 ADMIN_TOKEN="your-admin-token-here"
 
 echo "=== Testing Programs API ==="
