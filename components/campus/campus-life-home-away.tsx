@@ -22,7 +22,7 @@ export function CampusLifeHomeAwaySection() {
 
         <div className="overflow-hidden rounded-md">
           <Image
-            src="/assets/img/campus-life/image1.png"
+            src="/assets/img/college/admin.png"
             alt="Campus entrance"
             width={1200}
             height={800}
