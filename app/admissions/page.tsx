@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 
 import AdmissionsPageClient from "@/components/admissions/admissions-page";
@@ -9,5 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default function AdmissionsPage() {
-  return <AdmissionsPageClient />;
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
+      <AdmissionsPageClient />
+    </Suspense>
+  );
 }
