@@ -14,7 +14,7 @@ export function ProgramCtaSection({ programTitle, slug }: ProgramCtaSectionProps
         Join 10,000+ students who have built their careers at SVIET. Admissions for 2025 batch are now open. Limited seats available.
       </p>
       <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-        <Link href={`/admissions?program=${slug}`} className="rounded-lg bg-[#f7941d] px-6 py-3 font-semibold text-white">Apply Now →</Link>
+        <Link href={`/admissions?program=${slug}`} className="rounded-lg bg-[#f7941d] px-6 py-3 font-semibold text-white">Start Application →</Link>
         <Link href="/contact" className="rounded-lg border border-[#eaeaea] bg-white px-6 py-3 font-semibold">Talk to a Counselor</Link>
         <button className="rounded-lg border border-[#f1a866] bg-transparent px-6 py-3 font-semibold text-[#f7941d]">Download Brochure</button>
       </div>

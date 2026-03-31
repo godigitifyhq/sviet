@@ -21,6 +21,7 @@ export type ProgramDetailData = {
   curriculum: Record<string, string[]>;
   outcomes: string[];
   facilities: string[];
+  heroImage?: string | null;
 };
 
 type ProgramDetailPageProps = {
@@ -31,12 +32,14 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
   return (
     <div className="bg-background text-[#111]">
       <ProgramHeroSection
+        slug={program.slug}
         title={program.title}
         department={program.department}
         durationMonths={program.durationMonths}
         tuitionCents={program.tuitionCents}
         mode={program.mode}
         shortDescription={program.shortDescription}
+        heroImage={program.heroImage}
       />
       <ProgramOutcomesSection outcomes={program.outcomes} />
       <ProgramRecruitersSection />

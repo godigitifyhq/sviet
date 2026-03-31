@@ -13,6 +13,7 @@ export const BaseLeadSchema = z.object({
 
 export const ApplyNowSchema = BaseLeadSchema.extend({
   programId: z.string().uuid().optional(),
+  programSlug: z.string().trim().min(1).max(120).optional(),
   message: z.string().max(500).optional(),
   course: z.string().optional(),
 });

@@ -32,6 +32,24 @@ function parseCurriculum(value: unknown) {
   );
 }
 
+function parseHeroImage(value: unknown) {
+  if (!Array.isArray(value)) {
+    return null;
+  }
+
+  const heroImageEntry = value.find(
+    (item) =>
+      typeof item === "object" &&
+      item !== null &&
+      "q" in item &&
+      "a" in item &&
+      (item as { q?: unknown }).q === "heroImage" &&
+      typeof (item as { a?: unknown }).a === "string",
+  ) as { a: string } | undefined;
+
+  return heroImageEntry?.a ?? null;
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
 
@@ -85,6 +103,7 @@ export default async function ProgramSlugPage({ params }: PageProps) {
       curriculum: true,
       outcomes: true,
       facilities: true,
+      faqs: true,
       isActive: true,
     },
   });
@@ -107,6 +126,7 @@ export default async function ProgramSlugPage({ params }: PageProps) {
         curriculum: parseCurriculum(program.curriculum),
         outcomes: parseStringArray(program.outcomes),
         facilities: parseStringArray(program.facilities),
+        heroImage: parseHeroImage(program.faqs),
       }}
     />
   );

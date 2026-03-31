@@ -35,15 +35,19 @@ const NAV_LINK_IMAGES = [
   },
 ];
 
-const PROGRAM_DROPDOWN_ITEMS = [
-  { label: "Program Finder", href: "/program-finder" },
-  { label: "B.Tech CSE", href: "/programs/btech-cse" },
-  { label: "B.Tech AI & ML", href: "/programs/btech-ai" },
-  { label: "MBA", href: "/programs/mba" },
-  { label: "BBA", href: "/programs/bba" },
-  { label: "BCA", href: "/programs/bca" },
-  { label: "B.Pharm", href: "/programs/bpharm" },
-];
+const PROGRAM_DROPDOWN_ITEMS = [{ label: "Program Finder", href: "/program-finder" }];
+
+type ProgramDropdownItem = {
+  id: string;
+  slug: string;
+  title: string;
+  department?: string | null;
+};
+
+type ProgramsApiResponse = {
+  success?: boolean;
+  data?: ProgramDropdownItem[];
+};
 
 const UTILITY_MESSAGES = [
   " Admissions Open 2026 — Apply Now",
@@ -116,6 +120,74 @@ export function MainNavbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false);
   const [isMobileProgramsOpen, setIsMobileProgramsOpen] = useState(false);
+  const [dynamicPrograms, setDynamicPrograms] = useState<ProgramDropdownItem[]>([]);
+
+  useEffect(() => {
+    let active = true;
+
+    const loadPrograms = async () => {
+      try {
+        const response = await fetch("/api/programs", { cache: "no-store" });
+        const payload = (await response.json()) as ProgramsApiResponse;
+
+        if (!active) {
+          return;
+        }
+
+        if (!response.ok || !payload.success || !Array.isArray(payload.data)) {
+          setDynamicPrograms([]);
+          return;
+        }
+
+        setDynamicPrograms(payload.data);
+      } catch {
+        if (active) {
+          setDynamicPrograms([]);
+        }
+      }
+    };
+
+    loadPrograms();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const programDropdownItems: Array<{ label: string; href: string; department?: string }> = [
+    ...PROGRAM_DROPDOWN_ITEMS,
+    ...dynamicPrograms.map((program) => ({
+      label: program.title,
+      href: `/programs/${program.slug}`,
+      department: program.department ?? "Programs",
+    })),
+  ];
+
+  const groupedProgramItems = programDropdownItems.reduce<Record<string, { label: string; href: string }[]>>(
+    (accumulator, item) => {
+      const group = item.department ? item.department : "Explore";
+
+      if (!accumulator[group]) {
+        accumulator[group] = [];
+      }
+
+      accumulator[group].push({ label: item.label, href: item.href });
+      return accumulator;
+    },
+    {},
+  );
+
+  const orderedProgramGroups = Object.entries(groupedProgramItems).sort(([left], [right]) => {
+    if (left === "Explore") {
+      return -1;
+    }
+
+    if (right === "Explore") {
+      return 1;
+    }
+
+    return left.localeCompare(right);
+  });
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -174,8 +246,8 @@ export function MainNavbar() {
                   <span className="text-[10px]">▾</span>
                 </Link>
 
-                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-70 -translate-x-1/2 rounded-2xl border border-neutral-200 bg-white p-3 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
-                  <div className="space-y-1">
+                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-md -translate-x-1/2 rounded-2xl border border-neutral-200 bg-white p-4 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+                  <div className="grid gap-3 sm:grid-cols-2">
                     {ABOUT_DROPDOWN_ITEMS.map((aboutItem) => {
                       const isActive = pathname === aboutItem.href;
 
@@ -183,7 +255,7 @@ export function MainNavbar() {
                         <Link
                           key={aboutItem.href}
                           href={aboutItem.href}
-                          className={`block rounded-xl px-3 py-2 text-[11px] font-semibold transition hover:bg-neutral-100 hover:text-[#f7941d] ${isActive ? "bg-[#f7941d]/10 text-[#f7941d]" : "text-[#1b1b1b]"}`}
+                          className={`block rounded-xl border px-3 py-2 text-[11px] font-semibold transition hover:border-[#f7941d]/30 hover:bg-neutral-50 hover:text-[#f7941d] ${isActive ? "border-[#f7941d]/25 bg-[#f7941d]/10 text-[#f7941d]" : "border-neutral-200 text-[#1b1b1b]"}`}
                         >
                           {aboutItem.label}
                         </Link>
@@ -199,16 +271,25 @@ export function MainNavbar() {
                   <span className="text-[10px]">▾</span>
                 </button>
 
-                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-70 -translate-x-1/2 rounded-2xl border border-neutral-200 bg-white p-3 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
-                  <div className="space-y-1">
-                    {PROGRAM_DROPDOWN_ITEMS.map((dropdownItem, index) => (
-                      <Link
-                        key={dropdownItem.label}
-                        href={dropdownItem.href}
-                        className={`block rounded-xl px-3 py-2 text-[11px] font-semibold transition hover:bg-neutral-100 hover:text-[#f7941d] ${index === 0 ? "bg-[#f7941d]/10 text-[#f7941d]" : "text-[#1b1b1b]"}`}
-                      >
-                        {dropdownItem.label}
-                      </Link>
+                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-184 -translate-x-1/2 rounded-2xl border border-neutral-200 bg-white p-4 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+                  <div className="grid max-h-96 grid-cols-3 gap-4 overflow-y-auto pr-1">
+                    {orderedProgramGroups.map(([groupName, groupItems]) => (
+                      <div key={groupName} className="rounded-xl border border-neutral-200 bg-white p-3">
+                        <p className="border-b border-neutral-200 pb-2 text-[10px] font-bold uppercase tracking-[0.08em] text-[#f7941d]">
+                          {groupName}
+                        </p>
+                        <div className="mt-2 space-y-1">
+                          {groupItems.map((dropdownItem, index) => (
+                            <Link
+                              key={`${groupName}-${dropdownItem.href}-${dropdownItem.label}`}
+                              href={dropdownItem.href}
+                              className={`block rounded-lg px-2 py-1.5 text-[11px] font-semibold leading-tight transition hover:bg-neutral-100 hover:text-[#f7941d] ${groupName === "Explore" && index === 0 ? "bg-[#f7941d]/10 text-[#f7941d]" : "text-[#1b1b1b]"}`}
+                            >
+                              {dropdownItem.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -252,7 +333,7 @@ export function MainNavbar() {
                     </button>
 
                     {isMobileAboutOpen ? (
-                      <div className="mt-1 space-y-1 px-2 pb-2">
+                      <div className="mt-1 grid gap-1 px-2 pb-2">
                         {ABOUT_DROPDOWN_ITEMS.map((aboutItem) => {
                           const isActive = pathname === aboutItem.href;
 
@@ -261,7 +342,7 @@ export function MainNavbar() {
                               key={`mobile-about-${aboutItem.href}`}
                               href={aboutItem.href}
                               onClick={closeMobileMenu}
-                              className={`block rounded-lg px-3 py-2 text-sm transition hover:bg-neutral-100 hover:text-[#f7941d] ${isActive ? "bg-[#f7941d]/10 text-[#f7941d]" : "text-[#1b1b1b]"}`}
+                              className={`block rounded-lg border px-3 py-2 text-sm transition hover:border-[#f7941d]/30 hover:bg-neutral-100 hover:text-[#f7941d] ${isActive ? "border-[#f7941d]/25 bg-[#f7941d]/10 text-[#f7941d]" : "border-neutral-200 text-[#1b1b1b]"}`}
                             >
                               {aboutItem.label}
                             </Link>
@@ -282,16 +363,23 @@ export function MainNavbar() {
                     </button>
 
                     {isMobileProgramsOpen ? (
-                      <div className="mt-1 space-y-1 px-2 pb-2">
-                        {PROGRAM_DROPDOWN_ITEMS.map((programItem, index) => (
-                          <Link
-                            key={`mobile-program-${programItem.label}`}
-                            href={programItem.href}
-                            onClick={closeMobileMenu}
-                            className={`block rounded-lg px-3 py-2 text-sm transition hover:bg-neutral-100 hover:text-[#f7941d] ${index === 0 ? "bg-[#f7941d]/10 text-[#f7941d]" : "text-[#1b1b1b]"}`}
-                          >
-                            {programItem.label}
-                          </Link>
+                      <div className="mt-1 flex max-h-90 flex-col gap-3 overflow-y-auto px-2 pb-2">
+                        {orderedProgramGroups.map(([groupName, groupItems]) => (
+                          <div key={`mobile-group-${groupName}`} className="rounded-lg border border-neutral-200 bg-white p-2">
+                            <p className="px-1 pb-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[#f7941d]">{groupName}</p>
+                            <div className="space-y-1">
+                              {groupItems.map((programItem, index) => (
+                                <Link
+                                  key={`mobile-program-${groupName}-${programItem.href}-${programItem.label}`}
+                                  href={programItem.href}
+                                  onClick={closeMobileMenu}
+                                  className={`block rounded-lg px-3 py-2 text-sm transition hover:bg-neutral-100 hover:text-[#f7941d] ${groupName === "Explore" && index === 0 ? "bg-[#f7941d]/10 text-[#f7941d]" : "text-[#1b1b1b]"}`}
+                                >
+                                  {programItem.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
                         ))}
                       </div>
                     ) : null}

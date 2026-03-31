@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { ProgramFinderForm } from "@/components/forms/program-finder";
 import { postJson } from "@/lib/form-utils";
@@ -25,22 +26,20 @@ const procedureSteps = [
   },
 ];
 
-const courses = [
-  "BTECH CSE",
-  "BTECH ECE",
-  "AGRICULTURE",
-  "BBA",
-  "MBA",
-  "HM",
-  "PARAMEDICAL",
-  "PHARMACY",
-  "BCA",
-  "MCA",
-];
+type ProgramOption = {
+  id: string;
+  slug: string;
+  title: string;
+};
+
+type ProgramsApiResponse = {
+  success?: boolean;
+  data?: ProgramOption[];
+};
 
 type ApplyFormState = {
   name: string;
-  course: string;
+  programId: string;
   phone: string;
   email: string;
 };
@@ -49,7 +48,7 @@ type ApplyFormErrors = Partial<Record<keyof ApplyFormState, string>>;
 
 const initialApplyForm: ApplyFormState = {
   name: "",
-  course: "",
+  programId: "",
   phone: "",
   email: "",
 };
@@ -64,12 +63,27 @@ function splitApplyName(name: string) {
   return { firstName, lastName };
 }
 
-function useApplyLeadForm() {
+function useApplyLeadForm(programs: ProgramOption[], initialProgramSlug?: string | null) {
   const [form, setForm] = useState<ApplyFormState>(initialApplyForm);
   const [errors, setErrors] = useState<ApplyFormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+
+  useEffect(() => {
+    if (!initialProgramSlug || form.programId) {
+      return;
+    }
+
+    const selected = programs.find((program) => program.slug === initialProgramSlug);
+
+    if (selected) {
+      setForm((previous) => ({
+        ...previous,
+        programId: selected.id,
+      }));
+    }
+  }, [form.programId, initialProgramSlug, programs]);
 
   const handleFieldChange = (field: keyof ApplyFormState, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -84,8 +98,8 @@ function useApplyLeadForm() {
       nextErrors.name = "Name is required.";
     }
 
-    if (!form.course.trim()) {
-      nextErrors.course = "Course is required.";
+    if (!form.programId.trim()) {
+      nextErrors.programId = "Course is required.";
     }
 
     if (!form.phone.trim()) {
@@ -114,12 +128,16 @@ function useApplyLeadForm() {
 
     try {
       const { firstName, lastName } = splitApplyName(form.name);
+      const selectedProgram = programs.find((program) => program.id === form.programId);
+
       const response = await postJson<{ leadId: string; message: string }>("/api/leads/apply", {
         firstName,
         lastName,
         email: form.email.trim(),
         phone: form.phone.trim(),
-        course: form.course,
+        programId: form.programId,
+        programSlug: selectedProgram?.slug,
+        course: selectedProgram?.title,
       });
 
       const isSuccessful = response.success === true || (response as { ok?: boolean }).ok === true;
@@ -147,7 +165,7 @@ function useApplyLeadForm() {
   };
 }
 
-function HeroForm() {
+function HeroForm({ programs, initialProgramSlug }: { programs: ProgramOption[]; initialProgramSlug?: string | null }) {
   const {
     form,
     errors,
@@ -156,7 +174,7 @@ function HeroForm() {
     isSuccess,
     handleFieldChange,
     handleSubmit,
-  } = useApplyLeadForm();
+  } = useApplyLeadForm(programs, initialProgramSlug);
 
   if (isSuccess) {
     return (
@@ -183,17 +201,19 @@ function HeroForm() {
           <select
             title="Course"
             className={inputClass}
-            value={form.course}
-            onChange={(event) => handleFieldChange("course", event.target.value)}
+            value={form.programId}
+            onChange={(event) => handleFieldChange("programId", event.target.value)}
           >
             <option value="" disabled>
               Selection text
             </option>
-            <option value="btech">B.Tech</option>
-            <option value="mba">MBA</option>
-            <option value="bca">BCA</option>
+            {programs.map((program) => (
+              <option key={program.id} value={program.id}>
+                {program.title}
+              </option>
+            ))}
           </select>
-          {errors.course ? <p className="mt-1 text-xs text-red-600">{errors.course}</p> : null}
+          {errors.programId ? <p className="mt-1 text-xs text-red-600">{errors.programId}</p> : null}
         </div>
         <div>
           <input
@@ -229,7 +249,13 @@ function HeroForm() {
   );
 }
 
-function InitialApplicationForm() {
+function InitialApplicationForm({
+  programs,
+  initialProgramSlug,
+}: {
+  programs: ProgramOption[];
+  initialProgramSlug?: string | null;
+}) {
   const {
     form,
     errors,
@@ -238,7 +264,7 @@ function InitialApplicationForm() {
     isSuccess,
     handleFieldChange,
     handleSubmit,
-  } = useApplyLeadForm();
+  } = useApplyLeadForm(programs, initialProgramSlug);
 
   if (isSuccess) {
     return (
@@ -263,17 +289,19 @@ function InitialApplicationForm() {
       <select
         title="Course"
         className={inputClass}
-        value={form.course}
-        onChange={(event) => handleFieldChange("course", event.target.value)}
+        value={form.programId}
+        onChange={(event) => handleFieldChange("programId", event.target.value)}
       >
         <option value="" disabled>
           Selection text
         </option>
-        <option value="btech">B.Tech</option>
-        <option value="mba">MBA</option>
-        <option value="bca">BCA</option>
+        {programs.map((program) => (
+          <option key={program.id} value={program.id}>
+            {program.title}
+          </option>
+        ))}
       </select>
-      {errors.course ? <p className="-mt-2 text-xs text-red-600">{errors.course}</p> : null}
+      {errors.programId ? <p className="-mt-2 text-xs text-red-600">{errors.programId}</p> : null}
       <label className="text-sm text-gray-500">Phone</label>
       <input
         type="tel"
@@ -337,18 +365,18 @@ function Timeline() {
   );
 }
 
-function EligibilityPanel() {
+function EligibilityPanel({ programs }: { programs: ProgramOption[] }) {
   return (
     <div className="mt-10 grid gap-10 md:grid-cols-3">
       <div>
         <h3 className="text-2xl font-semibold">CHOOSE COURSE</h3>
         <ul className="mt-4 divide-y divide-gray-200 border-b border-gray-200">
-          {courses.map((course, index) => (
+          {programs.map((course, index) => (
             <li
-              key={course}
+              key={course.id}
               className={`py-2 text-base ${index === 0 ? "font-semibold text-orange-500" : "text-gray-600"}`}
             >
-              {course}
+              {course.title}
             </li>
           ))}
         </ul>
@@ -396,6 +424,43 @@ function EligibilityPanel() {
 }
 
 export default function AdmissionsPage() {
+  const searchParams = useSearchParams();
+  const [programs, setPrograms] = useState<ProgramOption[]>([]);
+
+  useEffect(() => {
+    let active = true;
+
+    const loadPrograms = async () => {
+      try {
+        const response = await fetch("/api/programs", { cache: "no-store" });
+        const payload = (await response.json()) as ProgramsApiResponse;
+
+        if (!active) {
+          return;
+        }
+
+        if (!response.ok || !payload.success || !Array.isArray(payload.data)) {
+          setPrograms([]);
+          return;
+        }
+
+        setPrograms(payload.data);
+      } catch {
+        if (active) {
+          setPrograms([]);
+        }
+      }
+    };
+
+    loadPrograms();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const initialProgramSlug = useMemo(() => searchParams.get("program"), [searchParams]);
+
   return (
     <div className="bg-white">
       <section className="relative min-h-140  overflow-hidden">
@@ -415,7 +480,7 @@ export default function AdmissionsPage() {
           </div>
 
           <div className="mt-8 md:absolute md:right-6 md:top-1/2 md:mt-0 md:-translate-y-1/2">
-            <HeroForm />
+            <HeroForm programs={programs} initialProgramSlug={initialProgramSlug} />
           </div>
         </div>
       </section>
@@ -435,7 +500,7 @@ export default function AdmissionsPage() {
         <div className="grid gap-10 md:grid-cols-2">
           <div>
             <h3 className="text-2xl font-semibold">INITIAL APPLICATION</h3>
-            <InitialApplicationForm />
+            <InitialApplicationForm programs={programs} initialProgramSlug={initialProgramSlug} />
           </div>
 
           <div className="relative overflow-hidden rounded-2xl">
@@ -474,7 +539,7 @@ export default function AdmissionsPage() {
         <p className="mt-2 max-w-3xl text-lg text-gray-700">
           Technology Enhanced Experimental Learning With Advance Learning Centers & Labs.
         </p>
-        <EligibilityPanel />
+        <EligibilityPanel programs={programs} />
       </section>
     </div>
   );

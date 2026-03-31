@@ -1,14 +1,17 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { PROGRAM_META_CHIPS } from "@/components/programs/data";
 
 type ProgramHeroSectionProps = {
+  slug: string;
   title: string;
   department?: string | null;
   durationMonths: number;
   tuitionCents: number;
   mode?: string | null;
   shortDescription: string;
+  heroImage?: string | null;
 };
 
 function formatMode(mode?: string | null) {
@@ -37,12 +40,14 @@ function formatDuration(durationMonths: number) {
 }
 
 export function ProgramHeroSection({
+  slug,
   title,
   department,
   durationMonths,
   tuitionCents,
   mode,
   shortDescription,
+  heroImage,
 }: ProgramHeroSectionProps) {
   const dynamicChips = [formatDuration(durationMonths), formatCurrency(tuitionCents), formatMode(mode)]
     .filter((chip): chip is string => Boolean(chip));
@@ -67,7 +72,7 @@ export function ProgramHeroSection({
             ))}
           </div>
           <Image
-            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80"
+            src={heroImage && heroImage.startsWith("/") ? heroImage : "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80"}
             alt="Program"
             width={1400}
             height={560}
@@ -80,7 +85,7 @@ export function ProgramHeroSection({
           <p className="text-6xl font-extrabold">
             120 <span className="text-sm font-semibold text-[#f7941d] mb-10">Filling Fast</span>
           </p>
-          <button className="w-full rounded bg-[#f7941d] px-4 py-2.5 font-semibold text-white">Apply Now</button>
+          <Link href={`/admissions?program=${slug}`} className="block w-full rounded bg-[#f7941d] px-4 py-2.5 text-center font-semibold text-white">Apply Now</Link>
           <button className="w-full rounded border border-[#f7941d] px-4 py-2.5 font-semibold text-[#f7941d]">Download Brochure</button>
           <button className="w-full rounded border border-[#e6e6e6] px-4 py-2.5 font-semibold text-[#555]">Enquire</button>
           <div className="space-y-5 pb-5 border-t border-[#eaeaea] pt-7 mt-3 text-xs">

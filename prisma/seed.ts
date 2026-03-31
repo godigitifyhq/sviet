@@ -33,6 +33,14 @@ type ProgramSeedInput = {
   faqs: Prisma.InputJsonValue;
 };
 
+type SourceProgramInput = {
+  category: string;
+  course: string;
+  slug: string;
+  title: string;
+  imagePath: string;
+};
+
 const PROGRAMS: ProgramSeedInput[] = [
   {
     slug: "btech-cse",
@@ -331,8 +339,210 @@ const PROGRAMS: ProgramSeedInput[] = [
   },
 ];
 
+const SOURCE_PROGRAMS: SourceProgramInput[] = [
+  { category: "BTech", course: "civil", slug: "btech-civil", title: "B.Tech Civil Engineering", imagePath: "/assets/programs/BTech/civil/civil.png" },
+  { category: "BTech", course: "cse", slug: "btech-cse", title: "B.Tech Computer Science & Engineering", imagePath: "/assets/programs/BTech/cse/CSEheader.jpg" },
+  { category: "BTech", course: "ece", slug: "btech-ece", title: "B.Tech Electronics & Communication Engineering", imagePath: "/assets/programs/BTech/ece/Header.jpg" },
+  { category: "BTech", course: "ee", slug: "btech-ee", title: "B.Tech Electrical Engineering", imagePath: "/assets/programs/BTech/ee/EEheader.jpg" },
+  { category: "BTech", course: "me", slug: "btech-me", title: "B.Tech Mechanical Engineering", imagePath: "/assets/programs/BTech/me/MEheader.jpg" },
+  { category: "Business", course: "BBA", slug: "bba", title: "Bachelor of Business Administration", imagePath: "/assets/programs/Business/BBA/bbaHeader.jpg" },
+  { category: "Business", course: "commerce", slug: "bcom", title: "Bachelor of Commerce", imagePath: "/assets/programs/Business/commerce/commerce.jpg" },
+  { category: "Business", course: "MBA", slug: "mba", title: "Master of Business Administration", imagePath: "/assets/programs/Business/MBA/mba.jpg" },
+  { category: "CA", course: "CA", slug: "ca", title: "Chartered Accountancy", imagePath: "/assets/programs/CA/data.avif" },
+  { category: "ComputerApp", course: "BCA", slug: "bca", title: "Bachelor of Computer Applications", imagePath: "/assets/programs/ComputerApp/BCA/data.jpg" },
+  { category: "ComputerApp", course: "BscIt", slug: "bsc-it", title: "B.Sc Information Technology", imagePath: "/assets/programs/ComputerApp/BscIt/cyber.avif" },
+  { category: "ComputerApp", course: "MCA", slug: "mca", title: "Master of Computer Applications", imagePath: "/assets/programs/ComputerApp/MCA/cloud.avif" },
+  { category: "ComputerApp", course: "pgdca", slug: "pgdca", title: "Post Graduate Diploma in Computer Applications", imagePath: "/assets/programs/ComputerApp/pgdca/consultant.avif" },
+  { category: "diploma", course: "civil", slug: "diploma-civil", title: "Diploma in Civil Engineering", imagePath: "/assets/programs/diploma/civil/civilheader.jpg" },
+  { category: "diploma", course: "cse", slug: "diploma-cse", title: "Diploma in Computer Science Engineering", imagePath: "/assets/programs/diploma/cse/cse.jpg" },
+  { category: "diploma", course: "ee", slug: "diploma-ee", title: "Diploma in Electrical Engineering", imagePath: "/assets/programs/diploma/ee/ee.jpg" },
+  { category: "diploma", course: "me", slug: "diploma-me", title: "Diploma in Mechanical Engineering", imagePath: "/assets/programs/diploma/me/me.jpg" },
+  { category: "Education", course: "Arts", slug: "education-arts", title: "Bachelor of Arts", imagePath: "/assets/programs/Education/Arts/curriculum.avif" },
+  { category: "Education", course: "BA", slug: "ba", title: "B.A. Program", imagePath: "/assets/programs/Education/BA/comms.avif" },
+  { category: "Education", course: "Bachelor", slug: "bed", title: "Bachelor of Education", imagePath: "/assets/programs/Education/Bachelor/expertise.avif" },
+  { category: "Education", course: "Masters", slug: "med", title: "Master of Education", imagePath: "/assets/programs/Education/Masters/header.avif" },
+  { category: "HM", course: "Bsc", slug: "bsc-hm", title: "B.Sc in Hospitality & Nutrition", imagePath: "/assets/programs/HM/Bsc/header.jpg" },
+  { category: "HM", course: "BVoc", slug: "bvoc-hospitality", title: "B.Voc in Hospitality", imagePath: "/assets/programs/HM/BVoc/Bvoc.jpg" },
+  { category: "HM", course: "catering", slug: "catering-hospitality", title: "Catering & Hospitality Management", imagePath: "/assets/programs/HM/catering/catering.jpg" },
+  { category: "HM", course: "mhmct", slug: "mhmct", title: "MHMCT", imagePath: "/assets/programs/HM/mhmct/Mhmct.jpg" },
+  { category: "Law", course: "Bachelors", slug: "ba-llb", title: "B.A. LL.B", imagePath: "/assets/programs/Law/Bachelors/header.avif" },
+  { category: "Law", course: "LLB", slug: "llb", title: "Bachelor of Law (LLB)", imagePath: "/assets/programs/Law/LLB/header.avif" },
+  { category: "MTech", course: "civil", slug: "mtech-civil", title: "M.Tech Civil Engineering", imagePath: "/assets/programs/MTech/civil/header.avif" },
+  { category: "MTech", course: "cse", slug: "mtech-cse", title: "M.Tech Computer Science Engineering", imagePath: "/assets/programs/MTech/cse/Header.jpg" },
+  { category: "MTech", course: "ee", slug: "mtech-ee", title: "M.Tech Electrical Engineering", imagePath: "/assets/programs/MTech/ee/Header.jpg" },
+  { category: "paramedical", course: "Anasthesia", slug: "paramedical-anasthesia", title: "Anasthesia Technology", imagePath: "/assets/programs/paramedical/Anasthesia/header.avif" },
+  { category: "paramedical", course: "Anesthesia", slug: "paramedical-anesthesia", title: "Anesthesia Technology", imagePath: "/assets/programs/paramedical/Anesthesia/anestehsia.jpg" },
+  { category: "paramedical", course: "Cardiac", slug: "paramedical-cardiac", title: "Cardiac Care Technology", imagePath: "/assets/programs/paramedical/Cardiac/header.avif" },
+  { category: "paramedical", course: "DMLT", slug: "dmlt", title: "Diploma in Medical Laboratory Technology", imagePath: "/assets/programs/paramedical/DMLT/header.avif" },
+  { category: "paramedical", course: "Lab", slug: "paramedical-lab", title: "Medical Lab Sciences", imagePath: "/assets/programs/paramedical/Lab/header.avif" },
+  { category: "paramedical", course: "MLS", slug: "mls", title: "Medical Laboratory Science", imagePath: "/assets/programs/paramedical/MLS/mls.jpg" },
+  { category: "paramedical", course: "Optometry", slug: "optometry", title: "Optometry", imagePath: "/assets/programs/paramedical/Optometry/header.avif" },
+  { category: "paramedical", course: "OT", slug: "ot", title: "Operation Theatre Technology", imagePath: "/assets/programs/paramedical/OT/ot.jpg" },
+  { category: "paramedical", course: "Physiotherapy", slug: "physiotherapy", title: "Physiotherapy", imagePath: "/assets/programs/paramedical/Physiotherapy/header.avif" },
+  { category: "paramedical", course: "Radiology", slug: "radiology", title: "Radiology & Imaging Technology", imagePath: "/assets/programs/paramedical/Radiology/radiology.jpg" },
+  { category: "pharmacy", course: "diploma", slug: "dpharm", title: "Diploma in Pharmacy", imagePath: "/assets/programs/pharmacy/diploma/Diploma.jpg" },
+  { category: "pharmacy", course: "Mpharma", slug: "mpharm", title: "Master of Pharmacy", imagePath: "/assets/programs/pharmacy/Mpharma/Mpharma.jpg" },
+  { category: "pharmacy", course: "pharm", slug: "bpharm", title: "Bachelor of Pharmacy", imagePath: "/assets/programs/pharmacy/pharm/Bpharma.jpg" },
+  { category: "pharmacy", course: "pharmD", slug: "pharmd", title: "Pharm.D", imagePath: "/assets/programs/pharmacy/pharmD/pharmd.jpg" },
+  { category: "Science", course: "Chemistry", slug: "chemistry", title: "Chemistry", imagePath: "/assets/programs/Science/Chemistry/header.avif" },
+  { category: "Science", course: "Maths", slug: "maths", title: "Mathematics", imagePath: "/assets/programs/Science/Maths/header.avif" },
+  { category: "Science", course: "Non-medical", slug: "non-medical", title: "Non-Medical Sciences", imagePath: "/assets/programs/Science/Non-medical/header.avif" },
+  { category: "Science", course: "Physics", slug: "physics", title: "Physics", imagePath: "/assets/programs/Science/Physics/header.avif" },
+];
+
+function inferDurationMonths(title: string, category: string) {
+  const normalizedTitle = title.toLowerCase();
+  const normalizedCategory = category.toLowerCase();
+
+  if (normalizedTitle.includes("pharm.d")) {
+    return 72;
+  }
+
+  if (normalizedTitle.startsWith("post graduate") || normalizedTitle.includes("pgdca")) {
+    return 12;
+  }
+
+  if (normalizedTitle.includes("master") || normalizedTitle.startsWith("mba") || normalizedTitle.startsWith("m.tech") || normalizedTitle.startsWith("mca") || normalizedTitle.startsWith("mhmct") || normalizedTitle.startsWith("m.pharm")) {
+    return 24;
+  }
+
+  if (normalizedCategory === "diploma" || normalizedTitle.startsWith("diploma")) {
+    return 36;
+  }
+
+  if (normalizedTitle.startsWith("b.tech") || normalizedTitle.startsWith("b.pharm") || normalizedTitle.includes("ll.b")) {
+    return 48;
+  }
+
+  return 36;
+}
+
+function inferTuitionCents(durationMonths: number) {
+  if (durationMonths >= 72) {
+    return 11000000;
+  }
+
+  if (durationMonths >= 48) {
+    return 9000000;
+  }
+
+  if (durationMonths >= 36) {
+    return 6500000;
+  }
+
+  if (durationMonths >= 24) {
+    return 7500000;
+  }
+
+  return 4500000;
+}
+
+function normalizeDepartment(category: string) {
+  const map: Record<string, string> = {
+    btech: "Engineering",
+    mtech: "Engineering",
+    business: "Management",
+    ca: "Commerce",
+    computerapp: "Computer Applications",
+    diploma: "Diploma",
+    education: "Education",
+    hm: "Hotel Management",
+    law: "Law",
+    paramedical: "Paramedical",
+    pharmacy: "Pharmacy",
+    science: "Science",
+  };
+
+  return map[category.toLowerCase()] ?? category;
+}
+
+function normalizeSourceProgram(input: SourceProgramInput): ProgramSeedInput {
+  const durationMonths = inferDurationMonths(input.title, input.category);
+
+  return {
+    slug: input.slug,
+    title: input.title,
+    shortDescription: `${input.title} program at SVIET with practical learning and career support.`,
+    department: normalizeDepartment(input.category),
+    durationMonths,
+    tuitionCents: inferTuitionCents(durationMonths),
+    mode: "OFFLINE",
+    isActive: true,
+    isFeatured: false,
+    fullDescription: `${input.title} is offered under the ${normalizeDepartment(input.category)} stream at SVIET. Please connect with admissions for detailed curriculum and fee breakup.`,
+    highlights: [
+      "Industry-aligned academic delivery",
+      "Hands-on learning and lab exposure",
+      "Placement and career guidance support",
+    ],
+    eligibility: "Eligibility varies by course. Contact admissions for detailed criteria.",
+    outcomes: [
+      "Domain specialist roles",
+      "Higher education pathways",
+      "Industry and practical career readiness",
+    ],
+    facilities: [
+      "Modern labs and infrastructure",
+      "Experienced faculty guidance",
+      "Career support ecosystem",
+    ],
+    curriculum: {
+      overview: [
+        "Foundation modules",
+        "Core domain subjects",
+        "Practical training",
+        "Project-based learning",
+      ],
+    },
+    faqs: [
+      { q: "Where can I view course details?", a: "Please contact admissions for latest curriculum and intake information." },
+      { q: "heroImage", a: input.imagePath },
+    ],
+  };
+}
+
+function withImageFaq(program: ProgramSeedInput) {
+  const sourceMatch = SOURCE_PROGRAMS.find((sourceProgram) => sourceProgram.slug === program.slug);
+
+  if (!sourceMatch) {
+    return program;
+  }
+
+  const currentFaqs = Array.isArray(program.faqs) ? [...program.faqs] : [];
+  const hasHeroImageEntry = currentFaqs.some(
+    (item) =>
+      typeof item === "object" &&
+      item !== null &&
+      "q" in item &&
+      "a" in item &&
+      (item as { q?: unknown }).q === "heroImage",
+  );
+
+  if (!hasHeroImageEntry) {
+    currentFaqs.push({ q: "heroImage", a: sourceMatch.imagePath });
+  }
+
+  return {
+    ...program,
+    faqs: currentFaqs,
+  };
+}
+
+const SOURCE_PROGRAM_SEEDS = SOURCE_PROGRAMS.map(normalizeSourceProgram);
+const PROGRAM_MAP = new Map<string, ProgramSeedInput>();
+
+for (const sourceProgram of SOURCE_PROGRAM_SEEDS) {
+  PROGRAM_MAP.set(sourceProgram.slug, sourceProgram);
+}
+
+for (const program of PROGRAMS) {
+  PROGRAM_MAP.set(program.slug, withImageFaq(program));
+}
+
+const ALL_PROGRAMS = [...PROGRAM_MAP.values()];
+
 async function main() {
-  for (const program of PROGRAMS) {
+  for (const program of ALL_PROGRAMS) {
     const { slug, ...data } = program;
 
     await prisma.program.upsert({
@@ -345,7 +555,7 @@ async function main() {
     });
   }
 
-  console.log(`Seed complete: upserted ${PROGRAMS.length} programs.`);
+  console.log(`Seed complete: upserted ${ALL_PROGRAMS.length} programs.`);
 }
 
 main()

@@ -39,6 +39,17 @@ export const POST = withPublicApiHandler(async (req: NextRequest) => {
 
   const body = ApplyNowSchema.parse(await req.json());
 
+  let intendedProgramId: string | null = body.programId ?? null;
+
+  if (!intendedProgramId && body.programSlug) {
+    const matchedProgram = await prisma.program.findUnique({
+      where: { slug: body.programSlug },
+      select: { id: true },
+    });
+
+    intendedProgramId = matchedProgram?.id ?? null;
+  }
+
   const lead = await prisma.$transaction(async (tx) => {
     const created = await tx.lead.create({
       data: {
@@ -48,7 +59,7 @@ export const POST = withPublicApiHandler(async (req: NextRequest) => {
         phone: body.phone,
         source: "APPLY_NOW",
         status: "NEW",
-        intendedProgramId: body.programId ?? null,
+        intendedProgramId,
       },
     });
 

@@ -186,7 +186,7 @@ export function Results({ selections, recommendations, onRestart }: ResultsProps
                   </div>
 
                   <Link
-                    href="/admissions"
+                    href={`/admissions?program=${program.slug}`}
                     className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#FF6A00] px-6 py-3 text-sm font-medium text-white transition-all shadow-lg hover:bg-[#E55A00] hover:shadow-xl"
                   >
                     Apply Now
