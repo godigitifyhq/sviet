@@ -10,14 +10,38 @@ const leaders = [
   {
     name: "Aman Gupta",
     role: "Co-Founder, boAt",
-    image: "/assets/img/college/aman_gupta.png",
+    image: "/assets/img/college/guests/aman_gupta.png",
     quote: "Build products that solve real problems",
   },
   {
     name: "Ashneer Grover",
     role: "Co-Founder, BharatPe",
-    image: "/assets/img/college/ashneer_groveer.png",
+    image: "/assets/img/college/guests/ashneer_groveer.png",
     quote: "Entrepreneurship is about creating value at scale",
+  },
+  {
+    name: "Anand Kumar Sir",
+    role: "Distinguished Guest",
+    image: "/assets/img/college/guests/anand_kumar_sir.png",
+    quote: "Education has the power to transform every life",
+  },
+  {
+    name: "PK Desai Sir",
+    role: "Distinguished Guest",
+    image: "/assets/img/college/guests/pkdesaisir.jpeg",
+    quote: "Discipline and consistency drive long-term success",
+  },
+  {
+    name: "Rajeev Ahuja Sir",
+    role: "Distinguished Guest",
+    image: "/assets/img/college/guests/rajeev_ahuja_sir.jpg.jpeg",
+    quote: "Innovation begins when curiosity meets execution",
+  },
+  {
+    name: "Susheel Mital Sir",
+    role: "Distinguished Guest",
+    image: "/assets/img/college/guests/susheel_mital_sir.jpg.jpeg",
+    quote: "Leadership is about enabling others to excel",
   },
 ];
 
@@ -76,14 +100,16 @@ export function DistinguishedLeadersSection() {
               <SwiperSlide key={`${leader.name}-${index}`} className="h-full">
                 <article className="flex h-full flex-col items-start md:min-h-[320px] md:items-stretch md:flex-row">
                   {/* Left Side - Image */}
-                  <div className="w-full overflow-hidden rounded-2xl md:w-[45%]">
-                    <Image
-                      src={leader.image}
-                      alt={leader.name}
-                      className=" w-full object-cover grayscale "
-                      width={400}
-                      height={320}
-                    />
+                  <div className="w-[400px] overflow-hidden md:w-[45%]">
+                    <div className="h-[400px] w-full overflow-hidden">
+                      <Image
+                        src={leader.image}
+                        alt={leader.name}
+                        className="h-full w-full object-cover grayscale"
+                        width={400}
+                        height={320}
+                      />
+                    </div>
                   </div>
 
                   {/* Right Side - Content */}

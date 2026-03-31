@@ -13,24 +13,6 @@ const testimonials = [
     company: "Marketing Manager at Dabur",
     quote: "The industry exposure at SVIET is unmatched. From live case studies to corporate internships, every experience prepared me for the real world.",
   },
-  {
-    name: "Arjun Mehta",
-    program: "B.Tech ME, 2023",
-    company: "Engineer at Maruti Suzuki",
-    quote: "The hands-on lab experience and placement cell at SVIET helped me land my dream job. I'm proud to be a SVIET alumnus.",
-  },
-  {
-    name: "Neha Gupta",
-    program: "B.Pharm, 2022",
-    company: "Medical Representative at Cipla",
-    quote: "The pharmacy department at SVIET has world-class labs and amazing faculty. The practical training prepared me completely for my role.",
-  },
-  {
-    name: "Vikram Patel",
-    program: "BCA, 2023",
-    company: "Web Developer at Infosys BPM",
-    quote: "From coding bootcamps to hackathons, SVIET kept pushing us to grow. The placement support was incredible.",
-  },
 ];
 
 export function CampusLifeTestimonialsSection() {
