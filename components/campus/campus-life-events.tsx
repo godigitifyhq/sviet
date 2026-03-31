@@ -1,4 +1,5 @@
 import Image from "next/image";
+import eventsData from "@/data/data/event";
 
 const eventImages = [
   "/assets/img/campus-life/r1c1.png",
@@ -10,10 +11,20 @@ const eventImages = [
   "/assets/img/campus-life/r3c2.png",
 ];
 
-const events = eventImages.map((image) => ({
-  title: "SPONTANIA",
-  text: "Explore our collection of memorable moments and events that capture the vibrant life at SVIET.",
-  image,
+type CampusEvent = {
+  id: number;
+  name: string;
+  headerImage: string;
+  overview: string;
+};
+
+const events = (eventsData as CampusEvent[]).slice(0, 7).map((event, index) => ({
+  title: event.name,
+  text:
+    event.overview.length > 120
+      ? `${event.overview.slice(0, 117)}...`
+      : event.overview,
+  image: event.headerImage || eventImages[index] || eventImages[0],
 }));
 
 export function CampusLifeEventsSection() {

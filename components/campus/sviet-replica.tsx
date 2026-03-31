@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import eventsData from "@/data/data/event";
 
 type NavItem = {
   label: string;
@@ -10,6 +11,17 @@ type SimpleCard = {
   title: string;
   subtitle?: string;
   image: string;
+  date?: string;
+  venue?: string;
+};
+
+type EventRecord = {
+  id: number;
+  name: string;
+  headerImage: string;
+  overview: string;
+  date: string;
+  venue: string;
 };
 
 const NAV_ITEMS: NavItem[] = [
@@ -25,41 +37,35 @@ const NAV_ITEMS: NavItem[] = [
 
 const RECRUITERS = ["Deloitte.", "amazon", "wipro", "Infosys", "tcs", "Calvin Klein", "Dabur", "mamy's"];
 
-const UPCOMING_EVENTS: SimpleCard[] = [
-  {
-    title: "Cultural Fest Rang-e-SVIET",
-    subtitle: "Three day cultural extravaganza celebrating diversity and talent.",
-    image:
-      "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "AI & Machine Learning Workshop",
-    subtitle: "Hands-on workshop on latest ML frameworks and practical applications.",
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Leadership & Entrepreneurship Seminar",
-    subtitle: "Industry experts share insights on building startups and leadership skills.",
-    image:
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80",
-  },
-];
+const DEFAULT_EVENT_IMAGE =
+  "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80";
 
-const WORKSHOPS: SimpleCard[] = [
-  {
-    title: "AI & Machine Learning Workshop",
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "IoT & Robotics Workshop",
-    image:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
-  },
-];
+const normalizedEvents = (eventsData as EventRecord[]).map((event) => ({
+  title: event.name,
+  subtitle: event.overview,
+  image: event.headerImage || DEFAULT_EVENT_IMAGE,
+  date: event.date,
+  venue: event.venue,
+}));
+
+const UPCOMING_EVENTS: SimpleCard[] = normalizedEvents;
+
+const WORKSHOPS: SimpleCard[] = normalizedEvents.slice(0, 2);
 
 const FACILITIES = ["Computer Labs", "Central Library", "Sports Complex", "Research Labs"];
+
+function truncateToWords(text: string | undefined, maxWords: number) {
+  if (!text) {
+    return "";
+  }
+
+  const words = text.trim().split(/\s+/);
+  if (words.length <= maxWords) {
+    return text;
+  }
+
+  return `${words.slice(0, maxWords).join(" ")} ....`;
+}
 
 function TopUtilityBar() {
   return (
@@ -755,11 +761,11 @@ export function EventsPageReplica() {
               <Image src={event.image} alt={event.title} width={1200} height={800} className="h-36 w-full rounded-lg object-cover" />
               <div className="mt-3 flex items-center justify-between text-xs text-[#f7941d] font-semibold">
                 <span className="rounded-full border border-[#f7941d] px-2 py-0.5">Cultural</span>
-                <span>Apr 12 2026</span>
+                <span>{event.date ?? "TBA"}</span>
               </div>
               <h3 className="mt-2 text-lg font-bold">{event.title}</h3>
-              <p className="mt-1 text-sm text-[#555]">{event.subtitle}</p>
-              <p className="mt-2 text-xs text-[#777]">SVIET Campus</p>
+              <p className="mt-1 text-sm text-[#555]">{truncateToWords(event.subtitle, 30)}</p>
+              <p className="mt-2 text-xs text-[#777]">{event.venue ?? "SVIET Campus"}</p>
               <a className="mt-3 inline-block text-sm font-semibold text-[#f7941d]">View Details →</a>
             </article>
           ))}
@@ -774,7 +780,7 @@ export function EventsPageReplica() {
               <Image src={event.image} alt={event.title} width={1200} height={800} className="h-40 w-full rounded-lg object-cover" />
               <div className="mt-2 text-xs text-[#f7941d] font-bold">Workshop</div>
               <h3 className="mt-1 text-lg font-bold">{event.title}</h3>
-              <p className="mt-1 text-xs text-[#777]">Apr 18, 2026</p>
+              <p className="mt-1 text-xs text-[#777]">{event.date ?? "TBA"}</p>
               <a className="mt-3 inline-block text-sm font-semibold text-[#f7941d]">View Details →</a>
             </article>
           ))}
@@ -876,39 +882,7 @@ export function EventsPageReplica() {
         </div>
       </section>
 
-      <footer className="bg-black px-3 py-8 text-white md:px-5">
-        <div className="mx-auto grid w-full max-w-300 gap-8 md:grid-cols-[1fr_1fr_0.7fr]">
-          <div>
-            <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-sm bg-[#1d65b9]" />
-              <span className="font-serif text-2xl font-bold">SVIET</span>
-            </div>
-            <p className="mt-3 text-xs text-[#ccc]">Swami Vivekanand Institute of Engineering and Technology</p>
-            <p className="mt-1 text-xs text-[#ccc]">Chakkar, Patiala, Punjab</p>
-            <p className="mt-1 text-xs text-[#ccc]">+91 12345 67890</p>
-          </div>
-          <form className="space-y-2">
-            <input className="w-full rounded bg-[#131313] px-3 py-2 text-sm text-white" placeholder="First Name" />
-            <input className="w-full rounded bg-[#131313] px-3 py-2 text-sm text-white" placeholder="Course" />
-            <input className="w-full rounded bg-[#131313] px-3 py-2 text-sm text-white" placeholder="Phone" />
-            <input className="w-full rounded bg-[#131313] px-3 py-2 text-sm text-white" placeholder="Email" />
-            <button className="w-full rounded bg-[#f7941d] px-4 py-2 text-sm font-semibold text-white">Get Started</button>
-          </form>
-          <div className="space-y-2 text-sm text-white/90">
-            <p className="font-semibold">Quick Links</p>
-            <a href="#" className="block hover:text-white">About</a>
-            <a href="#" className="block hover:text-white">Careers</a>
-            <a href="#" className="block hover:text-white">FAQs</a>
-            <a href="#" className="block hover:text-white">Teams</a>
-            <a href="#" className="block hover:text-white">Contact</a>
-            <div className="mt-3 flex items-center gap-2 text-xs text-white/70">
-              <span>🔴</span>
-              <span>🟠</span>
-              <span>🟣</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      
     </div>
   );
 }
