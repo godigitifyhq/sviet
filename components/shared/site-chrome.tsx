@@ -298,7 +298,7 @@ export function MainNavbar() {
 
                                 return (
                                   <Link
-                                    key={aboutItem.href}
+                                    key={`${group.title}-${aboutItem.href}-${aboutItem.label}`}
                                     href={aboutItem.href}
                                     className={`flex items-center justify-between rounded-xl border px-3 py-2 text-[12px] font-semibold transition hover:border-[#f7941d]/30 hover:bg-white hover:text-[#f7941d] ${isActive ? "border-[#f7941d]/25 bg-[#f7941d]/10 text-[#f7941d]" : "border-transparent text-[#1b1b1b]"}`}
                                   >
