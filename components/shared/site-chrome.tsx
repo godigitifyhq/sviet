@@ -37,6 +37,45 @@ const NAV_LINK_IMAGES = [
 
 const PROGRAM_DROPDOWN_ITEMS = [{ label: "Program Finder", href: "/program-finder" }];
 
+const ABOUT_PANEL_GROUPS = [
+  {
+    title: "Discover PU",
+    items: [
+      { label: "Overview", href: "/about" },
+      { label: "Leadership", href: "/about/leadership" },
+      { label: "Vision and Mission", href: "/about" },
+      { label: "PU Advantage", href: "/about" },
+    ],
+  },
+  {
+    title: "Explore More",
+    items: [
+      { label: "Our Campus Locations", href: "/about/infrastructure" },
+      { label: "PU Infrastructure", href: "/about/infrastructure" },
+      { label: "Sakshamthad Foundation", href: "/about" },
+      { label: "Life at PU", href: "/campus-life" },
+    ],
+  },
+] as const;
+
+const ABOUT_PANEL_FEATURE = {
+  eyebrow: "Admissions Open 2026",
+  title: "Join a new generation of learners",
+  description: "Explore academics, campus life, and the student experience in one focused view.",
+  href: "/admissions",
+  imageSrc: "/assets/img/college/8th.png",
+  imageAlt: "Student spotlight",
+};
+
+const PROGRAM_PANEL_FEATURE = {
+  eyebrow: "Program Finder",
+  title: "Find the right program faster",
+  description: "Browse departments, compare active programs, and jump straight into the degree that fits.",
+  href: "/program-finder",
+  imageSrc: "/assets/img/college/4th.png",
+  imageAlt: "Campus building",
+};
+
 type ProgramDropdownItem = {
   id: string;
   slug: string;
@@ -246,21 +285,57 @@ export function MainNavbar() {
                   <span className="text-[10px]">▾</span>
                 </Link>
 
-                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-md -translate-x-1/2 rounded-2xl border border-neutral-200 bg-white p-4 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    {ABOUT_DROPDOWN_ITEMS.map((aboutItem) => {
-                      const isActive = pathname === aboutItem.href;
+                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-[min(1080px,calc(100vw-2rem))] -translate-x-1/2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+                  <div className="overflow-hidden rounded-[28px] border border-neutral-200 bg-white p-5 shadow-[0_24px_70px_rgba(15,23,42,0.14)]">
+                    <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px]">
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        {ABOUT_PANEL_GROUPS.map((group) => (
+                          <section key={group.title} className="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+                            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f7941d]">{group.title}</p>
+                            <div className="mt-3 space-y-1.5">
+                              {group.items.map((aboutItem) => {
+                                const isActive = pathname === aboutItem.href;
 
-                      return (
-                        <Link
-                          key={aboutItem.href}
-                          href={aboutItem.href}
-                          className={`block rounded-xl border px-3 py-2 text-[11px] font-semibold transition hover:border-[#f7941d]/30 hover:bg-neutral-50 hover:text-[#f7941d] ${isActive ? "border-[#f7941d]/25 bg-[#f7941d]/10 text-[#f7941d]" : "border-neutral-200 text-[#1b1b1b]"}`}
-                        >
-                          {aboutItem.label}
-                        </Link>
-                      );
-                    })}
+                                return (
+                                  <Link
+                                    key={aboutItem.href}
+                                    href={aboutItem.href}
+                                    className={`flex items-center justify-between rounded-xl border px-3 py-2 text-[12px] font-semibold transition hover:border-[#f7941d]/30 hover:bg-white hover:text-[#f7941d] ${isActive ? "border-[#f7941d]/25 bg-[#f7941d]/10 text-[#f7941d]" : "border-transparent text-[#1b1b1b]"}`}
+                                  >
+                                    <span>{aboutItem.label}</span>
+                                    <span className="text-[10px] opacity-60">↗</span>
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          </section>
+                        ))}
+                      </div>
+
+                      <Link
+                        href={ABOUT_PANEL_FEATURE.href}
+                        className="group/card relative overflow-hidden rounded-3xl bg-linear-to-br from-[#f2ecff] via-[#f9eef7] to-[#f9d9e7] p-5 text-slate-900 transition hover:-translate-y-0.5"
+                      >
+                        <div className="relative z-10 flex h-full flex-col">
+                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#5c4dd8]">{ABOUT_PANEL_FEATURE.eyebrow}</span>
+                          <h3 className="mt-3 max-w-56 text-3xl font-black leading-[0.95] tracking-tight">{ABOUT_PANEL_FEATURE.title}</h3>
+                          <p className="mt-3 max-w-60 text-sm leading-6 text-slate-700">{ABOUT_PANEL_FEATURE.description}</p>
+                          <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#5c4dd8]">
+                            Learn more
+                            <span className="transition group-hover/card:translate-x-0.5">→</span>
+                          </div>
+                        </div>
+                        <div className="absolute inset-x-0 bottom-0 h-40">
+                          <Image
+                            src={ABOUT_PANEL_FEATURE.imageSrc}
+                            alt={ABOUT_PANEL_FEATURE.imageAlt}
+                            fill
+                            sizes="(max-width: 1280px) 340px, 340px"
+                            className="object-cover object-top-right opacity-55 mix-blend-multiply"
+                          />
+                        </div>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -271,26 +346,67 @@ export function MainNavbar() {
                   <span className="text-[10px]">▾</span>
                 </button>
 
-                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-184 -translate-x-1/2 rounded-2xl border border-neutral-200 bg-white p-4 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
-                  <div className="grid max-h-96 grid-cols-3 gap-4 overflow-y-auto pr-1">
-                    {orderedProgramGroups.map(([groupName, groupItems]) => (
-                      <div key={groupName} className="rounded-xl border border-neutral-200 bg-white p-3">
-                        <p className="border-b border-neutral-200 pb-2 text-[10px] font-bold uppercase tracking-[0.08em] text-[#f7941d]">
-                          {groupName}
-                        </p>
-                        <div className="mt-2 space-y-1">
-                          {groupItems.map((dropdownItem, index) => (
-                            <Link
-                              key={`${groupName}-${dropdownItem.href}-${dropdownItem.label}`}
-                              href={dropdownItem.href}
-                              className={`block rounded-lg px-2 py-1.5 text-[11px] font-semibold leading-tight transition hover:bg-neutral-100 hover:text-[#f7941d] ${groupName === "Explore" && index === 0 ? "bg-[#f7941d]/10 text-[#f7941d]" : "text-[#1b1b1b]"}`}
-                            >
-                              {dropdownItem.label}
-                            </Link>
+                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-[min(1080px,calc(100vw-2rem))] -translate-x-1/2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+                  <div className="overflow-hidden rounded-[28px] border border-neutral-200 bg-white p-5 shadow-[0_24px_70px_rgba(15,23,42,0.14)]">
+                    <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px]">
+                      <div className="space-y-4">
+                        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                          <Link
+                            href="/program-finder"
+                            className="rounded-3xl border border-[#f7941d]/20 bg-[#f7941d]/10 p-4 transition hover:-translate-y-0.5 hover:border-[#f7941d]/40 hover:bg-[#f7941d]/15"
+                          >
+                            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f7941d]">Explore</p>
+                            <h3 className="mt-3 text-xl font-black tracking-tight text-[#111]">Program Finder</h3>
+                            <p className="mt-2 text-sm leading-6 text-[#555]">Search by career goal, duration, department, or specialization.</p>
+                          </Link>
+
+                          {orderedProgramGroups.map(([groupName, groupItems]) => (
+                            <section key={groupName} className="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+                              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f7941d]">{groupName}</p>
+                              <div className="mt-3 space-y-1.5">
+                                {groupItems.slice(0, 6).map((dropdownItem) => {
+                                  const isCurrent = pathname === dropdownItem.href;
+
+                                  return (
+                                    <Link
+                                      key={`${groupName}-${dropdownItem.href}-${dropdownItem.label}`}
+                                      href={dropdownItem.href}
+                                      className={`block rounded-xl border px-3 py-2 text-[12px] font-semibold transition hover:border-[#f7941d]/30 hover:bg-white hover:text-[#f7941d] ${isCurrent ? "border-[#f7941d]/25 bg-[#f7941d]/10 text-[#f7941d]" : "border-transparent text-[#1b1b1b]"}`}
+                                    >
+                                      {dropdownItem.label}
+                                    </Link>
+                                  );
+                                })}
+                              </div>
+                            </section>
                           ))}
                         </div>
                       </div>
-                    ))}
+
+                      <Link
+                        href={PROGRAM_PANEL_FEATURE.href}
+                        className="group/card relative overflow-hidden rounded-3xl bg-linear-to-br from-[#0f172a] via-[#1e293b] to-[#334155] p-5 text-white transition hover:-translate-y-0.5"
+                      >
+                        <div className="relative z-10 flex h-full flex-col">
+                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-orange-300">{PROGRAM_PANEL_FEATURE.eyebrow}</span>
+                          <h3 className="mt-3 max-w-56 text-3xl font-black leading-[0.95] tracking-tight">{PROGRAM_PANEL_FEATURE.title}</h3>
+                          <p className="mt-3 max-w-60 text-sm leading-6 text-slate-200">{PROGRAM_PANEL_FEATURE.description}</p>
+                          <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-orange-300">
+                            Open finder
+                            <span className="transition group-hover/card:translate-x-0.5">→</span>
+                          </div>
+                        </div>
+                        <div className="absolute inset-x-0 bottom-0 h-44">
+                          <Image
+                            src={PROGRAM_PANEL_FEATURE.imageSrc}
+                            alt={PROGRAM_PANEL_FEATURE.imageAlt}
+                            fill
+                            sizes="(max-width: 1280px) 340px, 340px"
+                            className="object-cover object-center opacity-35 mix-blend-screen"
+                          />
+                        </div>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

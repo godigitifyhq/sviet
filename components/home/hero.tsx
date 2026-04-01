@@ -262,7 +262,7 @@ export function HeroSection() {
             <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/90 to-black/90" />
 
             <div className="relative grid h-full items-center gap-6 px-5  text-white md:grid-cols-[0.50fr_0.50fr] md:px-12">
-              <div className="relative mx-auto  hidden h-full w-full max-w-165 items-end justify-center md:flex">
+              <div className="relative mx-auto flex h-full w-full max-w-165 items-end justify-center">
                 <Image
                   src={activeHeroSlide.studentImage}
                   alt={activeHeroSlide.studentImageAlt}
