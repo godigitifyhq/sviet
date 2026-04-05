@@ -28,7 +28,7 @@ const audienceCards = [
 
 export function EducationBeyondSection() {
   return (
-    <section className=" bg-[#F5F7FB] py-14 md:py-18">
+    <section className=" bg-[#ffffff] py-14 md:py-18">
       <div className="mx-auto w-[80%] max-md:w-[92%]">
         <p className="text-xl font-medium leading-tight text-[#6B7280] md:text-2xl">Information for</p>
         <h2 className="mt-2 text-3xl font-bold leading-tight tracking-tight text-[#1E2A78] md:text-5xl">
@@ -57,11 +57,11 @@ export function EducationBeyondSection() {
                   sizes="(max-width: 767px) 100vw, 33vw"
                   className="object-cover transition duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 rounded-[28px] bg-linear-to-t from-white/70 via-white/30 to-transparent" />
+                <div className="absolute inset-0 rounded-[28px] bg-linear-to-t from-black/70 via-black/30 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-7">
-                  <CardIcon className="h-10 w-10 text-[#3B82F6]" aria-label={card.iconLabel} />
-                  <h3 className="mt-4 text-2xl font-semibold leading-tight text-[#111827]">{card.title}</h3>
-                  <span className="mt-3 inline-flex items-center gap-2 text-lg font-semibold text-[#3B82F6] transition group-hover:gap-3">
+                  <CardIcon className="h-10 w-10 text-[#ffffff]" aria-label={card.iconLabel} />
+                  <h3 className="mt-4 text-2xl font-semibold leading-tight text-[#ffffff]">{card.title}</h3>
+                  <span className="mt-3 inline-flex items-center gap-2 text-lg font-semibold text-[#f7941d] transition group-hover:gap-3">
                     Read more
                     <span aria-hidden="true">›</span>
                   </span>
