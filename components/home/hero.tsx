@@ -243,25 +243,126 @@ export function HeroSection() {
 
   return (
     <>
-      <section className="px-4 py-10 md:px-6 md:py-2">
-        <div className="mx-auto ">
-          <div className="relative h-140 overflow-hidden rounded-2xl md:h-150">
+      <section className="bg-black w-full">
+        <div className="relative w-full">
+          <div className="relative w-full h-auto min-h-96 md:h-140 lg:h-150 overflow-hidden">
             {HERO_SLIDES.map((slide, index) => (
               <Image
                 key={`bg-${slide.heading}`}
                 src="/assets/img/college/main_gate.png"
                 alt="SVIET campus main gate"
                 fill
-                sizes="(max-width: 768px) 100vw, 1280px"
+                sizes="100vw"
                 className={`absolute inset-0 object-cover transition-opacity duration-500 ${
                   activeSlide === index ? "opacity-100" : "opacity-0"
                 }`}
                 priority={index === 0}
               />
             ))}
-            <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/90 to-black/90" />
+            <div className="absolute inset-0 bg-linear-to-r from-black/95 via-black/90 to-black/85" />
 
-            <div className="relative grid h-full items-center gap-6 px-5  text-white md:grid-cols-[0.50fr_0.50fr] md:px-12">
+            {/* Mobile Layout */}
+            <div className="md:hidden relative w-full flex flex-col items-center gap-6 px-4 py-8 text-white">
+              <div className="flex items-end justify-center h-56 w-full">
+                <div className="relative w-full max-w-xs h-full flex items-end justify-center">
+                  <Image
+                    src={activeHeroSlide.studentImage}
+                    alt={activeHeroSlide.studentImageAlt}
+                    width={660}
+                    height={862}
+                    className="h-full w-auto object-contain"
+                  />
+                  <div className="absolute bottom-4 left-2 right-2 flex flex-col items-start gap-1.5 rounded-lg bg-white px-2 py-1.5 text-foreground shadow-md">
+                    {activeHeroSlide.placementCompanyLogo ? (
+                      <Image
+                        src={activeHeroSlide.placementCompanyLogo}
+                        alt={activeHeroSlide.placementCompanyLogoAlt ?? `${activeHeroSlide.placementCompany} logo`}
+                        width={82}
+                        height={32}
+                        className="h-5 w-auto"
+                        style={{ width: "auto" }}
+                      />
+                    ) : (
+                      <div className="rounded-md bg-[#f2f2f2] px-2 py-0.5 text-[9px] font-semibold text-[#333333]">
+                        {activeHeroSlide.placementCompany}
+                      </div>
+                    )}
+                    <div>
+                      <p className="text-xs font-bold leading-tight">{activeHeroSlide.placementName}</p>
+                      <p className="text-[10px] font-medium text-[#555555]">
+                        {activeHeroSlide.placementCompany} • {activeHeroSlide.placementPackage}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-center space-y-4 text-center w-full">
+                <h1 className="whitespace-pre-line text-xl font-bold leading-snug">
+                  {activeHeroSlide.heading}
+                </h1>
+
+                <div className="grid grid-cols-3 gap-2">
+                  {[activeHeroSlide.stat1, activeHeroSlide.stat2, activeHeroSlide.stat3].map((item) => (
+                    <div key={item.label} className="flex flex-col items-center">
+                      <p className="text-lg font-bold">{item.value}</p>
+                      <p className="text-[9px] font-medium text-white/85 mt-0.5 leading-tight">{item.label}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-col gap-2 w-full">
+                  <button
+                    type="button"
+                    onClick={toggleApplyPanel}
+                    className="w-full rounded-full bg-[#3B82F6] px-4 py-2 text-xs font-bold text-white transition duration-200 hover:bg-[#2563EB]"
+                  >
+                    Apply Now
+                  </button>
+                  <Link
+                    href="/contact"
+                    className="w-full rounded-full border border-white/70 px-4 py-2 text-xs font-bold transition duration-200 hover:bg-white/10"
+                  >
+                    Talk to Counselor
+                  </Link>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+                  <button
+                    type="button"
+                    onClick={showPreviousSlide}
+                    aria-label="Previous hero slide"
+                    className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/60 text-xs text-white transition hover:bg-white/15"
+                  >
+                    <FaChevronLeft />
+                  </button>
+                  <div className="flex items-center gap-1">
+                    {HERO_SLIDES.map((slide, index) => (
+                      <button
+                        key={`dot-${slide.heading}`}
+                        type="button"
+                        aria-label={`Go to slide ${index + 1}`}
+                        onClick={() => setActiveSlide(index)}
+                        className={`h-1.5 w-1.5 rounded-full transition ${
+                          activeSlide === index ? "bg-[#3B82F6]" : "bg-white/50"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={showNextSlide}
+                    aria-label="Next hero slide"
+                    className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/60 text-xs text-white transition hover:bg-white/15"
+                  >
+                    <FaChevronRight />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop Layout */}
+            <div className="hidden md:grid relative grid-cols-[0.50fr_0.50fr] h-full items-center gap-6 px-12 text-white">
               <div className="relative mx-auto flex h-full w-full max-w-165 items-end justify-center">
                 <Image
                   src={activeHeroSlide.studentImage}
@@ -294,37 +395,37 @@ export function HeroSection() {
                 </div>
               </div>
 
-              <div className="space-y-10 text-center md:flex md:h-full md:flex-col md:justify-start md:pt-26 md:text-left">
-                <h1 className="mx-auto min-h-22 max-w-xl whitespace-pre-line text-4xl font-bold leading-tight md:mx-0 md:min-h-30 md:text-5xl">
+              <div className="space-y-10 text-left flex h-full flex-col justify-start pt-26">
+                <h1 className="whitespace-pre-line text-5xl font-bold leading-tight max-w-xl">
                   {activeHeroSlide.heading}
                 </h1>
 
-                <div className="mx-auto grid max-w-xl grid-cols-3 gap-4 md:mx-0 md:gap-6">
+                <div className="grid grid-cols-3 gap-6 max-w-xl">
                   {[activeHeroSlide.stat1, activeHeroSlide.stat2, activeHeroSlide.stat3].map((item) => (
                     <div key={item.label}>
-                      <p className="text-3xl font-bold md:text-4xl">{item.value}</p>
-                      <p className="mt-1 min-h-8 text-xs font-medium text-white/85 md:text-sm">{item.label}</p>
+                      <p className="text-4xl font-bold">{item.value}</p>
+                      <p className="mt-1 min-h-8 text-sm font-medium text-white/85">{item.label}</p>
                     </div>
                   ))}
                 </div>
 
-                <div className="flex flex-col gap-3 sm:flex-row">
+                <div className="flex flex-row gap-3">
                   <button
                     type="button"
                     onClick={toggleApplyPanel}
-                    className="w-full rounded-full bg-[#3B82F6] px-6 py-3 text-sm font-bold text-white transition duration-200 hover:bg-[#2563EB] hover:scale-105 sm:w-auto"
+                    className="rounded-full bg-[#3B82F6] px-6 py-3 text-sm font-bold text-white transition duration-200 hover:bg-[#2563EB] hover:scale-105"
                   >
                     Apply Now
                   </button>
                   <Link
                     href="/contact"
-                    className="w-full rounded-full border border-white/70 px-6 py-3 text-sm font-bold transition duration-200 hover:scale-105 sm:w-auto"
+                    className="rounded-full border border-white/70 px-6 py-3 text-sm font-bold transition duration-200 hover:scale-105"
                   >
                     Talk to Counselor
                   </Link>
                 </div>
 
-                <div className="flex items-center justify-center gap-3 md:justify-start">
+                <div className="flex items-center gap-3">
                   <button
                     type="button"
                     onClick={showPreviousSlide}
@@ -361,15 +462,15 @@ export function HeroSection() {
         </div>
       </section>
 
-      <div className="fixed right-0 top-1/2 z-50 -translate-y-1/2">
+      <div className="fixed right-0 top-1/2 z-50 -translate-y-1/2 hidden sm:block">
         <button
           type="button"
           onClick={toggleApplyPanel}
-          className=" bg-[#3B82F6] !rounded-none px-4 py-3 text-sm rotate-90 mr-[-40px] font-bold text-white shadow-md transition duration-200 hover:bg-[#2563EB] hover:scale-105"
+          className=" bg-[#3B82F6] !rounded-none px-3 py-2 text-xs rotate-90 mr-[-32px] font-bold text-white shadow-md transition duration-200 hover:bg-[#2563EB] hover:scale-105 sm:px-4 sm:py-3 sm:text-sm"
           aria-label={isApplyOpen ? "Close apply form" : "Open apply form"}
           aria-controls="apply-now-panel"
         >
-          {isApplyOpen ? "Close Form" : "Apply Now"}
+          {isApplyOpen ? "Close" : "Apply"}
         </button>
       </div>
 
@@ -379,28 +480,28 @@ export function HeroSection() {
         <div
           id="apply-now-panel"
           ref={panelRef}
-          className={`absolute right-0 top-0 h-full w-[92%] max-w-md bg-[#1F2937] p-6 shadow-2xl transition-transform duration-300 md:w-105 ${isApplyOpen ? "translate-x-0" : "translate-x-full"}`}
+          className={`absolute right-0 top-0 h-full w-full overflow-y-auto rounded-t-2xl bg-[#1F2937] p-4 shadow-2xl transition-transform duration-300 sm:w-[92%] sm:rounded-t-none md:w-105 ${isApplyOpen ? "translate-x-0 translate-y-0 sm:translate-y-0" : "translate-x-full sm:translate-x-full"}`}
         >
-          <div className="flex items-center justify-between border-b border-[#374151] pb-3">
-            <h3 className="text-xl font-bold text-white">Apply Now</h3>
+          <div className="flex items-center justify-between border-b border-[#374151] pb-3 sticky top-0 bg-[#1F2937]">
+            <h3 className="text-lg font-bold text-white sm:text-xl">Apply Now</h3>
             <button type="button" onClick={closeApplyPanel} className="text-sm font-semibold text-[#9CA3AF]">
-              Close
+              ✕
             </button>
           </div>
 
           {applySuccess ? (
-            <div className="mt-5 rounded-xl border border-emerald-800 bg-emerald-900/30 p-4 text-sm font-medium text-emerald-300">
+            <div className="mt-4 rounded-xl border border-emerald-800 bg-emerald-900/30 p-3 text-sm font-medium text-emerald-300 sm:p-4">
               ✓ Application received! Our team will contact you within 24 hours.
             </div>
           ) : (
-            <form className="mt-5 grid gap-4" onSubmit={handleApplySubmit}>
+            <form className="mt-4 grid gap-3 sm:gap-4" onSubmit={handleApplySubmit}>
               <div>
                 <input
                   type="text"
                   placeholder="Full Name"
                   value={applyForm.fullName}
                   onChange={(event) => handleApplyFormChange("fullName", event.target.value)}
-                  className="rounded-xl border border-[#374151] bg-[#1F2937] px-4 py-3 text-sm font-medium text-white outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20"
+                  className="w-full rounded-lg border border-[#374151] bg-[#1F2937] px-3 py-2 text-sm font-medium text-white outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 sm:rounded-xl sm:px-4 sm:py-3"
                 />
                 {applyErrors.fullName ? <p className="mt-1 text-xs text-red-600">{applyErrors.fullName}</p> : null}
               </div>
@@ -410,7 +511,7 @@ export function HeroSection() {
                   placeholder="Email Address"
                   value={applyForm.email}
                   onChange={(event) => handleApplyFormChange("email", event.target.value)}
-                  className="rounded-xl border border-[#374151] bg-[#1F2937] px-4 py-3 text-sm font-medium text-white outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20"
+                  className="w-full rounded-lg border border-[#374151] bg-[#1F2937] px-3 py-2 text-sm font-medium text-white outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 sm:rounded-xl sm:px-4 sm:py-3"
                 />
                 {applyErrors.email ? <p className="mt-1 text-xs text-red-600">{applyErrors.email}</p> : null}
               </div>
@@ -420,7 +521,7 @@ export function HeroSection() {
                   placeholder="Phone Number"
                   value={applyForm.phone}
                   onChange={(event) => handleApplyFormChange("phone", event.target.value)}
-                  className="rounded-xl border border-[#374151] bg-[#1F2937] px-4 py-3 text-sm font-medium text-white outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20"
+                  className="w-full rounded-lg border border-[#374151] bg-[#1F2937] px-3 py-2 text-sm font-medium text-white outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 sm:rounded-xl sm:px-4 sm:py-3"
                 />
                 {applyErrors.phone ? <p className="mt-1 text-xs text-red-600">{applyErrors.phone}</p> : null}
               </div>
@@ -429,7 +530,7 @@ export function HeroSection() {
                   aria-label="Choose Program"
                   value={applyForm.course}
                   onChange={(event) => handleApplyFormChange("course", event.target.value)}
-                  className="rounded-xl border border-[#374151] bg-[#1F2937] px-4 py-3 text-sm font-medium text-white outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20"
+                  className="w-full rounded-lg border border-[#374151] bg-[#1F2937] px-3 py-2 text-sm font-medium text-white outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 sm:rounded-xl sm:px-4 sm:py-3"
                 >
                   <option value="">Choose Program</option>
                   <option value="B.Tech CSE">B.Tech CSE</option>
@@ -441,7 +542,7 @@ export function HeroSection() {
               <button
                 type="submit"
                 disabled={applyLoading}
-                className="rounded-full bg-[#3B82F6] px-6 py-3 text-sm font-bold text-white transition duration-200 hover:bg-[#2563EB] hover:scale-105 disabled:opacity-60"
+                className="rounded-lg bg-[#3B82F6] px-4 py-2 text-sm font-bold text-white transition duration-200 hover:bg-[#2563EB] hover:scale-105 disabled:opacity-60 sm:rounded-full sm:px-6 sm:py-3"
               >
                 {applyLoading ? "Submitting..." : "Submit Application"}
               </button>
