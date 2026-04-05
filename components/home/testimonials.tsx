@@ -1,134 +1,238 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useState, useRef } from "react";
+import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 
 const testimonials = [
   {
+    id: 1,
+    name: "Serena Chokshi",
+    title: '"Hear Why Serena Chokshi Loves Studying at Parul University"',
+    image: "/assets/img/college/1st.png",
+  },
+  {
+    id: 2,
+    name: "Amarpreet Kaur",
+    title: '"Amarpreet Kaur Panesar\'s Student Life at Parul University | A Success Story"',
+    image: "/assets/img/college/1st.png",
+  },
+  {
+    id: 3,
+    name: "Juhi Lakhani",
+    title: '"Juhi\'s Journey @ Parul University: BDes (Fashion & Technology) Student"',
+    image: "/assets/img/college/1st.png",
+  },
+  {
+    id: 4,
+    name: "Kunal",
+    title: '"Hear All About My Journey at Parul University"',
+    image: "/assets/img/college/1st.png",
+  },
+  {
+    id: 5,
     name: "Rahul Sharma",
-    program: "B.Tech CSE, 2023",
-    company: "Software Engineer at TCS",
-    quote: "SVIET gave me the technical foundation and placement support that launched my career. The faculty mentorship here is exceptional.",
-  },
-  {
-    name: "Priya Singh",
-    program: "MBA, 2022",
-    company: "Marketing Manager at Dabur",
-    quote: "The industry exposure at SVIET is unmatched. From live case studies to corporate internships, every experience prepared me for the real world.",
-  },
-  {
-    name: "Arjun Mehta",
-    program: "B.Tech ME, 2023",
-    company: "Engineer at Maruti Suzuki",
-    quote: "The hands-on lab experience and placement cell at SVIET helped me land my dream job. I'm proud to be a SVIET alumnus.",
-  },
-  {
-    name: "Neha Gupta",
-    program: "B.Pharm, 2022",
-    company: "Medical Representative at Cipla",
-    quote: "The pharmacy department at SVIET has world-class labs and amazing faculty. The practical training prepared me completely for my role.",
-  },
-  {
-    name: "Vikram Patel",
-    program: "BCA, 2023",
-    company: "Web Developer at Infosys BPM",
-    quote: "From coding bootcamps to hackathons, SVIET kept pushing us to grow. The placement support was incredible.",
+    title: '"SVIET Changed My Career Path - Success Story"',
+    image: "/assets/img/college/1st.png",
   },
 ];
 
 export function StudentTestimonialsSection() {
-  const [index, setIndex] = useState(0);
-  const dragStartXRef = useRef<number | null>(null);
-  const swipeThreshold = 60;
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % testimonials.length);
-    }, 3000);
+  const CARD_WIDTH = 384; // w-96 = 384px
+  const GAP = 24; // gap-6 = 24px
+  const CARD_WITH_GAP = CARD_WIDTH + GAP;
 
-    return () => clearInterval(interval);
-  }, []);
+  const handleDotClick = (index: number) => {
+    const container = containerRef.current;
+    if (!container) return;
 
-  const onDragStart = (clientX: number) => {
-    dragStartXRef.current = clientX;
+    setIsTransitioning(true);
+    const newPosition = index * CARD_WITH_GAP + 16; // 16px for initial padding
+    setActiveIndex(index);
+    setScrollPosition(newPosition);
+
+    container.scrollTo({
+      left: newPosition,
+      behavior: "smooth",
+    });
+
+    setTimeout(() => setIsTransitioning(false), 300);
   };
 
-  const onDragEnd = (clientX: number) => {
-    if (dragStartXRef.current === null) return;
+  const scroll = (direction: "left" | "right") => {
+    const container = containerRef.current;
+    if (!container) return;
 
-    const distance = clientX - dragStartXRef.current;
-    if (distance > swipeThreshold) {
-      setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-    } else if (distance < -swipeThreshold) {
-      setIndex((prev) => (prev + 1) % testimonials.length);
-    }
+    setIsTransitioning(true);
+    const scrollAmount = CARD_WITH_GAP;
+    const newPosition =
+      direction === "left"
+        ? Math.max(0, scrollPosition - scrollAmount)
+        : scrollPosition + scrollAmount;
 
-    dragStartXRef.current = null;
+    container.scrollTo({
+      left: newPosition,
+      behavior: "smooth",
+    });
+
+    setScrollPosition(newPosition);
+    setTimeout(() => setIsTransitioning(false), 300);
+  };
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const position = (e.target as HTMLDivElement).scrollLeft;
+    setScrollPosition(position);
+    
+    // Update active index based on scroll position
+    const newIndex = Math.round((position - 16) / CARD_WITH_GAP);
+    setActiveIndex(Math.max(0, Math.min(newIndex, testimonials.length - 1)));
+  };
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    if ((e.target as HTMLElement).closest("button")) return; // Don't drag if clicking button
+    setIsDragging(true);
+    setDragStart(e.clientX);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging || !containerRef.current) return;
+    e.preventDefault();
+    
+    const x = e.clientX;
+    const diff = dragStart - x;
+    containerRef.current.scrollLeft = scrollPosition + diff;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if ((e.target as HTMLElement).closest("button")) return; // Don't drag if clicking button
+    setIsDragging(true);
+    setDragStart(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isDragging || !containerRef.current) return;
+
+    const x = e.touches[0].clientX;
+    const diff = dragStart - x;
+    containerRef.current.scrollLeft = scrollPosition + diff;
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
   };
 
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-[1280px] px-6 py-16">
-        <div className="grid gap-10 md:grid-cols-3">
-          <div>
-            <h3 className="text-3xl font-bold text-gray-900">Our Students Speak</h3>
-            <p className="mt-3 text-sm text-gray-500">
-              Real stories of growth, achievement, and ambition from learners who transformed their careers.
-            </p>
+    <section className="bg-[#FFFFFF] py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-4 md:px-6">
+        {/* Header */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold md:text-4xl">
+            <span className="text-[#1E2A78]">Our students speak</span>
+            <span className="text-[#111827]"> hear it from those who are learning with us!</span>
+          </h2>
+        </div>
 
-            <div className="mt-10 flex  gap-2">
-              {testimonials.map((_, dotIndex) => (
-                <button
-                  key={dotIndex}
-                  type="button"
-                  onClick={() => setIndex(dotIndex)}
-                  aria-label={`Go to slide ${dotIndex + 1}`}
-                  className={`h-2.5 w-2.5 rounded-full ${index === dotIndex ? "bg-black" : "bg-gray-300"}`}
-                />
-              ))}
-            </div>
+        {/* Navigation and Carousel */}
+        <div className="space-y-6">
+          {/* Navigation Buttons */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => scroll("left")}
+              disabled={scrollPosition === 0}
+              className="h-10 w-10 rounded-full border border-[#3B82F6] text-[#3B82F6] transition disabled:opacity-40 hover:bg-[#3B82F6] hover:text-white flex items-center justify-center shrink-0"
+              aria-label="Previous testimonials"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className="h-10 w-10 rounded-full border border-[#3B82F6] text-[#3B82F6] transition hover:bg-[#3B82F6] hover:text-white flex items-center justify-center shrink-0"
+              aria-label="Next testimonials"
+            >
+              <ChevronRight size={20} />
+            </button>
           </div>
 
+          {/* Carousel */}
           <div
-            className="col-span-2 overflow-hidden"
-            onMouseDown={(e) => onDragStart(e.clientX)}
-            onMouseUp={(e) => onDragEnd(e.clientX)}
-            onMouseLeave={(e) => onDragEnd(e.clientX)}
-            onTouchStart={(e) => onDragStart(e.touches[0].clientX)}
-            onTouchEnd={(e) => onDragEnd(e.changedTouches[0].clientX)}
+            ref={containerRef}
+            onScroll={handleScroll}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            className={`flex gap-6 overflow-x-auto scrollbar-hide select-none ${
+              isDragging ? "cursor-grabbing" : "cursor-grab scroll-smooth"
+            } ${isTransitioning ? "opacity-75" : "opacity-100"}`}
           >
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${index * 100}%)` }}
-            >
-              {testimonials.map((item) => (
-                <article key={item.name} className="flex min-w-full flex-col gap-6 lg:flex-row">
-                  <div className="w-full overflow-hidden rounded-2xl lg:w-[45%]">
-                    <div className="relative h-[320px] w-full">
-                      <Image
-                        src="/assets/img/college/main_gate.png"
-                        alt={item.name}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 45vw"
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
-                      <div className="absolute bottom-0 left-0 p-5 text-white">
-                        <p className="text-xl font-semibold">{item.name}</p>
-                        <p className="mt-1 text-sm text-white/90">{item.program}</p>
-                        <p className="mt-1 text-sm text-white/90">{item.company}</p>
-                      </div>
-                    </div>
+            <div className="shrink-0 w-4 md:w-6" />
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.id} className="shrink-0 w-96">
+                <div className="relative overflow-hidden rounded-3xl bg-linear-to-br from-[#F5F7FB] to-[#FFFFFF] h-96 flex flex-col justify-between p-6 text-[#111827] transition-transform hover:scale-105 cursor-pointer border border-[#E5E7EB]">
+                  {/* Top Section - Quote and Title */}
+                  <div>
+                    {/* Quote Mark */}
+                    <div className="mb-3 text-4xl text-[#F4B740] font-bold">"</div>
+                    {/* Quote Title */}
+                    <p className="text-sm font-semibold leading-tight">{testimonial.title}</p>
+                    {/* Name */}
+                    <p className="mt-3 text-xs text-[#6B7280]">{testimonial.name}</p>
                   </div>
 
-                  <div className="flex w-full flex-col gap-4 lg:w-[55%]">
-                    <article className="rounded-xl border border-gray-100 bg-white p-4">
-                      <p className="text-sm leading-relaxed text-gray-700">{item.quote}</p>
-                    </article>
+                  {/* Bottom Section - Image and Watch Video Button */}
+                  <div className="flex items-end justify-between">
+                    {/* Student Image */}
+                    <div className="relative w-24 h-32 -mb-6">
+                      <Image
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        fill
+                        className="object-cover rounded-lg"
+                      />
+                    </div>
+
+                    {/* Watch Video Button */}
+                    <button className="flex items-center gap-2 rounded-full bg-[#3B82F6] px-4 py-2 text-white hover:bg-[#2563EB] transition">
+                      <span className="text-xs font-semibold">Watch Video</span>
+                      <Play size={16} className="fill-[#F4B740] text-[#F4B740]" />
+                    </button>
                   </div>
-                </article>
-              ))}
-            </div>
+
+                  {/* Decorative Elements */}
+                  <div className="absolute top-8 right-8 text-[#D1D5DB] text-2xl opacity-40">,</div>
+                  <div className="absolute top-12 right-12 text-[#D1D5DB] text-xl opacity-30">,</div>
+                </div>
+              </div>
+            ))}
+            <div className="shrink-0 w-4 md:w-6" />
+          </div>
+
+          {/* Carousel Indicators */}
+          <div className="flex justify-center gap-2">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handleDotClick(index)}
+                className={`h-2 w-2 rounded-full transition ${
+                  activeIndex === index ? "bg-[#3B82F6] w-6" : "bg-[#D1D5DB]"
+                }`}
+                aria-label={`Go to testimonial ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>

@@ -1,99 +1,188 @@
-import Image from "next/image";
+"use client";
 
-const experiences = [
+import Image from "next/image";
+import { useState } from "react";
+
+const milestonePlacements = [
   {
-    title: "From Classroom to Career",
-    description: "Most students prepare for exams. Here, you prepare for the real world. Super 60 focuses on helping you apply what you learn - in interviews, in problem-solving, and in situations where performance actually matters.",
+    company: "Goldman Sachs",
+    studentName: "Suhani Shah",
+    position: "Software Engineering Analyst",
+    studentImage: "/assets/img/students/image (1).png",
+    companyLogo: "/assets/img/companies/goldman_sachs.png",
   },
   {
-    title: "Training That Transforms You",
-    description: "The program is designed with depth and intent. With over 300 hours of focused training, continuous evaluations, and real-world exposure, students don't just gain knowledge - they develop the ability to think clearly, solve problems, and perform under pressure.",
+    company: "Microsoft",
+    studentName: "Tanish Patel",
+    position: "Software Engineer",
+    studentImage: "/assets/img/students/image (2).png",
+    companyLogo: "/assets/img/companies/jio_digital.png",
   },
   {
-    title: "Confidence That Shows",
-    description: "Technical skills alone aren't enough. Through consistent practice, mock interviews, and real interaction, students develop a level of confidence that reflects in the way they speak, present, and handle challenges. It's not taught once - it's built over time.",
-  },
-  {
-    title: "Built for Those Who Want More",
-    description: "Super 60 is for students who are not satisfied with average outcomes. It's for those willing to push beyond comfort, stay consistent, and become professionals that companies genuinely value. The goal isn't just placement - it's transformation.",
+    company: "Amazon",
+    studentName: "Suraj Jagtap",
+    position: "Backend Engineer",
+    studentImage: "/assets/img/students/moon_mandal.png",
+    companyLogo: "/assets/img/companies/amazon.png",
   },
 ];
 
 export function ExperiencesSection() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % milestonePlacements.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + milestonePlacements.length) % milestonePlacements.length);
+  };
+
+  const placement = milestonePlacements[currentSlide];
+
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-7xl px-6 pb-16">
-        <div className="flex flex-1 gap-4">
-          <div className="flex mt-6 justify-center items-center">
-            <Image
-              src="/assets/img/s60.png"
-              alt="s60 logo"
-              width={100}
-              height={10}
-              className=""
-              style={{ width: "auto" }}
-            />
-          </div>
-
-        <div className="flex-1 flex mt-6 items-center">
-            <div className="mt-7  bg-[#F58634] flex-1 px-5 py-2.5 text-sm font-medium tracking-wide text-white">
-            What Makes Super 60 Different - Not just a program, but an environment that changes how you think, perform, and grow.
-          </div>
-        </div>
+    <section className="bg-[#FFFFFF] px-4 py-16 md:px-6 md:py-20">
+      <div className="mx-auto max-w-7xl">
+        {/* Header Section */}
+        <div className="mb-12 space-y-6">
+          <h1 className="text-3xl font-bold leading-tight text-[#1E2A78] md:text-5xl">
+            One University, infinite placements.
+          </h1>
+          <h2 className="text-2xl font-light leading-tight text-[#111827] md:text-3xl">
+            Come with your passion, leave with your profession!
+          </h2>
+          <p className="max-w-2xl text-sm leading-relaxed text-[#6B7280] md:text-base">
+            Discover a transformative ecosystem that blends academic excellence with real-world exposure, empowering
+            students to step confidently into their chosen careers.
+          </p>
         </div>
 
-        <div className="mt-8 grid gap-10 md:grid-cols-2">
-          <div className="space-y-6">
-            <article className="border border-gray-200 bg-white rounded-2xl p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
-              <h3 className="text-lg font-semibold text-foreground">
-                Not for Everyone. Just 60.
-              </h3>
-              <p className="mt-2 text-sm text-gray-500">
-                Every year, only 60 students are selected into Super 60. This
-                isn't about filling seats - it's about building a space where
-                driven individuals grow together, challenge each other, and
-                raise their standards every single day. From the moment you
-                step in, you realise this is different.
-              </p>
-            </article>
+        {/* Stats Section */}
+        <div className="mb-12 grid gap-8 md:grid-cols-2">
+          {/* Left Stat Card */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2 text-[#6B7280]">
+              <span className="text-lg">▶</span>
+              <span className="text-sm md:text-base">Ready to provide you with the best job offers with up to</span>
+            </div>
+            <div className="text-5xl font-bold text-[#3B82F6] md:text-6xl">60 Lakhs</div>
+            <p className="text-sm text-[#6B7280] md:text-base">
+              Highest package & average packages of <span className="text-[#3B82F6]">4-6 LPA</span>.
+            </p>
+          </div>
 
-            <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
-              <Image
-                width={1200}
-                height={1000}
-                src="/assets/img/s60.jpg"
-                alt="Seminar hall with students"
-                className="h-55 w-full object-cover transition duration-200"
-              />
+          {/* Right Stat Card */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2 text-[#6B7280]">
+              <span className="text-lg">▶</span>
+              <span className="text-sm md:text-base">We have</span>
+            </div>
+            <div>
+              <div className="text-5xl font-bold text-[#3B82F6] md:text-6xl">2,200+</div>
+              <div className="text-3xl font-bold text-[#111827] md:text-4xl">Recruiters</div>
+            </div>
+          </div>
+        </div>
+
+
+        {/* Milestone Placements Carousel */}
+        <div className="mt-16 space-y-8">
+          {/* Carousel Card */}
+          <div className="h-80 overflow-hidden rounded-2xl bg-[#F5F7FB] p-4 md:p-8">
+            <div className="grid h-full gap-8 md:grid-cols-[1fr_1fr]">
+              {/* Left Content */}
+              <div className="space-y-3 flex flex-col justify-center md:pr-4">
+                <div>
+                  <h2 className="text-xs font-semibold text-[#3B82F6] md:text-sm">Milestone Placements</h2>
+                  <p className="mt-1 text-base font-light leading-relaxed text-[#111827] md:text-lg">
+                    Aligning your career aspirations with
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold leading-tight text-[#111827] md:text-2xl">
+                    Prominent Companies For the most enriching future career
+                  </h3>
+                </div>
+              </div>
+
+              {/* Right Side - Student Profile */}
+              <div className="relative flex items-end justify-between">
+                {/* Decorative star */}
+                <div className="absolute top-6 right-12 text-3xl text-[#3B82F6]">✦</div>
+
+                {/* Student Image - Left Side of Right Column */}
+                <div className="relative shrink-0">
+                  {/* Gradient circles background */}
+                  <div className="relative h-56 w-40">
+
+                    {/* Student Image */}
+                    <div className="relative z-10 top-4 md:top-8 h-full w-full overflow-hidden">
+                      <Image
+                        src={placement.studentImage}
+                        alt={placement.studentName}
+                        width={160}
+                        height={224}
+                        className="h-full w-full object-cover object-top"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Company and Profile Info - Right Side */}
+                <div className="flex flex-col items-end justify-end space-y-2 pl-4">
+                  <div className="relative h-10 w-28 md:h-12 md:w-36">
+                    <Image
+                      src={placement.companyLogo}
+                      alt={placement.company}
+                      fill
+                      className="object-contain object-right"
+                    />
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm font-semibold text-[#111827] md:text-base">{placement.studentName}</p>
+                    <div className="space-y-0.5 text-xs leading-tight text-[#6B7280]">
+                      <p className="font-medium">{placement.company}</p>
+                      <p className="font-light line-clamp-2">{placement.position}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="space-y-6">
-            {experiences.map((feature, index) => (
-              <article
-                key={feature.title}
-                className="border border-gray-200 bg-white rounded-2xl p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <h3 className="text-lg font-semibold text-foreground">
-                  {feature.title}
-                </h3>
-                <p
-                  className={`mt-2 text-sm text-gray-500 ${index > 0 ? "border-t border-gray-100 pt-4" : ""}`}
-                >
-                  {feature.description}
-                </p>
-              </article>
-            ))}
+          {/* Carousel Controls */}
+          <div className="flex items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={prevSlide}
+              aria-label="Previous placement"
+              className="inline-flex h-10 w-10 items-center justify-center rounded bg-[#E5E7EB] transition hover:bg-[#D1D5DB]"
+            >
+              <span className="text-lg text-[#111827]">‹</span>
+            </button>
 
-            <button className="w-full bg-black text-white px-6 py-3 rounded-full flex items-center justify-between transition duration-200 hover:bg-gray-900 sm:w-auto sm:min-w-[320px]">
-              <a href="https://www.supersixty.in/" target="_blank" rel="noopener noreferrer">  
-              <span className="text-sm font-semibold">
-                Know more about Super 60
-              </span>
-              <span aria-hidden="true" className="text-lg leading-none">
-                →
-              </span>
-              </a>
+            <div className="flex gap-2">
+              {milestonePlacements.map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => setCurrentSlide(index)}
+                  aria-label={`Go to placement ${index + 1}`}
+                  className={`h-2 transition-all ${
+                    index === currentSlide ? "w-8 bg-[#3B82F6]" : "w-2 bg-[#D1D5DB]"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={nextSlide}
+              aria-label="Next placement"
+              className="inline-flex h-10 w-10 items-center justify-center rounded bg-[#E5E7EB] transition hover:bg-[#D1D5DB]"
+            >
+              <span className="text-lg text-[#111827]">›</span>
             </button>
           </div>
         </div>

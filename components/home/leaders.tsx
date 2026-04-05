@@ -55,23 +55,24 @@ export function DistinguishedLeadersSection() {
         }
         
         .leaders-swiper-pagination .swiper-pagination-bullet {
-          background: #d1d5db;
+          background: #D1D5DB;
           opacity: 1;
         }
         
         .leaders-swiper-pagination .swiper-pagination-bullet-active {
-          background: #000;
+          background: #3B82F6;
         }
       `}</style>
-      <section className="bg-white px-6 py-16">
+      <section className="bg-[#FFFFFF] px-6 py-16">
       <div className="mx-auto max-w-[1280px]">
         {/* Header Area */}
-        <div className="space-y-4 mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-            The Distinguished: Leaders, Visionaries And Changemakers
+        <div className=" w-[80%] max-md:w-[92%] space-y-2">
+          <p className="text-xl font-medium leading-tight text-[#6B7280] md:text-2xl">Meet the visionary leaders</p>
+          <h2 className="mt-2 text-3xl font-bold leading-tight tracking-tight text-[#1E2A78] md:text-5xl">
+            Distinguished Leaders & Changemakers
           </h2>
-          <Image src={'/assets/img/line_vector.png'} className="mt-[-12]" alt="Line Vector" height={3} width={100} style={{ width: "auto" }} />
-          <p className="text-gray-600 max-w-3xl text-sm md:text-base leading-relaxed">
+          <p className="mt-3 text-2xl font-medium leading-tight text-[#111827] md:text-4xl">Inspiring innovation and transformation</p>
+          <p className="mt-6 max-w-3xl text-sm leading-relaxed text-[#6B7280] md:text-lg">
             Meet the visionary leaders and changemakers who inspire innovation and drive positive transformation in their industries.
           </p>
         </div>
@@ -115,13 +116,13 @@ export function DistinguishedLeadersSection() {
                   {/* Right Side - Content */}
                   <div className="flex h-full w-full flex-col p-4 md:min-h-[320px] md:w-[55%]">
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold md:pl-6 text-gray-900">{leader.name}</h3>
-                      <span className="mt-2 inline-block md:ml-[-16px] md:pl-9 bg-gray-800 px-4 py-1.5 text-xs font-medium text-white">
+                      <h3 className="text-xl font-bold md:pl-6 text-[#111827]">{leader.name}</h3>
+                      <span className="mt-2 inline-block md:ml-[-16px] md:pl-9 bg-[#3B82F6] px-4 py-1.5 text-xs font-medium text-white">
                         {leader.role}
                       </span>
-                      <p className="mt-4 text-sm leading-relaxed md:pl-6 text-gray-600">{leader.quote}</p>
+                      <p className="mt-4 text-sm leading-relaxed md:pl-6 text-[#6B7280]">{leader.quote}</p>
                     </div>
-                    <button className="mt-8 flex w-full justify-center gap-2 bg-black px-5 py-3 text-sm font-medium text-white transition hover:bg-gray-900 md:mt-6 md:w-auto md:justify-start md:pl-6">
+                    <button className="mt-8 flex w-full justify-center gap-2 bg-[#3B82F6] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#2563EB] md:mt-6 md:w-auto md:justify-start md:pl-6">
                       Check Event
                       <span>→</span>
                     </button>

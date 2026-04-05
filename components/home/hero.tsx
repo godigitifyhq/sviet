@@ -312,7 +312,7 @@ export function HeroSection() {
                   <button
                     type="button"
                     onClick={toggleApplyPanel}
-                    className="w-full rounded-full bg-[#F97316] px-6 py-3 text-sm font-bold transition duration-200 hover:scale-105 sm:w-auto"
+                    className="w-full rounded-full bg-[#3B82F6] px-6 py-3 text-sm font-bold text-white transition duration-200 hover:bg-[#2563EB] hover:scale-105 sm:w-auto"
                   >
                     Apply Now
                   </button>
@@ -341,7 +341,7 @@ export function HeroSection() {
                         aria-label={`Go to slide ${index + 1}`}
                         onClick={() => setActiveSlide(index)}
                         className={`h-2.5 w-2.5 rounded-full transition ${
-                          activeSlide === index ? "bg-[#F97316]" : "bg-white/50"
+                          activeSlide === index ? "bg-[#3B82F6]" : "bg-white/50"
                         }`}
                       />
                     ))}
@@ -365,7 +365,7 @@ export function HeroSection() {
         <button
           type="button"
           onClick={toggleApplyPanel}
-          className=" bg-[#F97316] !rounded-none px-4 py-3 text-sm rotate-90 mr-[-40px] font-bold text-white shadow-md transition duration-200 hover:scale-105"
+          className=" bg-[#3B82F6] !rounded-none px-4 py-3 text-sm rotate-90 mr-[-40px] font-bold text-white shadow-md transition duration-200 hover:bg-[#2563EB] hover:scale-105"
           aria-label={isApplyOpen ? "Close apply form" : "Open apply form"}
           aria-controls="apply-now-panel"
         >
@@ -379,17 +379,17 @@ export function HeroSection() {
         <div
           id="apply-now-panel"
           ref={panelRef}
-          className={`absolute right-0 top-0 h-full w-[92%] max-w-md bg-white p-6 shadow-2xl transition-transform duration-300 md:w-105 ${isApplyOpen ? "translate-x-0" : "translate-x-full"}`}
+          className={`absolute right-0 top-0 h-full w-[92%] max-w-md bg-[#1F2937] p-6 shadow-2xl transition-transform duration-300 md:w-105 ${isApplyOpen ? "translate-x-0" : "translate-x-full"}`}
         >
-          <div className="flex items-center justify-between border-b border-[#e8e8e8] pb-3">
-            <h3 className="text-xl font-bold text-foreground">Apply Now</h3>
-            <button type="button" onClick={closeApplyPanel} className="text-sm font-semibold text-[#666666]">
+          <div className="flex items-center justify-between border-b border-[#374151] pb-3">
+            <h3 className="text-xl font-bold text-white">Apply Now</h3>
+            <button type="button" onClick={closeApplyPanel} className="text-sm font-semibold text-[#9CA3AF]">
               Close
             </button>
           </div>
 
           {applySuccess ? (
-            <div className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-medium text-emerald-700">
+            <div className="mt-5 rounded-xl border border-emerald-800 bg-emerald-900/30 p-4 text-sm font-medium text-emerald-300">
               ✓ Application received! Our team will contact you within 24 hours.
             </div>
           ) : (
@@ -400,7 +400,7 @@ export function HeroSection() {
                   placeholder="Full Name"
                   value={applyForm.fullName}
                   onChange={(event) => handleApplyFormChange("fullName", event.target.value)}
-                  className="rounded-xl border border-[#e4e4e4] px-4 py-3 text-sm font-medium outline-none transition focus:border-[#F97316]"
+                  className="rounded-xl border border-[#374151] bg-[#1F2937] px-4 py-3 text-sm font-medium text-white outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20"
                 />
                 {applyErrors.fullName ? <p className="mt-1 text-xs text-red-600">{applyErrors.fullName}</p> : null}
               </div>
@@ -410,7 +410,7 @@ export function HeroSection() {
                   placeholder="Email Address"
                   value={applyForm.email}
                   onChange={(event) => handleApplyFormChange("email", event.target.value)}
-                  className="rounded-xl border border-[#e4e4e4] px-4 py-3 text-sm font-medium outline-none transition focus:border-[#F97316]"
+                  className="rounded-xl border border-[#374151] bg-[#1F2937] px-4 py-3 text-sm font-medium text-white outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20"
                 />
                 {applyErrors.email ? <p className="mt-1 text-xs text-red-600">{applyErrors.email}</p> : null}
               </div>
@@ -420,7 +420,7 @@ export function HeroSection() {
                   placeholder="Phone Number"
                   value={applyForm.phone}
                   onChange={(event) => handleApplyFormChange("phone", event.target.value)}
-                  className="rounded-xl border border-[#e4e4e4] px-4 py-3 text-sm font-medium outline-none transition focus:border-[#F97316]"
+                  className="rounded-xl border border-[#374151] bg-[#1F2937] px-4 py-3 text-sm font-medium text-white outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20"
                 />
                 {applyErrors.phone ? <p className="mt-1 text-xs text-red-600">{applyErrors.phone}</p> : null}
               </div>
@@ -429,7 +429,7 @@ export function HeroSection() {
                   aria-label="Choose Program"
                   value={applyForm.course}
                   onChange={(event) => handleApplyFormChange("course", event.target.value)}
-                  className="rounded-xl border border-[#e4e4e4] bg-white px-4 py-3 text-sm font-medium outline-none transition focus:border-[#F97316]"
+                  className="rounded-xl border border-[#374151] bg-[#1F2937] px-4 py-3 text-sm font-medium text-white outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20"
                 >
                   <option value="">Choose Program</option>
                   <option value="B.Tech CSE">B.Tech CSE</option>
@@ -441,7 +441,7 @@ export function HeroSection() {
               <button
                 type="submit"
                 disabled={applyLoading}
-                className="rounded-full bg-[#F97316] px-6 py-3 text-sm font-bold text-white transition duration-200 hover:scale-105 disabled:opacity-60"
+                className="rounded-full bg-[#3B82F6] px-6 py-3 text-sm font-bold text-white transition duration-200 hover:bg-[#2563EB] hover:scale-105 disabled:opacity-60"
               >
                 {applyLoading ? "Submitting..." : "Submit Application"}
               </button>

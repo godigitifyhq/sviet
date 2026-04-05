@@ -150,181 +150,207 @@ export function ScholarshipSection() {
         : "border-emerald-200 bg-emerald-50 text-emerald-800";
 
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-[1280px] px-6 py-16">
+    <section className="bg-[#FFFFFF] py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-4 md:px-6">
+        {/* Header */}
+        <div className="mb-12 space-y-4">
+          <h2 className="text-3xl font-bold md:text-4xl">
+            <span className="text-[#1E2A78]">Find Your Scholarship</span>
+          </h2>
+          <p className="max-w-2xl text-sm leading-relaxed text-[#6B7280] md:text-base">
+            Check your scholarship eligibility based on your academic performance and family income.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
           {isSuccess && eligibilityResult ? (
-            <div className={`w-full max-w-md rounded-2xl border p-6 ${eligibilityTone}`}>
-              <p className="text-sm font-semibold">Scholarship Eligibility</p>
-              <p className="mt-3 text-5xl font-bold">{eligibilityResult.percentage}%</p>
-              <p className="mt-3 text-sm leading-relaxed">{eligibilityResult.reason}</p>
+            <div
+              className={`w-full max-w-md rounded-2xl border-2 p-8 ${
+                !eligibilityResult.eligible
+                  ? "border-red-300 bg-red-50 text-red-800"
+                  : isPartiallyEligible
+                    ? "border-yellow-300 bg-yellow-50 text-yellow-800"
+                    : "border-[#3B82F6] bg-blue-50 text-[#1E40AF]"
+              }`}
+            >
+              <p className="font-semibold">Scholarship Eligibility</p>
+              <p className="mt-4 text-5xl font-bold">{eligibilityResult.percentage}%</p>
+              <p className="mt-4 text-sm leading-relaxed">{eligibilityResult.reason}</p>
               {eligibilityResult.conditions.length > 0 ? (
-                <ul className="mt-4 list-disc space-y-1 pl-5 text-sm">
+                <ul className="mt-4 space-y-2">
                   {eligibilityResult.conditions.map((condition) => (
-                    <li key={condition}>{condition}</li>
+                    <li key={condition} className="flex gap-2 text-sm">
+                      <span>✓</span>
+                      <span>{condition}</span>
+                    </li>
                   ))}
                 </ul>
               ) : null}
             </div>
           ) : (
-            <form className="flex w-full max-w-md flex-col gap-4" onSubmit={handleSubmit}>
-              <label className="text-xs text-gray-600" htmlFor="scholarship-name">
-                Name
-              </label>
-              <input
-                id="scholarship-name"
-                name="name"
-                type="text"
-                placeholder="Input text"
-                value={form.name}
-                onChange={(event) => handleFieldChange("name", event.target.value)}
-                className="w-full rounded-lg border border-transparent bg-gray-100 px-4 py-3 text-sm outline-none transition focus:border-black"
-              />
-              {errors.name ? <p className="-mt-2 text-xs text-red-600">{errors.name}</p> : null}
+            <form className="flex w-full max-w-md flex-col gap-6" onSubmit={handleSubmit}>
+              <div>
+                <label className="mb-2 block text-xs font-semibold text-[#6B7280]" htmlFor="scholarship-name">
+                  Full Name
+                </label>
+                <input
+                  id="scholarship-name"
+                  name="name"
+                  type="text"
+                  placeholder="Enter your full name"
+                  value={form.name}
+                  onChange={(event) => handleFieldChange("name", event.target.value)}
+                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10"
+                />
+                {errors.name ? <p className="mt-1 text-xs text-red-600">{errors.name}</p> : null}
+              </div>
 
-              <label className="text-xs text-gray-600" htmlFor="scholarship-phone">
-                Phone
-              </label>
-              <input
-                id="scholarship-phone"
-                name="phone"
-                type="tel"
-                placeholder="Input text"
-                value={form.phone}
-                onChange={(event) => handleFieldChange("phone", event.target.value)}
-                className="w-full rounded-lg border border-transparent bg-gray-100 px-4 py-3 text-sm outline-none transition focus:border-black"
-              />
-              {errors.phone ? <p className="-mt-2 text-xs text-red-600">{errors.phone}</p> : null}
+              <div>
+                <label className="mb-2 block text-xs font-semibold text-[#6B7280]" htmlFor="scholarship-phone">
+                  Phone Number
+                </label>
+                <input
+                  id="scholarship-phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="Enter your 10-digit phone number"
+                  value={form.phone}
+                  onChange={(event) => handleFieldChange("phone", event.target.value)}
+                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10"
+                />
+                {errors.phone ? <p className="mt-1 text-xs text-red-600">{errors.phone}</p> : null}
+              </div>
 
-              <label className="text-xs text-gray-600" htmlFor="scholarship-email">
-                Email
-              </label>
-              <input
-                id="scholarship-email"
-                name="email"
-                type="email"
-                placeholder="Input text"
-                value={form.email}
-                onChange={(event) => handleFieldChange("email", event.target.value)}
-                className="w-full rounded-lg border border-transparent bg-gray-100 px-4 py-3 text-sm outline-none transition focus:border-black"
-              />
-              {errors.email ? <p className="-mt-2 text-xs text-red-600">{errors.email}</p> : null}
+              <div>
+                <label className="mb-2 block text-xs font-semibold text-[#6B7280]" htmlFor="scholarship-email">
+                  Email Address
+                </label>
+                <input
+                  id="scholarship-email"
+                  name="email"
+                  type="email"
+                  placeholder="Enter your email"
+                  value={form.email}
+                  onChange={(event) => handleFieldChange("email", event.target.value)}
+                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10"
+                />
+                {errors.email ? <p className="mt-1 text-xs text-red-600">{errors.email}</p> : null}
+              </div>
 
-              <label className="text-xs text-gray-600" htmlFor="scholarship-course">
-                Course
-              </label>
-              <select
-                id="scholarship-course"
-                name="course"
-                value={form.course}
-                onChange={(event) => handleFieldChange("course", event.target.value)}
-                className="w-full rounded-lg border border-transparent bg-gray-100 px-4 py-3 text-sm outline-none transition focus:border-black"
-              >
-                <option value="" disabled>
-                  Selection text
-                </option>
-                <option value="btech">B.Tech</option>
-                <option value="mtech">M.Tech</option>
-                <option value="mba">MBA</option>
-                <option value="bca">BCA</option>
-                <option value="mca">MCA</option>
-                <option value="bpharm">B.Pharm</option>
-                <option value="bba">BBA</option>
-                <option value="bhmct">BHMCT</option>
-                <option value="polytechnic">Polytechnic</option>
-              </select>
-              {errors.course ? <p className="-mt-2 text-xs text-red-600">{errors.course}</p> : null}
+              <div>
+                <label className="mb-2 block text-xs font-semibold text-[#6B7280]" htmlFor="scholarship-course">
+                  Select Your Course
+                </label>
+                <select
+                  id="scholarship-course"
+                  name="course"
+                  value={form.course}
+                  onChange={(event) => handleFieldChange("course", event.target.value)}
+                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10"
+                >
+                  <option value="" disabled>
+                    Select your course
+                  </option>
+                  <option value="btech">B.Tech</option>
+                  <option value="mtech">M.Tech</option>
+                  <option value="mba">MBA</option>
+                  <option value="bca">BCA</option>
+                  <option value="mca">MCA</option>
+                  <option value="bpharm">B.Pharm</option>
+                  <option value="bba">BBA</option>
+                  <option value="bhmct">BHMCT</option>
+                  <option value="polytechnic">Polytechnic</option>
+                </select>
+                {errors.course ? <p className="mt-1 text-xs text-red-600">{errors.course}</p> : null}
+              </div>
 
-              <label className="text-xs text-gray-600" htmlFor="scholarship-academic-score">
-                Academic Score (%)
-              </label>
-              <input
-                id="scholarship-academic-score"
-                name="academicScore"
-                type="number"
-                min={0}
-                max={100}
-                placeholder="0-100"
-                value={form.academicScore}
-                onChange={(event) => handleFieldChange("academicScore", event.target.value)}
-                className="w-full rounded-lg border border-transparent bg-gray-100 px-4 py-3 text-sm outline-none transition focus:border-black"
-              />
-              {errors.academicScore ? <p className="-mt-2 text-xs text-red-600">{errors.academicScore}</p> : null}
+              <div>
+                <label className="mb-2 block text-xs font-semibold text-[#6B7280]" htmlFor="scholarship-academic-score">
+                  Academic Score (%)
+                </label>
+                <input
+                  id="scholarship-academic-score"
+                  name="academicScore"
+                  type="number"
+                  min={0}
+                  max={100}
+                  placeholder="Enter percentage (0-100)"
+                  value={form.academicScore}
+                  onChange={(event) => handleFieldChange("academicScore", event.target.value)}
+                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10"
+                />
+                {errors.academicScore ? <p className="mt-1 text-xs text-red-600">{errors.academicScore}</p> : null}
+              </div>
 
-              <label className="text-xs text-gray-600" htmlFor="scholarship-family-income">
-                Family Income (LPA)
-              </label>
-              <input
-                id="scholarship-family-income"
-                name="familyIncomeLPA"
-                type="number"
-                min={0}
-                placeholder="Enter family income"
-                value={form.familyIncomeLPA}
-                onChange={(event) => handleFieldChange("familyIncomeLPA", event.target.value)}
-                className="w-full rounded-lg border border-transparent bg-gray-100 px-4 py-3 text-sm outline-none transition focus:border-black"
-              />
-              {errors.familyIncomeLPA ? <p className="-mt-2 text-xs text-red-600">{errors.familyIncomeLPA}</p> : null}
+              <div>
+                <label className="mb-2 block text-xs font-semibold text-[#6B7280]" htmlFor="scholarship-family-income">
+                  Family Annual Income (LPA)
+                </label>
+                <input
+                  id="scholarship-family-income"
+                  name="familyIncomeLPA"
+                  type="number"
+                  min={0}
+                  placeholder="Enter family income in lakhs"
+                  value={form.familyIncomeLPA}
+                  onChange={(event) => handleFieldChange("familyIncomeLPA", event.target.value)}
+                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10"
+                />
+                {errors.familyIncomeLPA ? <p className="mt-1 text-xs text-red-600">{errors.familyIncomeLPA}</p> : null}
+              </div>
 
-              <label className="text-xs text-gray-600" htmlFor="scholarship-category">
-                Category
-              </label>
-              <select
-                id="scholarship-category"
-                name="category"
-                value={form.category}
-                onChange={(event) => handleFieldChange("category", event.target.value)}
-                className="w-full rounded-lg border border-transparent bg-gray-100 px-4 py-3 text-sm outline-none transition focus:border-black"
-              >
-                <option value="" disabled>
-                  Select category
-                </option>
-                <option value="GENERAL">GENERAL</option>
-                <option value="OBC">OBC</option>
-                <option value="SC">SC</option>
-                <option value="ST">ST</option>
-              </select>
-              {errors.category ? <p className="-mt-2 text-xs text-red-600">{errors.category}</p> : null}
+              <div>
+                <label className="mb-2 block text-xs font-semibold text-[#6B7280]" htmlFor="scholarship-category">
+                  Category
+                </label>
+                <select
+                  id="scholarship-category"
+                  name="category"
+                  value={form.category}
+                  onChange={(event) => handleFieldChange("category", event.target.value)}
+                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10"
+                >
+                  <option value="" disabled>
+                    Select your category
+                  </option>
+                  <option value="GENERAL">GENERAL</option>
+                  <option value="OBC">OBC</option>
+                  <option value="SC">SC</option>
+                  <option value="ST">ST</option>
+                </select>
+                {errors.category ? <p className="mt-1 text-xs text-red-600">{errors.category}</p> : null}
+              </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-4 flex w-full items-center justify-between gap-3 rounded-full bg-black px-6 py-3 text-white transition hover:bg-gray-900 disabled:opacity-60"
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#3B82F6] px-6 py-3 font-semibold text-white transition hover:bg-[#2563EB] disabled:opacity-60"
               >
-                <span className="text-lg font-semibold">{isSubmitting ? "Checking..." : "Check Now"}</span>
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="h-5 w-5"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M5 12H19" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                  <path d="M13 6L19 12L13 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <span>{isSubmitting ? "Checking Eligibility..." : "Check My Eligibility"}</span>
               </button>
-              {submitError ? <p className="text-sm text-red-600">{submitError}</p> : null}
+              {submitError && <p className="text-sm text-red-600">{submitError}</p>}
             </form>
           )}
 
-          <div className="flex flex-col gap-4">
-            <h2 className="text-center text-3xl font-bold text-black md:text-right md:text-4xl">
-              RNR Scholarship - Rewarding Merit & Need
-            </h2>
-            <p className="text-center text-sm text-gray-600 md:text-right">
-              SVIET offers need-cum-merit scholarships to deserving students. Check your eligibility in 60 seconds.
-            </p>
-            <p className="text-center text-sm font-semibold text-gray-900 md:text-right">
-              Up to 100% fee waiver | 500+ scholarships awarded annually
-            </p>
-          <Image src={'/assets/img/line_vector.png'} className="mr-0 ml-auto" width={300} height={200} alt="line" style={{ width: "auto" }} />
+          <div className="flex flex-col gap-6">
+            <div>
+              <h2 className="text-3xl font-bold md:text-4xl">
+                <span className="text-[#1E2A78]">RNR Scholarship</span>
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-[#6B7280]">
+                SVIET offers need-cum-merit scholarships to deserving students. Check your eligibility in 60 seconds.
+              </p>
+              <p className="mt-4 font-semibold text-[#3B82F6]">
+                Up to 100% fee waiver | 500+ scholarships awarded annually
+              </p>
+            </div>
             <div className="w-full overflow-hidden rounded-2xl">
               <Image
                 src="/assets/img/college/scholarship.png"
                 alt="Scholarship eligibility"
                 width={700}
                 height={300}
-                className=" w-full object-cover"
+                className="w-full object-cover"
               />
             </div>
           </div>

@@ -3,23 +3,27 @@ import { ExperiencesSection } from "@/components/home/experiences";
 import { HeroSection } from "@/components/home/hero";
 import { DistinguishedLeadersSection } from "@/components/home/leaders";
 import { PivotEducationSection } from "@/components/home/pivot-education";
-import { PlacementsSection } from "@/components/home/placements";
-import { RankingBannerSection } from "@/components/home/ranking-banner";
+import { CurriculumOpportunitiesSection } from "@/components/home/curriculum-opportunities";
+import { ResearchInnovationsSection } from "@/components/home/research-innovations";
+import { OngoingResearchProjectsSection } from "@/components/home/ongoing-research-projects";
+import { EntrepreneurshipSection } from "@/components/home/entrepreneurship";
 import { ScholarshipSection } from "@/components/home/scholarship";
 import { StudentTestimonialsSection } from "@/components/home/testimonials";
 
 export function HomePage() {
   return (
-    <div className="min-h-screen bg-white text-foreground">
+    <div className="min-h-screen bg-[#FFFFFF] text-[#111827]">
       <HeroSection />
       <EducationBeyondSection />
       <ExperiencesSection />
-      <RankingBannerSection />
-      <PlacementsSection />
       <PivotEducationSection />
+      <CurriculumOpportunitiesSection />
       <DistinguishedLeadersSection />
+      <ResearchInnovationsSection />
+      <OngoingResearchProjectsSection />
+      <EntrepreneurshipSection />
       <StudentTestimonialsSection />
-      <ScholarshipSection />
+      {/* <ScholarshipSection /> */}
     </div>
   );
 }
