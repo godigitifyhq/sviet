@@ -26,9 +26,12 @@ const NAV_ITEMS = [
   { label: "Programs", href: "/programs" },
   { label: "Placements", href: "/placements" },
   { label: "Admissions", href: "/admissions" },
+  { label: "Our Initiatives", href: "/our-initiatives" },
+  { label: "International", href: "/international" },
   { label: "Campus Life", href: "/campus-life" },
   { label: "Research", href: "/research" },
   { label: "Events", href: "/events" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -379,8 +382,8 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
-        <nav className="hidden items-center gap-5 text-[11px] font-semibold tracking-wide text-current lg:flex">
-          <div className="flex items-center gap-1.5">
+        <nav className="hidden min-w-0 items-center gap-2 whitespace-nowrap text-[10px] font-semibold tracking-wide text-current lg:flex xl:gap-3 xl:text-[10px] 2xl:gap-5 2xl:text-[11px]">
+          <div className="hidden shrink-0 items-center gap-1.5 2xl:flex">
             {NAV_LINK_IMAGES.map((image) => (
               <Image
                 key={image.src}
@@ -388,7 +391,7 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                 alt={image.alt}
                 width={347}
                 height={150}
-                className="h-22 w-auto object-contain"
+                className="h-12 w-auto object-contain"
               />
             ))}
           </div>
