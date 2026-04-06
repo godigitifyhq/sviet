@@ -405,9 +405,10 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                 </Link>
 
                 <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-[min(1080px,calc(100vw-2rem))] -translate-x-1/2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
-                  <div className="overflow-hidden border border-black/10 bg-[#FFFFFF] p-5 shadow-[0_16px_45px_rgba(0,0,0,0.1)]">
-                    <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px]">
-                      <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="border border-black/10 bg-[#FFFFFF] shadow-[0_16px_45px_rgba(0,0,0,0.1)]">
+                    <div className="flex max-h-[90vh] flex-col xl:flex-row">
+                      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5">
+                        <div className="grid gap-4 sm:grid-cols-2">
                         {ABOUT_PANEL_GROUPS.map((group) => (
                           <section key={group.title} className="border border-black/10 bg-[#FFFFFF] p-4">
                             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{group.title}</p>
@@ -433,31 +434,34 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                             </div>
                           </section>
                         ))}
+                        </div>
                       </div>
 
-                      <Link
-                        href={ABOUT_PANEL_FEATURE.href}
-                        className="group/card relative overflow-hidden border border-[#FEA700]/35 bg-[#000000] p-5 text-[#FFFFFF] transition-colors duration-300 ease-out hover:border-[#FEA700]"
-                      >
-                        <div className="relative z-10 flex h-full flex-col">
-                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{ABOUT_PANEL_FEATURE.eyebrow}</span>
-                          <h3 className="mt-3 max-w-56 text-3xl font-black leading-[0.95] tracking-tight">{ABOUT_PANEL_FEATURE.title}</h3>
-                          <p className="mt-3 max-w-60 text-sm leading-6 text-white/80">{ABOUT_PANEL_FEATURE.description}</p>
-                          <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#FEA700]">
-                            Learn more
-                            <span className="transition group-hover/card:translate-x-0.5">→</span>
+                      <div className="border-t border-black/10 p-5 xl:sticky xl:top-0 xl:w-75 xl:shrink-0 xl:self-start xl:border-l xl:border-t-0">
+                        <Link
+                          href={ABOUT_PANEL_FEATURE.href}
+                          className="group/card relative block overflow-hidden border border-[#FEA700]/35 bg-[#000000] p-5 text-[#FFFFFF] transition-colors duration-300 ease-out hover:border-[#FEA700]"
+                        >
+                          <div className="relative z-10 flex h-full flex-col">
+                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{ABOUT_PANEL_FEATURE.eyebrow}</span>
+                            <h3 className="mt-3 max-w-56 text-3xl font-black leading-[0.95] tracking-tight">{ABOUT_PANEL_FEATURE.title}</h3>
+                            <p className="mt-3 max-w-60 text-sm leading-6 text-white/80">{ABOUT_PANEL_FEATURE.description}</p>
+                            <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#FEA700]">
+                              Learn more
+                              <span className="transition group-hover/card:translate-x-0.5">→</span>
+                            </div>
                           </div>
-                        </div>
-                        <div className="absolute inset-x-0 bottom-0 h-40">
-                          <Image
-                            src={ABOUT_PANEL_FEATURE.imageSrc}
-                            alt={ABOUT_PANEL_FEATURE.imageAlt}
-                            fill
-                            sizes="(max-width: 1280px) 340px, 340px"
-                            className="object-cover object-top-right opacity-30 mix-blend-screen"
-                          />
-                        </div>
-                      </Link>
+                          <div className="absolute inset-x-0 bottom-0 h-40">
+                            <Image
+                              src={ABOUT_PANEL_FEATURE.imageSrc}
+                              alt={ABOUT_PANEL_FEATURE.imageAlt}
+                              fill
+                              sizes="(max-width: 1280px) 340px, 340px"
+                              className="object-cover object-top-right opacity-30 mix-blend-screen"
+                            />
+                          </div>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -470,10 +474,11 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                 </button>
 
                 <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-[min(1080px,calc(100vw-2rem))] -translate-x-1/2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
-                  <div className="overflow-hidden border border-black/10 bg-[#FFFFFF] p-5 shadow-[0_16px_45px_rgba(0,0,0,0.1)]">
-                    <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px]">
-                      <div className="space-y-4">
-                        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                  <div className="border border-black/10 bg-[#FFFFFF] shadow-[0_16px_45px_rgba(0,0,0,0.1)]">
+                    <div className="flex max-h-[90vh] flex-col xl:flex-row">
+                      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5">
+                        <div className="space-y-4">
+                          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                           <Link
                             href="/program-finder"
                             className="border border-[#FEA700]/30 bg-[#FEA700]/10 p-4 transition-colors duration-300 ease-out hover:border-[#FEA700]"
@@ -507,32 +512,35 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                               </div>
                             </section>
                           ))}
+                          </div>
                         </div>
                       </div>
 
-                      <Link
-                        href={PROGRAM_PANEL_FEATURE.href}
-                        className="group/card relative overflow-hidden border border-[#FEA700]/35 bg-[#000000] p-5 text-[#FFFFFF] transition-colors duration-300 ease-out hover:border-[#FEA700]"
-                      >
-                        <div className="relative z-10 flex h-full flex-col">
-                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{PROGRAM_PANEL_FEATURE.eyebrow}</span>
-                          <h3 className="mt-3 max-w-56 text-3xl font-black leading-[0.95] tracking-tight">{PROGRAM_PANEL_FEATURE.title}</h3>
-                          <p className="mt-3 max-w-60 text-sm leading-6 text-white/80">{PROGRAM_PANEL_FEATURE.description}</p>
-                          <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#FEA700]">
-                            Open finder
-                            <span className="transition group-hover/card:translate-x-0.5">→</span>
+                      <div className="border-t border-black/10 p-5 xl:sticky xl:top-0 xl:w-75 xl:shrink-0 xl:self-start xl:border-l xl:border-t-0">
+                        <Link
+                          href={PROGRAM_PANEL_FEATURE.href}
+                          className="group/card relative block overflow-hidden border border-[#FEA700]/35 bg-[#000000] p-5 text-[#FFFFFF] transition-colors duration-300 ease-out hover:border-[#FEA700]"
+                        >
+                          <div className="relative z-10 flex h-full flex-col">
+                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{PROGRAM_PANEL_FEATURE.eyebrow}</span>
+                            <h3 className="mt-3 max-w-56 text-3xl font-black leading-[0.95] tracking-tight">{PROGRAM_PANEL_FEATURE.title}</h3>
+                            <p className="mt-3 max-w-60 text-sm leading-6 text-white/80">{PROGRAM_PANEL_FEATURE.description}</p>
+                            <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#FEA700]">
+                              Open finder
+                              <span className="transition group-hover/card:translate-x-0.5">→</span>
+                            </div>
                           </div>
-                        </div>
-                        <div className="absolute inset-x-0 bottom-0 h-44">
-                          <Image
-                            src={PROGRAM_PANEL_FEATURE.imageSrc}
-                            alt={PROGRAM_PANEL_FEATURE.imageAlt}
-                            fill
-                            sizes="(max-width: 1280px) 340px, 340px"
-                            className="object-cover object-center opacity-30 mix-blend-screen"
-                          />
-                        </div>
-                      </Link>
+                          <div className="absolute inset-x-0 bottom-0 h-44">
+                            <Image
+                              src={PROGRAM_PANEL_FEATURE.imageSrc}
+                              alt={PROGRAM_PANEL_FEATURE.imageAlt}
+                              fill
+                              sizes="(max-width: 1280px) 340px, 340px"
+                              className="object-cover object-center opacity-30 mix-blend-screen"
+                            />
+                          </div>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -549,7 +557,7 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
       {isMobileMenuOpen ? (
         <div
           id="mobile-main-menu"
-          className={`absolute left-0 top-full z-40 w-full border-t backdrop-blur-sm lg:hidden ${
+          className={`absolute left-0 top-full z-40 max-h-[90vh] w-full overflow-y-auto overscroll-contain border-t backdrop-blur-sm lg:hidden ${
             isTransparent
               ? "border-white/20 bg-[#000000]/95 text-[#FFFFFF]"
               : "border-black/10 bg-[#FFFFFF]/98 text-[#000000] shadow-[0_2px_10px_rgba(0,0,0,0.05)]"
@@ -619,7 +627,7 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                     </button>
 
                     {isMobileProgramsOpen ? (
-                      <div className="mt-1 flex max-h-90 flex-col gap-3 overflow-y-auto px-2 pb-2">
+                      <div className="mt-1 flex max-h-[70vh] flex-col gap-3 overflow-y-auto px-2 pb-2">
                         {orderedProgramGroups.map(([groupName, groupItems]) => (
                           <div key={`mobile-group-${groupName}`} className={`border p-2 ${isTransparent ? "border-white/20 bg-black/50" : "border-black/10 bg-[#FFFFFF]"}`}>
                             <p className="px-1 pb-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[#FEA700]">{groupName}</p>
