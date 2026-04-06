@@ -364,9 +364,7 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
             alt="SVIET logo"
             width={347}
             height={150}
-            className={`main-navbar-logo h-10 md:h-12 w-auto object-contain transition-[filter] duration-300 ease-out ${
-              isTransparent ? "brightness-0 invert" : ""
-            }`}
+            className={`main-navbar-logo h-10 md:h-12 w-auto transition-[filter] duration-300 ease-out object-contain `}
             style={{ width: "auto" }}
             priority
           />
