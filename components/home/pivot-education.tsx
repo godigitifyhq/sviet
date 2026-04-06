@@ -33,7 +33,7 @@ export function PivotEducationSection() {
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-14 space-y-4">
-          <h2 className="text-3xl font-bold text-[#000000] md:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-bold text-[#ffffff] md:text-4xl lg:text-5xl">
             One choice, endless opportunities
           </h2>
           <h3 className="text-2xl font-bold leading-tight text-white md:text-3xl">
