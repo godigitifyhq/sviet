@@ -4,7 +4,9 @@ import Image from "next/image";
 import { FaBookOpen, FaFlask, FaHandshake, FaIndustry, FaLaptopCode, FaMicroscope, FaTools } from "react-icons/fa";
 
 const containerClass = "mx-auto max-w-[1280px] px-6";
-const sectionClass = "py-20";
+const sectionClass = "py-20 lg:py-24";
+const sectionPaddingClass = "py-16 lg:py-24";
+const headerSpacing = "mb-8 lg:mb-10";
 
 const hero = {
   title: "Research & Innovation at SVIET",
@@ -253,7 +255,8 @@ const services = [
 export function ResearchPageComponent() {
   return (
     <>
-      <section className="relative overflow-hidden py-30">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden pt-32 pb-32 lg:pb-40 lg:pt-40">
         <Image
           src="/assets/img/college/main_gate.png"
           alt="Research at SVIET"
@@ -262,220 +265,262 @@ export function ResearchPageComponent() {
           sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/65 to-black/45" />
-        <div className="absolute -left-20 top-16 h-60 w-60 rounded-full bg-[#f7941d]/25 blur-3xl" />
-        <div className="absolute -right-16 bottom-10 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
-        <div className={`${containerClass} relative grid gap-10 md:grid-cols-2 md:items-center`}>
-          <div>
-            <p className="inline-flex rounded-full border border-white/30 bg-white/10 px-4 py-1 text-sm font-semibold tracking-wide text-white/90">
-              {hero.subtitle}
+        <div className="absolute inset-0 bg-black/55" />
+        <div className={`${containerClass} relative`}>
+          <div className="max-w-2xl">
+            <p className="text-sm font-semibold text-white/80">
+              <a href="/" className="hover:text-[#f7941d] transition">Home</a> / <span className="text-white">Research & Innovation</span>
             </p>
-            <h1 className="text-5xl font-bold text-white">{hero.title}</h1>
-            <p className="mt-6 max-w-xl text-base text-white/90">
+            <h1 className="mt-8 text-5xl lg:text-6xl font-bold leading-tight text-white">
+              {hero.title}
+            </h1>
+            <p className="mt-6 text-lg leading-relaxed text-white/90 max-w-xl">
               {hero.description}
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a href="#projects" className="rounded-full bg-[#f7941d] px-6 py-3 font-semibold text-white transition hover:bg-[#df850f]">Explore Projects</a>
-              <a href="#committee" className="rounded-full border border-white/40 bg-white/10 px-6 py-3 font-semibold text-white transition hover:bg-white/20">Meet R&D Committee</a>
-            </div>
-          </div>
-          <div className="justify-self-start rounded-2xl border border-white/30 bg-white/15 p-6 backdrop-blur-md md:justify-self-end">
-            <p className="text-sm text-white/80">Research Helpline</p>
-            <p className="mt-2 text-2xl font-semibold text-white">+91-1762-508005</p>
-            <p className="mt-3 text-sm text-white/80">research@sviet.ac.in</p>
-            <p className="mt-4 text-sm text-white/80">Mon-Sat | 9:00 AM - 6:00 PM</p>
           </div>
         </div>
       </section>
 
+      {/* Quick Links / Stats Section */}
       <section className={`${sectionClass} ${containerClass}`}>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {stats.map((item) => (
-            <article key={item.label} className="rounded-2xl border border-gray-200 bg-linear-to-b from-white to-gray-50 p-8 text-center transition duration-300 hover:-translate-y-1 hover:border-[#f7941d]/40">
-              <p className="text-4xl font-bold text-gray-900">{item.value}</p>
-              <p className="mt-2 text-base text-gray-600">{item.label}</p>
+            <article key={item.label} className="rounded-2xl border border-gray-200 bg-linear-to-b from-white to-gray-50 p-8 text-center transition duration-300 hover:-translate-y-1 hover:border-[#f7941d]/50 hover:shadow-lg">
+              <p className="text-5xl font-bold text-gray-900">{item.value}</p>
+              <p className="mt-3 text-sm font-semibold uppercase tracking-wide text-gray-600">{item.label}</p>
             </article>
           ))}
         </div>
       </section>
 
+      {/* About Research Section */}
       <section className={`${sectionClass} ${containerClass}`}>
         <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f7941d]">Research Vision</p>
-          <h2 className="text-4xl font-bold text-gray-900">About Research at SVIET</h2>
-          <p className="mt-4 text-lg text-gray-700">A research ecosystem built for societal and industrial impact.</p>
-          <p className="mt-6 text-base text-gray-600">
-            At our college, research is not just an academic requirement-it is a way of thinking, questioning, and innovating. We believe that true learning extends beyond textbooks, and we foster a culture where faculty and students collaborate to create practical, sustainable, and high-impact solutions for real-world challenges.
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Research Vision</p>
+          <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>About Research at SVIET</h2>
+          <p className="text-lg font-semibold text-gray-700">A research ecosystem built for societal and industrial impact.</p>
+          <p className="mt-6 text-base leading-relaxed text-gray-600">
+            At our college, research is not just an academic requirement—it is a way of thinking, questioning, and innovating. We believe that true learning extends beyond textbooks, and we foster a culture where faculty and students collaborate to create practical, sustainable, and high-impact solutions for real-world challenges.
           </p>
         </div>
       </section>
 
+      {/* Research Domains Section */}
       <section className={`${sectionClass} ${containerClass}`}>
-        <h2 className="text-4xl font-bold text-gray-900">Research Domains</h2>
-        <p className="mt-4 text-lg text-gray-700">Focused verticals that combine scientific rigor with real-world application.</p>
-        <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mb-12 lg:mb-16">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Research Areas</p>
+          <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>Research Domains</h2>
+          <p className="text-lg text-gray-700">Focused verticals that combine scientific rigor with real-world application.</p>
+        </div>
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {researchDomains.map((domain) => (
-            <article key={domain.title} className="rounded-2xl border border-gray-100 bg-white p-6 transition duration-300 hover:border-[#f7941d]/40 hover:bg-[#f7941d]/5">
-              <domain.icon className="text-2xl text-[#f7941d]" />
-              <h3 className="mt-4 text-2xl font-semibold text-gray-900">{domain.title}</h3>
-              <p className="mt-3 text-base text-gray-600">{domain.description}</p>
+            <article key={domain.title} className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 hover:shadow-lg">
+              <domain.icon className="text-3xl text-[#f7941d] transition group-hover:scale-110" />
+              <h3 className="mt-6 text-xl font-semibold text-gray-900">{domain.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-gray-600">{domain.description}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section id="committee" className="bg-gray-50 py-20">
+      {/* R&D Committee Section */}
+      <section id="committee" className="bg-gray-50 py-20 lg:py-24">
         <div className={containerClass}>
-          <h2 className="text-4xl font-bold text-gray-900">R&D Committee</h2>
-          <p className="mt-4 text-lg text-gray-700">Leadership and members guiding the institute&apos;s research direction.</p>
-          <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mb-12 lg:mb-16">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Leadership</p>
+            <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>R&D Committee</h2>
+            <p className="text-lg text-gray-700">Leadership and members guiding the institute's research direction.</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {rdCommittee.map((member) => (
-              <article key={member.name} className="rounded-2xl border border-gray-100 bg-white p-6">
-                <h3 className="text-2xl font-semibold text-gray-900">{member.name}</h3>
-                <p className="mt-3 text-base text-gray-700">{member.department}</p>
-                <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-[#f7941d]">{member.designation}</p>
+              <article key={member.name} className="rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-[#f7941d]/40 hover:shadow-md">
+                <h3 className="text-lg font-semibold text-gray-900">{member.name}</h3>
+                <p className="mt-2 text-sm text-gray-700">{member.department}</p>
+                <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-[#f7941d]">{member.designation}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="projects" className="bg-black py-20">
+      {/* Innovative Projects Section */}
+      <section id="projects" className="bg-gray-900 py-20 lg:py-24">
         <div className={containerClass}>
-          <h2 className="text-4xl font-bold text-white">Innovative Projects</h2>
-          <p className="mt-4 text-lg text-white/85">Student and faculty innovations addressing practical and societal needs.</p>
-          <div className="mt-10 grid gap-10 md:grid-cols-3">
+          <div className="mb-12 lg:mb-16">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Achievements</p>
+            <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-white lg:text-5xl`}>Innovative Projects</h2>
+            <p className="text-lg text-gray-300">Student and faculty innovations addressing practical and societal needs.</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {innovativeProjects.map((project) => (
-              <article key={project.title} className="rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm transition hover:bg-white/10">
-                <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
-                <p className="mt-3 text-base text-white/85">{project.description}</p>
+              <article key={project.title} className="group rounded-2xl border border-gray-700 bg-linear-to-br from-gray-800 to-gray-900 p-6 transition hover:border-[#f7941d]/50 hover:bg-linear-to-br hover:from-gray-800 hover:to-[#f7941d]/10">
+                <h3 className="text-lg font-semibold text-white group-hover:text-[#f7941d]">{project.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-gray-400">{project.description}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Research Publications Section */}
       <section className={`${sectionClass} ${containerClass}`}>
-        <h2 className="text-4xl font-bold text-gray-900">Research Publications</h2>
-        <p className="mt-4 text-lg text-gray-700">Selected list of publications contributed by SVIET researchers.</p>
-        <div className="mt-10 overflow-x-auto rounded-2xl border border-gray-100 bg-white">
-          <table className="min-w-full text-left">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-4 py-3 text-sm font-semibold text-gray-700">Title</th>
-                <th className="px-4 py-3 text-sm font-semibold text-gray-700">Author</th>
-                <th className="px-4 py-3 text-sm font-semibold text-gray-700">Year</th>
-                <th className="px-4 py-3 text-sm font-semibold text-gray-700">ISSN</th>
-              </tr>
-            </thead>
-            <tbody>
-              {publications.map((publication) => (
-                <tr key={`${publication.title}-${publication.author}`} className="border-t border-gray-100">
-                  <td className="px-4 py-3 text-sm text-gray-700">{publication.title}</td>
-                  <td className="px-4 py-3 text-sm text-gray-700">{publication.author}</td>
-                  <td className="px-4 py-3 text-sm text-gray-700">{publication.year}</td>
-                  <td className="px-4 py-3 text-sm text-gray-700">{publication.issn}</td>
+        <div className="mb-12 lg:mb-16">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Scholarly Output</p>
+          <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>Research Publications</h2>
+          <p className="text-lg text-gray-700">Selected list of publications contributed by SVIET researchers.</p>
+        </div>
+        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead className="border-b border-gray-200 bg-gray-50">
+                <tr>
+                  <th className="px-6 py-4 font-semibold text-gray-900">Title</th>
+                  <th className="px-6 py-4 font-semibold text-gray-900">Author</th>
+                  <th className="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">Year</th>
+                  <th className="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">ISSN</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {publications.map((publication) => (
+                  <tr key={`${publication.title}-${publication.author}`} className="transition hover:bg-gray-50">
+                    <td className="px-6 py-4 text-gray-700">{publication.title}</td>
+                    <td className="px-6 py-4 text-gray-700">{publication.author}</td>
+                    <td className="px-6 py-4 text-gray-700 whitespace-nowrap">{publication.year}</td>
+                    <td className="px-6 py-4 text-gray-700 whitespace-nowrap">{publication.issn}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
+      {/* Patents Section */}
       <section className={`${sectionClass} ${containerClass}`}>
-        <h2 className="text-4xl font-bold text-gray-900">Patents</h2>
-        <p className="mt-4 text-lg text-gray-700">Patent applications filed across engineering and technology domains.</p>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
+        <div className="mb-12 lg:mb-16">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">IP Portfolio</p>
+          <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>Patents</h2>
+          <p className="text-lg text-gray-700">Patent applications filed across engineering and technology domains.</p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2">
           {patents.map((patent) => (
-            <article key={patent.applicationNo} className="rounded-2xl border border-gray-100 bg-white p-5">
-              <p className="text-sm font-semibold uppercase tracking-wide text-[#f7941d]">Application No. {patent.applicationNo}</p>
-              <h3 className="mt-3 text-2xl font-semibold text-gray-900">{patent.title}</h3>
+            <article key={patent.applicationNo} className="group rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-[#f7941d]/50 hover:shadow-md">
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Ref: {patent.applicationNo}</p>
+              <h3 className="mt-4 text-lg font-semibold text-gray-900 group-hover:text-[#f7941d]">{patent.title}</h3>
             </article>
           ))}
         </div>
       </section>
 
+      {/* Research Collaborations Section */}
       <section className={`${sectionClass} ${containerClass}`}>
-        <h2 className="text-4xl font-bold text-gray-900">Research Collaborations</h2>
-        <p className="mt-4 text-lg text-gray-700">Collaborative partnerships driving shared innovation outcomes.</p>
-        <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-6">
+        <div className="mb-12 lg:mb-16">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Partnerships</p>
+          <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>Research Collaborations</h2>
+          <p className="text-lg text-gray-700">Collaborative partnerships driving shared innovation outcomes.</p>
+        </div>
+        <div className="flex flex-wrap items-center gap-8">
           {collaborations.map((company) => (
-            <p key={company} className="text-2xl font-semibold tracking-wide text-gray-400 transition duration-300 hover:text-[#f7941d] grayscale hover:grayscale-0">{company}</p>
+            <p key={company} className="text-2xl font-semibold tracking-tight text-gray-400 transition duration-300 hover:text-[#f7941d]">
+              {company}
+            </p>
           ))}
         </div>
       </section>
 
+      {/* Infrastructure & Books Section */}
       <section className={`${sectionClass} ${containerClass}`}>
-        <div className="grid gap-10 md:grid-cols-2">
+        <div className="grid gap-12 lg:grid-cols-2">
+          {/* Infrastructure */}
           <div>
-            <h2 className="text-4xl font-bold text-gray-900">Infrastructure & Facilities</h2>
-            <p className="mt-4 text-lg text-gray-700">Core research infrastructure supporting advanced experimentation and prototyping.</p>
-            <div className="mt-8 space-y-4">
+            <div className="mb-8">
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Facilities</p>
+              <h2 className="mt-2 text-3xl font-bold text-gray-900 lg:text-4xl">Infrastructure & Facilities</h2>
+            </div>
+            <p className="text-gray-700 mb-8">Core research infrastructure supporting advanced experimentation and prototyping.</p>
+            <div className="space-y-4">
               {infrastructure.map((facility) => (
-                <article key={facility} className="rounded-xl border border-gray-100 bg-white p-4">
-                  <h3 className="text-xl font-semibold text-gray-900">{facility}</h3>
+                <article key={facility} className="group rounded-xl border border-gray-200 bg-white p-4 transition hover:border-[#f7941d]/50 hover:shadow-md">
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-[#f7941d]">{facility}</h3>
                 </article>
               ))}
             </div>
           </div>
+
+          {/* Books & Chapters */}
           <div>
-            <h2 className="text-4xl font-bold text-gray-900">Books & Edited Chapters</h2>
-            <p className="mt-4 text-lg text-gray-700">
-              {booksMeta.title} ({booksMeta.year})
+            <div className="mb-8">
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Publications</p>
+              <h2 className="mt-2 text-3xl font-bold text-gray-900 lg:text-4xl">Books & Edited Chapters</h2>
+            </div>
+            <p className="text-gray-700">
+              <span className="font-semibold">{booksMeta.title}</span> ({booksMeta.year})
             </p>
-            <p className="mt-2 text-base text-gray-600">Total count: {booksMeta.total}</p>
-            <div className="mt-8 max-h-105 overflow-auto rounded-2xl border border-gray-100 bg-white">
-              <table className="min-w-full text-left">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-4 py-3 text-sm font-semibold text-gray-700">Sr.</th>
-                    <th className="px-4 py-3 text-sm font-semibold text-gray-700">Title</th>
-                    <th className="px-4 py-3 text-sm font-semibold text-gray-700">Author</th>
-                    <th className="px-4 py-3 text-sm font-semibold text-gray-700">Type</th>
-                    <th className="px-4 py-3 text-sm font-semibold text-gray-700">ISBN</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {booksAndChapters.map((book) => (
-                    <tr key={book.srNo} className="border-t border-gray-100">
-                      <td className="px-4 py-3 text-sm text-gray-700">{book.srNo}</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">{book.title}</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">{book.author}</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">{book.type}</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">{book.isbn}</td>
+            <p className="mt-2 text-sm text-gray-600">Total count: <span className="font-semibold text-gray-900">{booksMeta.total}</span></p>
+            <div className="mt-6 rounded-2xl border border-gray-200 bg-white shadow-lg overflow-hidden">
+              <div className="overflow-x-auto max-h-96">
+                <table className="w-full text-left text-sm">
+                  <thead className="border-b border-gray-200 bg-gray-50 sticky top-0">
+                    <tr>
+                      <th className="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap w-10">Sr.</th>
+                      <th className="px-4 py-3 font-semibold text-gray-900">Title</th>
+                      <th className="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap min-w-32">Author</th>
+                      <th className="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">Type</th>
+                      <th className="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">ISBN</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {booksAndChapters.map((book) => (
+                      <tr key={book.srNo} className="transition hover:bg-gray-50">
+                        <td className="px-4 py-3 text-gray-700 font-medium">{book.srNo}</td>
+                        <td className="px-4 py-3 text-gray-700">{book.title}</td>
+                        <td className="px-4 py-3 text-gray-700 text-xs">{book.author}</td>
+                        <td className="px-4 py-3 text-gray-700 text-xs whitespace-nowrap">{book.type}</td>
+                        <td className="px-4 py-3 text-gray-700 text-xs whitespace-nowrap">{book.isbn}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Research Activities & Services Section */}
       <section className={`${sectionClass} ${containerClass}`}>
-        <h2 className="text-4xl font-bold text-gray-900">Research Activities & Services</h2>
-        <p className="mt-4 text-lg text-gray-700">Institutional support mechanisms that help ideas move from concept to impact.</p>
-        <div className="mt-10 grid gap-10 md:grid-cols-3">
+        <div className="mb-12 lg:mb-16">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Support Systems</p>
+          <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>Research Activities & Services</h2>
+          <p className="text-lg text-gray-700">Institutional support mechanisms that help ideas move from concept to impact.</p>
+        </div>
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
-            <article key={service.title} className="rounded-2xl border border-gray-100 bg-white p-6 transition duration-300 hover:border-[#f7941d]/40 hover:bg-[#f7941d]/5">
-              <service.icon className="text-2xl text-[#f7941d]" />
-              <h3 className="mt-4 text-2xl font-semibold text-gray-900">{service.title}</h3>
-              <p className="mt-3 text-base text-gray-600">{service.description}</p>
+            <article key={service.title} className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 hover:shadow-lg">
+              <service.icon className="text-3xl text-[#f7941d] transition group-hover:scale-110" />
+              <h3 className="mt-6 text-xl font-semibold text-gray-900">{service.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-gray-600">{service.description}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="bg-black py-20">
+      {/* CTA Section */}
+      <section className="bg-gray-900 py-20 lg:py-24">
         <div className={containerClass}>
-          <h2 className="text-4xl font-bold text-white">Shape Your Future with Us</h2>
-          <p className="mt-4 max-w-2xl text-lg text-white/85">
-            Join a campus where research, innovation, and entrepreneurship are part of everyday learning.
-          </p>
-          <div className="mt-8">
-            <a href="/admissions" className="inline-flex rounded-full bg-[#f7941d] px-6 py-3 font-semibold text-white transition hover:bg-[#df850f]">
-              Apply Now
-            </a>
+          <div className="text-center">
+            <h2 className="text-4xl font-bold text-white lg:text-5xl">Shape Your Future with Us</h2>
+            <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
+              Join a campus where research, innovation, and entrepreneurship are part of everyday learning.
+            </p>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <a href="/admissions" className="inline-block rounded-full bg-[#f7941d] px-8 py-3 font-semibold text-black transition hover:bg-[#df850f]">
+                Apply Now
+              </a>
+              <a href="#projects" className="inline-block rounded-full border border-white/40 bg-white/10 px-8 py-3 font-semibold text-white transition hover:bg-white/20">
+                Learn More
+              </a>
+            </div>
           </div>
         </div>
       </section>

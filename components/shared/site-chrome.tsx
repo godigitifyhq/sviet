@@ -125,7 +125,7 @@ export function SiteHeader() {
   const pathname = usePathname();
   const pathSegments = pathname.split("/").filter(Boolean);
   const isProgramDetailPage = pathSegments[0] === "programs" && pathSegments.length === 2;
-  const isHeroOverlayRoute = pathname === "/" || isProgramDetailPage;
+  const isHeroOverlayRoute = pathname === "/" || pathname === "/research" || isProgramDetailPage;
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -364,7 +364,9 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
             alt="SVIET logo"
             width={347}
             height={150}
-            className={`main-navbar-logo h-10 md:h-12 w-auto transition-[filter] duration-300 ease-out object-contain `}
+            className={`main-navbar-logo h-10 md:h-12 w-auto object-contain transition-[filter] duration-300 ease-out ${
+              isTransparent ? "brightness-0 invert" : ""
+            }`}
             style={{ width: "auto" }}
             priority
           />
