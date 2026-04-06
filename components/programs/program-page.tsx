@@ -55,15 +55,6 @@ const DEFAULT_WHY_STUDY_ITEMS = [
   },
 ] as const;
 
-const DEFAULT_CAREERS = [
-  "Sports Physiotherapist",
-  "Orthopedic Physiotherapist",
-  "Rehabilitation Specialist",
-  "Fitness and Wellness Consultant",
-  "Clinical Researcher",
-  "Physiotherapy Lecturer or Educator",
-] as const;
-
 const IMPORTANT_INFO_ITEMS = [
   {
     title: "Download curriculum",
@@ -196,7 +187,6 @@ function getWhyStudyItems(highlights: string[]) {
 export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
   const heroImage = getHeroImage(program.heroImage);
   const whyStudyItems = getWhyStudyItems(program.highlights);
-  const careers = program.outcomes.length > 0 ? program.outcomes.slice(0, 6) : [...DEFAULT_CAREERS];
   const facilityNames = program.facilities.length > 0 ? program.facilities.slice(0, 3) : ["Advanced Labs", "Clinical Exposure", "Smart Classrooms"];
 
   return (
@@ -508,33 +498,41 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
         </div>
       </section>
 
-      <section id="placements" className="scroll-mt-30 bg-[#111827] py-16 md:scroll-mt-32 md:py-20">
+      <section id="placements" className="scroll-mt-30 bg-linear-to-b from-[#2d1f52] to-[#1f1545] py-20 md:scroll-mt-32 md:py-28">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
-          <h2 className="max-w-4xl text-4xl font-semibold leading-tight text-white md:text-5xl">
-            Launch your career with our leading placements
+          <h2 className="max-w-4xl text-4xl font-semibold leading-snug tracking-[-0.01em] text-white md:text-5xl lg:text-6xl">
+            Launch your career with <span className="text-white">our</span>
+            <br /> <span className="text-white">leading placements</span>
           </h2>
-          <p className="mt-5 max-w-4xl text-base leading-relaxed text-white/80 md:text-lg">
-            We provide strong placement preparation, recruiter exposure, and career readiness support before you graduate.
+
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/85 md:text-[1.05rem]">
+            We provide you with leading placement opportunities before you graduate, with the best career training and
+            an exposure to leading recruiters.
           </p>
 
-          <div className="mt-10 grid gap-5 border border-white/15 bg-white/5 p-4 text-white md:grid-cols-3 md:p-6">
-            <div>
-              <p className="text-5xl font-bold text-[#f7941d] md:text-6xl">4-6 LPA</p>
-              <p className="mt-1 text-lg text-white/85">Average Package</p>
+          <div className="mt-12 grid gap-0 md:grid-cols-3 md:divide-x md:divide-white/20">
+            <div className="border-b border-white/20 py-8 md:border-b-0 md:px-6 md:py-0 md:first:pl-0 md:last:pr-0">
+              <p className="text-6xl font-bold text-[#f7941d] md:text-7xl">4-6 LPA</p>
+              <p className="mt-2 text-lg text-white/80">Average Package</p>
             </div>
-            <div>
-              <p className="text-5xl font-bold text-[#f7941d] md:text-6xl">2,200+</p>
-              <p className="mt-1 text-lg text-white/85">Recruiters</p>
+            <div className="border-b border-white/20 py-8 md:border-b-0 md:px-6 md:py-0">
+              <p className="text-6xl font-bold text-[#f7941d] md:text-7xl">2,200+</p>
+              <p className="mt-2 text-lg text-white/80">Recruiters</p>
             </div>
-            <div>
-              <p className="text-5xl font-bold text-[#f7941d] md:text-6xl">60 LPA</p>
-              <p className="mt-1 text-lg text-white/85">Highest Package Offered</p>
+            <div className="py-8 md:px-6 md:py-0 md:last:pr-0">
+              <p className="text-6xl font-bold text-[#f7941d] md:text-7xl">60 LPA</p>
+              <p className="mt-2 text-lg text-white/80">Highest Package Offered</p>
             </div>
+          </div>
+
+          <div className="mt-12 flex items-center gap-3">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#24b4be]" />
+            <p className="text-xl font-medium text-white">Give your future career a head start</p>
           </div>
 
           <Link
             href="/placements"
-            className="mt-8 inline-flex items-center border border-[#f7941d] bg-[#f7941d] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#F97316]"
+            className="mt-8 inline-flex items-center rounded-lg bg-[#6366F1] px-8 py-3.5 text-base font-semibold text-white transition hover:bg-[#4F46E5] active:scale-95"
           >
             Explore placements
           </Link>
