@@ -8,21 +8,21 @@ const milestonePlacements = [
     company: "Goldman Sachs",
     studentName: "Suhani Shah",
     position: "Software Engineering Analyst",
-    studentImage: "/assets/img/students/image (1).png",
+    studentImage: "/assets/img/students/pppp.png",
     companyLogo: "/assets/img/companies/goldman_sachs.png",
   },
   {
     company: "Microsoft",
     studentName: "Tanish Patel",
     position: "Software Engineer",
-    studentImage: "/assets/img/students/image (2).png",
+    studentImage: "/assets/img/students/Placement-Mockup-1.png",
     companyLogo: "/assets/img/companies/jio_digital.png",
   },
   {
     company: "Amazon",
     studentName: "Suraj Jagtap",
     position: "Backend Engineer",
-    studentImage: "/assets/img/students/moon_mandal.png",
+    studentImage: "/assets/img/students/pppp.png",
     companyLogo: "/assets/img/companies/amazon.png",
   },
 ];
@@ -45,7 +45,7 @@ export function ExperiencesSection() {
       <div className="mx-auto max-w-7xl">
         {/* Header Section */}
         <div className="mb-12 space-y-6">
-          <h1 className="text-3xl font-bold leading-tight text-[#1E2A78] md:text-5xl">
+          <h1 className="text-3xl font-bold leading-tight text-[#000000] md:text-5xl">
             One University, infinite placements.
           </h1>
           <h2 className="text-2xl font-light leading-tight text-[#111827] md:text-3xl">
@@ -65,9 +65,9 @@ export function ExperiencesSection() {
               <span className="text-lg">▶</span>
               <span className="text-sm md:text-base">Ready to provide you with the best job offers with up to</span>
             </div>
-            <div className="text-5xl font-bold text-[#3B82F6] md:text-6xl">60 Lakhs</div>
+            <div className="text-5xl font-bold text-[#f7941d] md:text-6xl">60 Lakhs</div>
             <p className="text-sm text-[#6B7280] md:text-base">
-              Highest package & average packages of <span className="text-[#3B82F6]">4-6 LPA</span>.
+              Highest package & average packages of <span className="text-[#f7941d]">4-6 LPA</span>.
             </p>
           </div>
 
@@ -78,7 +78,7 @@ export function ExperiencesSection() {
               <span className="text-sm md:text-base">We have</span>
             </div>
             <div>
-              <div className="text-5xl font-bold text-[#3B82F6] md:text-6xl">2,200+</div>
+              <div className="text-5xl font-bold text-[#f7941d] md:text-6xl">2,200+</div>
               <div className="text-3xl font-bold text-[#111827] md:text-4xl">Recruiters</div>
             </div>
           </div>
@@ -93,7 +93,7 @@ export function ExperiencesSection() {
               {/* Left Content */}
               <div className="space-y-3 flex flex-col justify-center md:pr-4">
                 <div>
-                  <h2 className="text-xs font-semibold text-[#3B82F6] md:text-sm">Milestone Placements</h2>
+                  <h2 className="text-xs font-semibold text-[#f7941d] md:text-sm">Milestone Placements</h2>
                   <p className="mt-1 text-base font-light leading-relaxed text-[#111827] md:text-lg">
                     Aligning your career aspirations with
                   </p>
@@ -109,21 +109,21 @@ export function ExperiencesSection() {
               {/* Right Side - Student Profile */}
               <div className="relative flex items-end justify-between">
                 {/* Decorative star */}
-                <div className="absolute top-6 right-12 text-3xl text-[#3B82F6]">✦</div>
+               
 
                 {/* Student Image - Left Side of Right Column */}
                 <div className="relative shrink-0">
                   {/* Gradient circles background */}
-                  <div className="relative h-56 w-40">
+                  <div className="relative h-56 w-70">
 
                     {/* Student Image */}
                     <div className="relative z-10 top-4 md:top-8 h-full w-full overflow-hidden">
                       <Image
                         src={placement.studentImage}
                         alt={placement.studentName}
-                        width={160}
-                        height={224}
-                        className="h-full w-full object-cover object-top"
+                        width={560}
+                        height={424}
+                        className="h-full w-w-full object-contain object-bottom"
                       />
                     </div>
                   </div>
@@ -170,7 +170,7 @@ export function ExperiencesSection() {
                   onClick={() => setCurrentSlide(index)}
                   aria-label={`Go to placement ${index + 1}`}
                   className={`h-2 transition-all ${
-                    index === currentSlide ? "w-8 bg-[#3B82F6]" : "w-2 bg-[#D1D5DB]"
+                    index === currentSlide ? "w-8 bg-[#f7941d]" : "w-2 bg-[#D1D5DB]"
                   }`}
                 />
               ))}

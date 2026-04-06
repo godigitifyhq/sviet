@@ -8,8 +8,8 @@ type ImageCardProps = {
 
 export function ImageCard({ title, imageSrc, imageAlt }: ImageCardProps) {
   return (
-    <article className="group overflow-hidden border border-gray-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-      <div className="relative aspect-4/3 overflow-hidden bg-gray-100">
+    <article className="group overflow-hidden border border-[#DCE7FF] bg-white shadow-[0_8px_24px_rgba(30,42,120,0.08)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(30,42,120,0.14)]">
+      <div className="relative aspect-4/3 overflow-hidden bg-[#EFF6FF]">
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -20,7 +20,7 @@ export function ImageCard({ title, imageSrc, imageAlt }: ImageCardProps) {
         />
       </div>
       <div className="px-4 py-4">
-        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+        <h3 className="text-lg font-semibold text-[#f7941d]">{title}</h3>
       </div>
     </article>
   );

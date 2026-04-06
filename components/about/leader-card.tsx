@@ -40,8 +40,8 @@ export function LeaderCard({ name, title, imageSrc, imageAlt, active = false, on
       className={cn(
         "snap-start shrink-0 basis-55 overflow-hidden border text-left transition shadow-none sm:basis-60",
         active
-          ? "border-zinc-200 bg-zinc-800 text-white"
-          : "border-zinc-800 bg-zinc-950/70 text-zinc-100 hover:bg-zinc-900",
+          ? "border-[#93C5FD] bg-[#1E3A8A] text-white"
+          : "border-[#1E3A8A]/70 bg-[#0F172A]/80 text-[#E2E8F0] hover:bg-[#1E293B]",
         className,
       )}
     >
@@ -56,7 +56,7 @@ export function LeaderCard({ name, title, imageSrc, imageAlt, active = false, on
       </div>
       <div className="p-4">
         <p className="text-2xl font-semibold leading-tight">{name}</p>
-        <p className={cn("mt-2 text-base", active ? "text-amber-300" : "text-zinc-300")}>{title}</p>
+        <p className={cn("mt-2 text-base", active ? "text-[#BFDBFE]" : "text-[#93C5FD]")}>{title}</p>
       </div>
     </button>
   );

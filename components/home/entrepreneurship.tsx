@@ -77,7 +77,7 @@ export function EntrepreneurshipSection() {
   ];
 
   return (
-    <section className="bg-[#000000fd] py-16 md:py-24">
+    <section className="bg-[#000000d7] py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         {/* Header */}
         <div className="mb-12 space-y-4">
@@ -86,7 +86,7 @@ export function EntrepreneurshipSection() {
           </h2>
           <h2 className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">
             ecosystem{" "}
-            <span className="bg-linear-to-r from-[#F4B740] to-[#FF6B6B] bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-[#F4B740] to-[#f7941d] bg-clip-text text-transparent">
               that turns your ideas into impact!
             </span>
           </h2>
@@ -102,8 +102,8 @@ export function EntrepreneurshipSection() {
         {/* Stats Section */}
         <div className="mb-12 grid gap-6 md:grid-cols-3">
           {stats.map((stat) => (
-            <div key={stat.id} className="border-l-2 border-[#3B82F6] bg-[#111111]/50 p-6 backdrop-blur">
-              <div className="mb-3 text-4xl font-bold text-[#3B82F6]">{stat.number}</div>
+            <div key={stat.id} className="border-l-2 border-[#f7941d] bg-[#111111]/50 p-6 backdrop-blur">
+              <div className="mb-3 text-4xl font-bold text-[#f7941d]">{stat.number}</div>
               <h4 className="mb-2 font-semibold text-white">{stat.label}</h4>
               <p className="text-xs leading-relaxed text-gray-300">{stat.description}</p>
             </div>
@@ -112,7 +112,7 @@ export function EntrepreneurshipSection() {
 
         {/* Research Centre Label */}
         <div className="mb-12 flex items-center gap-2">
-          <div className="h-1 w-1.5 bg-[#3B82F6]"></div>
+          <div className="h-1 w-1.5 bg-[#f7941d]"></div>
           <p className="text-sm font-semibold text-white">
             Parul innovation and entrepreneurship research centre
           </p>

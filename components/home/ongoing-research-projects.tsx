@@ -13,6 +13,7 @@ const researchProjects = [
     organization: "ICMR",
     icon: "🔧",
     gradient: "from-pink-500 via-purple-600 to-purple-700",
+    img: "/assets/img/re.jpg",
   },
   {
     id: 2,
@@ -23,6 +24,7 @@ const researchProjects = [
     organization: "ICMR",
     icon: "💧",
     gradient: "from-pink-500 via-blue-600 to-purple-700",
+    img: "/assets/img/re.jpg",
   },
   {
     id: 3,
@@ -33,6 +35,7 @@ const researchProjects = [
     organization: "ICMR",
     icon: "😊",
     gradient: "from-pink-500 via-purple-600 to-purple-700",
+    img: "/assets/img/re.jpg",
   },
   {
     id: 4,
@@ -43,6 +46,7 @@ const researchProjects = [
     organization: "ICMR",
     icon: "💊",
     gradient: "from-pink-500 via-green-600 to-purple-700",
+    img: "/assets/img/re.jpg",
   },
   {
     id: 5,
@@ -53,6 +57,7 @@ const researchProjects = [
     organization: "ICMR",
     icon: "🧬",
     gradient: "from-pink-500 via-orange-600 to-purple-700",
+    img: "/assets/img/re.jpg",
   },
 ];
 
@@ -127,8 +132,8 @@ export function OngoingResearchProjectsSection() {
         {/* Header */}
         <div className="mb-12">
           <div className="flex items-center gap-3">
-            <div className="h-1 w-8 bg-[#3B82F6]"></div>
-            <h2 className="text-2xl font-bold text-[#111827] md:text-3xl">
+            <div className="h-1 w-8 bg-[#f7941d]"></div>
+            <h2 className="text-2xl font-bold text-[#fffffff] md:text-3xl">
               Ongoing research projects
             </h2>
           </div>
@@ -141,14 +146,14 @@ export function OngoingResearchProjectsSection() {
             <button
               onClick={() => scroll("left")}
               disabled={scrollPosition === 0}
-              className="h-10 w-10 rounded-full border border-[#3B82F6] text-[#3B82F6] transition disabled:opacity-40 hover:bg-[#3B82F6] hover:text-white flex items-center justify-center shrink-0"
+              className="h-10 w-10 rounded-full border border-[#f7941d] text-[#f7941d] transition disabled:opacity-40 hover:bg-[#f7941d] hover:text-white flex items-center justify-center shrink-0"
               aria-label="Previous projects"
             >
               <ChevronLeft size={20} />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="h-10 w-10 rounded-full border border-[#3B82F6] text-[#3B82F6] transition hover:bg-[#3B82F6] hover:text-white flex items-center justify-center shrink-0"
+              className="h-10 w-10 rounded-full border border-[#f7941d] text-[#f7941d] transition hover:bg-[#f7941d] hover:text-white flex items-center justify-center shrink-0"
               aria-label="Next projects"
             >
               <ChevronRight size={20} />
@@ -181,74 +186,18 @@ export function OngoingResearchProjectsSection() {
                   <div className="bg-white rounded-[15px]! mb-4 overflow-hidden   h-full flex flex-col">
                     {/* Top Section - Gradient Background with Design Elements */}
                     <div
-                      className={`bg-linear-to-br ${project.gradient} w-[299px] mx-auto mt-[10px] rounded-[15px]!  p-6 text-white relative overflow-hidden min-h-64`}
+                      style={{
+                        backgroundImage: `url(${project.img})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                      }}
+                      className="w-full h-48 rounded-t-[15px] p-6 text-white relative overflow-hidden"
                     >
-                      {/* Decorative wavy background element */}
-                      <svg
-                        className="absolute bottom-0 left-0 w-32 h-32 opacity-20"
-                        viewBox="0 0 200 200"
-                        fill="white"
-                      >
-                        <path
-                          d="M0,100 Q50,50 100,100 T200,100 L200,200 L0,200 Z"
-                          fill="white"
-                          opacity="0.3"
-                        />
-                      </svg>
+                
 
-                      {/* ICMR Logo Badge */}
-                      <div className="absolute top-4 right-4 w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-lg">
-                        <div className="text-center">
-                          <div className="text-2xl font-bold text-transparent bg-linear-to-r from-purple-600 to-blue-600 bg-clip-text">
-                            ICMR
-                          </div>
-                        </div>
-                      </div>
+                 
 
-                      {/* Content */}
-                      <div className="relative z-10 flex flex-col h-full justify-between">
-                        <div>
-                          {/* Project Title Badge */}
-                          <div className="mb-2">
-                            <span className="inline-block bg-pink-500 text-white text-xs font-bold px-3 py-1 rounded-sm">
-                              PROJECT TITLE
-                            </span>
-                          </div>
-                          {/* Title */}
-                          <p className="text-sm font-semibold mb-4 leading-tight line-clamp-3 pr-12">
-                            {project.title}
-                          </p>
-                        </div>
-
-                        <div>
-                          {/* Project Grant Badge */}
-                          <div className="mb-2">
-                            <span className="inline-block bg-pink-500 text-white text-xs font-bold px-3 py-1 rounded-sm">
-                              PROJECT GRANT
-                            </span>
-                          </div>
-                          {/* Grant Amount */}
-                          <div className="text-4xl font-bold mb-4">{project.grant}</div>
-
-                          {/* Project Investigator Badge */}
-                          <div className="mb-2">
-                            <span className="inline-block bg-pink-500 text-white text-xs font-bold px-3 py-1 rounded-sm">
-                              PROJECT INVESTIGATOR
-                            </span>
-                          </div>
-                          {/* Investigator Name */}
-                          <p className="text-xs font-medium">{project.investigator}</p>
-                        </div>
-                      </div>
-
-                      {/* Decorative bottom wave */}
-                      <svg
-                        className="absolute bottom-0 right-0 w-40 h-32 opacity-30"
-                        viewBox="0 0 400 200"
-                        fill="white"
-                      >
-                        <path d="M0,100 Q100,50 200,100 T400,100 L400,200 L0,200 Z" />
-                      </svg>
+                
                     </div>
 
                     {/* Bottom Section - White Background */}

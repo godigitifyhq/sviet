@@ -203,40 +203,44 @@ export function getAboutPageDataBySlug(slug: string): AboutPageData | null {
 
 export function AboutPageTemplate({ data }: { data: AboutPageData }) {
   return (
-    <main className="bg-white">
-      <section className="h-[300px] bg-gray-100">
-        <div className="mx-auto flex h-full max-w-[1280px] items-center px-6">
+    <main className="bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] text-[#111827]">
+      <section className="relative min-h-80 overflow-hidden bg-[linear-gradient(130deg,#EEF4FF_0%,#FFFFFF_52%,#F5F9FF_100%)]">
+        <div className="absolute -right-36 -top-30 hidden h-80 w-80 bg-[#BFDBFE]/35 blur-3xl md:block" aria-hidden="true" />
+        <div className="relative mx-auto flex min-h-80 max-w-7xl items-center px-4 py-14 md:px-6">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500">About SVIET</p>
-            <h1 className="mt-3 text-4xl font-bold text-gray-900">{data.title}</h1>
-            <p className="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">{data.intro}</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#f7941d]">About SVIET</p>
+            <h1 className="mt-3 text-4xl font-bold tracking-tight text-[#f7941d] md:text-5xl">{data.title}</h1>
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-[#6B7280]">{data.intro}</p>
           </div>
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="mx-auto max-w-[1280px] px-6">
-          <div className="max-w-3xl space-y-5 text-gray-600 leading-relaxed">
+      <section className="py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 md:px-6">
+          <div className="max-w-3xl space-y-5 leading-relaxed text-[#6B7280]">
             {data.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
 
           {data.stats?.length ? (
-            <div className="mt-12 grid max-w-3xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {data.stats.map((item) => (
-                <article key={item.label} className="border border-gray-200 bg-white px-4 py-5">
-                  <p className="text-2xl font-bold text-gray-900">{item.value}</p>
-                  <p className="mt-2 text-sm text-gray-600">{item.label}</p>
+                <article
+                  key={item.label}
+                  className="border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F5F9FF_100%)] px-4 py-5 shadow-[0_8px_24px_rgba(30,42,120,0.06)]"
+                >
+                  <p className="text-2xl font-bold text-[#f7941d]">{item.value}</p>
+                  <p className="mt-2 text-sm text-[#6B7280]">{item.label}</p>
                 </article>
               ))}
             </div>
           ) : null}
 
           {data.highlights?.length ? (
-            <ul className="mt-10 max-w-3xl space-y-3 text-gray-600 leading-relaxed">
+            <ul className="mt-10 max-w-3xl space-y-3 leading-relaxed text-[#4B5563]">
               {data.highlights.map((item) => (
-                <li key={item} className="border-l-2 border-gray-300 pl-4">
+                <li key={item} className="border-l-2 border-[#f7941d] bg-white/80 pl-4 py-2">
                   {item}
                 </li>
               ))}

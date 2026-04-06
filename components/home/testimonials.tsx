@@ -138,7 +138,7 @@ export function StudentTestimonialsSection() {
         {/* Header */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold md:text-4xl">
-            <span className="text-[#1E2A78]">Our students speak</span>
+            <span className="text-[#f7941d]">Our students speak</span>
             <span className="text-[#111827]"> hear it from those who are learning with us!</span>
           </h2>
         </div>
@@ -150,14 +150,14 @@ export function StudentTestimonialsSection() {
             <button
               onClick={() => scroll("left")}
               disabled={scrollPosition === 0}
-              className="h-10 w-10 rounded-full border border-[#3B82F6] text-[#3B82F6] transition disabled:opacity-40 hover:bg-[#3B82F6] hover:text-white flex items-center justify-center shrink-0"
+              className="h-10 w-10 rounded-full border border-[#f7941d] text-[#f7941d] transition disabled:opacity-40 hover:bg-[#f7941d] hover:text-white flex items-center justify-center shrink-0"
               aria-label="Previous testimonials"
             >
               <ChevronLeft size={20} />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="h-10 w-10 rounded-full border border-[#3B82F6] text-[#3B82F6] transition hover:bg-[#3B82F6] hover:text-white flex items-center justify-center shrink-0"
+              className="h-10 w-10 rounded-full border border-[#f7941d] text-[#f7941d] transition hover:bg-[#f7941d] hover:text-white flex items-center justify-center shrink-0"
               aria-label="Next testimonials"
             >
               <ChevronRight size={20} />
@@ -206,7 +206,7 @@ export function StudentTestimonialsSection() {
                     </div>
 
                     {/* Watch Video Button */}
-                    <button className="flex items-center gap-2 rounded-full bg-[#3B82F6] px-4 py-2 text-white hover:bg-[#2563EB] transition">
+                    <button className="flex items-center gap-2 rounded-full bg-[#f7941d] px-4 py-2 text-white hover:bg-[#2563EB] transition">
                       <span className="text-xs font-semibold">Watch Video</span>
                       <Play size={16} className="fill-[#F4B740] text-[#F4B740]" />
                     </button>
@@ -228,7 +228,7 @@ export function StudentTestimonialsSection() {
                 key={index}
                 onClick={() => handleDotClick(index)}
                 className={`h-2 w-2 rounded-full transition ${
-                  activeIndex === index ? "bg-[#3B82F6] w-6" : "bg-[#D1D5DB]"
+                  activeIndex === index ? "bg-[#f7941d] w-6" : "bg-[#D1D5DB]"
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />

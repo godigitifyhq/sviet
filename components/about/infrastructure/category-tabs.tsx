@@ -21,8 +21,8 @@ export function CategoryTabs({ categories, activeCategory, onCategoryChange }: C
               className={cn(
                 "rounded-md border px-4 py-2 text-sm font-semibold transition",
                 isActive
-                  ? "border-gray-900 bg-gray-900 text-white"
-                  : "border-gray-300 bg-white text-gray-700 hover:border-gray-400 hover:text-gray-900",
+                  ? "border-[#f7941d] bg-[#f7941d] text-white"
+                  : "border-[#BFDBFE] bg-white text-[#f7941d] hover:border-[#f7941d] hover:text-[#111827]",
               )}
             >
               {category}

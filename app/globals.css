@@ -61,3 +61,79 @@ button {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+.site-header {
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 60;
+}
+
+.site-header-home {
+  position: absolute;
+  top: 0;
+}
+
+.site-header-home.navbar-scrolled {
+  position: fixed;
+}
+
+.site-header-default {
+  position: sticky;
+  top: 0;
+}
+
+.site-header .utility-bar,
+.site-header .main-navbar,
+.site-header .main-navbar a,
+.site-header .main-navbar button,
+.site-header .main-navbar svg {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    padding 0.3s ease;
+}
+
+.site-header .utility-bar {
+  max-height: 56px;
+  overflow: hidden;
+}
+
+.site-header.utility-hidden .utility-bar {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom-width: 0;
+}
+
+.site-header.navbar-transparent .utility-bar {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.site-header.navbar-transparent .main-navbar {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.site-header.navbar-scrolled .utility-bar {
+  background-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #000000;
+}
+
+.site-header.navbar-scrolled .main-navbar {
+  background-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  color: #000000;
+}

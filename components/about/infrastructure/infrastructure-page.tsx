@@ -163,26 +163,31 @@ export function InfrastructurePage() {
   }, [activeCategory]);
 
   return (
-    <main className="bg-white">
-      <SectionWrapper aria-labelledby="infrastructure-heading" className="border-b border-gray-100 bg-gray-50">
+    <main className="bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)]">
+      <SectionWrapper
+        aria-labelledby="infrastructure-heading"
+        className="relative overflow-hidden border-b border-[#E5E7EB] bg-[linear-gradient(130deg,#EEF4FF_0%,#FFFFFF_52%,#F5F9FF_100%)]"
+      >
+        <div className="absolute -right-32 -top-25 hidden h-72 w-72 bg-[#BFDBFE]/30 blur-3xl md:block" aria-hidden="true" />
         <div className="flex flex-wrap items-start justify-between gap-6">
           <div className="max-w-3xl">
-            <h1 id="infrastructure-heading" className="text-4xl font-bold text-gray-900 md:text-5xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#f7941d]">About SVIET</p>
+            <h1 id="infrastructure-heading" className="mt-3 text-4xl font-bold tracking-tight text-[#f7941d] md:text-5xl">
               Infrastructure
             </h1>
-            <p className="mt-5 text-base leading-relaxed text-gray-600">
+            <p className="mt-5 text-base leading-relaxed text-[#6B7280]">
               Our campus infrastructure is thoughtfully designed to blend innovation, sustainability, and functionality,
               enhancing academic excellence, research, and holistic student life.
             </p>
           </div>
 
-          <span className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700">
+          <span className="inline-flex items-center rounded-md border border-[#BFDBFE] bg-white px-4 py-2 text-sm font-semibold text-[#f7941d]">
             Virtual Background
           </span>
         </div>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="campus-facilities-heading">
+      <SectionWrapper aria-labelledby="campus-facilities-heading" className="border-b border-[#E5E7EB]">
         <SectionHeader id="campus-facilities-heading" title="Explore SVIET’s Campus Facilities" />
 
         <CategoryTabs categories={[...CATEGORY_TABS]} activeCategory={activeCategory} onCategoryChange={(category) => setActiveCategory(category as typeof activeCategory)} />
@@ -190,7 +195,7 @@ export function InfrastructurePage() {
         <ImageGrid items={filteredFacilities} />
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="sustainability-heading" className="bg-gray-50">
+      <SectionWrapper aria-labelledby="sustainability-heading" className="bg-[#F5F7FB]">
         <SectionHeader
           id="sustainability-heading"
           title="Sustainability Initiatives"

@@ -105,13 +105,18 @@ const MEMBERSHIPS = [
 
 export function AccreditationsPage() {
   return (
-    <main className="bg-white">
-      <SectionWrapper aria-labelledby="accreditations-heading" className="border-b border-gray-100 bg-gray-50">
+    <main className="bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)]">
+      <SectionWrapper
+        aria-labelledby="accreditations-heading"
+        className="relative overflow-hidden border-b border-[#E5E7EB] bg-[linear-gradient(130deg,#EEF4FF_0%,#FFFFFF_52%,#F5F9FF_100%)]"
+      >
+        <div className="absolute -right-32 -top-25 hidden h-72 w-72 bg-[#BFDBFE]/30 blur-3xl md:block" aria-hidden="true" />
         <div className="max-w-4xl">
-          <h1 id="accreditations-heading" className="text-4xl font-bold text-gray-900 md:text-5xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#f7941d]">About SVIET</p>
+          <h1 id="accreditations-heading" className="mt-3 text-4xl font-bold tracking-tight text-[#f7941d] md:text-5xl">
             Accreditations &amp; Approvals
           </h1>
-          <p className="mt-5 text-base leading-relaxed text-gray-600">
+          <p className="mt-5 text-base leading-relaxed text-[#6B7280]">
             SVGOI is recognized by leading national and international bodies, reflecting our commitment to quality
             education and academic excellence.
           </p>
@@ -119,17 +124,17 @@ export function AccreditationsPage() {
       </SectionWrapper>
 
       <SectionWrapper aria-labelledby="accreditation-status-heading">
-        <article className="grid gap-8 rounded-lg border border-gray-200 bg-white p-8 shadow-sm lg:grid-cols-[1.7fr_1fr] lg:items-center">
+        <article className="grid gap-8 border border-[#DCE7FF] bg-white p-8 shadow-[0_10px_28px_rgba(30,42,120,0.08)] lg:grid-cols-[1.7fr_1fr] lg:items-center">
           <div>
-            <h2 id="accreditation-status-heading" className="text-3xl font-bold text-gray-900">
+            <h2 id="accreditation-status-heading" className="text-3xl font-bold text-[#f7941d]">
               SVIET Accreditation Status
             </h2>
-            <p className="mt-4 text-lg font-semibold text-gray-800">NAAC Accredited with B++ Grade (2024)</p>
-            <p className="mt-4 text-base leading-relaxed text-gray-600">
+            <p className="mt-4 text-lg font-semibold text-[#f7941d]">NAAC Accredited with B++ Grade (2024)</p>
+            <p className="mt-4 text-base leading-relaxed text-[#6B7280]">
               Recognized for maintaining high standards in teaching, infrastructure, and student development.
             </p>
 
-            <ul className="mt-6 space-y-2 text-sm text-gray-600">
+            <ul className="mt-6 space-y-2 text-sm text-[#4B5563]">
               <li>Engineering and Technology Programs</li>
               <li>Pharmacy and Health Sciences</li>
               <li>Management and Applied Sciences</li>
@@ -151,7 +156,7 @@ export function AccreditationsPage() {
         </article>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="key-accreditations-heading" className="border-t border-gray-100">
+      <SectionWrapper aria-labelledby="key-accreditations-heading" className="border-t border-[#E5E7EB]">
         <SectionHeader id="key-accreditations-heading" title="Key Accreditations" />
 
         <div className="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -168,7 +173,7 @@ export function AccreditationsPage() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="ugc-certificate-heading" className="bg-gray-50">
+      <SectionWrapper aria-labelledby="ugc-certificate-heading" className="bg-[#F5F7FB]">
         <SectionHeader id="ugc-certificate-heading" title="Certificate / Document" />
         <div className="mt-8">
           <CertificateBlock
@@ -181,37 +186,40 @@ export function AccreditationsPage() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="other-approvals-heading" className="bg-[#8b1e1e]">
+      <SectionWrapper
+        aria-labelledby="other-approvals-heading"
+        className="bg-[linear-gradient(120deg,#111827_0%,#f7941d_58%,#f7941d_100%)]"
+      >
         <SectionHeader
           id="other-approvals-heading"
           title="Other Approvals"
           titleClassName="text-white"
           description="Additional regulatory and professional approvals supporting institutional and program-level operations."
-          descriptionClassName="text-red-100"
+          descriptionClassName="text-[#DBEAFE]"
         />
 
         <ApprovalGrid items={OTHER_APPROVALS} />
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="important-notice-heading" className="border-t border-gray-100">
-        <article className="rounded-lg border border-amber-200 bg-amber-50 p-6">
-          <h2 id="important-notice-heading" className="text-2xl font-bold text-gray-900">
+      <SectionWrapper aria-labelledby="important-notice-heading" className="border-t border-[#E5E7EB]">
+        <article className="border border-[#BFDBFE] bg-[#EFF6FF] p-6">
+          <h2 id="important-notice-heading" className="text-2xl font-bold text-[#f7941d]">
             Important Notice
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-gray-700">
+          <p className="mt-3 text-sm leading-relaxed text-[#4B5563]">
             AICTE approval is not required for universities as per Supreme Court judgment and subsequent regulatory
             clarifications. Stakeholders are advised to review the official document for complete context.
           </p>
           <button
             type="button"
-            className="mt-5 inline-flex items-center rounded-md border border-amber-400 bg-white px-4 py-2 text-sm font-semibold text-amber-800 transition hover:bg-amber-100"
+            className="mt-5 inline-flex items-center rounded-md border border-[#93C5FD] bg-white px-4 py-2 text-sm font-semibold text-[#f7941d] transition hover:border-[#60A5FA] hover:bg-[#DBEAFE]"
           >
             View Copy of Judgment
           </button>
         </article>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="memberships-heading" className="bg-gray-50">
+      <SectionWrapper aria-labelledby="memberships-heading" className="bg-[#F8FAFF]">
         <SectionHeader id="memberships-heading" title="Memberships" />
 
         <div className="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">

@@ -12,10 +12,12 @@ type SectionHeaderProps = {
 export function SectionHeader({ id, title, description, className, titleClassName, descriptionClassName }: SectionHeaderProps) {
   return (
     <header className={cn("max-w-3xl", className)}>
-      <h2 id={id} className={cn("text-3xl font-bold text-gray-900 md:text-4xl", titleClassName)}>
+      <h2 id={id} className={cn("text-3xl font-bold tracking-tight text-[#f7941d] md:text-4xl", titleClassName)}>
         {title}
       </h2>
-      {description ? <p className={cn("mt-4 text-base leading-relaxed text-gray-600", descriptionClassName)}>{description}</p> : null}
+      {description ? (
+        <p className={cn("mt-4 text-base leading-relaxed text-[#6B7280]", descriptionClassName)}>{description}</p>
+      ) : null}
     </header>
   );
 }

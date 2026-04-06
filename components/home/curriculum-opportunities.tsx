@@ -623,7 +623,7 @@ export function CurriculumOpportunitiesSection() {
               <button
                 onClick={handlePrev}
                 disabled={scrollOffset === 0}
-                className="h-8 w-8 rounded-full border border-[#3B82F6] text-[#3B82F6] transition disabled:opacity-40 hover:bg-[#3B82F6] hover:text-white flex items-center justify-center"
+                className="h-8 w-8 rounded-full border border-[#f7941d] text-[#f7941d] transition disabled:opacity-40 hover:bg-[#f7941d] hover:text-white flex items-center justify-center"
                 aria-label="Scroll up"
               >
                 <ChevronUp size={16} />
@@ -631,7 +631,7 @@ export function CurriculumOpportunitiesSection() {
               <button
                 onClick={handleNext}
                 disabled={scrollOffset >= maxScroll}
-                className="h-8 w-8 rounded-full border border-[#3B82F6] text-[#3B82F6] transition disabled:opacity-40 hover:bg-[#3B82F6] hover:text-white flex items-center justify-center"
+                className="h-8 w-8 rounded-full border border-[#f7941d] text-[#f7941d] transition disabled:opacity-40 hover:bg-[#f7941d] hover:text-white flex items-center justify-center"
                 aria-label="Scroll down"
               >
                 <ChevronDown size={16} />
@@ -649,8 +649,8 @@ export function CurriculumOpportunitiesSection() {
                     onClick={() => handleItemClick(curriculumEvents.indexOf(event))}
                     className={`w-full text-left px-3 py-2 rounded transition-all duration-200 ${
                       isActive
-                        ? "text-[#3B82F6] font-semibold bg-[#E5E7EB]"
-                        : "text-[#6B7280] font-normal hover:text-[#3B82F6] hover:bg-[#F3F4F6]"
+                        ? "text-[#f7941d] font-semibold bg-[#E5E7EB]"
+                        : "text-[#6B7280] font-normal hover:text-[#f7941d] hover:bg-[#F3F4F6]"
                     }`}
                   >
                     <div className="text-xs md:text-sm line-clamp-2">{event.name}</div>
@@ -667,7 +667,7 @@ export function CurriculumOpportunitiesSection() {
             <div className="grid gap-6 lg:grid-cols-[1fr_1.5fr_1fr]">
               {/* Left Column - Highlight Card */}
               <div className="space-y-4">
-                <div className="overflow-hidden rounded-[20px] bg-[#3B82F6] p-5 md:p-6 text-white h-full flex flex-col justify-between">
+                <div className="overflow-hidden rounded-[20px] bg-[#f7941d] p-5 md:p-6 text-white h-full flex flex-col justify-between">
                   <div>
                     <div className="mb-3 h-10 w-10 rounded-lg bg-white/20" />
                     <h3 className="mb-3 text-sm md:text-base font-bold leading-tight">
@@ -677,7 +677,7 @@ export function CurriculumOpportunitiesSection() {
                       {currentEvent.mainCard.description}
                     </p>
                   </div>
-                  <button className="inline-flex items-center gap-2 rounded-full bg-white px-3 md:px-4 py-2 text-xs md:text-sm font-semibold text-[#3B82F6] transition hover:bg-white/90">
+                  <button className="inline-flex items-center gap-2 rounded-full bg-white px-3 md:px-4 py-2 text-xs md:text-sm font-semibold text-[#f7941d] transition hover:bg-white/90">
                     {currentEvent.mainCard.cta}
                     <span aria-hidden="true">›</span>
                   </button>

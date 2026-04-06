@@ -8,8 +8,8 @@ type SectionWrapperProps = ComponentPropsWithoutRef<"section"> & {
 
 export function SectionWrapper({ className, containerClassName, children, ...props }: SectionWrapperProps) {
   return (
-    <section className={cn("py-16", className)} {...props}>
-      <div className={cn("mx-auto max-w-7xl px-6", containerClassName)}>{children}</div>
+    <section className={cn("py-16 md:py-20", className)} {...props}>
+      <div className={cn("mx-auto max-w-[1280px] px-4 md:px-6", containerClassName)}>{children}</div>
     </section>
   );
 }

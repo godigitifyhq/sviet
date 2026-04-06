@@ -23,6 +23,18 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "utfs.io",
       },
+      {
+        protocol: "https",
+        hostname: "cdn2.hubspot.net",
+      },
+      {
+        protocol: "https",
+        hostname: "concept3d.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.paruluniversity.ac.in",
+      },
     ],
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],

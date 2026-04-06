@@ -22,7 +22,7 @@ export function ResearchInnovationsSection() {
           <p className="text-xl font-medium leading-tight text-[#6B7280] md:text-2xl">
             Innovations that drive change!
           </p>
-          <h2 className="text-3xl font-bold leading-tight tracking-tight text-[#1E2A78] md:text-5xl">
+          <h2 className="text-3xl font-bold leading-tight tracking-tight text-[#000000] md:text-5xl">
             Research that solves challenges
           </h2>
           <p className="mx-auto max-w-3xl text-sm leading-relaxed text-[#6B7280] md:text-lg">
@@ -34,7 +34,7 @@ export function ResearchInnovationsSection() {
         <div className="grid gap-8 md:grid-cols-3">
           {stats.map((stat, index) => (
             <div key={index} className="flex flex-col items-center justify-center space-y-3 border-r border-[#D1D5DB] last:border-r-0 py-8">
-              <div className="text-4xl md:text-5xl font-bold text-[#3B82F6]">
+              <div className="text-4xl md:text-5xl font-bold text-[#f7941d]">
                 {stat.number}
               </div>
               <p className="text-center text-sm md:text-base font-medium text-[#6B7280]">

@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight, Award, Building2, GraduationCap, Users } from "lucide-react";
 
 import type { Leader } from "@/components/about/leader-card";
 import { InfoCard } from "@/components/about/info-card";
@@ -6,23 +8,33 @@ import { LeadershipCarousel } from "@/components/about/leadership-carousel";
 import { SectionHeader } from "@/components/about/section-header";
 import { SectionWrapper } from "@/components/about/section-wrapper";
 import { StatCard } from "@/components/about/stat-card";
-import { TimelineList } from "@/components/about/timeline-list";
 
-const HERO_STATS = [
-  { value: "35000+", label: "International Students" },
-  { value: "50000+", label: "Full-time Students" },
-  { value: "75+", label: "Nationalities" },
-  { value: "28", label: "States" },
-];
-
-const FOUNDATION_TIMELINE = [
-  { year: "2005", event: "SVCP and SVCE" },
-  { year: "2010", event: "SVPC" },
-  { year: "2012", event: "SVITC with IT and Business Faculty" },
-  { year: "2014", event: "Management and Technology" },
-  { year: "2017", event: "SVCMT (MRSPTU)" },
-  { year: "2021", event: "College of Law" },
-];
+const RELATED_LINKS = [
+  {
+    title: "Awards & Rankings",
+    description: "Marks of Quality",
+    href: "/about/accreditations",
+    icon: Award,
+  },
+  {
+    title: "SVIET Infrastructure",
+    description: "World-class learning facilities",
+    href: "/about/infrastructure",
+    icon: Building2,
+  },
+  {
+    title: "Our Programs",
+    description: "Explore Learning at SVIET",
+    href: "/programs",
+    icon: GraduationCap,
+  },
+  {
+    title: "Leadership Desk",
+    description: "The visionaries behind SVIET",
+    href: "/about/leadership",
+    icon: Users,
+  },
+] as const;
 
 const INITIATIVES = [
   {
@@ -233,17 +245,17 @@ const VISION_POINTS: PhilosophyPoint[] = [
 function PhilosophyTimeline({ points }: { points: PhilosophyPoint[] }) {
   return (
     <ol className="relative space-y-6">
-      <span className="absolute left-3 top-2 h-[calc(100%-1rem)] w-px bg-gray-300" aria-hidden="true" />
+      <span className="absolute left-3 top-2 h-[calc(100%-1rem)] w-px bg-[#93C5FD]" aria-hidden="true" />
       {points.map((point, index) => (
         <li key={point.title} className="relative pl-16">
-          <span className="absolute left-0 top-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-500 text-xs font-semibold text-white">
+          <span className="absolute left-0 top-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#f7941d] text-xs font-semibold text-white">
             {index + 1}
           </span>
-          <span className="absolute left-8 top-1 inline-flex h-5 w-5 items-center justify-center rounded-full border-2 border-amber-500 bg-gray-100">
-            <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+          <span className="absolute left-8 top-1 inline-flex h-5 w-5 items-center justify-center rounded-full border-2 border-[#f7941d] bg-white">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#f7941d]" />
           </span>
-          <h3 className="text-lg font-semibold text-gray-900">{point.title}</h3>
-          <p className="mt-1 text-sm leading-relaxed text-gray-600">{point.description}</p>
+          <h3 className="text-lg font-semibold text-[#f7941d]">{point.title}</h3>
+          <p className="mt-1 text-sm leading-relaxed text-[#4B5563]">{point.description}</p>
         </li>
       ))}
     </ol>
@@ -252,84 +264,112 @@ function PhilosophyTimeline({ points }: { points: PhilosophyPoint[] }) {
 
 export function AboutOverviewPage() {
   return (
-    <main className="bg-white">
-      <SectionWrapper aria-labelledby="about-hero-heading">
-        <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
+    <main className="bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] text-[#111827]">
+      <section aria-labelledby="about-hero-heading" className="relative -mt-30 overflow-hidden pt-30">
+        <Image
+          src="/assets/img/college/main_gate.png"
+          alt="SVIET main campus gate"
+          fill
+          sizes="100vw"
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-linear-to-r from-[#020617]/90 via-[#0F172A]/72 to-[#0F172A]/30" aria-hidden="true" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#020617]/72 via-transparent to-[#38BDF8]/20" aria-hidden="true" />
+
+        <div className="relative mx-auto flex min-h-140 max-w-7xl flex-col justify-end px-4 pb-16 md:min-h-160 md:px-6 md:pb-24">
+          <p className="flex items-center gap-2 text-sm font-medium text-white/90 md:text-3xl">
+            <Link href="/" className="transition hover:text-white">
+              Home
+            </Link>
+            <span aria-hidden="true">/</span>
+            <span className="font-semibold text-white">About Us</span>
+          </p>
+
+          <h1 id="about-hero-heading" className="mt-8 max-w-5xl text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl">
+            A Place for Discovery, Innovation and Quality Learning.
+          </h1>
+
+          <p className="mt-6 max-w-4xl text-lg leading-relaxed text-white/95 md:text-2xl">
+            Welcome to a unique destination of learning, innovation and research, providing the highest form of quality
+            in education while hosting the world&apos;s diversities.
+          </p>
+        </div>
+      </section>
+
+      <SectionWrapper aria-labelledby="about-svgoi-heading" className="border-t border-[#E5E7EB] bg-[#F8FAFC]">
+        <div className="space-y-14">
           <div>
-            <h1 id="about-hero-heading" className="text-4xl font-bold text-gray-900 md:text-5xl">
-              Infinite Horizons, One Campus
-            </h1>
-            <p className="mt-6 text-base leading-relaxed text-gray-600">
-              Swami Vivekanand Group of Institutes was established in 2004 under the aegis of Sh. Raghunath Rai Memorial
-              Education and Charitable Trust, with a commitment to quality higher education, discipline, and inclusive
-              institutional growth.
+            <p className="inline-flex items-center gap-3 text-xl font-medium leading-tight text-[#374151]">
+              <span className="h-2.5 w-2.5 rotate-45 bg-[#14B8A6]" aria-hidden="true" />
+              Related links
             </p>
+
+            <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {RELATED_LINKS.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    className="group flex items-center justify-between border border-[#E5E7EB] bg-white px-6 py-6 shadow-[0_6px_20px_rgba(15,23,42,0.06)] transition hover:-translate-y-0.5 hover:border-[#BFDBFE] hover:shadow-[0_12px_28px_rgba(30,42,120,0.12)]"
+                  >
+                    <div className="flex items-start gap-4">
+                      <Icon className="mt-0.5 h-7 w-7 text-[#4F46E5]" aria-hidden="true" />
+                      <div>
+                        <p className="text-xl font-semibold leading-tight text-[#111827] md:text-2xl">{item.title}</p>
+                        <p className="mt-1 text-sm text-[#6B7280]">{item.description}</p>
+                      </div>
+                    </div>
+
+                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center bg-[#EEF2FF] text-[#4F46E5] transition group-hover:bg-[#f7941d] group-hover:text-white">
+                      <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
 
-          <div className="relative min-h-70 border border-gray-200 md:min-h-90">
-            <Image
-              src="/assets/img/college/main_gate.png"
-              alt="SVIET campus"
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-              priority
-            />
-          </div>
-        </div>
+          <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-start">
+            <h2 id="about-svgoi-heading" className="text-5xl font-semibold leading-tight md:text-7xl">
+              <span className="block text-[#1F2937]">Know About</span>
+              <span className="mt-2 block bg-linear-to-r from-[#f7941d] via-[#4F46E5] to-[#EC4899] bg-clip-text text-transparent">
+                SVIET
+              </span>
+            </h2>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {HERO_STATS.map((item) => (
-            <StatCard key={item.label} value={item.value} label={item.label} />
-          ))}
-        </div>
-      </SectionWrapper>
-
-      <SectionWrapper aria-labelledby="about-svgoi-heading" className="border-t border-gray-100">
-        <div className="grid gap-8 lg:grid-cols-2">
-          <div className="space-y-6">
-            <SectionHeader
-              id="about-svgoi-heading"
-              title="About SVGOI"
-              description="SVGOI was conceptualized during 2003 and formally established in 2004 to create an accessible and quality-driven higher education ecosystem in the region."
-            />
-
-            <div className="space-y-4 text-base leading-relaxed text-gray-600">
+            <div className="max-w-4xl space-y-7 text-lg leading-relaxed text-[#111827]">
               <p>
-                Over the years, the group expanded through multiple institutions and faculties to serve students from
-                diverse academic and geographic backgrounds.
+                With a legacy of <strong>more than 20 years in higher education</strong>, Swami Vivekanand Group of
+                Institutes has emerged as a leading institution focused on innovation, research, and industry-oriented
+                learning. With a vibrant community of students from diverse states and countries, SVIET continues to
+                strengthen its reputation as a destination for academic excellence and professional outcomes.
               </p>
+
               <p>
-                This phased growth model reflects a sustained commitment to academic relevance, professional preparation,
-                and social responsibility.
+                With the goal of delivering future-ready education, SVIET aligns academic practices with modern
+                standards, practical exposure, and strong mentorship. Across its multidisciplinary programs, the
+                institution supports students through advanced labs, contemporary infrastructure, and career-focused
+                training pathways. This commitment reflects SVIET&apos;s progressive approach to building quality education
+                with social and global relevance.
               </p>
             </div>
-
-            <TimelineList items={FOUNDATION_TIMELINE} className="space-y-1" />
-          </div>
-
-          <div className="relative min-h-80 border border-gray-200">
-            <Image
-              src="/assets/img/college/4th.png"
-              alt="SVGOI campus infrastructure"
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
           </div>
         </div>
       </SectionWrapper>
 
-      <SectionWrapper aria-label="Location Highlight" className="bg-gray-50">
+      <SectionWrapper aria-label="Location Highlight" className="bg-[#F5F7FB]">
         <InfoCard
           title="Location Highlight"
           description="Situated 30 km from Chandigarh on NH-1, the campus offers strong regional connectivity while maintaining a focused academic environment."
-          className="border-gray-300"
+          className="border-[#BFDBFE]"
         >
-          <p className="mt-4 text-sm leading-relaxed text-gray-600">
+          <p className="mt-4 text-sm leading-relaxed text-[#6B7280]">
             Accessible from Chandigarh, Mohali, Panchkula, Ambala, and Patiala through major road links.
           </p>
-          <ul className="mt-4 flex flex-wrap gap-2 text-sm font-medium text-gray-700" aria-label="Nearby connected cities">
+          <ul className="mt-4 flex flex-wrap gap-2 text-sm font-medium text-[#f7941d]" aria-label="Nearby connected cities">
             {[
               "Chandigarh",
               "Mohali",
@@ -337,7 +377,7 @@ export function AboutOverviewPage() {
               "Ambala",
               "Patiala",
             ].map((city) => (
-              <li key={city} className="border border-gray-300 px-3 py-1">
+              <li key={city} className="border border-[#BFDBFE] bg-white px-3 py-1">
                 {city}
               </li>
             ))}
@@ -348,6 +388,7 @@ export function AboutOverviewPage() {
       <SectionWrapper aria-labelledby="initiatives-heading">
         <SectionHeader
           id="initiatives-heading"
+          eyebrow="Institutional Focus"
           title="Initiatives and Achievements"
           description="Institutional priorities that support quality education, inclusion, and long-term student development."
           className="mb-8"
@@ -360,42 +401,49 @@ export function AboutOverviewPage() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="philosophy-heading" className="bg-gray-100">
+      <SectionWrapper aria-labelledby="philosophy-heading" className="bg-[#EEF4FF]">
         <SectionHeader
           id="philosophy-heading"
+          eyebrow="Guiding Principles"
           title="Our Philosophy"
           description="To become a leading global educational institution that shapes ethical professionals, future-ready leaders, and responsible citizens."
           className="mx-auto max-w-4xl text-center"
-          titleClassName="text-black"
-          descriptionClassName="text-gray-600"
+          titleClassName="text-[#f7941d]"
+          descriptionClassName="text-[#4B5563]"
         />
 
         <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_2fr] lg:items-start">
-          <h3 className="text-4xl font-bold tracking-wide text-gray-900 md:text-5xl">MISSION</h3>
+          <h3 className="text-4xl font-bold tracking-wide text-[#f7941d] md:text-5xl">MISSION</h3>
           <PhilosophyTimeline points={MISSION_POINTS} />
         </div>
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[2fr_1fr] lg:items-start">
           <PhilosophyTimeline points={VISION_POINTS} />
-          <h3 className="text-4xl font-bold tracking-wide text-gray-900 md:text-right md:text-5xl">VISION</h3>
+          <h3 className="text-4xl font-bold tracking-wide text-[#f7941d] md:text-right md:text-5xl">VISION</h3>
         </div>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="management-desk-heading" className="bg-black">
+      <SectionWrapper
+        aria-labelledby="management-desk-heading"
+        className="bg-[linear-gradient(120deg,#111827_0%,#f7941d_58%,#f7941d_100%)]"
+      >
         <SectionHeader
           id="management-desk-heading"
+          eyebrow="Leadership"
           title="From the Desk of Management"
           description="Leadership perspectives that shape institutional direction, student outcomes, and academic quality."
           className="mb-8"
           titleClassName="text-white"
-          descriptionClassName="text-gray-300"
+          descriptionClassName="text-[#DBEAFE]"
+          eyebrowClassName="text-[#BFDBFE]"
         />
         <LeadershipCarousel leaders={LEADERSHIP_DESK} />
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="culture-diversity-heading" className="bg-gray-50">
+      <SectionWrapper aria-labelledby="culture-diversity-heading" className="bg-[#F8FAFF]">
         <SectionHeader
           id="culture-diversity-heading"
+          eyebrow="Campus Life"
           title="Culture and Diversity"
           description="A vibrant student community built on inclusion, cross-cultural learning, and shared academic purpose."
           centered
@@ -408,15 +456,16 @@ export function AboutOverviewPage() {
           ))}
         </div>
 
-        <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-gray-600">
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-[#6B7280]">
           Students from across India and multiple international backgrounds learn together in a collaborative and
           respectful campus environment.
         </p>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="infrastructure-heading">
+      <SectionWrapper aria-labelledby="infrastructure-heading" className="border-t border-[#E5E7EB]">
         <SectionHeader
           id="infrastructure-heading"
+          eyebrow="Campus"
           title="Infrastructure"
           description="Core academic and campus facilities that support learning, innovation, and student well-being."
           className="mb-8"

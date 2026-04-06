@@ -188,17 +188,17 @@ const INFRASTRUCTURE = [
 function PhilosophyTimeline({ points }: { points: PhilosophyPoint[] }) {
   return (
     <ol className="relative space-y-6">
-      <span className="absolute left-3 top-2 h-[calc(100%-1rem)] w-px bg-gray-300" aria-hidden="true" />
+      <span className="absolute left-3 top-2 h-[calc(100%-1rem)] w-px bg-[#93C5FD]" aria-hidden="true" />
       {points.map((point, index) => (
         <li key={point.title} className="relative pl-16">
-          <span className="absolute left-0 top-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-500 text-xs font-semibold text-white">
+          <span className="absolute left-0 top-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#f7941d] text-xs font-semibold text-white">
             {index + 1}
           </span>
-          <span className="absolute left-8 top-1 inline-flex h-5 w-5 items-center justify-center rounded-full border-2 border-amber-500 bg-gray-100">
-            <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+          <span className="absolute left-8 top-1 inline-flex h-5 w-5 items-center justify-center rounded-full border-2 border-[#f7941d] bg-white">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#f7941d]" />
           </span>
-          <h3 className="text-lg font-semibold text-gray-900">{point.title}</h3>
-          <p className="mt-1 text-sm leading-relaxed text-gray-600">{point.description}</p>
+          <h3 className="text-lg font-semibold text-[#f7941d]">{point.title}</h3>
+          <p className="mt-1 text-sm leading-relaxed text-[#4B5563]">{point.description}</p>
         </li>
       ))}
     </ol>
@@ -207,51 +207,64 @@ function PhilosophyTimeline({ points }: { points: PhilosophyPoint[] }) {
 
 export function LeadershipPage() {
   return (
-    <main className="bg-white">
-      <SectionWrapper aria-labelledby="leadership-hero-heading">
+    <main className="bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)]">
+      <SectionWrapper
+        aria-labelledby="leadership-hero-heading"
+        className="relative overflow-hidden border-b border-[#E5E7EB] bg-[linear-gradient(130deg,#EEF4FF_0%,#FFFFFF_52%,#F5F9FF_100%)]"
+      >
+        <div className="absolute -right-28 -top-22.5 hidden h-72 w-72 bg-[#BFDBFE]/30 blur-3xl md:block" aria-hidden="true" />
         <SectionHeader
           id="leadership-hero-heading"
+          eyebrow="About SVIET"
           title="Leadership"
           description="Institutional leadership at SVIET is guided by academic integrity, strategic planning, and student-first governance."
+          className="relative"
         />
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="philosophy-heading" className="bg-gray-100">
+      <SectionWrapper aria-labelledby="philosophy-heading" className="bg-[#EEF4FF]">
         <SectionHeader
           id="philosophy-heading"
+          eyebrow="Guiding Principles"
           title="Our Philosophy"
           description="To become a leading global educational institution that shapes ethical professionals, future-ready leaders, and responsible citizens."
           className="mx-auto max-w-4xl text-center"
-          titleClassName="text-black"
-          descriptionClassName="text-gray-600"
+          titleClassName="text-[#f7941d]"
+          descriptionClassName="text-[#4B5563]"
         />
 
         <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_2fr] lg:items-start">
-          <h3 className="text-4xl font-bold tracking-wide text-gray-900 md:text-5xl">MISSION</h3>
+          <h3 className="text-4xl font-bold tracking-wide text-[#f7941d] md:text-5xl">MISSION</h3>
           <PhilosophyTimeline points={MISSION_POINTS} />
         </div>
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[2fr_1fr] lg:items-start">
           <PhilosophyTimeline points={VISION_POINTS} />
-          <h3 className="text-4xl font-bold tracking-wide text-gray-900 md:text-right md:text-5xl">VISION</h3>
+          <h3 className="text-4xl font-bold tracking-wide text-[#f7941d] md:text-right md:text-5xl">VISION</h3>
         </div>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="management-desk-heading" className="bg-black">
+      <SectionWrapper
+        aria-labelledby="management-desk-heading"
+        className="bg-[linear-gradient(120deg,#111827_0%,#f7941d_58%,#f7941d_100%)]"
+      >
         <SectionHeader
           id="management-desk-heading"
+          eyebrow="Leadership"
           title="From the Desk of Management"
           description="Leadership perspectives that shape institutional direction, student outcomes, and academic quality."
           className="mb-8"
           titleClassName="text-white"
-          descriptionClassName="text-gray-300"
+          descriptionClassName="text-[#DBEAFE]"
+          eyebrowClassName="text-[#BFDBFE]"
         />
         <LeadershipCarousel leaders={LEADERSHIP_DESK} />
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="culture-diversity-heading" className="bg-gray-50">
+      <SectionWrapper aria-labelledby="culture-diversity-heading" className="bg-[#F8FAFF]">
         <SectionHeader
           id="culture-diversity-heading"
+          eyebrow="Campus Life"
           title="Culture and Diversity"
           description="A vibrant student community built on inclusion, cross-cultural learning, and shared academic purpose."
           centered
@@ -264,15 +277,16 @@ export function LeadershipPage() {
           ))}
         </div>
 
-        <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-gray-600">
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-[#6B7280]">
           Students from across India and multiple international backgrounds learn together in a collaborative and respectful
           campus environment.
         </p>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="infrastructure-heading">
+      <SectionWrapper aria-labelledby="infrastructure-heading" className="border-t border-[#E5E7EB]">
         <SectionHeader
           id="infrastructure-heading"
+          eyebrow="Campus"
           title="Infrastructure"
           description="Core academic and campus facilities that support learning, innovation, and student well-being."
           className="mb-8"

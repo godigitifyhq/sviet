@@ -155,7 +155,7 @@ export function ScholarshipSection() {
         {/* Header */}
         <div className="mb-12 space-y-4">
           <h2 className="text-3xl font-bold md:text-4xl">
-            <span className="text-[#1E2A78]">Find Your Scholarship</span>
+            <span className="text-[#f7941d]">Find Your Scholarship</span>
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed text-[#6B7280] md:text-base">
             Check your scholarship eligibility based on your academic performance and family income.
@@ -170,7 +170,7 @@ export function ScholarshipSection() {
                   ? "border-red-300 bg-red-50 text-red-800"
                   : isPartiallyEligible
                     ? "border-yellow-300 bg-yellow-50 text-yellow-800"
-                    : "border-[#3B82F6] bg-blue-50 text-[#1E40AF]"
+                    : "border-[#f7941d] bg-blue-50 text-[#1E40AF]"
               }`}
             >
               <p className="font-semibold">Scholarship Eligibility</p>
@@ -200,7 +200,7 @@ export function ScholarshipSection() {
                   placeholder="Enter your full name"
                   value={form.name}
                   onChange={(event) => handleFieldChange("name", event.target.value)}
-                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10"
+                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
                 />
                 {errors.name ? <p className="mt-1 text-xs text-red-600">{errors.name}</p> : null}
               </div>
@@ -216,7 +216,7 @@ export function ScholarshipSection() {
                   placeholder="Enter your 10-digit phone number"
                   value={form.phone}
                   onChange={(event) => handleFieldChange("phone", event.target.value)}
-                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10"
+                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
                 />
                 {errors.phone ? <p className="mt-1 text-xs text-red-600">{errors.phone}</p> : null}
               </div>
@@ -232,7 +232,7 @@ export function ScholarshipSection() {
                   placeholder="Enter your email"
                   value={form.email}
                   onChange={(event) => handleFieldChange("email", event.target.value)}
-                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10"
+                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
                 />
                 {errors.email ? <p className="mt-1 text-xs text-red-600">{errors.email}</p> : null}
               </div>
@@ -246,7 +246,7 @@ export function ScholarshipSection() {
                   name="course"
                   value={form.course}
                   onChange={(event) => handleFieldChange("course", event.target.value)}
-                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10"
+                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
                 >
                   <option value="" disabled>
                     Select your course
@@ -277,7 +277,7 @@ export function ScholarshipSection() {
                   placeholder="Enter percentage (0-100)"
                   value={form.academicScore}
                   onChange={(event) => handleFieldChange("academicScore", event.target.value)}
-                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10"
+                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
                 />
                 {errors.academicScore ? <p className="mt-1 text-xs text-red-600">{errors.academicScore}</p> : null}
               </div>
@@ -294,7 +294,7 @@ export function ScholarshipSection() {
                   placeholder="Enter family income in lakhs"
                   value={form.familyIncomeLPA}
                   onChange={(event) => handleFieldChange("familyIncomeLPA", event.target.value)}
-                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10"
+                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
                 />
                 {errors.familyIncomeLPA ? <p className="mt-1 text-xs text-red-600">{errors.familyIncomeLPA}</p> : null}
               </div>
@@ -308,7 +308,7 @@ export function ScholarshipSection() {
                   name="category"
                   value={form.category}
                   onChange={(event) => handleFieldChange("category", event.target.value)}
-                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10"
+                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
                 >
                   <option value="" disabled>
                     Select your category
@@ -324,7 +324,7 @@ export function ScholarshipSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#3B82F6] px-6 py-3 font-semibold text-white transition hover:bg-[#2563EB] disabled:opacity-60"
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#f7941d] px-6 py-3 font-semibold text-white transition hover:bg-[#2563EB] disabled:opacity-60"
               >
                 <span>{isSubmitting ? "Checking Eligibility..." : "Check My Eligibility"}</span>
               </button>
@@ -335,12 +335,12 @@ export function ScholarshipSection() {
           <div className="flex flex-col gap-6">
             <div>
               <h2 className="text-3xl font-bold md:text-4xl">
-                <span className="text-[#1E2A78]">RNR Scholarship</span>
+                <span className="text-[#f7941d]">RNR Scholarship</span>
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-[#6B7280]">
                 SVIET offers need-cum-merit scholarships to deserving students. Check your eligibility in 60 seconds.
               </p>
-              <p className="mt-4 font-semibold text-[#3B82F6]">
+              <p className="mt-4 font-semibold text-[#f7941d]">
                 Up to 100% fee waiver | 500+ scholarships awarded annually
               </p>
             </div>

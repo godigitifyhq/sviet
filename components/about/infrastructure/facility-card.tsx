@@ -9,8 +9,8 @@ type FacilityCardProps = {
 
 export function FacilityCard({ title, description, imageSrc, imageAlt }: FacilityCardProps) {
   return (
-    <article className="group overflow-hidden border border-gray-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-      <div className="relative aspect-4/3 overflow-hidden bg-gray-100">
+    <article className="group overflow-hidden border border-[#DCE7FF] bg-white shadow-[0_8px_24px_rgba(30,42,120,0.08)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(30,42,120,0.14)]">
+      <div className="relative aspect-4/3 overflow-hidden bg-[#EFF6FF]">
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -22,8 +22,8 @@ export function FacilityCard({ title, description, imageSrc, imageAlt }: Facilit
       </div>
 
       <div className="space-y-2 px-5 py-5">
-        <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
-        <p className="text-sm leading-relaxed text-gray-600">{description}</p>
+        <h3 className="text-xl font-semibold text-[#f7941d]">{title}</h3>
+        <p className="text-sm leading-relaxed text-[#6B7280]">{description}</p>
       </div>
     </article>
   );

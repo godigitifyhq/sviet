@@ -3,7 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaBars, FaChevronLeft, FaChevronRight, FaFacebookF, FaInstagram, FaLinkedinIn, FaPhoneAlt, FaTimes, FaWhatsapp, FaYoutube } from "react-icons/fa";
+import {
+  FaBars,
+  FaChevronLeft,
+  FaChevronRight,
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaPhoneAlt,
+  FaSearch,
+  FaTimes,
+  FaWhatsapp,
+  FaYoutube,
+} from "react-icons/fa";
 import { useEffect, useState } from "react";
 
 import { CounsellorChat } from "@/components/ai-chat/counsellor-chat";
@@ -94,8 +106,78 @@ const UTILITY_MESSAGES = [
   "NIRF Ranked #104 | NBA & NAAC Accredited",
 ];
 
-export function TopUtilityBar() {
+const HEADER_SCROLL_THRESHOLD = 50;
+
+type TopUtilityBarProps = {
+  isTransparent?: boolean;
+  isUtilityHidden?: boolean;
+};
+
+type MainNavbarProps = {
+  isTransparent?: boolean;
+  isScrolled?: boolean;
+};
+
+export function SiteHeader() {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    let animationFrameId: number | null = null;
+
+    const syncScrollState = () => {
+      const nextScrolled = window.scrollY > HEADER_SCROLL_THRESHOLD;
+      setIsScrolled((previous) => (previous === nextScrolled ? previous : nextScrolled));
+      animationFrameId = null;
+    };
+
+    const onScroll = () => {
+      if (animationFrameId !== null) {
+        return;
+      }
+
+      animationFrameId = window.requestAnimationFrame(syncScrollState);
+    };
+
+    syncScrollState();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+
+      if (animationFrameId !== null) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, [pathname]);
+
+  const isTransparent = isHomePage && !isScrolled;
+  const isUtilityHidden = isScrolled;
+
+  return (
+    <div
+      className={[
+        "site-header",
+        isHomePage ? "site-header-home" : "site-header-default",
+        isTransparent ? "navbar-transparent" : "navbar-scrolled",
+        isUtilityHidden ? "utility-hidden" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      <TopUtilityBar isTransparent={isTransparent} isUtilityHidden={isUtilityHidden} />
+      <MainNavbar isTransparent={isTransparent} isScrolled={isScrolled} />
+    </div>
+  );
+}
+
+export function TopUtilityBar({ isTransparent = false, isUtilityHidden = false }: TopUtilityBarProps) {
   const [messageIndex, setMessageIndex] = useState(0);
+
+  const utilityToneClass = isTransparent
+    ? "border-white/25 bg-transparent text-[#FFFFFF]"
+    : "border-black/10 bg-[#FFFFFF] text-[#000000]";
 
   const showPreviousMessage = () => {
     setMessageIndex((prev) => (prev === 0 ? UTILITY_MESSAGES.length - 1 : prev - 1));
@@ -114,14 +196,14 @@ export function TopUtilityBar() {
   }, []);
 
   return (
-    <div className="w-full border-b border-neutral-200 bg-[#ffffff] px-3 py-3 text-[10px] text-neutral-700 md:px-5 md:text-xs">
+    <div className={`utility-bar w-full border-b px-3 py-2 text-[10px] md:px-5 md:text-xs ${utilityToneClass} ${isUtilityHidden ? "utility-hidden" : ""}`}>
       <div className="mx-auto flex w-full max-w-300 items-center justify-between">
         <div className="relative min-w-0 flex-1 pr-3">
           <button
             type="button"
             onClick={showPreviousMessage}
             aria-label="Previous announcement"
-            className="absolute left-0 top-1/2 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full text-[8px] transition hover:text-[#f7941d] md:h-6 md:w-6 md:text-[10px]"
+            className="absolute left-0 top-1/2 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full text-[8px] text-current transition-colors duration-300 ease-out hover:text-[#FEA700] md:h-6 md:w-6 md:text-[10px]"
           >
             <FaChevronLeft />
           </button>
@@ -132,20 +214,32 @@ export function TopUtilityBar() {
             type="button"
             onClick={showNextMessage}
             aria-label="Next announcement"
-            className="absolute right-0 top-1/2 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full text-[8px] transition hover:text-[#f7941d] md:h-6 md:w-6 md:text-[10px]"
+            className="absolute right-0 top-1/2 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full text-[8px] text-current transition-colors duration-300 ease-out hover:text-[#FEA700] md:h-6 md:w-6 md:text-[10px]"
           >
             <FaChevronRight />
           </button>
         </div>
-        <div className="ml-3 flex items-center gap-3 whitespace-nowrap">
-          <span className="flex items-center gap-1">
-            <FaWhatsapp className="text-[#25D366]" />
-            <span>WhatsApp</span>
-          </span>
-          <span className="flex items-center gap-1 rounded bg-[#f7941d] px-2 py-0.5 text-white">
+        <div className="ml-3 hidden items-center gap-3 whitespace-nowrap md:flex">
+          <span className="flex items-center gap-1 border border-current/20 px-2 py-1">
             <FaPhoneAlt className="text-[9px] md:text-[10px]" />
             <span>1800-120-1200</span>
           </span>
+          <button
+            type="button"
+            className="inline-flex items-center gap-1 border border-current/20 px-2 py-1 text-current transition-colors duration-300 ease-out hover:border-[#FEA700] hover:text-[#FEA700]"
+            aria-label="Open search"
+          >
+            <FaSearch className="text-[9px] md:text-[10px]" />
+            <span>Search</span>
+          </button>
+          <a
+            href="https://wa.me/919465233333"
+            className="inline-flex items-center gap-1 bg-[#FEA700] px-2 py-1 font-semibold text-[#000000] transition-colors duration-300 ease-out hover:bg-[#FFFFFF]"
+            aria-label="Chat on WhatsApp"
+          >
+            <FaWhatsapp className="text-[10px]" />
+            <span>WhatsApp</span>
+          </a>
           <FaFacebookF className="text-[10px] md:text-xs" />
           <FaInstagram className="text-[10px] md:text-xs" />
         </div>
@@ -154,12 +248,16 @@ export function TopUtilityBar() {
   );
 }
 
-export function MainNavbar() {
+export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNavbarProps) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false);
   const [isMobileProgramsOpen, setIsMobileProgramsOpen] = useState(false);
   const [dynamicPrograms, setDynamicPrograms] = useState<ProgramDropdownItem[]>([]);
+
+  const navbarToneClass = isTransparent
+    ? "border-white/25 bg-transparent text-[#FFFFFF]"
+    : "border-black/10 bg-[#FFFFFF] text-[#000000]";
 
   useEffect(() => {
     let active = true;
@@ -249,21 +347,39 @@ export function MainNavbar() {
   };
 
   return (
-    <header className="sticky top-0 z-30 border-b border-neutral-200 bg-white">
-      <div className="mx-auto flex w-full max-w-300 items-center justify-between px-3 py-3 md:px-5">
+    <header
+      className={`main-navbar w-full border-b transition-[background-color,color,border-color,box-shadow] duration-300 ease-out ${navbarToneClass} ${
+        isScrolled ? "shadow-[0_2px_10px_rgba(0,0,0,0.05)]" : "shadow-none"
+      }`}
+    >
+      <div className={`mx-auto flex w-full max-w-300 items-center justify-between px-3 md:px-5 ${isScrolled ? "py-2 md:py-2.5" : "py-3 md:py-3.5"}`}>
         <Link href="/" className="flex items-center">
-          <Image src="/Logo.webp" alt="SVIET logo" width={180} height={56} className="h-10 w-auto md:h-12" style={{ width: "auto" }} priority />
+          <Image
+            src={isTransparent ? "/assets/img/sviet_white.png" : "/Logo.webp"}
+            alt="SVIET logo"
+            width={347}
+            height={150}
+            className={`main-navbar-logo h-10 md:h-12 w-auto transition-[filter] duration-300 ease-out object-contain `}
+            style={{ width: "auto" }}
+            priority
+          />
         </Link>
+
         <button
           type="button"
           onClick={toggleMobileMenu}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-300 text-[#1b1b1b] transition hover:bg-neutral-100 lg:hidden"
+          className={`inline-flex h-10 w-10 items-center justify-center border transition-colors duration-300 ease-out lg:hidden ${
+            isTransparent
+              ? "border-white/35 text-[#FFFFFF] hover:border-[#FEA700] hover:text-[#FEA700]"
+              : "border-black/20 text-[#000000] hover:border-[#FEA700] hover:text-[#FEA700]"
+          }`}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           aria-controls="mobile-main-menu"
         >
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
-        <nav className="hidden items-center gap-5 text-[11px] font-semibold tracking-wide text-[#1b1b1b] lg:flex">
+
+        <nav className="hidden items-center gap-5 text-[11px] font-semibold tracking-wide text-current lg:flex">
           <div className="flex items-center gap-1.5">
             {NAV_LINK_IMAGES.map((image) => (
               <Image
@@ -280,18 +396,18 @@ export function MainNavbar() {
           {NAV_ITEMS.map((item) => (
             item.label === "About" ? (
               <div key={item.label} className="group relative">
-                <Link href={item.href} className="inline-flex items-center gap-1 hover:text-[#f7941d]">
+                <Link href={item.href} className="inline-flex items-center gap-1 transition-colors duration-300 ease-out hover:text-[#FEA700]">
                   {item.label}
                   <span className="text-[10px]">▾</span>
                 </Link>
 
                 <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-[min(1080px,calc(100vw-2rem))] -translate-x-1/2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
-                  <div className="overflow-hidden rounded-[28px] border border-neutral-200 bg-white p-5 shadow-[0_24px_70px_rgba(15,23,42,0.14)]">
+                  <div className="overflow-hidden border border-black/10 bg-[#FFFFFF] p-5 shadow-[0_16px_45px_rgba(0,0,0,0.1)]">
                     <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px]">
                       <div className="grid gap-4 sm:grid-cols-2">
                         {ABOUT_PANEL_GROUPS.map((group) => (
-                          <section key={group.title} className="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
-                            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f7941d]">{group.title}</p>
+                          <section key={group.title} className="border border-black/10 bg-[#FFFFFF] p-4">
+                            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{group.title}</p>
                             <div className="mt-3 space-y-1.5">
                               {group.items.map((aboutItem) => {
                                 const isActive = pathname === aboutItem.href;
@@ -300,7 +416,11 @@ export function MainNavbar() {
                                   <Link
                                     key={`${group.title}-${aboutItem.href}-${aboutItem.label}`}
                                     href={aboutItem.href}
-                                    className={`flex items-center justify-between rounded-xl border px-3 py-2 text-[12px] font-semibold transition hover:border-[#f7941d]/30 hover:bg-white hover:text-[#f7941d] ${isActive ? "border-[#f7941d]/25 bg-[#f7941d]/10 text-[#f7941d]" : "border-transparent text-[#1b1b1b]"}`}
+                                    className={`flex items-center justify-between border px-3 py-2 text-[12px] font-semibold transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
+                                      isActive
+                                        ? "border-[#FEA700]/40 bg-[#FEA700]/10 text-[#000000]"
+                                        : "border-transparent text-[#000000]"
+                                    }`}
                                   >
                                     <span>{aboutItem.label}</span>
                                     <span className="text-[10px] opacity-60">↗</span>
@@ -314,13 +434,13 @@ export function MainNavbar() {
 
                       <Link
                         href={ABOUT_PANEL_FEATURE.href}
-                        className="group/card relative overflow-hidden rounded-3xl bg-linear-to-br from-[#f2ecff] via-[#f9eef7] to-[#f9d9e7] p-5 text-slate-900 transition hover:-translate-y-0.5"
+                        className="group/card relative overflow-hidden border border-[#FEA700]/35 bg-[#000000] p-5 text-[#FFFFFF] transition-colors duration-300 ease-out hover:border-[#FEA700]"
                       >
                         <div className="relative z-10 flex h-full flex-col">
-                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#5c4dd8]">{ABOUT_PANEL_FEATURE.eyebrow}</span>
+                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{ABOUT_PANEL_FEATURE.eyebrow}</span>
                           <h3 className="mt-3 max-w-56 text-3xl font-black leading-[0.95] tracking-tight">{ABOUT_PANEL_FEATURE.title}</h3>
-                          <p className="mt-3 max-w-60 text-sm leading-6 text-slate-700">{ABOUT_PANEL_FEATURE.description}</p>
-                          <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#5c4dd8]">
+                          <p className="mt-3 max-w-60 text-sm leading-6 text-white/80">{ABOUT_PANEL_FEATURE.description}</p>
+                          <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#FEA700]">
                             Learn more
                             <span className="transition group-hover/card:translate-x-0.5">→</span>
                           </div>
@@ -331,7 +451,7 @@ export function MainNavbar() {
                             alt={ABOUT_PANEL_FEATURE.imageAlt}
                             fill
                             sizes="(max-width: 1280px) 340px, 340px"
-                            className="object-cover object-top-right opacity-55 mix-blend-multiply"
+                            className="object-cover object-top-right opacity-30 mix-blend-screen"
                           />
                         </div>
                       </Link>
@@ -341,28 +461,28 @@ export function MainNavbar() {
               </div>
             ) : item.label === "Programs" ? (
               <div key={item.label} className="group relative">
-                <button type="button" className="inline-flex items-center gap-1 hover:text-[#f7941d]">
+                <button type="button" className="inline-flex items-center gap-1 transition-colors duration-300 ease-out hover:text-[#FEA700]">
                   {item.label}
                   <span className="text-[10px]">▾</span>
                 </button>
 
                 <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-[min(1080px,calc(100vw-2rem))] -translate-x-1/2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
-                  <div className="overflow-hidden rounded-[28px] border border-neutral-200 bg-white p-5 shadow-[0_24px_70px_rgba(15,23,42,0.14)]">
+                  <div className="overflow-hidden border border-black/10 bg-[#FFFFFF] p-5 shadow-[0_16px_45px_rgba(0,0,0,0.1)]">
                     <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px]">
                       <div className="space-y-4">
                         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                           <Link
                             href="/program-finder"
-                            className="rounded-3xl border border-[#f7941d]/20 bg-[#f7941d]/10 p-4 transition hover:-translate-y-0.5 hover:border-[#f7941d]/40 hover:bg-[#f7941d]/15"
+                            className="border border-[#FEA700]/30 bg-[#FEA700]/10 p-4 transition-colors duration-300 ease-out hover:border-[#FEA700]"
                           >
-                            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f7941d]">Explore</p>
-                            <h3 className="mt-3 text-xl font-black tracking-tight text-[#111]">Program Finder</h3>
-                            <p className="mt-2 text-sm leading-6 text-[#555]">Search by career goal, duration, department, or specialization.</p>
+                            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">Explore</p>
+                            <h3 className="mt-3 text-xl font-black tracking-tight text-[#000000]">Program Finder</h3>
+                            <p className="mt-2 text-sm leading-6 text-black/70">Search by career goal, duration, department, or specialization.</p>
                           </Link>
 
                           {orderedProgramGroups.map(([groupName, groupItems]) => (
-                            <section key={groupName} className="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
-                              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f7941d]">{groupName}</p>
+                            <section key={groupName} className="border border-black/10 bg-[#FFFFFF] p-4">
+                              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{groupName}</p>
                               <div className="mt-3 space-y-1.5">
                                 {groupItems.slice(0, 6).map((dropdownItem) => {
                                   const isCurrent = pathname === dropdownItem.href;
@@ -371,7 +491,11 @@ export function MainNavbar() {
                                     <Link
                                       key={`${groupName}-${dropdownItem.href}-${dropdownItem.label}`}
                                       href={dropdownItem.href}
-                                      className={`block rounded-xl border px-3 py-2 text-[12px] font-semibold transition hover:border-[#f7941d]/30 hover:bg-white hover:text-[#f7941d] ${isCurrent ? "border-[#f7941d]/25 bg-[#f7941d]/10 text-[#f7941d]" : "border-transparent text-[#1b1b1b]"}`}
+                                      className={`block border px-3 py-2 text-[12px] font-semibold transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
+                                        isCurrent
+                                          ? "border-[#FEA700]/40 bg-[#FEA700]/10 text-[#000000]"
+                                          : "border-transparent text-[#000000]"
+                                      }`}
                                     >
                                       {dropdownItem.label}
                                     </Link>
@@ -385,13 +509,13 @@ export function MainNavbar() {
 
                       <Link
                         href={PROGRAM_PANEL_FEATURE.href}
-                        className="group/card relative overflow-hidden rounded-3xl bg-linear-to-br from-[#0f172a] via-[#1e293b] to-[#334155] p-5 text-white transition hover:-translate-y-0.5"
+                        className="group/card relative overflow-hidden border border-[#FEA700]/35 bg-[#000000] p-5 text-[#FFFFFF] transition-colors duration-300 ease-out hover:border-[#FEA700]"
                       >
                         <div className="relative z-10 flex h-full flex-col">
-                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-orange-300">{PROGRAM_PANEL_FEATURE.eyebrow}</span>
+                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{PROGRAM_PANEL_FEATURE.eyebrow}</span>
                           <h3 className="mt-3 max-w-56 text-3xl font-black leading-[0.95] tracking-tight">{PROGRAM_PANEL_FEATURE.title}</h3>
-                          <p className="mt-3 max-w-60 text-sm leading-6 text-slate-200">{PROGRAM_PANEL_FEATURE.description}</p>
-                          <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-orange-300">
+                          <p className="mt-3 max-w-60 text-sm leading-6 text-white/80">{PROGRAM_PANEL_FEATURE.description}</p>
+                          <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#FEA700]">
                             Open finder
                             <span className="transition group-hover/card:translate-x-0.5">→</span>
                           </div>
@@ -402,7 +526,7 @@ export function MainNavbar() {
                             alt={PROGRAM_PANEL_FEATURE.imageAlt}
                             fill
                             sizes="(max-width: 1280px) 340px, 340px"
-                            className="object-cover object-center opacity-35 mix-blend-screen"
+                            className="object-cover object-center opacity-30 mix-blend-screen"
                           />
                         </div>
                       </Link>
@@ -411,7 +535,7 @@ export function MainNavbar() {
                 </div>
               </div>
             ) : (
-              <Link key={item.label} href={item.href} className="hover:text-[#f7941d]">
+              <Link key={item.label} href={item.href} className="transition-colors duration-300 ease-out hover:text-[#FEA700]">
                 {item.label}
               </Link>
             )
@@ -420,7 +544,14 @@ export function MainNavbar() {
       </div>
 
       {isMobileMenuOpen ? (
-        <div id="mobile-main-menu" className="absolute left-0 top-full z-40 w-full border-t border-neutral-200 bg-white/98 shadow-lg backdrop-blur-sm lg:hidden">
+        <div
+          id="mobile-main-menu"
+          className={`absolute left-0 top-full z-40 w-full border-t backdrop-blur-sm lg:hidden ${
+            isTransparent
+              ? "border-white/20 bg-[#000000]/95 text-[#FFFFFF]"
+              : "border-black/10 bg-[#FFFFFF]/98 text-[#000000] shadow-[0_2px_10px_rgba(0,0,0,0.05)]"
+          }`}
+        >
           <div className="mx-auto w-full max-w-300 px-4 py-4">
             <div className="mb-3 flex items-center gap-2">
               {NAV_LINK_IMAGES.map((image) => (
@@ -430,19 +561,19 @@ export function MainNavbar() {
                   alt={image.alt}
                   width={347}
                   height={150}
-                  className="h-9 w-auto border border-neutral-200 object-contain"
+                  className={`h-9 w-auto border object-contain ${isTransparent ? "border-white/20" : "border-black/10"}`}
                 />
               ))}
             </div>
 
-            <nav className="space-y-1 text-sm font-semibold text-[#1b1b1b]">
+            <nav className="space-y-1 text-sm font-semibold text-current">
               {NAV_ITEMS.map((item) => (
                 item.label === "About" ? (
-                  <div key="mobile-about-dropdown" className="rounded-lg border border-neutral-200 p-1">
+                  <div key="mobile-about-dropdown" className={`border p-1 ${isTransparent ? "border-white/20 bg-black/60" : "border-black/10 bg-[#FFFFFF]"}`}>
                     <button
                       type="button"
                       onClick={toggleMobileAbout}
-                      className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left transition hover:bg-neutral-100 hover:text-[#f7941d]"
+                      className="flex w-full items-center justify-between px-3 py-2 text-left transition-colors duration-300 ease-out hover:text-[#FEA700]"
                     >
                       <span>{item.label}</span>
                       <span className={`text-xs transition ${isMobileAboutOpen ? "rotate-180" : "rotate-0"}`}>▾</span>
@@ -458,7 +589,13 @@ export function MainNavbar() {
                               key={`mobile-about-${aboutItem.href}`}
                               href={aboutItem.href}
                               onClick={closeMobileMenu}
-                              className={`block rounded-lg border px-3 py-2 text-sm transition hover:border-[#f7941d]/30 hover:bg-neutral-100 hover:text-[#f7941d] ${isActive ? "border-[#f7941d]/25 bg-[#f7941d]/10 text-[#f7941d]" : "border-neutral-200 text-[#1b1b1b]"}`}
+                              className={`block border px-3 py-2 text-sm transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#FEA700] ${
+                                isActive
+                                  ? "border-[#FEA700]/40 bg-[#FEA700]/10 text-[#FEA700]"
+                                  : isTransparent
+                                    ? "border-white/20 text-[#FFFFFF]"
+                                    : "border-black/10 text-[#000000]"
+                              }`}
                             >
                               {aboutItem.label}
                             </Link>
@@ -468,11 +605,11 @@ export function MainNavbar() {
                     ) : null}
                   </div>
                 ) : item.label === "Programs" ? (
-                  <div key="mobile-programs-dropdown" className="rounded-lg border border-neutral-200 p-1">
+                  <div key="mobile-programs-dropdown" className={`border p-1 ${isTransparent ? "border-white/20 bg-black/60" : "border-black/10 bg-[#FFFFFF]"}`}>
                     <button
                       type="button"
                       onClick={toggleMobilePrograms}
-                      className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left transition hover:bg-neutral-100 hover:text-[#f7941d]"
+                      className="flex w-full items-center justify-between px-3 py-2 text-left transition-colors duration-300 ease-out hover:text-[#FEA700]"
                     >
                       <span>{item.label}</span>
                       <span className={`text-xs transition ${isMobileProgramsOpen ? "rotate-180" : "rotate-0"}`}>▾</span>
@@ -481,15 +618,21 @@ export function MainNavbar() {
                     {isMobileProgramsOpen ? (
                       <div className="mt-1 flex max-h-90 flex-col gap-3 overflow-y-auto px-2 pb-2">
                         {orderedProgramGroups.map(([groupName, groupItems]) => (
-                          <div key={`mobile-group-${groupName}`} className="rounded-lg border border-neutral-200 bg-white p-2">
-                            <p className="px-1 pb-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[#f7941d]">{groupName}</p>
+                          <div key={`mobile-group-${groupName}`} className={`border p-2 ${isTransparent ? "border-white/20 bg-black/50" : "border-black/10 bg-[#FFFFFF]"}`}>
+                            <p className="px-1 pb-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[#FEA700]">{groupName}</p>
                             <div className="space-y-1">
                               {groupItems.map((programItem, index) => (
                                 <Link
                                   key={`mobile-program-${groupName}-${programItem.href}-${programItem.label}`}
                                   href={programItem.href}
                                   onClick={closeMobileMenu}
-                                  className={`block rounded-lg px-3 py-2 text-sm transition hover:bg-neutral-100 hover:text-[#f7941d] ${groupName === "Explore" && index === 0 ? "bg-[#f7941d]/10 text-[#f7941d]" : "text-[#1b1b1b]"}`}
+                                  className={`block px-3 py-2 text-sm transition-colors duration-300 ease-out hover:text-[#FEA700] ${
+                                    groupName === "Explore" && index === 0
+                                      ? "bg-[#FEA700]/10 text-[#FEA700]"
+                                      : isTransparent
+                                        ? "text-[#FFFFFF]"
+                                        : "text-[#000000]"
+                                  }`}
                                 >
                                   {programItem.label}
                                 </Link>
@@ -505,7 +648,7 @@ export function MainNavbar() {
                     key={`mobile-${item.label}`}
                     href={item.href}
                     onClick={closeMobileMenu}
-                    className="block rounded-lg px-3 py-2 transition hover:bg-neutral-100 hover:text-[#f7941d]"
+                    className="block px-3 py-2 transition-colors duration-300 ease-out hover:text-[#FEA700]"
                   >
                     {item.label}
                   </Link>
@@ -545,7 +688,7 @@ export function SiteFooter() {
             <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
               <section>
                 <div className="flex items-center gap-3">
-                  <Image src="/Logo.webp" alt="SVIET logo" width={120} height={40} className="h-8 w-auto md:h-10" style={{ width: "auto" }} />
+                  <Image src="/assets/img/sviet_white.png" alt="SVIET logo" width={120} height={40} className="h-8 w-auto md:h-10" style={{ width: "auto" }} />
                 </div>
 
                 <div className="mt-6 flex items-center gap-2">
