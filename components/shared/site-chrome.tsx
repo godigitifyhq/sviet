@@ -499,15 +499,15 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                           <Link
                             href="/program-finder"
-                            className="border border-[#FEA700]/30 bg-[#FEA700]/10 p-4 transition-colors duration-300 ease-out hover:border-[#FEA700]"
+                            className="min-w-0 border border-[#FEA700]/30 bg-[#FEA700]/10 p-4 transition-colors duration-300 ease-out hover:border-[#FEA700]"
                           >
                             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">Explore</p>
-                            <h3 className="mt-3 text-xl font-black tracking-tight text-[#000000]">Program Finder</h3>
+                            <h3 className="mt-3 text-xl font-black leading-tight tracking-tight text-[#000000]">Program Finder</h3>
                             <p className="mt-2 text-sm leading-6 text-black/70">Search by career goal, duration, department, or specialization.</p>
                           </Link>
 
                           {orderedProgramGroups.map(([groupName, groupItems]) => (
-                            <section key={groupName} className="border border-black/10 bg-[#FFFFFF] p-4">
+                            <section key={groupName} className="min-w-0 border border-black/10 bg-[#FFFFFF] p-4">
                               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{groupName}</p>
                               <div className="mt-3 space-y-1.5">
                                 {groupItems.slice(0, 6).map((dropdownItem) => {
@@ -517,7 +517,7 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                                     <Link
                                       key={`${groupName}-${dropdownItem.href}-${dropdownItem.label}`}
                                       href={dropdownItem.href}
-                                      className={`block border px-3 py-2 text-[12px] font-semibold transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
+                                      className={`block min-w-0 whitespace-normal wrap-break-word border px-3 py-2 text-[12px] font-semibold leading-snug transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
                                         isCurrent
                                           ? "border-[#FEA700]/40 bg-[#FEA700]/10 text-[#000000]"
                                           : "border-transparent text-[#000000]"
@@ -537,12 +537,12 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                       <div className="border-t border-black/10 p-5 xl:sticky xl:top-0 xl:w-75 xl:shrink-0 xl:self-start xl:border-l xl:border-t-0">
                         <Link
                           href={PROGRAM_PANEL_FEATURE.href}
-                          className="group/card relative block overflow-hidden border border-[#FEA700]/35 bg-[#000000] p-5 text-[#FFFFFF] transition-colors duration-300 ease-out hover:border-[#FEA700]"
+                          className="group/card relative block min-w-0 overflow-hidden border border-[#FEA700]/35 bg-[#000000] p-5 text-[#FFFFFF] transition-colors duration-300 ease-out hover:border-[#FEA700]"
                         >
                           <div className="relative z-10 flex h-full flex-col">
                             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{PROGRAM_PANEL_FEATURE.eyebrow}</span>
-                            <h3 className="mt-3 max-w-56 text-3xl font-black leading-[0.95] tracking-tight">{PROGRAM_PANEL_FEATURE.title}</h3>
-                            <p className="mt-3 max-w-60 text-sm leading-6 text-white/80">{PROGRAM_PANEL_FEATURE.description}</p>
+                            <h3 className="mt-3 max-w-full wrap-break-word text-3xl font-black leading-tight tracking-tight">{PROGRAM_PANEL_FEATURE.title}</h3>
+                            <p className="mt-3 max-w-full wrap-break-word text-sm leading-6 text-white/80">{PROGRAM_PANEL_FEATURE.description}</p>
                             <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#FEA700]">
                               Open finder
                               <span className="transition group-hover/card:translate-x-0.5">→</span>
