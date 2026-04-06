@@ -382,18 +382,36 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
-        <nav className="hidden min-w-0 items-center gap-2 whitespace-nowrap text-[10px] font-semibold tracking-wide text-current lg:flex xl:gap-3 xl:text-[10px] 2xl:gap-5 2xl:text-[11px]">
-          <div className="hidden shrink-0 items-center gap-1.5 2xl:flex">
-            {NAV_LINK_IMAGES.map((image) => (
-              <Image
-                key={image.src}
-                src={image.src}
-                alt={image.alt}
-                width={347}
-                height={150}
-                className="h-12 w-auto object-contain"
-              />
-            ))}
+        <nav className="hidden min-w-0 flex-1 items-center gap-2 whitespace-nowrap text-[10px] font-semibold tracking-wide text-current lg:flex xl:gap-3 xl:text-[10px] 2xl:gap-5 2xl:text-[11px]">
+          <div className="flex min-w-0 flex-1 justify-center">
+            <div className="w-[min(18rem,30vw)] md:hidden">
+              <div className="no-scrollbar flex snap-x snap-mandatory gap-2 overflow-x-auto pb-1">
+                {NAV_LINK_IMAGES.map((image) => (
+                  <div key={image.src} className="min-w-22 snap-start">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={347}
+                      height={150}
+                      className="h-10 w-auto object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="hidden shrink-0 items-center gap-1.5 md:flex">
+              {NAV_LINK_IMAGES.map((image) => (
+                <Image
+                  key={image.src}
+                  src={image.src}
+                  alt={image.alt}
+                  width={347}
+                  height={150}
+                  className="h-10 w-auto object-contain"
+                />
+              ))}
+            </div>
           </div>
 
           {NAV_ITEMS.map((item) => (
