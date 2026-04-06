@@ -343,7 +343,7 @@ export function ResearchPageComponent() {
         </div>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {researchDomains.map((domain) => (
-            <article key={domain.title} className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 hover:shadow-lg">
+            <article key={domain.title} className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 ">
               <domain.icon className="text-3xl text-[#f7941d] transition group-hover:scale-110" />
               <h3 className="mt-6 text-xl font-semibold text-gray-900">{domain.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-gray-600">{domain.description}</p>
@@ -362,7 +362,7 @@ export function ResearchPageComponent() {
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {rdCommittee.map((member) => (
-              <div key={member.name} className="bg-white rounded-2xl overflow-hidden h-full flex flex-col transition-shadow hover:shadow-lg">
+              <div key={member.name} className="bg-white rounded-2xl overflow-hidden h-full flex flex-col  ">
                 {/* Top Section - Gradient Background */}
                 <div className="w-full h-40 bg-linear-to-br from-[#f7941d]/20 via-[#f7941d]/10 to-transparent p-6 flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 opacity-5 bg-pattern" />
@@ -433,7 +433,7 @@ export function ResearchPageComponent() {
           <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>Research Publications</h2>
           <p className="text-lg text-gray-700">Selected list of publications contributed by SVIET researchers.</p>
         </div>
-        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg">
+        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white ">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead className="border-b border-gray-200 bg-gray-50">
@@ -468,7 +468,7 @@ export function ResearchPageComponent() {
         </div>
         <div className="grid gap-6 md:grid-cols-2">
           {patents.map((patent) => (
-            <article key={patent.applicationNo} className="group rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-[#f7941d]/50 hover:shadow-md">
+            <article key={patent.applicationNo} className="group rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-[#f7941d]/50 ">
               <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Ref: {patent.applicationNo}</p>
               <h3 className="mt-4 text-lg font-semibold text-gray-900 group-hover:text-[#f7941d]">{patent.title}</h3>
             </article>
@@ -504,7 +504,7 @@ export function ResearchPageComponent() {
             <p className="text-gray-700 mb-8">Core research infrastructure supporting advanced experimentation and prototyping.</p>
             <div className="space-y-4">
               {infrastructure.map((facility) => (
-                <article key={facility} className="group rounded-xl border border-gray-200 bg-white p-4 transition hover:border-[#f7941d]/50 hover:shadow-md">
+                <article key={facility} className="group rounded-xl border border-gray-200 bg-white p-4 transition hover:border-[#f7941d]/50 ">
                   <h3 className="text-lg font-semibold text-gray-900 group-hover:text-[#f7941d]">{facility}</h3>
                 </article>
               ))}
@@ -521,7 +521,7 @@ export function ResearchPageComponent() {
               <span className="font-semibold">{booksMeta.title}</span> ({booksMeta.year})
             </p>
             <p className="mt-2 text-sm text-gray-600">Total count: <span className="font-semibold text-gray-900">{booksMeta.total}</span></p>
-            <div className="mt-6 rounded-2xl border border-gray-200 bg-white shadow-lg overflow-hidden">
+            <div className="mt-6 rounded-2xl border border-gray-200 bg-white overflow-hidden">
               <div className="overflow-x-auto max-h-96">
                 <table className="w-full text-left text-sm">
                   <thead className="border-b border-gray-200 bg-gray-50 sticky top-0">
@@ -560,7 +560,7 @@ export function ResearchPageComponent() {
         </div>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
-            <article key={service.title} className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 hover:shadow-lg">
+            <article key={service.title} className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 ">
               <service.icon className="text-3xl text-[#f7941d] transition group-hover:scale-110" />
               <h3 className="mt-6 text-xl font-semibold text-gray-900">{service.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-gray-600">{service.description}</p>
