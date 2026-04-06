@@ -3,7 +3,11 @@ import Image from "next/image";
 import { FAQAccordion } from "@/components/placements/faq-accordion";
 import { HiringPartners } from "@/components/placements/hiring-partners";
 import { NewsCard } from "@/components/placements/news-card";
+import { PlacementCardsMarqueeSection } from "@/components/placements/placement-cards-marquee-section";
+import { PlacementHighlightsSection } from "@/components/placements/placement-highlights-section";
 import { PlacementSuccessBanner } from "@/components/placements/placement-success-banner";
+import { PlacementStatsBlockSection } from "@/components/placements/placement-stats-block-section";
+import { PlacementStudentSpeakSection } from "@/components/placements/placement-student-speak-section";
 import { RecruiterGrid } from "@/components/placements/recruiter-grid";
 import { SectionHeader } from "@/components/placements/section-header";
 import { SectionWrapper } from "@/components/placements/section-wrapper";
@@ -158,6 +162,15 @@ export function PlacementsPageComponent() {
       <HiringPartners />
 
       <PlacementSuccessBanner />
+
+      <PlacementCardsMarqueeSection />
+
+      <PlacementStatsBlockSection />
+
+      <PlacementStudentSpeakSection />
+
+      <PlacementHighlightsSection />
+      
 
       {/* <SectionWrapper aria-labelledby="key-placement-stats-heading" className="border-t border-gray-100 bg-gray-50">
         <SectionHeader id="key-placement-stats-heading" title="Key Placement Stats" />

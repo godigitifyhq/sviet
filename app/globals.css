@@ -19,31 +19,6 @@ h3 {
   font-family: var(--font-display), sans-serif;
 }
 
-:root {
-  --radius-standard: 0px;
-}
-
-button {
-  border-radius: var(--radius-standard) !important;
-}
-
-/* Global hard reset: no rounded corners anywhere in the UI. */
-*,
-*::before,
-*::after {
-  border-radius: 0 !important;
-}
-
-.rounded,
-.rounded-sm,
-.rounded-md,
-.rounded-lg,
-.rounded-xl,
-.rounded-2xl,
-.rounded-3xl {
-  border-radius: var(--radius-standard) !important;
-}
-
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
