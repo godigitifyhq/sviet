@@ -1,13 +1,20 @@
 import Image from "next/image";
 
 import { FAQAccordion } from "@/components/placements/faq-accordion";
+import { HiringPartners } from "@/components/placements/hiring-partners";
 import { NewsCard } from "@/components/placements/news-card";
+import { PlacementCardsMarqueeSection } from "@/components/placements/placement-cards-marquee-section";
+import { PlacementHighlightsSection } from "@/components/placements/placement-highlights-section";
+import { PlacementSuccessBanner } from "@/components/placements/placement-success-banner";
+import { PlacementStatsBlockSection } from "@/components/placements/placement-stats-block-section";
+import { PlacementStudentSpeakSection } from "@/components/placements/placement-student-speak-section";
 import { RecruiterGrid } from "@/components/placements/recruiter-grid";
 import { SectionHeader } from "@/components/placements/section-header";
 import { SectionWrapper } from "@/components/placements/section-wrapper";
 import { StatCard } from "@/components/placements/stat-card";
 import { TestimonialCard } from "@/components/placements/testimonial-card";
 import { TestimonialCarousel } from "@/components/placements/testimonial-carousel";
+import { HeroSection } from "@/components/home/hero";
 
 const HERO_STATS = [
   { label: "Students Placed", value: "2000+" },
@@ -150,42 +157,22 @@ const FAQ_ITEMS = [
 export function PlacementsPageComponent() {
   return (
     <main className="bg-white">
-      <SectionWrapper aria-labelledby="placements-hero-heading">
-        <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-          <div>
-            <h1 id="placements-hero-heading" className="text-4xl font-bold text-gray-900 md:text-5xl">
-              Where ambition meets opportunity
-            </h1>
-            <p className="mt-5 text-base leading-relaxed text-gray-600">
-              At SVIET, we empower students with industry-ready skills and strong placement support.
-            </p>
-          </div>
+      <HeroSection />
 
-          <div className="relative overflow-hidden rounded-lg border border-gray-200">
-            <div className="relative min-h-80">
-              <Image
-                src="/assets/img/college/auditorium.png"
-                alt="SVIET placement support event"
-                fill
-                loading="lazy"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
+      <HiringPartners />
 
-            <div className="grid grid-cols-3 border-t border-white/40 bg-[#a60f2d] px-4 py-3 text-center text-white">
-              {HERO_STATS.map((item) => (
-                <div key={item.label}>
-                  <p className="text-lg font-bold">{item.value}</p>
-                  <p className="text-xs uppercase tracking-wide text-red-100">{item.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </SectionWrapper>
+      <PlacementSuccessBanner />
 
-      <SectionWrapper aria-labelledby="key-placement-stats-heading" className="border-t border-gray-100 bg-gray-50">
+      <PlacementCardsMarqueeSection />
+
+      <PlacementStatsBlockSection />
+
+      <PlacementStudentSpeakSection />
+
+      <PlacementHighlightsSection />
+      
+
+      {/* <SectionWrapper aria-labelledby="key-placement-stats-heading" className="border-t border-gray-100 bg-gray-50">
         <SectionHeader id="key-placement-stats-heading" title="Key Placement Stats" />
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -224,9 +211,9 @@ export function PlacementsPageComponent() {
             <p className="text-sm text-gray-600">SVIET</p>
           </div>
         </article>
-      </SectionWrapper>
+      </SectionWrapper> */}
 
-      <SectionWrapper aria-labelledby="student-testimonials-heading">
+      {/* <SectionWrapper aria-labelledby="student-testimonials-heading">
         <SectionHeader id="student-testimonials-heading" title="Student Testimonials" />
         <TestimonialCarousel testimonials={STUDENT_TESTIMONIALS} />
       </SectionWrapper>
@@ -260,9 +247,9 @@ export function PlacementsPageComponent() {
           <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Resume building</li>
           <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Industry workshops</li>
         </ul>
-      </SectionWrapper>
+      </SectionWrapper> */}
 
-      <SectionWrapper aria-labelledby="recruiter-testimonials-heading" className="bg-[#a60f2d]">
+      {/* <SectionWrapper aria-labelledby="recruiter-testimonials-heading" className="bg-[#a60f2d]">
         <SectionHeader
           id="recruiter-testimonials-heading"
           title="Recruiter Testimonials"
@@ -285,7 +272,7 @@ export function PlacementsPageComponent() {
             />
           ))}
         </div>
-      </SectionWrapper>
+      </SectionWrapper> */}
 
       <SectionWrapper aria-labelledby="placements-faq-heading" className="bg-gray-50">
         <SectionHeader id="placements-faq-heading" title="FAQ" />
