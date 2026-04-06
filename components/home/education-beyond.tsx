@@ -29,7 +29,7 @@ const audienceCards = [
 export function EducationBeyondSection() {
   return (
     <section className=" bg-[#ffffff] py-14 md:py-18">
-      <div className="mx-auto w-[80%] max-md:w-[92%]">
+      <div className="mx-auto max-w-7xl">
         <p className="text-xl font-medium leading-tight text-[#6B7280] md:text-2xl">Information for</p>
         <h2 className="mt-2 text-3xl font-bold leading-tight tracking-tight text-[#000000] md:text-5xl">
           One Place, Different Paths
