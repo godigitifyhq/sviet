@@ -123,7 +123,9 @@ type MainNavbarProps = {
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
+  const pathSegments = pathname.split("/").filter(Boolean);
+  const isProgramDetailPage = pathSegments[0] === "programs" && pathSegments.length === 2;
+  const isHeroOverlayRoute = pathname === "/" || isProgramDetailPage;
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -155,14 +157,14 @@ export function SiteHeader() {
     };
   }, [pathname]);
 
-  const isTransparent = isHomePage && !isScrolled;
+  const isTransparent = isHeroOverlayRoute && !isScrolled;
   const isUtilityHidden = isScrolled;
 
   return (
     <div
       className={[
         "site-header",
-        isHomePage ? "site-header-home" : "site-header-default",
+        isHeroOverlayRoute ? "site-header-home" : "site-header-default",
         isTransparent ? "navbar-transparent" : "navbar-scrolled",
         isUtilityHidden ? "utility-hidden" : "",
       ]
