@@ -125,7 +125,7 @@ export function SiteHeader() {
   const pathname = usePathname();
   const pathSegments = pathname.split("/").filter(Boolean);
   const isProgramDetailPage = pathSegments[0] === "programs" && pathSegments.length === 2;
-  const isHeroOverlayRoute = pathname === "/" || isProgramDetailPage;
+  const isHeroOverlayRoute = pathname === "/" || pathname === "/research" || isProgramDetailPage;
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
