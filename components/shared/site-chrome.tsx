@@ -109,7 +109,12 @@ const UTILITY_MESSAGES = [
   "NIRF Ranked #104 | NBA & NAAC Accredited",
 ];
 
-const HEADER_SCROLL_THRESHOLD = 50;
+const HEADER_SCROLL_ENTER_THRESHOLD = 56;
+const HEADER_SCROLL_EXIT_THRESHOLD = 36;
+const UTILITY_HIDE_SCROLL_Y = 96;
+const UTILITY_SHOW_SCROLL_Y = 44;
+const UTILITY_DIRECTION_DELTA = 2;
+const UTILITY_UP_REVEAL_DELTA = 18;
 
 type TopUtilityBarProps = {
   isTransparent?: boolean;
@@ -127,13 +132,44 @@ export function SiteHeader() {
   const isProgramDetailPage = pathSegments[0] === "programs" && pathSegments.length === 2;
   const isHeroOverlayRoute = pathname === "/" || pathname === "/research" || isProgramDetailPage;
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isUtilityHidden, setIsUtilityHidden] = useState(false);
 
   useEffect(() => {
     let animationFrameId: number | null = null;
+    let lastScrollY = 0;
 
     const syncScrollState = () => {
-      const nextScrolled = window.scrollY > HEADER_SCROLL_THRESHOLD;
-      setIsScrolled((previous) => (previous === nextScrolled ? previous : nextScrolled));
+      const scrollY = window.scrollY;
+
+      setIsScrolled((previous) => {
+        const nextScrolled = previous
+          ? scrollY > HEADER_SCROLL_EXIT_THRESHOLD
+          : scrollY > HEADER_SCROLL_ENTER_THRESHOLD;
+
+        return previous === nextScrolled ? previous : nextScrolled;
+      });
+
+      setIsUtilityHidden((previous) => {
+        if (scrollY <= UTILITY_SHOW_SCROLL_Y) {
+          return false;
+        }
+
+        const delta = scrollY - lastScrollY;
+        const isScrollingDown = delta > UTILITY_DIRECTION_DELTA;
+        const isScrollingUp = delta < -UTILITY_DIRECTION_DELTA;
+
+        if (!previous && isScrollingDown && scrollY > UTILITY_HIDE_SCROLL_Y) {
+          return true;
+        }
+
+        if (previous && isScrollingUp && lastScrollY - scrollY > UTILITY_UP_REVEAL_DELTA) {
+          return false;
+        }
+
+        return previous;
+      });
+
+      lastScrollY = scrollY;
       animationFrameId = null;
     };
 
@@ -158,7 +194,6 @@ export function SiteHeader() {
   }, [pathname]);
 
   const isTransparent = isHeroOverlayRoute && !isScrolled;
-  const isUtilityHidden = isScrolled;
 
   return (
     <div
@@ -357,7 +392,7 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
         isScrolled ? "shadow-[0_2px_10px_rgba(0,0,0,0.05)]" : "shadow-none"
       }`}
     >
-      <div className={`mx-auto flex w-full max-w-300 items-center justify-between px-3 md:px-5 ${isScrolled ? "py-2 md:py-2.5" : "py-3 md:py-3.5"}`}>
+      <div className="mx-auto flex w-full max-w-300 items-center justify-between px-3 py-2.5 md:px-5 md:py-3">
         <Link href="/" className="flex items-center">
           <Image
             src={isTransparent ? "/assets/img/sviet_white.png" : "/Logo.webp"}

@@ -45,12 +45,8 @@ h3 {
 }
 
 .site-header-home {
-  position: absolute;
-  top: 0;
-}
-
-.site-header-home.navbar-scrolled {
   position: fixed;
+  top: 0;
 }
 
 .site-header-default {
@@ -59,23 +55,31 @@ h3 {
 }
 
 .site-header .utility-bar,
-.site-header .main-navbar,
-.site-header .main-navbar a,
-.site-header .main-navbar button,
-.site-header .main-navbar svg {
+.site-header .main-navbar {
   transition:
     background-color 0.3s ease,
     color 0.3s ease,
     border-color 0.3s ease,
     box-shadow 0.3s ease,
     opacity 0.3s ease,
-    transform 0.3s ease,
-    padding 0.3s ease;
+    transform 0.3s ease;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .site-header .utility-bar {
   max-height: 56px;
   overflow: hidden;
+  transition:
+    max-height 0.32s ease,
+    padding-top 0.32s ease,
+    padding-bottom 0.32s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    opacity 0.32s ease,
+    transform 0.32s ease;
 }
 
 .site-header.utility-hidden .utility-bar {
