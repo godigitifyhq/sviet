@@ -41,7 +41,7 @@ export default function RootLayout({
     <html lang="en" className={`${displayFont.variable} ${sansFont.variable} h-full antialiased`}>
       <body className="min-h-full bg-background text-foreground">
         <SiteHeader />
-        <main className="bg-white">{children}</main>
+        <main className="site-main bg-white">{children}</main>
         <SiteFooter />
       </body>
     </html>
