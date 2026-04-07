@@ -49,8 +49,8 @@ export function AdmissionsHeroSection({
       />
       <div className="absolute inset-0 bg-linear-to-r from-black/85 via-black/65 to-black/35" />
 
-      <div className="relative mx-auto grid max-w-7xl gap-8 px-4 py-16 md:grid-cols-[1fr_360px] md:px-6 lg:py-24">
-        <div className="pt-4 text-white md:pt-10">
+      <div className="relative mx-auto grid max-w-7xl gap-8 px-4 pb-16 pt-36 md:grid-cols-[1fr_360px] md:px-6 md:pb-20 md:pt-40 lg:pb-24 lg:pt-44">
+        <div className="text-white">
           <p className="text-xs font-medium text-white/80">
             <Link href="/" className="hover:text-white">
               Home
