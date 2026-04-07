@@ -8,7 +8,7 @@ function LaurelMark({ className, flip = false }: { className?: string; flip?: bo
       className={className}
       style={{ transform: flip ? "scaleX(-1)" : undefined }}
     >
-      <g fill="#2f266d">
+      <g fill="#0b3b8f">
         <ellipse cx="23" cy="14" rx="3.4" ry="9" transform="rotate(-28 23 14)" />
         <ellipse cx="18" cy="26" rx="3.4" ry="9" transform="rotate(-31 18 26)" />
         <ellipse cx="15" cy="39" rx="3.4" ry="9" transform="rotate(-34 15 39)" />
@@ -45,7 +45,7 @@ export function PlacementSuccessBanner() {
 
           <div className="max-w-3xl">
             <p className="text-3xl font-normal leading-none text-[#0f0f0f] md:text-5xl">Their Success,</p>
-            <h2 className="mt-2 bg-linear-to-r from-[#5249e4] via-[#8a4bd2] to-[#d06a98] bg-clip-text text-4xl font-extrabold leading-none text-transparent md:text-6xl">
+            <h2 className="mt-2 text-4xl font-extrabold leading-none text-[#0b3b8f] md:text-6xl">
               Our Greatest Pride
             </h2>
           </div>
@@ -54,11 +54,11 @@ export function PlacementSuccessBanner() {
         </div>
 
         <div className="mx-auto mt-10 max-w-7xl md:mt-12">
-          <div className="relative overflow-hidden rounded-2xl bg-[#25166e] px-6 py-8 shadow-[0_20px_60px_rgba(28,18,87,0.22)] md:h-72 md:px-10 md:py-10">
+          <div className="relative overflow-hidden rounded-2xl bg-[#0b3b8f] px-6 py-8 shadow-[0_20px_60px_rgba(11,59,143,0.28)] md:h-72 md:px-10 md:py-10">
             <div className="grid h-full items-center gap-6 md:grid-cols-[1fr_1.2fr_0.95fr] md:gap-6">
               <div className="relative z-10 flex flex-col justify-center md:pr-2">
                 <p className="text-base font-medium text-white md:text-xl">Our Top Placements</p>
-                <p className="mt-3 max-w-60 text-[2.1rem] font-extrabold leading-[0.98] tracking-[-0.02em] text-[#ffd54c] md:max-w-65 md:text-[3.3rem]">
+                <p className="mt-3 max-w-60 text-[2.1rem] font-extrabold leading-[0.98] tracking-[-0.02em] text-[#fea700] md:max-w-65 md:text-[3.3rem]">
                   A PU Star
                   <br />
                   Goes
@@ -68,7 +68,7 @@ export function PlacementSuccessBanner() {
               </div>
 
               <div className="relative flex h-56 items-end justify-center overflow-hidden md:h-64">
-                <div className="pointer-events-none absolute bottom-0 left-1/2 h-24 w-40 -translate-x-1/2 rounded-full bg-[#7cf0d7]/15 blur-3xl md:h-28 md:w-52" />
+                <div className="pointer-events-none absolute bottom-0 left-1/2 h-24 w-40 -translate-x-1/2 rounded-full bg-[#fea700]/20 blur-3xl md:h-28 md:w-52" />
                 <Image
                   src="/assets/img/students/Placement-Mockup-1.png"
                   alt="Suraj Jagtap and Tanish Patel placed at Microsoft"

@@ -64,8 +64,8 @@ export function HiringPartners() {
 
         <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
           {/* Title Badge */}
-          <div className="flex justify-center mb-12">
-            <div className="rounded-lg bg-linear-to-r from-blue-600 via-purple-600 to-pink-500 px-8 py-4">
+          <div className="mb-12 flex justify-center">
+            <div className="rounded-lg border border-[#0b3b8f]/20 bg-[#0b3b8f] px-8 py-4">
               <h2 className="text-2xl md:text-3xl font-bold text-white text-center whitespace-nowrap">
                 Our Hiring Partners
               </h2>

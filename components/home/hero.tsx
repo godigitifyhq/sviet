@@ -29,7 +29,12 @@ function splitFullName(fullName: string) {
   return { firstName, lastName };
 }
 
-export function HeroSection() {
+type HeroSectionProps = {
+  imageSrc?: string;
+  imageAlt?: string;
+};
+
+export function HeroSection({ imageSrc = "/assets/img/banner_hero.jpg", imageAlt = "SVIET Banner" }: HeroSectionProps) {
   const [requestForm, setRequestForm] = useState<RequestFormState>(initialRequestForm);
   const [requestErrors, setRequestErrors] = useState<RequestFormErrors>({});
   const [requestLoading, setRequestLoading] = useState(false);
@@ -106,8 +111,8 @@ export function HeroSection() {
         <div className="md:hidden flex flex-col items-center gap-6 px-4 py-8">
           <div className="relative w-full h-80 overflow-hidden rounded-lg">
             <Image
-              src="/assets/img/banner_hero.jpg"
-              alt="SVIET Banner"
+              src={imageSrc}
+              alt={imageAlt}
               fill
               sizes="100vw"
               className="object-cover"
@@ -184,8 +189,8 @@ export function HeroSection() {
         <div className="hidden md:block relative w-full h-full min-h-200 overflow-hidden">
           {/* Full Background Image */}
           <Image
-            src="/assets/img/banner_hero.jpg"
-            alt="SVIET Banner"
+            src={imageSrc}
+            alt={imageAlt}
             fill
             sizes="100vw"
             className="object-cover"

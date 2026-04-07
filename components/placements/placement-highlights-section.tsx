@@ -33,10 +33,10 @@ const PLACEMENT_HIGHLIGHT_CARDS = [
 
 export function PlacementHighlightsSection() {
   return (
-    <section className="mt-16 rounded-[36px] bg-[#21146d] px-4 py-14 text-white shadow-[0_24px_70px_rgba(17,10,58,0.28)] md:mt-20 md:px-8 md:py-18">
+    <section className="mt-16 rounded-[36px] bg-[#0b3b8f] px-4 py-14 text-white shadow-[0_24px_70px_rgba(11,59,143,0.28)] md:mt-20 md:px-8 md:py-18">
       <div className="text-center">
         <p className="text-2xl font-medium leading-none text-white md:text-[2.15rem]">If they did it, so can you</p>
-        <h3 className="mt-4 text-4xl font-extrabold leading-none tracking-[-0.04em] text-[#f4c63f] md:text-[4.9rem]">
+        <h3 className="mt-4 text-4xl font-extrabold leading-none tracking-[-0.04em] text-[#fea700] md:text-[4.9rem]">
           Placement Highlights
         </h3>
       </div>
@@ -61,9 +61,9 @@ export function PlacementHighlightsSection() {
           {[...PLACEMENT_HIGHLIGHT_CARDS, ...PLACEMENT_HIGHLIGHT_CARDS].map((card, index) => (
             <article
               key={`${card.imageSrc}-${index}`}
-              className="w-62 shrink-0 rounded-[28px] bg-[#2a1a7a] p-3 shadow-[0_18px_44px_rgba(0,0,0,0.22)] md:w-73"
+              className="w-62 shrink-0 rounded-[28px] bg-[#0a2f73] p-3 shadow-[0_18px_44px_rgba(0,0,0,0.22)] md:w-73"
             >
-              <div className="relative aspect-4/5 overflow-hidden rounded-[22px] bg-[#1d1460]">
+              <div className="relative aspect-4/5 overflow-hidden rounded-[22px] bg-[#08265e]">
                 <Image
                   src={card.imageSrc}
                   alt={card.imageAlt}
