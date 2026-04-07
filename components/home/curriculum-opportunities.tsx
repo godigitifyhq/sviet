@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { useState, useRef } from "react";
@@ -7,10 +7,10 @@ import { ChevronUp, ChevronDown, Play } from "lucide-react";
 const curriculumEvents = [
   {
     id: 1,
-    name: "Vadodara Fashion Week",
+    name: "Chandigarh Fashion Week",
     mainCard: {
-      title: "Vadodara Fashion Week",
-      description: "The Vadodara Fashion Week (VFW), is a flagship event of the...",
+      title: "Chandigarh Fashion Week",
+      description: "The Chandigarh Fashion Week (VFW), is a flagship event of the...",
       image: "/assets/img/college/1st.png",
       cta: "Read more",
     },
@@ -59,9 +59,9 @@ const curriculumEvents = [
   },
   {
     id: 3,
-    name: "Vadodara Literature Festival",
+    name: "Chandigarh Literature Festival",
     mainCard: {
-      title: "Vadodara Literature Festival",
+      title: "Chandigarh Literature Festival",
       description: "Celebrating literary excellence and creative expression...",
       image: "/assets/img/college/8th.png",
       cta: "Read more",
@@ -137,9 +137,9 @@ const curriculumEvents = [
   },
   {
     id: 6,
-    name: "Vadodara Film & Design Festival",
+    name: "Chandigarh Film & Design Festival",
     mainCard: {
-      title: "Vadodara Film & Design Festival",
+      title: "Chandigarh Film & Design Festival",
       description: "Celebrating visual arts and innovative design...",
       image: "/assets/img/college/4th.png",
       cta: "Read more",
@@ -189,9 +189,9 @@ const curriculumEvents = [
   },
   {
     id: 8,
-    name: "Vadodara Start up Festival",
+    name: "Chandigarh Start up Festival",
     mainCard: {
-      title: "Vadodara Start up Festival",
+      title: "Chandigarh Start up Festival",
       description: "Nurturing entrepreneurship and innovation...",
       image: "/assets/img/college/8th.png",
       cta: "Read more",
@@ -501,9 +501,9 @@ const curriculumEvents = [
   },
   {
     id: 20,
-    name: "VADODARA VISUAL ART FESTIVAL 2026!",
+    name: "CHANDIGARH VISUAL ART FESTIVAL 2026!",
     mainCard: {
-      title: "VADODARA VISUAL ART FESTIVAL 2026!",
+      title: "CHANDIGARH VISUAL ART FESTIVAL 2026!",
       description: "Contemporary art and visual expression celebration...",
       image: "/assets/img/college/8th.png",
       cta: "Read more",
@@ -746,3 +746,4 @@ export function CurriculumOpportunitiesSection() {
     </section>
   );
 }
+

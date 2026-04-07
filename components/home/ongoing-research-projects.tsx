@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight, Users, DollarSign, FileText } from "lucide-react";
@@ -17,7 +17,7 @@ const researchProjects = [
   },
   {
     id: 2,
-    title: "Assessment-Water Quality of Ground and River water and identification of Causative Microorganism causing water borne diseases and Epidemiological studies in the state of Gujarat",
+    title: "Assessment-Water Quality of Ground and River water and identification of Causative Microorganism causing water borne diseases and Epidemiological studies in the state of Chandigarh",
     grant: "₹1.5 Crores",
     grantLacs: "150 lacs",
     investigator: "Prof. M.H. Fulekar",
@@ -257,3 +257,4 @@ export function OngoingResearchProjectsSection() {
     </section>
   );
 }
+

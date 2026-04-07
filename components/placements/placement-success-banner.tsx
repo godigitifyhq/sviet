@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 
 function LaurelMark({ className, flip = false }: { className?: string; flip?: boolean }) {
   return (
@@ -59,7 +59,7 @@ export function PlacementSuccessBanner() {
               <div className="relative z-10 flex flex-col justify-center md:pr-2">
                 <p className="text-base font-medium text-white md:text-xl">Our Top Placements</p>
                 <p className="mt-3 max-w-60 text-[2.1rem] font-extrabold leading-[0.98] tracking-[-0.02em] text-[#fea700] md:max-w-65 md:text-[3.3rem]">
-                  A PU Star
+                  A SVIET Star
                   <br />
                   Goes
                   <br />

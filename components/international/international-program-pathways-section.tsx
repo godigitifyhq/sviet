@@ -27,16 +27,35 @@ export function InternationalProgramPathwaysSection() {
           We offer a wide array of programs designed to support your academic and professional aspirations.
         </p>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-8 grid auto-rows-fr gap-4 md:grid-cols-2 xl:grid-cols-3">
           {PROGRAM_PATHWAYS.map((program, index) => {
             const last = index === PROGRAM_PATHWAYS.length - 1;
             return (
-              <article key={program} className={`relative rounded-xl border border-black/10 bg-white p-5 ${last ? "bg-[#eef3ff]" : ""}`}>
-                <h3 className="text-xl font-semibold text-[#111827] md:text-2xl">{program}</h3>
-                <Link href="/programs" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#2563EB] hover:text-[#f7941d]">
-                  Know more <span aria-hidden="true">›</span>
-                </Link>
-                {last ? <span className="absolute bottom-4 right-4 inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#2563EB] text-white">→</span> : null}
+              <article
+                key={program}
+                className={`group relative h-full min-h-48 overflow-hidden rounded-2xl border border-black/10 bg-white p-6 shadow-[0_10px_30px_rgba(17,24,39,0.06)] transition duration-300 hover:-translate-y-1 hover:border-[#2563EB]/30 hover:shadow-[0_16px_40px_rgba(37,99,235,0.12)] ${last ? "bg-linear-to-br from-[#eef3ff] via-white to-[#f8fbff]" : ""}`}
+              >
+                <div className="absolute right-0 top-0 h-20 w-20 rounded-bl-full bg-[#2563EB]/8 opacity-80 transition group-hover:bg-[#f7941d]/12" />
+                <div className={`relative flex h-full flex-col ${last ? "text-[#111827]" : ""}`}>
+                  <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#2563EB]/10 text-[#2563EB] ring-1 ring-[#2563EB]/10 transition group-hover:bg-[#2563EB] group-hover:text-white">
+                    <span className="text-lg font-semibold">{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                  <h3 className="text-xl font-semibold leading-snug text-[#111827] md:text-2xl">{program}</h3>
+                  <p className="mt-3 max-w-sm text-sm leading-relaxed text-[#4b5563] md:text-[15px]">
+                    Explore curriculum options, career-oriented learning, and flexible academic pathways.
+                  </p>
+                  <div className="mt-auto pt-6">
+                    <Link
+                      href="/programs"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-[#2563EB] transition group-hover:text-[#f7941d]"
+                    >
+                      Know more <span aria-hidden="true" className="transition group-hover:translate-x-0.5">›</span>
+                    </Link>
+                  </div>
+                  <span className="absolute bottom-5 right-5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#2563EB] text-white shadow-lg shadow-[#2563EB]/25 transition group-hover:scale-110 group-hover:bg-[#f7941d] group-hover:shadow-[#f7941d]/30">
+                    →
+                  </span>
+                </div>
               </article>
             );
           })}

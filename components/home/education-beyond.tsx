@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 import { ClipboardCheck, Search, Users } from "lucide-react";
 
@@ -37,7 +37,7 @@ export function EducationBeyondSection() {
         <p className="mt-3 text-2xl font-medium leading-tight text-[#111827] md:text-4xl">We have something for everyone!</p>
         <p className="mt-6 max-w-3xl text-sm leading-relaxed text-[#6B7280] md:text-lg">
           Whether you&apos;re a prospective student just starting their journey or an alumni who has just finished it,
-          here is where you will find your way around PU.
+          here is where you will find your way around SVIET.
         </p>
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">
@@ -74,3 +74,4 @@ export function EducationBeyondSection() {
     </section>
   );
 }
+

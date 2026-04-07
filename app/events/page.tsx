@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { EventsPageReplica } from "@/components/campus/sviet-replica";
+import { EventsPage as EventsPageView } from "@/components/events/events-page";
 
 export const metadata: Metadata = {
   title: "Events | SVIET",
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function EventsPage() {
-  return <EventsPageReplica />;
+  return <EventsPageView />;
 }

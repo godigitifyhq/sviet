@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -54,21 +54,21 @@ const PROGRAM_DROPDOWN_ITEMS = [{ label: "Program Finder", href: "/program-finde
 
 const ABOUT_PANEL_GROUPS = [
   {
-    title: "Discover PU",
+    title: "Discover SVIET",
     items: [
       { label: "Overview", href: "/about" },
       { label: "Leadership", href: "/about/leadership" },
       { label: "Vision and Mission", href: "/about" },
-      { label: "PU Advantage", href: "/about" },
+      { label: "SVIET Advantage", href: "/about" },
     ],
   },
   {
     title: "Explore More",
     items: [
       { label: "Our Campus Locations", href: "/about/infrastructure" },
-      { label: "PU Infrastructure", href: "/about/infrastructure" },
+      { label: "SVIET Infrastructure", href: "/about/infrastructure" },
       { label: "Sakshamthad Foundation", href: "/about" },
-      { label: "Life at PU", href: "/campus-life" },
+      { label: "Life at SVIET", href: "/campus-life" },
     ],
   },
 ] as const;
@@ -878,3 +878,4 @@ export function SiteFooter() {
     </>
   );
 }
+

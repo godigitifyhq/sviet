@@ -20,8 +20,8 @@ export function InternationalSupportServicesSection() {
               <p className="absolute bottom-4 left-4 text-xl font-semibold text-white md:text-2xl">Hostel & Residence</p>
             </article>
             <div className="grid gap-4 sm:grid-cols-2">
-              <article className="rounded-2xl bg-[#f7941d] p-5 text-white"><Briefcase className="h-6 w-6" /><p className="mt-12 text-xl font-semibold">Travel Assistance</p></article>
-              <article className="rounded-2xl bg-[#0f766e] p-5 text-white"><Users className="h-6 w-6" /><p className="mt-12 text-xl font-semibold">Students Welfare</p></article>
+              <article className="min-h-42 rounded-2xl bg-[#f7941d] p-5 text-white"><Briefcase className="h-6 w-6" /><p className="mt-12 text-xl font-semibold">Travel Assistance</p></article>
+              <article className="min-h-42 rounded-2xl bg-[#0f766e] p-5 text-white"><Users className="h-6 w-6" /><p className="mt-12 text-xl font-semibold">Students Welfare</p></article>
             </div>
           </div>
 

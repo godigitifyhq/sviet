@@ -30,16 +30,16 @@ export function InternationalHeroIntroSection() {
           </div>
         </div>
 
-        <div className="relative mt-12 overflow-hidden rounded-2xl bg-[#f5e2bf] px-6 py-8 md:px-10 md:py-10">
+        <div className="relative mt-32 overflow-visible rounded-2xl bg-[#f5e2bf] px-6 py-8 md:px-10 md:py-10">
           <div className="grid items-end gap-6 md:grid-cols-[1fr_1fr]">
-            <div className="relative min-h-56 md:min-h-64">
-              <div className="absolute bottom-0 left-4 h-40 w-40 rounded-t-full bg-[#f7b56b] md:h-44 md:w-44" />
+            <div className="relative min-h-40 md:min-h-40">
+              {/* <div className="absolute bottom-0 left-4 h-48 w-48 rounded-t-full bg-[#f7b56b] md:h-56 md:w-56" /> */}
               <Image
-                src="/assets/img/students/image (2).png"
+                src="https://www.paruluniversity.ac.in/wp-content/uploads/2025/03/mid-banner.svg"
                 alt="International student"
                 fill
-                sizes="(max-width: 768px) 100vw, 45vw"
-                className="object-contain object-bottom"
+                sizes="(max-width: 968px) 100vw, 45vw"
+                className="object-contain object-bottom scale-200 -translate-y-10 md:-translate-y-10"
               />
             </div>
 
