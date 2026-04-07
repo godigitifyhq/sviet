@@ -58,6 +58,7 @@ const ABOUT_PANEL_GROUPS = [
     items: [
       { label: "Overview", href: "/about" },
       { label: "Leadership", href: "/about/leadership" },
+      { label: "Awards, Rankings & Ratings", href: "/about/awards-recognitions" },
       { label: "Vision and Mission", href: "/about" },
       { label: "SVIET Advantage", href: "/about" },
     ],

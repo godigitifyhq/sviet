@@ -3,27 +3,27 @@
 import Image from "next/image";
 
 const HIRING_PARTNERS_ROW_1 = [
-  { name: "Microsoft", logoSrc: "/assets/img/companies/microsoft.png", logoAlt: "Microsoft logo" },
-  { name: "Commvault", logoSrc: "/assets/img/companies/commvault.png", logoAlt: "Commvault logo" },
-  { name: "HCLTech", logoSrc: "/assets/img/companies/hcltech.png", logoAlt: "HCLTech logo" },
-  { name: "Accenture", logoSrc: "/assets/img/companies/accenture.png", logoAlt: "Accenture logo" },
-  { name: "IBM", logoSrc: "/assets/img/companies/ibm.png", logoAlt: "IBM logo" },
-  { name: "IndiGo", logoSrc: "/assets/img/companies/indigo.png", logoAlt: "IndiGo logo" },
-  { name: "Reliance", logoSrc: "/assets/img/companies/reliance.png", logoAlt: "Reliance Industries logo" },
   { name: "Infosys", logoSrc: "/assets/img/companies/infosys.png", logoAlt: "Infosys logo" },
   { name: "TCS", logoSrc: "/assets/img/companies/tcs.png", logoAlt: "TCS logo" },
+  { name: "Infosys", logoSrc: "/assets/img/companies/infosys.png", logoAlt: "Infosys logo" },
+  { name: "TCS", logoSrc: "/assets/img/companies/tcs.png", logoAlt: "TCS logo" },
+  { name: "Infosys", logoSrc: "/assets/img/companies/infosys.png", logoAlt: "Infosys logo" },
+  { name: "TCS", logoSrc: "/assets/img/companies/tcs.png", logoAlt: "TCS logo" },
+  { name: "Infosys", logoSrc: "/assets/img/companies/infosys.png", logoAlt: "Infosys logo" },
+  { name: "TCS", logoSrc: "/assets/img/companies/tcs.png", logoAlt: "TCS logo" },
+  { name: "Infosys", logoSrc: "/assets/img/companies/infosys.png", logoAlt: "Infosys logo" },
 ];
 
 const HIRING_PARTNERS_ROW_2 = [
-  { name: "Yokohama", logoSrc: "/assets/img/companies/yokohama.png", logoAlt: "Yokohama logo" },
-  { name: "Oracle", logoSrc: "/assets/img/companies/oracle.png", logoAlt: "Oracle logo" },
-  { name: "Adani", logoSrc: "/assets/img/companies/adani.png", logoAlt: "Adani logo" },
-  { name: "Philips", logoSrc: "/assets/img/companies/philips.png", logoAlt: "Philips logo" },
-  { name: "Aditya Birla", logoSrc: "/assets/img/companies/aditya_birla.png", logoAlt: "Aditya Birla Group logo" },
-  { name: "Zomato", logoSrc: "/assets/img/companies/zomato.png", logoAlt: "Zomato logo" },
-  { name: "Blinkit", logoSrc: "/assets/img/companies/blinkit.png", logoAlt: "Blinkit logo" },
-  { name: "Larsen & Toubro", logoSrc: "/assets/img/companies/larsen_toubro.png", logoAlt: "Larsen & Toubro logo" },
-  { name: "Gateway Group", logoSrc: "/assets/img/companies/gateway_group.png", logoAlt: "Gateway Group logo" },
+  { name: "TCS", logoSrc: "/assets/img/companies/tcs.png", logoAlt: "TCS logo" },
+  { name: "Infosys", logoSrc: "/assets/img/companies/infosys.png", logoAlt: "Infosys logo" },
+  { name: "TCS", logoSrc: "/assets/img/companies/tcs.png", logoAlt: "TCS logo" },
+  { name: "Infosys", logoSrc: "/assets/img/companies/infosys.png", logoAlt: "Infosys logo" },
+  { name: "TCS", logoSrc: "/assets/img/companies/tcs.png", logoAlt: "TCS logo" },
+  { name: "Infosys", logoSrc: "/assets/img/companies/infosys.png", logoAlt: "Infosys logo" },
+  { name: "TCS", logoSrc: "/assets/img/companies/tcs.png", logoAlt: "TCS logo" },
+  { name: "Infosys", logoSrc: "/assets/img/companies/infosys.png", logoAlt: "Infosys logo" },
+  { name: "TCS", logoSrc: "/assets/img/companies/tcs.png", logoAlt: "TCS logo" },
 ];
 
 export function HiringPartners() {
@@ -37,28 +37,32 @@ export function HiringPartners() {
         <style>{`
           @keyframes slideLeft {
             from {
-              transform: translateX(0);
+                transform: translate3d(0, 0, 0);
             }
             to {
-              transform: translateX(-50%);
+                transform: translate3d(-50%, 0, 0);
             }
           }
           
           @keyframes slideRight {
             from {
-              transform: translateX(-50%);
+                transform: translate3d(-50%, 0, 0);
             }
             to {
-              transform: translateX(0);
+                transform: translate3d(0, 0, 0);
             }
           }
           
           .animate-slide-left {
-            animation: slideLeft 50s linear infinite;
+            animation: slideLeft 22s linear infinite;
+            will-change: transform;
+            backface-visibility: hidden;
           }
           
           .animate-slide-right {
-            animation: slideRight 50s linear infinite;
+            animation: slideRight 22s linear infinite;
+            will-change: transform;
+            backface-visibility: hidden;
           }
         `}</style>
 

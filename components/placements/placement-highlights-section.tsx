@@ -2,15 +2,15 @@ import Image from "next/image";
 
 const PLACEMENT_HIGHLIGHT_CARDS = [
   {
-    imageSrc: "/assets/img/college/1st.png",
+    imageSrc: "/assets/img/college/global_recognition.png",
     imageAlt: "SVIET ranked first in North India",
   },
   {
-    imageSrc: "/assets/img/college/4th.png",
+    imageSrc: "/assets/img/college/global_recognition.png",
     imageAlt: "SVIET ranked fourth among top engineering colleges in Punjab",
   },
   {
-    imageSrc: "/assets/img/college/8th.png",
+    imageSrc: "/assets/img/college/global_recognition.png",
     imageAlt: "SVIET ranked eighth among outstanding engineering colleges in India",
   },
   {
@@ -18,15 +18,15 @@ const PLACEMENT_HIGHLIGHT_CARDS = [
     imageAlt: "Global recognition for excellence in education",
   },
   {
-    imageSrc: "/assets/img/college/elets.png",
+    imageSrc: "/assets/img/college/global_recognition.png",
     imageAlt: "Elets World Education Summit award",
   },
   {
-    imageSrc: "/assets/img/college/dl.png",
+    imageSrc: "/assets/img/college/global_recognition.png",
     imageAlt: "Digital learning recognition",
   },
   {
-    imageSrc: "/assets/img/college/banner_95.png",
+    imageSrc: "/assets/img/college/global_recognition.png",
     imageAlt: "SVGOI recognition banner",
   },
 ] as const;

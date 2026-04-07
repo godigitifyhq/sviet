@@ -8,13 +8,13 @@ import { PlacementHighlightsSection } from "@/components/placements/placement-hi
 import { PlacementSuccessBanner } from "@/components/placements/placement-success-banner";
 import { PlacementStatsBlockSection } from "@/components/placements/placement-stats-block-section";
 import { PlacementStudentSpeakSection } from "@/components/placements/placement-student-speak-section";
+import { PlacementsHeroSection } from "@/components/placements/placements-hero-section";
 import { RecruiterGrid } from "@/components/placements/recruiter-grid";
 import { SectionHeader } from "@/components/placements/section-header";
 import { SectionWrapper } from "@/components/placements/section-wrapper";
 import { StatCard } from "@/components/placements/stat-card";
 import { TestimonialCard } from "@/components/placements/testimonial-card";
 import { TestimonialCarousel } from "@/components/placements/testimonial-carousel";
-import { HeroSection } from "@/components/home/hero";
 
 const HERO_STATS = [
   { label: "Students Placed", value: "2000+" },
@@ -157,7 +157,7 @@ const FAQ_ITEMS = [
 export function PlacementsPageComponent() {
   return (
     <main className="bg-white">
-      <HeroSection />
+      <PlacementsHeroSection />
 
       <HiringPartners />
 

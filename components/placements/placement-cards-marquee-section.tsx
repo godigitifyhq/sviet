@@ -41,15 +41,17 @@ export function PlacementCardsMarqueeSection() {
       <style>{`
         @keyframes placementCardsMarquee {
           from {
-            transform: translateX(0);
+            transform: translate3d(0, 0, 0);
           }
           to {
-            transform: translateX(-50%);
+            transform: translate3d(-50%, 0, 0);
           }
         }
 
         .animate-placement-cards-marquee {
-          animation: placementCardsMarquee 28s linear infinite;
+          animation: placementCardsMarquee 16s linear infinite;
+          will-change: transform;
+          backface-visibility: hidden;
         }
       `}</style>
 
