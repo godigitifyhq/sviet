@@ -16,9 +16,24 @@ const hero = {
 };
 
 const stats = [
-  { value: "620", label: "Research Publications" },
-  { value: "47", label: "Technology Transfers" },
-  { value: "89", label: "Patents Filed" },
+  { 
+    value: "620", 
+    label: "Research Publications",
+    image: "/assets/img/college/main_gate.png",
+    href: "#"
+  },
+  { 
+    value: "47", 
+    label: "Technology Transfers",
+    image: "/assets/img/college/4th.png",
+    href: "#"
+  },
+  { 
+    value: "89", 
+    label: "Patents Filed",
+    image: "/assets/img/college/8th.png",
+    href: "#"
+  },
 ];
 
 const researchDomains = [
@@ -283,12 +298,26 @@ export function ResearchPageComponent() {
 
       {/* Quick Links / Stats Section */}
       <section className={`${sectionClass} ${containerClass}`}>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {stats.map((item) => (
-            <article key={item.label} className="rounded-2xl border border-gray-200 bg-linear-to-b from-white to-gray-50 p-8 text-center transition duration-300 hover:-translate-y-1 hover:border-[#f7941d]/50 hover:shadow-lg">
-              <p className="text-5xl font-bold text-gray-900">{item.value}</p>
-              <p className="mt-3 text-sm font-semibold uppercase tracking-wide text-gray-600">{item.label}</p>
-            </article>
+            <a key={item.label} href={item.href} className="group relative block h-72 overflow-hidden rounded-3xl">
+              <Image
+                src={item.image}
+                alt={item.label}
+                fill
+                sizes="(max-width: 767px) 100vw, 33vw"
+                className="object-cover transition duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 rounded-3xl bg-linear-to-t from-black/75 via-black/40 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-8">
+                <p className="text-5xl font-bold text-white">{item.value}</p>
+                <h3 className="mt-3 text-xl font-semibold leading-tight text-white">{item.label}</h3>
+                <span className="mt-4 inline-flex items-center gap-2 text-base font-semibold text-[#f7941d] transition group-hover:gap-3">
+                  Explore
+                  <span aria-hidden="true">›</span>
+                </span>
+              </div>
+            </a>
           ))}
         </div>
       </section>
@@ -314,7 +343,7 @@ export function ResearchPageComponent() {
         </div>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {researchDomains.map((domain) => (
-            <article key={domain.title} className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 hover:shadow-lg">
+            <article key={domain.title} className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 ">
               <domain.icon className="text-3xl text-[#f7941d] transition group-hover:scale-110" />
               <h3 className="mt-6 text-xl font-semibold text-gray-900">{domain.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-gray-600">{domain.description}</p>
@@ -333,11 +362,46 @@ export function ResearchPageComponent() {
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {rdCommittee.map((member) => (
-              <article key={member.name} className="rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-[#f7941d]/40 hover:shadow-md">
-                <h3 className="text-lg font-semibold text-gray-900">{member.name}</h3>
-                <p className="mt-2 text-sm text-gray-700">{member.department}</p>
-                <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-[#f7941d]">{member.designation}</p>
-              </article>
+              <div key={member.name} className="bg-white rounded-2xl overflow-hidden h-full flex flex-col  ">
+                {/* Top Section - Gradient Background */}
+                <div className="w-full h-40 bg-linear-to-br from-[#f7941d]/20 via-[#f7941d]/10 to-transparent p-6 flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 bg-pattern" />
+                  <div className="w-20 h-20 rounded-full bg-[#f7941d]/20 border-2 border-[#f7941d] flex items-center justify-center text-2xl font-bold text-[#f7941d]">
+                    {member.name.charAt(0)}
+                  </div>
+                </div>
+
+                {/* Bottom Section - White Background */}
+                <div className="p-6 grow flex flex-col">
+                  {/* Name */}
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">{member.name}</h3>
+
+                  {/* Details */}
+                  <div className="space-y-3 grow">
+                    {/* Department */}
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-[#f7941d]/10 flex items-center justify-center shrink-0 mt-0.5">
+                        <span className="text-xs text-[#f7941d] font-bold">📚</span>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-xs font-semibold text-gray-500">Department</span>
+                        <span className="text-sm text-gray-700">{member.department}</span>
+                      </div>
+                    </div>
+
+                    {/* Designation */}
+                    <div className="flex items-start gap-3 border-t pt-3">
+                      <div className="w-6 h-6 rounded-full bg-[#f7941d]/10 flex items-center justify-center shrink-0 mt-0.5">
+                        <span className="text-xs text-[#f7941d] font-bold">⭐</span>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-xs font-semibold text-gray-500">Designation</span>
+                        <span className="text-sm font-semibold text-[#f7941d]">{member.designation}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -369,7 +433,7 @@ export function ResearchPageComponent() {
           <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>Research Publications</h2>
           <p className="text-lg text-gray-700">Selected list of publications contributed by SVIET researchers.</p>
         </div>
-        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg">
+        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white ">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead className="border-b border-gray-200 bg-gray-50">
@@ -404,7 +468,7 @@ export function ResearchPageComponent() {
         </div>
         <div className="grid gap-6 md:grid-cols-2">
           {patents.map((patent) => (
-            <article key={patent.applicationNo} className="group rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-[#f7941d]/50 hover:shadow-md">
+            <article key={patent.applicationNo} className="group rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-[#f7941d]/50 ">
               <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Ref: {patent.applicationNo}</p>
               <h3 className="mt-4 text-lg font-semibold text-gray-900 group-hover:text-[#f7941d]">{patent.title}</h3>
             </article>
@@ -440,7 +504,7 @@ export function ResearchPageComponent() {
             <p className="text-gray-700 mb-8">Core research infrastructure supporting advanced experimentation and prototyping.</p>
             <div className="space-y-4">
               {infrastructure.map((facility) => (
-                <article key={facility} className="group rounded-xl border border-gray-200 bg-white p-4 transition hover:border-[#f7941d]/50 hover:shadow-md">
+                <article key={facility} className="group rounded-xl border border-gray-200 bg-white p-4 transition hover:border-[#f7941d]/50 ">
                   <h3 className="text-lg font-semibold text-gray-900 group-hover:text-[#f7941d]">{facility}</h3>
                 </article>
               ))}
@@ -457,7 +521,7 @@ export function ResearchPageComponent() {
               <span className="font-semibold">{booksMeta.title}</span> ({booksMeta.year})
             </p>
             <p className="mt-2 text-sm text-gray-600">Total count: <span className="font-semibold text-gray-900">{booksMeta.total}</span></p>
-            <div className="mt-6 rounded-2xl border border-gray-200 bg-white shadow-lg overflow-hidden">
+            <div className="mt-6 rounded-2xl border border-gray-200 bg-white overflow-hidden">
               <div className="overflow-x-auto max-h-96">
                 <table className="w-full text-left text-sm">
                   <thead className="border-b border-gray-200 bg-gray-50 sticky top-0">
@@ -496,7 +560,7 @@ export function ResearchPageComponent() {
         </div>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
-            <article key={service.title} className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 hover:shadow-lg">
+            <article key={service.title} className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 ">
               <service.icon className="text-3xl text-[#f7941d] transition group-hover:scale-110" />
               <h3 className="mt-6 text-xl font-semibold text-gray-900">{service.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-gray-600">{service.description}</p>
