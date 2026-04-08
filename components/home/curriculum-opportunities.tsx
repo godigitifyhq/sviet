@@ -553,6 +553,16 @@ const curriculumEvents = [
   },
 ];
 
+const curriculumImageMap: Record<string, string> = {
+  "/assets/img/college/1st.png": "/assets/img/students/slider-img-1.png",
+  "/assets/img/college/4th.png": "/assets/img/s60.jpg",
+  "/assets/img/college/8th.png": "/assets/img/re.jpg",
+  "/assets/img/college/admin.png": "/assets/img/college/global_recognition.png",
+  "/assets/img/college/auditorium.png": "/assets/img/college/global_recognition.png",
+};
+
+const resolveCurriculumImage = (imagePath: string) => curriculumImageMap[imagePath] ?? imagePath;
+
 export function CurriculumOpportunitiesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -687,7 +697,7 @@ export function CurriculumOpportunitiesSection() {
               {/* Center Column - Main Image */}
               <div className="relative overflow-hidden rounded-[20px] bg-black h-80 md:h-full">
                 <Image
-                  src={currentEvent.mainCard.image}
+                  src={resolveCurriculumImage(currentEvent.mainCard.image)}
                   alt={currentEvent.mainCard.title}
                   fill
                   className="object-cover transition-all duration-500"
@@ -699,10 +709,10 @@ export function CurriculumOpportunitiesSection() {
               <div className="space-y-4">
                 {/* Stats Card */}
                 {currentEvent.stats.map((stat, idx) => (
-                  <div key={idx} className="relative overflow-hidden rounded-[20px] bg-[#b8754f] p-5 md:p-6 text-white h-40">
+                  <div key={idx} className="relative overflow-hidden rounded-[20px] bg-[#000000ba]  text-white h-40">
                     <div className="relative h-full w-full">
                       <Image
-                        src={stat.image}
+                        src={resolveCurriculumImage(stat.image)}
                         alt={stat.label}
                         fill
                         className="object-cover opacity-30 absolute"
@@ -719,7 +729,7 @@ export function CurriculumOpportunitiesSection() {
                 {currentEvent.videos.map((video, idx) => (
                   <div key={idx} className="relative overflow-hidden rounded-[20px] bg-black h-40 group">
                     <Image
-                      src={video.image}
+                      src={resolveCurriculumImage(video.image)}
                       alt={video.label}
                       fill
                       className="object-cover transition-all duration-500 group-hover:scale-105"

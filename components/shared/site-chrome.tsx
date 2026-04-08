@@ -396,11 +396,11 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
       <div className="mx-auto flex w-full max-w-300 items-center justify-between px-3 py-2.5 md:px-5 md:py-3">
         <Link href="/" className="flex shrink-0 items-center">
           <Image
-            src={isTransparent ? "/assets/img/sviet_white.png" : "/Logo.webp"}
+            src={isTransparent ? "/assets/img/sviet_white.png" : "/Logo.png"}
             alt="SVIET logo"
             width={347}
             height={150}
-            className={`main-navbar-logo h-10 md:h-12 w-auto transition-[filter] duration-300 ease-out object-contain `}
+            className={`main-navbar-logo h-8 md:h-10 w-auto transition-[filter] duration-300 ease-out object-contain `}
             style={{ width: "auto" }}
             priority
           />
@@ -429,7 +429,7 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                 alt={image.alt}
                 width={347}
                 height={150}
-                className="h-8 w-auto object-contain"
+                className="h-16 w-auto object-contain"
               />
             ))}
           </div>

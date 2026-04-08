@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export function EntrepreneurshipSection() {
   const stats = [
     {
@@ -128,7 +130,13 @@ export function EntrepreneurshipSection() {
               <h3 className="mb-3 text-xl font-bold">{programs[0].title}</h3>
               <p className="mb-8 text-sm leading-relaxed">{programs[0].description}</p>
             </div>
-            <div className="absolute bottom-0 right-0 text-6xl opacity-20">🚀</div>
+            <Image
+              src="/assets/img/section_card/group-img-1.png"
+              alt="Startup growth illustration"
+              width={170}
+              height={170}
+              className="pointer-events-none absolute bottom-0 right-0 w-36 opacity-90 md:w-44"
+            />
           </div>
 
           {/* Leading Entrepreneurship Events - with image placeholder */}
@@ -139,7 +147,13 @@ export function EntrepreneurshipSection() {
               <h3 className="mb-3 text-xl font-bold">{programs[1].title}</h3>
               <p className="text-sm leading-relaxed">{programs[1].description}</p>
             </div>
-            <div className="absolute bottom-0 right-0 text-8xl opacity-30">👨‍💼</div>
+            <Image
+              src="/assets/img/section_card/group-img-4.png"
+              alt="Entrepreneurship event speaker"
+              width={180}
+              height={180}
+              className="pointer-events-none absolute bottom-0 right-0 w-36 opacity-95 md:w-44"
+            />
           </div>
 
           {/* Start-up Studios */}
@@ -150,7 +164,13 @@ export function EntrepreneurshipSection() {
               <h3 className="mb-3 text-xl font-bold">{programs[2].title}</h3>
               <p className="text-sm leading-relaxed">{programs[2].description}</p>
             </div>
-            <div className="absolute bottom-0 right-0 text-6xl opacity-20">💡</div>
+            <Image
+              src="/assets/img/section_card/group-img-2.png"
+              alt="Startup studio ideation"
+              width={160}
+              height={160}
+              className="pointer-events-none absolute bottom-0 right-0 w-32 opacity-90 md:w-40"
+            />
           </div>
 
           {/* Fabrication Lab - Full width bottom row left */}
@@ -161,7 +181,13 @@ export function EntrepreneurshipSection() {
               <h3 className="mb-3 text-xl font-bold">{programs[3].title}</h3>
               <p className="text-sm leading-relaxed">{programs[3].description}</p>
             </div>
-            <div className="absolute bottom-0 right-0 text-8xl opacity-30">🏭</div>
+            <Image
+              src="/assets/img/section_card/group-img-5.png"
+              alt="Fabrication lab equipment"
+              width={210}
+              height={170}
+              className="pointer-events-none absolute bottom-0 right-0 w-40 opacity-90 md:w-52"
+            />
           </div>
 
           {/* Start Incubation Centre - spanning across */}
@@ -172,7 +198,13 @@ export function EntrepreneurshipSection() {
               <h3 className="mb-3 text-xl font-bold">{programs[4].title}</h3>
               <p className="text-sm leading-relaxed">{programs[4].description}</p>
             </div>
-            <div className="absolute bottom-0 right-0 text-8xl opacity-30">📡</div>
+            <Image
+              src="/assets/img/section_card/group-img-3.png"
+              alt="Incubation centre research"
+              width={190}
+              height={150}
+              className="pointer-events-none absolute bottom-0 right-0 w-36 opacity-90 md:w-44"
+            />
           </div>
         </div>
       </div>
