@@ -148,7 +148,7 @@ export function EntrepreneurshipSection() {
               <p className="text-sm leading-relaxed">{programs[1].description}</p>
             </div>
             <Image
-              src="/assets/img/section_card/group-img-4.png"
+              src="/assets/img/section_card/group-img-5.png"
               alt="Entrepreneurship event speaker"
               width={180}
               height={180}
@@ -177,17 +177,18 @@ export function EntrepreneurshipSection() {
           <div
             className={`relative overflow-hidden rounded-2xl bg-linear-to-br ${programs[3].bgColor} p-8 text-white`}
           >
-            <div className="relative z-10">
-              <h3 className="mb-3 text-xl font-bold">{programs[3].title}</h3>
-              <p className="text-sm leading-relaxed">{programs[3].description}</p>
-            </div>
             <Image
-              src="/assets/img/section_card/group-img-5.png"
+              src="/assets/img/section_card/group-img-3.png"
               alt="Fabrication lab equipment"
               width={210}
               height={170}
-              className="pointer-events-none absolute bottom-0 right-0 w-40 opacity-90 md:w-52"
+              className="pointer-events-none absolute top-0 right-0 w-40 opacity-90 md:w-52"
             />
+            <div className="relative mt-12 z-10">
+              <h3 className="mb-3 text-xl font-bold">{programs[3].title}</h3>
+              <p className="text-sm leading-relaxed">{programs[3].description}</p>
+            </div>
+            
           </div>
 
           {/* Start Incubation Centre - spanning across */}
@@ -199,11 +200,11 @@ export function EntrepreneurshipSection() {
               <p className="text-sm leading-relaxed">{programs[4].description}</p>
             </div>
             <Image
-              src="/assets/img/section_card/group-img-3.png"
+              src="/assets/img/section_card/group-img-4.png"
               alt="Incubation centre research"
               width={190}
               height={150}
-              className="pointer-events-none absolute bottom-0 right-0 w-36 opacity-90 md:w-44"
+              className="pointer-events-none absolute bottom-0 right-0 w-36 opacity-90 md:w-80"
             />
           </div>
         </div>

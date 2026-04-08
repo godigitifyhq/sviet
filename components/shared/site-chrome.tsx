@@ -58,17 +58,15 @@ const ABOUT_PANEL_GROUPS = [
     items: [
       { label: "Overview", href: "/about" },
       { label: "Leadership", href: "/about/leadership" },
+      { label: "Accreditations & Approvals", href: "/about/accreditations" },
       { label: "Awards, Rankings & Ratings", href: "/about/awards-recognitions" },
-      { label: "Vision and Mission", href: "/about" },
-      { label: "SVIET Advantage", href: "/about" },
     ],
   },
   {
     title: "Explore More",
     items: [
-      { label: "Our Campus Locations", href: "/about/infrastructure" },
-      { label: "SVIET Infrastructure", href: "/about/infrastructure" },
-      { label: "Sakshamthad Foundation", href: "/about" },
+      { label: "Infrastructure", href: "/about/infrastructure" },
+      { label: "Placements", href: "/about/placements" },
       { label: "Life at SVIET", href: "/campus-life" },
     ],
   },
@@ -420,7 +418,7 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
-        <nav className="hidden min-w-0 flex-1 items-center justify-end whitespace-nowrap text-[10px] font-semibold tracking-wide text-current lg:flex lg:gap-1.5 xl:gap-2 xl:text-[10px] 2xl:gap-3 2xl:text-[11px]">
+        <nav className="hidden min-w-0 flex-1 items-center justify-end text-[10px] font-semibold tracking-wide text-current lg:flex lg:gap-1.5 xl:gap-2 xl:text-[10px] 2xl:gap-3 2xl:text-[11px]">
           <div className="hidden shrink-0 items-center gap-1 2xl:flex">
             {NAV_LINK_IMAGES.map((image) => (
               <Image
@@ -437,12 +435,12 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
           {NAV_ITEMS.map((item) => (
             item.label === "About" ? (
               <div key={item.label} className="group relative">
-                <Link href={item.href} className="inline-flex items-center gap-1 transition-colors duration-300 ease-out hover:text-[#FEA700]">
+                <Link href={item.href} className="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-300 ease-out hover:text-[#FEA700]">
                   {item.label}
                   <span className="text-[10px]">▾</span>
                 </Link>
 
-                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-[min(1080px,calc(100vw-2rem))] -translate-x-1/2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-[min(1080px,calc(100vw-2rem))] -translate-x-1/2 whitespace-normal opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
                   <div className="border border-black/10 bg-[#FFFFFF] shadow-[0_16px_45px_rgba(0,0,0,0.1)]">
                     <div className="flex max-h-[90vh] flex-col xl:flex-row">
                       <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5">
@@ -475,27 +473,28 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                         </div>
                       </div>
 
-                      <div className="border-t border-black/10 p-5 xl:sticky xl:top-0 xl:w-75 xl:shrink-0 xl:self-start xl:border-l xl:border-t-0">
+                      <div className="border-t border-black/10 p-5 xl:sticky xl:top-0 xl:w-96 xl:shrink-0 xl:self-start xl:border-l xl:border-t-0">
                         <Link
                           href={ABOUT_PANEL_FEATURE.href}
-                          className="group/card relative block overflow-hidden border border-[#FEA700]/35 bg-[#000000] p-5 text-[#FFFFFF] transition-colors duration-300 ease-out hover:border-[#FEA700]"
+                          className="group/card relative block min-h-80 overflow-hidden border border-[#FEA700]/35 bg-[#000000] p-5 text-[#FFFFFF] transition-colors duration-300 ease-out hover:border-[#FEA700]"
                         >
-                          <div className="relative z-10 flex h-full flex-col">
+                          <div className="relative z-10 flex h-full min-h-72 flex-col">
                             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{ABOUT_PANEL_FEATURE.eyebrow}</span>
-                            <h3 className="mt-3 max-w-56 text-3xl font-black leading-[0.95] tracking-tight">{ABOUT_PANEL_FEATURE.title}</h3>
-                            <p className="mt-3 max-w-60 text-sm leading-6 text-white/80">{ABOUT_PANEL_FEATURE.description}</p>
-                            <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#FEA700]">
+                            <h3 className="mt-3 max-w-full text-2xl font-black leading-tight tracking-tight xl:text-3xl">{ABOUT_PANEL_FEATURE.title}</h3>
+                            <p className="mt-3 max-w-full text-sm leading-relaxed text-white/85">{ABOUT_PANEL_FEATURE.description}</p>
+                            <div className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-[#FEA700]">
                               Learn more
                               <span className="transition group-hover/card:translate-x-0.5">→</span>
                             </div>
                           </div>
-                          <div className="absolute inset-x-0 bottom-0 h-40">
+                          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-52">
+                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/45 to-transparent" />
                             <Image
                               src={ABOUT_PANEL_FEATURE.imageSrc}
                               alt={ABOUT_PANEL_FEATURE.imageAlt}
                               fill
                               sizes="(max-width: 1280px) 340px, 340px"
-                              className="object-cover object-top-right opacity-30 mix-blend-screen"
+                              className="object-cover object-center opacity-35 mix-blend-screen"
                             />
                           </div>
                         </Link>
@@ -506,12 +505,12 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
               </div>
             ) : item.label === "Programs" ? (
               <div key={item.label} className="group relative">
-                <button type="button" className="inline-flex items-center gap-1 transition-colors duration-300 ease-out hover:text-[#FEA700]">
+                <button type="button" className="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-300 ease-out hover:text-[#FEA700]">
                   {item.label}
                   <span className="text-[10px]">▾</span>
                 </button>
 
-                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-[min(1080px,calc(100vw-2rem))] -translate-x-1/2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-[min(1080px,calc(100vw-2rem))] -translate-x-1/2 whitespace-normal opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
                   <div className="border border-black/10 bg-[#FFFFFF] shadow-[0_16px_45px_rgba(0,0,0,0.1)]">
                     <div className="flex max-h-[90vh] flex-col xl:flex-row">
                       <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5">
@@ -537,7 +536,7 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                                     <Link
                                       key={`${groupName}-${dropdownItem.href}-${dropdownItem.label}`}
                                       href={dropdownItem.href}
-                                      className={`block min-w-0 whitespace-normal wrap-break-word border px-3 py-2 text-[12px] font-semibold leading-snug transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
+                                      className={`block min-w-0 wrap-break-word border px-3 py-2 text-[12px] font-semibold leading-snug transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
                                         isCurrent
                                           ? "border-[#FEA700]/40 bg-[#FEA700]/10 text-[#000000]"
                                           : "border-transparent text-[#000000]"
@@ -554,27 +553,28 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                         </div>
                       </div>
 
-                      <div className="border-t border-black/10 p-5 xl:sticky xl:top-0 xl:w-75 xl:shrink-0 xl:self-start xl:border-l xl:border-t-0">
+                      <div className="border-t border-black/10 p-5 xl:sticky xl:top-0 xl:w-96 xl:shrink-0 xl:self-start xl:border-l xl:border-t-0">
                         <Link
                           href={PROGRAM_PANEL_FEATURE.href}
-                          className="group/card relative block min-w-0 overflow-hidden border border-[#FEA700]/35 bg-[#000000] p-5 text-[#FFFFFF] transition-colors duration-300 ease-out hover:border-[#FEA700]"
+                          className="group/card relative block min-h-80 min-w-0 overflow-hidden border border-[#FEA700]/35 bg-[#000000] p-5 text-[#FFFFFF] transition-colors duration-300 ease-out hover:border-[#FEA700]"
                         >
-                          <div className="relative z-10 flex h-full flex-col">
+                          <div className="relative z-10 flex h-full min-h-72 flex-col">
                             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{PROGRAM_PANEL_FEATURE.eyebrow}</span>
-                            <h3 className="mt-3 max-w-full wrap-break-word text-3xl font-black leading-tight tracking-tight">{PROGRAM_PANEL_FEATURE.title}</h3>
-                            <p className="mt-3 max-w-full wrap-break-word text-sm leading-6 text-white/80">{PROGRAM_PANEL_FEATURE.description}</p>
-                            <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#FEA700]">
+                            <h3 className="mt-3 max-w-full wrap-break-word text-2xl font-black leading-tight tracking-tight xl:text-3xl">{PROGRAM_PANEL_FEATURE.title}</h3>
+                            <p className="mt-3 max-w-full wrap-break-word text-sm leading-relaxed text-white/85">{PROGRAM_PANEL_FEATURE.description}</p>
+                            <div className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-[#FEA700]">
                               Open finder
                               <span className="transition group-hover/card:translate-x-0.5">→</span>
                             </div>
                           </div>
-                          <div className="absolute inset-x-0 bottom-0 h-44">
+                          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-52">
+                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/45 to-transparent" />
                             <Image
                               src={PROGRAM_PANEL_FEATURE.imageSrc}
                               alt={PROGRAM_PANEL_FEATURE.imageAlt}
                               fill
                               sizes="(max-width: 1280px) 340px, 340px"
-                              className="object-cover object-center opacity-30 mix-blend-screen"
+                              className="object-cover object-center opacity-35 mix-blend-screen"
                             />
                           </div>
                         </Link>
@@ -584,7 +584,7 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                 </div>
               </div>
             ) : (
-              <Link key={item.label} href={item.href} className="transition-colors duration-300 ease-out hover:text-[#FEA700]">
+              <Link key={item.label} href={item.href} className="whitespace-nowrap transition-colors duration-300 ease-out hover:text-[#FEA700]">
                 {item.label}
               </Link>
             )

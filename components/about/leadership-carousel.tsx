@@ -64,7 +64,7 @@ export function LeadershipCarousel({ leaders, className }: LeadershipCarouselPro
 
   return (
     <div className={cn("space-y-6", className)}>
-      <article className="border border-white/25 bg-[linear-gradient(135deg,rgba(15,23,42,0.96)_0%,rgba(30,58,138,0.94)_55%,rgba(59,130,246,0.86)_100%)] text-white shadow-[0_18px_30px_rgba(2,6,23,0.35)]">
+      <article className="border border-white/25  text-white shadow-[0_18px_30px_rgba(2,6,23,0.35)]">
         <div className="grid lg:grid-cols-[1.05fr_1.95fr]">
           <div className="relative min-h-72 border-b border-white/20 lg:min-h-full lg:border-b-0 lg:border-r lg:border-white/20">
             <Image

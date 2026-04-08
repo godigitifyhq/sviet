@@ -3,50 +3,6 @@ import { LeadershipCarousel } from "@/components/about/leadership-carousel";
 import { InfoCard } from "@/components/about/info-card";
 import { SectionHeader } from "@/components/about/section-header";
 import { SectionWrapper } from "@/components/about/section-wrapper";
-import { StatCard } from "@/components/about/stat-card";
-
-type PhilosophyPoint = {
-  title: string;
-  description: string;
-};
-
-const MISSION_POINTS: PhilosophyPoint[] = [
-  {
-    title: "Empowering Students",
-    description: "Our mission is to inspire and empower students to pursue excellence in academics, character, and personal growth.",
-  },
-  {
-    title: "Driving Positive Change",
-    description: "We strive to prepare students to become responsible professionals who contribute positively to society.",
-  },
-  {
-    title: "Fostering Community Engagement",
-    description: "We encourage meaningful participation in community initiatives to build social awareness and empathy.",
-  },
-  {
-    title: "Promoting Diversity and Inclusion",
-    description: "We build an inclusive campus where every student is respected, supported, and valued equally.",
-  },
-];
-
-const VISION_POINTS: PhilosophyPoint[] = [
-  {
-    title: "Pursuing Excellence",
-    description: "Our vision is to become a world-class institution that nurtures talent through quality and consistency.",
-  },
-  {
-    title: "Building Leaders",
-    description: "We envision graduates as innovators and ethical leaders capable of creating lasting impact.",
-  },
-  {
-    title: "Global Impact",
-    description: "We aim to create global relevance through collaboration, research culture, and future-ready education.",
-  },
-  {
-    title: "Sustainable Future",
-    description: "We are committed to sustainability-oriented thinking and responsible practices across institutional growth.",
-  },
-];
 
 const LEADERSHIP_DESK: Leader[] = [
   {
@@ -159,58 +115,31 @@ const LEADERSHIP_DESK: Leader[] = [
   },
 ];
 
-const CULTURE_STATS = [
-  { value: "28", label: "States" },
-  { value: "75+", label: "Nationalities" },
-  { value: "35000+", label: "International Students" },
-  { value: "50000+", label: "Students" },
-];
-
-const INFRASTRUCTURE = [
+const LEADERSHIP_PRIORITIES = [
   {
-    title: "Research Centres",
-    description: "Dedicated spaces for interdisciplinary projects, innovation practice, and applied research activity.",
+    title: "Student-First Governance",
+    description: "Academic and administrative decisions are aligned to student development, well-being, and long-term career outcomes.",
   },
   {
-    title: "Library",
-    description: "A well-supported library ecosystem with academic references, journals, and digital learning access.",
+    title: "Academic Quality Assurance",
+    description: "Leadership teams continuously review curriculum delivery, faculty enablement, and institutional standards.",
   },
   {
-    title: "Labs",
-    description: "Program-specific laboratories that support practical learning and hands-on technical development.",
+    title: "Industry and Global Connect",
+    description: "Focused partnerships across industry and international networks strengthen exposure, research, and employability.",
   },
   {
-    title: "Playgrounds",
-    description: "Sports and outdoor infrastructure that contribute to physical wellness and balanced campus life.",
+    title: "Innovation and Responsibility",
+    description: "The institution promotes ethical leadership, innovation-driven thinking, and social responsibility across programs.",
   },
 ];
-
-function PhilosophyTimeline({ points }: { points: PhilosophyPoint[] }) {
-  return (
-    <ol className="relative space-y-6">
-      <span className="absolute left-3 top-2 h-[calc(100%-1rem)] w-px bg-[#93C5FD]" aria-hidden="true" />
-      {points.map((point, index) => (
-        <li key={point.title} className="relative pl-16">
-          <span className="absolute left-0 top-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#f7941d] text-xs font-semibold text-white">
-            {index + 1}
-          </span>
-          <span className="absolute left-8 top-1 inline-flex h-5 w-5 items-center justify-center rounded-full border-2 border-[#f7941d] bg-white">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#f7941d]" />
-          </span>
-          <h3 className="text-lg font-semibold text-[#f7941d]">{point.title}</h3>
-          <p className="mt-1 text-sm leading-relaxed text-[#4B5563]">{point.description}</p>
-        </li>
-      ))}
-    </ol>
-  );
-}
 
 export function LeadershipPage() {
   return (
-    <main className="bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)]">
+    <main className="">
       <SectionWrapper
         aria-labelledby="leadership-hero-heading"
-        className="relative overflow-hidden border-b border-[#E5E7EB] bg-[linear-gradient(130deg,#EEF4FF_0%,#FFFFFF_52%,#F5F9FF_100%)]"
+        className="relative overflow-hidden border-b border-[#E5E7EB] "
       >
         <div className="absolute -right-28 -top-22.5 hidden h-72 w-72 bg-[#BFDBFE]/30 blur-3xl md:block" aria-hidden="true" />
         <SectionHeader
@@ -219,34 +148,31 @@ export function LeadershipPage() {
           title="Leadership"
           description="Institutional leadership at SVIET is guided by academic integrity, strategic planning, and student-first governance."
           className="relative"
+          titleClassName="text-[#000000]"
         />
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="philosophy-heading" className="bg-[#EEF4FF]">
+      <SectionWrapper aria-labelledby="leadership-priority-heading" className="bg-[#F8FAFF]">
         <SectionHeader
-          id="philosophy-heading"
-          eyebrow="Guiding Principles"
-          title="Our Philosophy"
-          description="To become a leading global educational institution that shapes ethical professionals, future-ready leaders, and responsible citizens."
-          className="mx-auto max-w-4xl text-center"
-          titleClassName="text-[#f7941d]"
+          id="leadership-priority-heading"
+          eyebrow="Leadership Focus"
+          title="How Leadership Drives Institutional Growth"
+          description="A leadership framework designed to strengthen academic quality, student outcomes, and future-ready institutional planning."
+          className="mb-8"
+          titleClassName="text-[#000000]"
           descriptionClassName="text-[#4B5563]"
         />
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_2fr] lg:items-start">
-          <h3 className="text-4xl font-bold tracking-wide text-[#f7941d] md:text-5xl">MISSION</h3>
-          <PhilosophyTimeline points={MISSION_POINTS} />
-        </div>
-
-        <div className="mt-14 grid gap-12 lg:grid-cols-[2fr_1fr] lg:items-start">
-          <PhilosophyTimeline points={VISION_POINTS} />
-          <h3 className="text-4xl font-bold tracking-wide text-[#f7941d] md:text-right md:text-5xl">VISION</h3>
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {LEADERSHIP_PRIORITIES.map((item) => (
+            <InfoCard key={item.title} title={item.title} description={item.description} className="border-[#DBEAFE]" />
+          ))}
         </div>
       </SectionWrapper>
 
       <SectionWrapper
         aria-labelledby="management-desk-heading"
-        className="bg-[linear-gradient(120deg,#111827_0%,#f7941d_58%,#f7941d_100%)]"
+        className="bg-black"
       >
         <SectionHeader
           id="management-desk-heading"
@@ -259,44 +185,6 @@ export function LeadershipPage() {
           eyebrowClassName="text-[#BFDBFE]"
         />
         <LeadershipCarousel leaders={LEADERSHIP_DESK} />
-      </SectionWrapper>
-
-      <SectionWrapper aria-labelledby="culture-diversity-heading" className="bg-[#F8FAFF]">
-        <SectionHeader
-          id="culture-diversity-heading"
-          eyebrow="Campus Life"
-          title="Culture and Diversity"
-          description="A vibrant student community built on inclusion, cross-cultural learning, and shared academic purpose."
-          centered
-          className="mb-8"
-        />
-
-        <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {CULTURE_STATS.map((item) => (
-            <StatCard key={item.label} value={item.value} label={item.label} className="text-center" />
-          ))}
-        </div>
-
-        <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-[#6B7280]">
-          Students from across India and multiple international backgrounds learn together in a collaborative and respectful
-          campus environment.
-        </p>
-      </SectionWrapper>
-
-      <SectionWrapper aria-labelledby="infrastructure-heading" className="border-t border-[#E5E7EB]">
-        <SectionHeader
-          id="infrastructure-heading"
-          eyebrow="Campus"
-          title="Infrastructure"
-          description="Core academic and campus facilities that support learning, innovation, and student well-being."
-          className="mb-8"
-        />
-
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {INFRASTRUCTURE.map((item) => (
-            <InfoCard key={item.title} title={item.title} description={item.description} />
-          ))}
-        </div>
       </SectionWrapper>
     </main>
   );

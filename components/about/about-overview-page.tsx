@@ -251,10 +251,8 @@ function PhilosophyTimeline({ points }: { points: PhilosophyPoint[] }) {
           <span className="absolute left-0 top-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#f7941d] text-xs font-semibold text-white">
             {index + 1}
           </span>
-          <span className="absolute left-8 top-1 inline-flex h-5 w-5 items-center justify-center rounded-full border-2 border-[#f7941d] bg-white">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#f7941d]" />
-          </span>
-          <h3 className="text-lg font-semibold text-[#f7941d]">{point.title}</h3>
+       
+          <h3 className="text-lg font-semibold text-[#000000]">{point.title}</h3>
           <p className="mt-1 text-sm leading-relaxed text-[#4B5563]">{point.description}</p>
         </li>
       ))}
@@ -391,6 +389,7 @@ export function AboutOverviewPage() {
           eyebrow="Institutional Focus"
           title="Initiatives and Achievements"
           description="Institutional priorities that support quality education, inclusion, and long-term student development."
+          titleClassName="text-[#000000]"
           className="mb-8"
         />
 
@@ -408,7 +407,7 @@ export function AboutOverviewPage() {
           title="Our Philosophy"
           description="To become a leading global educational institution that shapes ethical professionals, future-ready leaders, and responsible citizens."
           className="mx-auto max-w-4xl text-center"
-          titleClassName="text-[#f7941d]"
+          titleClassName="text-[#000000]"
           descriptionClassName="text-[#4B5563]"
         />
 
@@ -425,7 +424,7 @@ export function AboutOverviewPage() {
 
       <SectionWrapper
         aria-labelledby="management-desk-heading"
-        className="bg-[linear-gradient(120deg,#111827_0%,#f7941d_58%,#f7941d_100%)]"
+        className="bg-black"
       >
         <SectionHeader
           id="management-desk-heading"
@@ -447,6 +446,7 @@ export function AboutOverviewPage() {
           title="Culture and Diversity"
           description="A vibrant student community built on inclusion, cross-cultural learning, and shared academic purpose."
           centered
+          titleClassName="text-[#000000]"
           className="mb-8"
         />
 
@@ -469,6 +469,7 @@ export function AboutOverviewPage() {
           title="Infrastructure"
           description="Core academic and campus facilities that support learning, innovation, and student well-being."
           className="mb-8"
+          titleClassName="text-[#000000]"
         />
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
