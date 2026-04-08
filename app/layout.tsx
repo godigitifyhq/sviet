@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Montserrat, Poppins } from "next/font/google";
-import { SiteFooter, SiteHeader } from "@/components/shared/site-chrome";
 
 import "./globals.css";
 
@@ -39,11 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${displayFont.variable} ${sansFont.variable} h-full antialiased`}>
-      <body className="min-h-full bg-background text-foreground">
-        <SiteHeader />
-        <main className="site-main bg-white">{children}</main>
-        <SiteFooter />
-      </body>
+      <body className="min-h-full bg-background text-foreground">{children}</body>
     </html>
   );
 }

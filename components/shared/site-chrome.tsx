@@ -18,7 +18,6 @@ import {
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
-import { CounsellorChat } from "@/components/ai-chat/counsellor-chat";
 import { ABOUT_DROPDOWN_ITEMS } from "@/lib/config/about-nav";
 
 const NAV_ITEMS = [
@@ -713,8 +712,7 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
 
 export function SiteFooter() {
   return (
-    <>
-      <footer className="bg-black text-white">
+    <footer className="bg-black text-white">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="mx-auto max-w-4xl text-center">
             <h3 className="text-3xl font-semibold md:text-3xl">Shape Your Future with Us</h3>
@@ -857,8 +855,6 @@ export function SiteFooter() {
           </div>
         </div>
       </footer>
-      <CounsellorChat />
-    </>
   );
 }
 
