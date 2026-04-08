@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 
 import { PlacementsPageComponent } from "@/components/placements/placements-page";
@@ -9,5 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPlacementsPage() {
-  return <PlacementsPageComponent />;
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
+      <PlacementsPageComponent />
+    </Suspense>
+  );
 }
