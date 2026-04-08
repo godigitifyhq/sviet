@@ -95,6 +95,16 @@ npm run dev
 
 You must create at least one active admin or counselor user in the `User` table before CRM login will work.
 
+Quick option (seeded automatically):
+
+- `npm run prisma:seed` now upserts one active CRM user.
+- Defaults (if you do not set overrides):
+	- `email`: `crm.admin@sviet.edu`
+	- `password`: `ChangeMe123!`
+	- `role`: `ADMIN`
+- Override values using `CRM_SEED_USER_EMAIL`, `CRM_SEED_USER_PASSWORD`, `CRM_SEED_USER_FIRST_NAME`, `CRM_SEED_USER_LAST_NAME`, `CRM_SEED_USER_ROLE` in your environment.
+- Change the default password before shared or production use.
+
 Option 1: Prisma Studio
 
 1. Run `npx prisma studio`.

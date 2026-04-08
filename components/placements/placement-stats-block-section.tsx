@@ -1,29 +1,29 @@
 export function PlacementStatsBlockSection() {
   return (
-    <div className="mt-14 overflow-hidden rounded-[28px] bg-[#fea700] px-6 py-14 text-[#0b3b8f] shadow-[0_18px_40px_rgba(0,0,0,0.08)] md:mt-18 md:rounded-[34px] md:px-12 md:py-20">
-      <div className="grid items-center gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-12">
-        <div className="flex flex-col items-center justify-center text-center md:border-r-2 md:border-black/15 md:pr-12">
-          <p className="text-6xl font-extrabold leading-none tracking-[-0.05em] text-[#0b3b8f] md:text-[7.25rem]">
+    <div className="mt-10 overflow-hidden rounded-3xl bg-linear-to-br from-[#ffffff] to-[#f8f9fb] px-5 py-10 shadow-[0_8px_24px_rgba(11,59,143,0.08)] md:mt-14 md:rounded-[30px] md:px-10 md:py-16">
+      <div className="grid items-center gap-6 md:grid-cols-[1.1fr_0.9fr] md:gap-8">
+        <div className="flex flex-col items-center justify-center text-center md:border-r-2 md:border-black/15 md:pr-10">
+          <p className="text-5xl font-extrabold leading-none tracking-[-0.05em] text-[#0b3b8f] md:text-[6.5rem]">
             60 Lacs
           </p>
-          <p className="mt-5 text-2xl font-medium text-black md:mt-8 md:text-4xl">Highest package offered</p>
+          <p className="mt-4 text-lg font-medium text-black/75 md:mt-6 md:text-3xl">Highest package offered</p>
         </div>
 
-        <div className="grid gap-8 md:gap-0">
-          <div className="grid items-center gap-4 md:grid-cols-[auto_1fr] md:gap-6 md:pb-10">
-            <p className="text-5xl font-extrabold leading-none tracking-[-0.05em] text-[#0b3b8f] md:text-[5.75rem]">
+        <div className="grid gap-6 md:gap-0">
+          <div className="grid items-center gap-3 md:grid-cols-[auto_1fr] md:gap-5 md:pb-8">
+            <p className="text-4xl font-extrabold leading-none tracking-[-0.05em] text-[#0b3b8f] md:text-[5rem]">
               20,000+
             </p>
-            <p className="text-2xl font-medium text-black md:pt-3 md:text-4xl">Placed Students</p>
+            <p className="text-lg font-medium text-black/75 md:pt-2 md:text-3xl">Placed Students</p>
           </div>
 
-          <div className="h-px w-full bg-black/20 md:mb-10" />
+          <div className="h-px w-full bg-linear-to-r from-black/10 via-black/20 to-black/10 md:mb-8" />
 
-          <div className="grid items-center gap-4 md:grid-cols-[auto_1fr] md:gap-6">
-            <p className="text-5xl font-extrabold leading-none tracking-[-0.05em] text-[#0b3b8f] md:text-[5.75rem]">
+          <div className="grid items-center gap-3 md:grid-cols-[auto_1fr] md:gap-5">
+            <p className="text-4xl font-extrabold leading-none tracking-[-0.05em] text-[#0b3b8f] md:text-[5rem]">
               2,200+
             </p>
-            <p className="text-2xl font-medium text-black md:pt-3 md:text-4xl">Recruiters</p>
+            <p className="text-lg font-medium text-black/75 md:pt-2 md:text-3xl">Recruiters</p>
           </div>
         </div>
       </div>

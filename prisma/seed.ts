@@ -1,5 +1,6 @@
 import { PrismaPg } from "@prisma/adapter-pg";
 import { loadEnvConfig } from "@next/env";
+import { randomBytes, scryptSync } from "node:crypto";
 
 import { PrismaClient, type Prisma } from "../generated/prisma/client";
 
@@ -13,6 +14,28 @@ if (!databaseUrl) {
 
 const adapter = new PrismaPg({ connectionString: databaseUrl });
 const prisma = new PrismaClient({ adapter });
+
+const CRM_SEED_EMAIL = (process.env.CRM_SEED_USER_EMAIL ?? "crm.admin@sviet.edu").trim().toLowerCase();
+const CRM_SEED_PASSWORD = process.env.CRM_SEED_USER_PASSWORD ?? "ChangeMe123!";
+const CRM_SEED_FIRST_NAME = (process.env.CRM_SEED_USER_FIRST_NAME ?? "CRM").trim() || "CRM";
+const CRM_SEED_LAST_NAME = (process.env.CRM_SEED_USER_LAST_NAME ?? "Admin").trim() || "Admin";
+const CRM_SEED_ROLE = parseCrmSeedRole(process.env.CRM_SEED_USER_ROLE);
+
+function parseCrmSeedRole(input: string | undefined): "COUNSELOR" | "ADMIN" | "SUPER_ADMIN" {
+  const normalized = input?.trim().toUpperCase();
+
+  if (normalized === "COUNSELOR" || normalized === "SUPER_ADMIN") {
+    return normalized;
+  }
+
+  return "ADMIN";
+}
+
+function makePasswordHash(password: string): string {
+  const salt = randomBytes(16);
+  const hash = scryptSync(password, salt, 64);
+  return `scrypt$${salt.toString("hex")}$${hash.toString("hex")}`;
+}
 
 type ProgramSeedInput = {
   slug: string;
@@ -542,6 +565,25 @@ for (const program of PROGRAMS) {
 const ALL_PROGRAMS = [...PROGRAM_MAP.values()];
 
 async function main() {
+  await prisma.user.upsert({
+    where: { email: CRM_SEED_EMAIL },
+    update: {
+      firstName: CRM_SEED_FIRST_NAME,
+      lastName: CRM_SEED_LAST_NAME,
+      role: CRM_SEED_ROLE,
+      status: "ACTIVE",
+      passwordHash: makePasswordHash(CRM_SEED_PASSWORD),
+    },
+    create: {
+      email: CRM_SEED_EMAIL,
+      firstName: CRM_SEED_FIRST_NAME,
+      lastName: CRM_SEED_LAST_NAME,
+      role: CRM_SEED_ROLE,
+      status: "ACTIVE",
+      passwordHash: makePasswordHash(CRM_SEED_PASSWORD),
+    },
+  });
+
   for (const program of ALL_PROGRAMS) {
     const { slug, ...data } = program;
 
@@ -555,6 +597,13 @@ async function main() {
     });
   }
 
+  if (!process.env.CRM_SEED_USER_PASSWORD) {
+    console.warn(
+      "CRM seed user created with default password. Set CRM_SEED_USER_PASSWORD in your environment before shared or production usage.",
+    );
+  }
+
+  console.log(`CRM seed user ready: ${CRM_SEED_EMAIL} (${CRM_SEED_ROLE})`);
   console.log(`Seed complete: upserted ${ALL_PROGRAMS.length} programs.`);
 }
 
