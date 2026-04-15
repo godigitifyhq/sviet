@@ -122,13 +122,13 @@ export function HeroSection({ imageSrc = "/assets/img/banner_hero.jpg", imageAlt
 
           <div className="w-full max-w-md space-y-4">
             <div>
-              <h2 className="text-2xl font-bold text-[#111827]">Want to know more?</h2>
-              <p className="mt-2 text-sm text-[#6B7280]">Discover more information about the program</p>
+              <h2 className="text-2xl font-bold text-[#111827]">Need program details?</h2>
+              <p className="mt-2 text-sm text-[#6B7280]">Get complete course and admission guidance.</p>
             </div>
 
             {requestSuccess ? (
-              <div className="rounded-lg border border-emerald-800 bg-emerald-900/30 p-4 text-sm font-medium text-emerald-300">
-                ✓ Thank you! Our team will contact you within 24 hours.
+                  <div className="rounded-lg border border-emerald-800 bg-emerald-900/30 p-4 text-sm font-medium text-emerald-300">
+                    ✓ Thank you. Our team will contact you within 24 hours.
               </div>
             ) : (
               <form className="space-y-3" onSubmit={handleRequestSubmit}>
@@ -176,7 +176,7 @@ export function HeroSection({ imageSrc = "/assets/img/banner_hero.jpg", imageAlt
                   disabled={requestLoading}
                   className="w-full rounded-lg bg-[#6366F1] px-4 py-3 text-sm font-bold text-white transition duration-200 hover:bg-[#4F46E5] disabled:opacity-60"
                 >
-                  {requestLoading ? "Submitting..." : "Request Callback"}
+                  {requestLoading ? "Submitting..." : "Request a Callback"}
                 </button>
 
                 {requestError ? <p className="text-sm text-red-600">{requestError}</p> : null}
@@ -204,8 +204,8 @@ export function HeroSection({ imageSrc = "/assets/img/banner_hero.jpg", imageAlt
           <div className="absolute inset-0 flex items-center justify-end pr-12">
             <div className="w-full max-w-md space-y-6 bg-white p-8 rounded-lg shadow-2xl">
               <div>
-                <h2 className="text-3xl font-bold text-[#111827]">Want to know more?</h2>
-                <p className="mt-2 text-base text-[#6B7280]">Discover more information about the program</p>
+                <h2 className="text-3xl font-bold text-[#111827]">Need program details?</h2>
+                <p className="mt-2 text-base text-[#6B7280]">Get complete course and admission guidance.</p>
               </div>
 
               {requestSuccess ? (
@@ -272,7 +272,7 @@ export function HeroSection({ imageSrc = "/assets/img/banner_hero.jpg", imageAlt
                     disabled={requestLoading}
                     className="w-full rounded-lg bg-[#6366F1] px-6 py-3 text-base font-bold text-white transition duration-200 hover:bg-[#4F46E5] disabled:opacity-60"
                   >
-                    {requestLoading ? "Submitting..." : "Request Callback"}
+                    {requestLoading ? "Submitting..." : "Request a Callback"}
                   </button>
 
                   {requestError ? <p className="text-sm text-red-600">{requestError}</p> : null}

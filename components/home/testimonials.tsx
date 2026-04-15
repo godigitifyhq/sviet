@@ -8,31 +8,31 @@ const testimonials = [
   {
     id: 1,
     name: "Serena Chokshi",
-    title: '"Hear Why Serena Chokshi Loves Studying at Parul University"',
+    title: '"Why I chose to study at SVIET"',
     image: "/assets/img/college/1st.png",
   },
   {
     id: 2,
     name: "Amarpreet Kaur",
-    title: '"Amarpreet Kaur Panesar\'s Student Life at Parul University | A Success Story"',
+    title: '"My student life at SVIET"',
     image: "/assets/img/college/1st.png",
   },
   {
     id: 3,
     name: "Juhi Lakhani",
-    title: '"Juhi\'s Journey @ Parul University: BDes (Fashion & Technology) Student"',
+    title: '"My journey as a BDes student at SVIET"',
     image: "/assets/img/college/1st.png",
   },
   {
     id: 4,
     name: "Kunal",
-    title: '"Hear All About My Journey at Parul University"',
+    title: '"My learning journey at SVIET"',
     image: "/assets/img/college/1st.png",
   },
   {
     id: 5,
     name: "Rahul Sharma",
-    title: '"SVIET Changed My Career Path - Success Story"',
+    title: '"How SVIET shaped my career path"',
     image: "/assets/img/college/1st.png",
   },
 ];
@@ -139,7 +139,7 @@ export function StudentTestimonialsSection() {
         <div className="mb-12">
           <h2 className="text-3xl font-bold md:text-4xl">
             <span className="text-[#f7941d]">Our students speak</span>
-            <span className="text-[#111827]"> hear it from those who are learning with us!</span>
+            <span className="text-[#111827]"> hear it from those learning with us.</span>
           </h2>
         </div>
 
@@ -207,7 +207,7 @@ export function StudentTestimonialsSection() {
 
                     {/* Watch Video Button */}
                     <button className="flex items-center gap-2 rounded-full bg-[#f7941d] px-4 py-2 text-white hover:bg-[#2563EB] transition">
-                      <span className="text-xs font-semibold">Watch Video</span>
+                      <span className="text-xs font-semibold">Watch video</span>
                       <Play size={16} className="fill-[#F4B740] text-[#F4B740]" />
                     </button>
                   </div>

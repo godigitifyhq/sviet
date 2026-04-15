@@ -20,13 +20,14 @@ export function ResearchInnovationsSection() {
         {/* Header - Centered */}
         <div className="mb-16 space-y-4 text-center">
           <p className="text-xl font-medium leading-tight text-[#6B7280] md:text-2xl">
-            Innovations that drive change!
+            Innovation that drives change.
           </p>
           <h2 className="text-3xl font-bold leading-tight tracking-tight text-[#000000] md:text-5xl">
-            Research that solves challenges
+            Research that solves real challenges
           </h2>
           <p className="mx-auto max-w-3xl text-sm leading-relaxed text-[#6B7280] md:text-lg">
-            A research intensive atmosphere of learning providing the finest exposure to the exploration of cutting-edge solutions.
+            A research-intensive learning environment focused on exploring
+            practical, cutting-edge solutions.
           </p>
         </div>
 

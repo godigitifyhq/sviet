@@ -134,7 +134,7 @@ export function OngoingResearchProjectsSection() {
           <div className="flex items-center gap-3">
             <div className="h-1 w-8 bg-[#f7941d]"></div>
             <h2 className="text-2xl font-bold text-[#fffffff] md:text-3xl">
-              Ongoing research projects
+              Ongoing Research Projects
             </h2>
           </div>
         </div>

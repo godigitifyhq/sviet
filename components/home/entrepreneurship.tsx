@@ -6,31 +6,31 @@ export function EntrepreneurshipSection() {
   const stats = [
     {
       id: 1,
-      number: "12 Cr+",
-      label: "in Innovation Grants",
-      description: "Fueling new-age ventures through government and institutional funding.",
+      number: "15+",
+      label: "Startup Initiatives Supported",
+      description: "SVIET has supported early-stage student ventures with guidance, mentoring, and execution support.",
     },
     {
       id: 2,
-      number: "230+",
-      label: "Start-ups Incubated & Supported",
+      number: "Live",
+      label: "Startup Exposure on Campus",
       description:
-        "Guiding student entrepreneurs across diverse sectors, be it health tech or sustainability.",
+        "Students engage with ventures like Godigitify and other campus-led initiatives to understand how startups operate.",
     },
     {
       id: 3,
-      number: "30+ Crore",
-      label: "Revenue Generated",
-      description: "Helping founders turn prototypes into profitable businesses.",
+      number: "MVP to Market",
+      label: "Execution-Focused Learning",
+      description: "Workshops and practical sessions help students test ideas, build MVPs, and move from concept to execution.",
     },
   ];
 
   const programs = [
     {
       id: 1,
-      title: "Start-up Incubation & Funding Support",
+      title: "Real Startup Exposure on Campus",
       description:
-        "From ideation to execution, our incubation programs offer seed funding, strategic mentoring, and investor access to student-led start-ups.",
+        "Entrepreneurship at SVIET is not limited to theory. Students actively engage with running ventures and learn business models, marketing, and execution in real environments.",
       bgColor: "from-orange-500 to-orange-600",
       icon: "🚀",
       textColor: "text-white",
@@ -38,9 +38,9 @@ export function EntrepreneurshipSection() {
     },
     {
       id: 2,
-      title: "Leading Entrepreneurship Events",
+      title: "Supported by Innovation & Incubation",
       description:
-        "Through events like StartUp Catalyst and Innovation Concalves, we bring together visionaries, investors, and changemakers to celebrate innovation and inspire entrepreneurship.",
+        "On-campus incubation support, mentorship in product, marketing, and strategy, plus startup-focused workshops help students shape ideas into ventures.",
       bgColor: "from-purple-500 to-purple-700",
       textColor: "text-white",
       hasImage: true,
@@ -48,9 +48,9 @@ export function EntrepreneurshipSection() {
     },
     {
       id: 3,
-      title: "Start-up Studios",
+      title: "Driven by Entrepreneurship-Focused Initiatives",
       description:
-        "Creative labs are designed for interdisciplinary collaboration, a space where art meets innovation, and imagination meets execution.",
+        "Programs like BharatTechXperience, Elevate, IdeaJam, and innovation sessions create continuous engagement through hackathons and problem-solving platforms.",
       bgColor: "from-teal-500 to-teal-600",
       textColor: "text-white",
       hasImage: false,
@@ -58,9 +58,9 @@ export function EntrepreneurshipSection() {
     },
     {
       id: 4,
-      title: "Fabrication Lab",
+      title: "Guided by Industry & Institutional Support",
       description:
-        "Equipped with 3D printers, CNC routers, and rapid prototyping tools, the lab bridges innovation gaps to transform blueprints into viable products.",
+        "Through IIC and entrepreneurship-focused sessions, students receive structured guidance on MVP building, startup ecosystems, and sustainable business ideas.",
       bgColor: "from-indigo-700 to-indigo-900",
       textColor: "text-white",
       hasImage: true,
@@ -68,9 +68,9 @@ export function EntrepreneurshipSection() {
     },
     {
       id: 5,
-      title: "Start Incubation Centre",
+      title: "Building a Mindset, Not Just Startups",
       description:
-        "A fully equipped hub offering mentorship, networking, and commercialization support for promising ventures ready to enter the market.",
+        "SVIET develops thinkers, problem-solvers, and self-starters so students graduate with the confidence to create opportunities and build their own paths.",
       bgColor: "from-pink-500 to-pink-600",
       textColor: "text-white",
       hasImage: true,
@@ -84,20 +84,18 @@ export function EntrepreneurshipSection() {
         {/* Header */}
         <div className="mb-12 space-y-4">
           <h2 className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">
-            An entrepreneurship
+            An Ecosystem
           </h2>
           <h2 className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">
-            ecosystem{" "}
+            Where Ideas{" "}
             <span className="bg-linear-to-r from-[#F4B740] to-[#f7941d] bg-clip-text text-transparent">
-              that turns your ideas into impact!
+              Turn Into Action
             </span>
           </h2>
           <p className="max-w-3xl text-sm leading-relaxed text-gray-300 md:text-base">
-            Entrepreneurship is not only taught but also developed. We enable students to
-            transform their ideas into scalable businesses by providing a strong ecosystem of
-            incubation, funding, coaching, and prototype facilities. Our ecosystem helps you turn
-            concept to launch, whether you&apos;re working on a high-tech start-up or a social
-            innovation.
+            At SVIET, entrepreneurship is built through experience. Students are encouraged to
+            explore ideas, test them in real environments, and understand how ventures grow
+            from concept to execution.
           </p>
         </div>
 
@@ -116,7 +114,7 @@ export function EntrepreneurshipSection() {
         <div className="mb-12 flex items-center gap-2">
           <div className="h-1 w-1.5 bg-[#f7941d]"></div>
           <p className="text-sm font-semibold text-white">
-            Parul innovation and entrepreneurship research centre
+            SVIET innovation and entrepreneurship ecosystem
           </p>
         </div>
 

@@ -2,27 +2,27 @@ import Image from "next/image";
 
 const educationPillars = [
   {
-    title: "A lifetime exposure to leading minds",
+    title: "Flagship Innovation & Tech Events",
     description:
-      "An immersive academic culture that brings students into dialogue with pioneers, innovators, and thought leaders through infra-mural and extramural programs.",
+      "Initiatives like Elevate and BharatTechXperience bring together innovation, technology, and collaboration—giving students a platform to build, compete, and showcase their skills.",
     image: "/assets/img/students/1.png",
   },
   {
-    title: "Thrilling study tours & academic events",
+    title: "Global & Future-Focused Platforms",
     description:
-      "Learning that travels beyond the classroom. Be it national industry tours or international academic summits, we offer a rich context to every discipline.",
+      "Through programs like the Global Future Summit, students engage with emerging ideas, global perspectives, and forward-thinking discussions shaping tomorrow's industries.",
     image: "/assets/img/students/slider-img-1.png",
   },
   {
-    title: "A vibrant & diverse campus",
+    title: "Insights from Industry Leaders",
     description:
-      "A community where cultures, disciplines, and ideas converge, celebrating diversity through art, festivals, research, and student-led initiatives.",
+      "SVIET has hosted renowned entrepreneurs like Aman Gupta and Ashneer Grover, offering students direct exposure to real-world business insights, leadership journeys, and startup ecosystems.",
     image: "/assets/img/students/1.png",
   },
   {
-    title: "A skill-based & NEP aligned learning",
+    title: "Student Leadership & Professional Bodies",
     description:
-      "A forward-looking approach to education that integrates skill development, interdisciplinary learning, and NEP-driven pedagogy for future-ready graduates.",
+      "With active chapters like ISTE, students take the lead in organizing technical events, workshops, and knowledge-driven sessions—building leadership alongside technical expertise.",
     image: "/assets/img/students/slider-img-1.png",
   },
 ];
@@ -34,14 +34,13 @@ export function PivotEducationSection() {
         {/* Header */}
         <div className="mb-14 space-y-4">
           <h2 className="text-3xl font-bold text-[#ffffff] md:text-4xl lg:text-5xl">
-            One choice, endless opportunities
+            Where Learning Meets Real-World Exposure
           </h2>
           <h3 className="text-2xl font-bold leading-tight text-white md:text-3xl">
-            everything you need to become anything you want to be!
+            Beyond the Classroom
           </h3>
           <p className="max-w-2xl text-sm leading-relaxed text-gray-300 md:text-base">
-            Experience a dynamic learning journey enriched with global perspectives, hands-on training, and mentorship
-            designed to shape your ambition into achievement.
+            At SVIET, growth extends far beyond classrooms. Through high-impact events, industry interactions, and student-led initiatives, we create an environment where ideas turn into action.
           </p>
         </div>
 

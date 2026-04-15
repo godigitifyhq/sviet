@@ -5,25 +5,45 @@ import { useState } from "react";
 
 const milestonePlacements = [
   {
-    company: "Goldman Sachs",
-    studentName: "Suhani Shah",
-    position: "Software Engineering Analyst",
-    studentImage: "/assets/img/students/pppp.png",
-    companyLogo: "/assets/img/companies/goldman_sachs.png",
-  },
-  {
-    company: "Microsoft",
-    studentName: "Tanish Patel",
-    position: "Software Engineer",
+    heading: "Career Outcomes That Matter",
+    title: "₹19 LPA Top Package (2026)",
+    description:
+      "Two of our students, Laxmi and Vaishnavi, secured roles at Caelius Consulting-setting a new benchmark of excellence.",
+    points: [
+      "Average Package: 4-6 LPA",
+      "Consistent placement support across multiple career paths.",
+    ],
+    tags: ["19lpa laxmi", "19lpa vaishnavi"],
+    company: "Caelius Consulting",
+    studentName: "Laxmi & Vaishnavi",
+    position: "19 LPA Placements",
     studentImage: "/assets/img/students/Placement-Mockup-1.png",
     companyLogo: "/assets/img/companies/jio_digital.png",
   },
   {
-    company: "Amazon",
-    studentName: "Suraj Jagtap",
-    position: "Backend Engineer",
+    heading: "A Diverse & Thriving Campus",
+    title: "50,000+ Full-Time Students",
+    description: "A vibrant learning environment that brings together talent from across the globe.",
+    points: ["35,000+ International Students", "75+ Nationalities", "28 States Represented"],
+    tags: [],
+    company: "Campus Community",
+    studentName: "Global Student Body",
+    position: "75+ Nationalities | 28 States",
     studentImage: "/assets/img/students/pppp.png",
     companyLogo: "/assets/img/companies/amazon.png",
+  },
+  {
+    heading: "Connecting Talent with Opportunity",
+    title: "",
+    description:
+      "We bridge the gap between education and employment-aligning your skills with the expectations of modern industries and recruiters.",
+    points: [],
+    tags: [],
+    company: "Industry Network",
+    studentName: "Career Readiness",
+    position: "Skills aligned with recruiter expectations",
+    studentImage: "/assets/img/students/pppp.png",
+    companyLogo: "/assets/img/companies/goldman_sachs.png",
   },
 ];
 
@@ -46,14 +66,13 @@ export function ExperiencesSection() {
         {/* Header Section */}
         <div className="mb-12 space-y-6">
           <h1 className="text-3xl font-bold leading-tight text-[#000000] md:text-5xl">
-            One University, infinite placements.
+            Build Your Future with Confidence
           </h1>
           <h2 className="text-2xl font-light leading-tight text-[#111827] md:text-3xl">
-            Come with your passion, leave with your profession!
+            Turn your ambition into achievement.
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed text-[#6B7280] md:text-base">
-            Discover a transformative ecosystem that blends academic excellence with real-world exposure, empowering
-            students to step confidently into their chosen careers.
+            At SVGOI , education goes beyond classrooms—blending strong academics with industry exposure to prepare you for meaningful careers.
           </p>
         </div>
 
@@ -63,11 +82,11 @@ export function ExperiencesSection() {
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-[#6B7280]">
               <span className="text-lg">▶</span>
-              <span className="text-sm md:text-base">Ready to provide you with the best job offers with up to</span>
+              <span className="text-sm md:text-base">Placement opportunities with packages up to</span>
             </div>
             <div className="text-5xl font-bold text-[#f7941d] md:text-6xl">60 Lakhs</div>
             <p className="text-sm text-[#6B7280] md:text-base">
-              Highest package & average packages of <span className="text-[#f7941d]">4-6 LPA</span>.
+              Highest package and average packages of <span className="text-[#f7941d]">4-6 LPA</span>.
             </p>
           </div>
 
@@ -75,7 +94,7 @@ export function ExperiencesSection() {
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-[#6B7280]">
               <span className="text-lg">▶</span>
-              <span className="text-sm md:text-base">We have</span>
+              <span className="text-sm md:text-base">Backed by</span>
             </div>
             <div>
               <div className="text-5xl font-bold text-[#f7941d] md:text-6xl">2,200+</div>
@@ -93,30 +112,44 @@ export function ExperiencesSection() {
               {/* Left Content */}
               <div className="space-y-3 flex flex-col justify-center md:pr-4">
                 <div>
-                  <h2 className="text-xs font-semibold text-[#f7941d] md:text-sm">Milestone Placements</h2>
-                  <p className="mt-1 text-base font-light leading-relaxed text-[#111827] md:text-lg">
-                    Aligning your career aspirations with
-                  </p>
+                  <h2 className="text-xs font-semibold text-[#f7941d] md:text-sm">{placement.heading}</h2>
+                  {placement.title ? (
+                    <h3 className="mt-1 text-xl font-bold leading-tight text-[#111827] md:text-2xl">{placement.title}</h3>
+                  ) : null}
+                  <p className="mt-2 text-sm leading-relaxed text-[#4B5563] md:text-base">{placement.description}</p>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-bold leading-tight text-[#111827] md:text-2xl">
-                    Prominent Companies For the most enriching future career
-                  </h3>
+                <div className="space-y-3">
+                  {placement.points.length > 0 ? (
+                    <ul className="space-y-2">
+                      {placement.points.map((point) => (
+                        <li key={point} className="flex items-start gap-2 text-sm text-[#111827] md:text-base">
+                          <span className="mt-1 text-[#f7941d]">•</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+
+                  {placement.tags.length > 0 ? (
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {placement.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-[#f7941d] bg-[#fff7ed] px-3 py-1 text-xs font-semibold text-[#b45309]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
               </div>
 
               {/* Right Side - Student Profile */}
               <div className="relative flex items-end justify-between">
-                {/* Decorative star */}
-               
-
-                {/* Student Image - Left Side of Right Column */}
                 <div className="relative shrink-0">
-                  {/* Gradient circles background */}
                   <div className="relative h-56 w-70">
-
-                    {/* Student Image */}
                     <div className="relative z-10 top-4 md:top-8 h-full w-full overflow-hidden">
                       <Image
                         src={placement.studentImage}
@@ -129,7 +162,6 @@ export function ExperiencesSection() {
                   </div>
                 </div>
 
-                {/* Company and Profile Info - Right Side */}
                 <div className="flex flex-col items-end justify-end space-y-2 pl-4">
                   <div className="relative h-10 w-28 md:h-12 md:w-36">
                     <Image
@@ -156,7 +188,7 @@ export function ExperiencesSection() {
             <button
               type="button"
               onClick={prevSlide}
-              aria-label="Previous placement"
+              aria-label="Previous card"
               className="inline-flex h-10 w-10 items-center justify-center rounded bg-[#E5E7EB] transition hover:bg-[#D1D5DB]"
             >
               <span className="text-lg text-[#111827]">‹</span>
@@ -168,7 +200,7 @@ export function ExperiencesSection() {
                   key={index}
                   type="button"
                   onClick={() => setCurrentSlide(index)}
-                  aria-label={`Go to placement ${index + 1}`}
+                  aria-label={`Go to card ${index + 1}`}
                   className={`h-2 transition-all ${
                     index === currentSlide ? "w-8 bg-[#f7941d]" : "w-2 bg-[#D1D5DB]"
                   }`}
@@ -179,7 +211,7 @@ export function ExperiencesSection() {
             <button
               type="button"
               onClick={nextSlide}
-              aria-label="Next placement"
+              aria-label="Next card"
               className="inline-flex h-10 w-10 items-center justify-center rounded bg-[#E5E7EB] transition hover:bg-[#D1D5DB]"
             >
               <span className="text-lg text-[#111827]">›</span>

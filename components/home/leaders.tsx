@@ -11,37 +11,37 @@ const leaders = [
     name: "Aman Gupta",
     role: "Co-Founder, boAt",
     image: "/assets/img/college/guests/aman_gupta.png",
-    quote: "Build products that solve real problems",
+    quote: "Build products that solve real problems.",
   },
   {
     name: "Ashneer Grover",
     role: "Co-Founder, BharatPe",
     image: "/assets/img/college/guests/ashneer_groveer.png",
-    quote: "Entrepreneurship is about creating value at scale",
+    quote: "Entrepreneurship is about creating value at scale.",
   },
   {
     name: "Anand Kumar Sir",
     role: "Distinguished Guest",
     image: "/assets/img/college/guests/anand_kumar_sir.png",
-    quote: "Education has the power to transform every life",
+    quote: "Education has the power to transform lives.",
   },
   {
     name: "PK Desai Sir",
     role: "Distinguished Guest",
     image: "/assets/img/college/guests/pkdesaisir.jpeg",
-    quote: "Discipline and consistency drive long-term success",
+    quote: "Discipline and consistency drive long-term success.",
   },
   {
     name: "Rajeev Ahuja Sir",
     role: "Distinguished Guest",
     image: "/assets/img/college/guests/rajeev_ahuja_sir.jpg.jpeg",
-    quote: "Innovation begins when curiosity meets execution",
+    quote: "Innovation begins when curiosity meets execution.",
   },
   {
     name: "Susheel Mital Sir",
     role: "Distinguished Guest",
     image: "/assets/img/college/guests/susheel_mital_sir.jpg.jpeg",
-    quote: "Leadership is about enabling others to excel",
+    quote: "Leadership is about enabling others to excel.",
   },
 ];
 
@@ -67,13 +67,13 @@ export function DistinguishedLeadersSection() {
       <div className="mx-auto max-w-[1280px]">
         {/* Header Area */}
         <div className=" w-[80%] max-md:w-[92%] space-y-2">
-          <p className="text-xl font-medium leading-tight text-[#6B7280] md:text-2xl">Meet the visionary leaders</p>
+          <p className="text-xl font-medium leading-tight text-[#6B7280] md:text-2xl">Meet visionary leaders</p>
           <h2 className="mt-2 text-3xl font-bold leading-tight tracking-tight text-[#f7941d] md:text-5xl">
             Distinguished Leaders & Changemakers
           </h2>
-          <p className="mt-3 text-2xl font-medium leading-tight text-[#111827] md:text-4xl">Inspiring innovation and transformation</p>
+          <p className="mt-3 text-2xl font-medium leading-tight text-[#111827] md:text-4xl">Driving innovation and transformation</p>
           <p className="mt-6 max-w-3xl text-sm leading-relaxed text-[#6B7280] md:text-lg">
-            Meet the visionary leaders and changemakers who inspire innovation and drive positive transformation in their industries.
+            Meet leaders and changemakers who share practical insights from their industries.
           </p>
         </div>
 
@@ -123,7 +123,7 @@ export function DistinguishedLeadersSection() {
                       <p className="mt-4 text-sm leading-relaxed md:pl-6 text-[#6B7280]">{leader.quote}</p>
                     </div>
                     <button className="mt-8 flex w-full justify-center gap-2 bg-[#f7941d] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#2563EB] md:mt-6 md:w-auto md:justify-start md:pl-6">
-                      Check Event
+                      View event
                       <span>→</span>
                     </button>
                   </div>
