@@ -70,6 +70,9 @@ export default function AdmissionsPage() {
         onFieldChange={handleFieldChange}
         onSubmit={handleSubmit}
       />
+      <div className="mt-20"> 
+
+      </div>
       <AdmissionsRecognitionsSection />
       <AdmissionsStudyOverviewSection />
       <AdmissionsEntranceEligibilitySection />

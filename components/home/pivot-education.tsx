@@ -5,25 +5,25 @@ const educationPillars = [
     title: "Flagship Innovation & Tech Events",
     description:
       "Initiatives like Elevate and BharatTechXperience bring together innovation, technology, and collaboration—giving students a platform to build, compete, and showcase their skills.",
-    image: "/assets/img/students/1.png",
+    image: "/assets/img/section_card/BharatTech.JPG.jpeg",
   },
   {
     title: "Global & Future-Focused Platforms",
     description:
       "Through programs like the Global Future Summit, students engage with emerging ideas, global perspectives, and forward-thinking discussions shaping tomorrow's industries.",
-    image: "/assets/img/students/slider-img-1.png",
+    image: "/assets/img/section_card/GFS.JPG.jpeg",
   },
   {
     title: "Insights from Industry Leaders",
     description:
       "SVIET has hosted renowned entrepreneurs like Aman Gupta and Ashneer Grover, offering students direct exposure to real-world business insights, leadership journeys, and startup ecosystems.",
-    image: "/assets/img/students/1.png",
+    image: "/assets/img/section_card/AmanGupta.JPG.jpeg",
   },
   {
     title: "Student Leadership & Professional Bodies",
     description:
       "With active chapters like ISTE, students take the lead in organizing technical events, workshops, and knowledge-driven sessions—building leadership alongside technical expertise.",
-    image: "/assets/img/students/slider-img-1.png",
+    image: "/assets/img/section_card/ISTE25.JPG.jpeg",
   },
 ];
 

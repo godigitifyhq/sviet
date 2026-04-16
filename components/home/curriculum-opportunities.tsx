@@ -11,18 +11,18 @@ const curriculumEvents = [
     mainCard: {
       title: "Sportsmania 2025",
       description: "The annual sports festival of SVIET brings together students in a vibrant display of athleticism, teamwork and competitive spirit across events like football, basketball, and more.",
-      image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumUFNaeJrVPFul6q2HRvZ8sMIWLa5xwjUytOhi",
+      image: "/assets/img/section_card/Sportsmania.jpeg",
       cta: "Learn more",
     },
     stats: [
       {
-        image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumUFNaeJrVPFul6q2HRvZ8sMIWLa5xwjUytOhi",
+        image: "/assets/img/section_card/Cricket.jpeg",
         label: "October 17–18, 2025",
       },
     ],
     videos: [
       {
-        image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumUFNaeJrVPFul6q2HRvZ8sMIWLa5xwjUytOhi",
+        image: "/assets/img/section_card/Kabbadi.jpeg",
         label: "SVIET Campus",
       },
     ],
@@ -33,18 +33,18 @@ const curriculumEvents = [
     mainCard: {
       title: "Elevate 2.0",
       description: "A flagship cultural & innovation fest bringing together creative minds, performances, workshops and peer-networking celebrating innovation, student talent and campus life.",
-      image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumQZ22PWyaj2Z1DfTG5xHuqnQog6vKB4FpJeI8",
+      image: "/assets/img/section_card/Elevate.jpeg",
       cta: "Learn more",
     },
     stats: [
       {
-        image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumQZ22PWyaj2Z1DfTG5xHuqnQog6vKB4FpJeI8",
+        image: "/assets/img/section_card/Elevate2.jpeg",
         label: "September 11–13, 2025",
       },
     ],
     videos: [
       {
-        image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumQZ22PWyaj2Z1DfTG5xHuqnQog6vKB4FpJeI8",
+        image: "/assets/img/section_card/Elevate3.jpeg",
         label: "SVIET Campus",
       },
     ],
@@ -55,18 +55,18 @@ const curriculumEvents = [
     mainCard: {
       title: "TEDx SVIET",
       description: "TEDx SVIET 2025, under the theme 'The Power of One', featured thoughtful talks and inspiring conversations aimed at spreading ideas worth sharing.",
-      image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumTJiOaxw6itj04AFlILkGvbdQPE8uOqWpHYsU",
+      image: "/assets/img/section_card/TEDx.jpeg",
       cta: "Learn more",
     },
     stats: [
       {
-        image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumTJiOaxw6itj04AFlILkGvbdQPE8uOqWpHYsU",
+        image: "/assets/img/section_card/TEDx2.jpeg",
         label: "August 23, 2025",
       },
     ],
     videos: [
       {
-        image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumTJiOaxw6itj04AFlILkGvbdQPE8uOqWpHYsU",
+        image: "/assets/img/section_card/TEDx3.jpeg",
         label: "SVIET Campus",
       },
     ],
@@ -77,18 +77,18 @@ const curriculumEvents = [
     mainCard: {
       title: "DevFest Chandigarh 2025",
       description: "A power-packed tech fest bringing together technologists, developers and enthusiasts for learning, innovation, workshops and community networking focused on AI, Web, Cloud and emerging tech.",
-      image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumZdCLf8nLS41ZsWrz2yX9qNdG5vVC7FuBlfa0",
+      image: "/assets/img/section_card/Dev1.jpeg",
       cta: "Learn more",
     },
     stats: [
       {
-        image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumZdCLf8nLS41ZsWrz2yX9qNdG5vVC7FuBlfa0",
+        image: "/assets/img/section_card/Dev2.jpeg",
         label: "November 8, 2025",
       },
     ],
     videos: [
       {
-        image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumZdCLf8nLS41ZsWrz2yX9qNdG5vVC7FuBlfa0",
+        image: "/assets/img/section_card/Dev3.jpeg",
         label: "SVIET Campus",
       },
     ],
@@ -99,18 +99,18 @@ const curriculumEvents = [
     mainCard: {
       title: "Graduation Ceremony 2025",
       description: "The Graduation Ceremony 2025 marked a proud milestone for graduating batches, celebrating years of dedication, learning, and achievement with esteemed dignitaries.",
-      image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumINSwyyR21jqluvKkFoRaDpPfCGTtxewIs74z",
+      image: "/assets/img/section_card/Convo.jpeg",
       cta: "Learn more",
     },
     stats: [
       {
-        image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumINSwyyR21jqluvKkFoRaDpPfCGTtxewIs74z",
+        image: "/assets/img/section_card/Convo2.jpeg",
         label: "May 2025",
       },
     ],
     videos: [
       {
-        image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumINSwyyR21jqluvKkFoRaDpPfCGTtxewIs74z",
+        image: "/assets/img/section_card/Convo3.jpeg",
         label: "Chief Guest: Dr. Gurpreet Kaur Mann",
       },
     ],
@@ -121,18 +121,18 @@ const curriculumEvents = [
     mainCard: {
       title: "Spontania 2025",
       description: "The flagship cultural extravaganza of SVIET with a vibrant three-day celebration of art, culture, and talent featuring dance, music, theater and cultural showcases.",
-      image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumIyCbVLR21jqluvKkFoRaDpPfCGTtxewIs74z",
+      image: "/assets/img/section_card/Spont.jpeg",
       cta: "Learn more",
     },
     stats: [
       {
-        image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumIyCbVLR21jqluvKkFoRaDpPfCGTtxewIs74z",
+        image: "/assets/img/section_card/Spont2.jpeg",
         label: "April 15-17, 2025",
       },
     ],
     videos: [
       {
-        image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumIyCbVLR21jqluvKkFoRaDpPfCGTtxewIs74z",
+        image: "/assets/img/section_card/Spont3.jpeg",
         label: "600+ Students",
       },
     ],
@@ -143,18 +143,18 @@ const curriculumEvents = [
     mainCard: {
       title: "Global Futures Summit 2.0",
       description: "Industry & HR Perspectives event bringing together thought leaders to discuss emerging trends, career pathways, and shaping the future workforce.",
-      image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumpKvXrQ6ntRyaQormsAvUSgqZTJcibOuXfBWd",
+      image: "/assets/img/section_card/GFS.JPG",
       cta: "Learn more",
     },
     stats: [
       {
-        image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumGmR8Ob9IoeyaO1d7xYQMuBsK0zrR9WmSiLvE",
+        image: "/assets/img/section_card/GFS2.JPG",
         label: "8th March 2025",
       },
     ],
     videos: [
       {
-        image: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumpKvXrQ6ntRyaQormsAvUSgqZTJcibOuXfBWd",
+        image: "/assets/img/section_card/GFS3.JPG",
         label: "SVIET Auditorium",
       },
     ],
