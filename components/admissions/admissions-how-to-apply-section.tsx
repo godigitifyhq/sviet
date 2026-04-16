@@ -6,29 +6,44 @@ import { ChevronDown } from "lucide-react";
 
 const APPLY_STEPS = [
   {
-    title: "Visit our online portal",
-    detail:
-      "Open the admissions portal, pick your program, and hit start. Your journey begins in minutes.",
+    title: "Complete the online application form",
+    detail: "Start your admission journey by submitting the online application with accurate details.",
   },
   {
-    title: "Fill in your primary information",
-    detail:
-      "Add your key personal and academic details carefully. Clean data means a faster process.",
+    title: "Receive Application ID via email",
+    detail: "Once submitted, you will receive a unique Application ID for future reference.",
   },
   {
-    title: "Choosing a program",
-    detail:
-      "Compare options, align with your goals, and choose the program that fits your future.",
+    title: "Appear for SVIET-EEE or submit JEE score",
+    detail: "Students may take the SVIET-EEE test or apply using valid JEE Main scores.",
   },
   {
-    title: "Registration for the selected program",
-    detail:
-      "Confirm your selected program, review the summary, and lock your registration confidently.",
+    title: "Check merit list and qualification status",
+    detail: "Review your status after evaluation through the applicable admission route.",
   },
   {
-    title: "Hostel selection",
-    detail:
-      "Need accommodation? Select your preferred hostel option during admission itself.",
+    title: "Attend interview if applicable",
+    detail: "Some programs may require an interview or additional interaction before confirmation.",
+  },
+  {
+    title: "Document verification",
+    detail: "Submit required documents for verification and admissions review.",
+  },
+  {
+    title: "Receive provisional admission offer",
+    detail: "Eligible applicants receive a provisional offer after successful verification.",
+  },
+  {
+    title: "Complete fee payment",
+    detail: "Confirm your seat by completing the required admission fee payment.",
+  },
+  {
+    title: "Receive final admission confirmation",
+    detail: "Get final confirmation once all formalities are completed.",
+  },
+  {
+    title: "Begin your academic journey",
+    detail: "Join SVIET and start your classes with confidence and clarity.",
   },
 ] as const;
 
@@ -40,10 +55,10 @@ export function AdmissionsHowToApplySection() {
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 md:grid-cols-[1fr_0.9fr] md:px-6">
         <div>
           <h2 className="text-4xl font-bold leading-tight text-[#1a1a21] md:text-5xl">
-            How to <span className="text-[#f7941d]">apply</span> to SVIET
+            Admission Process
           </h2>
           <p className="mt-4 max-w-2xl text-sm text-[#4f4f5f] md:text-base">
-            No confusion. No guesswork. Just a simple step-by-step admission flow.
+            Simple. Structured. Transparent.
           </p>
 
           <div className="mt-7 divide-y divide-[#d8d7e3] border-y border-[#d8d7e3]">

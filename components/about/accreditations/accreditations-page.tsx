@@ -9,22 +9,22 @@ import { SectionWrapper } from "@/components/about/accreditations/section-wrappe
 
 const ACCREDITATIONS = [
   {
-    title: "NAAC",
-    description: "Accreditation assessing quality of higher education institutions.",
+    title: "NAAC Accreditation",
+    description: "Recognized with NAAC B++ Grade (2.94 Score, 2024), reflecting institutional focus on quality learning and continuous improvement.",
     ctaLabel: "View Details",
     logoSrc: "/assets/img/uniques_logo.png",
     logoAlt: "NAAC accreditation logo",
   },
   {
-    title: "NBA",
-    description: "Program-level accreditation for engineering and technical education.",
+    title: "Program Quality Assurance",
+    description: "Program delivery is aligned with applicable national quality frameworks and outcome-based academic practices.",
     ctaLabel: "View Details",
     logoSrc: "/assets/img/uniques_logo.png",
-    logoAlt: "NBA accreditation logo",
+    logoAlt: "Program quality assurance logo",
   },
   {
-    title: "UGC",
-    description: "Statutory body coordinating higher education standards in India.",
+    title: "UGC Compliance",
+    description: "Institutional operations and academic standards are maintained in line with relevant UGC norms and expectations.",
     ctaLabel: "View Certificate",
     logoSrc: "/assets/img/uniques_logo.png",
     logoAlt: "UGC approval logo",
@@ -33,43 +33,43 @@ const ACCREDITATIONS = [
 
 const OTHER_APPROVALS = [
   {
-    title: "AICTE Approval",
-    description: "Compliance alignment with technical education quality norms.",
+    title: "AICTE Alignment",
+    description: "Technical and professional programs are structured in accordance with applicable regulatory expectations.",
     ctaLabel: "View Approval",
     logoSrc: "/assets/img/uniques_logo.png",
-    logoAlt: "AICTE approval logo",
+    logoAlt: "AICTE alignment logo",
   },
   {
-    title: "PCI Approval",
-    description: "Recognition for pharmacy education standards and governance.",
+    title: "PCI Recognition",
+    description: "Pharmacy programs follow standards prescribed for curriculum quality, training, and compliance.",
     ctaLabel: "View Approval",
     logoSrc: "/assets/img/uniques_logo.png",
     logoAlt: "PCI approval logo",
   },
   {
-    title: "NCTE Approval",
-    description: "Regulatory compliance for teacher education programs.",
+    title: "NCTE Recognition",
+    description: "Teacher education pathways are maintained with required academic and regulatory safeguards.",
     ctaLabel: "View Approval",
     logoSrc: "/assets/img/uniques_logo.png",
     logoAlt: "NCTE approval logo",
   },
   {
-    title: "Pharmacy Council",
-    description: "Program oversight for professional pharmacy curriculum delivery.",
+    title: "Pharmacy Council Standards",
+    description: "Academic delivery and laboratory infrastructure are benchmarked against pharmacy council guidelines.",
     ctaLabel: "View Approval",
     logoSrc: "/assets/img/uniques_logo.png",
     logoAlt: "Pharmacy council logo",
   },
   {
-    title: "Bar Council of India",
-    description: "Approval framework supporting legal education standards.",
+    title: "Bar Council Framework",
+    description: "Legal education offerings are aligned to professional standards for law and applied legal studies.",
     ctaLabel: "View Approval",
     logoSrc: "/assets/img/uniques_logo.png",
     logoAlt: "Bar Council of India logo",
   },
   {
-    title: "State Government Recognition",
-    description: "Recognized for institutional operations under applicable state norms.",
+    title: "State-Level Recognition",
+    description: "Institutional operations continue under valid state-level recognition and compliance mechanisms.",
     ctaLabel: "View Approval",
     logoSrc: "/assets/img/uniques_logo.png",
     logoAlt: "State government recognition logo",
@@ -79,27 +79,27 @@ const OTHER_APPROVALS = [
 const MEMBERSHIPS = [
   {
     name: "Association of Indian Universities (AIU)",
-    description: "Membership supporting academic collaboration and institutional benchmarking.",
+    description: "Membership strengthens academic collaboration, institutional benchmarking, and best-practice sharing.",
     logoSrc: "/assets/img/uniques_logo.png",
     logoAlt: "AIU membership logo",
   },
   {
-    name: "International Associations",
-    description: "Partnership channels that strengthen global academic engagement and exposure.",
+    name: "Innovation & Academic Networks",
+    description: "Collaborative platforms support innovation-led learning, faculty development, and student exposure.",
     logoSrc: "/assets/img/uniques_logo.png",
-    logoAlt: "International associations logo",
+    logoAlt: "Innovation and academic networks logo",
   },
   {
-    name: "Engineering Institutes",
-    description: "Professional linkage with engineering communities and practice networks.",
+    name: "Professional Bodies",
+    description: "Engagement with professional bodies helps keep curriculum and practice aligned with industry evolution.",
     logoSrc: "/assets/img/uniques_logo.png",
-    logoAlt: "Engineering institutes membership logo",
+    logoAlt: "Professional bodies membership logo",
   },
   {
-    name: "Education Alliances",
-    description: "Collaborative networks for quality assurance and knowledge-sharing initiatives.",
+    name: "Quality Assurance Alliances",
+    description: "Institutional participation in quality-focused alliances supports transparent review and continuous improvement.",
     logoSrc: "/assets/img/uniques_logo.png",
-    logoAlt: "Education alliances membership logo",
+    logoAlt: "Quality assurance alliances membership logo",
   },
 ];
 
@@ -113,12 +113,12 @@ export function AccreditationsPage() {
         <div className="absolute -right-32 -top-25 hidden h-72 w-72 bg-[#BFDBFE]/30 blur-3xl md:block" aria-hidden="true" />
         <div className="max-w-4xl">
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#f7941d]">About SVIET</p>
-          <h1 id="accreditations-heading" className="mt-3 text-4xl font-bold tracking-tight text-[#f7941d] md:text-5xl">
+          <h1 id="accreditations-heading" className="mt-3 text-4xl font-bold tracking-tight text-[#111827] md:text-5xl">
             Accreditations &amp; Approvals
           </h1>
           <p className="mt-5 text-base leading-relaxed text-[#6B7280]">
-            SVGOI is recognized by leading national and international bodies, reflecting our commitment to quality
-            education and academic excellence.
+            This page highlights SVIET&apos;s accreditation status, regulatory recognitions, and institutional quality
+            frameworks that support consistent academic standards.
           </p>
         </div>
       </SectionWrapper>
@@ -126,18 +126,19 @@ export function AccreditationsPage() {
       <SectionWrapper aria-labelledby="accreditation-status-heading">
         <article className="grid gap-8 border border-[#DCE7FF] bg-white p-8 shadow-[0_10px_28px_rgba(30,42,120,0.08)] lg:grid-cols-[1.7fr_1fr] lg:items-center">
           <div>
-            <h2 id="accreditation-status-heading" className="text-3xl font-bold text-[#f7941d]">
+            <h2 id="accreditation-status-heading" className="text-3xl font-bold text-[#111827]">
               SVIET Accreditation Status
             </h2>
-            <p className="mt-4 text-lg font-semibold text-[#f7941d]">NAAC Accredited with B++ Grade (2024)</p>
+            <p className="mt-4 text-lg font-semibold text-[#111827]">NAAC Accredited with B++ Grade (2.94 Score, 2024)</p>
             <p className="mt-4 text-base leading-relaxed text-[#6B7280]">
-              Recognized for maintaining high standards in teaching, infrastructure, and student development.
+              The accreditation reflects sustained institutional commitment to teaching quality, student development,
+              and improvement-driven governance.
             </p>
 
             <ul className="mt-6 space-y-2 text-sm text-[#4B5563]">
-              <li>Engineering and Technology Programs</li>
-              <li>Pharmacy and Health Sciences</li>
-              <li>Management and Applied Sciences</li>
+              <li>Structured quality assurance and review mechanisms</li>
+              <li>Academic delivery aligned with regulatory expectations</li>
+              <li>Continuous improvement across departments and services</li>
             </ul>
           </div>
 
@@ -188,14 +189,12 @@ export function AccreditationsPage() {
 
       <SectionWrapper
         aria-labelledby="other-approvals-heading"
-        className="bg-[linear-gradient(120deg,#111827_0%,#f7941d_58%,#f7941d_100%)]"
+         className="bg-[#F5F7FB]"
       >
         <SectionHeader
           id="other-approvals-heading"
-          title="Other Approvals"
-          titleClassName="text-white"
-          description="Additional regulatory and professional approvals supporting institutional and program-level operations."
-          descriptionClassName="text-[#DBEAFE]"
+          title="Regulatory & Professional Approvals"
+          description="Additional recognitions and approvals that strengthen trust, compliance, and discipline-specific standards."
         />
 
         <ApprovalGrid items={OTHER_APPROVALS} />
@@ -203,7 +202,7 @@ export function AccreditationsPage() {
 
       <SectionWrapper aria-labelledby="important-notice-heading" className="border-t border-[#E5E7EB]">
         <article className="border border-[#BFDBFE] bg-[#EFF6FF] p-6">
-          <h2 id="important-notice-heading" className="text-2xl font-bold text-[#f7941d]">
+          <h2 id="important-notice-heading" className="text-2xl font-bold text-[#111827]">
             Important Notice
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-[#4B5563]">
@@ -220,7 +219,7 @@ export function AccreditationsPage() {
       </SectionWrapper>
 
       <SectionWrapper aria-labelledby="memberships-heading" className="bg-[#F8FAFF]">
-        <SectionHeader id="memberships-heading" title="Memberships" />
+        <SectionHeader id="memberships-heading" title="Institutional Memberships" />
 
         <div className="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {MEMBERSHIPS.map((item) => (

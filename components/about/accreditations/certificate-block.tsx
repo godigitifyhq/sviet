@@ -16,7 +16,7 @@ export function CertificateBlock({ imageSrc, imageAlt, title, description, ctaLa
       </div>
 
       <div>
-        <h3 className="text-2xl font-bold text-[#f7941d]">{title}</h3>
+        <h3 className="text-2xl font-bold text-[#111827]">{title}</h3>
         <p className="mt-4 text-base leading-relaxed text-[#6B7280]">{description}</p>
         <button
           type="button"

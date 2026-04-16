@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { InfrastructurePage } from "@/components/about/infrastructure/infrastructure-page";
 
 export const metadata: Metadata = {
-  title: "Infrastructure",
+  title: "Infrastructure | SVIET",
   description:
-    "SVIET infrastructure overview including campus facilities, academic spaces, research infrastructure, sports amenities, and sustainability initiatives.",
+    "Explore SVIET infrastructure across academic facilities, research spaces, sports amenities, and sustainability systems.",
 };
 
 export default function AboutInfrastructurePage() {

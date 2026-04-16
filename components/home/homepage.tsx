@@ -7,6 +7,8 @@ import { CurriculumOpportunitiesSection } from "@/components/home/curriculum-opp
 import { ResearchInnovationsSection } from "@/components/home/research-innovations";
 import { OngoingResearchProjectsSection } from "@/components/home/ongoing-research-projects";
 import { EntrepreneurshipSection } from "@/components/home/entrepreneurship";
+import { CorporateCollaborationSection } from "@/components/home/corporate-collaboration-section";
+import { MOUImpactSection } from "@/components/home/mou-impact-section";
 import { StudentTestimonialsSection } from "@/components/home/testimonials";
 
 export function HomePage() {
@@ -16,6 +18,8 @@ export function HomePage() {
       <EducationBeyondSection />
       <ExperiencesSection />
       <PivotEducationSection />
+      <CorporateCollaborationSection />
+      <MOUImpactSection />
       <CurriculumOpportunitiesSection />
       <DistinguishedLeadersSection />
       <ResearchInnovationsSection />

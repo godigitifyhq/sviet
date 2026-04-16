@@ -1,36 +1,26 @@
 import Image from "next/image";
-import { BookOpenCheck, BriefcaseBusiness, GraduationCap, Trophy } from "lucide-react";
+import { BriefcaseBusiness, GraduationCap, Trophy } from "lucide-react";
 
 const VALUE_CARDS = [
   {
-    title: "Top-class infrastructure and digital learning, all in one place.",
+    title: "Industry-integrated learning",
     tone: "image",
     image: "/assets/img/college/auditorium.png",
   },
   {
-    title: "Teaching that sharpens skills and shapes confident professionals.",
+    title: "Internship opportunities",
     tone: "blue",
     icon: GraduationCap,
   },
   {
-    title: "A curriculum that stays relevant, from local industry to global demand.",
+    title: "Placement preparation programs",
     tone: "orange",
     icon: BriefcaseBusiness,
   },
   {
-    title: "Graduate with a degree that carries weight and credibility.",
+    title: "Startup and innovation support",
     tone: "navy",
     icon: Trophy,
-  },
-  {
-    title: "Research and innovation opportunities that keep you ahead.",
-    tone: "teal",
-    icon: BookOpenCheck,
-  },
-  {
-    title: "Practical training that turns classroom learning into career readiness.",
-    tone: "image",
-    image: "/assets/img/college/main_gate.png",
   },
 ] as const;
 
@@ -59,16 +49,18 @@ export function AdmissionsValueGridSection() {
     <section className="bg-[#f5f7fb] py-16 md:py-20">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
         <h2 className="max-w-3xl text-4xl font-bold leading-tight text-[#202027] md:text-5xl">
-          You bring the ambition.
-          <span className="text-[#f7941d]"> We deliver the edge.</span>
+          From Admission to
+          <span className="text-[#f7941d]"> Career Readiness</span>
         </h2>
         <p className="mt-5 max-w-4xl text-sm leading-relaxed text-[#4d4d57] md:text-base">
-          At SVIET, everything is built around one promise: better learning, better exposure, and better career outcomes.
+          At SVIET, your journey extends beyond admission. The institution ensures continuous development through
+          industry-integrated learning, internship opportunities, placement preparation programs, and startup and
+          innovation support.
         </p>
 
         <div className="mt-10 grid gap-3 md:grid-cols-12">
           {VALUE_CARDS.map((card, index) => {
-            const wide = index === 0 || index === 5;
+            const wide = index === 0;
             const colClass = wide ? "md:col-span-6" : "md:col-span-3";
 
             if (card.tone === "image") {

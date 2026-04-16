@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 
 import { CategoryTabs } from "@/components/about/infrastructure/category-tabs";
 import { FacilityCard } from "@/components/about/infrastructure/facility-card";
@@ -13,6 +14,8 @@ type FacilityCategory = "Campus" | "Academic" | "Research" | "Sports" | "Sustain
 type FacilityItem = {
   title: string;
   category: FacilityCategory;
+  summary: string;
+  highlights: string[];
   imageSrc: string;
   imageAlt: string;
 };
@@ -21,88 +24,116 @@ const CATEGORY_TABS = ["All", "Campus", "Academic", "Research", "Sports", "Susta
 
 const FACILITY_ITEMS: FacilityItem[] = [
   {
-    title: "Modern Campus Layout",
+    title: "Campus Academic Zone",
     category: "Campus",
+    summary: "Planned circulation and access systems designed for smooth academic movement.",
+    highlights: ["Wide internal corridors", "Clear departmental zoning", "Student-first accessibility"],
     imageSrc: "/assets/img/college/main_gate.png",
-    imageAlt: "SVIET modern campus entrance and layout",
+    imageAlt: "SVIET campus academic zone and entry corridor",
   },
   {
-    title: "Central Greens",
+    title: "Student Interaction Spaces",
     category: "Campus",
+    summary: "Informal spaces for peer collaboration, clubs, and project discussions.",
+    highlights: ["Collaborative seating", "Mentoring-friendly spaces", "Community engagement zones"],
     imageSrc: "/assets/img/college/1st.png",
-    imageAlt: "SVIET central greens on campus",
+    imageAlt: "Student interaction areas across SVIET campus",
   },
   {
-    title: "Outdoor Spaces",
+    title: "Open Learning Courtyards",
     category: "Campus",
+    summary: "Open-air learning pockets built for discussion-led and activity-led sessions.",
+    highlights: ["Open study zones", "Event-ready pockets", "Ventilated common spaces"],
     imageSrc: "/assets/img/campus-life/image2.png",
-    imageAlt: "SVIET outdoor spaces for student activities",
+    imageAlt: "Open learning courtyards for student collaboration",
   },
   {
-    title: "Lecture Halls",
+    title: "Classrooms & Lecture Halls",
     category: "Academic",
+    summary: "Tech-enabled rooms built to support structured delivery and participative learning.",
+    highlights: ["AV-enabled lecture rooms", "Flexible teaching setup", "High-capacity halls"],
     imageSrc: "/assets/img/campus-life/audi.png",
-    imageAlt: "SVIET lecture halls with classroom setup",
+    imageAlt: "Classrooms and lecture halls for structured learning",
   },
   {
-    title: "Library Facilities",
+    title: "Library & Study Resources",
     category: "Academic",
+    summary: "Centralized resource support for coursework, references, and independent study.",
+    highlights: ["Reference collections", "Reading spaces", "Digital learning support"],
     imageSrc: "/assets/img/campus-life/image1.png",
-    imageAlt: "SVIET library facilities and study resources",
+    imageAlt: "Library and study resources for focused academic work",
   },
   {
-    title: "Computer Labs",
+    title: "Technical Laboratories",
     category: "Academic",
+    summary: "Program-specific labs focused on hands-on skill development and experimentation.",
+    highlights: ["Practice-ready lab setups", "Faculty-guided sessions", "Outcome-led practicals"],
     imageSrc: "/assets/img/college/4th.png",
-    imageAlt: "SVIET computer labs and technical workstations",
+    imageAlt: "Program-specific technical laboratories at SVIET",
   },
   {
     title: "Research Centres",
     category: "Research",
+    summary: "Research spaces that support applied experimentation and prototype development.",
+    highlights: ["Applied research culture", "Project mentorship", "Innovation-led activities"],
     imageSrc: "/assets/img/college/8th.png",
-    imageAlt: "SVIET research centres and advanced learning spaces",
+    imageAlt: "Research centres for experimentation and applied learning",
   },
   {
     title: "Innovation Labs",
     category: "Research",
+    summary: "Labs dedicated to ideation, prototyping, and student innovation challenges.",
+    highlights: ["Prototype development", "Interdisciplinary projects", "Startup-oriented thinking"],
     imageSrc: "/assets/img/college/global_recognition.png",
-    imageAlt: "SVIET innovation labs for applied projects",
+    imageAlt: "Innovation labs for student projects and prototyping",
   },
   {
     title: "Playgrounds",
     category: "Sports",
+    summary: "Outdoor spaces designed for sports, fitness routines, and team-building activities.",
+    highlights: ["Practice-friendly grounds", "Student sports engagement", "Wellness ecosystem"],
     imageSrc: "/assets/img/campus-life/r1c2.png",
-    imageAlt: "SVIET playground areas for sports and fitness",
+    imageAlt: "Campus playgrounds supporting sports and fitness",
   },
   {
-    title: "Sports Complex",
+    title: "Sports Facilities",
     category: "Sports",
+    summary: "Dedicated facilities that strengthen discipline, teamwork, and physical well-being.",
+    highlights: ["Multi-sport readiness", "Structured coaching support", "Active campus culture"],
     imageSrc: "/assets/img/campus-life/r2c3.png",
-    imageAlt: "SVIET sports complex infrastructure",
+    imageAlt: "Sports facilities promoting teamwork and well-being",
   },
   {
     title: "Solar Power Systems",
     category: "Sustainability",
+    summary: "Renewable energy setup contributing to cleaner and more efficient campus operations.",
+    highlights: ["Reduced energy dependency", "Sustainable operations", "Long-term resilience"],
     imageSrc: "/assets/img/college/banner_95.png",
-    imageAlt: "Solar power systems supporting campus sustainability",
+    imageAlt: "Solar power systems supporting sustainable campus operations",
   },
   {
     title: "Rain Water Harvesting",
     category: "Sustainability",
+    summary: "Water conservation infrastructure supporting reuse and responsible consumption.",
+    highlights: ["Groundwater recharge", "Conservation planning", "Campus water stewardship"],
     imageSrc: "/assets/img/campus-life/image4.png",
-    imageAlt: "Rain water harvesting infrastructure on campus",
+    imageAlt: "Rain water harvesting infrastructure for water conservation",
   },
   {
     title: "Waste Management",
     category: "Sustainability",
+    summary: "Structured segregation and waste handling practices integrated across campus.",
+    highlights: ["Segregation process", "Recycling support", "Cleaner campus operations"],
     imageSrc: "/assets/img/campus-life/r3c1.png",
-    imageAlt: "Campus waste management and segregation systems",
+    imageAlt: "Waste management systems with campus segregation practices",
   },
   {
-    title: "Green Transportation",
+    title: "Green Mobility",
     category: "Sustainability",
+    summary: "Mobility systems and pathways planned for safe and accessible movement.",
+    highlights: ["Pedestrian-first routes", "Transit point planning", "Safer movement corridors"],
     imageSrc: "/assets/img/campus-life/r3c2.png",
-    imageAlt: "Green transportation support infrastructure",
+    imageAlt: "Green mobility support infrastructure within campus",
   },
 ];
 
@@ -153,6 +184,7 @@ const SUSTAINABILITY_ITEMS = [
 
 export function InfrastructurePage() {
   const [activeCategory, setActiveCategory] = useState<(typeof CATEGORY_TABS)[number]>("All");
+  const [selectedTitle, setSelectedTitle] = useState<string>(FACILITY_ITEMS[0]?.title ?? "");
 
   const filteredFacilities = useMemo(() => {
     if (activeCategory === "All") {
@@ -161,6 +193,17 @@ export function InfrastructurePage() {
 
     return FACILITY_ITEMS.filter((item) => item.category === activeCategory);
   }, [activeCategory]);
+
+  useEffect(() => {
+    if (!filteredFacilities.some((item) => item.title === selectedTitle)) {
+      setSelectedTitle(filteredFacilities[0]?.title ?? "");
+    }
+  }, [filteredFacilities, selectedTitle]);
+
+  const selectedFacility = useMemo(
+    () => filteredFacilities.find((item) => item.title === selectedTitle) ?? filteredFacilities[0],
+    [filteredFacilities, selectedTitle],
+  );
 
   return (
     <main className="bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)]">
@@ -176,8 +219,8 @@ export function InfrastructurePage() {
               Infrastructure
             </h1>
             <p className="mt-5 text-base leading-relaxed text-[#6B7280]">
-              Our campus infrastructure is thoughtfully designed to blend innovation, sustainability, and functionality,
-              enhancing academic excellence, research, and holistic student life.
+              Campus facilities are designed to support academic growth, practical learning, innovation, and student
+              well-being through integrated spaces for study, experimentation, and development.
             </p>
           </div>
 
@@ -188,18 +231,41 @@ export function InfrastructurePage() {
       </SectionWrapper>
 
       <SectionWrapper aria-labelledby="campus-facilities-heading" className="border-b border-[#E5E7EB]">
-        <SectionHeader id="campus-facilities-heading" title="Explore SVIET’s Campus Facilities" />
+        <SectionHeader id="campus-facilities-heading" title="Explore Campus Infrastructure" />
 
         <CategoryTabs categories={[...CATEGORY_TABS]} activeCategory={activeCategory} onCategoryChange={(category) => setActiveCategory(category as typeof activeCategory)} />
 
-        <ImageGrid items={filteredFacilities} />
+        <ImageGrid items={filteredFacilities} activeTitle={selectedFacility?.title} onSelectItem={setSelectedTitle} />
+
+        {selectedFacility ? (
+          <article className="mt-8 rounded-2xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] p-6 shadow-[0_10px_26px_rgba(30,42,120,0.08)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#f7941d]">Selected Infrastructure</p>
+            <h3 className="mt-2 text-2xl font-bold text-[#111827]">{selectedFacility.title}</h3>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#6B7280]">{selectedFacility.summary}</p>
+            <ul className="mt-5 grid gap-3 text-sm text-[#4B5563] sm:grid-cols-3">
+              {selectedFacility.highlights.map((point) => (
+                <li key={point} className="rounded-lg border border-[#E5E7EB] bg-white px-3 py-2">
+                  {point}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6">
+              <Link
+                href="/contact"
+                className="inline-flex items-center rounded-md bg-[#f7941d] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#d97706]"
+              >
+                Schedule a Campus Visit
+              </Link>
+            </div>
+          </article>
+        ) : null}
       </SectionWrapper>
 
       <SectionWrapper aria-labelledby="sustainability-heading" className="bg-[#F5F7FB]">
         <SectionHeader
           id="sustainability-heading"
-          title="Sustainability Initiatives"
-          description="SVIET continues to strengthen environmentally responsible infrastructure through energy, water, waste, and mobility interventions across campus."
+          title="Sustainability & Responsible Operations"
+          description="SVIET strengthens environmentally responsible campus systems across energy, water, waste, and mobility to support long-term resilience."
         />
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

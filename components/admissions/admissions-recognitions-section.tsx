@@ -1,26 +1,43 @@
-import Link from "next/link";
-
-const RECOGNITIONS = [
+const TRUST_STATS = [
   {
-    tag: "WORLD UNIVERSITY RANKINGS",
-    title: "QS University Rankings",
-    description:
-      "Global recognition that says one thing loud and clear: SVIET students are built for impact.",
-    tone: "from-[#f7941d] to-[#d97706]",
+    title: "25+ Acres",
+    description: "Spacious & modern campus",
+    tone: "from-[#0b3b8f] to-[#133f92]",
   },
   {
-    tag: "NAAC A++ GRADE",
-    title: "NAAC A++ Accreditation",
-    description:
-      "A++ is not a label. It is the result of consistent quality in learning, research, and governance.",
+    title: "250+ Faculty Members",
+    description: "Academic and industry expertise",
     tone: "from-[#2563EB] to-[#1d4ed8]",
   },
   {
-    tag: "NIRF",
-    title: "NIRF Ranking",
-    description:
-      "National rankings that reflect real outcomes: stronger academics, stronger innovation, stronger careers.",
+    title: "25,000+ Alumni Network",
+    description: "Strong global presence",
     tone: "from-[#111827] to-[#1f2937]",
+  },
+  {
+    title: "1000+ International Students",
+    description: "Diverse learning environment",
+    tone: "from-[#0f766e] to-[#0d9488]",
+  },
+  {
+    title: "350+ Companies Visit Every Year",
+    description: "Strong industry connections",
+    tone: "from-[#f7941d] to-[#d97706]",
+  },
+  {
+    title: "5000+ Students Placed",
+    description: "Career-focused outcomes",
+    tone: "from-[#7c3aed] to-[#5b21b6]",
+  },
+  {
+    title: "Scholarships Available Across Programs",
+    description: "Financial support opportunities",
+    tone: "from-[#0b3b8f] to-[#1d4ed8]",
+  },
+  {
+    title: "₹45 Lakh+ Startup Support",
+    description: "Entrepreneurship ecosystem",
+    tone: "from-[#374151] to-[#111827]",
   },
 ] as const;
 
@@ -28,27 +45,21 @@ export function AdmissionsRecognitionsSection() {
   return (
     <section className="bg-[#f5f7fb] pb-16 md:pb-20">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
-        <div className="grid gap-4 md:grid-cols-3">
-          {RECOGNITIONS.map((item) => (
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {TRUST_STATS.map((item) => (
             <article
               key={item.title}
-              className={`relative overflow-hidden rounded-xl bg-linear-to-br p-6 text-white shadow-lg ${item.tone}`}
+              className={`relative overflow-hidden rounded-xl bg-linear-to-br p-5 text-white shadow-lg md:p-6 ${item.tone}`}
             >
               <div className="absolute -right-14 -top-14 h-40 w-40 rounded-full border border-white/10" />
-              <p className="relative text-xs font-semibold uppercase tracking-[0.12em] text-white/75">{item.tag}</p>
-              <h3 className="relative mt-4 text-4xl font-bold leading-tight md:text-4xl">{item.title}</h3>
-              <p className="relative mt-4 text-sm leading-relaxed text-white/85">{item.description}</p>
+              <h3 className="relative text-2xl font-bold leading-tight md:text-3xl">{item.title}</h3>
+              <p className="relative mt-3 text-sm leading-relaxed text-white/85">{item.description}</p>
             </article>
           ))}
         </div>
 
-        <div className="mt-6 flex justify-center">
-          <Link
-            href="/about/awards-recognitions"
-            className="rounded-md bg-[#f7941d] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#d97706]"
-          >
-            View all recognitions
-          </Link>
+        <div className="mt-4 text-center text-xs text-[#4b5563] md:text-sm">
+          Figures represent cumulative institutional data.
         </div>
       </div>
     </section>

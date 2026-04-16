@@ -69,10 +69,15 @@ export function AdmissionsCareerProgramsSection({ programs }: AdmissionsCareerPr
     <section className="bg-[#f5f7fb] py-16 md:py-20">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
         <h2 className="text-center text-4xl font-bold leading-tight text-[#1a1a1f] md:text-6xl">
-          Career-first
+          Explore Academic
           <br />
-          <span className="text-[#f7941d]">bachelor programs</span>
+          <span className="text-[#f7941d]">Pathways</span>
         </h2>
+
+        <p className="mx-auto mt-5 max-w-3xl text-center text-sm leading-relaxed text-[#4f4f5f] md:text-base">
+          Choose from a wide range of programs designed for future-ready careers. Each program is aligned with
+          industry requirements and career outcomes.
+        </p>
 
         <div className="mx-auto mt-6 flex max-w-2xl items-center rounded-full bg-[#eaf1ff] px-4 py-2">
           <Search className="h-4 w-4 text-[#2563EB]" />

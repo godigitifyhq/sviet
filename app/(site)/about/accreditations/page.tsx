@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { AccreditationsPage } from "@/components/about/accreditations/accreditations-page";
 
 export const metadata: Metadata = {
-  title: "Accreditations & Approvals",
+  title: "Accreditations & Approvals | SVIET",
   description:
-    "SVIET accreditations and approvals page covering NAAC status, regulatory recognitions, approvals, and institutional memberships.",
+    "Explore SVIET accreditation status, NAAC quality benchmarks, regulatory recognitions, and institutional memberships.",
 };
 
 export default function AboutAccreditationsPage() {

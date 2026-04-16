@@ -13,7 +13,7 @@ export function MembershipCard({ name, description, logoSrc, logoAlt }: Membersh
       <div className="relative h-12 w-36">
         <Image src={logoSrc} alt={logoAlt} fill loading="lazy" className="object-contain object-left" sizes="144px" />
       </div>
-      <h3 className="mt-4 text-lg font-semibold text-[#f7941d]">{name}</h3>
+      <h3 className="mt-4 text-lg font-semibold text-[#111827]">{name}</h3>
       <p className="mt-2 text-sm leading-relaxed text-[#6B7280]">{description}</p>
     </article>
   );

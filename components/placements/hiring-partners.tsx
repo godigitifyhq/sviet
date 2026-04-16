@@ -76,6 +76,11 @@ export function HiringPartners() {
             </div>
           </div>
 
+          <p className="mx-auto mb-10 max-w-4xl text-center text-sm leading-relaxed text-[#4b5563] md:text-base">
+            SVIET takes pride in building strong relationships with leading companies across industries. Our placement
+            cell continuously expands its recruiter network to provide diverse career opportunities to students.
+          </p>
+
           {/* Logo Rows */}
           <div className="space-y-8">
             {/* Row 1 - Moving Left */}

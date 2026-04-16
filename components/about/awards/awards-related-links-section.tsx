@@ -4,19 +4,19 @@ import { ArrowUpRight, Building2, ChartNoAxesColumn, Users } from "lucide-react"
 const RELATED_LINKS = [
   {
     title: "Overview",
-    description: "Innovate, inspire and impact",
+    description: "Where learning meets innovation and opportunity",
     href: "/about",
     icon: ChartNoAxesColumn,
   },
   {
     title: "Infrastructure",
-    description: "World-class learning facilities",
+    description: "Facilities supporting modern, practical learning",
     href: "/about/infrastructure",
     icon: Building2,
   },
   {
     title: "Leadership",
-    description: "Meet the visionary leaders",
+    description: "Guidance shaping institutional direction",
     href: "/about/leadership",
     icon: Users,
   },
@@ -28,7 +28,7 @@ export function AwardsRelatedLinksSection() {
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
         <p className="flex items-center gap-2 text-sm font-semibold text-[#1f1f1f]">
           <span className="text-[#24b4be]">▸</span>
-          Related links
+          Quick Access
         </p>
 
         <div className="mt-5 grid gap-4 md:grid-cols-3">

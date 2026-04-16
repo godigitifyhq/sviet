@@ -14,6 +14,9 @@ import { AdmissionsHowToApplySection } from "@/components/admissions/admissions-
 import { InternationalOpportunitiesSection } from "@/components/international/international-opportunities-section";
 import { type ProgramOption, type ProgramsApiResponse } from "@/components/admissions/types";
 import { useApplyLeadForm } from "@/components/admissions/use-apply-lead-form";
+import { AdmissionsEntranceEligibilitySection } from "@/components/admissions/admissions-entrance-eligibility-section";
+import { AdmissionsScholarshipsSection } from "@/components/admissions/admissions-scholarships-section";
+import { AdmissionsFinalCtaSection } from "@/components/admissions/admissions-final-cta-section";
 
 export default function AdmissionsPage() {
   const searchParams = useSearchParams();
@@ -67,14 +70,17 @@ export default function AdmissionsPage() {
         onFieldChange={handleFieldChange}
         onSubmit={handleSubmit}
       />
-      <AdmissionsRelatedLinksSection />
-      <AdmissionsStudyOverviewSection />
-      <AdmissionsValueGridSection />
-      <AdmissionsCareerProgramsSection programs={programs} />
       <AdmissionsRecognitionsSection />
-      <AdmissionsEnrichingWaysSection />
+      <AdmissionsStudyOverviewSection />
+      <AdmissionsEntranceEligibilitySection />
+      <AdmissionsScholarshipsSection />
       <AdmissionsHowToApplySection />
+      <AdmissionsCareerProgramsSection programs={programs} />
+      <AdmissionsValueGridSection />
+      <AdmissionsEnrichingWaysSection />
+      <AdmissionsRelatedLinksSection />
       <InternationalOpportunitiesSection />
+      <AdmissionsFinalCtaSection />
     </div>
   );
 }

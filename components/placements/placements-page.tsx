@@ -1,129 +1,48 @@
-import Image from "next/image";
-
 import { FAQAccordion } from "@/components/placements/faq-accordion";
 import { HiringPartners } from "@/components/placements/hiring-partners";
 import { NewsCard } from "@/components/placements/news-card";
 import { PlacementCardsMarqueeSection } from "@/components/placements/placement-cards-marquee-section";
-import { PlacementHighlightsSection } from "@/components/placements/placement-highlights-section";
 import { PlacementSuccessBanner } from "@/components/placements/placement-success-banner";
-import { PlacementStatsBlockSection } from "@/components/placements/placement-stats-block-section";
 import { PlacementStudentSpeakSection } from "@/components/placements/placement-student-speak-section";
 import { PlacementsHeroSection } from "@/components/placements/placements-hero-section";
-import { RecruiterGrid } from "@/components/placements/recruiter-grid";
 import { SectionHeader } from "@/components/placements/section-header";
 import { SectionWrapper } from "@/components/placements/section-wrapper";
 import { StatCard } from "@/components/placements/stat-card";
-import { TestimonialCard } from "@/components/placements/testimonial-card";
-import { TestimonialCarousel } from "@/components/placements/testimonial-carousel";
-
-const HERO_STATS = [
-  { label: "Students Placed", value: "2000+" },
-  { label: "Highest Package", value: "Rs 10 LPA" },
-  { label: "Recruiters", value: "300+" },
-];
+import { TrainingCurriculumSection } from "@/components/placements/training-curriculum-section";
 
 const KEY_STATS = [
-  { value: "2000+", label: "Total Students Placed" },
-  { value: "300+", label: "Number of Recruiters" },
-  { value: "Rs 10 LPA", label: "Highest Package" },
-  { value: "Rs 4 LPA", label: "Average Package" },
-];
-
-const RECRUITERS = [
-  { name: "Infosys", logoSrc: "/assets/img/companies/infosys.png", logoAlt: "Infosys logo" },
-  { name: "TCS", logoSrc: "/assets/img/companies/tcs.png", logoAlt: "TCS logo" },
-  { name: "Wipro", logoSrc: "/assets/img/companies/wipro.png", logoAlt: "Wipro logo" },
-  { name: "Amazon", logoSrc: "/assets/img/companies/amazon.png", logoAlt: "Amazon logo" },
-  { name: "Deloitte", logoSrc: "/assets/img/companies/deloitte.png", logoAlt: "Deloitte logo" },
-  { name: "Jio Digital", logoSrc: "/assets/img/companies/jio_digital.png", logoAlt: "Jio Digital logo" },
-  { name: "Mamsys", logoSrc: "/assets/img/companies/mamsys.png", logoAlt: "Mamsys logo" },
-  { name: "Dabur", logoSrc: "/assets/img/companies/dabur.png", logoAlt: "Dabur logo" },
-];
-
-const STUDENT_TESTIMONIALS = [
-  {
-    imageSrc: "/assets/img/students/moon_mandal.png",
-    imageAlt: "Student placed at Infosys",
-    name: "Moon Mandal",
-    subtitle: "B.Tech CSE",
-    company: "Infosys",
-    quote:
-      "SVIET's placement team guided me from resume preparation to interview readiness and helped me secure the right opportunity.",
-  },
-  {
-    imageSrc: "/assets/img/students/moon_mandal.png",
-    imageAlt: "Student placed at TCS",
-    name: "Nikhil Arora",
-    subtitle: "B.Tech CSE",
-    company: "TCS",
-    quote:
-      "Mock interviews and technical bootcamps gave me the confidence to perform well during the campus recruitment process.",
-  },
-  {
-    imageSrc: "/assets/img/students/moon_mandal.png",
-    imageAlt: "Student placed at Wipro",
-    name: "Ritika Sharma",
-    subtitle: "BCA",
-    company: "Wipro",
-    quote:
-      "The structured training plan improved my communication and problem-solving skills before placement season began.",
-  },
-  {
-    imageSrc: "/assets/img/students/moon_mandal.png",
-    imageAlt: "Student placed at Deloitte",
-    name: "Aman Verma",
-    subtitle: "MBA",
-    company: "Deloitte",
-    quote:
-      "Industry workshops and domain mentoring prepared me for case discussions and final interviews.",
-  },
+  { value: "3,000+", label: "Offer Letters" },
+  { value: "50 LPA", label: "Highest Package" },
+  { value: "12,000+", label: "Students Placed" },
+  { value: "350+", label: "Companies Visited Per Year" },
 ];
 
 const PLACEMENT_NEWS = [
   {
+    imageSrc: "/assets/img/college/4th.png",
+    imageAlt: "Pharma Career Fair 2024 at SVIET",
+    title: "Pharma Career Fair 2024",
+    description:
+      "09 February 2024 - Students explored career opportunities, interacted with industry experts, and participated in recruitment processes in the pharmaceutical sector.",
+  },
+  {
+    imageSrc: "/assets/img/college/global_recognition.png",
+    imageAlt: "Global Futures Summit 2024",
+    title: "Global Futures Summit 2024",
+    description: "23 March 2024 - Industry and academic experts shared insights on emerging technologies and market trends.",
+  },
+  {
     imageSrc: "/assets/img/college/auditorium.png",
-    imageAlt: "Placement drive at SVIET auditorium",
-    title: "Mega Placement Drive 2026",
-    description: "Leading recruiters conducted multi-profile hiring across technology, management, and analytics roles.",
+    imageAlt: "24x7 Software placement drive",
+    title: "24x7 Software Placement Drive",
+    description:
+      "28 September 2024 - On-campus recruitment drive for B.Tech CSE students with strong participation.",
   },
   {
     imageSrc: "/assets/img/college/main_gate.png",
-    imageAlt: "SVIET campus placement update",
-    title: "Record Recruiter Participation",
-    description: "A growing employer network has expanded internship and full-time opportunities for final-year students.",
-  },
-  {
-    imageSrc: "/assets/img/college/scholarship.png",
-    imageAlt: "Training and placement workshop",
-    title: "Industry Readiness Workshop Series",
-    description: "Corporate experts led sessions on aptitude, coding rounds, communication, and interview success.",
-  },
-];
-
-const RECRUITER_TESTIMONIALS = [
-  {
-    imageSrc: "/assets/img/college/management/ankurgupta.jpg",
-    imageAlt: "Recruiter representative testimonial",
-    name: "Rahul Mehta",
-    subtitle: "Talent Acquisition Lead",
-    company: "Infosys",
-    quote: "SVIET students demonstrate strong fundamentals and excellent adaptability in corporate environments.",
-  },
-  {
-    imageSrc: "/assets/img/college/management/sahil-sir.jpg",
-    imageAlt: "Recruiter representative from TCS",
-    name: "Neha Bansal",
-    subtitle: "Campus Hiring Manager",
-    company: "TCS",
-    quote: "The institution's training quality and disciplined preparation make hiring from SVIET highly reliable.",
-  },
-  {
-    imageSrc: "/assets/img/college/management/shubham-sir..jpg",
-    imageAlt: "Recruiter representative from Wipro",
-    name: "Karan Sethi",
-    subtitle: "Human Resources Partner",
-    company: "Wipro",
-    quote: "SVIET has consistently provided candidates who are project-ready and aligned with industry expectations.",
+    imageAlt: "Skillkart placement drive at SVIET",
+    title: "Skillkart Placement Drive",
+    description: "04 October 2024 - Multi-course placement drive involving over 60 students from various programs.",
   },
 ];
 
@@ -159,69 +78,84 @@ export function PlacementsPageComponent() {
     <main className="bg-white">
       <PlacementsHeroSection />
 
-      <HiringPartners />
-
-      <PlacementSuccessBanner />
-
-      <PlacementCardsMarqueeSection />
-
-      <PlacementStatsBlockSection />
-
-      <PlacementStudentSpeakSection />
-
-      <PlacementHighlightsSection />
-      
-
-      {/* <SectionWrapper aria-labelledby="key-placement-stats-heading" className="border-t border-gray-100 bg-gray-50">
-        <SectionHeader id="key-placement-stats-heading" title="Key Placement Stats" />
+      <SectionWrapper aria-labelledby="key-placement-stats-heading" className="border-t border-gray-100 bg-gray-50">
+        <SectionHeader id="key-placement-stats-heading" title="Placement Achievements" />
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {KEY_STATS.map((item) => (
             <StatCard key={item.label} value={item.value} label={item.label} />
           ))}
         </div>
+        <p className="mt-5 text-sm text-gray-600">Data represents cumulative placement achievements.</p>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="top-recruiters-heading">
-        <SectionHeader id="top-recruiters-heading" title="Top Recruiters" />
-        <RecruiterGrid recruiters={RECRUITERS} />
-      </SectionWrapper>
+      <SectionWrapper aria-labelledby="placements-overview-heading">
+        <SectionHeader
+          id="placements-overview-heading"
+          title="Placements Overview"
+          description="At SVIET, placements are driven by a structured system designed to transform students into industry-ready professionals. The Training & Placement Department continuously works to bridge the gap between academic learning and real-world industry requirements."
+        />
 
-      <SectionWrapper aria-labelledby="placement-highlight-heading" className="bg-gray-50">
-        <article className="grid gap-8 rounded-lg border border-gray-200 bg-white p-6 shadow-sm lg:grid-cols-2 lg:items-center">
-          <div className="relative aspect-4/3 overflow-hidden rounded-md border border-gray-200 bg-gray-100">
-            <Image
-              src="/assets/img/students/moon_mandal.png"
-              alt="SVIET student placement highlight"
-              fill
-              loading="lazy"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
-          </div>
+        <p className="mt-6 max-w-4xl text-base leading-relaxed text-gray-600">
+          Our approach focuses on practical exposure, continuous training, and strong corporate engagement to ensure
+          students are well-prepared for successful careers.
+        </p>
 
-          <div>
-            <h2 id="placement-highlight-heading" className="text-3xl font-bold text-gray-900">
-              Placement Highlight
-            </h2>
-            <blockquote className="mt-5 border-l-2 border-gray-300 pl-4 text-lg leading-relaxed text-gray-700">
-              “We create skilled professionals that are remarkable much before they graduate.”
-            </blockquote>
-            <p className="mt-4 text-base font-semibold text-gray-900">Training &amp; Placement Cell</p>
-            <p className="text-sm text-gray-600">SVIET</p>
-          </div>
+        <article className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-6">
+          <h3 className="text-xl font-bold text-gray-900">Training &amp; Placement Cell</h3>
+          <p className="mt-3 text-sm leading-relaxed text-gray-700 md:text-base">
+            The Training &amp; Placement Cell at SVIET actively collaborates with leading organizations across industries
+            including IT, Manufacturing, Finance, Media, and Services.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-gray-700 md:text-base">
+            Our objective is to make every student a 100% employable asset through continuous skill development,
+            real-world exposure, and structured placement support - aligned with our vision of "One Person One Job."
+          </p>
         </article>
-      </SectionWrapper> */}
-
-      {/* <SectionWrapper aria-labelledby="student-testimonials-heading">
-        <SectionHeader id="student-testimonials-heading" title="Student Testimonials" />
-        <TestimonialCarousel testimonials={STUDENT_TESTIMONIALS} />
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="placement-updates-heading" className="border-t border-gray-100 bg-gray-50">
-        <SectionHeader id="placement-updates-heading" title="Placement Updates" />
+      <PlacementSuccessBanner />
 
-        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <PlacementCardsMarqueeSection />
+
+      <HiringPartners />
+
+      <SectionWrapper aria-labelledby="director-message-heading" className="bg-gray-50">
+        <SectionHeader id="director-message-heading" title="From the Desk of Director Placements" />
+        <article className="mt-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+          <h3 className="text-xl font-bold text-gray-900">Mr. Shubham Garg</h3>
+          <p className="mt-3 text-sm leading-relaxed text-gray-700 md:text-base">
+            Our goal is to provide strong placement opportunities and meaningful corporate exposure to students. Over
+            the years, the Training &amp; Placement Cell has successfully connected students with reputed organizations
+            across multiple industries.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-gray-700 md:text-base">
+            We focus on building industry-ready professionals by aligning academic learning with practical skills,
+            ensuring students are well-prepared to meet evolving career demands.
+          </p>
+        </article>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <article className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+            <h3 className="text-lg font-bold text-gray-900">Vision</h3>
+            <p className="mt-2 text-sm leading-relaxed text-gray-700 md:text-base">
+              Best Campus Experience, Best Placements, and Best Culture
+            </p>
+          </article>
+          <article className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+            <h3 className="text-lg font-bold text-gray-900">Mission</h3>
+            <p className="mt-2 text-sm leading-relaxed text-gray-700 md:text-base">
+              To strengthen industry connections, create meaningful placement opportunities, and provide holistic career
+              guidance that prepares students for long-term professional success.
+            </p>
+          </article>
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper aria-labelledby="placement-drives-heading">
+        <SectionHeader id="placement-drives-heading" title="Placement Drives" />
+
+        <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {PLACEMENT_NEWS.map((item) => (
             <NewsCard
               key={item.title}
@@ -234,45 +168,41 @@ export function PlacementsPageComponent() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="industry-learning-heading">
+      <SectionWrapper aria-labelledby="industrial-exposure-heading" className="bg-gray-50">
         <SectionHeader
-          id="industry-learning-heading"
-          title="Industry-based immersive learning"
-          description="SVIET follows an outcomes-focused training framework that combines foundational learning with placement-specific preparation across academic programs."
+          id="industrial-exposure-heading"
+          title="Industrial Exposure"
+          description="SVIET provides continuous industry exposure through visits, training programs, expert sessions, and live interactions with professionals. These initiatives help students understand real-world work environments and industry expectations."
         />
 
-        <ul className="mt-6 grid gap-3 text-sm text-gray-700 sm:grid-cols-2">
-          <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Soft skills training</li>
-          <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Mock interviews</li>
-          <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Resume building</li>
-          <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Industry workshops</li>
+        <article className="mt-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+          <h3 className="text-xl font-bold text-gray-900">Real-World Engagement</h3>
+          <p className="mt-3 text-sm leading-relaxed text-gray-700 md:text-base">
+            Our strong industry connections ensure that students gain hands-on experience through placement drives,
+            internships, and collaborative initiatives, transforming them into confident professionals ready for
+            real-world challenges.
+          </p>
+        </article>
+      </SectionWrapper>
+
+      <TrainingCurriculumSection />
+
+      <PlacementStudentSpeakSection />
+
+      <SectionWrapper aria-labelledby="outcomes-objectives-heading">
+        <SectionHeader id="outcomes-objectives-heading" title="Outcomes & Objectives" />
+
+        <ul className="mt-6 grid gap-3 text-sm text-gray-700 sm:grid-cols-3">
+          <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Professional Skill Development</li>
+          <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Maximum Opportunities</li>
+          <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Employable Graduates</li>
         </ul>
-      </SectionWrapper> */}
 
-      {/* <SectionWrapper aria-labelledby="recruiter-testimonials-heading" className="bg-[#a60f2d]">
-        <SectionHeader
-          id="recruiter-testimonials-heading"
-          title="Recruiter Testimonials"
-          titleClassName="text-white"
-          description="Industry partners share their experience of hiring SVIET graduates."
-          descriptionClassName="text-red-100"
-        />
-
-        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {RECRUITER_TESTIMONIALS.map((item) => (
-            <TestimonialCard
-              key={`${item.name}-${item.company}`}
-              imageSrc={item.imageSrc}
-              imageAlt={item.imageAlt}
-              name={item.name}
-              subtitle={item.subtitle}
-              company={item.company}
-              quote={item.quote}
-              className="border-white/30 bg-white text-gray-900"
-            />
-          ))}
-        </div>
-      </SectionWrapper> */}
+        <p className="mt-6 max-w-4xl text-base leading-relaxed text-gray-600">
+          We focus on developing industry-ready graduates equipped with practical skills, professional ethics, and the
+          ability to contribute effectively in their chosen careers.
+        </p>
+      </SectionWrapper>
 
       <SectionWrapper aria-labelledby="placements-faq-heading" className="bg-gray-50">
         <SectionHeader id="placements-faq-heading" title="FAQ" />

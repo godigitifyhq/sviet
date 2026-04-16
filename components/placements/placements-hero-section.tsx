@@ -58,10 +58,10 @@ export function PlacementsHeroSection() {
       onFieldChange={handleFieldChange}
       onSubmit={handleSubmit}
       breadcrumb="/ Placements"
-      titleLineOne="Training &"
-      titleLineTwo="Placement"
-      description="Build your career with industry-focused training, interview readiness, and strong placement support."
-      ctaLabel="Explore opportunities"
+      titleLineOne="Placements That Turn"
+      titleLineTwo="Potential Into Careers"
+      description="Bridging the Gap Between Industry & Academia. Arise, Awake & Achieve."
+      ctaLabel="Explore Placement Opportunities"
     />
   );
 }

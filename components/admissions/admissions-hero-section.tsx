@@ -32,10 +32,11 @@ export function AdmissionsHeroSection({
   onFieldChange,
   onSubmit,
   breadcrumb = "/ Admissions",
-  titleLineOne = "Programs at",
+  titleLineOne = "Admissions at",
   titleLineTwo = "SVIET",
-  description = "Dream big. Pick smart. Build your future with practical, industry-ready learning.",
-  ctaLabel = "Show me courses",
+  description =
+    "Where Your Future Begins. Step into a learning environment designed to transform ambition into achievement. SVIET offers a structured, transparent, and student-friendly admission process focused on helping you unlock the right opportunities for your career.",
+  ctaLabel = "Apply Now",
 }: AdmissionsHeroSectionProps) {
   return (
     <section className="relative overflow-hidden bg-[#0e1230]">

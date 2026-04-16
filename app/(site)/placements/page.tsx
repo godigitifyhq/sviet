@@ -6,7 +6,7 @@ import { PlacementsPageComponent } from "@/components/placements/placements-page
 export const metadata: Metadata = {
   title: "Placements | SVIET",
   description:
-    "SVIET placement record — 45 LPA highest package, 500+ recruiting companies including Infosys, TCS, Wipro, Amazon.",
+    "Placements at SVIET with 50 LPA highest package, strong recruiter engagement, and structured career readiness support.",
 };
 
 export default function PlacementsPage() {

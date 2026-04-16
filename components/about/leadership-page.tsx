@@ -117,20 +117,20 @@ const LEADERSHIP_DESK: Leader[] = [
 
 const LEADERSHIP_PRIORITIES = [
   {
-    title: "Student-First Governance",
-    description: "Academic and administrative decisions are aligned to student development, well-being, and long-term career outcomes.",
+    title: "Student-Centered Direction",
+    description: "Institutional decisions are shaped around student growth, real-world readiness, and long-term professional confidence.",
   },
   {
-    title: "Academic Quality Assurance",
-    description: "Leadership teams continuously review curriculum delivery, faculty enablement, and institutional standards.",
+    title: "Quality and Academic Governance",
+    description: "Leadership continuously strengthens curriculum delivery, learning standards, and academic accountability.",
   },
   {
-    title: "Industry and Global Connect",
-    description: "Focused partnerships across industry and international networks strengthen exposure, research, and employability.",
+    title: "Innovation and Institutional Progress",
+    description: "Strategic planning supports innovation-led initiatives, interdisciplinary development, and future-focused education.",
   },
   {
-    title: "Innovation and Responsibility",
-    description: "The institution promotes ethical leadership, innovation-driven thinking, and social responsibility across programs.",
+    title: "Industry and Ecosystem Engagement",
+    description: "Active industry and institutional collaborations improve exposure, practical relevance, and career pathways for students.",
   },
 ];
 
@@ -146,7 +146,7 @@ export function LeadershipPage() {
           id="leadership-hero-heading"
           eyebrow="About SVIET"
           title="Leadership"
-          description="Institutional leadership at SVIET is guided by academic integrity, strategic planning, and student-first governance."
+          description="SVIET&apos;s leadership framework combines institutional vision, academic responsibility, and a student-first approach to growth."
           className="relative"
           titleClassName="text-[#000000]"
         />
@@ -156,8 +156,8 @@ export function LeadershipPage() {
         <SectionHeader
           id="leadership-priority-heading"
           eyebrow="Leadership Focus"
-          title="How Leadership Drives Institutional Growth"
-          description="A leadership framework designed to strengthen academic quality, student outcomes, and future-ready institutional planning."
+          title="How Leadership Translates Vision Into Outcomes"
+          description="The leadership model at SVIET connects policy, academic quality, and institutional planning with measurable student outcomes."
           className="mb-8"
           titleClassName="text-[#000000]"
           descriptionClassName="text-[#4B5563]"

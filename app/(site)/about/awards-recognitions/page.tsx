@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { AwardsPage } from "@/components/about/awards/awards-page";
 
 export const metadata: Metadata = {
-  title: "Awards, Rankings & Ratings | SVIET",
+  title: "Awards & Recognitions | SVIET",
   description:
-    "Explore awards, rankings, and recognitions earned by SVIET across national and international platforms.",
+    "Explore recognition highlights that reflect SVIET's academic quality, institutional progress, and innovation-led development.",
 };
 
 export default function AboutAwardsRecognitionsPage() {

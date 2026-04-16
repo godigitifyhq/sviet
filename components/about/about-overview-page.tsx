@@ -11,26 +11,26 @@ import { StatCard } from "@/components/about/stat-card";
 
 const RELATED_LINKS = [
   {
-    title: "Awards & Rankings",
-    description: "Marks of Quality",
+    title: "Accreditations & Recognition",
+    description: "Institutional quality and benchmarks",
     href: "/about/accreditations",
     icon: Award,
   },
   {
-    title: "SVIET Infrastructure",
-    description: "World-class learning facilities",
+    title: "Campus Infrastructure",
+    description: "Facilities that support modern learning",
     href: "/about/infrastructure",
     icon: Building2,
   },
   {
-    title: "Our Programs",
-    description: "Explore Learning at SVIET",
+    title: "Academic Programs",
+    description: "Explore multidisciplinary pathways",
     href: "/programs",
     icon: GraduationCap,
   },
   {
     title: "Leadership Desk",
-    description: "The visionaries behind SVIET",
+    description: "Vision guiding the institution",
     href: "/about/leadership",
     icon: Users,
   },
@@ -38,21 +38,21 @@ const RELATED_LINKS = [
 
 const INITIATIVES = [
   {
-    title: "NAAC Accreditation",
-    description: "Institutional quality benchmarks recognized through a structured accreditation process.",
-    meta: "B++ | 2.94 | 2024",
+    title: "Accreditation & Quality Standards",
+    description: "Recognized through NAAC accreditation with a B++ Grade (2.94 Score, 2024), reflecting institutional commitment to quality education.",
+    meta: "NAAC B++ | 2.94 Score | 2024",
   },
   {
-    title: "Academic Excellence",
-    description: "Outcome-focused curriculum, mentoring, and continuous assessment for strong academic performance.",
+    title: "Academic Approach",
+    description: "A curriculum designed around practical application, continuous evaluation, and mentorship that prepares students for real-world challenges.",
   },
   {
-    title: "Cultural Inclusivity",
-    description: "A multicultural campus environment that respects linguistic, regional, and international diversity.",
+    title: "Inclusive Campus Environment",
+    description: "A diverse and welcoming ecosystem that values cultural exchange, collaboration, and mutual growth.",
   },
   {
-    title: "Student Development",
-    description: "Holistic growth through modern labs, library resources, sports facilities, and co-curricular exposure.",
+    title: "Student Development Ecosystem",
+    description: "Modern infrastructure including labs, libraries, sports facilities, and activity spaces supporting both academic and personal development.",
   },
 ];
 
@@ -176,26 +176,26 @@ const LEADERSHIP_DESK: Leader[] = [
 const CULTURE_STATS = [
   { value: "28", label: "States" },
   { value: "75+", label: "Nationalities" },
-  { value: "35000+", label: "International Students" },
+  { value: "35,000+", label: "International Students" },
   { value: "50000+", label: "Students" },
 ];
 
 const INFRASTRUCTURE = [
   {
     title: "Research Centres",
-    description: "Dedicated spaces for interdisciplinary projects, innovation practice, and applied research activity.",
+    description: "Spaces dedicated to innovation, experimentation, and interdisciplinary collaboration that encourage students to explore ideas beyond curriculum boundaries.",
   },
   {
     title: "Library",
-    description: "A well-supported library ecosystem with academic references, journals, and digital learning access.",
+    description: "A structured learning environment with access to academic resources, references, and digital tools for focused study and research.",
   },
   {
-    title: "Labs",
-    description: "Program-specific laboratories that support practical learning and hands-on technical development.",
+    title: "Laboratories",
+    description: "Program-specific labs equipped for practical learning, enabling students to build hands-on technical capabilities.",
   },
   {
-    title: "Playgrounds",
-    description: "Sports and outdoor infrastructure that contribute to physical wellness and balanced campus life.",
+    title: "Playgrounds & Sports Facilities",
+    description: "Open spaces and sports infrastructure that promote physical activity, teamwork, and a balanced campus lifestyle.",
   },
 ];
 
@@ -285,12 +285,12 @@ export function AboutOverviewPage() {
           </p>
 
           <h1 id="about-hero-heading" className="mt-8 max-w-5xl text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl">
-            A Place for Discovery, Innovation and Quality Learning.
+            Where Learning Meets Innovation and Opportunity.
           </h1>
 
           <p className="mt-6 max-w-4xl text-lg leading-relaxed text-white/95 md:text-2xl">
-            Welcome to a unique destination of learning, innovation and research, providing the highest form of quality
-            in education while hosting the world&apos;s diversities.
+            SVIET is built as a space where education goes beyond classrooms, bringing together academic depth,
+            practical exposure, and a culture of innovation for real-world readiness.
           </p>
         </div>
       </section>
@@ -300,7 +300,7 @@ export function AboutOverviewPage() {
           <div>
             <p className="inline-flex items-center gap-3 text-xl font-medium leading-tight text-[#374151]">
               <span className="h-2.5 w-2.5 rotate-45 bg-[#14B8A6]" aria-hidden="true" />
-              Related links
+              Quick Access
             </p>
 
             <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -332,7 +332,7 @@ export function AboutOverviewPage() {
 
           <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-start">
             <h2 id="about-svgoi-heading" className="text-5xl font-semibold leading-tight md:text-7xl">
-              <span className="block text-[#1F2937]">Know About</span>
+              <span className="block text-[#1F2937]">About</span>
               <span className="mt-2 block bg-linear-to-r from-[#f7941d] via-[#4F46E5] to-[#EC4899] bg-clip-text text-transparent">
                 SVIET
               </span>
@@ -340,18 +340,20 @@ export function AboutOverviewPage() {
 
             <div className="max-w-4xl space-y-7 text-lg leading-relaxed text-[#111827]">
               <p>
-                With a legacy of <strong>more than 20 years in higher education</strong>, Swami Vivekanand Group of
-                Institutes has emerged as a leading institution focused on innovation, research, and industry-oriented
-                learning. With a vibrant community of students from diverse states and countries, SVIET continues to
-                strengthen its reputation as a destination for academic excellence and professional outcomes.
+                With over two decades of presence in higher education, Swami Vivekanand Group of Institutes has
+                developed into a multidisciplinary institution centered on applied learning, innovation, and
+                career-oriented education.
               </p>
 
               <p>
-                With the goal of delivering future-ready education, SVIET aligns academic practices with modern
-                standards, practical exposure, and strong mentorship. Across its multidisciplinary programs, the
-                institution supports students through advanced labs, contemporary infrastructure, and career-focused
-                training pathways. This commitment reflects SVIET&apos;s progressive approach to building quality education
-                with social and global relevance.
+                Established under the Shri Raghunath Rai Memorial Educational and Charitable Trust, the journey began
+                with SVIET in 2004 and expanded into engineering, pharmacy, management, education, polytechnic, IT,
+                and law.
+              </p>
+
+              <p>
+                SVIET continues to evolve as a learning ecosystem that combines academic structure with industry
+                relevance, supporting students through practical training, mentorship, and skill-based development.
               </p>
             </div>
           </div>
@@ -360,14 +362,14 @@ export function AboutOverviewPage() {
 
       <SectionWrapper aria-label="Location Highlight" className="bg-[#F5F7FB]">
         <InfoCard
-          title="Location Highlight"
-          description="Situated 30 km from Chandigarh on NH-1, the campus offers strong regional connectivity while maintaining a focused academic environment."
+          title="Strategic Location Advantage"
+          description="Located along the Chandigarh-Patiala highway (NH-1), the campus offers strong accessibility while maintaining a focused academic setting."
           className="border-[#BFDBFE]"
         >
           <p className="mt-4 text-sm leading-relaxed text-[#6B7280]">
-            Accessible from Chandigarh, Mohali, Panchkula, Ambala, and Patiala through major road links.
+            Easily connected to Chandigarh, Mohali, Panchkula, Ambala, and Patiala through major road links.
           </p>
-          <ul className="mt-4 flex flex-wrap gap-2 text-sm font-medium text-[#f7941d]" aria-label="Nearby connected cities">
+          <ul className="mt-4 flex flex-wrap gap-2 text-sm font-medium text-[#f7941d]" aria-label="Easily connected cities">
             {[
               "Chandigarh",
               "Mohali",
@@ -387,8 +389,8 @@ export function AboutOverviewPage() {
         <SectionHeader
           id="initiatives-heading"
           eyebrow="Institutional Focus"
-          title="Initiatives and Achievements"
-          description="Institutional priorities that support quality education, inclusion, and long-term student development."
+          title="Institutional Focus & Achievements"
+          description="SVIET emphasizes consistent growth through structured initiatives that support academic quality and student success."
           titleClassName="text-[#000000]"
           className="mb-8"
         />
@@ -403,9 +405,9 @@ export function AboutOverviewPage() {
       <SectionWrapper aria-labelledby="philosophy-heading" className="bg-[#EEF4FF]">
         <SectionHeader
           id="philosophy-heading"
-          eyebrow="Guiding Principles"
+          eyebrow="Vision & Direction"
           title="Our Philosophy"
-          description="To become a leading global educational institution that shapes ethical professionals, future-ready leaders, and responsible citizens."
+          description="SVIET aims to build a progressive learning environment that nurtures thinkers, innovators, and future leaders through relevant and responsible education."
           className="mx-auto max-w-4xl text-center"
           titleClassName="text-[#000000]"
           descriptionClassName="text-[#4B5563]"
@@ -444,7 +446,7 @@ export function AboutOverviewPage() {
           id="culture-diversity-heading"
           eyebrow="Campus Life"
           title="Culture and Diversity"
-          description="A vibrant student community built on inclusion, cross-cultural learning, and shared academic purpose."
+          description="A dynamic campus environment built on inclusion, collaboration, and shared learning where ideas and perspectives are exchanged openly."
           centered
           titleClassName="text-[#000000]"
           className="mb-8"
@@ -457,8 +459,8 @@ export function AboutOverviewPage() {
         </div>
 
         <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-[#6B7280]">
-          Students from across India and multiple international backgrounds learn together in a collaborative and
-          respectful campus environment.
+          Students across India and international communities learn, interact, and grow together, creating a globally
+          aware and culturally rich academic environment.
         </p>
       </SectionWrapper>
 
@@ -467,7 +469,7 @@ export function AboutOverviewPage() {
           id="infrastructure-heading"
           eyebrow="Campus"
           title="Infrastructure"
-          description="Core academic and campus facilities that support learning, innovation, and student well-being."
+          description="Facilities designed to support academic growth, innovation, and overall student development while balancing learning with well-being."
           className="mb-8"
           titleClassName="text-[#000000]"
         />

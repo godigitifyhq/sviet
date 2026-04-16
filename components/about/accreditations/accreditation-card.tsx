@@ -14,7 +14,7 @@ export function AccreditationCard({ title, description, ctaLabel, logoSrc, logoA
       <div className="relative h-14 w-40">
         <Image src={logoSrc} alt={logoAlt} fill loading="lazy" className="object-contain object-left" sizes="160px" />
       </div>
-      <h3 className="mt-5 text-xl font-semibold text-[#f7941d]">{title}</h3>
+      <h3 className="mt-5 text-xl font-semibold text-[#111827]">{title}</h3>
       <p className="mt-3 text-sm leading-relaxed text-[#6B7280]">{description}</p>
       <button
         type="button"

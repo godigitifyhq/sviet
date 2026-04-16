@@ -2,24 +2,29 @@ import Image from "next/image";
 
 const ENRICHING_ITEMS = [
   {
-    title: "3 year regular programs",
+    title: "Career-oriented curriculum",
     description:
-      "Solid foundations, clear outcomes, and a steady path to career readiness.",
+      "Programs are structured to build capability, confidence, and clear career direction.",
   },
   {
-    title: "4 year honors programs",
+    title: "Practical exposure and live projects",
     description:
-      "Go deeper with projects, internships, and advanced domain expertise.",
+      "Students apply classroom learning through hands-on work and guided industry tasks.",
   },
   {
-    title: "4 year research programs",
+    title: "Strong placement ecosystem",
     description:
-      "If research drives you, this path helps you move from curiosity to contribution.",
+      "Focused support helps students prepare for interviews, hiring rounds, and career transitions.",
   },
   {
-    title: "Dual degree programs",
+    title: "Vibrant campus life",
     description:
-      "One journey, two qualifications, and stronger career value at graduation.",
+      "The campus experience supports personal growth, collaboration, and a balanced student journey.",
+  },
+  {
+    title: "Innovation and entrepreneurship culture",
+    description:
+      "Students are encouraged to build, test, and explore new ideas through a supportive ecosystem.",
   },
 ] as const;
 
@@ -29,12 +34,10 @@ export function AdmissionsEnrichingWaysSection() {
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 md:grid-cols-[1fr_360px] md:px-6 lg:grid-cols-[1fr_420px]">
         <div>
           <h2 className="text-4xl font-bold leading-tight text-[#1b1b22] md:text-5xl">
-            Choose how you want to
-            <br />
-            <span className="text-[#2563EB]">pursue your bachelor&apos;s program</span>
+            Why Choose <span className="text-[#2563EB]">SVIET</span>
           </h2>
           <p className="mt-4 max-w-xl text-sm text-[#4a4a58] md:text-base">
-            Your goal, your pace, your edge. SVIET gives you flexible pathways to grow with confidence.
+            SVIET focuses on building capability, not just degrees.
           </p>
 
           <div className="mt-8 grid gap-5 md:grid-cols-2">

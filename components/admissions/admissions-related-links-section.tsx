@@ -3,18 +3,18 @@ import { ArrowUpRight, GraduationCap } from "lucide-react";
 
 const RELATED_LINKS = [
   {
-    title: "Master's programs",
-    description: "Ready for your next leap after graduation? Start here.",
+    title: "Diploma Programs",
+    description: "View eligibility criteria and application details for diploma pathways.",
     href: "/programs",
   },
   {
-    title: "Dual degree programs",
-    description: "Two credentials. One bold career launch.",
+    title: "Undergraduate Programs",
+    description: "Explore admission steps and requirements for undergraduate study.",
     href: "/programs",
   },
   {
-    title: "Bachelor programs",
-    description: "Finished 12th? Let your degree do the talking.",
+    title: "Postgraduate Programs",
+    description: "Check detailed guidelines for master's-level applications.",
     href: "/programs",
   },
 ] as const;
@@ -25,7 +25,7 @@ export function AdmissionsRelatedLinksSection() {
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
         <p className="flex items-center gap-2 text-sm font-semibold text-[#1f1f1f]">
           <span className="text-[#1ca1b8]">▸</span>
-          Related links
+          How to Apply for Specific Programs
         </p>
 
         <div className="mt-5 grid gap-4 md:grid-cols-3">
