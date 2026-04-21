@@ -9,31 +9,31 @@ const testimonials = [
     id: 1,
     name: "Serena Chokshi",
     title: '"Why I chose to study at SVIET"',
-    image: "/assets/img/college/1st.png",
+    image: "/assets/img/students/stu1.png",
   },
   {
     id: 2,
     name: "Amarpreet Kaur",
     title: '"My student life at SVIET"',
-    image: "/assets/img/college/1st.png",
+    image: "/assets/img/students/stu2.png",
   },
   {
     id: 3,
     name: "Juhi Lakhani",
     title: '"My journey as a BDes student at SVIET"',
-    image: "/assets/img/college/1st.png",
+    image: "/assets/img/students/stu3.png",
   },
   {
     id: 4,
     name: "Kunal",
     title: '"My learning journey at SVIET"',
-    image: "/assets/img/college/1st.png",
+    image: "/assets/img/students/stu4.png",
   },
   {
     id: 5,
     name: "Rahul Sharma",
     title: '"How SVIET shaped my career path"',
-    image: "/assets/img/college/1st.png",
+    image: "/assets/img/students/stu5.png",
   },
 ];
 
@@ -89,7 +89,7 @@ export function StudentTestimonialsSection() {
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const position = (e.target as HTMLDivElement).scrollLeft;
     setScrollPosition(position);
-    
+
     // Update active index based on scroll position
     const newIndex = Math.round((position - 16) / CARD_WITH_GAP);
     setActiveIndex(Math.max(0, Math.min(newIndex, testimonials.length - 1)));
@@ -104,7 +104,7 @@ export function StudentTestimonialsSection() {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isDragging || !containerRef.current) return;
     e.preventDefault();
-    
+
     const x = e.clientX;
     const diff = dragStart - x;
     containerRef.current.scrollLeft = scrollPosition + diff;
@@ -139,7 +139,10 @@ export function StudentTestimonialsSection() {
         <div className="mb-12">
           <h2 className="text-3xl font-bold md:text-4xl">
             <span className="text-[#f7941d]">Our students speak</span>
-            <span className="text-[#111827]"> hear it from those learning with us.</span>
+            <span className="text-[#111827]">
+              {" "}
+              hear it from those learning with us.
+            </span>
           </h2>
         </div>
 
@@ -186,17 +189,23 @@ export function StudentTestimonialsSection() {
                   {/* Top Section - Quote and Title */}
                   <div>
                     {/* Quote Mark */}
-                    <div className="mb-3 text-4xl text-[#F4B740] font-bold">"</div>
+                    <div className="mb-3 text-4xl text-[#F4B740] font-bold">
+                      "
+                    </div>
                     {/* Quote Title */}
-                    <p className="text-sm font-semibold leading-tight">{testimonial.title}</p>
+                    <p className="text-sm font-semibold leading-tight">
+                      {testimonial.title}
+                    </p>
                     {/* Name */}
-                    <p className="mt-3 text-xs text-[#6B7280]">{testimonial.name}</p>
+                    <p className="mt-3 text-xs text-[#6B7280]">
+                      {testimonial.name}
+                    </p>
                   </div>
 
                   {/* Bottom Section - Image and Watch Video Button */}
                   <div className="flex items-end justify-between">
                     {/* Student Image */}
-                    <div className="relative w-24 h-32 -mb-6">
+                    <div className="relative w-40 h-52 -mb-6">
                       <Image
                         src={testimonial.image}
                         alt={testimonial.name}
@@ -208,13 +217,20 @@ export function StudentTestimonialsSection() {
                     {/* Watch Video Button */}
                     <button className="flex items-center gap-2 rounded-full bg-[#f7941d] px-4 py-2 text-white hover:bg-[#2563EB] transition">
                       <span className="text-xs font-semibold">Watch video</span>
-                      <Play size={16} className="fill-[#F4B740] text-[#F4B740]" />
+                      <Play
+                        size={16}
+                        className="fill-[#F4B740] text-[#F4B740]"
+                      />
                     </button>
                   </div>
 
                   {/* Decorative Elements */}
-                  <div className="absolute top-8 right-8 text-[#D1D5DB] text-2xl opacity-40">,</div>
-                  <div className="absolute top-12 right-12 text-[#D1D5DB] text-xl opacity-30">,</div>
+                  <div className="absolute top-8 right-8 text-[#D1D5DB] text-2xl opacity-40">
+                    ,
+                  </div>
+                  <div className="absolute top-12 right-12 text-[#D1D5DB] text-xl opacity-30">
+                    ,
+                  </div>
                 </div>
               </div>
             ))}
