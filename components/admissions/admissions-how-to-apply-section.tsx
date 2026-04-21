@@ -7,23 +7,28 @@ import { ChevronDown } from "lucide-react";
 const APPLY_STEPS = [
   {
     title: "Complete the online application form",
-    detail: "Start your admission journey by submitting the online application with accurate details.",
+    detail:
+      "Start your admission journey by submitting the online application with accurate details.",
   },
   {
     title: "Receive Application ID via email",
-    detail: "Once submitted, you will receive a unique Application ID for future reference.",
+    detail:
+      "Once submitted, you will receive a unique Application ID for future reference.",
   },
   {
     title: "Appear for SVIET-EEE or submit JEE score",
-    detail: "Students may take the SVIET-EEE test or apply using valid JEE Main scores.",
+    detail:
+      "Students may take the SVIET-EEE test or apply using valid JEE Main scores.",
   },
   {
     title: "Check merit list and qualification status",
-    detail: "Review your status after evaluation through the applicable admission route.",
+    detail:
+      "Review your status after evaluation through the applicable admission route.",
   },
   {
     title: "Attend interview if applicable",
-    detail: "Some programs may require an interview or additional interaction before confirmation.",
+    detail:
+      "Some programs may require an interview or additional interaction before confirmation.",
   },
   {
     title: "Document verification",
@@ -31,11 +36,13 @@ const APPLY_STEPS = [
   },
   {
     title: "Receive provisional admission offer",
-    detail: "Eligible applicants receive a provisional offer after successful verification.",
+    detail:
+      "Eligible applicants receive a provisional offer after successful verification.",
   },
   {
     title: "Complete fee payment",
-    detail: "Confirm your seat by completing the required admission fee payment.",
+    detail:
+      "Confirm your seat by completing the required admission fee payment.",
   },
   {
     title: "Receive final admission confirmation",
@@ -76,33 +83,35 @@ export function AdmissionsHowToApplySection() {
                       <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#fed7aa] text-xs font-semibold text-[#f7941d]">
                         {index + 1}
                       </span>
-                      <p className="text-base font-semibold text-[#16161d] md:text-lg">{step.title}</p>
+                      <p className="text-base font-semibold text-[#16161d] md:text-lg">
+                        {step.title}
+                      </p>
                     </div>
-                    <ChevronDown className={`mt-1 h-4 w-4 shrink-0 text-[#64637c] transition ${isActive ? "rotate-180" : ""}`} />
+                    <ChevronDown
+                      className={`mt-1 h-4 w-4 shrink-0 text-[#64637c] transition ${isActive ? "rotate-180" : ""}`}
+                    />
                   </button>
 
-                  {isActive ? <p className="ml-9 mt-2 max-w-2xl text-sm leading-relaxed text-[#4f4f5f]">{step.detail}</p> : null}
+                  {isActive ? (
+                    <p className="ml-9 mt-2 max-w-2xl text-sm leading-relaxed text-[#4f4f5f]">
+                      {step.detail}
+                    </p>
+                  ) : null}
                 </article>
               );
             })}
           </div>
         </div>
 
-        <div className="relative flex items-center justify-center rounded-2xl bg-[#2563EB] p-6 md:p-8">
-          <div className="w-full max-w-sm rounded-xl bg-white p-4 shadow-xl">
-            <p className="rounded-full bg-[#eaf1ff] px-3 py-2 text-xs font-semibold text-[#2563EB]">admissions.sviet.ac.in</p>
-            <p className="mt-2 text-sm font-semibold text-[#1a1a22]">SVIET admissions portal</p>
-            <div className="relative mt-3 overflow-hidden rounded-lg border border-[#ecebf5]">
-              <Image
-                src="/assets/img/college/main_gate.png"
-                alt="SVIET admissions portal preview"
-                width={420}
-                height={240}
-                className="h-40 w-full object-cover"
-              />
-            </div>
-            <div className="mt-3 h-3 w-3/4 rounded-full bg-[#ecebf5]" />
-          </div>
+        <div className="relative flex items-center justify-center bg-[#f5f7fb]">
+          <Image
+            src="/assets/img/banner/processform.jpeg"
+            alt="SVIET admission process steps"
+            width={900}
+            height={1200}
+            className="h-auto w-full max-w-140 object-contain"
+            priority
+          />
         </div>
       </div>
     </section>

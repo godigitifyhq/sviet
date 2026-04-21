@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import type { ApplyFormErrors, ApplyFormState, ProgramOption } from "@/components/admissions/types";
+import type {
+  ApplyFormErrors,
+  ApplyFormState,
+  ProgramOption,
+} from "@/components/admissions/types";
 
 type AdmissionsHeroSectionProps = {
   form: ApplyFormState;
@@ -34,14 +38,13 @@ export function AdmissionsHeroSection({
   breadcrumb = "/ Admissions",
   titleLineOne = "Admissions at",
   titleLineTwo = "SVIET",
-  description =
-    "Where Your Future Begins. Step into a learning environment designed to transform ambition into achievement. SVIET offers a structured, transparent, and student-friendly admission process focused on helping you unlock the right opportunities for your career.",
+  description = "Where Your Future Begins. Step into a learning environment designed to transform ambition into achievement. SVIET offers a structured, transparent, and student-friendly admission process focused on helping you unlock the right opportunities for your career.",
   ctaLabel = "Apply Now",
 }: AdmissionsHeroSectionProps) {
   return (
     <section className="relative overflow-hidden bg-[#0e1230]">
       <Image
-        src="/assets/img/banner_hero.jpg"
+        src="/assets/img/banner/AddmissionBanner.jpeg"
         alt="Admissions"
         fill
         priority
@@ -75,34 +78,49 @@ export function AdmissionsHeroSection({
         </div>
 
         <div className="rounded-xl bg-white p-5 shadow-2xl md:p-6">
-          <h2 className="text-2xl font-bold text-[#111]">Want to know more? Let&apos;s talk.</h2>
-          <p className="mt-1 text-sm text-[#555]">Drop your details. We&apos;ll guide your next step.</p>
+          <h2 className="text-2xl font-bold text-[#111]">
+            Want to know more? Let&apos;s talk.
+          </h2>
+          <p className="mt-1 text-sm text-[#555]">
+            Drop your details. We&apos;ll guide your next step.
+          </p>
 
           {isSuccess ? (
             <div className="mt-5 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
-              You&apos;re in. Our admissions team will connect with you within 24 hours.
+              You&apos;re in. Our admissions team will connect with you within
+              24 hours.
             </div>
           ) : (
             <form className="mt-4 space-y-3" onSubmit={onSubmit}>
               <div>
-                <label className="mb-1 block text-xs font-semibold text-[#333]">Full name</label>
+                <label className="mb-1 block text-xs font-semibold text-[#333]">
+                  Full name
+                </label>
                 <input
                   type="text"
                   placeholder="Enter your full name"
                   value={form.name}
-                  onChange={(event) => onFieldChange("name", event.target.value)}
+                  onChange={(event) =>
+                    onFieldChange("name", event.target.value)
+                  }
                   className={inputClass}
                 />
-                {errors.name ? <p className="mt-1 text-xs text-red-600">{errors.name}</p> : null}
+                {errors.name ? (
+                  <p className="mt-1 text-xs text-red-600">{errors.name}</p>
+                ) : null}
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-semibold text-[#333]">Program</label>
+                <label className="mb-1 block text-xs font-semibold text-[#333]">
+                  Program
+                </label>
                 <select
                   title="Program"
                   className={inputClass}
                   value={form.programId}
-                  onChange={(event) => onFieldChange("programId", event.target.value)}
+                  onChange={(event) =>
+                    onFieldChange("programId", event.target.value)
+                  }
                 >
                   <option value="" disabled>
                     Select program
@@ -113,31 +131,47 @@ export function AdmissionsHeroSection({
                     </option>
                   ))}
                 </select>
-                {errors.programId ? <p className="mt-1 text-xs text-red-600">{errors.programId}</p> : null}
+                {errors.programId ? (
+                  <p className="mt-1 text-xs text-red-600">
+                    {errors.programId}
+                  </p>
+                ) : null}
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-semibold text-[#333]">Phone number</label>
+                <label className="mb-1 block text-xs font-semibold text-[#333]">
+                  Phone number
+                </label>
                 <input
                   type="tel"
                   placeholder="(000) 000-0000"
                   value={form.phone}
-                  onChange={(event) => onFieldChange("phone", event.target.value)}
+                  onChange={(event) =>
+                    onFieldChange("phone", event.target.value)
+                  }
                   className={inputClass}
                 />
-                {errors.phone ? <p className="mt-1 text-xs text-red-600">{errors.phone}</p> : null}
+                {errors.phone ? (
+                  <p className="mt-1 text-xs text-red-600">{errors.phone}</p>
+                ) : null}
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-semibold text-[#333]">Email</label>
+                <label className="mb-1 block text-xs font-semibold text-[#333]">
+                  Email
+                </label>
                 <input
                   type="email"
                   placeholder="Enter your email"
                   value={form.email}
-                  onChange={(event) => onFieldChange("email", event.target.value)}
+                  onChange={(event) =>
+                    onFieldChange("email", event.target.value)
+                  }
                   className={inputClass}
                 />
-                {errors.email ? <p className="mt-1 text-xs text-red-600">{errors.email}</p> : null}
+                {errors.email ? (
+                  <p className="mt-1 text-xs text-red-600">{errors.email}</p>
+                ) : null}
               </div>
 
               <button
@@ -147,7 +181,9 @@ export function AdmissionsHeroSection({
               >
                 {isSubmitting ? "Submitting..." : "Call me back"}
               </button>
-              {submitError ? <p className="text-sm text-red-600">{submitError}</p> : null}
+              {submitError ? (
+                <p className="text-sm text-red-600">{submitError}</p>
+              ) : null}
             </form>
           )}
         </div>

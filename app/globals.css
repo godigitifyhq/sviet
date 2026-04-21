@@ -13,6 +13,17 @@ body {
   background: #f6f6f6;
 }
 
+/* Global sharp-corner override: remove rounded corners across the site. */
+:root {
+  --radius: 0px;
+}
+
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
 h1,
 h2,
 h3 {

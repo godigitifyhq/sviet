@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { ChevronDown, GraduationCap, Search } from "lucide-react";
 
 import type { ProgramOption } from "@/components/admissions/types";
@@ -12,7 +13,11 @@ type AdmissionsCareerProgramsSectionProps = {
 function detectLevel(title: string) {
   const text = title.toLowerCase();
 
-  if (text.includes("master") || text.includes("mba") || text.includes("m.tech")) {
+  if (
+    text.includes("master") ||
+    text.includes("mba") ||
+    text.includes("m.tech")
+  ) {
     return "Postgraduate";
   }
 
@@ -24,17 +29,25 @@ function detectLevel(title: string) {
 }
 
 function cardSummary(program: ProgramOption) {
-  return program.eligibility || program.shortDescription || "Eligibility details available on the program page.";
+  return (
+    program.eligibility ||
+    program.shortDescription ||
+    "Eligibility details available on the program page."
+  );
 }
 
-export function AdmissionsCareerProgramsSection({ programs }: AdmissionsCareerProgramsSectionProps) {
+export function AdmissionsCareerProgramsSection({
+  programs,
+}: AdmissionsCareerProgramsSectionProps) {
   const [keyword, setKeyword] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("All levels");
   const [selectedFaculty, setSelectedFaculty] = useState("All faculties");
   const [expanded, setExpanded] = useState(false);
 
   const levels = useMemo(() => {
-    const values = new Set(programs.map((program) => detectLevel(program.title)));
+    const values = new Set(
+      programs.map((program) => detectLevel(program.title)),
+    );
     return ["All levels", ...Array.from(values)];
   }, [programs]);
 
@@ -55,11 +68,16 @@ export function AdmissionsCareerProgramsSection({ programs }: AdmissionsCareerPr
       const matchesKeyword =
         normalizedKeyword.length === 0 ||
         program.title.toLowerCase().includes(normalizedKeyword) ||
-        (program.shortDescription || "").toLowerCase().includes(normalizedKeyword);
+        (program.shortDescription || "")
+          .toLowerCase()
+          .includes(normalizedKeyword);
 
-      const matchesLevel = selectedLevel === "All levels" || detectLevel(program.title) === selectedLevel;
+      const matchesLevel =
+        selectedLevel === "All levels" ||
+        detectLevel(program.title) === selectedLevel;
       const matchesFaculty =
-        selectedFaculty === "All faculties" || (program.department || "Unassigned").trim() === selectedFaculty;
+        selectedFaculty === "All faculties" ||
+        (program.department || "Unassigned").trim() === selectedFaculty;
 
       return matchesKeyword && matchesLevel && matchesFaculty;
     });
@@ -75,8 +93,9 @@ export function AdmissionsCareerProgramsSection({ programs }: AdmissionsCareerPr
         </h2>
 
         <p className="mx-auto mt-5 max-w-3xl text-center text-sm leading-relaxed text-[#4f4f5f] md:text-base">
-          Choose from a wide range of programs designed for future-ready careers. Each program is aligned with
-          industry requirements and career outcomes.
+          Choose from a wide range of programs designed for future-ready
+          careers. Each program is aligned with industry requirements and career
+          outcomes.
         </p>
 
         <div className="mx-auto mt-6 flex max-w-2xl items-center rounded-full bg-[#eaf1ff] px-4 py-2">
@@ -124,20 +143,36 @@ export function AdmissionsCareerProgramsSection({ programs }: AdmissionsCareerPr
             </label>
           </div>
 
-          <button type="button" onClick={() => setExpanded((previous) => !previous)} className="text-xs font-semibold uppercase tracking-wide text-[#2563EB]">
+          <button
+            type="button"
+            onClick={() => setExpanded((previous) => !previous)}
+            className="text-xs font-semibold uppercase tracking-wide text-[#2563EB]"
+          >
             {expanded ? "Collapse all" : "Expand all"}
           </button>
         </div>
 
-        <div className="mt-5 grid max-h-130 gap-3 overflow-y-auto pr-1 md:grid-cols-4">
+        <div
+          className={`mt-5 grid gap-3 pr-1 md:grid-cols-4 ${expanded ? "max-h-none overflow-visible" : "max-h-130 overflow-y-auto"}`}
+        >
           {visiblePrograms.map((program) => (
-            <article key={program.id} className="rounded-xl border border-[#d7d6e2] bg-white p-4">
-              <GraduationCap className="h-4 w-4 text-[#f7941d]" />
-              <h3 className="mt-3 text-sm font-bold leading-snug text-[#1e1e24]">{program.title}</h3>
-              <p className={`mt-2 text-xs leading-relaxed text-[#4b4b57] ${expanded ? "line-clamp-none" : "line-clamp-4"}`}>
-                {cardSummary(program)}
-              </p>
-            </article>
+            <Link
+              key={program.id}
+              href={program.slug ? `/programs/${program.slug}` : "/programs"}
+              className="block border border-[#d7d6e2] bg-white p-4 transition hover:border-[#c4c2d7] hover:bg-[#fafbff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]/40"
+            >
+              <article>
+                <GraduationCap className="h-4 w-4 text-[#f7941d]" />
+                <h3 className="mt-3 text-sm font-bold leading-snug text-[#1e1e24]">
+                  {program.title}
+                </h3>
+                <p
+                  className={`mt-2 text-xs leading-relaxed text-[#4b4b57] ${expanded ? "line-clamp-none" : "line-clamp-4"}`}
+                >
+                  {cardSummary(program)}
+                </p>
+              </article>
+            </Link>
           ))}
           {visiblePrograms.length === 0 ? (
             <div className="rounded-xl border border-dashed border-[#d7d6e2] bg-white p-6 text-sm text-[#555] md:col-span-4">
@@ -147,12 +182,12 @@ export function AdmissionsCareerProgramsSection({ programs }: AdmissionsCareerPr
         </div>
 
         <div className="mt-6 flex justify-center">
-          <button
-            type="button"
-            className="rounded-md bg-[#f7941d] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#d97706]"
+          <Link
+            href="/program-finder"
+            className="bg-[#f7941d] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#d97706]"
           >
             Take me to course finder
-          </button>
+          </Link>
         </div>
       </div>
     </section>
