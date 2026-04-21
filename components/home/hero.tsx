@@ -35,14 +35,17 @@ type HeroSectionProps = {
 };
 
 type HeroSlide = {
-  imageSrc: string;
+  imageSrc?: string;
+  videoSrc?: string;
   imageAlt: string;
 };
 
 export function HeroSection({
-  imageSrc = "/assets/img/banner_hero.jpg",
+  imageSrc = "/assets/img/banner/sviet-tag.jpeg",
   imageAlt = "SVIET Banner",
 }: HeroSectionProps) {
+  const VIDEO_SLIDE_INDEX = 2;
+
   const heroSlides: HeroSlide[] = [
     { imageSrc, imageAlt },
     {
@@ -50,8 +53,9 @@ export function HeroSection({
       imageAlt: "SVIET Campus Highlights",
     },
     {
-      imageSrc: "/assets/img/college/main_gate.png",
-      imageAlt: "SVIET Main Gate",
+      videoSrc:
+        "https://www.youtube.com/embed/Qrlxha0egks?autoplay=1&mute=1&controls=1&loop=1&playlist=Qrlxha0egks&rel=0&modestbranding=1&playsinline=1",
+      imageAlt: "SVIET Video",
     },
   ];
 
@@ -67,7 +71,13 @@ export function HeroSection({
 
   useEffect(() => {
     const interval = window.setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+      setActiveSlide((prev) => {
+        if (prev === VIDEO_SLIDE_INDEX) {
+          return prev;
+        }
+
+        return (prev + 1) % heroSlides.length;
+      });
     }, 5000);
 
     return () => window.clearInterval(interval);
@@ -215,17 +225,29 @@ export function HeroSection({
         {/* Mobile Layout */}
         <div className="md:hidden flex flex-col items-center gap-6 px-4 py-8">
           <div className="relative w-full h-80 overflow-hidden rounded-lg">
-            {heroSlides.map((slide, index) => (
-              <Image
-                key={slide.imageAlt}
-                src={slide.imageSrc}
-                alt={slide.imageAlt}
-                fill
-                sizes="100vw"
-                className={`transition-opacity duration-700 ${index === 1 ? "object-contain bg-[#0f172a]" : "object-cover"} ${activeSlide === index ? "opacity-100" : "opacity-0"}`}
-                priority={index === 0}
-              />
-            ))}
+            {heroSlides.map((slide, index) =>
+              slide.videoSrc ? (
+                <iframe
+                  key={slide.imageAlt}
+                  src={slide.videoSrc}
+                  title={slide.imageAlt}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${activeSlide === index ? "opacity-100" : "opacity-0"}`}
+                />
+              ) : (
+                <Image
+                  key={slide.imageAlt}
+                  src={slide.imageSrc ?? ""}
+                  alt={slide.imageAlt}
+                  fill
+                  sizes="(max-width: 767px) calc(100vw - 2rem), 100vw"
+                  className={`transition-opacity duration-700 ${index === 1 ? "object-contain bg-[#0f172a]" : "object-cover"} ${activeSlide === index ? "opacity-100" : "opacity-0"}`}
+                  priority={index === 0}
+                />
+              ),
+            )}
             <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-black/35 px-3 py-1.5">
               {heroSlides.map((slide, index) => (
                 <button
@@ -332,19 +354,31 @@ export function HeroSection({
 
         {/* Desktop Layout */}
         <div className="hidden md:block relative w-full h-full min-h-200 overflow-hidden">
-          {heroSlides.map((slide, index) => (
-            <Image
-              key={slide.imageAlt}
-              src={slide.imageSrc}
-              alt={slide.imageAlt}
-              fill
-              sizes="100vw"
-              className={`transition-opacity duration-700 ${index === 1 ? "object-contain bg-[#0f172a]" : "object-cover"} ${activeSlide === index ? "opacity-100" : "opacity-0"}`}
-              priority={index === 0}
-            />
-          ))}
+          {heroSlides.map((slide, index) =>
+            slide.videoSrc ? (
+              <iframe
+                key={slide.imageAlt}
+                src={slide.videoSrc}
+                title={slide.imageAlt}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${activeSlide === index ? "opacity-100" : "opacity-0"}`}
+              />
+            ) : (
+              <Image
+                key={slide.imageAlt}
+                src={slide.imageSrc ?? ""}
+                alt={slide.imageAlt}
+                fill
+                sizes="100vw"
+                className={`transition-opacity duration-700 ${index === 1 ? "object-contain bg-[#0f172a]" : "object-cover"} ${activeSlide === index ? "opacity-100" : "opacity-0"}`}
+                priority={index === 0}
+              />
+            ),
+          )}
 
-          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 bg-black/1" />
 
           <div className="absolute bottom-6 left-10 flex items-center gap-2 rounded-full bg-black/35 px-4 py-2">
             {heroSlides.map((slide, index) => (

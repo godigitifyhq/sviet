@@ -17,7 +17,7 @@ const milestonePlacements = [
     company: "Caelius Consulting",
     studentName: "Laxmi & Vaishnavi",
     position: "19 LPA Placements",
-    studentImage: "/assets/img/students/Placement-Mockup-1.png",
+    studentImage: "/assets/img/students/11.png",
     companyLogo: "/assets/img/companies/jio_digital.png",
   },
   {
@@ -29,7 +29,7 @@ const milestonePlacements = [
     company: "Campus Community",
     studentName: "Global Student Body",
     position: "75+ Nationalities | 28 States",
-    studentImage: "/assets/img/students/pppp.png",
+    studentImage: "/assets/img/students/22.png",
     companyLogo: "/assets/img/companies/amazon.png",
   },
   {
@@ -42,7 +42,7 @@ const milestonePlacements = [
     company: "Industry Network",
     studentName: "Career Readiness",
     position: "Skills aligned with recruiter expectations",
-    studentImage: "/assets/img/students/pppp.png",
+    studentImage: "/assets/img/students/33.png",
     companyLogo: "/assets/img/companies/goldman_sachs.png",
   },
 ];
