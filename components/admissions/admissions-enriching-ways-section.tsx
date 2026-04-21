@@ -52,11 +52,11 @@ export function AdmissionsEnrichingWaysSection() {
 
         <div className="relative overflow-hidden rounded-xl">
           <Image
-            src="/assets/img/college/main_gate.png"
+            src="/assets/img/section_card/WhySVIET.jpeg"
             alt="Students learning"
             width={420}
             height={500}
-            className="h-full min-h-75 w-full object-cover"
+            className="h-full min-h-75 w-full object-left object-cover"
           />
         </div>
       </div>

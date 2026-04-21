@@ -129,27 +129,16 @@ export const metadata: Metadata = {
 export default function OurInitiativesPage() {
   return (
     <main className="bg-white text-black">
-      <section className="relative overflow-hidden border-b border-[#E5E7EB] bg-[#0e1230]">
+      <section className="relative h-200  overflow-hidden border-b border-[#E5E7EB]">
         <Image
-          src="/assets/img/banner_hero.jpg"
+          src="/assets/img/banner/uniq11.jpg"
           alt="Innovation and student initiatives at SVIET"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-top"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-linear-to-r from-black/85 via-black/65 to-black/35" />
-        <div className="relative mx-auto max-w-7xl px-4 py-24 text-white md:px-6 md:py-32">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f7941d]">Innovation at SVIET</p>
-          <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-tight md:text-6xl">
-            Innovation &amp; Student Initiatives at SVIET
-          </h1>
-          <p className="mt-4 text-xl font-medium text-white/90 md:text-2xl">Where Ideas Evolve Into Real Impact</p>
-          <p className="mt-5 max-w-3xl text-sm leading-relaxed text-white/85 md:text-base">
-            At SVIET, learning extends beyond academics through a dynamic ecosystem of student-led initiatives,
-            innovation platforms, and professional communities.
-          </p>
-        </div>
+        
       </section>
 
       <section className="bg-white">

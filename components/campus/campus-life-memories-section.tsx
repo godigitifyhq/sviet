@@ -25,7 +25,7 @@ export function CampusLifeMemoriesSection() {
           </div>
           <div className="relative overflow-hidden rounded-xl">
             <Image
-              src="/assets/img/campus-life/r1c2.png"
+              src="/assets/img/section_card/LifetimeMemory.jpeg"
               alt="Campus activities and sports"
               width={1200}
               height={760}

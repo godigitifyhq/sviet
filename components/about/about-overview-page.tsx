@@ -184,18 +184,26 @@ const INFRASTRUCTURE = [
   {
     title: "Research Centres",
     description: "Spaces dedicated to innovation, experimentation, and interdisciplinary collaboration that encourage students to explore ideas beyond curriculum boundaries.",
+    imageSrc: "/assets/img/section_card/ResearchCenter.jpeg",
+    imageAlt: "Research centres for experimentation and applied learning",
   },
   {
     title: "Library",
     description: "A structured learning environment with access to academic resources, references, and digital tools for focused study and research.",
+    imageSrc: "/assets/img/section_card/Library.jpeg",
+    imageAlt: "Library and study resources for focused academic work",
   },
   {
     title: "Laboratories",
     description: "Program-specific labs equipped for practical learning, enabling students to build hands-on technical capabilities.",
+    imageSrc: "/assets/img/section_card/Labo.jpeg",
+    imageAlt: "Program-specific technical laboratories at SVIET",
   },
   {
     title: "Playgrounds & Sports Facilities",
     description: "Open spaces and sports infrastructure that promote physical activity, teamwork, and a balanced campus lifestyle.",
+    imageSrc: "/assets/img/section_card/Playground.jpeg",
+    imageAlt: "Sports facilities promoting teamwork and well-being",
   },
 ];
 
@@ -476,7 +484,13 @@ export function AboutOverviewPage() {
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {INFRASTRUCTURE.map((item) => (
-            <InfoCard key={item.title} title={item.title} description={item.description} />
+            <InfoCard
+              key={item.title}
+              title={item.title}
+              description={item.description}
+              imageSrc={item.imageSrc}
+              imageAlt={item.imageAlt}
+            />
           ))}
         </div>
       </SectionWrapper>

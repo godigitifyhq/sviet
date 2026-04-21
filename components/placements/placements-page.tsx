@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { FAQAccordion } from "@/components/placements/faq-accordion";
 import { HiringPartners } from "@/components/placements/hiring-partners";
 import { NewsCard } from "@/components/placements/news-card";
@@ -26,7 +28,7 @@ const PLACEMENT_NEWS = [
       "09 February 2024 - Students explored career opportunities, interacted with industry experts, and participated in recruitment processes in the pharmaceutical sector.",
   },
   {
-    imageSrc: "/assets/img/college/global_recognition.png",
+    imageSrc: "/assets/img/section_card/GFS.JPG",
     imageAlt: "Global Futures Summit 2024",
     title: "Global Futures Summit 2024",
     description: "23 March 2024 - Industry and academic experts shared insights on emerging technologies and market trends.",
@@ -109,9 +111,26 @@ export function PlacementsPageComponent() {
           </p>
           <p className="mt-3 text-sm leading-relaxed text-gray-700 md:text-base">
             Our objective is to make every student a 100% employable asset through continuous skill development,
-            real-world exposure, and structured placement support - aligned with our vision of "One Person One Job."
+            real-world exposure, and structured placement support - aligned with our vision of &quot;One Person One Job.&quot;
           </p>
         </article>
+
+        <figure className="mt-6 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
+          <div className="relative rounded-3xl aspect-21/8 w-full">
+            <Image
+              src="/assets/img/section_card/T&P MOU.jpeg"
+              alt="Training and Placement Cell showcase"
+              fill
+              priority
+            
+              className="object-cover object-center "
+            />
+          </div>
+          <figcaption className="flex items-center justify-between gap-4 border-t border-gray-200 bg-white px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-gray-500 md:px-6">
+            <span>Training &amp; Placement Cell</span>
+            <span className="text-[#f7941d]">Industry-ready outcomes</span>
+          </figcaption>
+        </figure>
       </SectionWrapper>
 
       <PlacementSuccessBanner />
@@ -120,31 +139,44 @@ export function PlacementsPageComponent() {
 
       <HiringPartners />
 
-      <SectionWrapper aria-labelledby="director-message-heading" className="bg-gray-50">
+      <SectionWrapper aria-labelledby="director-message-heading" className="bg-[#F8FAFF]">
         <SectionHeader id="director-message-heading" title="From the Desk of Director Placements" />
-        <article className="mt-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-          <h3 className="text-xl font-bold text-gray-900">Mr. Shubham Garg</h3>
-          <p className="mt-3 text-sm leading-relaxed text-gray-700 md:text-base">
-            Our goal is to provide strong placement opportunities and meaningful corporate exposure to students. Over
-            the years, the Training &amp; Placement Cell has successfully connected students with reputed organizations
-            across multiple industries.
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-gray-700 md:text-base">
-            We focus on building industry-ready professionals by aligning academic learning with practical skills,
-            ensuring students are well-prepared to meet evolving career demands.
-          </p>
+        <article className="mt-6 grid min-h-120 overflow-hidden rounded-3xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] shadow-[0_8px_24px_rgba(30,42,120,0.06)] lg:grid-cols-4">
+          <div className="relative min-h-96 border-b border-[#DCE7FF] bg-[#EEF4FF] lg:col-span-1 lg:min-h-full lg:border-b-0 lg:border-r">
+            <Image
+              src="/assets/img/college/management/shubham-sir..jpg"
+              alt="Mr. Shubham Garg"
+              fill
+              sizes="(max-width: 1024px) 100vw, 25vw"
+              className="object-cover object-top"
+            />
+          </div>
+          <div className="p-6 md:p-8 lg:col-span-3">
+            <h3 className="text-xl font-bold text-[#111827] md:text-2xl">Mr. Shubham Garg</h3>
+            <p className="mt-4 text-sm leading-relaxed text-[#374151] md:text-base">
+              Our goal is to provide strong placement opportunities and meaningful corporate exposure to students. Over
+              the years, the Training &amp; Placement Cell has successfully connected students with reputed organizations
+              across multiple industries.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-[#374151] md:text-base">
+              We focus on building industry-ready professionals by aligning academic learning with practical skills,
+              ensuring students are well-prepared to meet evolving career demands.
+            </p>
+          </div>
         </article>
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <article className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-            <h3 className="text-lg font-bold text-gray-900">Vision</h3>
-            <p className="mt-2 text-sm leading-relaxed text-gray-700 md:text-base">
+          <article className="rounded-2xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] p-6 shadow-[0_8px_24px_rgba(30,42,120,0.06)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">Philosophy</p>
+            <h3 className="mt-2 text-lg font-bold text-[#111827]">Vision</h3>
+            <p className="mt-3 text-sm leading-relaxed text-[#4B5563] md:text-base">
               Best Campus Experience, Best Placements, and Best Culture
             </p>
           </article>
-          <article className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-            <h3 className="text-lg font-bold text-gray-900">Mission</h3>
-            <p className="mt-2 text-sm leading-relaxed text-gray-700 md:text-base">
+          <article className="rounded-2xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] p-6 shadow-[0_8px_24px_rgba(30,42,120,0.06)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">Philosophy</p>
+            <h3 className="mt-2 text-lg font-bold text-[#111827]">Mission</h3>
+            <p className="mt-3 text-sm leading-relaxed text-[#4B5563] md:text-base">
               To strengthen industry connections, create meaningful placement opportunities, and provide holistic career
               guidance that prepares students for long-term professional success.
             </p>
@@ -183,6 +215,21 @@ export function PlacementsPageComponent() {
             real-world challenges.
           </p>
         </article>
+
+        <figure className="mt-6 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
+          <div className="relative rounded-3xl aspect-21/8 w-full">
+            <Image
+              src="/assets/img/section_card/Industrial Visit.jpeg"
+              alt="Students participating in industry exposure and placement activities"
+              fill
+              className="object-cover object-center"
+            />
+          </div>
+          <figcaption className="flex items-center justify-between gap-4 border-t border-gray-200 bg-white px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-gray-500 md:px-6">
+            <span>Industrial Exposure</span>
+            <span className="text-[#f7941d]">Real-world engagement</span>
+          </figcaption>
+        </figure>
       </SectionWrapper>
 
       <TrainingCurriculumSection />

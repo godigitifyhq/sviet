@@ -15,7 +15,7 @@ export function InternationalSupportServicesSection() {
         <div className="mt-8 grid gap-4 lg:grid-cols-2">
           <div className="space-y-4">
             <article className="relative min-h-72 overflow-hidden rounded-2xl">
-              <Image src="/assets/img/campus-life/image2.png" alt="Hostel and residence" fill sizes="50vw" className="object-cover" />
+              <Image src="/assets/img/section_card/Hostels.jpeg" alt="Hostel and residence" fill sizes="50vw" className="object-cover" />
               <div className="absolute inset-0 bg-linear-to-t from-black/45 to-transparent" />
               <p className="absolute bottom-4 left-4 text-xl font-semibold text-white md:text-2xl">Hostel & Residence</p>
             </article>
@@ -31,7 +31,7 @@ export function InternationalSupportServicesSection() {
               <article className="rounded-2xl bg-[#dc2626] p-5 text-white"><CalendarDays className="h-6 w-6" /><p className="mt-12 text-xl font-semibold">Cultural Events & Activities</p></article>
             </div>
             <article className="relative min-h-72 overflow-hidden rounded-2xl">
-              <Image src="/assets/img/campus-life/image1.png" alt="Academic support" fill sizes="50vw" className="object-cover" />
+              <Image src="/assets/img/section_card/AcademicSupportInternational.jpeg" alt="Academic support" fill sizes="50vw" className="object-cover" />
               <div className="absolute inset-0 bg-linear-to-t from-black/45 to-transparent" />
               <House className="absolute left-4 top-4 h-6 w-6 text-white" />
               <p className="absolute bottom-4 left-4 text-xl font-semibold leading-tight text-white md:text-2xl">Academic Support & Assistance</p>
