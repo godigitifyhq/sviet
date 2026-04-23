@@ -96,6 +96,7 @@ export function PlacementsHeroSection() {
             priority
             sizes="100vw"
             className="object-cover object-center"
+            draggable={false}
           />
         </div>
 

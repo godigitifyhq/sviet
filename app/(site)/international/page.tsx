@@ -25,6 +25,7 @@ export default function InternationalPage() {
               priority
               sizes="100vw"
               className="object-cover"
+              draggable={false}
             />
             <div className="relative mx-auto flex max-w-7xl justify-end px-4 py-16 md:px-6 md:py-20 lg:py-24">
               <aside className="w-full max-w-md border border-black/10 bg-white p-6 text-black shadow-[0_20px_35px_rgba(0,0,0,0.2)]">
