@@ -1,8 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Award, Building2, GraduationCap, Users } from "lucide-react";
+import {
+  ArrowUpRight,
+  Award,
+  Building2,
+  GraduationCap,
+  Users,
+} from "lucide-react";
 
 import type { Leader } from "@/components/about/leader-card";
+import { AboutHeroVideoBackground } from "@/components/about/about-hero-video-background";
 import { InfoCard } from "@/components/about/info-card";
 import { LeadershipCarousel } from "@/components/about/leadership-carousel";
 import { SectionHeader } from "@/components/about/section-header";
@@ -39,20 +45,24 @@ const RELATED_LINKS = [
 const INITIATIVES = [
   {
     title: "Accreditation & Quality Standards",
-    description: "Recognized through NAAC accreditation with a B++ Grade (2.94 Score, 2024), reflecting institutional commitment to quality education.",
+    description:
+      "Recognized through NAAC accreditation with a B++ Grade (2.94 Score, 2024), reflecting institutional commitment to quality education.",
     meta: "NAAC B++ | 2.94 Score | 2024",
   },
   {
     title: "Academic Approach",
-    description: "A curriculum designed around practical application, continuous evaluation, and mentorship that prepares students for real-world challenges.",
+    description:
+      "A curriculum designed around practical application, continuous evaluation, and mentorship that prepares students for real-world challenges.",
   },
   {
     title: "Inclusive Campus Environment",
-    description: "A diverse and welcoming ecosystem that values cultural exchange, collaboration, and mutual growth.",
+    description:
+      "A diverse and welcoming ecosystem that values cultural exchange, collaboration, and mutual growth.",
   },
   {
     title: "Student Development Ecosystem",
-    description: "Modern infrastructure including labs, libraries, sports facilities, and activity spaces supporting both academic and personal development.",
+    description:
+      "Modern infrastructure including labs, libraries, sports facilities, and activity spaces supporting both academic and personal development.",
   },
 ];
 
@@ -60,7 +70,8 @@ const LEADERSHIP_DESK: Leader[] = [
   {
     name: "Mr. Ashwani Garg",
     title: "Chairman",
-    description: "I welcome every aspiring achiever to the Swami Vivekanand Group of Institutions.",
+    description:
+      "I welcome every aspiring achiever to the Swami Vivekanand Group of Institutions.",
     messageParagraphs: [
       "I welcome every aspiring achiever to the Swami Vivekanand Group of Institutions. SVGOI has become a place that provides valuable educational experiences to students from diverse cultures and backgrounds.",
       "We offer an interactive curriculum designed to deliver strong learning outcomes across scientific, medical, arts, business, and engineering fields.",
@@ -76,7 +87,8 @@ const LEADERSHIP_DESK: Leader[] = [
   {
     name: "Mr. Ashok Garg",
     title: "President",
-    description: "SVGOI has witnessed remarkable growth, driven by dedication, exceptional faculty, and a strong learning environment.",
+    description:
+      "SVGOI has witnessed remarkable growth, driven by dedication, exceptional faculty, and a strong learning environment.",
     messageParagraphs: [
       "SVGOI has witnessed remarkable growth, driven by dedication, exceptional faculty, and a strong learning environment.",
       "We focus on quality education with programs affiliated with national and international universities.",
@@ -92,7 +104,8 @@ const LEADERSHIP_DESK: Leader[] = [
   {
     name: "Mr. Vishal Garg",
     title: "Director Secretarial and Administration",
-    description: "At SVGOI, we prioritize global academic standards and active engagement between students, faculty, and industry.",
+    description:
+      "At SVGOI, we prioritize global academic standards and active engagement between students, faculty, and industry.",
     messageParagraphs: [
       "At SVGOI, we prioritize global academic standards and active engagement between students, faculty, and industry.",
       "Our focus is on holistic education that prepares students for a globalized world.",
@@ -100,8 +113,14 @@ const LEADERSHIP_DESK: Leader[] = [
       "Join us in shaping the future of learning.",
     ],
     socialLinks: [
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/vishal-garg-2134aa142/" },
-      { label: "Facebook", href: "https://www.facebook.com/vishal.garg.7921975" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/vishal-garg-2134aa142/",
+      },
+      {
+        label: "Facebook",
+        href: "https://www.facebook.com/vishal.garg.7921975",
+      },
     ],
     imageSrc: "/assets/img/college/management/vishal-sir.jpg",
     imageAlt: "Mr. Vishal Garg",
@@ -109,14 +128,18 @@ const LEADERSHIP_DESK: Leader[] = [
   {
     name: "Mr. Ankur Gupta",
     title: "Director Corporate Affairs",
-    description: "Students across the country are attracted to SVGOI due to our focus on teaching excellence, research, and industry-aligned courses.",
+    description:
+      "Students across the country are attracted to SVGOI due to our focus on teaching excellence, research, and industry-aligned courses.",
     messageParagraphs: [
       "Students across the country are attracted to SVGOI due to our focus on teaching excellence, research, and industry-aligned courses.",
       "We provide modern infrastructure including ICT-enabled classrooms and active participation in co-curricular activities.",
       "International exchange programs help students gain valuable global exposure and opportunities.",
     ],
     socialLinks: [
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/ankur-gupta-14278730/" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/ankur-gupta-14278730/",
+      },
     ],
     imageSrc: "/assets/img/college/management/ankurgupta.jpg",
     imageAlt: "Mr. Ankur Gupta",
@@ -124,7 +147,8 @@ const LEADERSHIP_DESK: Leader[] = [
   {
     name: "Mr. Sahil Garg",
     title: "Project Director",
-    description: "SVGOI represents quality, dedication, and strong values, reflected in our accomplished alumni.",
+    description:
+      "SVGOI represents quality, dedication, and strong values, reflected in our accomplished alumni.",
     messageParagraphs: [
       "SVGOI represents quality, dedication, and strong values, reflected in our accomplished alumni.",
       "We offer diverse and industry-relevant programs with a student-centric approach, making us one of the top private institutions in North India.",
@@ -132,7 +156,10 @@ const LEADERSHIP_DESK: Leader[] = [
       "Join us in shaping a brighter future.",
     ],
     socialLinks: [
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/sahil-garg-034226130/" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/sahil-garg-034226130/",
+      },
       { label: "Facebook", href: "https://www.facebook.com/sahil.garg.58910" },
     ],
     imageSrc: "/assets/img/college/management/sahil-sir.jpg",
@@ -141,15 +168,22 @@ const LEADERSHIP_DESK: Leader[] = [
   {
     name: "Mr. Shubham Garg",
     title: "Director Placements",
-    description: "Our focus is to provide strong placement opportunities and corporate exposure to students.",
+    description:
+      "Our focus is to provide strong placement opportunities and corporate exposure to students.",
     messageParagraphs: [
       "Our focus is to provide strong placement opportunities and corporate exposure to students.",
       "Over the years, we have successfully placed students across multiple industries including IT, manufacturing, banking, media, and services.",
       "The Training and Placement Office coordinates closely with departments to ensure smooth placement activities and career support.",
     ],
     socialLinks: [
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/shubham-garg-670537170/" },
-      { label: "Facebook", href: "https://www.facebook.com/profile.php?id=100052235821482" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/shubham-garg-670537170/",
+      },
+      {
+        label: "Facebook",
+        href: "https://www.facebook.com/profile.php?id=100052235821482",
+      },
     ],
     imageSrc: "/assets/img/college/management/shubham-sir..jpg",
     imageAlt: "Mr. Shubham Garg",
@@ -157,7 +191,8 @@ const LEADERSHIP_DESK: Leader[] = [
   {
     name: "Mr. Ankur Gill",
     title: "Director Operations",
-    description: "As the Director of Operations at Swami Vivekanand Institute of Engineering and Technology, I am deeply committed to excellence, innovation, and growth.",
+    description:
+      "As the Director of Operations at Swami Vivekanand Institute of Engineering and Technology, I am deeply committed to excellence, innovation, and growth.",
     messageParagraphs: [
       "As the Director of Operations at Swami Vivekanand Institute of Engineering and Technology, I am deeply committed to fostering an environment of excellence, innovation, and growth within our institution.",
       "With a focus on providing top-notch education and opportunities for our students, I am honored to collaborate with such dedicated professionals who share a passion for academic advancement and student success.",
@@ -165,7 +200,10 @@ const LEADERSHIP_DESK: Leader[] = [
       "I am confident that with unwavering support and dedication, the institute will continue to reach new heights of success and distinction.",
     ],
     socialLinks: [
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/ankurgillofficial/" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/ankurgillofficial/",
+      },
       { label: "Facebook", href: "https://www.facebook.com/ankurgillofficial" },
     ],
     imageSrc: "/assets/img/college/management/ankur-sir.jpg",
@@ -183,25 +221,29 @@ const CULTURE_STATS = [
 const INFRASTRUCTURE = [
   {
     title: "Research Centres",
-    description: "Spaces dedicated to innovation, experimentation, and interdisciplinary collaboration that encourage students to explore ideas beyond curriculum boundaries.",
+    description:
+      "Spaces dedicated to innovation, experimentation, and interdisciplinary collaboration that encourage students to explore ideas beyond curriculum boundaries.",
     imageSrc: "/assets/img/section_card/ResearchCenter.jpeg",
     imageAlt: "Research centres for experimentation and applied learning",
   },
   {
     title: "Library",
-    description: "A structured learning environment with access to academic resources, references, and digital tools for focused study and research.",
+    description:
+      "A structured learning environment with access to academic resources, references, and digital tools for focused study and research.",
     imageSrc: "/assets/img/section_card/Library.jpeg",
     imageAlt: "Library and study resources for focused academic work",
   },
   {
     title: "Laboratories",
-    description: "Program-specific labs equipped for practical learning, enabling students to build hands-on technical capabilities.",
+    description:
+      "Program-specific labs equipped for practical learning, enabling students to build hands-on technical capabilities.",
     imageSrc: "/assets/img/section_card/Labo.jpeg",
     imageAlt: "Program-specific technical laboratories at SVIET",
   },
   {
     title: "Playgrounds & Sports Facilities",
-    description: "Open spaces and sports infrastructure that promote physical activity, teamwork, and a balanced campus lifestyle.",
+    description:
+      "Open spaces and sports infrastructure that promote physical activity, teamwork, and a balanced campus lifestyle.",
     imageSrc: "/assets/img/section_card/Playground.jpeg",
     imageAlt: "Sports facilities promoting teamwork and well-being",
   },
@@ -215,53 +257,68 @@ type PhilosophyPoint = {
 const MISSION_POINTS: PhilosophyPoint[] = [
   {
     title: "Empowering Students",
-    description: "Our mission is to inspire and empower students to pursue excellence in academics, character, and personal growth.",
+    description:
+      "Our mission is to inspire and empower students to pursue excellence in academics, character, and personal growth.",
   },
   {
     title: "Driving Positive Change",
-    description: "We strive to prepare students to become responsible professionals who contribute positively to society.",
+    description:
+      "We strive to prepare students to become responsible professionals who contribute positively to society.",
   },
   {
     title: "Fostering Community Engagement",
-    description: "We encourage meaningful participation in community initiatives to build social awareness and empathy.",
+    description:
+      "We encourage meaningful participation in community initiatives to build social awareness and empathy.",
   },
   {
     title: "Promoting Diversity and Inclusion",
-    description: "We build an inclusive campus where every student is respected, supported, and valued equally.",
+    description:
+      "We build an inclusive campus where every student is respected, supported, and valued equally.",
   },
 ];
 
 const VISION_POINTS: PhilosophyPoint[] = [
   {
     title: "Pursuing Excellence",
-    description: "Our vision is to become a world-class institution that nurtures talent through quality and consistency.",
+    description:
+      "Our vision is to become a world-class institution that nurtures talent through quality and consistency.",
   },
   {
     title: "Building Leaders",
-    description: "We envision graduates as innovators and ethical leaders capable of creating lasting impact.",
+    description:
+      "We envision graduates as innovators and ethical leaders capable of creating lasting impact.",
   },
   {
     title: "Global Impact",
-    description: "We aim to create global relevance through collaboration, research culture, and future-ready education.",
+    description:
+      "We aim to create global relevance through collaboration, research culture, and future-ready education.",
   },
   {
     title: "Sustainable Future",
-    description: "We are committed to sustainability-oriented thinking and responsible practices across institutional growth.",
+    description:
+      "We are committed to sustainability-oriented thinking and responsible practices across institutional growth.",
   },
 ];
 
 function PhilosophyTimeline({ points }: { points: PhilosophyPoint[] }) {
   return (
     <ol className="relative space-y-6">
-      <span className="absolute left-3 top-2 h-[calc(100%-1rem)] w-px bg-[#93C5FD]" aria-hidden="true" />
+      <span
+        className="absolute left-3 top-2 h-[calc(100%-1rem)] w-px bg-[#93C5FD]"
+        aria-hidden="true"
+      />
       {points.map((point, index) => (
         <li key={point.title} className="relative pl-16">
           <span className="absolute left-0 top-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#f7941d] text-xs font-semibold text-white">
             {index + 1}
           </span>
-       
-          <h3 className="text-lg font-semibold text-[#000000]">{point.title}</h3>
-          <p className="mt-1 text-sm leading-relaxed text-[#4B5563]">{point.description}</p>
+
+          <h3 className="text-lg font-semibold text-[#000000]">
+            {point.title}
+          </h3>
+          <p className="mt-1 text-sm leading-relaxed text-[#4B5563]">
+            {point.description}
+          </p>
         </li>
       ))}
     </ol>
@@ -271,20 +328,18 @@ function PhilosophyTimeline({ points }: { points: PhilosophyPoint[] }) {
 export function AboutOverviewPage() {
   return (
     <main className="bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] text-[#111827]">
-      <section aria-labelledby="about-hero-heading" className="relative -mt-30 overflow-hidden pt-30">
-        <Image
-          src="/assets/img/college/main_gate.png"
-          alt="SVIET main campus gate"
-          fill
-          sizes="100vw"
-          priority
-          className="object-cover"
+      <section
+        aria-labelledby="about-hero-heading"
+        className="relative -mt-30 overflow-hidden pt-30"
+      >
+        <AboutHeroVideoBackground />
+        <div
+          className="absolute inset-0 bg-linear-to-r from-[#000000]/90 via-[#000000]/60 to-[#000000]/30"
+          aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-linear-to-r from-[#020617]/90 via-[#0F172A]/72 to-[#0F172A]/30" aria-hidden="true" />
-        <div className="absolute inset-0 bg-linear-to-t from-[#020617]/72 via-transparent to-[#38BDF8]/20" aria-hidden="true" />
 
-        <div className="relative mx-auto flex min-h-140 max-w-7xl flex-col justify-end px-4 pb-16 md:min-h-160 md:px-6 md:pb-24">
-          <p className="flex items-center gap-2 text-sm font-medium text-white/90 md:text-3xl">
+        <div className="relative ml-20 flex min-h-160 max-w-4xl flex-col justify-end px-4 pb-18 md:min-h-184 md:px-6 md:pb-28">
+          <p className="flex items-center gap-2 text-sm font-medium text-white/90 md:text-2xl">
             <Link href="/" className="transition hover:text-white">
               Home
             </Link>
@@ -292,22 +347,32 @@ export function AboutOverviewPage() {
             <span className="font-semibold text-white">About Us</span>
           </p>
 
-          <h1 id="about-hero-heading" className="mt-8 max-w-5xl text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl">
+          <h1
+            id="about-hero-heading"
+            className="mt-8 max-w-5xl text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl"
+          >
             Where Learning Meets Innovation and Opportunity.
           </h1>
 
-          <p className="mt-6 max-w-4xl text-lg leading-relaxed text-white/95 md:text-2xl">
-            SVIET is built as a space where education goes beyond classrooms, bringing together academic depth,
-            practical exposure, and a culture of innovation for real-world readiness.
+          <p className="mt-6 max-w-4xl text-lg leading-relaxed text-white/95 md:text-xl">
+            SVIET is built as a space where education goes beyond classrooms,
+            bringing together academic depth, practical exposure, and a culture
+            of innovation for real-world readiness.
           </p>
         </div>
       </section>
 
-      <SectionWrapper aria-labelledby="about-svgoi-heading" className="border-t border-[#E5E7EB] bg-[#F8FAFC]">
+      <SectionWrapper
+        aria-labelledby="about-svgoi-heading"
+        className="border-t border-[#E5E7EB] bg-[#F8FAFC]"
+      >
         <div className="space-y-14">
           <div>
             <p className="inline-flex items-center gap-3 text-xl font-medium leading-tight text-[#374151]">
-              <span className="h-2.5 w-2.5 rotate-45 bg-[#14B8A6]" aria-hidden="true" />
+              <span
+                className="h-2.5 w-2.5 rotate-45 bg-[#14B8A6]"
+                aria-hidden="true"
+              />
               Quick Access
             </p>
 
@@ -322,10 +387,17 @@ export function AboutOverviewPage() {
                     className="group flex items-center justify-between border border-[#E5E7EB] bg-white px-6 py-6 shadow-[0_6px_20px_rgba(15,23,42,0.06)] transition hover:-translate-y-0.5 hover:border-[#BFDBFE] hover:shadow-[0_12px_28px_rgba(30,42,120,0.12)]"
                   >
                     <div className="flex items-start gap-4">
-                      <Icon className="mt-0.5 h-7 w-7 text-[#4F46E5]" aria-hidden="true" />
+                      <Icon
+                        className="mt-0.5 h-7 w-7 text-[#4F46E5]"
+                        aria-hidden="true"
+                      />
                       <div>
-                        <p className="text-xl font-semibold leading-tight text-[#111827] md:text-2xl">{item.title}</p>
-                        <p className="mt-1 text-sm text-[#6B7280]">{item.description}</p>
+                        <p className="text-xl font-semibold leading-tight text-[#111827] md:text-2xl">
+                          {item.title}
+                        </p>
+                        <p className="mt-1 text-sm text-[#6B7280]">
+                          {item.description}
+                        </p>
                       </div>
                     </div>
 
@@ -339,29 +411,34 @@ export function AboutOverviewPage() {
           </div>
 
           <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-start">
-            <h2 id="about-svgoi-heading" className="text-5xl font-semibold leading-tight md:text-7xl">
+            <h2
+              id="about-svgoi-heading"
+              className="text-5xl font-semibold leading-tight md:text-7xl"
+            >
               <span className="block text-[#1F2937]">About</span>
-              <span className="mt-2 block bg-linear-to-r from-[#f7941d] via-[#4F46E5] to-[#EC4899] bg-clip-text text-transparent">
-                SVIET
-              </span>
+              <span className="mt-2 block text-[#f7941d]">SVIET</span>
             </h2>
 
             <div className="max-w-4xl space-y-7 text-lg leading-relaxed text-[#111827]">
               <p>
-                With over two decades of presence in higher education, Swami Vivekanand Group of Institutes has
-                developed into a multidisciplinary institution centered on applied learning, innovation, and
-                career-oriented education.
+                With over two decades of presence in higher education, Swami
+                Vivekanand Group of Institutes has developed into a
+                multidisciplinary institution centered on applied learning,
+                innovation, and career-oriented education.
               </p>
 
               <p>
-                Established under the Shri Raghunath Rai Memorial Educational and Charitable Trust, the journey began
-                with SVIET in 2004 and expanded into engineering, pharmacy, management, education, polytechnic, IT,
-                and law.
+                Established under the Shri Raghunath Rai Memorial Educational
+                and Charitable Trust, the journey began with SVIET in 2004 and
+                expanded into engineering, pharmacy, management, education,
+                polytechnic, IT, and law.
               </p>
 
               <p>
-                SVIET continues to evolve as a learning ecosystem that combines academic structure with industry
-                relevance, supporting students through practical training, mentorship, and skill-based development.
+                SVIET continues to evolve as a learning ecosystem that combines
+                academic structure with industry relevance, supporting students
+                through practical training, mentorship, and skill-based
+                development.
               </p>
             </div>
           </div>
@@ -375,20 +452,23 @@ export function AboutOverviewPage() {
           className="border-[#BFDBFE]"
         >
           <p className="mt-4 text-sm leading-relaxed text-[#6B7280]">
-            Easily connected to Chandigarh, Mohali, Panchkula, Ambala, and Patiala through major road links.
+            Easily connected to Chandigarh, Mohali, Panchkula, Ambala, and
+            Patiala through major road links.
           </p>
-          <ul className="mt-4 flex flex-wrap gap-2 text-sm font-medium text-[#f7941d]" aria-label="Easily connected cities">
-            {[
-              "Chandigarh",
-              "Mohali",
-              "Panchkula",
-              "Ambala",
-              "Patiala",
-            ].map((city) => (
-              <li key={city} className="border border-[#BFDBFE] bg-white px-3 py-1">
-                {city}
-              </li>
-            ))}
+          <ul
+            className="mt-4 flex flex-wrap gap-2 text-sm font-medium text-[#f7941d]"
+            aria-label="Easily connected cities"
+          >
+            {["Chandigarh", "Mohali", "Panchkula", "Ambala", "Patiala"].map(
+              (city) => (
+                <li
+                  key={city}
+                  className="border border-[#BFDBFE] bg-white px-3 py-1"
+                >
+                  {city}
+                </li>
+              ),
+            )}
           </ul>
         </InfoCard>
       </SectionWrapper>
@@ -405,12 +485,20 @@ export function AboutOverviewPage() {
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {INITIATIVES.map((item) => (
-            <InfoCard key={item.title} title={item.title} description={item.description} meta={item.meta} />
+            <InfoCard
+              key={item.title}
+              title={item.title}
+              description={item.description}
+              meta={item.meta}
+            />
           ))}
         </div>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="philosophy-heading" className="bg-[#EEF4FF]">
+      <SectionWrapper
+        aria-labelledby="philosophy-heading"
+        className="bg-[#EEF4FF]"
+      >
         <SectionHeader
           id="philosophy-heading"
           eyebrow="Vision & Direction"
@@ -422,13 +510,17 @@ export function AboutOverviewPage() {
         />
 
         <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_2fr] lg:items-start">
-          <h3 className="text-4xl font-bold tracking-wide text-[#f7941d] md:text-5xl">MISSION</h3>
+          <h3 className="text-4xl font-bold tracking-wide text-[#f7941d] md:text-5xl">
+            MISSION
+          </h3>
           <PhilosophyTimeline points={MISSION_POINTS} />
         </div>
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[2fr_1fr] lg:items-start">
           <PhilosophyTimeline points={VISION_POINTS} />
-          <h3 className="text-4xl font-bold tracking-wide text-[#f7941d] md:text-right md:text-5xl">VISION</h3>
+          <h3 className="text-4xl font-bold tracking-wide text-[#f7941d] md:text-right md:text-5xl">
+            VISION
+          </h3>
         </div>
       </SectionWrapper>
 
@@ -449,7 +541,10 @@ export function AboutOverviewPage() {
         <LeadershipCarousel leaders={LEADERSHIP_DESK} />
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="culture-diversity-heading" className="bg-[#F8FAFF]">
+      <SectionWrapper
+        aria-labelledby="culture-diversity-heading"
+        className="bg-[#F8FAFF]"
+      >
         <SectionHeader
           id="culture-diversity-heading"
           eyebrow="Campus Life"
@@ -462,17 +557,26 @@ export function AboutOverviewPage() {
 
         <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {CULTURE_STATS.map((item) => (
-            <StatCard key={item.label} value={item.value} label={item.label} className="text-center" />
+            <StatCard
+              key={item.label}
+              value={item.value}
+              label={item.label}
+              className="text-center"
+            />
           ))}
         </div>
 
         <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-[#6B7280]">
-          Students across India and international communities learn, interact, and grow together, creating a globally
-          aware and culturally rich academic environment.
+          Students across India and international communities learn, interact,
+          and grow together, creating a globally aware and culturally rich
+          academic environment.
         </p>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="infrastructure-heading" className="border-t border-[#E5E7EB]">
+      <SectionWrapper
+        aria-labelledby="infrastructure-heading"
+        className="border-t border-[#E5E7EB]"
+      >
         <SectionHeader
           id="infrastructure-heading"
           eyebrow="Campus"

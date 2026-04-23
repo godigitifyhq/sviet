@@ -43,8 +43,8 @@ const TRUST_STATS = [
 
 export function AdmissionsRecognitionsSection() {
   return (
-    <section className="bg-[#f5f7fb] pb-16 md:pb-20">
-      <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
+    <section className="bg-[#f5f7fb] py-16 md:py-20">
+      <div className="mx-auto w-full max-w-7xl  px-4 md:px-6">
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {TRUST_STATS.map((item) => (
             <article

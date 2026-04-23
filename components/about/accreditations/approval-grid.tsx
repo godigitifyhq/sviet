@@ -3,7 +3,6 @@ import { LogoCard } from "@/components/about/accreditations/logo-card";
 type ApprovalItem = {
   title: string;
   description: string;
-  ctaLabel: string;
   logoSrc: string;
   logoAlt: string;
 };
@@ -20,7 +19,6 @@ export function ApprovalGrid({ items }: ApprovalGridProps) {
           key={item.title}
           title={item.title}
           description={item.description}
-          ctaLabel={item.ctaLabel}
           logoSrc={item.logoSrc}
           logoAlt={item.logoAlt}
         />

@@ -49,7 +49,9 @@ const NAV_LINK_IMAGES = [
   },
 ];
 
-const PROGRAM_DROPDOWN_ITEMS = [{ label: "Program Finder", href: "/program-finder" }];
+const PROGRAM_DROPDOWN_ITEMS = [
+  { label: "Program Finder", href: "/program-finder" },
+];
 
 const ABOUT_PANEL_GROUPS = [
   {
@@ -58,13 +60,16 @@ const ABOUT_PANEL_GROUPS = [
       { label: "Overview", href: "/about" },
       { label: "Leadership", href: "/about/leadership" },
       { label: "Accreditations & Approvals", href: "/about/accreditations" },
-      { label: "Awards, Rankings & Ratings", href: "/about/awards-recognitions" },
+      {
+        label: "Awards, Rankings & Ratings",
+        href: "/about/awards-recognitions",
+      },
     ],
   },
   {
     title: "Explore More",
     items: [
-      { label: "Infrastructure", href: "/about/infrastructure" },
+      // { label: "Infrastructure", href: "/about/infrastructure" },
       { label: "Placements", href: "/about/placements" },
       { label: "Life at SVIET", href: "/campus-life" },
     ],
@@ -74,18 +79,20 @@ const ABOUT_PANEL_GROUPS = [
 const ABOUT_PANEL_FEATURE = {
   eyebrow: "Admissions Open 2026",
   title: "Join a new generation of learners",
-  description: "Explore academics, campus life, and the student experience in one focused view.",
+  description:
+    "Explore academics, campus life, and the student experience in one focused view.",
   href: "/admissions",
-  imageSrc: "/assets/img/college/8th.png",
+  imageSrc: "/assets/img/nav1.jpeg",
   imageAlt: "Student spotlight",
 };
 
 const PROGRAM_PANEL_FEATURE = {
   eyebrow: "Program Finder",
   title: "Find the right program faster",
-  description: "Browse departments, compare active programs, and jump straight into the degree that fits.",
+  description:
+    "Browse departments, compare active programs, and jump straight into the degree that fits.",
   href: "/program-finder",
-  imageSrc: "/assets/img/college/4th.png",
+  imageSrc: "/assets/img/nav2.jpeg",
   imageAlt: "Campus building",
 };
 
@@ -127,8 +134,13 @@ type MainNavbarProps = {
 export function SiteHeader() {
   const pathname = usePathname();
   const pathSegments = pathname.split("/").filter(Boolean);
-  const isProgramDetailPage = pathSegments[0] === "programs" && pathSegments.length === 2;
-  const isHeroOverlayRoute = pathname === "/" || pathname === "/research" || pathname === "/admissions" || isProgramDetailPage;
+  const isProgramDetailPage =
+    pathSegments[0] === "programs" && pathSegments.length === 2;
+  const isHeroOverlayRoute =
+    pathname === "/" ||
+    pathname === "/research" ||
+    pathname === "/admissions" ||
+    isProgramDetailPage;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isUtilityHidden, setIsUtilityHidden] = useState(false);
 
@@ -160,7 +172,11 @@ export function SiteHeader() {
           return true;
         }
 
-        if (previous && isScrollingUp && lastScrollY - scrollY > UTILITY_UP_REVEAL_DELTA) {
+        if (
+          previous &&
+          isScrollingUp &&
+          lastScrollY - scrollY > UTILITY_UP_REVEAL_DELTA
+        ) {
           return false;
         }
 
@@ -204,13 +220,19 @@ export function SiteHeader() {
         .filter(Boolean)
         .join(" ")}
     >
-      <TopUtilityBar isTransparent={isTransparent} isUtilityHidden={isUtilityHidden} />
+      <TopUtilityBar
+        isTransparent={isTransparent}
+        isUtilityHidden={isUtilityHidden}
+      />
       <MainNavbar isTransparent={isTransparent} isScrolled={isScrolled} />
     </div>
   );
 }
 
-export function TopUtilityBar({ isTransparent = false, isUtilityHidden = false }: TopUtilityBarProps) {
+export function TopUtilityBar({
+  isTransparent = false,
+  isUtilityHidden = false,
+}: TopUtilityBarProps) {
   const [messageIndex, setMessageIndex] = useState(0);
 
   const utilityToneClass = isTransparent
@@ -218,7 +240,9 @@ export function TopUtilityBar({ isTransparent = false, isUtilityHidden = false }
     : "border-black/10 bg-[#FFFFFF] text-[#000000]";
 
   const showPreviousMessage = () => {
-    setMessageIndex((prev) => (prev === 0 ? UTILITY_MESSAGES.length - 1 : prev - 1));
+    setMessageIndex((prev) =>
+      prev === 0 ? UTILITY_MESSAGES.length - 1 : prev - 1,
+    );
   };
 
   const showNextMessage = () => {
@@ -234,7 +258,9 @@ export function TopUtilityBar({ isTransparent = false, isUtilityHidden = false }
   }, []);
 
   return (
-    <div className={`utility-bar w-full border-b px-3 py-2 text-[10px] md:px-5 md:text-xs ${utilityToneClass} ${isUtilityHidden ? "utility-hidden" : ""}`}>
+    <div
+      className={`utility-bar w-full border-b px-3 py-2 text-[10px] md:px-5 md:text-xs ${utilityToneClass} ${isUtilityHidden ? "utility-hidden" : ""}`}
+    >
       <div className="mx-auto flex w-full max-w-300 items-center justify-between">
         <div className="relative min-w-0 flex-1 pr-3">
           <button
@@ -245,7 +271,10 @@ export function TopUtilityBar({ isTransparent = false, isUtilityHidden = false }
           >
             <FaChevronLeft />
           </button>
-          <p className="truncate px-8 text-center font-medium md:px-10" aria-live="polite">
+          <p
+            className="truncate px-8 text-center font-medium md:px-10"
+            aria-live="polite"
+          >
             {UTILITY_MESSAGES[messageIndex]}
           </p>
           <button
@@ -286,12 +315,17 @@ export function TopUtilityBar({ isTransparent = false, isUtilityHidden = false }
   );
 }
 
-export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNavbarProps) {
+export function MainNavbar({
+  isTransparent = false,
+  isScrolled = false,
+}: MainNavbarProps) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false);
   const [isMobileProgramsOpen, setIsMobileProgramsOpen] = useState(false);
-  const [dynamicPrograms, setDynamicPrograms] = useState<ProgramDropdownItem[]>([]);
+  const [dynamicPrograms, setDynamicPrograms] = useState<ProgramDropdownItem[]>(
+    [],
+  );
 
   const navbarToneClass = isTransparent
     ? "border-white/25 bg-transparent text-[#FFFFFF]"
@@ -329,7 +363,11 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
     };
   }, []);
 
-  const programDropdownItems: Array<{ label: string; href: string; department?: string }> = [
+  const programDropdownItems: Array<{
+    label: string;
+    href: string;
+    department?: string;
+  }> = [
     ...PROGRAM_DROPDOWN_ITEMS,
     ...dynamicPrograms.map((program) => ({
       label: program.title,
@@ -338,31 +376,32 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
     })),
   ];
 
-  const groupedProgramItems = programDropdownItems.reduce<Record<string, { label: string; href: string }[]>>(
-    (accumulator, item) => {
-      const group = item.department ? item.department : "Explore";
+  const groupedProgramItems = programDropdownItems.reduce<
+    Record<string, { label: string; href: string }[]>
+  >((accumulator, item) => {
+    const group = item.department ? item.department : "Explore";
 
-      if (!accumulator[group]) {
-        accumulator[group] = [];
+    if (!accumulator[group]) {
+      accumulator[group] = [];
+    }
+
+    accumulator[group].push({ label: item.label, href: item.href });
+    return accumulator;
+  }, {});
+
+  const orderedProgramGroups = Object.entries(groupedProgramItems).sort(
+    ([left], [right]) => {
+      if (left === "Explore") {
+        return -1;
       }
 
-      accumulator[group].push({ label: item.label, href: item.href });
-      return accumulator;
+      if (right === "Explore") {
+        return 1;
+      }
+
+      return left.localeCompare(right);
     },
-    {},
   );
-
-  const orderedProgramGroups = Object.entries(groupedProgramItems).sort(([left], [right]) => {
-    if (left === "Explore") {
-      return -1;
-    }
-
-    if (right === "Explore") {
-      return 1;
-    }
-
-    return left.localeCompare(right);
-  });
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -431,10 +470,13 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
             ))}
           </div>
 
-          {NAV_ITEMS.map((item) => (
+          {NAV_ITEMS.map((item) =>
             item.label === "About" ? (
               <div key={item.label} className="group relative">
-                <Link href={item.href} className="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-300 ease-out hover:text-[#FEA700]">
+                <Link
+                  href={item.href}
+                  className="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-300 ease-out hover:text-[#FEA700]"
+                >
                   {item.label}
                   <span className="text-[10px]">▾</span>
                 </Link>
@@ -444,56 +486,70 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                     <div className="flex max-h-[90vh] flex-col xl:flex-row">
                       <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5">
                         <div className="grid gap-4 sm:grid-cols-2">
-                        {ABOUT_PANEL_GROUPS.map((group) => (
-                          <section key={group.title} className="border border-black/10 bg-[#FFFFFF] p-4">
-                            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{group.title}</p>
-                            <div className="mt-3 space-y-1.5">
-                              {group.items.map((aboutItem) => {
-                                const isActive = pathname === aboutItem.href;
+                          {ABOUT_PANEL_GROUPS.map((group) => (
+                            <section
+                              key={group.title}
+                              className="border border-black/10 bg-[#FFFFFF] p-4"
+                            >
+                              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">
+                                {group.title}
+                              </p>
+                              <div className="mt-3 space-y-1.5">
+                                {group.items.map((aboutItem) => {
+                                  const isActive = pathname === aboutItem.href;
 
-                                return (
-                                  <Link
-                                    key={`${group.title}-${aboutItem.href}-${aboutItem.label}`}
-                                    href={aboutItem.href}
-                                    className={`flex items-center justify-between border px-3 py-2 text-[12px] font-semibold transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
-                                      isActive
-                                        ? "border-[#FEA700]/40 bg-[#FEA700]/10 text-[#000000]"
-                                        : "border-transparent text-[#000000]"
-                                    }`}
-                                  >
-                                    <span>{aboutItem.label}</span>
-                                    <span className="text-[10px] opacity-60">↗</span>
-                                  </Link>
-                                );
-                              })}
-                            </div>
-                          </section>
-                        ))}
+                                  return (
+                                    <Link
+                                      key={`${group.title}-${aboutItem.href}-${aboutItem.label}`}
+                                      href={aboutItem.href}
+                                      className={`flex items-center justify-between border px-3 py-2 text-[12px] font-semibold transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
+                                        isActive
+                                          ? "border-[#FEA700]/40 bg-[#FEA700]/10 text-[#000000]"
+                                          : "border-transparent text-[#000000]"
+                                      }`}
+                                    >
+                                      <span>{aboutItem.label}</span>
+                                      <span className="text-[10px] opacity-60">
+                                        ↗
+                                      </span>
+                                    </Link>
+                                  );
+                                })}
+                              </div>
+                            </section>
+                          ))}
                         </div>
                       </div>
 
                       <div className="border-t border-black/10 p-5 xl:sticky xl:top-0 xl:w-96 xl:shrink-0 xl:self-start xl:border-l xl:border-t-0">
                         <Link
                           href={ABOUT_PANEL_FEATURE.href}
-                          className="group/card relative block min-h-80 overflow-hidden border border-[#FEA700]/35 bg-[#000000] p-5 text-[#FFFFFF] transition-colors duration-300 ease-out hover:border-[#FEA700]"
+                          className="group/card relative block min-h-80 overflow-hidden border border-[#FEA700]/35 bg-[#FFFFFF] p-5 text-[#000000] transition-colors duration-300 ease-out hover:border-[#FEA700]"
                         >
                           <div className="relative z-10 flex h-full min-h-72 flex-col">
-                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{ABOUT_PANEL_FEATURE.eyebrow}</span>
-                            <h3 className="mt-3 max-w-full text-2xl font-black leading-tight tracking-tight xl:text-3xl">{ABOUT_PANEL_FEATURE.title}</h3>
-                            <p className="mt-3 max-w-full text-sm leading-relaxed text-white/85">{ABOUT_PANEL_FEATURE.description}</p>
+                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">
+                              {ABOUT_PANEL_FEATURE.eyebrow}
+                            </span>
+                            <h3 className="mt-3 max-w-full text-2xl font-black leading-tight tracking-tight xl:text-3xl text-[#000000]">
+                              {ABOUT_PANEL_FEATURE.title}
+                            </h3>
+                            <p className="mt-3 max-w-full text-sm leading-relaxed text-black/80">
+                              {ABOUT_PANEL_FEATURE.description}
+                            </p>
                             <div className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-[#FEA700]">
                               Learn more
-                              <span className="transition group-hover/card:translate-x-0.5">→</span>
+                              <span className="transition group-hover/card:translate-x-0.5">
+                                →
+                              </span>
                             </div>
                           </div>
-                          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-52">
-                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/45 to-transparent" />
+                          <div className="pointer-events-none absolute inset-0">
                             <Image
                               src={ABOUT_PANEL_FEATURE.imageSrc}
                               alt={ABOUT_PANEL_FEATURE.imageAlt}
                               fill
                               sizes="(max-width: 1280px) 340px, 340px"
-                              className="object-cover object-center opacity-35 mix-blend-screen"
+                              className="object-cover object-center opacity-60"
                             />
                           </div>
                         </Link>
@@ -504,7 +560,10 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
               </div>
             ) : item.label === "Programs" ? (
               <div key={item.label} className="group relative">
-                <button type="button" className="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-300 ease-out hover:text-[#FEA700]">
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-300 ease-out hover:text-[#FEA700]"
+                >
                   {item.label}
                   <span className="text-[10px]">▾</span>
                 </button>
@@ -515,39 +574,56 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                       <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5">
                         <div className="space-y-4">
                           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                          <Link
-                            href="/program-finder"
-                            className="min-w-0 border border-[#FEA700]/30 bg-[#FEA700]/10 p-4 transition-colors duration-300 ease-out hover:border-[#FEA700]"
-                          >
-                            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">Explore</p>
-                            <h3 className="mt-3 text-xl font-black leading-tight tracking-tight text-[#000000]">Program Finder</h3>
-                            <p className="mt-2 text-sm leading-6 text-black/70">Search by career goal, duration, department, or specialization.</p>
-                          </Link>
+                            <Link
+                              href="/program-finder"
+                              className="min-w-0 border border-[#FEA700]/30 bg-[#FEA700]/10 p-4 transition-colors duration-300 ease-out hover:border-[#FEA700]"
+                            >
+                              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">
+                                Explore
+                              </p>
+                              <h3 className="mt-3 text-xl font-black leading-tight tracking-tight text-[#000000]">
+                                Program Finder
+                              </h3>
+                              <p className="mt-2 text-sm leading-6 text-black/70">
+                                Search by career goal, duration, department, or
+                                specialization.
+                              </p>
+                            </Link>
 
-                          {orderedProgramGroups.map(([groupName, groupItems]) => (
-                            <section key={groupName} className="min-w-0 border border-black/10 bg-[#FFFFFF] p-4">
-                              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{groupName}</p>
-                              <div className="mt-3 space-y-1.5">
-                                {groupItems.slice(0, 6).map((dropdownItem) => {
-                                  const isCurrent = pathname === dropdownItem.href;
+                            {orderedProgramGroups.map(
+                              ([groupName, groupItems]) => (
+                                <section
+                                  key={groupName}
+                                  className="min-w-0 border border-black/10 bg-[#FFFFFF] p-4"
+                                >
+                                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">
+                                    {groupName}
+                                  </p>
+                                  <div className="mt-3 space-y-1.5">
+                                    {groupItems
+                                      .slice(0, 6)
+                                      .map((dropdownItem) => {
+                                        const isCurrent =
+                                          pathname === dropdownItem.href;
 
-                                  return (
-                                    <Link
-                                      key={`${groupName}-${dropdownItem.href}-${dropdownItem.label}`}
-                                      href={dropdownItem.href}
-                                      className={`block min-w-0 wrap-break-word border px-3 py-2 text-[12px] font-semibold leading-snug transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
-                                        isCurrent
-                                          ? "border-[#FEA700]/40 bg-[#FEA700]/10 text-[#000000]"
-                                          : "border-transparent text-[#000000]"
-                                      }`}
-                                    >
-                                      {dropdownItem.label}
-                                    </Link>
-                                  );
-                                })}
-                              </div>
-                            </section>
-                          ))}
+                                        return (
+                                          <Link
+                                            key={`${groupName}-${dropdownItem.href}-${dropdownItem.label}`}
+                                            href={dropdownItem.href}
+                                            className={`block min-w-0 wrap-break-word border px-3 py-2 text-[12px] font-semibold leading-snug transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
+                                              isCurrent
+                                                ? "border-[#FEA700]/40 bg-[#FEA700]/10 text-[#000000]"
+                                                : "border-transparent text-[#000000]"
+                                            }`}
+                                          >
+                                            {dropdownItem.label}
+                                          </Link>
+                                        );
+                                      })}
+                                  </div>
+                                </section>
+                              ),
+                            )}
                           </div>
                         </div>
                       </div>
@@ -555,25 +631,32 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                       <div className="border-t border-black/10 p-5 xl:sticky xl:top-0 xl:w-96 xl:shrink-0 xl:self-start xl:border-l xl:border-t-0">
                         <Link
                           href={PROGRAM_PANEL_FEATURE.href}
-                          className="group/card relative block min-h-80 min-w-0 overflow-hidden border border-[#FEA700]/35 bg-[#000000] p-5 text-[#FFFFFF] transition-colors duration-300 ease-out hover:border-[#FEA700]"
+                          className="group/card relative block min-h-80 min-w-0 overflow-hidden border border-[#FEA700]/35 bg-[#FFFFFF] p-5 text-[#000000] transition-colors duration-300 ease-out hover:border-[#FEA700]"
                         >
                           <div className="relative z-10 flex h-full min-h-72 flex-col">
-                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">{PROGRAM_PANEL_FEATURE.eyebrow}</span>
-                            <h3 className="mt-3 max-w-full wrap-break-word text-2xl font-black leading-tight tracking-tight xl:text-3xl">{PROGRAM_PANEL_FEATURE.title}</h3>
-                            <p className="mt-3 max-w-full wrap-break-word text-sm leading-relaxed text-white/85">{PROGRAM_PANEL_FEATURE.description}</p>
+                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">
+                              {PROGRAM_PANEL_FEATURE.eyebrow}
+                            </span>
+                            <h3 className="mt-3 max-w-full wrap-break-word text-2xl font-black leading-tight tracking-tight xl:text-3xl text-[#000000]">
+                              {PROGRAM_PANEL_FEATURE.title}
+                            </h3>
+                            <p className="mt-3 max-w-full wrap-break-word text-sm leading-relaxed text-black/80">
+                              {PROGRAM_PANEL_FEATURE.description}
+                            </p>
                             <div className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-[#FEA700]">
                               Open finder
-                              <span className="transition group-hover/card:translate-x-0.5">→</span>
+                              <span className="transition group-hover/card:translate-x-0.5">
+                                →
+                              </span>
                             </div>
                           </div>
-                          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-52">
-                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/45 to-transparent" />
+                          <div className="pointer-events-none absolute inset-0">
                             <Image
                               src={PROGRAM_PANEL_FEATURE.imageSrc}
                               alt={PROGRAM_PANEL_FEATURE.imageAlt}
                               fill
                               sizes="(max-width: 1280px) 340px, 340px"
-                              className="object-cover object-center opacity-35 mix-blend-screen"
+                              className="object-cover object-center opacity-60"
                             />
                           </div>
                         </Link>
@@ -583,11 +666,15 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                 </div>
               </div>
             ) : (
-              <Link key={item.label} href={item.href} className="whitespace-nowrap transition-colors duration-300 ease-out hover:text-[#FEA700]">
+              <Link
+                key={item.label}
+                href={item.href}
+                className="whitespace-nowrap transition-colors duration-300 ease-out hover:text-[#FEA700]"
+              >
                 {item.label}
               </Link>
-            )
-          ))}
+            ),
+          )}
         </nav>
       </div>
 
@@ -615,16 +702,23 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
             </div>
 
             <nav className="space-y-1 text-sm font-semibold text-current">
-              {NAV_ITEMS.map((item) => (
+              {NAV_ITEMS.map((item) =>
                 item.label === "About" ? (
-                  <div key="mobile-about-dropdown" className={`border p-1 ${isTransparent ? "border-white/20 bg-black/60" : "border-black/10 bg-[#FFFFFF]"}`}>
+                  <div
+                    key="mobile-about-dropdown"
+                    className={`border p-1 ${isTransparent ? "border-white/20 bg-black/60" : "border-black/10 bg-[#FFFFFF]"}`}
+                  >
                     <button
                       type="button"
                       onClick={toggleMobileAbout}
                       className="flex w-full items-center justify-between px-3 py-2 text-left transition-colors duration-300 ease-out hover:text-[#FEA700]"
                     >
                       <span>{item.label}</span>
-                      <span className={`text-xs transition ${isMobileAboutOpen ? "rotate-180" : "rotate-0"}`}>▾</span>
+                      <span
+                        className={`text-xs transition ${isMobileAboutOpen ? "rotate-180" : "rotate-0"}`}
+                      >
+                        ▾
+                      </span>
                     </button>
 
                     {isMobileAboutOpen ? (
@@ -653,21 +747,33 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                     ) : null}
                   </div>
                 ) : item.label === "Programs" ? (
-                  <div key="mobile-programs-dropdown" className={`border p-1 ${isTransparent ? "border-white/20 bg-black/60" : "border-black/10 bg-[#FFFFFF]"}`}>
+                  <div
+                    key="mobile-programs-dropdown"
+                    className={`border p-1 ${isTransparent ? "border-white/20 bg-black/60" : "border-black/10 bg-[#FFFFFF]"}`}
+                  >
                     <button
                       type="button"
                       onClick={toggleMobilePrograms}
                       className="flex w-full items-center justify-between px-3 py-2 text-left transition-colors duration-300 ease-out hover:text-[#FEA700]"
                     >
                       <span>{item.label}</span>
-                      <span className={`text-xs transition ${isMobileProgramsOpen ? "rotate-180" : "rotate-0"}`}>▾</span>
+                      <span
+                        className={`text-xs transition ${isMobileProgramsOpen ? "rotate-180" : "rotate-0"}`}
+                      >
+                        ▾
+                      </span>
                     </button>
 
                     {isMobileProgramsOpen ? (
                       <div className="mt-1 flex max-h-[70vh] flex-col gap-3 overflow-y-auto px-2 pb-2">
                         {orderedProgramGroups.map(([groupName, groupItems]) => (
-                          <div key={`mobile-group-${groupName}`} className={`border p-2 ${isTransparent ? "border-white/20 bg-black/50" : "border-black/10 bg-[#FFFFFF]"}`}>
-                            <p className="px-1 pb-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[#FEA700]">{groupName}</p>
+                          <div
+                            key={`mobile-group-${groupName}`}
+                            className={`border p-2 ${isTransparent ? "border-white/20 bg-black/50" : "border-black/10 bg-[#FFFFFF]"}`}
+                          >
+                            <p className="px-1 pb-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[#FEA700]">
+                              {groupName}
+                            </p>
                             <div className="space-y-1">
                               {groupItems.map((programItem, index) => (
                                 <Link
@@ -700,8 +806,8 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
                   >
                     {item.label}
                   </Link>
-                )
-              ))}
+                ),
+              )}
             </nav>
           </div>
         </div>
@@ -713,148 +819,186 @@ export function MainNavbar({ isTransparent = false, isScrolled = false }: MainNa
 export function SiteFooter() {
   return (
     <footer className="bg-black text-white">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mx-auto max-w-4xl text-center">
-            <h3 className="text-3xl font-semibold md:text-3xl">Shape Your Future with Us</h3>
-            <p className="mt-4 text-sm leading-relaxed text-white/80 md:text-md">
-              Discover limitless opportunities at SVIET, where innovation, learning, and industry connect.
-            </p>
-            <p className="text-sm leading-relaxed text-white/80 md:text-md">
-              Take the first step towards your dreams. Explore our programs and get in touch to begin your journey with us.
-            </p>
-            <button
-              type="button"
-              className="mx-auto mt-8 inline-flex items-center gap-3 rounded-full bg-white px-5 py-2 text-sm font-medium text-black transition hover:bg-white/90"
-            >
-              Get in touch
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#f7941d] text-white">↗</span>
-            </button>
-          </div>
+      <div className="mx-auto max-w-7xl px-6 py-14">
+        <div className="mx-auto max-w-4xl text-center">
+          <h3 className="text-3xl font-semibold md:text-3xl">
+            Shape Your Future with Us
+          </h3>
+          <p className="mt-4 text-sm leading-relaxed text-white/80 md:text-md">
+            Discover limitless opportunities at SVIET, where innovation,
+            learning, and industry connect.
+          </p>
+          <p className="text-sm leading-relaxed text-white/80 md:text-md">
+            Take the first step towards your dreams. Explore our programs and
+            get in touch to begin your journey with us.
+          </p>
+          <button
+            type="button"
+            className="mx-auto mt-8 inline-flex items-center gap-3 rounded-full bg-white px-5 py-2 text-sm font-medium text-black transition hover:bg-white/90"
+          >
+            Get in touch
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#f7941d] text-white">
+              ↗
+            </span>
+          </button>
+        </div>
 
-          <div className="mt-14 border-t border-white/10 pt-14">
-            <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
-              <section>
-                <div className="flex items-center gap-3">
-                  <Image src="/assets/img/sviet_white.png" alt="SVIET logo" width={120} height={40} className="h-8 w-auto md:h-10" style={{ width: "auto" }} />
+        <div className="mt-14 border-t border-white/10 pt-14">
+          <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
+            <section>
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/assets/img/sviet_white.png"
+                  alt="SVIET logo"
+                  width={120}
+                  height={40}
+                  className="h-8 w-auto md:h-10"
+                  style={{ width: "auto" }}
+                />
+              </div>
+
+              <div className="mt-6 flex items-center gap-2">
+                <a
+                  href="#"
+                  aria-label="Facebook"
+                  className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25"
+                >
+                  <FaFacebookF />
+                </a>
+                <a
+                  href="#"
+                  aria-label="Instagram"
+                  className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25"
+                >
+                  <FaInstagram />
+                </a>
+                <a
+                  href="#"
+                  aria-label="LinkedIn"
+                  className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25"
+                >
+                  <FaLinkedinIn />
+                </a>
+                <a
+                  href="#"
+                  aria-label="X"
+                  className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-base font-semibold text-white transition hover:bg-white/25"
+                >
+                  X
+                </a>
+                <a
+                  href="#"
+                  aria-label="YouTube"
+                  className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25"
+                >
+                  <FaYoutube />
+                </a>
+              </div>
+
+              <div className="mt-8 space-y-6 text-sm leading-relaxed text-white/90">
+                <div>
+                  <p className="font-semibold uppercase tracking-wide">
+                    Address
+                  </p>
+                  <p>
+                    Village Ramnagar, Near Banur, Tehsil Rajpura, Patiala,
+                    Punjab - 140601
+                  </p>
+                  <p className="mt-3">Phone: +91-94652-33333</p>
+                  <p>Toll Free: 1800-120-1200</p>
+                  <p>Email: admission@sviet.ac.in | info@sviet.ac.in</p>
+                  <p>Website: www.sviet.ac.in</p>
                 </div>
+              </div>
+            </section>
 
-                <div className="mt-6 flex items-center gap-2">
-                  <a href="#" aria-label="Facebook" className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25">
-                    <FaFacebookF />
-                  </a>
-                  <a href="#" aria-label="Instagram" className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25">
-                    <FaInstagram />
-                  </a>
-                  <a href="#" aria-label="LinkedIn" className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25">
-                    <FaLinkedinIn />
-                  </a>
-                  <a href="#" aria-label="X" className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-base font-semibold text-white transition hover:bg-white/25">
-                    X
-                  </a>
-                  <a href="#" aria-label="YouTube" className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25">
-                    <FaYoutube />
-                  </a>
-                </div>
+            <section>
+              <h4 className="text-lg font-semibold uppercase">
+                <Link href="/admissions" className="hover:text-white">
+                  Admissions
+                </Link>
+              </h4>
+              <ul className="mt-5 space-y-3 text-sm text-white/85">
+                {[
+                  "Downloadable Brochures",
+                  "Important Contact Numbers",
+                  "Application Form Sale Outlets",
+                  "Admission Procedure",
+                  "Fee Structure",
+                  "International Students",
+                  "Downloadable Forms & Formats",
+                  "FAQ",
+                ].map((item) => (
+                  <li key={item}>
+                    {item === "Admission Procedure" ? (
+                      <Link href="/admissions" className="hover:text-white">
+                        {item}
+                      </Link>
+                    ) : (
+                      item
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
 
-                <div className="mt-8 space-y-6 text-sm leading-relaxed text-white/90">
-                  <div>
-                    <p className="font-semibold uppercase tracking-wide">Address</p>
-                    <p>Village Ramnagar, Near Banur, Tehsil Rajpura, Patiala, Punjab - 140601</p>
-                    <p className="mt-3">Phone: +91-94652-33333</p>
-                    <p>Toll Free: 1800-120-1200</p>
-                    <p>Email: admission@sviet.ac.in | info@sviet.ac.in</p>
-                    <p>Website: www.sviet.ac.in</p>
-                  </div>
-                </div>
-              </section>
+            <section>
+              <h4 className="text-lg font-semibold uppercase">
+                Important Info
+              </h4>
+              <ul className="mt-5 space-y-3 text-sm text-white/85">
+                {[
+                  "Grievance Redressal",
+                  "NIRF Report",
+                  "University National Academic Depository (NAD) Cell",
+                  "UGC Mandatory Disclosures",
+                  "www.pmydisha2mci.co.in/",
+                  "Academic Bank of Credits (ABC)",
+                  "Request for Educational Verification",
+                  "RTI",
+                  "Agnipath Yojana",
+                ].map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
 
-              <section>
-                <h4 className="text-lg font-semibold uppercase">
-                  <Link href="/admissions" className="hover:text-white">
-                    Admissions
-                  </Link>
-                </h4>
-                <ul className="mt-5 space-y-3 text-sm text-white/85">
-                  {[
-                    "Downloadable Brochures",
-                    "Important Contact Numbers",
-                    "Application Form Sale Outlets",
-                    "Admission Procedure",
-                    "Fee Structure",
-                    "International Students",
-                    "Downloadable Forms & Formats",
-                    "FAQ",
-                  ].map((item) => (
-                    <li key={item}>
-                      {item === "Admission Procedure" ? (
-                        <Link href="/admissions" className="hover:text-white">
-                          {item}
-                        </Link>
-                      ) : (
-                        item
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </section>
-
-              <section>
-                <h4 className="text-lg font-semibold uppercase">Important Info</h4>
-                <ul className="mt-5 space-y-3 text-sm text-white/85">
-                  {[
-                    "Grievance Redressal",
-                    "NIRF Report",
-                    "University National Academic Depository (NAD) Cell",
-                    "UGC Mandatory Disclosures",
-                    "www.pmydisha2mci.co.in/",
-                    "Academic Bank of Credits (ABC)",
-                    "Request for Educational Verification",
-                    "RTI",
-                    "Agnipath Yojana",
-                  ].map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </section>
-
-              <section>
-                <h4 className="text-lg font-semibold uppercase">Explore</h4>
-                <ul className="mt-5 space-y-3 text-sm text-white/85">
-                  {[
-                    "SVIET University, Punjab",
-                    "SVIET University, Himachal Pradesh",
-                    "SVIET International School",
-                    "SVIET Centre for Global Education",
-                    "Office of International Affairs",
-                    "Career Advancement Services",
-                    "Office of Student Affairs",
-                    "University Sports Board",
-                    "Research",
-                    "Blogs",
-                  ].map((item) => (
-                    <li key={item}>
-                      {item === "Research" ? (
-                        <Link href="/research" className="hover:text-white">
-                          {item}
-                        </Link>
-                      ) : (
-                        item
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            </div>
-          </div>
-
-          <div className="mt-12 border-t border-white/10 pt-5">
-            <div className="flex flex-col items-center justify-between gap-2 text-xs text-white/65 md:flex-row">
-             
-              <p>© {new Date().getFullYear()} SVIET. All rights reserved.</p>
-            </div>
+            <section>
+              <h4 className="text-lg font-semibold uppercase">Explore</h4>
+              <ul className="mt-5 space-y-3 text-sm text-white/85">
+                {[
+                  "SVIET University, Punjab",
+                  "SVIET University, Himachal Pradesh",
+                  "SVIET International School",
+                  "SVIET Centre for Global Education",
+                  "Office of International Affairs",
+                  "Career Advancement Services",
+                  "Office of Student Affairs",
+                  "University Sports Board",
+                  "Research",
+                  "Blogs",
+                ].map((item) => (
+                  <li key={item}>
+                    {item === "Research" ? (
+                      <Link href="/research" className="hover:text-white">
+                        {item}
+                      </Link>
+                    ) : (
+                      item
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
           </div>
         </div>
-      </footer>
+
+        <div className="mt-12 border-t border-white/10 pt-5">
+          <div className="flex flex-col items-center justify-between gap-2 text-xs text-white/65 md:flex-row">
+            <p>© {new Date().getFullYear()} SVIET. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }
-

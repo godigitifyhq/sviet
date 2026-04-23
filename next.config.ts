@@ -35,6 +35,42 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "www.paruluniversity.ac.in",
       },
+      {
+        protocol: "https",
+        hostname: "www.igauge.in",
+      },
+      {
+        protocol: "https",
+        hostname: "www.nirfindia.org",
+      },
+      {
+        protocol: "https",
+        hostname: "www.ugc.gov.in",
+      },
+      {
+        protocol: "https",
+        hostname: "silicon.ac.in",
+      },
+      {
+        protocol: "http",
+        hostname: "naac.gov.in",
+      },
+      {
+        protocol: "https",
+        hostname: "naac.gov.in",
+      },
+      {
+        protocol: "https",
+        hostname: "images.financialexpressdigital.com",
+      },
+      {
+        protocol: "https",
+        hostname: "pci.gov.in",
+      },
+      {
+        protocol: "https",
+        hostname: "www.barcouncilofindia.org",
+      },
     ],
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
@@ -42,7 +78,7 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
   },
-  allowedDevOrigins: ['10.73.220.15'],
+  allowedDevOrigins: ["10.73.220.15"],
 };
 
 export default nextConfig;

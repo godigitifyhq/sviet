@@ -6,20 +6,20 @@ import { useEffect, useRef, useState } from "react";
 
 const STUDENT_SPEAK_SLIDES = [
   {
-    imageSrc: "/assets/img/campus-life/image1.png",
-    imageAlt: "Students on campus",
+    imageSrc: "/assets/img/students/aman-student-speak.jpeg",
+    imageAlt: "Student Speaks card featuring Aman Verma",
   },
   {
-    imageSrc: "/assets/img/campus-life/image2.png",
-    imageAlt: "Student life at SVIET",
+    imageSrc: "/assets/img/students/NIKHIL-student-speak.jpeg",
+    imageAlt: "Student Speaks card featuring Nikhil Arora",
   },
   {
-    imageSrc: "/assets/img/campus-life/image4.png",
-    imageAlt: "Campus moments with students",
+    imageSrc: "/assets/img/students/riya-student-speak.jpeg",
+    imageAlt: "Student Speaks card featuring Riya Sharma",
   },
   {
-    imageSrc: "/assets/img/campus-life/r1c1.png",
-    imageAlt: "Student group on campus",
+    imageSrc: "/assets/img/students/simran-student-speak.jpeg",
+    imageAlt: "Student Speaks card featuring Simran Kaur",
   },
 ] as const;
 
@@ -59,27 +59,32 @@ export function PlacementStudentSpeakSection() {
     }
 
     const offset = Math.round(track.clientWidth * 0.82);
-    track.scrollBy({ left: direction === "right" ? offset : -offset, behavior: "smooth" });
+    track.scrollBy({
+      left: direction === "right" ? offset : -offset,
+      behavior: "smooth",
+    });
   };
 
   return (
-    <section className="mt-16 pb-2 md:mt-20">
+    <section className="mt-12 pb-1 md:mt-14">
       <div className="text-center">
-        <p className="text-2xl font-medium leading-none text-black md:text-[2.15rem]">Our students speak</p>
-        <h3 className="mt-3 text-4xl font-extrabold leading-none tracking-[-0.04em] text-[#0b3b8f] md:text-[4.75rem]">
+        <p className="text-xl font-medium leading-none text-black md:text-2xl">
+          Our students speak
+        </p>
+        <h3 className="mt-2 text-3xl font-bold leading-none tracking-[-0.02em] text-[#0b3b8f] md:text-5xl">
           empowering the future
         </h3>
       </div>
 
-      <div className="relative mt-8 md:mt-10">
+      <div className="relative mt-6 md:mt-8">
         {canScrollLeft ? (
           <button
             type="button"
             onClick={() => scrollByAmount("left")}
-            className="absolute left-2 top-1/2 z-10 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black text-white shadow-[0_14px_30px_rgba(0,0,0,0.18)] transition hover:bg-black/80 md:flex"
+            className="absolute left-2 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black text-white shadow-[0_10px_20px_rgba(0,0,0,0.16)] transition hover:bg-black/80 md:flex"
             aria-label="Previous student story"
           >
-            <ChevronLeft size={28} />
+            <ChevronLeft size={20} />
           </button>
         ) : null}
 
@@ -87,30 +92,30 @@ export function PlacementStudentSpeakSection() {
           <button
             type="button"
             onClick={() => scrollByAmount("right")}
-            className="absolute right-2 top-1/2 z-10 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black text-white shadow-[0_14px_30px_rgba(0,0,0,0.18)] transition hover:bg-black/80 md:flex"
+            className="absolute right-2 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black text-white shadow-[0_10px_20px_rgba(0,0,0,0.16)] transition hover:bg-black/80 md:flex"
             aria-label="Next student story"
           >
-            <ChevronRight size={28} />
+            <ChevronRight size={20} />
           </button>
         ) : null}
 
         <div
           ref={trackRef}
-          className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-[5vw] pb-4 pt-2 scroll-smooth md:gap-6 md:px-[9vw]"
+          className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-[6vw] pb-3 pt-1 scroll-smooth md:gap-4 md:px-[12vw]"
           aria-label="Student stories carousel"
         >
           {STUDENT_SPEAK_SLIDES.map((slide) => (
             <article
               key={slide.imageSrc}
-              className="w-[84vw] shrink-0 snap-center overflow-hidden rounded-[28px] border border-[#0b3b8f]/10 bg-[#fff8ea] shadow-[0_20px_55px_rgba(0,0,0,0.14)] md:w-[72vw] lg:w-[66vw]"
+              className="w-[62vw] shrink-0 snap-center overflow-hidden rounded-2xl border border-[#0b3b8f]/10 md:w-[42vw] lg:w-[28vw]"
             >
-              <div className="relative aspect-video w-full md:aspect-17/9">
+              <div className="relative aspect-858/768 w-full">
                 <Image
                   src={slide.imageSrc}
                   alt={slide.imageAlt}
                   fill
-                  sizes="(max-width: 768px) 84vw, 66vw"
-                  className="object-cover"
+                  sizes="(max-width: 768px) 62vw, (max-width: 1024px) 42vw, 28vw"
+                  className="object-contain"
                 />
               </div>
             </article>

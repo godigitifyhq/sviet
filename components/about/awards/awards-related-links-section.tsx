@@ -8,12 +8,12 @@ const RELATED_LINKS = [
     href: "/about",
     icon: ChartNoAxesColumn,
   },
-  {
-    title: "Infrastructure",
-    description: "Facilities supporting modern, practical learning",
-    href: "/about/infrastructure",
-    icon: Building2,
-  },
+  // {
+  //   title: "Infrastructure",
+  //   description: "Facilities supporting modern, practical learning",
+  //   href: "/about/infrastructure",
+  //   icon: Building2,
+  // },
   {
     title: "Leadership",
     description: "Guidance shaping institutional direction",
