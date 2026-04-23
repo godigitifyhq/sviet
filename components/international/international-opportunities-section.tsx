@@ -14,7 +14,7 @@ export function InternationalOpportunitiesSection() {
         <div className="grid gap-8 lg:grid-cols-[0.4fr_0.6fr] lg:gap-10">
           <div className="lg:sticky lg:top-25 lg:self-start">
             <h2 className="text-3xl font-semibold leading-tight text-[#111827] md:text-4xl">
-              What else can <span className="bg-linear-to-r from-[#2563EB] to-[#f7941d] bg-clip-text font-extrabold text-transparent">you do
+              What else can <span className="font-extrabold ">you do
               {/* <br /> */}
               while studying at SVIET</span>
             </h2>
@@ -31,7 +31,7 @@ export function InternationalOpportunitiesSection() {
                     <p className="mt-2 text-sm text-white/95 md:text-lg">{item.description}</p>
                   </div>
                   <div className="relative h-40 w-36 md:h-44 md:w-40">
-                    <Image src={item.imageSrc} alt={item.title} fill sizes="160px" className="object-contain object-bottom" />
+                    {/* <Image src={item.imageSrc} alt={item.title} fill sizes="160px" className="object-contain object-bottom" /> */}
                   </div>
                 </div>
               </article>

@@ -12,10 +12,12 @@ import { AdmissionsRecognitionsSection } from "@/components/admissions/admission
 import { AdmissionsEnrichingWaysSection } from "@/components/admissions/admissions-enriching-ways-section";
 import { AdmissionsHowToApplySection } from "@/components/admissions/admissions-how-to-apply-section";
 import { InternationalOpportunitiesSection } from "@/components/international/international-opportunities-section";
-import { type ProgramOption, type ProgramsApiResponse } from "@/components/admissions/types";
+import {
+  type ProgramOption,
+  type ProgramsApiResponse,
+} from "@/components/admissions/types";
 import { useApplyLeadForm } from "@/components/admissions/use-apply-lead-form";
 import { AdmissionsEntranceEligibilitySection } from "@/components/admissions/admissions-entrance-eligibility-section";
-import { AdmissionsScholarshipsSection } from "@/components/admissions/admissions-scholarships-section";
 import { AdmissionsFinalCtaSection } from "@/components/admissions/admissions-final-cta-section";
 
 export default function AdmissionsPage() {
@@ -54,9 +56,19 @@ export default function AdmissionsPage() {
     };
   }, []);
 
-  const initialProgramSlug = useMemo(() => searchParams.get("program"), [searchParams]);
-  const { form, errors, isSubmitting, submitError, isSuccess, handleFieldChange, handleSubmit } =
-    useApplyLeadForm(programs, initialProgramSlug);
+  const initialProgramSlug = useMemo(
+    () => searchParams.get("program"),
+    [searchParams],
+  );
+  const {
+    form,
+    errors,
+    isSubmitting,
+    submitError,
+    isSuccess,
+    handleFieldChange,
+    handleSubmit,
+  } = useApplyLeadForm(programs, initialProgramSlug);
 
   return (
     <div className="bg-white text-[#111]">
@@ -70,13 +82,10 @@ export default function AdmissionsPage() {
         onFieldChange={handleFieldChange}
         onSubmit={handleSubmit}
       />
-      <div className="mt-20"> 
-
-      </div>
+      <div className="mt-20"></div>
       <AdmissionsRecognitionsSection />
       <AdmissionsStudyOverviewSection />
       <AdmissionsEntranceEligibilitySection />
-      <AdmissionsScholarshipsSection />
       <AdmissionsHowToApplySection />
       <AdmissionsCareerProgramsSection programs={programs} />
       <AdmissionsValueGridSection />

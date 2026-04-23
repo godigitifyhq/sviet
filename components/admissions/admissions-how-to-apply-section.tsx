@@ -105,7 +105,7 @@ export function AdmissionsHowToApplySection() {
 
         <div className="relative flex items-center justify-center bg-[#f5f7fb]">
           <Image
-            src="/assets/img/banner/processform.jpeg"
+            src="/assets/img/banner/processform.png"
             alt="SVIET admission process steps"
             width={900}
             height={1200}
