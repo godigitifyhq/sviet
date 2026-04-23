@@ -7,17 +7,27 @@ export function InternationalAdmissionsHelpSection() {
         <h2 className="text-3xl font-semibold text-[#111827] md:text-5xl">
           Need help with
           <br />
-          <span className="bg-linear-to-r from-[#2563EB] to-[#f7941d] bg-clip-text font-extrabold text-transparent">International Admissions?</span>
+          <span className="">International Admissions?</span>
         </h2>
         <p className="mt-4 max-w-3xl text-base text-[#374151] md:text-lg">
-          Our admissions team guides you through eligibility, documentation, visa support, and onboarding.
+          Our admissions team guides you through eligibility, documentation,
+          visa support, and onboarding.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/contact" className="rounded-lg bg-[#f7941d] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#d97706]">Talk to us</Link>
-          <Link href="/admissions" className="rounded-lg border border-[#2563EB] px-6 py-3 text-sm font-semibold text-[#2563EB] transition hover:bg-[#2563EB] hover:text-white">Start application</Link>
+          <Link
+            href="/contact"
+            className="rounded-lg bg-[#f7941d] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#d97706]"
+          >
+            Talk to us
+          </Link>
+          <Link
+            href="/admissions"
+            className="rounded-lg border border-[#2563EB] px-6 py-3 text-sm font-semibold text-[#2563EB] transition hover:bg-[#2563EB] hover:text-white"
+          >
+            Start application
+          </Link>
         </div>
       </div>
     </section>
   );
 }
-

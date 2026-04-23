@@ -27,7 +27,7 @@ export function InternationalNewsUpdatesSection() {
         <h2 className="text-xl font-semibold leading-tight text-[#111827] md:text-5xl">
           Stay Up To Date With the
           <br />
-          <span className="bg-linear-to-r from-[#2563EB] to-[#f7941d] bg-clip-text font-bold text-transparent">
+          <span className=" ">
             International Community News & Updates
           </span>
         </h2>

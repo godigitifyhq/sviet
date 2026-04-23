@@ -11,7 +11,7 @@ export function InternationalHeroIntroSection() {
             <br />
             community of over
             <br />
-            <span className="bg-linear-to-r from-[#2563EB] to-[#f7941d] bg-clip-text font-extrabold text-transparent">
+            <span className="">
               5,500+ international students
               <br />
               from 75+ countries.
@@ -19,13 +19,17 @@ export function InternationalHeroIntroSection() {
           </h2>
 
           <div>
-            <h3 className="text-2xl font-bold text-[#111827] md:text-3xl">International Students</h3>
+            <h3 className="text-2xl font-bold text-[#111827] md:text-3xl">
+              International Students
+            </h3>
             <p className="mt-4 text-base leading-relaxed text-[#374151] md:text-lg">
-              At SVIET, we pride ourselves on being a melting pot of cultures, ideas, and innovations. With students
-              from 75+ countries, our campus offers a truly global experience.
+              At SVIET, we pride ourselves on being a melting pot of cultures,
+              ideas, and innovations. With students from 75+ countries, our
+              campus offers a truly global experience.
             </p>
             <p className="mt-4 text-base leading-relaxed text-[#374151] md:text-lg">
-              Explore diverse programs, state-of-the-art facilities, and a supportive environment that nurtures your ambitions.
+              Explore diverse programs, state-of-the-art facilities, and a
+              supportive environment that nurtures your ambitions.
             </p>
           </div>
         </div>
@@ -60,4 +64,3 @@ export function InternationalHeroIntroSection() {
     </section>
   );
 }
-
