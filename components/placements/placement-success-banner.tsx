@@ -48,7 +48,7 @@ export function PlacementSuccessBanner() {
               <div className="relative flex h-56 items-end justify-center overflow-visible md:h-64">
                 <div className="pointer-events-none absolute bottom-0 left-1/2 h-24 w-40 -translate-x-1/2 rounded-full bg-[#fea700]/20 blur-3xl md:h-28 md:w-52" />
                 <Image
-                  src="/assets/img/students/Placement-Mockup-1.png"
+                  src="/assets/img/students/33.png"
                   alt="Suraj Jagtap and Tanish Patel placed at Microsoft"
                   width={560}
                   height={560}

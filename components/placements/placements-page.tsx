@@ -184,7 +184,7 @@ export function PlacementsPageComponent() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="placement-drives-heading">
+      {/* <SectionWrapper aria-labelledby="placement-drives-heading">
         <SectionHeader id="placement-drives-heading" title="Placement Drives" />
 
         <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -198,7 +198,7 @@ export function PlacementsPageComponent() {
             />
           ))}
         </div>
-      </SectionWrapper>
+      </SectionWrapper> */}
 
       <SectionWrapper aria-labelledby="industrial-exposure-heading" className="bg-gray-50">
         <SectionHeader
@@ -236,7 +236,7 @@ export function PlacementsPageComponent() {
 
       <PlacementStudentSpeakSection />
 
-      <SectionWrapper aria-labelledby="outcomes-objectives-heading">
+      {/* <SectionWrapper aria-labelledby="outcomes-objectives-heading">
         <SectionHeader id="outcomes-objectives-heading" title="Outcomes & Objectives" />
 
         <ul className="mt-6 grid gap-3 text-sm text-gray-700 sm:grid-cols-3">
@@ -249,7 +249,7 @@ export function PlacementsPageComponent() {
           We focus on developing industry-ready graduates equipped with practical skills, professional ethics, and the
           ability to contribute effectively in their chosen careers.
         </p>
-      </SectionWrapper>
+      </SectionWrapper> */}
 
       <SectionWrapper aria-labelledby="placements-faq-heading" className="bg-gray-50">
         <SectionHeader id="placements-faq-heading" title="FAQ" />
