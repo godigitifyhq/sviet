@@ -116,25 +116,33 @@ export function AccreditationsPage() {
         aria-labelledby="accreditations-heading"
         className="relative overflow-hidden border-b border-[#E5E7EB] bg-white"
       >
-        <div
-          className="absolute -right-32 -top-25 hidden h-72 w-72 bg-[#BFDBFE]/30 blur-3xl md:block"
-          aria-hidden="true"
-        />
-        <div className="max-w-4xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#f7941d]">
+        <div className=" mb-7 max-w-4xl text-left">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em]  md:text-sm">
             About SVIET
           </p>
           <h1
             id="accreditations-heading"
-            className="mt-3 text-4xl font-bold tracking-tight text-[#111827] md:text-5xl"
+            className="mt-3 text-3xl font-black tracking-tight md:text-5xl"
           >
-            Accreditations &amp; Approvals
+            Accreditations{" "}
+            <span className="">&amp; Approvals</span>
           </h1>
-          <p className="mt-5 text-base leading-relaxed text-[#6B7280]">
-            This page highlights SVIET&apos;s accreditation status, regulatory
-            recognitions, and institutional quality frameworks that support
-            consistent academic standards.
+          <p className=" mt-3 max-w-3xl text-sm leading-relaxed text-[#475569] md:text-base">
+            Recognitions that reflect SVIET&apos;s quality-first academic
+            systems, regulatory compliance, and sustained excellence.
           </p>
+        </div>
+        <div className="relative mx-auto w-full max-w-7xl overflow-hidden border border-[#E5E7EB] bg-white">
+          <div className="relative aspect-2048/878 w-full">
+            <Image
+              src="/assets/img/banner/accred.jpeg"
+              alt="Accredited and approved banner highlighting NAAC B++ and AICTE approved recognitions"
+              fill
+              priority
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-contain"
+            />
+          </div>
         </div>
       </SectionWrapper>
 
@@ -169,6 +177,7 @@ export function AccreditationsPage() {
                 src="http://naac.gov.in/templates/naac/images/header.png"
                 alt="SVIET accreditation logo"
                 fill
+                unoptimized
                 loading="lazy"
                 className="object-contain"
                 sizes="240px"

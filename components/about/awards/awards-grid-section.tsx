@@ -72,6 +72,8 @@ const getYearBadge = (title: string) => {
   return yearMatches[yearMatches.length - 1];
 };
 
+const isExternalImage = (src: string) => /^https?:\/\//.test(src);
+
 export function AwardsGridSection() {
   useEffect(() => {
     const revealElements = Array.from(
@@ -127,6 +129,7 @@ export function AwardsGridSection() {
                   src={logo.logoSrc}
                   alt={logo.logoAlt}
                   fill
+                  unoptimized={isExternalImage(logo.logoSrc)}
                   sizes="96px"
                   className="object-contain grayscale opacity-65"
                 />
@@ -194,6 +197,7 @@ export function AwardsGridSection() {
                                   src={item.logoSrc}
                                   alt={item.logoAlt}
                                   fill
+                                  unoptimized={isExternalImage(item.logoSrc)}
                                   sizes="128px"
                                   className="object-contain object-left"
                                 />

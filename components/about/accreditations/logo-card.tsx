@@ -14,6 +14,7 @@ export function LogoCard({
   logoAlt,
 }: LogoCardProps) {
   const hasLogo = Boolean(logoSrc?.trim());
+  const isExternalLogo = /^https?:\/\//.test(logoSrc);
 
   return (
     <article className="border border-[#DCE7FF] bg-white p-6 shadow-[0_8px_24px_rgba(30,42,120,0.08)]">
@@ -23,6 +24,7 @@ export function LogoCard({
             src={logoSrc}
             alt={logoAlt}
             fill
+            unoptimized={isExternalLogo}
             loading="lazy"
             className="object-contain object-left"
             sizes="128px"

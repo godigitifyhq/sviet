@@ -1,4 +1,5 @@
 import type { Leader } from "@/components/about/leader-card";
+import Image from "next/image";
 import { LeadershipCarousel } from "@/components/about/leadership-carousel";
 import { InfoCard } from "@/components/about/info-card";
 import { SectionHeader } from "@/components/about/section-header";
@@ -8,35 +9,42 @@ const LEADERSHIP_DESK: Leader[] = [
   {
     name: "Mr. Ashwani Garg",
     title: "Chairman",
-    description: "I welcome every aspiring achiever to the Swami Vivekanand Group of Institutions.",
+    description:
+      "I welcome every aspiring achiever to the Swami Vivekanand Group of Institutions.",
     messageParagraphs: [
       "I welcome every aspiring achiever to the Swami Vivekanand Group of Institutions. SVGOI has become a place that provides valuable educational experiences to students from diverse cultures and backgrounds.",
       "We offer an interactive curriculum designed to deliver strong learning outcomes across scientific, medical, arts, business, and engineering fields.",
       "In today's globalized world, boundaries are becoming transparent, and our international collaborations provide students with opportunities for global exposure.",
       "Join hands with SVGOI and become future-ready.",
     ],
-    socialLinks: [{ label: "Facebook", href: "https://www.facebook.com/ChairmanSVGOI" }],
+    socialLinks: [
+      { label: "Facebook", href: "https://www.facebook.com/ChairmanSVGOI" },
+    ],
     imageSrc: "/assets/img/college/management/ashwani-sir.jpg",
     imageAlt: "Mr. Ashwani Garg",
   },
   {
     name: "Mr. Ashok Garg",
     title: "President",
-    description: "SVGOI has witnessed remarkable growth, driven by dedication, exceptional faculty, and a strong learning environment.",
+    description:
+      "SVGOI has witnessed remarkable growth, driven by dedication, exceptional faculty, and a strong learning environment.",
     messageParagraphs: [
       "SVGOI has witnessed remarkable growth, driven by dedication, exceptional faculty, and a strong learning environment.",
       "We focus on quality education with programs affiliated with national and international universities.",
       "By emphasizing practical learning and research, we help students realize their full potential and build intellectual excellence.",
       "Let's collaborate in building a skilled society together.",
     ],
-    socialLinks: [{ label: "Facebook", href: "https://www.facebook.com/ashok.garg.566" }],
+    socialLinks: [
+      { label: "Facebook", href: "https://www.facebook.com/ashok.garg.566" },
+    ],
     imageSrc: "/assets/img/college/management/ashok-sir.jpg",
     imageAlt: "Mr. Ashok Garg",
   },
   {
     name: "Mr. Vishal Garg",
     title: "Director Secretarial and Administration",
-    description: "At SVGOI, we prioritize global academic standards and active engagement between students, faculty, and industry.",
+    description:
+      "At SVGOI, we prioritize global academic standards and active engagement between students, faculty, and industry.",
     messageParagraphs: [
       "At SVGOI, we prioritize global academic standards and active engagement between students, faculty, and industry.",
       "Our focus is on holistic education that prepares students for a globalized world.",
@@ -44,8 +52,14 @@ const LEADERSHIP_DESK: Leader[] = [
       "Join us in shaping the future of learning.",
     ],
     socialLinks: [
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/vishal-garg-2134aa142/" },
-      { label: "Facebook", href: "https://www.facebook.com/vishal.garg.7921975" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/vishal-garg-2134aa142/",
+      },
+      {
+        label: "Facebook",
+        href: "https://www.facebook.com/vishal.garg.7921975",
+      },
     ],
     imageSrc: "/assets/img/college/management/vishal-sir.jpg",
     imageAlt: "Mr. Vishal Garg",
@@ -53,20 +67,27 @@ const LEADERSHIP_DESK: Leader[] = [
   {
     name: "Mr. Ankur Gupta",
     title: "Director Corporate Affairs",
-    description: "Students across the country are attracted to SVGOI due to our focus on teaching excellence, research, and industry-aligned courses.",
+    description:
+      "Students across the country are attracted to SVGOI due to our focus on teaching excellence, research, and industry-aligned courses.",
     messageParagraphs: [
       "Students across the country are attracted to SVGOI due to our focus on teaching excellence, research, and industry-aligned courses.",
       "We provide modern infrastructure including ICT-enabled classrooms and active participation in co-curricular activities.",
       "International exchange programs help students gain valuable global exposure and opportunities.",
     ],
-    socialLinks: [{ label: "LinkedIn", href: "https://www.linkedin.com/in/ankur-gupta-14278730/" }],
+    socialLinks: [
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/ankur-gupta-14278730/",
+      },
+    ],
     imageSrc: "/assets/img/college/management/ankurgupta.jpg",
     imageAlt: "Mr. Ankur Gupta",
   },
   {
     name: "Mr. Sahil Garg",
     title: "Project Director",
-    description: "SVGOI represents quality, dedication, and strong values, reflected in our accomplished alumni.",
+    description:
+      "SVGOI represents quality, dedication, and strong values, reflected in our accomplished alumni.",
     messageParagraphs: [
       "SVGOI represents quality, dedication, and strong values, reflected in our accomplished alumni.",
       "We offer diverse and industry-relevant programs with a student-centric approach, making us one of the top private institutions in North India.",
@@ -74,7 +95,10 @@ const LEADERSHIP_DESK: Leader[] = [
       "Join us in shaping a brighter future.",
     ],
     socialLinks: [
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/sahil-garg-034226130/" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/sahil-garg-034226130/",
+      },
       { label: "Facebook", href: "https://www.facebook.com/sahil.garg.58910" },
     ],
     imageSrc: "/assets/img/college/management/sahil-sir.jpg",
@@ -83,15 +107,22 @@ const LEADERSHIP_DESK: Leader[] = [
   {
     name: "Mr. Shubham Garg",
     title: "Director Placements",
-    description: "Our focus is to provide strong placement opportunities and corporate exposure to students.",
+    description:
+      "Our focus is to provide strong placement opportunities and corporate exposure to students.",
     messageParagraphs: [
       "Our focus is to provide strong placement opportunities and corporate exposure to students.",
       "Over the years, we have successfully placed students across multiple industries including IT, manufacturing, banking, media, and services.",
       "The Training and Placement Office coordinates closely with departments to ensure smooth placement activities and career support.",
     ],
     socialLinks: [
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/shubham-garg-670537170/" },
-      { label: "Facebook", href: "https://www.facebook.com/profile.php?id=100052235821482" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/shubham-garg-670537170/",
+      },
+      {
+        label: "Facebook",
+        href: "https://www.facebook.com/profile.php?id=100052235821482",
+      },
     ],
     imageSrc: "/assets/img/college/management/shubham-sir..jpg",
     imageAlt: "Mr. Shubham Garg",
@@ -99,7 +130,8 @@ const LEADERSHIP_DESK: Leader[] = [
   {
     name: "Mr. Ankur Gill",
     title: "Director Operations",
-    description: "As the Director of Operations at Swami Vivekanand Institute of Engineering and Technology, I am deeply committed to excellence, innovation, and growth.",
+    description:
+      "As the Director of Operations at Swami Vivekanand Institute of Engineering and Technology, I am deeply committed to excellence, innovation, and growth.",
     messageParagraphs: [
       "As the Director of Operations at Swami Vivekanand Institute of Engineering and Technology, I am deeply committed to fostering an environment of excellence, innovation, and growth within our institution.",
       "With a focus on providing top-notch education and opportunities for our students, I am honored to collaborate with such dedicated professionals who share a passion for academic advancement and student success.",
@@ -107,7 +139,10 @@ const LEADERSHIP_DESK: Leader[] = [
       "I am confident that with unwavering support and dedication, the institute will continue to reach new heights of success and distinction.",
     ],
     socialLinks: [
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/ankurgillofficial/" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/ankurgillofficial/",
+      },
       { label: "Facebook", href: "https://www.facebook.com/ankurgillofficial" },
     ],
     imageSrc: "/assets/img/college/management/ankur-sir.jpg",
@@ -118,19 +153,23 @@ const LEADERSHIP_DESK: Leader[] = [
 const LEADERSHIP_PRIORITIES = [
   {
     title: "Student-Centered Direction",
-    description: "Institutional decisions are shaped around student growth, real-world readiness, and long-term professional confidence.",
+    description:
+      "Institutional decisions are shaped around student growth, real-world readiness, and long-term professional confidence.",
   },
   {
     title: "Quality and Academic Governance",
-    description: "Leadership continuously strengthens curriculum delivery, learning standards, and academic accountability.",
+    description:
+      "Leadership continuously strengthens curriculum delivery, learning standards, and academic accountability.",
   },
   {
     title: "Innovation and Institutional Progress",
-    description: "Strategic planning supports innovation-led initiatives, interdisciplinary development, and future-focused education.",
+    description:
+      "Strategic planning supports innovation-led initiatives, interdisciplinary development, and future-focused education.",
   },
   {
     title: "Industry and Ecosystem Engagement",
-    description: "Active industry and institutional collaborations improve exposure, practical relevance, and career pathways for students.",
+    description:
+      "Active industry and institutional collaborations improve exposure, practical relevance, and career pathways for students.",
   },
 ];
 
@@ -139,20 +178,30 @@ export function LeadershipPage() {
     <main className="">
       <SectionWrapper
         aria-labelledby="leadership-hero-heading"
-        className="relative overflow-hidden border-b border-[#E5E7EB] "
+        className="relative overflow-hidden border-b border-[#E5E7EB] bg-white py-0"
+        containerClassName="max-w-none px-0"
       >
-        <div className="absolute -right-28 -top-22.5 hidden h-72 w-72 bg-[#BFDBFE]/30 blur-3xl md:block" aria-hidden="true" />
-        <SectionHeader
-          id="leadership-hero-heading"
-          eyebrow="About SVIET"
-          title="Leadership"
-          description="SVIET&apos;s leadership framework combines institutional vision, academic responsibility, and a student-first approach to growth."
-          className="relative"
-          titleClassName="text-[#000000]"
-        />
+        <h1 id="leadership-hero-heading" className="sr-only">
+          Leadership
+        </h1>
+        <div className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden">
+          <div className="relative aspect-5/2 w-full">
+            <Image
+              src="/assets/img/banner/leadership.jpeg"
+              alt="SVIET leadership banner"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </div>
+        </div>
       </SectionWrapper>
 
-      <SectionWrapper aria-labelledby="leadership-priority-heading" className="bg-[#F8FAFF]">
+      <SectionWrapper
+        aria-labelledby="leadership-priority-heading"
+        className="bg-[#F8FAFF]"
+      >
         <SectionHeader
           id="leadership-priority-heading"
           eyebrow="Leadership Focus"
@@ -165,7 +214,12 @@ export function LeadershipPage() {
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {LEADERSHIP_PRIORITIES.map((item) => (
-            <InfoCard key={item.title} title={item.title} description={item.description} className="border-[#DBEAFE]" />
+            <InfoCard
+              key={item.title}
+              title={item.title}
+              description={item.description}
+              className="border-[#DBEAFE]"
+            />
           ))}
         </div>
       </SectionWrapper>

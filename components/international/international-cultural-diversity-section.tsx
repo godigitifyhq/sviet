@@ -7,7 +7,7 @@ export function InternationalCulturalDiversitySection() {
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <article className="overflow-hidden rounded-2xl">
           <Image
-            src="/assets/img/campus-life/audi.png"
+            src="/assets/img/banner/interplay.jpeg"
             alt="Cultural diversity"
             width={1600}
             height={900}

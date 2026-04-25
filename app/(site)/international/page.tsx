@@ -24,7 +24,7 @@ export default function InternationalPage() {
               fill
               priority
               sizes="100vw"
-              className="object-cover"
+              className="object-contain"
               draggable={false}
             />
             <div className="relative mx-auto flex max-w-7xl justify-end px-4 py-16 md:px-6 md:py-20 lg:py-24">
@@ -88,7 +88,7 @@ export default function InternationalPage() {
       </section>
       <InternationalHeroIntroSection />
       <InternationalProgramPathwaysSection />
-      <InternationalNewsUpdatesSection />
+      {/* <InternationalNewsUpdatesSection /> */}
       <InternationalSupportServicesSection />
       <InternationalCulturalDiversitySection />
       <InternationalFacilitiesSection />

@@ -124,11 +124,13 @@ const UTILITY_UP_REVEAL_DELTA = 18;
 type TopUtilityBarProps = {
   isTransparent?: boolean;
   isUtilityHidden?: boolean;
+  isLeadershipPage?: boolean;
 };
 
 type MainNavbarProps = {
   isTransparent?: boolean;
   isScrolled?: boolean;
+  isLeadershipPage?: boolean;
 };
 
 export function SiteHeader() {
@@ -136,10 +138,12 @@ export function SiteHeader() {
   const pathSegments = pathname.split("/").filter(Boolean);
   const isProgramDetailPage =
     pathSegments[0] === "programs" && pathSegments.length === 2;
+  const isLeadershipPage = pathname === "/about/leadership";
   const isHeroOverlayRoute =
     pathname === "/" ||
     pathname === "/research" ||
     pathname === "/admissions" ||
+    isLeadershipPage ||
     isProgramDetailPage;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isUtilityHidden, setIsUtilityHidden] = useState(false);
@@ -207,6 +211,10 @@ export function SiteHeader() {
     };
   }, [pathname]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname]);
+
   const isTransparent = isHeroOverlayRoute && !isScrolled;
 
   return (
@@ -214,6 +222,7 @@ export function SiteHeader() {
       className={[
         "site-header",
         isHeroOverlayRoute ? "site-header-home" : "site-header-default",
+        isLeadershipPage ? "site-header-leadership" : "",
         isTransparent ? "navbar-transparent" : "navbar-scrolled",
         isUtilityHidden ? "utility-hidden" : "",
       ]
@@ -223,8 +232,13 @@ export function SiteHeader() {
       <TopUtilityBar
         isTransparent={isTransparent}
         isUtilityHidden={isUtilityHidden}
+        isLeadershipPage={isLeadershipPage}
       />
-      <MainNavbar isTransparent={isTransparent} isScrolled={isScrolled} />
+      <MainNavbar
+        isTransparent={isTransparent}
+        isScrolled={isScrolled}
+        isLeadershipPage={isLeadershipPage}
+      />
     </div>
   );
 }
@@ -232,11 +246,14 @@ export function SiteHeader() {
 export function TopUtilityBar({
   isTransparent = false,
   isUtilityHidden = false,
+  isLeadershipPage = false,
 }: TopUtilityBarProps) {
   const [messageIndex, setMessageIndex] = useState(0);
 
   const utilityToneClass = isTransparent
-    ? "border-white/25 bg-transparent text-[#FFFFFF]"
+    ? isLeadershipPage
+      ? "border-black/10 bg-transparent text-[#000000]"
+      : "border-white/25 bg-transparent text-[#FFFFFF]"
     : "border-black/10 bg-[#FFFFFF] text-[#000000]";
 
   const showPreviousMessage = () => {
@@ -318,6 +335,7 @@ export function TopUtilityBar({
 export function MainNavbar({
   isTransparent = false,
   isScrolled = false,
+  isLeadershipPage = false,
 }: MainNavbarProps) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -328,7 +346,9 @@ export function MainNavbar({
   );
 
   const navbarToneClass = isTransparent
-    ? "border-white/25 bg-transparent text-[#FFFFFF]"
+    ? isLeadershipPage
+      ? "border-black/10 bg-transparent text-[#000000]"
+      : "border-white/25 bg-transparent text-[#FFFFFF]"
     : "border-black/10 bg-[#FFFFFF] text-[#000000]";
 
   useEffect(() => {
@@ -432,7 +452,13 @@ export function MainNavbar({
       <div className="mx-auto flex w-full max-w-300 items-center justify-between px-3 py-2.5 md:px-5 md:py-3">
         <Link href="/" className="flex shrink-0 items-center">
           <Image
-            src={isTransparent ? "/assets/img/sviet_white.png" : "/Logo.png"}
+            src={
+              isTransparent
+                ? isLeadershipPage
+                  ? "/Logo.png"
+                  : "/assets/img/sviet_white.png"
+                : "/Logo.png"
+            }
             alt="SVIET logo"
             width={347}
             height={150}

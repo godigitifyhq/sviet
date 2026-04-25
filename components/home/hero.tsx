@@ -45,16 +45,16 @@ export function HeroSection({
   imageAlt = "SVIET Banner",
 }: HeroSectionProps) {
   const VIDEO_SLIDE_INDEX = 2;
+  const SLIDE_DURATION_MS = 8000;
 
   const heroSlides: HeroSlide[] = [
     { imageSrc, imageAlt },
     {
-      imageSrc: "/assets/img/banner/banner_home_place.jpeg",
+      imageSrc: "/assets/img/banner/banner_home_place2.jpeg",
       imageAlt: "SVIET Campus Highlights",
     },
     {
-      videoSrc:
-        "https://www.youtube.com/embed/Qrlxha0egks?autoplay=1&mute=1&controls=1&loop=1&playlist=Qrlxha0egks&rel=0&modestbranding=1&playsinline=1",
+      videoSrc: "/assets/videos/hero_vedio.mp4",
       imageAlt: "SVIET Video",
     },
   ];
@@ -68,6 +68,7 @@ export function HeroSection({
   const [activeSlide, setActiveSlide] = useState(0);
   const [desktopFormOpen, setDesktopFormOpen] = useState(true);
   const formPanelRef = useRef<HTMLDivElement>(null);
+  const shouldShowHeroFilm = activeSlide !== 0;
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -78,7 +79,7 @@ export function HeroSection({
 
         return (prev + 1) % heroSlides.length;
       });
-    }, 5000);
+    }, SLIDE_DURATION_MS);
 
     return () => window.clearInterval(interval);
   }, [heroSlides.length]);
@@ -227,13 +228,15 @@ export function HeroSection({
           <div className="relative w-full h-80 overflow-hidden rounded-lg">
             {heroSlides.map((slide, index) =>
               slide.videoSrc ? (
-                <iframe
+                <video
                   key={slide.imageAlt}
                   src={slide.videoSrc}
-                  title={slide.imageAlt}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
+                  aria-label={slide.imageAlt}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
                   className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${activeSlide === index ? "opacity-100" : "opacity-0"}`}
                 />
               ) : (
@@ -243,11 +246,18 @@ export function HeroSection({
                   alt={slide.imageAlt}
                   fill
                   sizes="(max-width: 767px) calc(100vw - 2rem), 100vw"
-                  className={`transition-opacity duration-700 ${index === 1 ? "object-contain bg-[#0f172a]" : "object-cover"} ${activeSlide === index ? "opacity-100" : "opacity-0"}`}
+                  className={`object-cover transition-opacity duration-700 ${activeSlide === index ? "opacity-100" : "opacity-0"}`}
                   priority={index === 0}
                 />
               ),
             )}
+            <div
+              className={`pointer-events-none absolute inset-x-0 top-0 h-24 transition-colors duration-700 ${
+                shouldShowHeroFilm
+                  ? "bg-linear-to-b from-black/38 via-black/20 to-transparent"
+                  : "bg-transparent"
+              }`}
+            />
             <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-black/35 px-3 py-1.5">
               {heroSlides.map((slide, index) => (
                 <button
@@ -356,13 +366,15 @@ export function HeroSection({
         <div className="hidden md:block relative w-full h-full min-h-200 overflow-hidden">
           {heroSlides.map((slide, index) =>
             slide.videoSrc ? (
-              <iframe
+              <video
                 key={slide.imageAlt}
                 src={slide.videoSrc}
-                title={slide.imageAlt}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
+                aria-label={slide.imageAlt}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
                 className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${activeSlide === index ? "opacity-100" : "opacity-0"}`}
               />
             ) : (
@@ -372,13 +384,19 @@ export function HeroSection({
                 alt={slide.imageAlt}
                 fill
                 sizes="100vw"
-                className={`transition-opacity duration-700 ${index === 1 ? "object-contain bg-[#0f172a]" : "object-cover"} ${activeSlide === index ? "opacity-100" : "opacity-0"}`}
+                className={`object-cover transition-opacity duration-700 ${activeSlide === index ? "opacity-100" : "opacity-0"}`}
                 priority={index === 0}
               />
             ),
           )}
 
-          <div className="absolute inset-0 bg-black/1" />
+          <div
+            className={`pointer-events-none absolute inset-x-0 top-0 h-28 md:h-32 transition-colors duration-700 ${
+              shouldShowHeroFilm
+                ? "bg-linear-to-b from-black/38 via-black/20 to-transparent"
+                : "bg-transparent"
+            }`}
+          />
 
           <div className="absolute bottom-6 left-10 flex items-center gap-2 rounded-full bg-black/35 px-4 py-2">
             {heroSlides.map((slide, index) => (

@@ -115,6 +115,18 @@ h3 {
   color: #ffffff;
 }
 
+.site-header.site-header-leadership.navbar-transparent .utility-bar {
+  background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #000000;
+}
+
+.site-header.site-header-leadership.navbar-transparent .main-navbar {
+  background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #000000;
+}
+
 .site-header.navbar-scrolled .utility-bar {
   background-color: #ffffff;
   border-color: rgba(0, 0, 0, 0.1);
