@@ -81,7 +81,7 @@ export function PlacementStudentSpeakSection() {
           <button
             type="button"
             onClick={() => scrollByAmount("left")}
-            className="absolute left-2 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black text-white shadow-[0_10px_20px_rgba(0,0,0,0.16)] transition hover:bg-black/80 md:flex"
+            className="absolute left-2 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black text-white transition hover:bg-black/80 md:flex"
             aria-label="Previous student story"
           >
             <ChevronLeft size={20} />
@@ -92,7 +92,7 @@ export function PlacementStudentSpeakSection() {
           <button
             type="button"
             onClick={() => scrollByAmount("right")}
-            className="absolute right-2 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black text-white shadow-[0_10px_20px_rgba(0,0,0,0.16)] transition hover:bg-black/80 md:flex"
+            className="absolute right-2 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black text-white transition hover:bg-black/80 md:flex"
             aria-label="Next student story"
           >
             <ChevronRight size={20} />

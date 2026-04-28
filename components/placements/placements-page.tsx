@@ -6,6 +6,7 @@ import { NewsCard } from "@/components/placements/news-card";
 import { PlacementCardsMarqueeSection } from "@/components/placements/placement-cards-marquee-section";
 import { PlacementSuccessBanner } from "@/components/placements/placement-success-banner";
 import { PlacementStudentSpeakSection } from "@/components/placements/placement-student-speak-section";
+import { PlacementYearwiseTrendsSection } from "@/components/placements/placement-yearwise-trends-section";
 import { PlacementsHeroSection } from "@/components/placements/placements-hero-section";
 import { SectionHeader } from "@/components/placements/section-header";
 import { SectionWrapper } from "@/components/placements/section-wrapper";
@@ -31,7 +32,8 @@ const PLACEMENT_NEWS = [
     imageSrc: "/assets/img/section_card/GFS.JPG",
     imageAlt: "Global Futures Summit 2024",
     title: "Global Futures Summit 2024",
-    description: "23 March 2024 - Industry and academic experts shared insights on emerging technologies and market trends.",
+    description:
+      "23 March 2024 - Industry and academic experts shared insights on emerging technologies and market trends.",
   },
   {
     imageSrc: "/assets/img/college/auditorium.png",
@@ -44,7 +46,8 @@ const PLACEMENT_NEWS = [
     imageSrc: "/assets/img/college/main_gate.png",
     imageAlt: "Skillkart placement drive at SVIET",
     title: "Skillkart Placement Drive",
-    description: "04 October 2024 - Multi-course placement drive involving over 60 students from various programs.",
+    description:
+      "04 October 2024 - Multi-course placement drive involving over 60 students from various programs.",
   },
 ];
 
@@ -61,7 +64,8 @@ const FAQ_ITEMS = [
   },
   {
     question: "What is the average package?",
-    answer: "The average package is around Rs 4 LPA, with higher packages depending on role, domain, and student performance.",
+    answer:
+      "The average package is around Rs 4 LPA, with higher packages depending on role, domain, and student performance.",
   },
   {
     question: "Are internships provided?",
@@ -80,16 +84,26 @@ export function PlacementsPageComponent() {
     <main className="bg-white">
       <PlacementsHeroSection />
 
-      <SectionWrapper aria-labelledby="key-placement-stats-heading" className="border-t border-gray-100 bg-gray-50">
-        <SectionHeader id="key-placement-stats-heading" title="Placement Achievements" />
+      <SectionWrapper
+        aria-labelledby="key-placement-stats-heading"
+        className="border-t border-gray-100 bg-gray-50"
+      >
+        <SectionHeader
+          id="key-placement-stats-heading"
+          title="Placement Achievements"
+        />
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {KEY_STATS.map((item) => (
             <StatCard key={item.label} value={item.value} label={item.label} />
           ))}
         </div>
-        <p className="mt-5 text-sm text-gray-600">Data represents cumulative placement achievements.</p>
+        <p className="mt-5 text-sm text-gray-600">
+          Data represents cumulative placement achievements.
+        </p>
       </SectionWrapper>
+
+      <PlacementYearwiseTrendsSection />
 
       <SectionWrapper aria-labelledby="placements-overview-heading">
         <SectionHeader
@@ -99,19 +113,25 @@ export function PlacementsPageComponent() {
         />
 
         <p className="mt-6 max-w-4xl text-base leading-relaxed text-gray-600">
-          Our approach focuses on practical exposure, continuous training, and strong corporate engagement to ensure
-          students are well-prepared for successful careers.
+          Our approach focuses on practical exposure, continuous training, and
+          strong corporate engagement to ensure students are well-prepared for
+          successful careers.
         </p>
 
         <article className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-6">
-          <h3 className="text-xl font-bold text-gray-900">Training &amp; Placement Cell</h3>
+          <h3 className="text-xl font-bold text-gray-900">
+            Training &amp; Placement Cell
+          </h3>
           <p className="mt-3 text-sm leading-relaxed text-gray-700 md:text-base">
-            The Training &amp; Placement Cell at SVIET actively collaborates with leading organizations across industries
-            including IT, Manufacturing, Finance, Media, and Services.
+            The Training &amp; Placement Cell at SVIET actively collaborates
+            with leading organizations across industries including IT,
+            Manufacturing, Finance, Media, and Services.
           </p>
           <p className="mt-3 text-sm leading-relaxed text-gray-700 md:text-base">
-            Our objective is to make every student a 100% employable asset through continuous skill development,
-            real-world exposure, and structured placement support - aligned with our vision of &quot;One Person One Job.&quot;
+            Our objective is to make every student a 100% employable asset
+            through continuous skill development, real-world exposure, and
+            structured placement support - aligned with our vision of &quot;One
+            Person One Job.&quot;
           </p>
         </article>
 
@@ -122,7 +142,6 @@ export function PlacementsPageComponent() {
               alt="Training and Placement Cell showcase"
               fill
               priority
-            
               className="object-cover object-center "
             />
           </div>
@@ -139,8 +158,14 @@ export function PlacementsPageComponent() {
 
       <HiringPartners />
 
-      <SectionWrapper aria-labelledby="director-message-heading" className="bg-[#F8FAFF]">
-        <SectionHeader id="director-message-heading" title="From the Desk of Director Placements" />
+      <SectionWrapper
+        aria-labelledby="director-message-heading"
+        className="bg-[#F8FAFF]"
+      >
+        <SectionHeader
+          id="director-message-heading"
+          title="From the Desk of Director Placements"
+        />
         <article className="mt-6 grid min-h-120 overflow-hidden rounded-3xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] shadow-[0_8px_24px_rgba(30,42,120,0.06)] lg:grid-cols-4">
           <div className="relative min-h-96 border-b border-[#DCE7FF] bg-[#EEF4FF] lg:col-span-1 lg:min-h-full lg:border-b-0 lg:border-r">
             <Image
@@ -152,33 +177,42 @@ export function PlacementsPageComponent() {
             />
           </div>
           <div className="p-6 md:p-8 lg:col-span-3">
-            <h3 className="text-xl font-bold text-[#111827] md:text-2xl">Mr. Shubham Garg</h3>
+            <h3 className="text-xl font-bold text-[#111827] md:text-2xl">
+              Mr. Shubham Garg
+            </h3>
             <p className="mt-4 text-sm leading-relaxed text-[#374151] md:text-base">
-              Our goal is to provide strong placement opportunities and meaningful corporate exposure to students. Over
-              the years, the Training &amp; Placement Cell has successfully connected students with reputed organizations
-              across multiple industries.
+              Our goal is to provide strong placement opportunities and
+              meaningful corporate exposure to students. Over the years, the
+              Training &amp; Placement Cell has successfully connected students
+              with reputed organizations across multiple industries.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-[#374151] md:text-base">
-              We focus on building industry-ready professionals by aligning academic learning with practical skills,
-              ensuring students are well-prepared to meet evolving career demands.
+              We focus on building industry-ready professionals by aligning
+              academic learning with practical skills, ensuring students are
+              well-prepared to meet evolving career demands.
             </p>
           </div>
         </article>
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           <article className="rounded-2xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] p-6 shadow-[0_8px_24px_rgba(30,42,120,0.06)]">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">Philosophy</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
+              Philosophy
+            </p>
             <h3 className="mt-2 text-lg font-bold text-[#111827]">Vision</h3>
             <p className="mt-3 text-sm leading-relaxed text-[#4B5563] md:text-base">
               Best Campus Experience, Best Placements, and Best Culture
             </p>
           </article>
           <article className="rounded-2xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] p-6 shadow-[0_8px_24px_rgba(30,42,120,0.06)]">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">Philosophy</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
+              Philosophy
+            </p>
             <h3 className="mt-2 text-lg font-bold text-[#111827]">Mission</h3>
             <p className="mt-3 text-sm leading-relaxed text-[#4B5563] md:text-base">
-              To strengthen industry connections, create meaningful placement opportunities, and provide holistic career
-              guidance that prepares students for long-term professional success.
+              To strengthen industry connections, create meaningful placement
+              opportunities, and provide holistic career guidance that prepares
+              students for long-term professional success.
             </p>
           </article>
         </div>
@@ -200,7 +234,10 @@ export function PlacementsPageComponent() {
         </div>
       </SectionWrapper> */}
 
-      <SectionWrapper aria-labelledby="industrial-exposure-heading" className="bg-gray-50">
+      <SectionWrapper
+        aria-labelledby="industrial-exposure-heading"
+        className="bg-gray-50"
+      >
         <SectionHeader
           id="industrial-exposure-heading"
           title="Industrial Exposure"
@@ -208,11 +245,14 @@ export function PlacementsPageComponent() {
         />
 
         <article className="mt-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-          <h3 className="text-xl font-bold text-gray-900">Real-World Engagement</h3>
+          <h3 className="text-xl font-bold text-gray-900">
+            Real-World Engagement
+          </h3>
           <p className="mt-3 text-sm leading-relaxed text-gray-700 md:text-base">
-            Our strong industry connections ensure that students gain hands-on experience through placement drives,
-            internships, and collaborative initiatives, transforming them into confident professionals ready for
-            real-world challenges.
+            Our strong industry connections ensure that students gain hands-on
+            experience through placement drives, internships, and collaborative
+            initiatives, transforming them into confident professionals ready
+            for real-world challenges.
           </p>
         </article>
 
@@ -251,7 +291,10 @@ export function PlacementsPageComponent() {
         </p>
       </SectionWrapper> */}
 
-      <SectionWrapper aria-labelledby="placements-faq-heading" className="bg-gray-50">
+      <SectionWrapper
+        aria-labelledby="placements-faq-heading"
+        className="bg-gray-50"
+      >
         <SectionHeader id="placements-faq-heading" title="FAQ" />
         <FAQAccordion items={FAQ_ITEMS} />
       </SectionWrapper>

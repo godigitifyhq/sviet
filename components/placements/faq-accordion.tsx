@@ -21,7 +21,10 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
         const contentId = `faq-content-${index}`;
 
         return (
-          <article key={item.question} className="rounded-lg border border-gray-200 bg-white shadow-sm">
+          <article
+            key={item.question}
+            className="rounded-lg border border-gray-200 bg-white"
+          >
             <h3>
               <button
                 type="button"
@@ -34,7 +37,10 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
             </h3>
 
             {isOpen ? (
-              <div id={contentId} className="border-t border-gray-100 px-5 py-4 text-sm leading-relaxed text-gray-600">
+              <div
+                id={contentId}
+                className="border-t border-gray-100 px-5 py-4 text-sm leading-relaxed text-gray-600"
+              >
                 {item.answer}
               </div>
             ) : null}

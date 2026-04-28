@@ -11,7 +11,8 @@ const PLACEMENT_HIGHLIGHT_CARDS = [
   },
   {
     imageSrc: "/assets/img/college/global_recognition.png",
-    imageAlt: "SVIET ranked eighth among outstanding engineering colleges in India",
+    imageAlt:
+      "SVIET ranked eighth among outstanding engineering colleges in India",
   },
   {
     imageSrc: "/assets/img/college/global_recognition.png",
@@ -33,9 +34,11 @@ const PLACEMENT_HIGHLIGHT_CARDS = [
 
 export function PlacementHighlightsSection() {
   return (
-    <section className="mt-16 rounded-[36px] bg-[#0b3b8f] px-4 py-14 text-white shadow-[0_24px_70px_rgba(11,59,143,0.28)] md:mt-20 md:px-8 md:py-18">
+    <section className="mt-16 rounded-[36px] bg-[#0b3b8f] px-4 py-14 text-white md:mt-20 md:px-8 md:py-18">
       <div className="text-center">
-        <p className="text-2xl font-medium leading-none text-white md:text-[2.15rem]">If they did it, so can you</p>
+        <p className="text-2xl font-medium leading-none text-white md:text-[2.15rem]">
+          If they did it, so can you
+        </p>
         <h3 className="mt-4 text-4xl font-extrabold leading-none tracking-[-0.04em] text-[#fea700] md:text-[4.9rem]">
           Placement Highlights
         </h3>
@@ -58,22 +61,24 @@ export function PlacementHighlightsSection() {
         `}</style>
 
         <div className="flex w-max animate-placement-highlights-marquee gap-5 md:gap-6">
-          {[...PLACEMENT_HIGHLIGHT_CARDS, ...PLACEMENT_HIGHLIGHT_CARDS].map((card, index) => (
-            <article
-              key={`${card.imageSrc}-${index}`}
-              className="w-62 shrink-0 rounded-[28px] bg-[#0a2f73] p-3 shadow-[0_18px_44px_rgba(0,0,0,0.22)] md:w-73"
-            >
-              <div className="relative aspect-4/5 overflow-hidden rounded-[22px] bg-[#08265e]">
-                <Image
-                  src={card.imageSrc}
-                  alt={card.imageAlt}
-                  fill
-                  sizes="(max-width: 768px) 248px, 292px"
-                  className="object-contain object-center p-1"
-                />
-              </div>
-            </article>
-          ))}
+          {[...PLACEMENT_HIGHLIGHT_CARDS, ...PLACEMENT_HIGHLIGHT_CARDS].map(
+            (card, index) => (
+              <article
+                key={`${card.imageSrc}-${index}`}
+                className="w-62 shrink-0 rounded-[28px] bg-[#0a2f73] p-3 md:w-73"
+              >
+                <div className="relative aspect-4/5 overflow-hidden rounded-[22px] bg-[#08265e]">
+                  <Image
+                    src={card.imageSrc}
+                    alt={card.imageAlt}
+                    fill
+                    sizes="(max-width: 768px) 248px, 292px"
+                    className="object-contain object-center p-1"
+                  />
+                </div>
+              </article>
+            ),
+          )}
         </div>
       </div>
     </section>

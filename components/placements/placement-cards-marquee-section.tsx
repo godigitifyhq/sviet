@@ -134,7 +134,7 @@ export function PlacementCardsMarqueeSection() {
           >
             <div className="placement-card-shell relative h-80 overflow-hidden md:h-92">
               <div
-                className={`placement-card-top absolute inset-x-0 top-0 h-[80%] ${card.cardTone} shadow-[0_18px_40px_rgba(0,0,0,0.12)]`}
+                className={`placement-card-top absolute inset-x-0 top-0 h-[80%] ${card.cardTone}`}
               >
                 <Image
                   src={card.imageSrc}
@@ -145,7 +145,7 @@ export function PlacementCardsMarqueeSection() {
                 />
               </div>
 
-              <div className="absolute left-1/2 top-[70%] z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-lg font-bold text-white shadow-[0_12px_24px_rgba(0,0,0,0.22)] md:h-16 md:w-16 md:text-xl">
+              <div className="absolute left-1/2 top-[70%] z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-lg font-bold text-white md:h-16 md:w-16 md:text-xl">
                 <div
                   className={`flex h-full w-full items-center justify-center rounded-full ${card.badgeTone} ${card.badgeTone === "bg-white" ? "text-[#0b3b8f]" : "text-white"}`}
                 >
@@ -154,7 +154,7 @@ export function PlacementCardsMarqueeSection() {
               </div>
 
               <div className="absolute inset-x-0 bottom-0">
-                <div className="rounded-2xl border border-[#2f266d] bg-[#f2f2f2] px-3 py-2.5 text-center text-[0.6rem] font-medium leading-tight text-black shadow-[0_12px_24px_rgba(11,59,143,0.12)] md:px-4 md:py-3 md:text-[1.55rem]">
+                <div className="rounded-2xl border border-[#2f266d] bg-[#f2f2f2] px-3 py-2.5 text-center text-[0.6rem] font-medium leading-tight text-black md:px-4 md:py-3 md:text-[1.55rem]">
                   {card.name}
                 </div>
               </div>

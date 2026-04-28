@@ -8,7 +8,7 @@ type LogoCardProps = {
 
 export function LogoCard({ name, logoSrc, logoAlt }: LogoCardProps) {
   return (
-    <article className="group rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition hover:shadow-md">
+    <article className="group rounded-lg border border-gray-200 bg-white p-5">
       <div className="relative h-12 w-full">
         <Image
           src={logoSrc}

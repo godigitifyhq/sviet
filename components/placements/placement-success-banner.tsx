@@ -2,7 +2,7 @@
 
 function MicrosoftMark() {
   return (
-    <div className="grid h-12 w-12 grid-cols-2 grid-rows-2 overflow-hidden rounded-sm shadow-[0_4px_12px_rgba(0,0,0,0.18)] md:h-14 md:w-14">
+    <div className="grid h-12 w-12 grid-cols-2 grid-rows-2 overflow-hidden rounded-sm md:h-14 md:w-14">
       <div className="bg-[#f25022]" />
       <div className="bg-[#7fba00]" />
       <div className="bg-[#00a4ef]" />
@@ -29,7 +29,7 @@ export function PlacementSuccessBanner() {
         </div>
 
         <div className="mx-auto mt-10 max-w-7xl md:mt-24">
-          <div className="relative overflow-visible rounded-3xl border border-[#dbe6ff] bg-linear-to-br from-[#0b3b8f] to-[#133f92] px-6 py-8 shadow-[0_20px_55px_rgba(11,59,143,0.22)] md:h-72 md:px-10 md:py-10">
+          <div className="relative overflow-visible rounded-3xl border border-[#dbe6ff] bg-linear-to-br from-[#0b3b8f] to-[#133f92] px-6 py-8 md:h-72 md:px-10 md:py-10">
             <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full border border-white/10" />
             <div className="pointer-events-none absolute -left-18 -bottom-20 h-56 w-56 rounded-full border border-white/10" />
 
@@ -53,7 +53,7 @@ export function PlacementSuccessBanner() {
                   width={560}
                   height={560}
                   priority
-                  className="absolute bottom-2! z-20 h-64 w-auto max-w-none object-contain object-bottom drop-shadow-[0_24px_40px_rgba(0,0,0,0.38)] md:-bottom-10 md:h-96"
+                  className="absolute bottom-2! z-20 h-64 w-auto max-w-none object-contain object-bottom md:-bottom-10 md:h-96"
                 />
               </div>
 
