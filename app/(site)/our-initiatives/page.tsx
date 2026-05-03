@@ -11,6 +11,8 @@ import {
   Users,
 } from "lucide-react";
 
+import { FounderSection } from "@/components/initiatives/founder-section";
+
 const UNIQUES_POINTS = [
   {
     title: "Business strategy and execution",
@@ -63,6 +65,18 @@ const ENTREPRENEURSHIP_CARDS = [
       "Hands-on learning that builds consistency in strategy, delivery, and outcomes.",
   },
 ] as const;
+
+const FOUNDER_DESCRIPTION = [
+  "A distinguished instructional management specialist with an illustrious track record spanning over a decade. His expertise traverses the realms of Academics, Research & Innovation, Administration, Public Relations, Business Strategy, Brand Management, and Corporate Relations.",
+  "He stands as the proud Founder of the pioneering IT incubation center within our campus, aptly named UNIQUE ZONE. This incubation center stands as a testament to his commitment to providing a nurturing environment for students, where innovative ideas evolve into practical solutions. Through his transformative leadership, he has fostered an ecosystem that empowers students to transcend boundaries and turn their aspirations into reality.",
+  "As the Founder of this community, he epitomizes a strategic thinker and a dynamic force in the Corporate & Education Sector. His vision extends beyond conventional boundaries, driving a culture of excellence, creativity, and innovation.",
+] as const;
+
+const FOUNDER_SOCIALS = {
+  twitter: "#",
+  instagram: "#",
+  linkedin: "#",
+} as const;
 
 const SUPER60_POINTS = [
   "Advanced technical training",
@@ -378,6 +392,15 @@ export default function OurInitiativesPage() {
           </div>
         </div>
       </section>
+
+      <FounderSection
+        name="Ankur Gill"
+        role="Director of Operations"
+        image="/assets/img/college/management/ankur-sir.jpg"
+        description={FOUNDER_DESCRIPTION}
+        socials={FOUNDER_SOCIALS}
+        ctaHref="/about"
+      />
 
       <section className="bg-[#F8FAFF] py-16 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 md:px-6 lg:grid-cols-[1fr_0.95fr] lg:items-center">
