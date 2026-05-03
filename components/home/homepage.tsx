@@ -8,6 +8,7 @@ import { ResearchInnovationsSection } from "@/components/home/research-innovatio
 import { OngoingResearchProjectsSection } from "@/components/home/ongoing-research-projects";
 import { EntrepreneurshipSection } from "@/components/home/entrepreneurship";
 import { CorporateCollaborationSection } from "@/components/home/corporate-collaboration-section";
+import { MOUImpactSection } from "@/components/home/mou-impact-section";
 import { StudentTestimonialsSection } from "@/components/home/testimonials";
 import { FloatingApplyNow } from "@/components/home/floating-apply-now";
 
@@ -19,8 +20,8 @@ export function HomePage() {
       <EducationBeyondSection />
       <ExperiencesSection />
       <PivotEducationSection />
-      <CorporateCollaborationSection />
-      {/* <MOUImpactSection /> */}
+      {/* <CorporateCollaborationSection /> */}
+      <MOUImpactSection />
       <CurriculumOpportunitiesSection />
       <DistinguishedLeadersSection />
       <ResearchInnovationsSection />

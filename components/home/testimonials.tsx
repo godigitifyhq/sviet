@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 const testimonials = [
   {
     id: 1,
-    name: "Serena Chokshi",
+    name: "Neha Sharma",
     title: '"Why I chose to study at SVIET"',
     image: "/assets/img/students/stu1.png",
   },

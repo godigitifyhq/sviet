@@ -1,62 +1,51 @@
 ﻿"use client";
 
 import { useState, useRef } from "react";
-import { ChevronLeft, ChevronRight, Users, DollarSign, FileText } from "lucide-react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight, Users, FileText } from "lucide-react";
+
+const totalGrantForOngoingProjects =
+  "Rs. 12,58,100 /- (Rupees Twelve Lakh Fifty-Eight Thousand One Hundred Only)";
 
 const researchProjects = [
   {
     id: 1,
-    title: "An Implementation research study on developing a high quality patient-centric integrated model for emergency care systems in selected districts of India",
-    grant: "₹4.7 Crores",
-    grantLacs: "470 lacs",
-    investigator: "Dr. Shreyas Patel",
-    organization: "ICMR",
-    icon: "🔧",
-    gradient: "from-pink-500 via-purple-600 to-purple-700",
+    title:
+      "Optimization of Enteric-Coated Pantoprazole Capsules for Improved Acid Stability and Controlled Release",
+    investigator: "Dr. Damit, Associate Professor",
+    organization: "Research Project",
     img: "/assets/img/re.jpg",
   },
   {
     id: 2,
-    title: "Assessment-Water Quality of Ground and River water and identification of Causative Microorganism causing water borne diseases and Epidemiological studies in the state of Chandigarh",
-    grant: "₹1.5 Crores",
-    grantLacs: "150 lacs",
-    investigator: "Prof. M.H. Fulekar",
-    organization: "ICMR",
-    icon: "💧",
-    gradient: "from-pink-500 via-blue-600 to-purple-700",
+    title:
+      "Development and Evaluation of Mucoadhesive Nano-Liposomal Levocetirizine Syrup for Enhanced Oral Bioavailability",
+    investigator: "Dr. Meenakshi Rana, Associate Professor",
+    organization: "Research Project",
     img: "/assets/img/re.jpg",
   },
   {
     id: 3,
-    title: "Integrating Oral Healthcare into RMNCAH – plus- N under the National Health Mission for pregnant women and new mothers : A multisite implementation research",
-    grant: "₹1.31 Crores",
-    grantLacs: "131 lacs",
-    investigator: "Dr. Hemant Patadia",
-    organization: "ICMR",
-    icon: "😊",
-    gradient: "from-pink-500 via-purple-600 to-purple-700",
+    title:
+      "Develop and Evaluate a Co-loaded Topical Gel of Azelaic Acid and Sea Buckthorn Oil for Effective and Safe management of Acne Vulgaris",
+    investigator: "Dr. Swikriti, Professor",
+    organization: "Research Project",
     img: "/assets/img/re.jpg",
   },
   {
     id: 4,
-    title: "Advanced Drug Delivery Systems for Chronic Disease Management",
-    grant: "₹2.5 Crores",
-    grantLacs: "250 lacs",
-    investigator: "Dr. Priya Singh",
-    organization: "ICMR",
-    icon: "💊",
-    gradient: "from-pink-500 via-green-600 to-purple-700",
+    title:
+      "Market analysis of Bacillus Clausii spore suspension and Vit D3 oral solution 6000 IU/5 ml",
+    investigator: "Ms. Eshna Bhatt, Assistant Professor",
+    organization: "Research Project",
     img: "/assets/img/re.jpg",
   },
   {
     id: 5,
-    title: "Genomic Studies in Rare Genetic Disorders: A Population-based Approach",
-    grant: "₹3.2 Crores",
-    grantLacs: "320 lacs",
-    investigator: "Dr. Rajesh Kumar",
-    organization: "ICMR",
-    icon: "🧬",
-    gradient: "from-pink-500 via-orange-600 to-purple-700",
+    title:
+      "Formulation and evaluation of paracetamol dispersible tablets for Pediatric use.",
+    investigator: "Dr. Ashok Kumar Tiwary, Professor",
+    organization: "Research Project",
     img: "/assets/img/re.jpg",
   },
 ];
@@ -99,7 +88,7 @@ export function OngoingResearchProjectsSection() {
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isDragging || !containerRef.current) return;
-    
+
     const x = e.clientX - (containerRef.current?.offsetLeft || 0);
     const diff = dragStart - x;
     containerRef.current.scrollLeft = scrollPosition + diff;
@@ -111,12 +100,14 @@ export function OngoingResearchProjectsSection() {
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     setIsDragging(true);
-    setDragStart(e.touches[0].clientX - (containerRef.current?.offsetLeft || 0));
+    setDragStart(
+      e.touches[0].clientX - (containerRef.current?.offsetLeft || 0),
+    );
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!isDragging || !containerRef.current) return;
-    
+
     const x = e.touches[0].clientX - (containerRef.current?.offsetLeft || 0);
     const diff = dragStart - x;
     containerRef.current.scrollLeft = scrollPosition + diff;
@@ -133,10 +124,13 @@ export function OngoingResearchProjectsSection() {
         <div className="mb-12">
           <div className="flex items-center gap-3">
             <div className="h-1 w-8 bg-[#f7941d]"></div>
-            <h2 className="text-2xl font-bold text-[#fffffff] md:text-3xl">
+            <h2 className="text-2xl font-bold text-[#121217] md:text-3xl">
               Ongoing Research Projects
             </h2>
           </div>
+          <p className="mt-3 text-sm font-semibold md:text-base">
+            Total Grant : {totalGrantForOngoingProjects}
+          </p>
         </div>
 
         {/* Carousel Container */}
@@ -178,26 +172,18 @@ export function OngoingResearchProjectsSection() {
           >
             <div className="shrink-0 w-4 md:w-6" />
             {researchProjects.map((project) => (
-              <div
-                key={project.id}
-                className="shrink-0 w-80  cursor-pointer"
-              >
-              <button className="w-full  text-left transition-transform">
+              <div key={project.id} className="shrink-0 w-80  cursor-pointer">
+                <button className="w-full  text-left transition-transform">
                   <div className="bg-white rounded-[15px]! mb-4 overflow-hidden   h-full flex flex-col">
                     {/* Top Section - Gradient Background with Design Elements */}
-                    <div
-                      style={{
-                        backgroundImage: `url(${project.img})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }}
-                      className="w-full h-48 rounded-t-[15px] p-6 text-white relative overflow-hidden"
-                    >
-                
-
-                 
-
-                
+                    <div className="w-full h-48 rounded-t-[15px] text-white relative overflow-hidden">
+                      <Image
+                        src={project.img}
+                        alt={project.title}
+                        fill
+                        sizes="320px"
+                        className="object-cover"
+                      />
                     </div>
 
                     {/* Bottom Section - White Background */}
@@ -234,16 +220,6 @@ export function OngoingResearchProjectsSection() {
                             {project.organization}
                           </span>
                         </div>
-
-                        {/* Amount */}
-                        <div className="flex items-center gap-2 border-t pt-3">
-                          <div className="w-6 h-6 rounded-full bg-[#5047d8]/10 flex items-center justify-center shrink-0">
-                            <DollarSign size={14} className="text-[#5047d8]" />
-                          </div>
-                          <span className="text-xs font-semibold text-[#5047d8]">
-                            {project.grantLacs}
-                          </span>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -257,4 +233,3 @@ export function OngoingResearchProjectsSection() {
     </section>
   );
 }
-

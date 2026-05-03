@@ -1,6 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import {
+  FacilitiesSection,
+  type ProgramFacilityItem,
+} from "@/components/programs/facilities";
+import {
+  PlacementSection,
+  type ProgramOutcomeItem,
+} from "@/components/programs/outcomes";
+import {
+  WhyStudySection,
+  type ProgramHighlightItem,
+} from "@/components/programs/highlights";
+
 export type ProgramDetailData = {
   slug: string;
   title: string;
@@ -9,11 +22,19 @@ export type ProgramDetailData = {
   tuitionCents: number;
   mode?: string | null;
   shortDescription: string;
-  highlights: string[];
+  fullDescription?: string | null;
+  eligibility?: string | null;
+  highlights: ProgramHighlightItem[];
   curriculum: Record<string, string[]>;
-  outcomes: string[];
-  facilities: string[];
+  outcomes: ProgramOutcomeItem[];
+  facilities: ProgramFacilityItem[];
+  faqs?: ProgramFaqItem[];
   heroImage?: string | null;
+};
+
+export type ProgramFaqItem = {
+  q: string;
+  a: string;
 };
 
 type ProgramDetailPageProps = {
@@ -29,123 +50,7 @@ const PAGE_TABS = [
   { label: "Placements", id: "placements" },
   { label: "Facilities", id: "facilities" },
   { label: "Scholarships", id: "scholarships" },
-  { label: "Trends", id: "trends" },
-] as const;
-
-const DEFAULT_WHY_STUDY_ITEMS = [
-  {
-    title: "Meaningful Impact",
-    description:
-      "Physiotherapy lets you help people recover from pain, injury, or disability, making a real difference in their everyday lives.",
-  },
-  {
-    title: "Career Opportunities",
-    description:
-      "With rising demand in hospitals, sports, and wellness centers, physiotherapy offers secure and rewarding career pathways.",
-  },
-  {
-    title: "Practical Education",
-    description:
-      "The program includes active practice in labs, clinics, and hospitals from early semesters onward.",
-  },
-  {
-    title: "Expert Guidance",
-    description:
-      "Learn from experienced teachers and healthcare professionals who support your growth with practical insights.",
-  },
-  {
-    title: "Industry Experience",
-    description:
-      "Benefit from internships, field exposure, and hospital tie-ups that prepare you for confident professional practice.",
-  },
-] as const;
-
-const IMPORTANT_INFO_ITEMS = [
-  {
-    title: "Download Brochure",
-    description:
-      "Detailed semester-wise subjects and credits for this program.",
-    image: "/assets/img/students/broucher.jpeg",
-    cta: "Download",
-  },
-  // {
-  //   title: "Download teaching scheme",
-  //   description:
-  //     "Course delivery structure, practical components, and evaluation pattern.",
-  //   image: "/assets/img/campus-life/image2.png",
-  //   cta: "Download",
-  // },
-  // {
-  //   title: "Download faculty details",
-  //   description:
-  //     "Know the mentors, specializations, and teaching expertise for the program.",
-  //   image: "/assets/img/campus-life/image3.png",
-  //   cta: "View Details",
-  // },
-] as const;
-
-const FACILITY_IMAGES = [
-  "/assets/img/college/lab.jpeg",
-  "/assets/img/college/faculty.JPG",
-  "/assets/img/college/carrer.JPG",
-] as const;
-
-const SCHOLARSHIP_CARDS = [
-  {
-    title: "Meritorious Scholarships",
-    description:
-      "Recognizing academic excellence through performance-based fee support.",
-    tone: "bg-[#111827]",
-    image: "/assets/img/college/scholarship.png",
-  },
-  {
-    title: "Sports Scholarships",
-    description:
-      "Supporting students with state and national level sports achievements.",
-    tone: "bg-[#f7941d]",
-    image: "/assets/img/students/image (2).png",
-  },
-  {
-    title: "Alumni Scholarships",
-    description:
-      "Scholarship pathways supported by alumni and institutional mentorship programs.",
-    tone: "bg-[#1f2937]",
-    image: "/assets/img/students/1.png",
-  },
-  {
-    title: "Need-Based Support",
-    description:
-      "Flexible support for deserving students to continue quality education smoothly.",
-    tone: "bg-[#b8754f]",
-    image: "/assets/img/students/pppp.png",
-  },
-] as const;
-
-const TREND_ITEMS = [
-  {
-    title: "National Skill Conclave concluded with strong participation",
-    description:
-      "A collaborative event focused on practical skill development and future healthcare pathways.",
-    image: "/assets/img/campus-life/image1.png",
-  },
-  {
-    title: "SVIET hosts inter-college innovation and youth festival",
-    description:
-      "Students showcased projects, leadership, and creative problem-solving initiatives.",
-    image: "/assets/img/campus-life/image2.png",
-  },
-  {
-    title: "Institutional milestones in academic and placement outcomes",
-    description:
-      "Program-level achievements continue to strengthen student confidence and career progression.",
-    image: "/assets/img/campus-life/image3.png",
-  },
-  {
-    title: "Expert talks on future-ready rehabilitation practices",
-    description:
-      "Domain specialists shared insights into evolving therapy methods and technologies.",
-    image: "/assets/img/campus-life/image4.png",
-  },
+  // { label: "Trends", id: "trends" },
 ] as const;
 
 function formatDuration(durationMonths: number) {
@@ -182,32 +87,87 @@ function getHeroImage(heroImage?: string | null) {
   return "/assets/img/banner_hero.jpg";
 }
 
-function getWhyStudyItems(highlights: string[]) {
-  if (highlights.length === 0) {
-    return [...DEFAULT_WHY_STUDY_ITEMS];
+function getCurriculumSummary(curriculum: Record<string, string[]>) {
+  const years = Object.keys(curriculum);
+
+  if (years.length === 0) {
+    return "The curriculum is updated program by program and delivered through a mix of theory, practical work, and project-based learning.";
   }
 
-  return highlights.slice(0, 5).map((entry, index) => {
-    const fallback =
-      DEFAULT_WHY_STUDY_ITEMS[index % DEFAULT_WHY_STUDY_ITEMS.length];
-    const [rawTitle, ...rest] = entry.split(":");
-    const parsedTitle = rawTitle.trim();
-    const parsedDescription = rest.join(":").trim();
+  return `The curriculum is structured across ${years.join(", ")} with outcomes designed around the skills and careers relevant to this program.`;
+}
 
-    return {
-      title: parsedTitle || fallback.title,
-      description: parsedDescription || fallback.description,
-    };
-  });
+function getImportantInfoItems(program: ProgramDetailData) {
+  const curriculumYears = Object.keys(program.curriculum).length;
+
+  return [
+    {
+      title: "Eligibility",
+      description:
+        program.eligibility ??
+        "Eligibility details are confirmed during admissions counselling for this program.",
+      cta: "View",
+    },
+    {
+      title: "Duration",
+      description: formatDuration(program.durationMonths),
+      cta: "View",
+    },
+    {
+      title: "Annual Tuition",
+      description: formatCurrencyPerYear(program.tuitionCents),
+      cta: "View",
+    },
+    {
+      title: "Curriculum",
+      description:
+        curriculumYears > 0
+          ? `${curriculumYears} curriculum blocks are available for this program.`
+          : "Curriculum blocks are reviewed program by program.",
+      cta: "View",
+    },
+  ];
+}
+
+function getFundingItems(program: ProgramDetailData) {
+  const scholarshipFaqs = (program.faqs ?? []).filter((entry) =>
+    /scholar|fee|fund|waiver|support/i.test(`${entry.q} ${entry.a}`),
+  );
+
+  if (scholarshipFaqs.length > 0) {
+    return scholarshipFaqs.slice(0, 4).map((entry) => ({
+      title: entry.q,
+      description: entry.a,
+    }));
+  }
+
+  return [
+    {
+      title: "Annual Tuition",
+      description: formatCurrencyPerYear(program.tuitionCents),
+    },
+    {
+      title: "Eligibility Review",
+      description:
+        program.eligibility ??
+        "Funding support is reviewed during admissions counselling for the active intake.",
+    },
+    {
+      title: "Program Mode",
+      description: formatMode(program.mode),
+    },
+  ];
 }
 
 export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
   const heroImage = getHeroImage(program.heroImage);
-  const whyStudyItems = getWhyStudyItems(program.highlights);
-  const facilityNames =
-    program.facilities.length > 0
-      ? program.facilities.slice(0, 3)
-      : ["Advanced Labs", "Clinical Exposure", "Smart Classrooms"];
+  const overviewCopy = program.fullDescription ?? program.shortDescription;
+  const curriculumSummary = getCurriculumSummary(program.curriculum);
+  const importantInfoItems = getImportantInfoItems(program);
+  const fundingItems = getFundingItems(program);
+  const whyStudyIntro =
+    program.fullDescription ??
+    `Study ${program.title} through a program-specific blend of theory, practice, and guided learning.`;
 
   return (
     <main className="bg-[#FFFFFF] text-[#111827]">
@@ -249,12 +209,12 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
                   >
                     Apply Now
                   </Link>
-                  <button
+                  {/* <button
                     type="button"
                     className="inline-flex items-center border border-white/40 bg-transparent px-6 py-3 text-sm font-semibold text-white transition hover:border-white"
                   >
                     Download Brochure
-                  </button>
+                  </button> */}
                 </div>
               </div>
 
@@ -354,12 +314,15 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
               {program.title}
             </h3>
             <p className="mt-5 text-base leading-relaxed text-black/75 md:text-lg">
-              {program.shortDescription}
+              {overviewCopy}
             </p>
             <p className="mt-6 text-base leading-relaxed text-black/75 md:text-lg">
-              This {formatDuration(program.durationMonths)} is designed to
-              combine concept clarity, practical learning, and career readiness
-              with strong mentoring and outcome-oriented training.
+              This {formatDuration(program.durationMonths)} program is shaped by
+              a curriculum that spans{" "}
+              {Object.keys(program.curriculum).length > 0
+                ? Object.keys(program.curriculum).join(", ")
+                : "program-specific modules"}{" "}
+              and balances theory, practice, and career readiness.
             </p>
           </div>
         </div>
@@ -388,9 +351,7 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
             </div>
 
             <p className="mt-8 max-w-xl text-base leading-[1.85] text-black/72 md:text-[1.06rem]">
-              {program.shortDescription} Students study foundations in the first
-              phase and then advance into applied practice, recovery planning,
-              and patient-facing clinical exposure.
+              {overviewCopy} {curriculumSummary}
             </p>
           </div>
 
@@ -460,57 +421,13 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
         </div>
       </section>
 
-      <section
+      <WhyStudySection
         id="why-study"
-        className="scroll-mt-30 border-y border-black/8 bg-[#f1f1f4] md:scroll-mt-32"
-      >
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:px-6 md:py-16 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
-          <div>
-            <h2 className="text-4xl font-semibold leading-[1.06] tracking-[-0.02em] md:text-5xl lg:text-6xl">
-              <span className="text-[#f7941d]">Why study</span> this program
-            </h2>
-            <p className="mt-6 max-w-3xl text-base leading-relaxed text-black/75 md:text-[1.03rem]">
-              Be a part of an engaging learning atmosphere that gives you the
-              tools to excel in the career of your choice.
-            </p>
-
-            <div className="mt-10 grid gap-x-14 gap-y-10 md:grid-cols-2">
-              {whyStudyItems.map((item) => (
-                <article key={item.title}>
-                  <div className="flex items-start gap-4">
-                    <span
-                      className="mt-2 h-0 w-0 border-y-[6px] border-y-transparent border-l-10 border-l-[#24b4be]"
-                      aria-hidden="true"
-                    />
-                    <div>
-                      <h3 className="text-2xl font-semibold leading-tight text-black">
-                        {item.title}
-                      </h3>
-                      <p className="mt-2 text-[1.02rem] leading-relaxed text-black/75">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative mx-auto w-full max-w-136 lg:pt-2">
-            <div className="relative aspect-square rounded-full  p-3">
-              <div className="relative h-full w-full overflow-hidden rounded-full">
-                <Image
-                  src="/assets/img/students/11.png"
-                  alt="SVIET student"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 540px"
-                  className="object-contain object-bottom"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        items={program.highlights}
+        eyebrow={`Why study ${program.title}`}
+        heading={`What sets ${program.title} apart`}
+        intro={whyStudyIntro}
+      />
 
       {/* <section id="careers" className="scroll-mt-30 bg-linear-to-b from-[#2d1f52] to-[#1f1545] py-16 md:scroll-mt-32 md:py-24">
         <div className="mx-auto w-full max-w-[65%] px-4 md:px-6">
@@ -578,44 +495,35 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 md:px-6 md:py-20 lg:grid-cols-[300px_1fr]">
           <div>
             <h2 className="text-4xl font-semibold leading-tight text-[#f7941d] md:text-5xl">
-              Here is the important
-              <span className="block text-[#111827]">information</span>
-              <span className="block text-black">you need to know</span>
+              Important
+              <span className="block text-[#111827]">program details</span>
+              <span className="block text-black">for {program.title}</span>
             </h2>
             <p className="mt-6 text-base leading-relaxed text-black/75 md:text-lg">
-              Find all key academic and support documents related to this
-              program.
+              Find the key academic and admission details that are specific to
+              this program.
             </p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {IMPORTANT_INFO_ITEMS.map((item) => (
+            {importantInfoItems.map((item) => (
               <article
                 key={item.title}
                 className="border border-black/15 bg-white p-3"
               >
-                <div className="relative aspect-16/8 overflow-hidden border border-black/10 bg-white">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                    className="object-cover"
-                  />
-                </div>
                 <h3 className="mt-4 text-2xl font-semibold leading-tight md:text-[1.75rem]">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-black/70">
                   {item.description}
                 </p>
-                <button
+                {/* <button
                   type="button"
                   className="mt-5 inline-flex w-full items-center justify-between border border-[#f7941d]/40 bg-[#fff7ef] px-4 py-3 text-base font-semibold text-[#111827] transition hover:bg-[#fff2df]"
                 >
                   {item.cta}
                   <span>↓</span>
-                </button>
+                </button> */}
               </article>
             ))}
           </div>
@@ -626,101 +534,24 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
         id="placements"
         className="scroll-mt-30 bg-linear-to-b from-[#2d1f52] to-[#1f1545] py-20 md:scroll-mt-32 md:py-28"
       >
-        <div className="mx-auto max-w-7xl px-4 md:px-6">
-          <h2 className="max-w-4xl text-4xl font-semibold leading-snug tracking-[-0.01em] text-white md:text-5xl lg:text-6xl">
-            Launch your career with <span className="text-white">our</span>
-            <br /> <span className="text-white">leading placements</span>
-          </h2>
-
-          <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/85 md:text-[1.05rem]">
-            We provide you with leading placement opportunities before you
-            graduate, with the best career training and an exposure to leading
-            recruiters.
-          </p>
-
-          <div className="mt-12 grid gap-0 md:grid-cols-3 md:divide-x md:divide-white/20">
-            <div className="border-b border-white/20 py-8 md:border-b-0 md:px-6 md:py-0 md:first:pl-0 md:last:pr-0">
-              <p className="text-6xl font-bold text-[#f7941d] md:text-7xl">
-                4-6 LPA
-              </p>
-              <p className="mt-2 text-lg text-white/80">Average Package</p>
-            </div>
-            <div className="border-b border-white/20 py-8 md:border-b-0 md:px-6 md:py-0">
-              <p className="text-6xl font-bold text-[#f7941d] md:text-7xl">
-                2,200+
-              </p>
-              <p className="mt-2 text-lg text-white/80">Recruiters</p>
-            </div>
-            <div className="py-8 md:px-6 md:py-0 md:last:pr-0">
-              <p className="text-6xl font-bold text-[#f7941d] md:text-7xl">
-                60 LPA
-              </p>
-              <p className="mt-2 text-lg text-white/80">
-                Highest Package Offered
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-12 flex items-center gap-3">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#24b4be]" />
-            <p className="text-xl font-medium text-white">
-              Give your future career a head start
-            </p>
-          </div>
-
-          <Link
-            href="/placements"
-            className="mt-8 inline-flex items-center rounded-lg bg-[#6366F1] px-8 py-3.5 text-base font-semibold text-white transition hover:bg-[#4F46E5] active:scale-95"
-          >
-            Explore placements
-          </Link>
-        </div>
+        <PlacementSection
+          data={program.outcomes}
+          eyebrow={`Placement outcomes for ${program.title}`}
+          heading={`${program.title} career pathways`}
+          intro={program.fullDescription ?? program.shortDescription}
+        />
       </section>
 
       <section
         id="facilities"
         className="scroll-mt-30 bg-[#FFFFFF] py-16 md:scroll-mt-32 md:py-20"
       >
-        <div className="mx-auto max-w-7xl px-4 md:px-6">
-          <h2 className="text-4xl font-semibold leading-tight md:text-5xl">
-            Explore our facilities & resources
-            <span className="block text-[#f7941d]">for this program</span>
-          </h2>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {facilityNames.map((facility, index) => (
-              <article
-                key={facility}
-                className="group relative overflow-hidden border border-black/10 bg-black"
-              >
-                <div className="relative aspect-5/6">
-                  <Image
-                    src={FACILITY_IMAGES[index % FACILITY_IMAGES.length]}
-                    alt={facility}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover opacity-80 transition duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 bg-black/65 p-4 text-white">
-                    <h3 className="text-2xl font-semibold md:text-3xl">
-                      {facility}
-                    </h3>
-                    <p className="mt-2 text-base text-white/80">
-                      Advanced learning support with practical access and
-                      mentorship.
-                    </p>
-                    {/* <button
-                      type="button"
-                      className="mt-3 text-base font-semibold text-[#f7941d]"
-                    >
-                      Read more ›
-                    </button> */}
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
+        <FacilitiesSection
+          items={program.facilities}
+          eyebrow={`Infrastructure for ${program.title}`}
+          heading={`${program.title} facilities`}
+          intro={program.fullDescription ?? program.shortDescription}
+        />
       </section>
 
       <section
@@ -733,51 +564,26 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
               Scholarships & funding
             </h2>
             <p className="mt-4 text-xl leading-relaxed md:text-2xl">
-              Financing and supporting your education
+              Program-specific support and fee details
             </p>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-black/70 md:text-lg">
-              Explore scholarship pathways, grants, and student assistance
-              opportunities for deserving candidates.
+              The funding summary below is built from this program&apos;s own
+              tuition, eligibility, and FAQ data.
             </p>
-            {/* <Link
-              href="/admissions"
-              className="mt-6 inline-flex text-lg font-semibold text-[#f7941d] hover:text-[#F97316] md:text-xl"
-            >
-              Know More ›
-            </Link> */}
           </div>
 
           <div className="space-y-3">
-            {SCHOLARSHIP_CARDS.map((card) => (
+            {fundingItems.map((item) => (
               <article
-                key={card.title}
-                className={`relative overflow-hidden ${card.tone} p-5 text-white`}
+                key={item.title}
+                className="relative overflow-hidden bg-[#111827] p-5 text-white"
               >
-                <div className="grid gap-4 sm:grid-cols-[1fr_220px] sm:items-end">
-                  <div>
-                    <h3 className="text-2xl font-semibold md:text-3xl">
-                      {card.title}
-                    </h3>
-                    <p className="mt-3 max-w-2xl text-base text-white/90 md:text-lg">
-                      {card.description}
-                    </p>
-                    {/* <button
-                      type="button"
-                      className="mt-4 text-base font-semibold text-white"
-                    >
-                      Know more ›
-                    </button> */}
-                  </div>
-                  {/* <div className="relative h-44 sm:h-48">
-                    <Image
-                      src={card.image}
-                      alt={card.title}
-                      fill
-                      sizes="220px"
-                      className="object-contain object-bottom-right"
-                    />
-                  </div> */}
-                </div>
+                <h3 className="text-2xl font-semibold md:text-3xl">
+                  {item.title}
+                </h3>
+                <p className="mt-3 max-w-2xl text-base text-white/90 md:text-lg">
+                  {item.description}
+                </p>
               </article>
             ))}
           </div>

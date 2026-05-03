@@ -14,33 +14,14 @@ import {
   YAxis,
 } from "recharts";
 
-const YEARLY_DATA = [
-  { year: "2022", placementRate: 82, highestPackage: 8.5, averagePackage: 3.6 },
-  { year: "2023", placementRate: 86, highestPackage: 9.2, averagePackage: 3.9 },
-  {
-    year: "2024",
-    placementRate: 90,
-    highestPackage: 10.0,
-    averagePackage: 4.2,
-  },
-  {
-    year: "2025",
-    placementRate: 93,
-    highestPackage: 11.4,
-    averagePackage: 4.7,
-  },
-  {
-    year: "2026",
-    placementRate: 95,
-    highestPackage: 12.0,
-    averagePackage: 5.1,
-  },
-] as const;
+import { YEARLY_PLACEMENT_TRENDS } from "@/components/placements/placement-data";
 
 type ChartView = "placement" | "highest" | "average" | "both";
 
 export function PlacementYearwiseTrendsSection() {
   const [packageView, setPackageView] = useState<ChartView>("both");
+  const latestTrend =
+    YEARLY_PLACEMENT_TRENDS[YEARLY_PLACEMENT_TRENDS.length - 1];
 
   return (
     <section className=" px-4 py-16 md:px-6 md:py-20">
@@ -50,22 +31,22 @@ export function PlacementYearwiseTrendsSection() {
             Placement Analytics
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#111827] md:text-4xl">
-            Year-Wise Placement Trends
+            Year-Wise Placement Volume &amp; Package Trends
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#6B7280]">
-            A transparent, year-on-year view of placement outcomes across offer
-            conversion and salary growth.
+            A transparent, year-on-year view of placement volumes and salary
+            growth based on the shared student records.
           </p>
         </div>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
           <article className="rounded-2xl border border-[#DCE7FF] bg-white p-4 md:p-6">
             <h3 className="text-lg font-semibold text-[#111827]">
-              Placement Percentage Trend
+              Placement Volume Trend
             </h3>
             <div className="mt-5 h-64 w-full">
               <ResponsiveContainer>
-                <AreaChart data={YEARLY_DATA}>
+                <AreaChart data={YEARLY_PLACEMENT_TRENDS}>
                   <defs>
                     <linearGradient
                       id="placementRateFill"
@@ -90,11 +71,11 @@ export function PlacementYearwiseTrendsSection() {
                     tickLine={false}
                   />
                   <YAxis
-                    domain={[70, 100]}
+                    domain={[0, (dataMax: number) => dataMax + 2]}
                     tick={{ fill: "#4B5563", fontSize: 12 }}
                     axisLine={false}
                     tickLine={false}
-                    unit="%"
+                    allowDecimals={false}
                   />
                   <Tooltip
                     contentStyle={{
@@ -102,11 +83,11 @@ export function PlacementYearwiseTrendsSection() {
                       border: "1px solid #DCE7FF",
                       borderRadius: "8px",
                     }}
-                    formatter={(value) => [`${value}%`, "Placement Rate"]}
+                    formatter={(value) => [`${value} students`, "Placements"]}
                   />
                   <Area
                     type="monotone"
-                    dataKey="placementRate"
+                    dataKey="placements"
                     stroke="#2563EB"
                     fill="url(#placementRateFill)"
                     strokeWidth={3}
@@ -158,7 +139,7 @@ export function PlacementYearwiseTrendsSection() {
 
             <div className="mt-5 h-64 w-full">
               <ResponsiveContainer>
-                <LineChart data={YEARLY_DATA}>
+                <LineChart data={YEARLY_PLACEMENT_TRENDS}>
                   <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" />
                   <XAxis
                     dataKey="year"
@@ -209,21 +190,27 @@ export function PlacementYearwiseTrendsSection() {
         <div className="mt-6 grid gap-4 sm:grid-cols-3">
           <article className="rounded-xl border border-[#DCE7FF] bg-white p-4">
             <p className="text-xs uppercase tracking-[0.14em] text-[#6B7280]">
-              Latest Placement Rate
+              Latest Placement Count
             </p>
-            <p className="mt-2 text-2xl font-bold text-[#111827]">95%</p>
+            <p className="mt-2 text-2xl font-bold text-[#111827]">
+              {latestTrend.placements}
+            </p>
           </article>
           <article className="rounded-xl border border-[#DCE7FF] bg-white p-4">
             <p className="text-xs uppercase tracking-[0.14em] text-[#6B7280]">
               Highest Package
             </p>
-            <p className="mt-2 text-2xl font-bold text-[#111827]">12 LPA</p>
+            <p className="mt-2 text-2xl font-bold text-[#111827]">
+              {latestTrend.highestPackage} LPA
+            </p>
           </article>
           <article className="rounded-xl border border-[#DCE7FF] bg-white p-4">
             <p className="text-xs uppercase tracking-[0.14em] text-[#6B7280]">
               Average Package
             </p>
-            <p className="mt-2 text-2xl font-bold text-[#111827]">5.1 LPA</p>
+            <p className="mt-2 text-2xl font-bold text-[#111827]">
+              {latestTrend.averagePackage} LPA
+            </p>
           </article>
         </div>
       </div>

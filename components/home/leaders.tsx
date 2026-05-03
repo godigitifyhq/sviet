@@ -3,8 +3,6 @@
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
 
 const leaders = [
   {
@@ -122,10 +120,10 @@ export function DistinguishedLeadersSection() {
                       </span>
                       <p className="mt-4 text-sm leading-relaxed md:pl-6 text-[#6B7280]">{leader.quote}</p>
                     </div>
-                    <button className="mt-8 flex w-full justify-center gap-2 bg-[#f7941d] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#2563EB] md:mt-6 md:w-auto md:justify-start md:pl-6">
+                    {/* <button className="mt-8 flex w-full justify-center gap-2 bg-[#f7941d] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#2563EB] md:mt-6 md:w-auto md:justify-start md:pl-6">
                       View event
                       <span>→</span>
-                    </button>
+                    </button> */}
                   </div>
                 </article>
               </SwiperSlide>

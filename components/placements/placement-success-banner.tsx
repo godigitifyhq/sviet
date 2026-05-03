@@ -1,5 +1,7 @@
 ﻿import Image from "next/image";
 
+import { FEATURED_PLACEMENTS } from "@/components/placements/placement-data";
+
 function MicrosoftMark() {
   return (
     <div className="grid h-12 w-12 grid-cols-2 grid-rows-2 overflow-hidden rounded-sm md:h-14 md:w-14">
@@ -12,6 +14,8 @@ function MicrosoftMark() {
 }
 
 export function PlacementSuccessBanner() {
+  const [topPlacement, runnerUpPlacement] = FEATURED_PLACEMENTS;
+
   return (
     <section className="w-full bg-[#f8fafc] pt-12 md:pt-16">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
@@ -39,9 +43,9 @@ export function PlacementSuccessBanner() {
                   Our Top Placements
                 </p>
                 <p className="mt-3 max-w-60 text-[2.1rem] font-extrabold leading-[0.98] tracking-[-0.02em] text-[#fea700] md:max-w-65 md:text-[2.5rem]">
-                  Avinash Verma
+                  {topPlacement.name}
                   <br />
-                  50 LPA
+                  {runnerUpPlacement.name}
                 </p>
               </div>
 
@@ -49,7 +53,7 @@ export function PlacementSuccessBanner() {
                 <div className="pointer-events-none absolute bottom-0 left-1/2 h-24 w-40 -translate-x-1/2 rounded-full bg-[#fea700]/20 blur-3xl md:h-28 md:w-52" />
                 <Image
                   src="/assets/img/students/33.png"
-                  alt="Suraj Jagtap and Tanish Patel placed at Microsoft"
+                  alt="Top placement highlight for the latest 12 LPA achievers"
                   width={560}
                   height={560}
                   priority
@@ -60,15 +64,15 @@ export function PlacementSuccessBanner() {
               <div className="relative z-10 flex flex-col items-center justify-center gap-2 text-center md:items-end md:text-right">
                 <div>
                   <p className="text-sm font-semibold leading-tight text-white md:text-[1.05rem]">
-                    Top Placement Highlight
+                    {topPlacement.company}
                   </p>
                   <p className="mt-1 text-xs font-medium uppercase tracking-[0.14em] text-white/80 md:text-sm">
-                    SVIET
+                    2027 Batch
                   </p>
                 </div>
 
                 <p className="text-5xl font-extrabold leading-none tracking-tight text-white md:text-6xl">
-                  50 LPA
+                  {topPlacement.packageLabel}
                 </p>
 
                 <MicrosoftMark />

@@ -1,87 +1,6 @@
 import Image from "next/image";
 
-const PLACEMENT_CARDS = [
-  {
-    name: "Avinash Verma - 50 LPA",
-    imageSrc: "/assets/img/students/Placement-Mockup-1.png",
-    imageAlt: "Avinash Verma placement highlight",
-    iconLabel: "SV",
-    cardTone: "bg-[#0b3b8f]",
-    badgeTone: "bg-[#fea700]",
-  },
-  {
-    name: "Ankit Kumar - 27 LPA",
-    imageSrc: "/assets/img/students/pppp.png",
-    imageAlt: "Ankit Kumar placement highlight",
-    iconLabel: "SV",
-    cardTone: "bg-[#fea700]",
-    badgeTone: "bg-[#0b3b8f]",
-  },
-  {
-    name: "Aditi Rashmi - 18 LPA",
-    imageSrc: "/assets/img/students/1.png",
-    imageAlt: "Aditi Rashmi placement highlight",
-    iconLabel: "SV",
-    cardTone: "bg-[#0b3b8f]",
-    badgeTone: "bg-white",
-  },
-  {
-    name: "Rohan Shukla - 18 LPA",
-    imageSrc: "/assets/img/students/image (1).png",
-    imageAlt: "Rohan Shukla placement highlight",
-    iconLabel: "SV",
-    cardTone: "bg-[#fea700]",
-    badgeTone: "bg-white",
-  },
-  {
-    name: "Swati Khanna - 16 LPA",
-    imageSrc: "/assets/img/students/moon_mandal.png",
-    imageAlt: "Swati Khanna placement highlight",
-    iconLabel: "SV",
-    cardTone: "bg-[#0b3b8f]",
-    badgeTone: "bg-[#fea700]",
-  },
-  {
-    name: "Yash Khandelwal - 16 LPA",
-    imageSrc: "/assets/img/students/slider-img-1.png",
-    imageAlt: "Yash Khandelwal placement highlight",
-    iconLabel: "SV",
-    cardTone: "bg-[#fea700]",
-    badgeTone: "bg-[#0b3b8f]",
-  },
-  {
-    name: "Payal Kumari - 16 LPA",
-    imageSrc: "/assets/img/students/1.png",
-    imageAlt: "Payal Kumari placement highlight",
-    iconLabel: "SV",
-    cardTone: "bg-[#0b3b8f]",
-    badgeTone: "bg-white",
-  },
-  {
-    name: "Farzan Alam - 14 LPA",
-    imageSrc: "/assets/img/students/pppp.png",
-    imageAlt: "Farzan Alam placement highlight",
-    iconLabel: "SV",
-    cardTone: "bg-[#fea700]",
-    badgeTone: "bg-white",
-  },
-  {
-    name: "Ritik Kumar - 14 LPA",
-    imageSrc: "/assets/img/students/image (1).png",
-    imageAlt: "Ritik Kumar placement highlight",
-    iconLabel: "SV",
-    cardTone: "bg-[#0b3b8f]",
-    badgeTone: "bg-[#fea700]",
-  },
-  {
-    name: "Ritu Koul - 13 LPA",
-    imageSrc: "/assets/img/students/moon_mandal.png",
-    imageAlt: "Ritu Koul placement highlight",
-    iconLabel: "SV",
-    cardTone: "bg-[#fea700]",
-    badgeTone: "bg-[#0b3b8f]",
-  },
-] as const;
+import { TOP_PLACEMENT_CARDS } from "@/components/placements/placement-data";
 
 export function PlacementCardsMarqueeSection() {
   return (
@@ -127,9 +46,9 @@ export function PlacementCardsMarqueeSection() {
       `}</style>
 
       <div className="flex w-max animate-placement-cards-marquee gap-6 md:gap-8">
-        {[...PLACEMENT_CARDS, ...PLACEMENT_CARDS].map((card, index) => (
+        {[...TOP_PLACEMENT_CARDS, ...TOP_PLACEMENT_CARDS].map((card, index) => (
           <article
-            key={`${card.name}-${index}`}
+            key={`${card.name}-${card.year}-${index}`}
             className="w-56 shrink-0 md:w-64"
           >
             <div className="placement-card-shell relative h-80 overflow-hidden md:h-92">
@@ -155,7 +74,7 @@ export function PlacementCardsMarqueeSection() {
 
               <div className="absolute inset-x-0 bottom-0">
                 <div className="rounded-2xl border border-[#2f266d] bg-[#f2f2f2] px-3 py-2.5 text-center text-[0.6rem] font-medium leading-tight text-black md:px-4 md:py-3 md:text-[1.55rem]">
-                  {card.name}
+                  {card.name} - {card.packageLabel}
                 </div>
               </div>
             </div>

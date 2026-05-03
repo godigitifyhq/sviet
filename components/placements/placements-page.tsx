@@ -2,7 +2,6 @@ import Image from "next/image";
 
 import { FAQAccordion } from "@/components/placements/faq-accordion";
 import { HiringPartners } from "@/components/placements/hiring-partners";
-import { NewsCard } from "@/components/placements/news-card";
 import { PlacementCardsMarqueeSection } from "@/components/placements/placement-cards-marquee-section";
 import { PlacementSuccessBanner } from "@/components/placements/placement-success-banner";
 import { PlacementStudentSpeakSection } from "@/components/placements/placement-student-speak-section";
@@ -10,46 +9,12 @@ import { PlacementYearwiseTrendsSection } from "@/components/placements/placemen
 import { PlacementsHeroSection } from "@/components/placements/placements-hero-section";
 import { SectionHeader } from "@/components/placements/section-header";
 import { SectionWrapper } from "@/components/placements/section-wrapper";
+import {
+  PLACEMENT_KEY_STATS,
+  OVERALL_AVERAGE_PACKAGE,
+} from "@/components/placements/placement-data";
 import { StatCard } from "@/components/placements/stat-card";
 import { TrainingCurriculumSection } from "@/components/placements/training-curriculum-section";
-
-const KEY_STATS = [
-  { value: "3,000+", label: "Offer Letters" },
-  { value: "50 LPA", label: "Highest Package" },
-  { value: "12,000+", label: "Students Placed" },
-  { value: "350+", label: "Companies Visited Per Year" },
-];
-
-const PLACEMENT_NEWS = [
-  {
-    imageSrc: "/assets/img/college/4th.png",
-    imageAlt: "Pharma Career Fair 2024 at SVIET",
-    title: "Pharma Career Fair 2024",
-    description:
-      "09 February 2024 - Students explored career opportunities, interacted with industry experts, and participated in recruitment processes in the pharmaceutical sector.",
-  },
-  {
-    imageSrc: "/assets/img/section_card/GFS.JPG",
-    imageAlt: "Global Futures Summit 2024",
-    title: "Global Futures Summit 2024",
-    description:
-      "23 March 2024 - Industry and academic experts shared insights on emerging technologies and market trends.",
-  },
-  {
-    imageSrc: "/assets/img/college/auditorium.png",
-    imageAlt: "24x7 Software placement drive",
-    title: "24x7 Software Placement Drive",
-    description:
-      "28 September 2024 - On-campus recruitment drive for B.Tech CSE students with strong participation.",
-  },
-  {
-    imageSrc: "/assets/img/college/main_gate.png",
-    imageAlt: "Skillkart placement drive at SVIET",
-    title: "Skillkart Placement Drive",
-    description:
-      "04 October 2024 - Multi-course placement drive involving over 60 students from various programs.",
-  },
-];
 
 const FAQ_ITEMS = [
   {
@@ -64,8 +29,7 @@ const FAQ_ITEMS = [
   },
   {
     question: "What is the average package?",
-    answer:
-      "The average package is around Rs 4 LPA, with higher packages depending on role, domain, and student performance.",
+    answer: `The average package across the shared placement records is around Rs ${OVERALL_AVERAGE_PACKAGE} LPA, with higher packages depending on role, domain, and student performance.`,
   },
   {
     question: "Are internships provided?",
@@ -94,12 +58,13 @@ export function PlacementsPageComponent() {
         />
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {KEY_STATS.map((item) => (
+          {PLACEMENT_KEY_STATS.map((item) => (
             <StatCard key={item.label} value={item.value} label={item.label} />
           ))}
         </div>
         <p className="mt-5 text-sm text-gray-600">
-          Data represents cumulative placement achievements.
+          Data reflects the placement records currently shared by the Training
+          &amp; Placement Cell.
         </p>
       </SectionWrapper>
 
@@ -114,8 +79,8 @@ export function PlacementsPageComponent() {
 
         <p className="mt-6 max-w-4xl text-base leading-relaxed text-gray-600">
           Our approach focuses on practical exposure, continuous training, and
-          strong corporate engagement to ensure students are well-prepared for
-          successful careers.
+          strong corporate engagement. The current placement list spans 70
+          student outcomes across 2022 to 2027.
         </p>
 
         <article className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-6">
@@ -138,7 +103,7 @@ export function PlacementsPageComponent() {
         <figure className="mt-6 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
           <div className="relative rounded-3xl aspect-21/8 w-full">
             <Image
-              src="/assets/img/section_card/T&P MOU.jpeg"
+              src="/assets/img/training_cell.jpeg"
               alt="Training and Placement Cell showcase"
               fill
               priority
@@ -217,22 +182,6 @@ export function PlacementsPageComponent() {
           </article>
         </div>
       </SectionWrapper>
-
-      {/* <SectionWrapper aria-labelledby="placement-drives-heading">
-        <SectionHeader id="placement-drives-heading" title="Placement Drives" />
-
-        <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {PLACEMENT_NEWS.map((item) => (
-            <NewsCard
-              key={item.title}
-              imageSrc={item.imageSrc}
-              imageAlt={item.imageAlt}
-              title={item.title}
-              description={item.description}
-            />
-          ))}
-        </div>
-      </SectionWrapper> */}
 
       <SectionWrapper
         aria-labelledby="industrial-exposure-heading"
