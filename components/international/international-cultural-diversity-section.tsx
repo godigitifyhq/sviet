@@ -11,7 +11,7 @@ export function InternationalCulturalDiversitySection() {
             alt="Cultural diversity"
             width={1600}
             height={900}
-            className="h-72 w-full object-cover md:h-96"
+            className="h-96 w-full object-cover md:h-[500px] lg:h-[600px]"
           />
         </article>
 

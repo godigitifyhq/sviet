@@ -41,7 +41,7 @@ export function InternationalFacilitiesSection() {
           </article>
           <article className="relative min-h-96 overflow-hidden rounded-2xl">
             <Image
-              src="/assets/img/campus-life/image3.png"
+              src="/assets/img/college/lab.jpeg"
               alt="Specialized labs"
               fill
               sizes="33vw"
@@ -61,7 +61,7 @@ export function InternationalFacilitiesSection() {
           </article>
           <article className="relative min-h-96 overflow-hidden rounded-2xl">
             <Image
-              src="/assets/img/campus-life/image4.png"
+              src="/assets/img/library.jpeg"
               alt="Digital libraries"
               fill
               sizes="33vw"
