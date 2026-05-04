@@ -320,7 +320,8 @@ function GalleryHero() {
           Gallery
         </h1>
         <p className="mt-5 max-w-3xl text-base leading-relaxed text-[#475569] md:text-lg">
-          Explore life at SVIET through real campus moments, told in a section-based experience that stays focused on campus visuals.
+          Explore life at SVIET through real campus moments, told in a
+          section-based experience that stays focused on campus visuals.
         </p>
       </div>
     </section>
@@ -353,9 +354,16 @@ function AnchorNav() {
   );
 }
 
-function CampusInfrastructureSection({ onOpen }: { onOpen: (item: GalleryItem) => void }) {
+function CampusInfrastructureSection({
+  onOpen,
+}: {
+  onOpen: (item: GalleryItem) => void;
+}) {
   return (
-    <section id="campus-infrastructure" className="scroll-mt-28 px-4 md:px-6 bg-transparent">
+    <section
+      id="campus-infrastructure"
+      className="scroll-mt-28 px-4 md:px-6 bg-transparent"
+    >
       <div className="mx-auto max-w-7xl py-12 md:py-16">
         <GallerySectionHeader
           eyebrow="Campus Infrastructure"
@@ -364,10 +372,25 @@ function CampusInfrastructureSection({ onOpen }: { onOpen: (item: GalleryItem) =
         />
 
         <div className="mt-8 grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
-          <GalleryCard item={campusInfrastructure[0]} index={0} onOpen={onOpen} className="lg:min-h-135" />
+          <GalleryCard
+            item={campusInfrastructure[0]}
+            index={0}
+            onOpen={onOpen}
+            className="lg:min-h-135"
+          />
           <div className="grid gap-5">
-            <GalleryCard item={campusInfrastructure[1]} index={1} onOpen={onOpen} className="lg:min-h-65" />
-            <GalleryCard item={campusInfrastructure[2]} index={2} onOpen={onOpen} className="lg:min-h-65" />
+            <GalleryCard
+              item={campusInfrastructure[1]}
+              index={1}
+              onOpen={onOpen}
+              className="lg:min-h-65"
+            />
+            <GalleryCard
+              item={campusInfrastructure[2]}
+              index={2}
+              onOpen={onOpen}
+              className="lg:min-h-65"
+            />
           </div>
         </div>
       </div>
@@ -375,9 +398,16 @@ function CampusInfrastructureSection({ onOpen }: { onOpen: (item: GalleryItem) =
   );
 }
 
-function AcademicSpacesSection({ onOpen }: { onOpen: (item: GalleryItem) => void }) {
+function AcademicSpacesSection({
+  onOpen,
+}: {
+  onOpen: (item: GalleryItem) => void;
+}) {
   return (
-    <section id="academic-spaces" className="scroll-mt-28 px-4 md:px-6 bg-[#f0f5ff]">
+    <section
+      id="academic-spaces"
+      className="scroll-mt-28 px-4 md:px-6 bg-[#f0f5ff]"
+    >
       <div className="mx-auto max-w-7xl py-12 md:py-16">
         <GallerySectionHeader
           eyebrow="Academic Spaces"
@@ -387,7 +417,12 @@ function AcademicSpacesSection({ onOpen }: { onOpen: (item: GalleryItem) => void
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {academicSpaces.map((item, index) => (
-            <GalleryCard key={item.id} item={item} index={index} onOpen={onOpen} />
+            <GalleryCard
+              key={item.id}
+              item={item}
+              index={index}
+              onOpen={onOpen}
+            />
           ))}
         </div>
       </div>
@@ -395,9 +430,16 @@ function AcademicSpacesSection({ onOpen }: { onOpen: (item: GalleryItem) => void
   );
 }
 
-function EventsFestivalsSection({ onOpen }: { onOpen: (item: GalleryItem) => void }) {
+function EventsFestivalsSection({
+  onOpen,
+}: {
+  onOpen: (item: GalleryItem) => void;
+}) {
   return (
-    <section id="events-festivals" className="scroll-mt-28 px-4 md:px-6 bg-transparent">
+    <section
+      id="events-festivals"
+      className="scroll-mt-28 px-4 md:px-6 bg-transparent"
+    >
       <div className="mx-auto max-w-7xl py-12 md:py-16">
         <GallerySectionHeader
           eyebrow="Events & Festivals"
@@ -407,7 +449,13 @@ function EventsFestivalsSection({ onOpen }: { onOpen: (item: GalleryItem) => voi
 
         <div className="mt-8 columns-1 gap-4 sm:columns-2 xl:columns-3">
           {eventsAndFestivals.map((item, index) => (
-            <GalleryCard key={item.id} item={item} index={index} onOpen={onOpen} className="mb-4" />
+            <GalleryCard
+              key={item.id}
+              item={item}
+              index={index}
+              onOpen={onOpen}
+              className="mb-4"
+            />
           ))}
         </div>
       </div>
@@ -415,9 +463,16 @@ function EventsFestivalsSection({ onOpen }: { onOpen: (item: GalleryItem) => voi
   );
 }
 
-function StudentLifeSection({ onOpen }: { onOpen: (item: GalleryItem) => void }) {
+function StudentLifeSection({
+  onOpen,
+}: {
+  onOpen: (item: GalleryItem) => void;
+}) {
   return (
-    <section id="student-life" className="scroll-mt-28 px-4 md:px-6 bg-[#f0f5ff]">
+    <section
+      id="student-life"
+      className="scroll-mt-28 px-4 md:px-6 bg-[#f0f5ff]"
+    >
       <div className="mx-auto max-w-7xl py-12 md:py-16">
         <GallerySectionHeader
           eyebrow="Student Life"
@@ -426,12 +481,32 @@ function StudentLifeSection({ onOpen }: { onOpen: (item: GalleryItem) => void })
         />
 
         <div className="mt-8 grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
-          <GalleryCard item={studentLife[0]} index={0} onOpen={onOpen} className="lg:min-h-150" />
+          <GalleryCard
+            item={studentLife[0]}
+            index={0}
+            onOpen={onOpen}
+            className="lg:min-h-150"
+          />
           <div className="grid gap-5">
-            <GalleryCard item={studentLife[1]} index={1} onOpen={onOpen} className="lg:min-h-70" />
+            <GalleryCard
+              item={studentLife[1]}
+              index={1}
+              onOpen={onOpen}
+              className="lg:min-h-70"
+            />
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-2">
-              <GalleryCard item={studentLife[2]} index={2} onOpen={onOpen} className="sm:min-h-60" />
-              <GalleryCard item={studentLife[3]} index={3} onOpen={onOpen} className="sm:min-h-60" />
+              <GalleryCard
+                item={studentLife[2]}
+                index={2}
+                onOpen={onOpen}
+                className="sm:min-h-60"
+              />
+              <GalleryCard
+                item={studentLife[3]}
+                index={3}
+                onOpen={onOpen}
+                className="sm:min-h-60"
+              />
             </div>
           </div>
         </div>
@@ -440,9 +515,16 @@ function StudentLifeSection({ onOpen }: { onOpen: (item: GalleryItem) => void })
   );
 }
 
-function SportsActivitiesSection({ onOpen }: { onOpen: (item: GalleryItem) => void }) {
+function SportsActivitiesSection({
+  onOpen,
+}: {
+  onOpen: (item: GalleryItem) => void;
+}) {
   return (
-    <section id="sports-activities" className="scroll-mt-28 px-4 md:px-6 bg-transparent">
+    <section
+      id="sports-activities"
+      className="scroll-mt-28 px-4 md:px-6 bg-transparent"
+    >
       <div className="mx-auto max-w-7xl py-12 md:py-16">
         <GallerySectionHeader
           eyebrow="Sports & Activities"
