@@ -1,13 +1,15 @@
+import { researchData } from "../research/research-data";
+
 export function ResearchInnovationsSection() {
   const stats = [
     {
-      number: "39Lac+",
-      label: "In research grants",
+      number: researchData.stats.funding,
+      label: "Research grants & funding",
     },
     {
-      number: "85+",
-      label: "Patents and copyrights filed",
-    }
+      number: researchData.stats.patents,
+      label: "Patents filed and certification",
+    },
   ];
 
   return (
@@ -30,7 +32,10 @@ export function ResearchInnovationsSection() {
         {/* Stats Cards */}
         <div className="grid gap-8 md:grid-cols-2">
           {stats.map((stat, index) => (
-            <div key={index} className="flex flex-col items-center justify-center space-y-3 border-r border-[#D1D5DB] last:border-r-0 py-8">
+            <div
+              key={index}
+              className="flex flex-col items-center justify-center space-y-3 border-r border-[#D1D5DB] last:border-r-0 py-8"
+            >
               <div className="text-4xl md:text-5xl font-bold text-[#f7941d]">
                 {stat.number}
               </div>

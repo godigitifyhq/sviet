@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { GraduationCap, ArrowUpRight } from "lucide-react";
 
@@ -13,6 +13,13 @@ const CAMPUS_TABS = [
   { label: "SVIET Hangouts", targetId: "campus-hangouts" },
   { label: "Convocation", targetId: "campus-convocation" },
 ] as const;
+
+const TAB_TARGET_IDS = CAMPUS_TABS.map((tab) => tab.targetId);
+
+const isTabTargetId = (
+  value: string,
+): value is (typeof TAB_TARGET_IDS)[number] =>
+  TAB_TARGET_IDS.includes(value as (typeof TAB_TARGET_IDS)[number]);
 
 const RELATED_LINKS = [
   {
@@ -33,26 +40,28 @@ const RELATED_LINKS = [
 ] as const;
 
 export function CampusLifeQuickLinksSection() {
-  const [activeTabId, setActiveTabId] = useState<string>(CAMPUS_TABS[0].targetId);
-  const tabTargetIds = useMemo<string[]>(() => CAMPUS_TABS.map((tab) => tab.targetId), []);
+  const [activeTabId, setActiveTabId] = useState<string>(
+    CAMPUS_TABS[0].targetId,
+  );
 
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
     }
 
-    const hashId = window.location.hash.replace("#", "");
-    if (hashId && tabTargetIds.includes(hashId)) {
-      setActiveTabId(hashId);
-    }
-
-    const targets = tabTargetIds
-      .map((id) => document.getElementById(id))
-      .filter((element): element is HTMLElement => element !== null);
+    const targets = TAB_TARGET_IDS.map((id) =>
+      document.getElementById(id),
+    ).filter((element): element is HTMLElement => element !== null);
 
     if (targets.length === 0) {
       return;
     }
+
+    const maybeSetActiveTab = (nextId: string) => {
+      setActiveTabId((currentId) =>
+        currentId === nextId ? currentId : nextId,
+      );
+    };
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -61,7 +70,7 @@ export function CampusLifeQuickLinksSection() {
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
         if (visibleEntries.length > 0) {
-          setActiveTabId(visibleEntries[0].target.id);
+          maybeSetActiveTab(visibleEntries[0].target.id);
         }
       },
       {
@@ -70,13 +79,41 @@ export function CampusLifeQuickLinksSection() {
       },
     );
 
+    const syncFromHash = () => {
+      const hashId = window.location.hash.replace("#", "");
+      if (hashId && isTabTargetId(hashId)) {
+        maybeSetActiveTab(hashId);
+      }
+    };
+
+    const syncFromScrollPosition = () => {
+      const isAtPageBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
+
+      if (isAtPageBottom) {
+        maybeSetActiveTab(TAB_TARGET_IDS[TAB_TARGET_IDS.length - 1]);
+      }
+    };
+
     targets.forEach((target) => observer.observe(target));
+    window.addEventListener("hashchange", syncFromHash);
+    window.addEventListener("scroll", syncFromScrollPosition, {
+      passive: true,
+    });
+
+    const hashRafId = window.requestAnimationFrame(syncFromHash);
+    const rafId = window.requestAnimationFrame(syncFromScrollPosition);
 
     return () => {
       targets.forEach((target) => observer.unobserve(target));
       observer.disconnect();
+      window.removeEventListener("hashchange", syncFromHash);
+      window.removeEventListener("scroll", syncFromScrollPosition);
+      window.cancelAnimationFrame(hashRafId);
+      window.cancelAnimationFrame(rafId);
     };
-  }, [tabTargetIds]);
+  }, []);
 
   const handleTabClick = (targetId: string) => {
     const target = document.getElementById(targetId);
@@ -128,8 +165,12 @@ export function CampusLifeQuickLinksSection() {
               <div className="flex items-start gap-3">
                 <GraduationCap className="mt-0.5 h-5 w-5 text-[#6f47d9]" />
                 <div>
-                  <h3 className="text-base font-semibold text-[#1a1a1a]">{item.title}</h3>
-                  <p className="mt-1 text-xs text-[#5a5a67]">{item.description}</p>
+                  <h3 className="text-base font-semibold text-[#1a1a1a]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-xs text-[#5a5a67]">
+                    {item.description}
+                  </p>
                 </div>
               </div>
               <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#efefff] text-[#6f47d9] transition group-hover:bg-[#6f47d9] group-hover:text-white">

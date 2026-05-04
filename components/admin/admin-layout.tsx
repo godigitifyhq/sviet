@@ -5,6 +5,7 @@ import { ReactNode, useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import {
   BookOpen,
+  CalendarDays,
   FileText,
   LayoutDashboard,
   LogOut,
@@ -43,6 +44,7 @@ const NAV_ITEMS: NavItem[] = [
   { href: "/admin/leads", label: "Leads", icon: Users },
   { href: "/admin/applications", label: "Applications", icon: FileText },
   { href: "/admin/programs", label: "Programs", icon: BookOpen },
+  { href: "/admin/events", label: "Events", icon: CalendarDays },
 ];
 
 function titleFromPathname(pathname: string) {
@@ -61,6 +63,9 @@ function titleFromPathname(pathname: string) {
   if (pathname.startsWith("/admin/programs")) {
     return "Programs";
   }
+  if (pathname.startsWith("/admin/events")) {
+    return "Events";
+  }
   return "Admin";
 }
 
@@ -70,7 +75,10 @@ export function AdminLayout({ children, title }: AdminLayoutProps) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const pageTitle = useMemo(() => title ?? titleFromPathname(pathname), [pathname, title]);
+  const pageTitle = useMemo(
+    () => title ?? titleFromPathname(pathname),
+    [pathname, title],
+  );
 
   useEffect(() => {
     let active = true;
@@ -78,7 +86,9 @@ export function AdminLayout({ children, title }: AdminLayoutProps) {
     async function loadMe() {
       try {
         const response = await fetch("/api/auth/me", { cache: "no-store" });
-        const payload = (await response.json().catch(() => null)) as AuthMeResponse | null;
+        const payload = (await response
+          .json()
+          .catch(() => null)) as AuthMeResponse | null;
 
         if (!active) {
           return;
@@ -135,7 +145,9 @@ export function AdminLayout({ children, title }: AdminLayoutProps) {
       >
         <div className="flex items-center justify-between border-b border-slate-700 px-5 py-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-300">SVIET</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-300">
+              SVIET
+            </p>
             <p className="text-lg font-semibold text-white">CRM</p>
           </div>
           <button
@@ -150,7 +162,10 @@ export function AdminLayout({ children, title }: AdminLayoutProps) {
 
         <nav className="space-y-1 px-3 py-4">
           {NAV_ITEMS.map((item) => {
-            const isActive = item.href === "/admin" ? pathname === item.href : pathname.startsWith(item.href);
+            const isActive =
+              item.href === "/admin"
+                ? pathname === item.href
+                : pathname.startsWith(item.href);
             const Icon = item.icon;
 
             return (
@@ -158,7 +173,9 @@ export function AdminLayout({ children, title }: AdminLayoutProps) {
                 key={item.href}
                 href={item.href}
                 className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition ${
-                  isActive ? "bg-slate-100 text-slate-900" : "text-slate-200 hover:bg-slate-700"
+                  isActive
+                    ? "bg-slate-100 text-slate-900"
+                    : "text-slate-200 hover:bg-slate-700"
                 }`}
               >
                 <Icon className="h-4 w-4" />
@@ -181,7 +198,9 @@ export function AdminLayout({ children, title }: AdminLayoutProps) {
               >
                 <Menu className="h-5 w-5" />
               </button>
-              <h1 className="text-xl font-semibold text-slate-900">{pageTitle}</h1>
+              <h1 className="text-xl font-semibold text-slate-900">
+                {pageTitle}
+              </h1>
             </div>
 
             <div className="flex items-center gap-3">
@@ -189,7 +208,9 @@ export function AdminLayout({ children, title }: AdminLayoutProps) {
                 <p className="text-sm font-semibold text-slate-800">
                   {user ? `${user.firstName} ${user.lastName}` : "Loading..."}
                 </p>
-                <p className="text-xs uppercase tracking-wide text-slate-500">{user?.role ?? ""}</p>
+                <p className="text-xs uppercase tracking-wide text-slate-500">
+                  {user?.role ?? ""}
+                </p>
               </div>
               <button
                 type="button"
@@ -203,7 +224,9 @@ export function AdminLayout({ children, title }: AdminLayoutProps) {
           </div>
         </header>
 
-        <main className="min-h-[calc(100vh-65px)] bg-white p-4 md:p-8">{children}</main>
+        <main className="min-h-[calc(100vh-65px)] bg-white p-4 md:p-8">
+          {children}
+        </main>
       </div>
     </div>
   );

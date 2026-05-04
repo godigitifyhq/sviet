@@ -4,8 +4,9 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Users, FileText } from "lucide-react";
 
-const totalGrantForOngoingProjects =
-  "Rs. 12,58,100 /- (Rupees Twelve Lakh Fifty-Eight Thousand One Hundred Only)";
+import { researchData } from "../research/research-data";
+
+const totalGrantForOngoingProjects = `More than ${researchData.stats.ongoingFunding} research grant and funding by non-government agencies every year`;
 
 const researchProjects = [
   {

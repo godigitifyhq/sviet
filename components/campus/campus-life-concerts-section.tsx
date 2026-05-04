@@ -3,7 +3,7 @@ import Image from "next/image";
 const CONCERT_CARDS = [
   {
     title: "Anuv Jain live in concert",
-    image: "/assets/img/campus-life/r2c1.png",
+    image: "/assets/img/show.jpg",
     alt: "Anuv Jain live performance",
   },
   {
@@ -13,7 +13,7 @@ const CONCERT_CARDS = [
   },
   {
     title: "Vishal Shekhar concert",
-    image: "/assets/img/campus-life/r2c3.png",
+    image: "/assets/img/show2.jpg",
     alt: "Vishal Shekhar concert",
   },
   {
@@ -58,12 +58,12 @@ export function CampusLifeConcertsSection() {
                 className="object-cover transition duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-black/8" />
-              <div className="absolute left-4 top-4 inline-flex rounded-full bg-white/20 px-3 py-1 text-xs font-semibold tracking-wide text-white backdrop-blur-sm md:left-5 md:top-5">
+              {/* <div className="absolute left-4 top-4 inline-flex rounded-full bg-white/20 px-3 py-1 text-xs font-semibold tracking-wide text-white backdrop-blur-sm md:left-5 md:top-5">
                 Live event {String(index + 1).padStart(2, "0")}
               </div>
               <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/20 bg-white/12 p-4 backdrop-blur-sm md:inset-x-5 md:bottom-5 md:p-5">
                 <h3 className="text-2xl font-semibold leading-tight text-white md:text-4xl">{card.title}</h3>
-              </div>
+              </div> */}
             </article>
           ))}
         </div>

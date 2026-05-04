@@ -3,11 +3,11 @@ import Image from "next/image";
 const FRESHERS_CARDS = [
   {
     title: "Concerts & Live Shows",
-    image: "/assets/img/campus-life/image1.png",
+    image: "/assets/img/show3.jpg",
     alt: "Freshers concert stage",
   },
   {
-    title: "Games and activities",
+    title: "Exposure",
     image: "/assets/img/campus-life/image2.png",
     alt: "Freshers games and activities",
   },

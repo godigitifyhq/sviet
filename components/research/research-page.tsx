@@ -1,11 +1,19 @@
 "use client";
-
+import Link from "next/link";
 import Image from "next/image";
-import { FaBookOpen, FaFlask, FaHandshake, FaIndustry, FaLaptopCode, FaMicroscope, FaTools } from "react-icons/fa";
+import {
+  FaBookOpen,
+  FaFlask,
+  FaHandshake,
+  FaIndustry,
+  FaLaptopCode,
+  FaMicroscope,
+  FaTools,
+} from "react-icons/fa";
+import { researchData } from "./research-data";
 
 const containerClass = "mx-auto max-w-[1280px] px-6";
 const sectionClass = "py-20 lg:py-24";
-const sectionPaddingClass = "py-16 lg:py-24";
 const headerSpacing = "mb-8 lg:mb-10";
 
 const hero = {
@@ -16,40 +24,40 @@ const hero = {
 };
 
 const stats = [
-  { 
-    value: "620", 
+  {
+    value: researchData.stats.publications,
     label: "Research Publications",
-    image: "/assets/img/college/main_gate.png",
-    href: "#"
+    href: "#publications",
   },
-  { 
-    value: "47", 
-    label: "Technology Transfers",
-    image: "/assets/img/college/4th.png",
-    href: "#"
-  },
-  { 
-    value: "89", 
+  {
+    value: researchData.stats.patents,
     label: "Patents Filed",
-    image: "/assets/img/college/8th.png",
-    href: "#"
+    href: "#patents",
+  },
+  {
+    value: researchData.stats.books,
+    label: "Books Published",
+    href: "#books",
   },
 ];
 
 const researchDomains = [
   {
     title: "Advanced Computing",
-    description: "AI, data science, and intelligent systems for real-world applications.",
+    description:
+      "AI, data science, and intelligent systems for real-world applications.",
     icon: FaLaptopCode,
   },
   {
     title: "Biotechnology",
-    description: "Translational bio-research focused on health and sustainability.",
+    description:
+      "Translational bio-research focused on health and sustainability.",
     icon: FaMicroscope,
   },
   {
     title: "Civil Engineering",
-    description: "Applied civil research focused on resilient infrastructure and sustainable construction.",
+    description:
+      "Applied civil research focused on resilient infrastructure and sustainable construction.",
     icon: FaTools,
   },
   {
@@ -59,7 +67,8 @@ const researchDomains = [
   },
   {
     title: "Industry 4.0",
-    description: "Automation, cyber-physical systems, and process optimization.",
+    description:
+      "Automation, cyber-physical systems, and process optimization.",
     icon: FaIndustry,
   },
   {
@@ -137,26 +146,126 @@ const innovativeProjects = [
 ];
 
 const publications = [
-  { title: "Improve Performance in WSN using Modified CSMA/CD", author: "Mr. Ishant Premi", year: "2018-19", issn: "0025-0422" },
-  { title: "Improve Performance in WSN using Modified CSMA/CD", author: "Ms. Roop Shikha", year: "2018-19", issn: "0025-0422" },
-  { title: "IRIS Detection using Image Processing", author: "Ms. Vandana", year: "2018-19", issn: "0025-0422" },
-  { title: "IRIS Detection using Image Processing", author: "Ms. Nisha", year: "2018-19", issn: "0025-0422" },
-  { title: "R.O.L.S.H", author: "Mr. Ankur Gill", year: "2018-19", issn: "0025-0422" },
-  { title: "R.O.L.S.H", author: "Mr. Supinderjit Singh", year: "2018-19", issn: "0025-0422" },
-  { title: "Wireless Sensor Network Throughput", author: "Ms. Roop Sikha", year: "2018-19", issn: "0025-0422" },
-  { title: "Wireless Sensor Network Throughput", author: "Mr. Ishant Premi", year: "2018-19", issn: "0025-0422" },
-  { title: "Nanometrology Study", author: "Mr. Kapil Munjal", year: "2018-19", issn: "0378-4568" },
-  { title: "Efficient Algorithm for WSN", author: "Ms. Manju Bala Goel", year: "2018-19", issn: "0378-4568" },
-  { title: "Plant Maintenance Analysis", author: "Ms. Sakshi Sharma", year: "2018-19", issn: "0378-4568" },
-  { title: "Plant Maintenance Analysis", author: "Ms. Akanksha Pathania", year: "2018-19", issn: "0378-4568" },
-  { title: "Delay in Residential Projects", author: "Ms. Sakshi Sharma", year: "2018-19", issn: "0378-4568" },
-  { title: "Delay in Residential Projects", author: "Ms. Saneha", year: "2018-19", issn: "0378-4568" },
-  { title: "Material Management Challenges", author: "Mr. Dhiraj Parkash Dhiman", year: "2018-19", issn: "0378-4568" },
-  { title: "Material Management Challenges", author: "Mr. Prince Chawla", year: "2018-19", issn: "0378-4568" },
-  { title: "Cost of Production", author: "Mr. Gurpreet Singh", year: "2018-19", issn: "0378-4568" },
-  { title: "Cost of Production", author: "Mr. Aman Gupta", year: "2018-19", issn: "0378-4568" },
-  { title: "Engineering Materials", author: "Mr. Kapil Munjal", year: "2018-19", issn: "0378-4568" },
-  { title: "Heat Transfer", author: "Mr. Harneet Singh", year: "2018-19", issn: "0378-4568" },
+  {
+    title: "Improve Performance in WSN using Modified CSMA/CD",
+    author: "Mr. Ishant Premi",
+    year: "2018-19",
+    issn: "0025-0422",
+  },
+  {
+    title: "Improve Performance in WSN using Modified CSMA/CD",
+    author: "Ms. Roop Shikha",
+    year: "2018-19",
+    issn: "0025-0422",
+  },
+  {
+    title: "IRIS Detection using Image Processing",
+    author: "Ms. Vandana",
+    year: "2018-19",
+    issn: "0025-0422",
+  },
+  {
+    title: "IRIS Detection using Image Processing",
+    author: "Ms. Nisha",
+    year: "2018-19",
+    issn: "0025-0422",
+  },
+  {
+    title: "R.O.L.S.H",
+    author: "Mr. Ankur Gill",
+    year: "2018-19",
+    issn: "0025-0422",
+  },
+  {
+    title: "R.O.L.S.H",
+    author: "Mr. Supinderjit Singh",
+    year: "2018-19",
+    issn: "0025-0422",
+  },
+  {
+    title: "Wireless Sensor Network Throughput",
+    author: "Ms. Roop Sikha",
+    year: "2018-19",
+    issn: "0025-0422",
+  },
+  {
+    title: "Wireless Sensor Network Throughput",
+    author: "Mr. Ishant Premi",
+    year: "2018-19",
+    issn: "0025-0422",
+  },
+  {
+    title: "Nanometrology Study",
+    author: "Mr. Kapil Munjal",
+    year: "2018-19",
+    issn: "0378-4568",
+  },
+  {
+    title: "Efficient Algorithm for WSN",
+    author: "Ms. Manju Bala Goel",
+    year: "2018-19",
+    issn: "0378-4568",
+  },
+  {
+    title: "Plant Maintenance Analysis",
+    author: "Ms. Sakshi Sharma",
+    year: "2018-19",
+    issn: "0378-4568",
+  },
+  {
+    title: "Plant Maintenance Analysis",
+    author: "Ms. Akanksha Pathania",
+    year: "2018-19",
+    issn: "0378-4568",
+  },
+  {
+    title: "Delay in Residential Projects",
+    author: "Ms. Sakshi Sharma",
+    year: "2018-19",
+    issn: "0378-4568",
+  },
+  {
+    title: "Delay in Residential Projects",
+    author: "Ms. Saneha",
+    year: "2018-19",
+    issn: "0378-4568",
+  },
+  {
+    title: "Material Management Challenges",
+    author: "Mr. Dhiraj Parkash Dhiman",
+    year: "2018-19",
+    issn: "0378-4568",
+  },
+  {
+    title: "Material Management Challenges",
+    author: "Mr. Prince Chawla",
+    year: "2018-19",
+    issn: "0378-4568",
+  },
+  {
+    title: "Cost of Production",
+    author: "Mr. Gurpreet Singh",
+    year: "2018-19",
+    issn: "0378-4568",
+  },
+  {
+    title: "Cost of Production",
+    author: "Mr. Aman Gupta",
+    year: "2018-19",
+    issn: "0378-4568",
+  },
+  {
+    title: "Engineering Materials",
+    author: "Mr. Kapil Munjal",
+    year: "2018-19",
+    issn: "0378-4568",
+  },
+  {
+    title: "Heat Transfer",
+    author: "Mr. Harneet Singh",
+    year: "2018-19",
+    issn: "0378-4568",
+  },
 ];
 
 const patents = [
@@ -169,7 +278,10 @@ const patents = [
   { applicationNo: "440571-001", title: "Screw Driver cum Wrench" },
   { applicationNo: "440572-001", title: "Spraying Robot" },
   { applicationNo: "440573-001", title: "Food Delivery Robot" },
-  { applicationNo: "440574-001", title: "Temperature Gradient Incubation System" },
+  {
+    applicationNo: "440574-001",
+    title: "Temperature Gradient Incubation System",
+  },
   { applicationNo: "202411099894", title: "Self-Healing Cement" },
   { applicationNo: "202411099896", title: "Biodegradable Food Packaging" },
   { applicationNo: "202411099895", title: "Electrochromic Device" },
@@ -184,61 +296,363 @@ const patents = [
 
 const booksMeta = {
   title: "Books & Edited Chapters",
-  total: 50,
+  total: "50+",
   year: "2022-23",
 };
 
 const booksAndChapters = [
-  { srNo: 1, title: "Handbook on Big Data and Machine Learning", author: "Ms. Vandana", type: "Book", isbn: "978-93-5515-732-4" },
-  { srNo: 2, title: "Artificial Intelligence in Cyber Security", author: "Ms. Vandana", type: "Book", isbn: "978-93-5515-908-3" },
-  { srNo: 3, title: "8086 Microprocessor and Interfacing", author: "Ms. Roop Shikha", type: "Book", isbn: "978-93-87393-74-5" },
-  { srNo: 4, title: "8086 Microprocessor and Interfacing", author: "Mr. Manik Dhiman", type: "Book", isbn: "978-93-87393-74-5" },
-  { srNo: 5, title: "Introduction to Microprocessors", author: "Ms. Yukti Gupta", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 6, title: "Introduction to Microprocessors", author: "Ms. Roop Shikha", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 7, title: "Types of Computers", author: "Ms. Vandana", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 8, title: "Types of Computers", author: "Ms. Nisha", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 9, title: "Microprocessor Evolution and Types", author: "Mr. Manik Dhiman", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 10, title: "Microprocessor Evolution and Types", author: "Dr. Indu Batra", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 11, title: "8086 Internal Architecture", author: "Ms. Roop Shikha", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 12, title: "8086 Internal Architecture", author: "Dr. Shashi Jawla", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 13, title: "Microprocessor - 8086 Addressing Modes", author: "Ms. Neha Garg", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 14, title: "Microprocessor - 8086 Addressing Modes", author: "Ms. Sujata Tondon", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 15, title: "Data Transfer and Arithmetic Instructions of 8086", author: "Ms. Ritika Mishra", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 16, title: "Data Transfer and Arithmetic Instructions of 8086", author: "Mr. Vikas Zandu", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 17, title: "Logical, String Manipulation, Control Transfer and Processor Control Instructions", author: "Ms. Kulbir Kaur", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 18, title: "Logical, String Manipulation, Control Transfer and Processor Control Instructions", author: "Ms. Saneha", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 19, title: "Assembler Directives of the 8086 Microprocessor", author: "Ms. Komal Sood", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 20, title: "Assembler Directives of the 8086 Microprocessor", author: "Mr. Rajat Gupta", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 21, title: "Introduction to Assembly Language Programming", author: "Ms. Kulbir Kaur", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 22, title: "Introduction to Assembly Language Programming", author: "Mr. Hardeep Singh", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 23, title: "Assembly Language Programming", author: "Ms. Tanika Thakur", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 24, title: "Assembly Language Programming", author: "Mr. Navdeep Randhawa", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 25, title: "Pin Diagram and Description of 8086 Microprocessor", author: "Ms. Yashu", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 26, title: "Pin Diagram and Description of 8086 Microprocessor", author: "Dr. Pertik Garg", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 27, title: "Minimum Mode Configuration of 8086 Microprocessor (Min Mode)", author: "Ms. Kiran Bala", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 28, title: "Minimum Mode Configuration of 8086 Microprocessor (Min Mode)", author: "Ms. Komal Dhiman", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 29, title: "Maximum Mode Configuration of 8086 Microprocessor (Max Mode)", author: "Mr. Ishant Premi", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 30, title: "Maximum Mode Configuration of 8086 Microprocessor (Max Mode)", author: "Ms. Tanika Thakur", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 31, title: "Bus Timings for Minimum Mode and Maximum Mode", author: "Ms. Komal Dhiman", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 32, title: "Bus Timings for Minimum Mode and Maximum Mode", author: "Mr. Ishant Premi", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 33, title: "Interrupts in 8086 Microprocessor", author: "Dr. Pertik Garg", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 34, title: "Interrupts in 8086 Microprocessor", author: "Ms. Vandana", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 35, title: "8254 - Programmable Timer/Counter", author: "Mr. Navdeep Randhawa", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 36, title: "8254 - Programmable Timer/Counter", author: "Mr. Manik Dhiman", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 37, title: "8259- Priority Interrupt Controller", author: "Mr. Hardeep Singh", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 38, title: "8259- Priority Interrupt Controller", author: "Ms. Roop Shikha", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 39, title: "Pin Configuration of 8259 PIC", author: "Mr. Harjinder Singh", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 40, title: "Pin Configuration of 8259 PIC", author: "Ms. Neha Garg", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 41, title: "8255 Microprocessor: Architecture and Working", author: "Ms. Saneha", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 42, title: "8255 Microprocessor: Architecture and Working", author: "Ms. Yukti Gupta", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 43, title: "Pin Diagram of 8255 PPI", author: "Mr. Vikas Zandu", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 44, title: "Pin Diagram of 8255 PPI", author: "Ms. Kulbir Kaur", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 45, title: "Keyboard/Display Controller- 8279", author: "Ms. Sujata Tondon", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 46, title: "Keyboard/Display Controller- 8279", author: "Ms. Komal Dhiman", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 47, title: "Interfacing 8279 with 8086 Processor", author: "Dr. Shashi Jawla", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 48, title: "Interfacing 8279 with 8086 Processor", author: "Mr. Manik Dhiman", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 49, title: "8086 Microprocessor Interfacing with DAC", author: "Dr. Indu Batra", type: "Book Chapter", isbn: "978-93-87393-74-5" },
-  { srNo: 50, title: "8086 Microprocessor Interfacing with DAC", author: "Ms. Tanika Thakur", type: "Book Chapter", isbn: "978-93-87393-74-5" },
+  {
+    srNo: 1,
+    title: "Handbook on Big Data and Machine Learning",
+    author: "Ms. Vandana",
+    type: "Book",
+    isbn: "978-93-5515-732-4",
+  },
+  {
+    srNo: 2,
+    title: "Artificial Intelligence in Cyber Security",
+    author: "Ms. Vandana",
+    type: "Book",
+    isbn: "978-93-5515-908-3",
+  },
+  {
+    srNo: 3,
+    title: "8086 Microprocessor and Interfacing",
+    author: "Ms. Roop Shikha",
+    type: "Book",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 4,
+    title: "8086 Microprocessor and Interfacing",
+    author: "Mr. Manik Dhiman",
+    type: "Book",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 5,
+    title: "Introduction to Microprocessors",
+    author: "Ms. Yukti Gupta",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 6,
+    title: "Introduction to Microprocessors",
+    author: "Ms. Roop Shikha",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 7,
+    title: "Types of Computers",
+    author: "Ms. Vandana",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 8,
+    title: "Types of Computers",
+    author: "Ms. Nisha",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 9,
+    title: "Microprocessor Evolution and Types",
+    author: "Mr. Manik Dhiman",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 10,
+    title: "Microprocessor Evolution and Types",
+    author: "Dr. Indu Batra",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 11,
+    title: "8086 Internal Architecture",
+    author: "Ms. Roop Shikha",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 12,
+    title: "8086 Internal Architecture",
+    author: "Dr. Shashi Jawla",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 13,
+    title: "Microprocessor - 8086 Addressing Modes",
+    author: "Ms. Neha Garg",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 14,
+    title: "Microprocessor - 8086 Addressing Modes",
+    author: "Ms. Sujata Tondon",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 15,
+    title: "Data Transfer and Arithmetic Instructions of 8086",
+    author: "Ms. Ritika Mishra",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 16,
+    title: "Data Transfer and Arithmetic Instructions of 8086",
+    author: "Mr. Vikas Zandu",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 17,
+    title:
+      "Logical, String Manipulation, Control Transfer and Processor Control Instructions",
+    author: "Ms. Kulbir Kaur",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 18,
+    title:
+      "Logical, String Manipulation, Control Transfer and Processor Control Instructions",
+    author: "Ms. Saneha",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 19,
+    title: "Assembler Directives of the 8086 Microprocessor",
+    author: "Ms. Komal Sood",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 20,
+    title: "Assembler Directives of the 8086 Microprocessor",
+    author: "Mr. Rajat Gupta",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 21,
+    title: "Introduction to Assembly Language Programming",
+    author: "Ms. Kulbir Kaur",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 22,
+    title: "Introduction to Assembly Language Programming",
+    author: "Mr. Hardeep Singh",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 23,
+    title: "Assembly Language Programming",
+    author: "Ms. Tanika Thakur",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 24,
+    title: "Assembly Language Programming",
+    author: "Mr. Navdeep Randhawa",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 25,
+    title: "Pin Diagram and Description of 8086 Microprocessor",
+    author: "Ms. Yashu",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 26,
+    title: "Pin Diagram and Description of 8086 Microprocessor",
+    author: "Dr. Pertik Garg",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 27,
+    title: "Minimum Mode Configuration of 8086 Microprocessor (Min Mode)",
+    author: "Ms. Kiran Bala",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 28,
+    title: "Minimum Mode Configuration of 8086 Microprocessor (Min Mode)",
+    author: "Ms. Komal Dhiman",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 29,
+    title: "Maximum Mode Configuration of 8086 Microprocessor (Max Mode)",
+    author: "Mr. Ishant Premi",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 30,
+    title: "Maximum Mode Configuration of 8086 Microprocessor (Max Mode)",
+    author: "Ms. Tanika Thakur",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 31,
+    title: "Bus Timings for Minimum Mode and Maximum Mode",
+    author: "Ms. Komal Dhiman",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 32,
+    title: "Bus Timings for Minimum Mode and Maximum Mode",
+    author: "Mr. Ishant Premi",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 33,
+    title: "Interrupts in 8086 Microprocessor",
+    author: "Dr. Pertik Garg",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 34,
+    title: "Interrupts in 8086 Microprocessor",
+    author: "Ms. Vandana",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 35,
+    title: "8254 - Programmable Timer/Counter",
+    author: "Mr. Navdeep Randhawa",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 36,
+    title: "8254 - Programmable Timer/Counter",
+    author: "Mr. Manik Dhiman",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 37,
+    title: "8259- Priority Interrupt Controller",
+    author: "Mr. Hardeep Singh",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 38,
+    title: "8259- Priority Interrupt Controller",
+    author: "Ms. Roop Shikha",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 39,
+    title: "Pin Configuration of 8259 PIC",
+    author: "Mr. Harjinder Singh",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 40,
+    title: "Pin Configuration of 8259 PIC",
+    author: "Ms. Neha Garg",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 41,
+    title: "8255 Microprocessor: Architecture and Working",
+    author: "Ms. Saneha",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 42,
+    title: "8255 Microprocessor: Architecture and Working",
+    author: "Ms. Yukti Gupta",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 43,
+    title: "Pin Diagram of 8255 PPI",
+    author: "Mr. Vikas Zandu",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 44,
+    title: "Pin Diagram of 8255 PPI",
+    author: "Ms. Kulbir Kaur",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 45,
+    title: "Keyboard/Display Controller- 8279",
+    author: "Ms. Sujata Tondon",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 46,
+    title: "Keyboard/Display Controller- 8279",
+    author: "Ms. Komal Dhiman",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 47,
+    title: "Interfacing 8279 with 8086 Processor",
+    author: "Dr. Shashi Jawla",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 48,
+    title: "Interfacing 8279 with 8086 Processor",
+    author: "Mr. Manik Dhiman",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 49,
+    title: "8086 Microprocessor Interfacing with DAC",
+    author: "Dr. Indu Batra",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
+  {
+    srNo: 50,
+    title: "8086 Microprocessor Interfacing with DAC",
+    author: "Ms. Tanika Thakur",
+    type: "Book Chapter",
+    isbn: "978-93-87393-74-5",
+  },
 ];
 
 const infrastructure = [
@@ -252,17 +666,20 @@ const collaborations = ["Google", "DRDO", "Infosys", "TCS", "Wipro"];
 const services = [
   {
     title: "IPR & Patent Support",
-    description: "Support for ideation, filing, and protection of institutional innovations.",
+    description:
+      "Support for ideation, filing, and protection of institutional innovations.",
     icon: FaBookOpen,
   },
   {
     title: "Industry Consultancy",
-    description: "Consultancy support to solve practical industry problems through applied research.",
+    description:
+      "Consultancy support to solve practical industry problems through applied research.",
     icon: FaTools,
   },
   {
     title: "Conferences & Workshops",
-    description: "Regular events that connect academia, industry, and emerging research themes.",
+    description:
+      "Regular events that connect academia, industry, and emerging research themes.",
     icon: FaHandshake,
   },
 ];
@@ -273,7 +690,7 @@ export function ResearchPageComponent() {
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-32 pb-32 lg:pb-40 lg:pt-40">
         <Image
-          src="/assets/img/college/main_gate.png"
+          src="/assets/img/research.jpg"
           alt="Research at SVIET"
           fill
           className="object-cover"
@@ -284,7 +701,10 @@ export function ResearchPageComponent() {
         <div className={`${containerClass} relative`}>
           <div className="max-w-2xl">
             <p className="text-sm font-semibold text-white/80">
-              <a href="/" className="hover:text-[#f7941d] transition">Home</a> / <span className="text-white">Research & Innovation</span>
+              <Link href="/" className="hover:text-[#f7941d] transition">
+                Home
+              </Link>{" "}
+              / <span className="text-white">Research & Innovation</span>
             </p>
             <h1 className="mt-8 text-5xl lg:text-6xl font-bold leading-tight text-white">
               {hero.title}
@@ -297,27 +717,26 @@ export function ResearchPageComponent() {
       </section>
 
       {/* Quick Links / Stats Section */}
-      <section className={`${sectionClass} ${containerClass}`}>
+      <section
+        id="publications"
+        className={`${sectionClass} ${containerClass}`}
+      >
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {stats.map((item) => (
-            <a key={item.label} href={item.href} className="group relative block h-72 overflow-hidden rounded-3xl">
-              <Image
-                src={item.image}
-                alt={item.label}
-                fill
-                sizes="(max-width: 767px) 100vw, 33vw"
-                className="object-cover transition duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 rounded-3xl bg-linear-to-t from-black/75 via-black/40 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-8">
-                <p className="text-5xl font-bold text-white">{item.value}</p>
-                <h3 className="mt-3 text-xl font-semibold leading-tight text-white">{item.label}</h3>
-                <span className="mt-4 inline-flex items-center gap-2 text-base font-semibold text-[#f7941d] transition group-hover:gap-3">
-                  Explore
-                  <span aria-hidden="true">›</span>
-                </span>
-              </div>
-            </a>
+            <Link
+              key={item.label}
+              href={item.href}
+              className="group block rounded-2xl border border-gray-200 bg-white p-8 transition hover:border-[#f7941d]/60 hover:shadow-sm"
+            >
+              <p className="text-5xl font-bold text-gray-900">{item.value}</p>
+              <h3 className="mt-3 text-xl font-semibold leading-tight text-gray-800">
+                {item.label}
+              </h3>
+              <span className="mt-5 inline-flex items-center gap-2 text-base font-semibold text-[#f7941d] transition group-hover:gap-3">
+                Explore
+                <span aria-hidden="true">›</span>
+              </span>
+            </Link>
           ))}
         </div>
       </section>
@@ -325,11 +744,23 @@ export function ResearchPageComponent() {
       {/* About Research Section */}
       <section className={`${sectionClass} ${containerClass}`}>
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Research Vision</p>
-          <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>About Research at SVIET</h2>
-          <p className="text-lg font-semibold text-gray-700">A research ecosystem built for societal and industrial impact.</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+            Research Vision
+          </p>
+          <h2
+            className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}
+          >
+            About Research at SVIET
+          </h2>
+          <p className="text-lg font-semibold text-gray-700">
+            A research ecosystem built for societal and industrial impact.
+          </p>
           <p className="mt-6 text-base leading-relaxed text-gray-600">
-            At our college, research is not just an academic requirement—it is a way of thinking, questioning, and innovating. We believe that true learning extends beyond textbooks, and we foster a culture where faculty and students collaborate to create practical, sustainable, and high-impact solutions for real-world challenges.
+            At our college, research is not just an academic requirement—it is a
+            way of thinking, questioning, and innovating. We believe that true
+            learning extends beyond textbooks, and we foster a culture where
+            faculty and students collaborate to create practical, sustainable,
+            and high-impact solutions for real-world challenges.
           </p>
         </div>
       </section>
@@ -337,16 +768,32 @@ export function ResearchPageComponent() {
       {/* Research Domains Section */}
       <section className={`${sectionClass} ${containerClass}`}>
         <div className="mb-12 lg:mb-16">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Research Areas</p>
-          <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>Research Domains</h2>
-          <p className="text-lg text-gray-700">Focused verticals that combine scientific rigor with real-world application.</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+            Research Areas
+          </p>
+          <h2
+            className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}
+          >
+            Research Domains
+          </h2>
+          <p className="text-lg text-gray-700">
+            Focused verticals that combine scientific rigor with real-world
+            application.
+          </p>
         </div>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {researchDomains.map((domain) => (
-            <article key={domain.title} className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 ">
+            <article
+              key={domain.title}
+              className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 "
+            >
               <domain.icon className="text-3xl text-[#f7941d] transition group-hover:scale-110" />
-              <h3 className="mt-6 text-xl font-semibold text-gray-900">{domain.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-gray-600">{domain.description}</p>
+              <h3 className="mt-6 text-xl font-semibold text-gray-900">
+                {domain.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                {domain.description}
+              </p>
             </article>
           ))}
         </div>
@@ -356,13 +803,25 @@ export function ResearchPageComponent() {
       <section id="committee" className="bg-gray-50 py-20 lg:py-24">
         <div className={containerClass}>
           <div className="mb-12 lg:mb-16">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Leadership</p>
-            <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>R&D Committee</h2>
-            <p className="text-lg text-gray-700">Leadership and members guiding the institute's research direction.</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+              Leadership
+            </p>
+            <h2
+              className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}
+            >
+              R&D Committee
+            </h2>
+            <p className="text-lg text-gray-700">
+              Leadership and members guiding the institute&apos;s research
+              direction.
+            </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {rdCommittee.map((member) => (
-              <div key={member.name} className="bg-white rounded-2xl overflow-hidden h-full flex flex-col  ">
+              <div
+                key={member.name}
+                className="bg-white rounded-2xl overflow-hidden h-full flex flex-col  "
+              >
                 {/* Top Section - Gradient Background */}
                 <div className="w-full h-40 bg-linear-to-br from-[#f7941d]/20 via-[#f7941d]/10 to-transparent p-6 flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 opacity-5 bg-pattern" />
@@ -374,29 +833,43 @@ export function ResearchPageComponent() {
                 {/* Bottom Section - White Background */}
                 <div className="p-6 grow flex flex-col">
                   {/* Name */}
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">{member.name}</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                    {member.name}
+                  </h3>
 
                   {/* Details */}
                   <div className="space-y-3 grow">
                     {/* Department */}
                     <div className="flex items-start gap-3">
                       <div className="w-6 h-6 rounded-full bg-[#f7941d]/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <span className="text-xs text-[#f7941d] font-bold">📚</span>
+                        <span className="text-xs text-[#f7941d] font-bold">
+                          📚
+                        </span>
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xs font-semibold text-gray-500">Department</span>
-                        <span className="text-sm text-gray-700">{member.department}</span>
+                        <span className="text-xs font-semibold text-gray-500">
+                          Department
+                        </span>
+                        <span className="text-sm text-gray-700">
+                          {member.department}
+                        </span>
                       </div>
                     </div>
 
                     {/* Designation */}
                     <div className="flex items-start gap-3 border-t pt-3">
                       <div className="w-6 h-6 rounded-full bg-[#f7941d]/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <span className="text-xs text-[#f7941d] font-bold">⭐</span>
+                        <span className="text-xs text-[#f7941d] font-bold">
+                          ⭐
+                        </span>
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xs font-semibold text-gray-500">Designation</span>
-                        <span className="text-sm font-semibold text-[#f7941d]">{member.designation}</span>
+                        <span className="text-xs font-semibold text-gray-500">
+                          Designation
+                        </span>
+                        <span className="text-sm font-semibold text-[#f7941d]">
+                          {member.designation}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -411,15 +884,31 @@ export function ResearchPageComponent() {
       <section id="projects" className="bg-gray-900 py-20 lg:py-24">
         <div className={containerClass}>
           <div className="mb-12 lg:mb-16">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Achievements</p>
-            <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-white lg:text-5xl`}>Innovative Projects</h2>
-            <p className="text-lg text-gray-300">Student and faculty innovations addressing practical and societal needs.</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+              Achievements
+            </p>
+            <h2
+              className={`${headerSpacing} text-4xl font-bold leading-tight text-white lg:text-5xl`}
+            >
+              Innovative Projects
+            </h2>
+            <p className="text-lg text-gray-300">
+              Student and faculty innovations addressing practical and societal
+              needs.
+            </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {innovativeProjects.map((project) => (
-              <article key={project.title} className="group rounded-2xl border border-gray-700 bg-linear-to-br from-gray-800 to-gray-900 p-6 transition hover:border-[#f7941d]/50 hover:bg-linear-to-br hover:from-gray-800 hover:to-[#f7941d]/10">
-                <h3 className="text-lg font-semibold text-white group-hover:text-[#f7941d]">{project.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-gray-400">{project.description}</p>
+              <article
+                key={project.title}
+                className="group rounded-2xl border border-gray-700 bg-linear-to-br from-gray-800 to-gray-900 p-6 transition hover:border-[#f7941d]/50 hover:bg-linear-to-br hover:from-gray-800 hover:to-[#f7941d]/10"
+              >
+                <h3 className="text-lg font-semibold text-white group-hover:text-[#f7941d]">
+                  {project.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-gray-400">
+                  {project.description}
+                </p>
               </article>
             ))}
           </div>
@@ -429,28 +918,57 @@ export function ResearchPageComponent() {
       {/* Research Publications Section */}
       <section className={`${sectionClass} ${containerClass}`}>
         <div className="mb-12 lg:mb-16">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Scholarly Output</p>
-          <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>Research Publications</h2>
-          <p className="text-lg text-gray-700">Selected list of publications contributed by SVIET researchers.</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+            Scholarly Output
+          </p>
+          <h2
+            className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}
+          >
+            Research Publications
+          </h2>
+          <p className="text-lg text-gray-700">
+            Selected list of publications contributed by SVIET researchers. The
+            institute&apos;s total research output now stands at more than 1200
+            research publications.
+          </p>
         </div>
         <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white ">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead className="border-b border-gray-200 bg-gray-50">
                 <tr>
-                  <th className="px-6 py-4 font-semibold text-gray-900">Title</th>
-                  <th className="px-6 py-4 font-semibold text-gray-900">Author</th>
-                  <th className="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">Year</th>
-                  <th className="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">ISSN</th>
+                  <th className="px-6 py-4 font-semibold text-gray-900">
+                    Title
+                  </th>
+                  <th className="px-6 py-4 font-semibold text-gray-900">
+                    Author
+                  </th>
+                  <th className="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">
+                    Year
+                  </th>
+                  <th className="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">
+                    ISSN
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {publications.map((publication) => (
-                  <tr key={`${publication.title}-${publication.author}`} className="transition hover:bg-gray-50">
-                    <td className="px-6 py-4 text-gray-700">{publication.title}</td>
-                    <td className="px-6 py-4 text-gray-700">{publication.author}</td>
-                    <td className="px-6 py-4 text-gray-700 whitespace-nowrap">{publication.year}</td>
-                    <td className="px-6 py-4 text-gray-700 whitespace-nowrap">{publication.issn}</td>
+                  <tr
+                    key={`${publication.title}-${publication.author}`}
+                    className="transition hover:bg-gray-50"
+                  >
+                    <td className="px-6 py-4 text-gray-700">
+                      {publication.title}
+                    </td>
+                    <td className="px-6 py-4 text-gray-700">
+                      {publication.author}
+                    </td>
+                    <td className="px-6 py-4 text-gray-700 whitespace-nowrap">
+                      {publication.year}
+                    </td>
+                    <td className="px-6 py-4 text-gray-700 whitespace-nowrap">
+                      {publication.issn}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -460,17 +978,33 @@ export function ResearchPageComponent() {
       </section>
 
       {/* Patents Section */}
-      <section className={`${sectionClass} ${containerClass}`}>
+      <section id="patents" className={`${sectionClass} ${containerClass}`}>
         <div className="mb-12 lg:mb-16">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">IP Portfolio</p>
-          <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>Patents</h2>
-          <p className="text-lg text-gray-700">Patent applications filed across engineering and technology domains.</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+            IP Portfolio
+          </p>
+          <h2
+            className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}
+          >
+            Patents
+          </h2>
+          <p className="text-lg text-gray-700">
+            87 patents filed and certification across engineering and technology
+            domains.
+          </p>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
           {patents.map((patent) => (
-            <article key={patent.applicationNo} className="group rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-[#f7941d]/50 ">
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Ref: {patent.applicationNo}</p>
-              <h3 className="mt-4 text-lg font-semibold text-gray-900 group-hover:text-[#f7941d]">{patent.title}</h3>
+            <article
+              key={patent.applicationNo}
+              className="group rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-[#f7941d]/50 "
+            >
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+                Ref: {patent.applicationNo}
+              </p>
+              <h3 className="mt-4 text-lg font-semibold text-gray-900 group-hover:text-[#f7941d]">
+                {patent.title}
+              </h3>
             </article>
           ))}
         </div>
@@ -479,13 +1013,24 @@ export function ResearchPageComponent() {
       {/* Research Collaborations Section */}
       <section className={`${sectionClass} ${containerClass}`}>
         <div className="mb-12 lg:mb-16">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Partnerships</p>
-          <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>Research Collaborations</h2>
-          <p className="text-lg text-gray-700">Collaborative partnerships driving shared innovation outcomes.</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+            Partnerships
+          </p>
+          <h2
+            className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}
+          >
+            Research Collaborations
+          </h2>
+          <p className="text-lg text-gray-700">
+            Collaborative partnerships driving shared innovation outcomes.
+          </p>
         </div>
         <div className="flex flex-wrap items-center gap-8">
           {collaborations.map((company) => (
-            <p key={company} className="text-2xl font-semibold tracking-tight text-gray-400 transition duration-300 hover:text-[#f7941d]">
+            <p
+              key={company}
+              className="text-2xl font-semibold tracking-tight text-gray-400 transition duration-300 hover:text-[#f7941d]"
+            >
               {company}
             </p>
           ))}
@@ -493,19 +1038,31 @@ export function ResearchPageComponent() {
       </section>
 
       {/* Infrastructure & Books Section */}
-      <section className={`${sectionClass} ${containerClass}`}>
+      <section id="books" className={`${sectionClass} ${containerClass}`}>
         <div className="grid gap-12 lg:grid-cols-2">
           {/* Infrastructure */}
           <div>
             <div className="mb-8">
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Facilities</p>
-              <h2 className="mt-2 text-3xl font-bold text-gray-900 lg:text-4xl">Infrastructure & Facilities</h2>
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+                Facilities
+              </p>
+              <h2 className="mt-2 text-3xl font-bold text-gray-900 lg:text-4xl">
+                Infrastructure & Facilities
+              </h2>
             </div>
-            <p className="text-gray-700 mb-8">Core research infrastructure supporting advanced experimentation and prototyping.</p>
+            <p className="text-gray-700 mb-8">
+              Core research infrastructure supporting advanced experimentation
+              and prototyping.
+            </p>
             <div className="space-y-4">
               {infrastructure.map((facility) => (
-                <article key={facility} className="group rounded-xl border border-gray-200 bg-white p-4 transition hover:border-[#f7941d]/50 ">
-                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-[#f7941d]">{facility}</h3>
+                <article
+                  key={facility}
+                  className="group rounded-xl border border-gray-200 bg-white p-4 transition hover:border-[#f7941d]/50 "
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-[#f7941d]">
+                    {facility}
+                  </h3>
                 </article>
               ))}
             </div>
@@ -514,33 +1071,99 @@ export function ResearchPageComponent() {
           {/* Books & Chapters */}
           <div>
             <div className="mb-8">
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Publications</p>
-              <h2 className="mt-2 text-3xl font-bold text-gray-900 lg:text-4xl">Books & Edited Chapters</h2>
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+                Publications
+              </p>
+              <h2 className="mt-2 text-3xl font-bold text-gray-900 lg:text-4xl">
+                Books & Edited Chapters
+              </h2>
             </div>
             <p className="text-gray-700">
-              <span className="font-semibold">{booksMeta.title}</span> ({booksMeta.year})
+              <span className="font-semibold">{booksMeta.title}</span> (
+              {booksMeta.year})
             </p>
-            <p className="mt-2 text-sm text-gray-600">Total count: <span className="font-semibold text-gray-900">{booksMeta.total}</span></p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl border border-gray-200 bg-white p-4">
+                <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+                  Books published
+                </p>
+                <p className="mt-2 text-2xl font-bold text-gray-900">50+</p>
+              </div>
+              <div className="rounded-2xl border border-gray-200 bg-white p-4">
+                <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+                  Book chapters
+                </p>
+                <p className="mt-2 text-2xl font-bold text-gray-900">1800+</p>
+              </div>
+            </div>
+            <p className="mt-4 text-sm text-gray-600">
+              Total count:{" "}
+              <span className="font-semibold text-gray-900">
+                {booksMeta.total}
+              </span>
+            </p>
+
+            {/* Top 6 books (from central data) */}
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+              {researchData.books.slice(0, 6).map((b, i) => (
+                <div
+                  key={`${b.isbn}-${i}`}
+                  className="rounded-2xl border border-gray-200 bg-white p-4"
+                >
+                  <h4 className="text-sm font-semibold text-gray-900">
+                    {b.title}
+                  </h4>
+                  <p className="mt-1 text-xs text-gray-600">{b.authors}</p>
+                  <p className="mt-2 text-xs font-mono text-gray-500">
+                    ISBN: {b.isbn}
+                  </p>
+                </div>
+              ))}
+            </div>
+
             <div className="mt-6 rounded-2xl border border-gray-200 bg-white overflow-hidden">
               <div className="overflow-x-auto max-h-96">
                 <table className="w-full text-left text-sm">
                   <thead className="border-b border-gray-200 bg-gray-50 sticky top-0">
                     <tr>
-                      <th className="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap w-10">Sr.</th>
-                      <th className="px-4 py-3 font-semibold text-gray-900">Title</th>
-                      <th className="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap min-w-32">Author</th>
-                      <th className="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">Type</th>
-                      <th className="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">ISBN</th>
+                      <th className="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap w-10">
+                        Sr.
+                      </th>
+                      <th className="px-4 py-3 font-semibold text-gray-900">
+                        Title
+                      </th>
+                      <th className="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap min-w-32">
+                        Author
+                      </th>
+                      <th className="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">
+                        Type
+                      </th>
+                      <th className="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">
+                        ISBN
+                      </th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
                     {booksAndChapters.map((book) => (
-                      <tr key={book.srNo} className="transition hover:bg-gray-50">
-                        <td className="px-4 py-3 text-gray-700 font-medium">{book.srNo}</td>
-                        <td className="px-4 py-3 text-gray-700">{book.title}</td>
-                        <td className="px-4 py-3 text-gray-700 text-xs">{book.author}</td>
-                        <td className="px-4 py-3 text-gray-700 text-xs whitespace-nowrap">{book.type}</td>
-                        <td className="px-4 py-3 text-gray-700 text-xs whitespace-nowrap">{book.isbn}</td>
+                      <tr
+                        key={book.srNo}
+                        className="transition hover:bg-gray-50"
+                      >
+                        <td className="px-4 py-3 text-gray-700 font-medium">
+                          {book.srNo}
+                        </td>
+                        <td className="px-4 py-3 text-gray-700">
+                          {book.title}
+                        </td>
+                        <td className="px-4 py-3 text-gray-700 text-xs">
+                          {book.author}
+                        </td>
+                        <td className="px-4 py-3 text-gray-700 text-xs whitespace-nowrap">
+                          {book.type}
+                        </td>
+                        <td className="px-4 py-3 text-gray-700 text-xs whitespace-nowrap">
+                          {book.isbn}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -554,16 +1177,32 @@ export function ResearchPageComponent() {
       {/* Research Activities & Services Section */}
       <section className={`${sectionClass} ${containerClass}`}>
         <div className="mb-12 lg:mb-16">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">Support Systems</p>
-          <h2 className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}>Research Activities & Services</h2>
-          <p className="text-lg text-gray-700">Institutional support mechanisms that help ideas move from concept to impact.</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+            Support Systems
+          </p>
+          <h2
+            className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}
+          >
+            Research Activities & Services
+          </h2>
+          <p className="text-lg text-gray-700">
+            Institutional support mechanisms that help ideas move from concept
+            to impact.
+          </p>
         </div>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
-            <article key={service.title} className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 ">
+            <article
+              key={service.title}
+              className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 "
+            >
               <service.icon className="text-3xl text-[#f7941d] transition group-hover:scale-110" />
-              <h3 className="mt-6 text-xl font-semibold text-gray-900">{service.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-gray-600">{service.description}</p>
+              <h3 className="mt-6 text-xl font-semibold text-gray-900">
+                {service.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                {service.description}
+              </p>
             </article>
           ))}
         </div>
@@ -573,15 +1212,24 @@ export function ResearchPageComponent() {
       <section className="bg-gray-900 py-20 lg:py-24">
         <div className={containerClass}>
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-white lg:text-5xl">Shape Your Future with Us</h2>
+            <h2 className="text-4xl font-bold text-white lg:text-5xl">
+              Shape Your Future with Us
+            </h2>
             <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
-              Join a campus where research, innovation, and entrepreneurship are part of everyday learning.
+              Join a campus where research, innovation, and entrepreneurship are
+              part of everyday learning.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <a href="/admissions" className="inline-block rounded-full bg-[#f7941d] px-8 py-3 font-semibold text-black transition hover:bg-[#df850f]">
+              <a
+                href="/admissions"
+                className="inline-block rounded-full bg-[#f7941d] px-8 py-3 font-semibold text-black transition hover:bg-[#df850f]"
+              >
                 Apply Now
               </a>
-              <a href="#projects" className="inline-block rounded-full border border-white/40 bg-white/10 px-8 py-3 font-semibold text-white transition hover:bg-white/20">
+              <a
+                href="#projects"
+                className="inline-block rounded-full border border-white/40 bg-white/10 px-8 py-3 font-semibold text-white transition hover:bg-white/20"
+              >
                 Learn More
               </a>
             </div>

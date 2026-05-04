@@ -374,19 +374,21 @@ model Enrollment {
 
 model Event {
   id            String              @id @default(uuid())
-  slug          String              @unique
   title         String
-  summary       String
-  venue         String
-  startsAt      DateTime
-  endsAt        DateTime
-  capacity      Int
-  isPublished   Boolean             @default(false)
+  description   String
+  image         String
+  startDate     DateTime
+  endDate       DateTime?
+  category      String
+  isFeatured    Boolean             @default(false)
   createdAt     DateTime            @default(now())
   updatedAt     DateTime            @updatedAt
   registrations EventRegistration[]
 
-  @@index([startsAt])
+  @@index([startDate])
+  @@index([endDate])
+  @@index([category])
+  @@index([isFeatured, startDate])
 }
 
 model EventRegistration {

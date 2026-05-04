@@ -2230,14 +2230,13 @@ export type EnrollmentScalarFieldEnum = (typeof EnrollmentScalarFieldEnum)[keyof
 
 export const EventScalarFieldEnum = {
   id: 'id',
-  slug: 'slug',
   title: 'title',
-  summary: 'summary',
-  venue: 'venue',
-  startsAt: 'startsAt',
-  endsAt: 'endsAt',
-  capacity: 'capacity',
-  isPublished: 'isPublished',
+  description: 'description',
+  image: 'image',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  category: 'category',
+  isFeatured: 'isFeatured',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

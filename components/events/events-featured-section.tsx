@@ -47,7 +47,7 @@ export function EventsFeaturedSection({
                 width={700}
                 height={420}
                 unoptimized={shouldBypassOptimization(event.image)}
-                className="h-52 w-full object-cover"
+                className="h-52 w-full object-cover object-[50%_20%]"
               />
               <div className="space-y-3 p-5">
                 <p className="text-xs font-semibold uppercase tracking-wide text-[#f97316]">
