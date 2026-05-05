@@ -67,11 +67,16 @@ export function HeroSection({
   const [requestSuccess, setRequestSuccess] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
   const [desktopFormOpen, setDesktopFormOpen] = useState(true);
+  const [isRequestFormActive, setIsRequestFormActive] = useState(false);
   const formPanelRef = useRef<HTMLDivElement>(null);
   const shouldShowHeroFilm = activeSlide !== 0;
 
   useEffect(() => {
     const interval = window.setInterval(() => {
+      if (isRequestFormActive) {
+        return;
+      }
+
       setActiveSlide((prev) => {
         if (prev === VIDEO_SLIDE_INDEX) {
           return prev;
@@ -82,11 +87,16 @@ export function HeroSection({
     }, SLIDE_DURATION_MS);
 
     return () => window.clearInterval(interval);
-  }, [heroSlides.length]);
+  }, [heroSlides.length, isRequestFormActive]);
 
   useEffect(() => {
+    if (isRequestFormActive) {
+      setDesktopFormOpen(true);
+      return;
+    }
+
     setDesktopFormOpen(activeSlide === 0);
-  }, [activeSlide]);
+  }, [activeSlide, isRequestFormActive]);
 
   useEffect(() => {
     window.dispatchEvent(
@@ -214,6 +224,20 @@ export function HeroSection({
     } finally {
       setRequestLoading(false);
     }
+  };
+
+  const handleFormFocus = () => {
+    setIsRequestFormActive(true);
+    setDesktopFormOpen(true);
+  };
+
+  const handleFormBlur = () => {
+    window.setTimeout(() => {
+      const panel = formPanelRef.current;
+      if (!panel?.matches(":focus-within")) {
+        setIsRequestFormActive(false);
+      }
+    }, 0);
   };
 
   return (
@@ -415,6 +439,12 @@ export function HeroSection({
               <div
                 ref={formPanelRef}
                 className="w-full max-w-md space-y-6 bg-white p-8 rounded-lg shadow-2xl"
+                onMouseEnter={() => setIsRequestFormActive(true)}
+                onMouseLeave={() => {
+                  if (!formPanelRef.current?.matches(":focus-within")) {
+                    setIsRequestFormActive(false);
+                  }
+                }}
               >
                 <div>
                   <h2 className="text-3xl font-bold text-[#111827]">
@@ -430,7 +460,12 @@ export function HeroSection({
                     ✓ Thank you! Our team will contact you within 24 hours.
                   </div>
                 ) : (
-                  <form className="space-y-4" onSubmit={handleRequestSubmit}>
+                  <form
+                    className="space-y-4"
+                    onSubmit={handleRequestSubmit}
+                    onFocusCapture={handleFormFocus}
+                    onBlurCapture={handleFormBlur}
+                  >
                     <div>
                       <label
                         htmlFor="fullname"

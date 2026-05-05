@@ -2,8 +2,13 @@ export type AwardsRecord = {
   id: string;
   title: string;
   description: string;
+  /** small logo/icon used in the grid */
   logoSrc: string;
   logoAlt: string;
+  /** optional primary asset (image or pdf) placed in the record detail */
+  assetSrc?: string;
+  assetType?: "image" | "pdf";
+  assetAlt?: string;
 };
 
 export const AWARDS_RECORDS: AwardsRecord[] = [
@@ -103,5 +108,62 @@ export const AWARDS_RECORDS: AwardsRecord[] = [
     logoSrc:
       "https://silicon.ac.in/wp-content/uploads/2022/12/6.-IIC-Star-Rating.jpg",
     logoAlt: "Innovation Council rating logo",
+  },
+  {
+    id: "naac-accreditation",
+    title: "NAAC Accreditation Certificate",
+    description:
+      "SVIET has been accredited by NAAC demonstrating sustained quality assurance and academic standards.",
+    logoSrc: "/assets/img/awards/NAAC Accreditation Certificate.jpg",
+    logoAlt: "NAAC Accreditation",
+    assetSrc: "/assets/img/awards/NAAC Accreditation Certificate.jpg",
+    assetType: "image",
+    assetAlt: "NAAC Accreditation Certificate",
+  },
+  {
+    id: "ugc-2f-recognition",
+    title: "UGC 2(f) Recognition",
+    description:
+      "UGC 2(f) recognition granted to SVIET, marking an important milestone in institutional recognition.",
+    logoSrc: "/assets/img/awards/UGC 2(f) Recognition.jpg",
+    logoAlt: "UGC 2(f)",
+    assetSrc: "/assets/img/awards/2F RecognitionLetter.pdf",
+    assetType: "pdf",
+    assetAlt: "UGC 2(f) Recognition Letter",
+  },
+  {
+    id: "autonomous-status",
+    title: "Autonomous Status Granted",
+    description:
+      "SVIET granted autonomy by UGC/affiliating authorities (certificate available).",
+    logoSrc: "/assets/img/awards/Autonomous post.jpg",
+    logoAlt: "Autonomous status",
+    assetSrc: "/assets/img/awards/Autonomous Letter.pdf",
+    assetType: "pdf",
+    assetAlt: "Autonomous Letter",
+  },
+  {
+    id: "world-education-2024",
+    title: "3rd World Education & Business Conclave & Awards 2024",
+    description:
+      "Recognition received at the 3rd World Education & Business Conclave — highlights and trophies.",
+    logoSrc:
+      "/assets/img/awards/3rd World Education & Business Conclave & Awards 2024/487032404_1125118346325857_811749101722748028_n.jpg",
+    logoAlt: "World Education Awards 2024",
+    assetSrc:
+      "/assets/img/awards/3rd World Education & Business Conclave & Awards 2024/487032404_1125118346325857_811749101722748028_n.jpg",
+    assetType: "image",
+    assetAlt: "World Education Awards 2024 image",
+  },
+  {
+    id: "best-in-north-india",
+    title: "Best Institution in North India",
+    description:
+      "Awarded Best Institution in North India at the World Education & Business Awards.",
+    logoSrc: "/assets/img/awards/Best Institution in North India.jpg",
+    logoAlt: "Best Institution in North India",
+    assetSrc: "/assets/img/awards/Best Institution in North India.jpg",
+    assetType: "image",
+    assetAlt: "Best Institution in North India image",
   },
 ];

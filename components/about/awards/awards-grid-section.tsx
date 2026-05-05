@@ -214,6 +214,65 @@ export function AwardsGridSection() {
                             <p className="mt-3 text-sm leading-relaxed text-[#1f2937] opacity-80">
                               {item.description}
                             </p>
+                            {item.assetSrc ? (
+                              <div className="mt-4 flex items-center gap-3">
+                                {item.assetType === "image" ? (
+                                  <a
+                                    href={item.assetSrc}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="inline-flex items-center gap-3"
+                                  >
+                                    <div className="h-12 w-20 overflow-hidden rounded-md border">
+                                      <Image
+                                        src={item.assetSrc}
+                                        alt={item.assetAlt ?? item.title}
+                                        width={160}
+                                        height={96}
+                                        unoptimized={isExternalImage(
+                                          item.assetSrc,
+                                        )}
+                                        className="object-cover"
+                                      />
+                                    </div>
+                                    <span className="text-sm font-semibold text-[#1d4ed8]">
+                                      View
+                                    </span>
+                                  </a>
+                                ) : (
+                                  <a
+                                    href={item.assetSrc}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="inline-flex items-center gap-3"
+                                  >
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      className="h-8 w-8 text-[#ef4444]"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      strokeWidth={1.5}
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    >
+                                      <path d="M12 2v12" />
+                                      <path d="M7 7l5-5 5 5" />
+                                      <rect
+                                        x="3"
+                                        y="13"
+                                        width="18"
+                                        height="8"
+                                        rx="2"
+                                      />
+                                    </svg>
+                                    <span className="text-sm font-semibold text-[#1d4ed8]">
+                                      Open PDF
+                                    </span>
+                                  </a>
+                                )}
+                              </div>
+                            ) : null}
                           </div>
                         </div>
                       </article>

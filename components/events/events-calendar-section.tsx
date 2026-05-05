@@ -51,7 +51,7 @@ export function EventsCalendarSection({
                   width={480}
                   height={280}
                   unoptimized={shouldBypassOptimization(event.image)}
-                  className="h-44 w-full object-cover"
+                  className="h-44 w-full object-cover object-[50%_30%]"
                 />
                 <div className="space-y-2 p-4">
                   <p className="text-xs font-semibold uppercase tracking-wide text-[#2563eb]">
@@ -89,7 +89,7 @@ export function EventsCalendarSection({
                   width={460}
                   height={280}
                   unoptimized={shouldBypassOptimization(event.image)}
-                  className="h-40 w-full object-cover"
+                  className="h-40 w-full object-cover object-[50%_30%]"
                 />
                 <div className="p-3">
                   <h4 className="line-clamp-2 text-sm font-semibold text-[#0f172a]">

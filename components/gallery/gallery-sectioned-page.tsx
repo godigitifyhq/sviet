@@ -311,15 +311,27 @@ function Lightbox({
 
 function GalleryHero() {
   return (
-    <section className="border-b border-[#dbe2f2] bg-[linear-gradient(180deg,#ffffff_0%,#f6f8fc_100%)]">
-      <div className="mx-auto max-w-7xl px-4 py-14 md:px-6 md:py-20">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#2563eb]">
+    <section className="relative isolate overflow-hidden border-b border-[#0b1220] bg-black">
+      <div className="absolute inset-0">
+        <Image
+          src="/assets/img/college/auditorium.png"
+          alt="SVIET auditorium"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
+      <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/40 to-black/15" />
+
+      <div className="relative mx-auto max-w-7xl px-4 py-24 md:px-6 md:py-32 lg:py-36">
+        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/70">
           SVIET Visual Archive
         </p>
-        <h1 className="mt-3 max-w-4xl text-4xl font-semibold tracking-tight text-[#0f172a] md:text-6xl">
+        <h1 className="mt-3 max-w-4xl text-4xl font-semibold tracking-tight text-white md:text-6xl">
           Gallery
         </h1>
-        <p className="mt-5 max-w-3xl text-base leading-relaxed text-[#475569] md:text-lg">
+        <p className="mt-5 max-w-3xl text-base leading-relaxed text-white/80 md:text-lg">
           Explore life at SVIET through real campus moments, told in a
           section-based experience that stays focused on campus visuals.
         </p>
