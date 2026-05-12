@@ -15,7 +15,7 @@ const researchProjects = [
       "Optimization of Enteric-Coated Pantoprazole Capsules for Improved Acid Stability and Controlled Release",
     investigator: "Dr. Damit, Associate Professor",
     organization: "Research Project",
-    img: "/assets/img/re.jpg",
+    img: "/assets/img/college/Dr_Damit.jpg",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const researchProjects = [
       "Development and Evaluation of Mucoadhesive Nano-Liposomal Levocetirizine Syrup for Enhanced Oral Bioavailability",
     investigator: "Dr. Meenakshi Rana, Associate Professor",
     organization: "Research Project",
-    img: "/assets/img/re.jpg",
+    img: "/assets/img/college/Dr_Meenakshi.jpg",
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const researchProjects = [
       "Develop and Evaluate a Co-loaded Topical Gel of Azelaic Acid and Sea Buckthorn Oil for Effective and Safe management of Acne Vulgaris",
     investigator: "Dr. Swikriti, Professor",
     organization: "Research Project",
-    img: "/assets/img/re.jpg",
+    img: "/assets/img/college/Dr_Swikriti.jpg",
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ const researchProjects = [
       "Market analysis of Bacillus Clausii spore suspension and Vit D3 oral solution 6000 IU/5 ml",
     investigator: "Ms. Eshna Bhatt, Assistant Professor",
     organization: "Research Project",
-    img: "/assets/img/re.jpg",
+    img: "/assets/img/college/Ms_Eshna.jpg",
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ const researchProjects = [
       "Formulation and evaluation of paracetamol dispersible tablets for Pediatric use.",
     investigator: "Dr. Ashok Kumar Tiwary, Professor",
     organization: "Research Project",
-    img: "/assets/img/re.jpg",
+    img: "/assets/img/college/Dr_Ashok.jpg",
   },
 ];
 

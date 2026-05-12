@@ -287,10 +287,10 @@ export function CurriculumOpportunitiesSection() {
                       {currentEvent.mainCard.description}
                     </p>
                   </div>
-                  <button className="inline-flex items-center gap-2 rounded-full bg-white px-3 md:px-4 py-2 text-xs md:text-sm font-semibold text-[#f7941d] transition hover:bg-white/90">
+                  {/* <button className="inline-flex items-center gap-2 rounded-full bg-white px-3 md:px-4 py-2 text-xs md:text-sm font-semibold text-[#f7941d] transition hover:bg-white/90">
                     Learn more
                     <span aria-hidden="true">›</span>
-                  </button>
+                  </button> */}
                 </div>
               </div>
 
@@ -335,12 +335,12 @@ export function CurriculumOpportunitiesSection() {
                       <div>
                         <div className="text-xs md:text-sm font-semibold text-white">{video.label}</div>
                       </div>
-                      <button
+                      {/* <button
                         aria-label="Play video"
                         className="flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-full bg-[#7c4dff] transition hover:bg-[#6a3cde]"
                       >
                         <Play size={16} className="text-white md:w-5 md:h-5" />
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 ))}

@@ -4,11 +4,20 @@ export type PlacementRecord = {
   company: string;
   packageValue: number;
   packageLabel: string;
+  imageSrc?: string;
+  imageAlt?: string;
 };
 
 type PlacementGroup = {
   year: number;
   placements: readonly Omit<PlacementRecord, "year">[];
+};
+
+type PlacementShowcaseCard = PlacementRecord & {
+  imageAlt: string;
+  iconLabel: string;
+  cardTone: string;
+  badgeTone: string;
 };
 
 const PLACEMENT_GROUPS: readonly PlacementGroup[] = [
@@ -471,15 +480,6 @@ export const PLACEMENT_RECORDS = PLACEMENT_GROUPS.flatMap((group) =>
   })),
 );
 
-const SHOWCASE_IMAGE_SOURCES = [
-  "/assets/img/students/Placement-Mockup-1.png",
-  "/assets/img/students/pppp.png",
-  "/assets/img/students/1.png",
-  "/assets/img/students/image (1).png",
-  "/assets/img/students/moon_mandal.png",
-  "/assets/img/students/slider-img-1.png",
-] as const;
-
 const sortPlacementsByOutcome = (
   left: PlacementRecord,
   right: PlacementRecord,
@@ -495,12 +495,86 @@ const sortPlacementsByOutcome = (
   return left.name.localeCompare(right.name);
 };
 
-export const TOP_PLACEMENT_CARDS = [...PLACEMENT_RECORDS]
-  .sort(sortPlacementsByOutcome)
-  .slice(0, 10)
-  .map((placement, index) => ({
+const TOP_PLACEMENT_CARD_SOURCE = [
+  {
+    name: "Taniya Singh",
+    year: 2027,
+    company: "Caelius Consulating",
+    packageValue: 12,
+    packageLabel: "12 LPA",
+    imageSrc: "/assets/img/stu/Taniya.png",
+  },
+  {
+    name: "Utkarsh Kumar",
+    year: 2022,
+    company: "Byju's",
+    packageValue: 11,
+    packageLabel: "11 LPA",
+    imageSrc: "/assets/img/stu/Utkarsh.png",
+  },
+  {
+    name: "Anam Rashid",
+    year: 2025,
+    company: "Placed in Skillkart , Ucertify , Placed in Dentsu!",
+    packageValue: 12,
+    packageLabel: "12 LPA",
+    imageSrc: "/assets/img/stu/Anam.png",
+  },
+  {
+    name: "Pallavi Sharma",
+    year: 2021,
+    company: "Extra Marks",
+    packageValue: 7.2,
+    packageLabel: "7.2 LPA",
+    imageSrc: "/assets/img/stu/Pallavi.png",
+  },
+  {
+    name: "Naveen Jaiswal",
+    year: 2025,
+    company: "Placed in Entab Infotech PVt Ltd",
+    packageValue: 12,
+    packageLabel: "12 LPA",
+    imageSrc: "/assets/img/stu/Naveen.png",
+  },
+
+  {
+    name: "Priyanshi Sharma",
+    year: 2025,
+    company: "Placed in Caelius Consulting",
+    packageValue: 12,
+    packageLabel: "12 LPA",
+    imageSrc: "/assets/img/stu/Priyanshi.png",
+  },
+
+  {
+    name: "Shikhsa Singh",
+    year: 2022,
+    company: "Byju's",
+    packageValue: 10,
+    packageLabel: "10 LPA",
+    imageSrc: "/assets/img/stu/Shikha.png",
+  },
+  {
+    name: "Prateek Kumar",
+    year: 2022,
+    company: "Byju's",
+    packageValue: 8.2,
+    packageLabel: "8.2 LPA",
+    imageSrc: "/assets/img/stu/Prateek.png",
+  },
+  {
+    name: "Parvesh Sharma",
+    year: 2022,
+    company: "Byju's",
+    packageValue: 10,
+    packageLabel: "10 LPA",
+    imageSrc: "/assets/img/stu/Parvesh.png",
+  },
+] as const;
+
+export const TOP_PLACEMENT_CARDS: PlacementShowcaseCard[] =
+  TOP_PLACEMENT_CARD_SOURCE.map((placement, index) => ({
     ...placement,
-    imageSrc: SHOWCASE_IMAGE_SOURCES[index % SHOWCASE_IMAGE_SOURCES.length],
     imageAlt: `${placement.name} placement highlight`,
     iconLabel: "SV",
     cardTone: index % 2 === 0 ? "bg-[#0b3b8f]" : "bg-[#fea700]",

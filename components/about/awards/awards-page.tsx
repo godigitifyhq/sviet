@@ -177,7 +177,7 @@ export function AwardsPage() {
                     alt={f.title}
                     fill
                     sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
-                    className="object-cover"
+                    className="object-cover object-[50%_30%]"
                     priority={false}
                   />
                 ) : (
@@ -249,7 +249,7 @@ export function AwardsPage() {
                         alt={it.title}
                         fill
                         sizes="(min-width:1024px) 25vw, (min-width:640px) 33vw, 50vw"
-                        className="object-cover"
+                        className="object-cover object-[50%_30%]"
                       />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center bg-slate-50">
@@ -323,7 +323,7 @@ export function AwardsPage() {
                   alt={`award-${idx}`}
                   fill
                   sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
-                  className="object-cover"
+                  className="object-cover object-[50%_30%]"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
               </a>

@@ -55,13 +55,21 @@ export function PlacementCardsMarqueeSection() {
               <div
                 className={`placement-card-top absolute inset-x-0 top-0 h-[80%] ${card.cardTone}`}
               >
-                <Image
-                  src={card.imageSrc}
-                  alt={card.imageAlt}
-                  fill
-                  sizes="(max-width: 768px) 224px, 256px"
-                  className="object-contain object-bottom"
-                />
+                {card.imageSrc ? (
+                  <Image
+                    src={card.imageSrc}
+                    alt={card.imageAlt}
+                    fill
+                    sizes="(max-width: 768px) 224px, 256px"
+                    className="object-contain object-bottom"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-linear-to-b from-white/20 via-white/10 to-transparent">
+                    <span className="rounded-full border border-white/30 bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white md:text-sm">
+                      Image coming soon
+                    </span>
+                  </div>
+                )}
               </div>
 
               <div className="absolute left-1/2 top-[70%] z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-lg font-bold text-white md:h-16 md:w-16 md:text-xl">

@@ -1,27 +1,70 @@
-import Image from "next/image";
-import { Play } from "lucide-react";
+"use client";
+import { useEffect, useState } from "react";
 
 const TESTIMONIALS = [
   {
     title: "SVIET gave me confidence and global exposure to shape my future.",
     name: "Rohit Banik",
-    image: "/assets/img/students/moon_mandal.png",
   },
   {
     title:
       "From academics to campus life, every experience here helped me grow.",
     name: "Khalid Mahmood",
-    image: "/assets/img/students/Placement-Mockup-1.png",
   },
   {
     title:
       "I found mentorship, opportunities, and lifelong friendships at SVIET.",
     name: "Akash Pal",
-    image: "/assets/img/students/1.png",
+  },
+  {
+    title:
+      "Supportive faculty and diverse peer groups accelerated my learning.",
+    name: "Lina Mbete",
+  },
+  {
+    title:
+      "The campus culture helped me build confidence and leadership skills.",
+    name: "Aisha Kamara",
+  },
+  {
+    title: "Hands-on projects prepared me well for industry challenges.",
+    name: "Daniel Okoro",
+  },
+  {
+    title:
+      "A welcoming environment for international students — I felt at home.",
+    name: "Maya Chen",
   },
 ] as const;
 
 export function InternationalStudentTestimonialsSection() {
+  const [page, setPage] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+
+  useEffect(() => {
+    function update() {
+      setItemsPerPage(window.innerWidth < 768 ? 1 : 3);
+      setPage(0);
+    }
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const pageCount = Math.max(1, Math.ceil(TESTIMONIALS.length / itemsPerPage));
+
+  function prev() {
+    setPage((p) => Math.max(0, p - 1));
+  }
+
+  function next() {
+    setPage((p) => Math.min(pageCount - 1, p + 1));
+  }
+
+  const start = page * itemsPerPage;
+  const visible = TESTIMONIALS.slice(start, start + itemsPerPage);
+
   return (
     <section className="bg-background py-12 md:py-16">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
@@ -31,35 +74,61 @@ export function InternationalStudentTestimonialsSection() {
           <span className="">International Students Have To Say</span>
         </h2>
 
-        <div className="mt-8 flex gap-4 overflow-x-auto pb-3 no-scrollbar">
-          {TESTIMONIALS.map((testimonial) => (
-            <article
-              key={testimonial.name}
-              className="relative h-80 w-80 shrink-0 overflow-hidden rounded-2xl border border-black/10 bg-white p-5 md:w-88"
+        <div className="mt-8 relative">
+          <div className="flex items-center gap-4">
+            <button
+              aria-label="Previous testimonials"
+              onClick={prev}
+              className="rounded bg-white/90 p-2 text-xl shadow hover:bg-white"
+              disabled={page === 0}
             >
-              <div className="text-4xl font-bold text-[#f7941d]">&quot;</div>
-              <p className="mt-2 text-base font-semibold leading-snug text-[#111827]">
-                {testimonial.title}
-              </p>
-              <p className="mt-2 text-sm text-[#6b7280]">{testimonial.name}</p>
+              ‹
+            </button>
 
-              <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-5">
-                <div className="relative h-28 w-24">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    fill
-                    sizes="96px"
-                    className="object-contain object-bottom"
-                  />
-                </div>
-                <button className="inline-flex items-center gap-2 rounded-full bg-[#f7941d] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#2563EB]">
-                  Watch Video
-                  <Play size={14} className="fill-white text-white" />
-                </button>
-              </div>
-            </article>
-          ))}
+            <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3">
+              {visible.map((testimonial) => (
+                <article
+                  key={testimonial.name}
+                  className="flex h-80 flex-col justify-between overflow-hidden rounded-2xl border border-black/10 bg-white p-6"
+                >
+                  <div>
+                    <div className="text-4xl font-bold text-[#f7941d]">
+                      &quot;
+                    </div>
+                    <p className="mt-2 text-base font-semibold leading-snug text-[#111827]">
+                      {testimonial.title}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="mt-4 text-sm text-[#6b7280]">
+                      {testimonial.name}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <button
+              aria-label="Next testimonials"
+              onClick={next}
+              className="rounded bg-white/90 p-2 text-xl shadow hover:bg-white"
+              disabled={page >= pageCount - 1}
+            >
+              ›
+            </button>
+          </div>
+
+          <div className="mt-4 flex items-center justify-center gap-2">
+            {Array.from({ length: pageCount }).map((_, i) => (
+              <button
+                key={i}
+                aria-label={`Go to page ${i + 1}`}
+                onClick={() => setPage(i)}
+                className={`h-2 w-8 rounded-full ${i === page ? "bg-[#f7941d]" : "bg-[#D1D5DB]"}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

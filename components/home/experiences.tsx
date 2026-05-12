@@ -18,13 +18,18 @@ const milestonePlacements = [
     studentName: "Laxmi & Vaishnavi",
     position: "19 LPA Placements",
     studentImage: "/assets/img/students/11.png",
-    companyLogo: "/assets/img/companies/jio_digital.png",
+    companyLogo: "/assets/img/companies/cc.png",
   },
   {
     heading: "A Diverse & Thriving Campus",
     title: "50,000+ Full-Time Students",
-    description: "A vibrant learning environment that brings together talent from across the globe.",
-    points: ["35,000+ International Students", "75+ Nationalities", "28 States Represented"],
+    description:
+      "A vibrant learning environment that brings together talent from across the globe.",
+    points: [
+      "35,000+ International Students",
+      "75+ Nationalities",
+      "28 States Represented",
+    ],
     tags: [],
     company: "Campus Community",
     studentName: "Global Student Body",
@@ -55,7 +60,10 @@ export function ExperiencesSection() {
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + milestonePlacements.length) % milestonePlacements.length);
+    setCurrentSlide(
+      (prev) =>
+        (prev - 1 + milestonePlacements.length) % milestonePlacements.length,
+    );
   };
 
   const placement = milestonePlacements[currentSlide];
@@ -72,7 +80,9 @@ export function ExperiencesSection() {
             Turn your ambition into achievement.
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed text-[#6B7280] md:text-base">
-            At SVGOI , education goes beyond classrooms—blending strong academics with industry exposure to prepare you for meaningful careers.
+            At SVGOI , education goes beyond classrooms—blending strong
+            academics with industry exposure to prepare you for meaningful
+            careers.
           </p>
         </div>
 
@@ -82,11 +92,16 @@ export function ExperiencesSection() {
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-[#6B7280]">
               <span className="text-lg">▶</span>
-              <span className="text-sm md:text-base">Placement opportunities with packages up to</span>
+              <span className="text-sm md:text-base">
+                Placement opportunities with packages up to
+              </span>
             </div>
-            <div className="text-5xl font-bold text-[#f7941d] md:text-6xl">60 Lakhs</div>
+            <div className="text-5xl font-bold text-[#f7941d] md:text-6xl">
+              60 Lakhs
+            </div>
             <p className="text-sm text-[#6B7280] md:text-base">
-              Highest package and average packages of <span className="text-[#f7941d]">4-6 LPA</span>.
+              Highest package and average packages of{" "}
+              <span className="text-[#f7941d]">4-6 LPA</span>.
             </p>
           </div>
 
@@ -97,12 +112,15 @@ export function ExperiencesSection() {
               <span className="text-sm md:text-base">Backed by</span>
             </div>
             <div>
-              <div className="text-5xl font-bold text-[#f7941d] md:text-6xl">2,200+</div>
-              <div className="text-3xl font-bold text-[#111827] md:text-4xl">Recruiters</div>
+              <div className="text-5xl font-bold text-[#f7941d] md:text-6xl">
+                2,200+
+              </div>
+              <div className="text-3xl font-bold text-[#111827] md:text-4xl">
+                Recruiters
+              </div>
             </div>
           </div>
         </div>
-
 
         {/* Milestone Placements Carousel */}
         <div className="mt-16 space-y-8">
@@ -112,18 +130,27 @@ export function ExperiencesSection() {
               {/* Left Content */}
               <div className="space-y-3 flex flex-col justify-center md:pr-4">
                 <div>
-                  <h2 className="text-xs font-semibold text-[#f7941d] md:text-sm">{placement.heading}</h2>
+                  <h2 className="text-xs font-semibold text-[#f7941d] md:text-sm">
+                    {placement.heading}
+                  </h2>
                   {placement.title ? (
-                    <h3 className="mt-1 text-xl font-bold leading-tight text-[#111827] md:text-2xl">{placement.title}</h3>
+                    <h3 className="mt-1 text-xl font-bold leading-tight text-[#111827] md:text-2xl">
+                      {placement.title}
+                    </h3>
                   ) : null}
-                  <p className="mt-2 text-sm leading-relaxed text-[#4B5563] md:text-base">{placement.description}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-[#4B5563] md:text-base">
+                    {placement.description}
+                  </p>
                 </div>
 
                 <div className="space-y-3">
                   {placement.points.length > 0 ? (
                     <ul className="space-y-2">
                       {placement.points.map((point) => (
-                        <li key={point} className="flex items-start gap-2 text-sm text-[#111827] md:text-base">
+                        <li
+                          key={point}
+                          className="flex items-start gap-2 text-sm text-[#111827] md:text-base"
+                        >
                           <span className="mt-1 text-[#f7941d]">•</span>
                           <span>{point}</span>
                         </li>
@@ -163,19 +190,25 @@ export function ExperiencesSection() {
                 </div>
 
                 <div className="flex flex-col items-end justify-end space-y-2 pl-4">
-                  <div className="relative h-10 w-28 md:h-12 md:w-36">
-                    <Image
-                      src={placement.companyLogo}
-                      alt={placement.company}
-                      fill
-                      className="object-contain object-right"
-                    />
-                  </div>
+                  {currentSlide === 0 ? (
+                    <div className="relative h-10 w-28 md:h-12 md:w-36">
+                      <Image
+                        src={placement.companyLogo}
+                        alt={placement.company}
+                        fill
+                        className="object-contain object-right"
+                      />
+                    </div>
+                  ) : null}
                   <div className="text-right">
-                    <p className="text-sm font-semibold text-[#111827] md:text-base">{placement.studentName}</p>
+                    <p className="text-sm font-semibold text-[#111827] md:text-base">
+                      {placement.studentName}
+                    </p>
                     <div className="space-y-0.5 text-xs leading-tight text-[#6B7280]">
                       <p className="font-medium">{placement.company}</p>
-                      <p className="font-light line-clamp-2">{placement.position}</p>
+                      <p className="font-light line-clamp-2">
+                        {placement.position}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -202,7 +235,9 @@ export function ExperiencesSection() {
                   onClick={() => setCurrentSlide(index)}
                   aria-label={`Go to card ${index + 1}`}
                   className={`h-2 transition-all ${
-                    index === currentSlide ? "w-8 bg-[#f7941d]" : "w-2 bg-[#D1D5DB]"
+                    index === currentSlide
+                      ? "w-8 bg-[#f7941d]"
+                      : "w-2 bg-[#D1D5DB]"
                   }`}
                 />
               ))}

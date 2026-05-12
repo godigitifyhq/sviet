@@ -1,9 +1,59 @@
 import Image from "next/image";
 
 const ACHIEVERS = [
-  { name: "Tshering Deki | Bhutan", program: "B.A. (English)", description: "Recognized for active cultural engagement and representation.", imageSrc: "/assets/img/students/moon_mandal.png" },
-  { name: "Theophilus Makazhe | Zimbabwe", program: "B.A. L.L.B", description: "Winner of major public speaking contests with global impact.", imageSrc: "/assets/img/students/Placement-Mockup-1.png" },
-  { name: "Hastings Kankhuni | Malawi", program: "H.M.A.C.T.", description: "Contributing in global hospitality with discipline and excellence.", imageSrc: "/assets/img/students/1.png" },
+  {
+    name: "ZimFest Winners | Zimbabwe",
+    program: "Cultural & Talent Fest",
+    description: "Prize winners and cultural performers at ZimFest 2024.",
+    imageSrc: "/assets/img/international/zimfest-01.jpg",
+  },
+  {
+    name: "ZimFest Highlight | Zimbabwe",
+    program: "ZimFest 2024",
+    description: "Moments from the ZimFest crowning and award ceremony.",
+    imageSrc: "/assets/img/international/zimfest-02.jpg",
+  },
+  {
+    name: "Afro Masala — Global Seed",
+    program: "Entrepreneurship (MCA)",
+    description:
+      "Showcase of Global Seed startup 'Afro Masala' founded by international students.",
+    imageSrc: "/assets/img/international/afro-masala-01.jpg",
+  },
+  {
+    name: "Afro Masala — Launch",
+    program: "Student Entrepreneurship",
+    description: "On-campus launch and community engagement moments.",
+    imageSrc: "/assets/img/international/afro-masala-02.jpg",
+  },
+  {
+    name: "Spotania Community Event",
+    program: "Cultural Exchange",
+    description:
+      "Spotania cultural meetup and community dining at campus cafe.",
+    imageSrc: "/assets/img/international/spotania-01.jpg",
+  },
+  {
+    name: "Curación Conference",
+    program: "International Research",
+    description:
+      "International students presenting at Curación 2026 and receiving recognition.",
+    imageSrc: "/assets/img/international/curacion-01.jpg",
+  },
+  {
+    name: "Campus Salon — Student Startup",
+    program: "Entrepreneurship",
+    description:
+      "Student-run salon and vocational project showcasing skills and enterprise.",
+    imageSrc: "/assets/img/international/salon-01.jpg",
+  },
+  {
+    name: "Girls Volleyball Team",
+    program: "Sports",
+    description:
+      "International students participating and competing in volleyball tournaments.",
+    imageSrc: "/assets/img/international/girls-volleyball-01.jpg",
+  },
 ] as const;
 
 export function InternationalAchievementsSection() {
@@ -11,19 +61,37 @@ export function InternationalAchievementsSection() {
     <section className="bg-[#111c6b] py-12 text-white md:py-16">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <h2 className="text-3xl font-semibold leading-tight md:text-5xl">
-          Meet Our <span className="font-extrabold">International Students</span>
+          Meet Our{" "}
+          <span className="font-extrabold">International Students</span>
           <br />
-          Who Have Made <span className="font-extrabold">Remarkable Achievements</span>
+          Who Have Made{" "}
+          <span className="font-extrabold">Remarkable Achievements</span>
         </h2>
 
-        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 lg:grid-cols-3">
           {ACHIEVERS.map((item) => (
-            <article key={item.name} className="relative min-h-96 overflow-hidden rounded-2xl bg-[#1c2a86] p-5 md:p-6">
-              <h3 className="text-xl font-bold md:text-2xl">{item.name}</h3>
-              <p className="mt-1 text-lg font-semibold text-[#f7941d] md:text-xl">{item.program}</p>
-              <p className="mt-2 text-sm text-white/90 md:text-base">{item.description}</p>
-              <div className="absolute bottom-0 left-1/2 h-56 w-44 -translate-x-1/2 md:h-64 md:w-52">
-                <Image src={item.imageSrc} alt={item.name} fill sizes="220px" className="object-contain object-bottom" />
+            <article
+              key={item.name}
+              className="overflow-hidden rounded-2xl bg-[#1c2a86] shadow-sm"
+            >
+              <div className="relative h-44 w-full md:h-56">
+                <Image
+                  src={item.imageSrc}
+                  alt={item.name}
+                  fill
+                  sizes="(max-width: 768px) 600px, 400px"
+                  className="object-cover"
+                />
+              </div>
+
+              <div className="p-5 md:p-6">
+                <h3 className="text-xl font-bold md:text-2xl">{item.name}</h3>
+                <p className="mt-1 text-lg font-semibold text-[#f7941d] md:text-xl">
+                  {item.program}
+                </p>
+                <p className="mt-2 text-sm text-white/90 md:text-base">
+                  {item.description}
+                </p>
               </div>
             </article>
           ))}
@@ -32,4 +100,3 @@ export function InternationalAchievementsSection() {
     </section>
   );
 }
-
