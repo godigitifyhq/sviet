@@ -7,17 +7,21 @@ import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { postJson } from "@/lib/form-utils";
 
 const containerClass = "mx-auto max-w-[1280px] px-6";
-const inputClass = "w-full rounded-lg bg-gray-100 px-4 py-3 text-sm text-gray-700 outline-none";
-const primaryButtonClass = "rounded-full bg-black px-6 py-3  font-semibold transition hover:bg-gray-900";
+const inputClass =
+  "w-full rounded-lg bg-gray-100 px-4 py-3 text-sm text-gray-700 outline-none";
+const primaryButtonClass =
+  "rounded-full bg-black px-6 py-3  font-semibold transition hover:bg-gray-900";
 
 const campusLocations = [
   {
     name: "Main Campus - Banur",
-    address: "Village Ramnagar, Near Banur, Tehsil Rajpura, District Patiala, Punjab - 140601",
+    address:
+      "Village Ramnagar, Near Banur, Tehsil Rajpura, District Patiala, Punjab - 140601",
     phone: "+91-94652-33333",
     tollFree: "1800-120-1200",
     email: "admission@sviet.ac.in",
-    mapUrl: "https://maps.google.com/?q=Swami+Vivekanand+Institute+Banur+Punjab",
+    mapUrl:
+      "https://maps.google.com/?q=Swami+Vivekanand+Institute+Banur+Punjab",
   },
   {
     name: "Admissions Office",
@@ -31,31 +35,39 @@ const campusLocations = [
 const faqItems = [
   {
     question: "What is the admission procedure at SVIET?",
-    answer: "Applications can be submitted online at admission.sviet.ac.in or directly at the campus. After submission, shortlisted candidates are called for counselling and document verification.",
+    answer:
+      "Applications can be submitted online at admission.sviet.ac.in or directly at the campus. After submission, shortlisted candidates are called for counselling and document verification.",
   },
   {
     question: "What programs does SVIET offer?",
-    answer: "SVIET offers 50+ programs across Engineering, Management, Pharmacy, Computer Applications, Hotel Management, Law, Education, Paramedical, and more.",
+    answer:
+      "SVIET offers 50+ programs across Engineering, Management, Pharmacy, Computer Applications, Hotel Management, Law, Education, Paramedical, and more.",
   },
   {
     question: "Is hostel facility available?",
-    answer: "Yes, separate hostel facilities are available for boys and girls with all modern amenities including Wi-Fi, mess, laundry, and 24/7 security.",
+    answer:
+      "Yes, separate hostel facilities are available for boys and girls with all modern amenities including Wi-Fi, mess, laundry, and 24/7 security.",
   },
   {
     question: "What is the scholarship policy?",
-    answer: "SVIET offers RNR scholarships based on merit and financial need. Scholarships range from partial to 100% fee waiver. Check eligibility using the scholarship checker on our website.",
+    answer:
+      "SVIET offers RNR scholarships based on merit and financial need. Scholarships range from partial to 100% fee waiver. Check eligibility using the scholarship checker on our website.",
   },
   {
     question: "What is the placement record?",
-    answer: "SVIET has a near 100% placement record with a highest package of 45 LPA. 500+ companies visit campus annually including Amazon, TCS, Infosys, Wipro, and Deloitte.",
+    answer:
+      "SVIET has a near 100% placement record with a highest package of 45 LPA. 500+ companies visit campus annually including Amazon, TCS, Infosys, Wipro, and Deloitte.",
   },
   {
     question: "Is SVIET NAAC accredited?",
-    answer: "Yes, SVIET is NBA and NAAC accredited. SVIET was ranked 104 in NIRF 2021. The institution is approved by AICTE, PCI, and INC.",
+    answer:
+      "Yes, SVIET is NBA and NAAC accredited. SVIET was ranked 104 in NIRF 2021. The institution is approved by AICTE, PCI, and INC.",
   },
 ];
 
-type ContactFormErrors = Partial<Record<"name" | "email" | "phone" | "subject" | "message", string>>;
+type ContactFormErrors = Partial<
+  Record<"name" | "email" | "phone" | "subject" | "message", string>
+>;
 
 const indianMobilePattern = /^[6-9]\d{9}$/;
 
@@ -80,7 +92,9 @@ export function ContactPageComponent() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [errors, setErrors] = useState<ContactFormErrors>({});
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     setErrors((prev) => ({ ...prev, [name]: "" }));
@@ -128,18 +142,24 @@ export function ContactPageComponent() {
 
     try {
       const { firstName, lastName } = splitFullName(formData.name);
-      const response = await postJson<{ leadId: string; message: string }>("/api/leads/contact", {
-        firstName,
-        lastName,
-        email: formData.email.trim(),
-        phone: formData.phone.trim(),
-        subject: formData.subject.trim(),
-        message: formData.message.trim(),
-      });
+      const response = await postJson<{ leadId: string; message: string }>(
+        "/api/leads/contact",
+        {
+          firstName,
+          lastName,
+          email: formData.email.trim(),
+          phone: formData.phone.trim(),
+          subject: formData.subject.trim(),
+          message: formData.message.trim(),
+        },
+      );
 
-      const isSuccessful = response.success === true || (response as { ok?: boolean }).ok === true;
+      const isSuccessful =
+        response.success === true || (response as { ok?: boolean }).ok === true;
       if (!isSuccessful) {
-        setSubmitError(response.error?.message ?? "Unable to send your message right now.");
+        setSubmitError(
+          response.error?.message ?? "Unable to send your message right now.",
+        );
         return;
       }
 
@@ -156,7 +176,7 @@ export function ContactPageComponent() {
       {/* SECTION 1: HERO */}
       <section className="relative h-96 overflow-hidden md:h-[500px]">
         <Image
-          src="/assets/img/college/main_gate.png"
+          src="/assets/img/contact.jpg"
           alt="SVIET campus"
           fill
           className="object-cover"
@@ -167,7 +187,8 @@ export function ContactPageComponent() {
           <div className="max-w-2xl">
             <h1 className="text-5xl font-bold text-white">GET IN TOUCH</h1>
             <p className="mt-6 max-w-md text-lg text-white/90">
-              Have questions? We&apos;re here to help. Reach out to us through any of the channels below.
+              Have questions? We&apos;re here to help. Reach out to us through
+              any of the channels below.
             </p>
           </div>
         </div>
@@ -178,15 +199,23 @@ export function ContactPageComponent() {
         <div className="grid gap-10 md:grid-cols-2">
           {/* LEFT: FORM */}
           <div>
-            <h2 className="text-4xl font-bold text-gray-900">Send us a Message</h2>
+            <h2 className="text-4xl font-bold text-gray-900">
+              Send us a Message
+            </h2>
             {isSuccess ? (
               <div className="mt-8 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 text-emerald-700">
                 ✓ Message sent! We&apos;ll get back to you within 24 hours.
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
+              <form
+                onSubmit={handleSubmit}
+                className="mt-8 flex flex-col gap-4"
+              >
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-semibold text-gray-900 mb-2"
+                  >
                     Full Name
                   </label>
                   <input
@@ -199,10 +228,15 @@ export function ContactPageComponent() {
                     required
                     className={inputClass}
                   />
-                  {errors.name ? <p className="mt-1 text-xs text-red-600">{errors.name}</p> : null}
+                  {errors.name ? (
+                    <p className="mt-1 text-xs text-red-600">{errors.name}</p>
+                  ) : null}
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-semibold text-gray-900 mb-2"
+                  >
                     Email Address
                   </label>
                   <input
@@ -215,10 +249,15 @@ export function ContactPageComponent() {
                     required
                     className={inputClass}
                   />
-                  {errors.email ? <p className="mt-1 text-xs text-red-600">{errors.email}</p> : null}
+                  {errors.email ? (
+                    <p className="mt-1 text-xs text-red-600">{errors.email}</p>
+                  ) : null}
                 </div>
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-semibold text-gray-900 mb-2"
+                  >
                     Subject
                   </label>
                   <input
@@ -231,10 +270,17 @@ export function ContactPageComponent() {
                     required
                     className={inputClass}
                   />
-                  {errors.subject ? <p className="mt-1 text-xs text-red-600">{errors.subject}</p> : null}
+                  {errors.subject ? (
+                    <p className="mt-1 text-xs text-red-600">
+                      {errors.subject}
+                    </p>
+                  ) : null}
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-semibold text-gray-900 mb-2"
+                  >
                     Phone Number
                   </label>
                   <input
@@ -246,10 +292,15 @@ export function ContactPageComponent() {
                     placeholder="+91-XXXX-XXXX-XX"
                     className={inputClass}
                   />
-                  {errors.phone ? <p className="mt-1 text-xs text-red-600">{errors.phone}</p> : null}
+                  {errors.phone ? (
+                    <p className="mt-1 text-xs text-red-600">{errors.phone}</p>
+                  ) : null}
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-semibold text-gray-900 mb-2"
+                  >
                     Message
                   </label>
                   <textarea
@@ -262,7 +313,11 @@ export function ContactPageComponent() {
                     required
                     className={inputClass}
                   />
-                  {errors.message ? <p className="mt-1 text-xs text-red-600">{errors.message}</p> : null}
+                  {errors.message ? (
+                    <p className="mt-1 text-xs text-red-600">
+                      {errors.message}
+                    </p>
+                  ) : null}
                 </div>
                 <button
                   type="submit"
@@ -271,7 +326,9 @@ export function ContactPageComponent() {
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
-                {submitError ? <p className="text-sm text-red-600">{submitError}</p> : null}
+                {submitError ? (
+                  <p className="text-sm text-red-600">{submitError}</p>
+                ) : null}
               </form>
             )}
           </div>
@@ -279,7 +336,9 @@ export function ContactPageComponent() {
           {/* RIGHT: CONTACT DETAILS */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900">Contact Information</h3>
+              <h3 className="text-2xl font-semibold text-gray-900">
+                Contact Information
+              </h3>
             </div>
 
             <div className="space-y-6">
@@ -297,7 +356,9 @@ export function ContactPageComponent() {
 
               <div>
                 <h4 className="font-semibold text-gray-900">Office Hours</h4>
-                <p className="mt-2 text-gray-600">Monday - Saturday: 09:00 AM - 05:00 PM</p>
+                <p className="mt-2 text-gray-600">
+                  Monday - Saturday: 09:00 AM - 05:00 PM
+                </p>
                 <p className="text-gray-600">Sunday: Closed</p>
               </div>
             </div>
@@ -308,7 +369,9 @@ export function ContactPageComponent() {
       {/* SECTION 3: QUICK ACTION CARDS */}
       <section className={`${containerClass} py-16`}>
         <div className="mb-12 text-center">
-          <h2 className="text-4xl font-bold text-gray-900">Quick Contact Options</h2>
+          <h2 className="text-4xl font-bold text-gray-900">
+            Quick Contact Options
+          </h2>
         </div>
         <div className="grid gap-8 md:grid-cols-3">
           {/* Card 1: Call */}
@@ -317,8 +380,13 @@ export function ContactPageComponent() {
               <FaPhone className="text-2xl text-gray-900" />
             </div>
             <h3 className="text-2xl font-semibold text-gray-900">Call Us</h3>
-            <p className="mt-3 text-gray-600">Speak directly with our admissions team</p>
-            <a href="tel:+911762508005" className="mt-4 inline-block text-black font-semibold hover:text-gray-700">
+            <p className="mt-3 text-gray-600">
+              Speak directly with our admissions team
+            </p>
+            <a
+              href="tel:+911762508005"
+              className="mt-4 inline-block text-black font-semibold hover:text-gray-700"
+            >
               +91-94652-33333
             </a>
           </div>
@@ -329,8 +397,13 @@ export function ContactPageComponent() {
               <FaEnvelope className="text-2xl text-gray-900" />
             </div>
             <h3 className="text-2xl font-semibold text-gray-900">Email Us</h3>
-            <p className="mt-3 text-gray-600">We&apos;ll respond within 24 hours</p>
-            <a href="mailto:admission@sviet.ac.in" className="mt-4 inline-block text-black font-semibold hover:text-gray-700">
+            <p className="mt-3 text-gray-600">
+              We&apos;ll respond within 24 hours
+            </p>
+            <a
+              href="mailto:admission@sviet.ac.in"
+              className="mt-4 inline-block text-black font-semibold hover:text-gray-700"
+            >
               admission@sviet.ac.in
             </a>
           </div>
@@ -340,7 +413,9 @@ export function ContactPageComponent() {
             <div className="mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
               <FaMapMarkerAlt className="text-2xl text-gray-900" />
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900">Visit Campus</h3>
+            <h3 className="text-2xl font-semibold text-gray-900">
+              Visit Campus
+            </h3>
             <p className="mt-3 text-gray-600">Schedule a campus visit today</p>
             <button className="mt-4 font-semibold text-black hover:text-gray-700">
               Schedule Visit →
@@ -357,12 +432,24 @@ export function ContactPageComponent() {
         <div className="grid gap-10 md:grid-cols-2">
           {campusLocations.map((location, index) => (
             <div key={index} className="rounded-2xl border border-gray-100 p-8">
-              <h3 className="text-2xl font-semibold text-gray-900">{location.name}</h3>
+              <h3 className="text-2xl font-semibold text-gray-900">
+                {location.name}
+              </h3>
               <p className="mt-4 text-gray-600">{location.address}</p>
-              <p className="mt-2 font-semibold text-gray-900">{location.phone}</p>
-              {location.tollFree ? <p className="mt-2 font-semibold text-gray-900">{location.tollFree}</p> : null}
-              {location.email ? <p className="mt-2 text-gray-600">{location.email}</p> : null}
-              {location.timings ? <p className="mt-2 text-gray-600">{location.timings}</p> : null}
+              <p className="mt-2 font-semibold text-gray-900">
+                {location.phone}
+              </p>
+              {location.tollFree ? (
+                <p className="mt-2 font-semibold text-gray-900">
+                  {location.tollFree}
+                </p>
+              ) : null}
+              {location.email ? (
+                <p className="mt-2 text-gray-600">{location.email}</p>
+              ) : null}
+              {location.timings ? (
+                <p className="mt-2 text-gray-600">{location.timings}</p>
+              ) : null}
             </div>
           ))}
         </div>
@@ -387,8 +474,12 @@ export function ContactPageComponent() {
       {/* SECTION 6: FAQ */}
       <section className={`${containerClass} py-16`}>
         <div className="mb-12">
-          <h2 className="text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>
-          <p className="mt-4 text-gray-600">Can&apos;t find what you&apos;re looking for? Check our FAQ section.</p>
+          <h2 className="text-4xl font-bold text-gray-900">
+            Frequently Asked Questions
+          </h2>
+          <p className="mt-4 text-gray-600">
+            Can&apos;t find what you&apos;re looking for? Check our FAQ section.
+          </p>
         </div>
         <div className="space-y-6">
           {faqItems.map((item, index) => (
@@ -404,8 +495,13 @@ export function ContactPageComponent() {
       <section className={`${containerClass} py-16`}>
         <div className="rounded-2xl bg-gray-900 px-8 py-12 text-center md:py-16">
           <h2 className="text-4xl font-bold text-white">Ready to Apply?</h2>
-          <p className="mt-4 text-white/80">Join thousands of students at SVIET and start your journey to success.</p>
-          <button className={`${primaryButtonClass} mt-8 bg-white hover:text-white hover:bg-gray-100`}>
+          <p className="mt-4 text-white/80">
+            Join thousands of students at SVIET and start your journey to
+            success.
+          </p>
+          <button
+            className={`${primaryButtonClass} mt-8 bg-white hover:text-white hover:bg-gray-100`}
+          >
             Start Your Application
           </button>
         </div>
