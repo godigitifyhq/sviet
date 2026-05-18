@@ -25,7 +25,7 @@ const campusLocations = [
   },
   {
     name: "Admissions Office",
-    address: "Admin Block, SVIET Campus, Banur, Punjab",
+    address: "Admin Block, SVGOI Campus, Banur, Punjab",
     phone: "+91-94652-33333",
     email: "admission@sviet.ac.in",
     timings: "Mon-Sat: 9:00 AM - 5:00 PM",
@@ -34,14 +34,14 @@ const campusLocations = [
 
 const faqItems = [
   {
-    question: "What is the admission procedure at SVIET?",
+    question: "What is the admission procedure at SVGOI?",
     answer:
       "Applications can be submitted online at admission.sviet.ac.in or directly at the campus. After submission, shortlisted candidates are called for counselling and document verification.",
   },
   {
-    question: "What programs does SVIET offer?",
+    question: "What programs does SVGOI offer?",
     answer:
-      "SVIET offers 50+ programs across Engineering, Management, Pharmacy, Computer Applications, Hotel Management, Law, Education, Paramedical, and more.",
+      "SVGOI offers 50+ programs across Engineering, Management, Pharmacy, Computer Applications, Hotel Management, Law, Education, Paramedical, and more.",
   },
   {
     question: "Is hostel facility available?",
@@ -51,17 +51,17 @@ const faqItems = [
   {
     question: "What is the scholarship policy?",
     answer:
-      "SVIET offers RNR scholarships based on merit and financial need. Scholarships range from partial to 100% fee waiver. Check eligibility using the scholarship checker on our website.",
+      "SVGOI offers RNR scholarships based on merit and financial need. Scholarships range from partial to 100% fee waiver. Check eligibility using the scholarship checker on our website.",
   },
   {
     question: "What is the placement record?",
     answer:
-      "SVIET has a near 100% placement record with a highest package of 45 LPA. 500+ companies visit campus annually including Amazon, TCS, Infosys, Wipro, and Deloitte.",
+      "SVGOI has a near 100% placement record with a highest package of 45 LPA. 500+ companies visit campus annually including Amazon, TCS, Infosys, Wipro, and Deloitte.",
   },
   {
-    question: "Is SVIET NAAC accredited?",
+    question: "Is SVGOI NAAC accredited?",
     answer:
-      "Yes, SVIET is NBA and NAAC accredited. SVIET was ranked 104 in NIRF 2021. The institution is approved by AICTE, PCI, and INC.",
+      "Yes, SVGOI is NBA and NAAC accredited. SVGOI was ranked 104 in NIRF 2021. The institution is approved by AICTE, PCI, and INC.",
   },
 ];
 
@@ -177,7 +177,7 @@ export function ContactPageComponent() {
       <section className="relative h-96 overflow-hidden md:h-[500px]">
         <Image
           src="/assets/img/ contact.jpg"
-          alt="SVIET campus"
+          alt="SVGOI campus"
           fill
           className="object-cover"
           priority
@@ -459,14 +459,14 @@ export function ContactPageComponent() {
       <section className="py-16">
         <div className="relative h-96 w-full overflow-hidden rounded-2xl md:h-[500px]">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3426.1234567890123!2d76.8234567!3d31.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390f1234567890ab%3A0x1234567890abcdef!2sSVIET%20Punjab!5e0!3m2!1sen!2sin!4v1234567890123"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3426.1234567890123!2d76.8234567!3d31.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390f1234567890ab%3A0x1234567890abcdef!2sSVGOI%20Punjab!5e0!3m2!1sen!2sin!4v1234567890123"
             width="100%"
             height="100%"
             style={{ border: 0, position: "absolute", top: 0, left: 0 }}
             allowFullScreen={true}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="SVIET Campus Location"
+            title="SVGOI Campus Location"
           />
         </div>
       </section>
@@ -496,7 +496,7 @@ export function ContactPageComponent() {
         <div className="rounded-2xl bg-gray-900 px-8 py-12 text-center md:py-16">
           <h2 className="text-4xl font-bold text-white">Ready to Apply?</h2>
           <p className="mt-4 text-white/80">
-            Join thousands of students at SVIET and start your journey to
+            Join thousands of students at SVGOI and start your journey to
             success.
           </p>
           <button

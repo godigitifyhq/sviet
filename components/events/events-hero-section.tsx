@@ -6,7 +6,7 @@ export function EventsHeroSection() {
       <div className="relative w-full overflow-hidden">
         <Image
           src="/assets/img/banner/eventbanner.jpeg"
-          alt="SVIET events banner"
+          alt="SVGOI events banner"
           width={1600}
           draggable={false}
           height={900}

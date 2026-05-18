@@ -81,7 +81,7 @@ export function CorporateCollaborationSection() {
               Partnerships That Translate into Student Outcomes
             </h2>
             <p className="mt-5 text-base leading-relaxed text-[#6B7280] md:text-lg">
-              SVIET MOUs are built for execution, not just affiliation. These
+              SVGOI MOUs are built for execution, not just affiliation. These
               tie-ups strengthen curriculum relevance, practical exposure, and
               placement preparedness through structured collaboration.
             </p>

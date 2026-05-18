@@ -27,7 +27,7 @@ const HANGOUTS_CARDS = [
 
 const SPORTS_ITEMS = [
   {
-    title: "SVIET premier league",
+    title: "SVGOI premier league",
     description: "Our own cricket league",
     icon: Trophy,
   },
@@ -62,7 +62,7 @@ export function CampusLifeHangoutsSportsClubsSection() {
             </p>
             <p className="mt-2 text-3xl font-semibold leading-tight md:text-4xl">
               For us it&apos;s more than learning. It&apos;s a way of life at
-              SVIET
+              SVGOI
             </p>
           </div>
         </div>
@@ -71,10 +71,10 @@ export function CampusLifeHangoutsSportsClubsSection() {
           id="campus-hangouts"
           className="mt-10 scroll-mt-36 md:mt-24 md:scroll-mt-44"
         >
-          <p className="text-2xl font-medium md:text-3xl">SVIET Hangouts</p>
+          <p className="text-2xl font-medium md:text-3xl">SVGOI Hangouts</p>
           <h2 className="mt-3 max-w-5xl text-4xl font-medium leading-tight md:text-5xl">
             <span className="font-semibold text-[#1d4ed8]">
-              Evening at SVIET
+              Evening at SVGOI
             </span>{" "}
             are never dull, at a campus that never sleeps!
           </h2>

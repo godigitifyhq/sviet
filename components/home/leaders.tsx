@@ -10,36 +10,48 @@ const leaders = [
     role: "Co-Founder, boAt",
     image: "/assets/img/college/guests/aman_gupta.png",
     quote: "Build products that solve real problems.",
+    stars: 5,
+    feedback: "An inspiring visit that energized our entrepreneurship ecosystem and motivated students to think beyond conventional careers.",
   },
   {
     name: "Ashneer Grover",
     role: "Co-Founder, BharatPe",
     image: "/assets/img/college/guests/ashneer_groveer.png",
     quote: "Entrepreneurship is about creating value at scale.",
+    stars: 5,
+    feedback: "His candid insights on startups gave students a real-world perspective that no classroom could replicate.",
   },
   {
     name: "Anand Kumar Sir",
     role: "Distinguished Guest",
     image: "/assets/img/college/guests/anand_kumar_sir.png",
     quote: "Education has the power to transform lives.",
+    stars: 5,
+    feedback: "A transformative address on the power of perseverance — students left the hall with renewed belief in their own potential.",
   },
   {
     name: "PK Desai Sir",
     role: "Distinguished Guest",
     image: "/assets/img/college/guests/pkdesaisir.jpeg",
     quote: "Discipline and consistency drive long-term success.",
+    stars: 4,
+    feedback: "Shared invaluable wisdom on discipline and institutional leadership that resonated deeply with our faculty and students alike.",
   },
   {
     name: "Rajeev Ahuja Sir",
     role: "Distinguished Guest",
     image: "/assets/img/college/guests/rajeev_ahuja_sir.jpg.jpeg",
     quote: "Innovation begins when curiosity meets execution.",
+    stars: 5,
+    feedback: "Brought deep industry insights on innovation and execution — exactly the kind of exposure our students need before entering the workforce.",
   },
   {
     name: "Susheel Mital Sir",
     role: "Distinguished Guest",
     image: "/assets/img/college/guests/susheel_mital_sir.jpg.jpeg",
     quote: "Leadership is about enabling others to excel.",
+    stars: 4,
+    feedback: "Guided students on leadership and enabling high-performance teams, drawing from decades of real corporate experience.",
   },
 ];
 
@@ -118,7 +130,23 @@ export function DistinguishedLeadersSection() {
                       <span className="mt-2 inline-block md:ml-[-16px] md:pl-9 bg-[#f7941d] px-4 py-1.5 text-xs font-medium text-white">
                         {leader.role}
                       </span>
-                      <p className="mt-4 text-sm leading-relaxed md:pl-6 text-[#6B7280]">{leader.quote}</p>
+                      {/* Star rating */}
+                      <div className="mt-3 flex items-center gap-0.5 md:pl-6">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <svg
+                            key={i}
+                            viewBox="0 0 20 20"
+                            className="h-4 w-4"
+                            fill={i < leader.stars ? "#f7941d" : "none"}
+                            stroke={i < leader.stars ? "#f7941d" : "#d1d5db"}
+                            strokeWidth={1.5}
+                          >
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed md:pl-6 text-[#6B7280]">{leader.quote}</p>
+                      <p className="mt-2 text-xs leading-relaxed md:pl-6 text-[#9ca3af] italic">{leader.feedback}</p>
                     </div>
                     {/* <button className="mt-8 flex w-full justify-center gap-2 bg-[#f7941d] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#2563EB] md:mt-6 md:w-auto md:justify-start md:pl-6">
                       View event

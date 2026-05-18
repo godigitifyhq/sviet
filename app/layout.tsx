@@ -18,16 +18,16 @@ const sansFont = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL("https://sviet.ac.in"),
   title: {
-    default: "SVIET | Swami Vivekanand Institute of Engineering & Technology",
-    template: "%s | SVIET",
+    default: "SVGOI | Swami Vivekanand Group of Institutes",
+    template: "%s | SVGOI",
   },
-  description: "Premier engineering and management college in Punjab, India.",
+  description: "Premier engineering and management college group in Punjab, India.",
   keywords: [
-    "SVIET",
+    "SVGOI",
     "engineering college Punjab",
     "B.Tech admissions",
     "MBA college Punjab",
-    "SVIET Banur",
+    "SVGOI Banur",
   ],
 };
 

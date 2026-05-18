@@ -8,31 +8,31 @@ const testimonials = [
   {
     id: 1,
     name: "Neha Sharma",
-    title: '"Why I chose to study at SVIET"',
+    title: '"Why I chose to study at SVGOI"',
     image: "/assets/img/students/stu1.png",
   },
   {
     id: 2,
     name: "Amarpreet Kaur",
-    title: '"My student life at SVIET"',
+    title: '"My student life at SVGOI"',
     image: "/assets/img/students/stu2.png",
   },
   {
     id: 3,
     name: "Juhi Lakhani",
-    title: '"My journey as a BDes student at SVIET"',
+    title: '"My journey as a BDes student at SVGOI"',
     image: "/assets/img/students/stu3.png",
   },
   {
     id: 4,
     name: "Kunal",
-    title: '"My learning journey at SVIET"',
+    title: '"My learning journey at SVGOI"',
     image: "/assets/img/students/stu4.png",
   },
   {
     id: 5,
     name: "Rahul Sharma",
-    title: '"How SVIET shaped my career path"',
+    title: '"How SVGOI shaped my career path"',
     image: "/assets/img/students/stu5.png",
   },
 ];

@@ -16,7 +16,7 @@ const educationPillars = [
   {
     title: "Insights from Industry Leaders",
     description:
-      "SVIET has hosted renowned entrepreneurs like Aman Gupta and Ashneer Grover, offering students direct exposure to real-world business insights, leadership journeys, and startup ecosystems.",
+      "SVGOI has hosted renowned entrepreneurs like Aman Gupta and Ashneer Grover, offering students direct exposure to real-world business insights, leadership journeys, and startup ecosystems.",
     image: "/assets/img/section_card/AmanGupta.JPG.jpeg",
   },
   {
@@ -40,7 +40,7 @@ export function PivotEducationSection() {
             Beyond the Classroom
           </h3>
           <p className="max-w-2xl text-sm leading-relaxed text-gray-300 md:text-base">
-            At SVIET, growth extends far beyond classrooms. Through high-impact events, industry interactions, and student-led initiatives, we create an environment where ideas turn into action.
+            At SVGOI, growth extends far beyond classrooms. Through high-impact events, industry interactions, and student-led initiatives, we create an environment where ideas turn into action.
           </p>
         </div>
 

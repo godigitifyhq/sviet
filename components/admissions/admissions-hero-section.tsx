@@ -37,8 +37,8 @@ export function AdmissionsHeroSection({
   onSubmit,
   breadcrumb = "/ Admissions",
   titleLineOne = "Admissions at",
-  titleLineTwo = "SVIET",
-  description = "Where Your Future Begins. Step into a learning environment designed to transform ambition into achievement. SVIET offers a structured, transparent, and student-friendly admission process focused on helping you unlock the right opportunities for your career.",
+  titleLineTwo = "SVGOI",
+  description = "Where Your Future Begins. Step into a learning environment designed to transform ambition into achievement. SVGOI offers a structured, transparent, and student-friendly admission process focused on helping you unlock the right opportunities for your career.",
   ctaLabel = "Apply Now",
 }: AdmissionsHeroSectionProps) {
   return (

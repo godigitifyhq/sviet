@@ -17,10 +17,10 @@ const sectionClass = "py-20 lg:py-24";
 const headerSpacing = "mb-8 lg:mb-10";
 
 const hero = {
-  title: "Research & Innovation at SVIET",
+  title: "Research & Innovation at SVGOI",
   subtitle: "Where Ideas Transform into Real-World Impact",
   description:
-    "Research at SVIET is not just academic-it is a culture of innovation, experimentation, and real-world problem solving.",
+    "Research at SVGOI is not just academic-it is a culture of innovation, experimentation, and real-world problem solving.",
 };
 
 const stats = [
@@ -113,14 +113,14 @@ const rdCommittee = [
 
 const innovativeProjects = [
   {
-    title: "Electric Bike Created by SVIET Student",
+    title: "Electric Bike Created by SVGOI Student",
     description:
       "Mohd. Jawaad Khan (Electrical Engg. 7th Sem) launched a prototype electric bike, expected to be available on Paytm, Flipkart and Amazon.",
   },
   {
-    title: "Electric Car 'SVIET VOLTA'",
+    title: "Electric Car 'SVGOI VOLTA'",
     description:
-      "An eco-friendly electric car innovation where SVIET acts as seed funding agency and venture capitalist.",
+      "An eco-friendly electric car innovation where SVGOI acts as seed funding agency and venture capitalist.",
   },
   {
     title: "IIT Ropar Achievement",
@@ -691,7 +691,7 @@ export function ResearchPageComponent() {
       <section className="relative overflow-hidden pt-32 pb-32 lg:pb-40 lg:pt-40">
         <Image
           src="/assets/img/research.jpg"
-          alt="Research at SVIET"
+          alt="Research at SVGOI"
           fill
           className="object-cover"
           sizes="100vw"
@@ -750,7 +750,7 @@ export function ResearchPageComponent() {
           <h2
             className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}
           >
-            About Research at SVIET
+            About Research at SVGOI
           </h2>
           <p className="text-lg font-semibold text-gray-700">
             A research ecosystem built for societal and industrial impact.
@@ -927,7 +927,7 @@ export function ResearchPageComponent() {
             Research Publications
           </h2>
           <p className="text-lg text-gray-700">
-            Selected list of publications contributed by SVIET researchers. The
+            Selected list of publications contributed by SVGOI researchers. The
             institute&apos;s total research output now stands at more than 1200
             research publications.
           </p>

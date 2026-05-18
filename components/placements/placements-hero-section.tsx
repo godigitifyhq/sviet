@@ -91,7 +91,7 @@ export function PlacementsHeroSection() {
         <div className="relative aspect-video min-h-64 w-full sm:min-h-96 md:aspect-16/7 md:min-h-130 lg:min-h-155">
           <Image
             src="/assets/img/banner/bannerplace.jpeg"
-            alt="SVIET placements banner"
+            alt="SVGOI placements banner"
             fill
             priority
             sizes="100vw"

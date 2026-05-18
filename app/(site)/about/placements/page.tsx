@@ -4,9 +4,9 @@ import type { Metadata } from "next";
 import { PlacementsPageComponent } from "@/components/placements/placements-page";
 
 export const metadata: Metadata = {
-  title: "Placements | SVIET",
+  title: "Placements | SVGOI",
   description:
-    "Explore SVIET placements with recruiter engagement, career preparation support, and student outcome-focused training pathways.",
+    "Explore SVGOI placements with recruiter engagement, career preparation support, and student outcome-focused training pathways.",
 };
 
 export default function AboutPlacementsPage() {

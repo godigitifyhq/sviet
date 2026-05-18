@@ -16,7 +16,7 @@ export function AwardsIntroSection() {
             progress
           </h3>
           <p className="mt-4 text-sm leading-relaxed text-[#374151] md:text-base">
-            At SVIET, recognitions are outcomes of long-term commitment to
+            At SVGOI, recognitions are outcomes of long-term commitment to
             quality learning, applied education, student development, and
             innovation-focused institutional practices.
           </p>

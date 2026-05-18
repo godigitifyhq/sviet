@@ -43,7 +43,7 @@ const CARD_GROUPS: Array<{
   {
     title: "Global & leadership platforms",
     description:
-      "Engage in TEDx SVIET and Global Futures Summit to explore ideas and leadership insights.",
+      "Engage in TEDx SVGOI and Global Futures Summit to explore ideas and leadership insights.",
     category: "summit",
     accent: "from-[#7c3aed] to-[#1d4ed8]",
   },

@@ -334,10 +334,10 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${program.title} | SVIET`,
+    title: `${program.title} | SVGOI`,
     description: program.shortDescription,
     openGraph: {
-      title: `${program.title} | SVIET`,
+      title: `${program.title} | SVGOI`,
       description: program.shortDescription,
       type: "website",
     },

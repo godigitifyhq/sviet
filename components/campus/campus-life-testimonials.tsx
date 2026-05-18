@@ -5,13 +5,13 @@ const testimonials = [
     name: "Rahul Sharma",
     program: "B.Tech CSE, 2023",
     company: "Software Engineer at TCS",
-    quote: "SVIET gave me the technical foundation and placement support that launched my career. The faculty mentorship here is exceptional.",
+    quote: "SVGOI gave me the technical foundation and placement support that launched my career. The faculty mentorship here is exceptional.",
   },
   {
     name: "Priya Singh",
     program: "MBA, 2022",
     company: "Marketing Manager at Dabur",
-    quote: "The industry exposure at SVIET is unmatched. From live case studies to corporate internships, every experience prepared me for the real world.",
+    quote: "The industry exposure at SVGOI is unmatched. From live case studies to corporate internships, every experience prepared me for the real world.",
   },
 ];
 

@@ -219,7 +219,7 @@ export function CounsellorChat({ mode = "widget" }: CounsellorChatProps) {
 
               {!isAssistant ? (
                 <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#E5E7EB]">
-                  <Image src="/Logo.png" alt="SVIET" width={32} height={32} className="h-7 w-7 rounded-full object-contain" />
+                  <Image src="/Logo.png" alt="SVGOI" width={32} height={32} className="h-7 w-7 rounded-full object-contain" />
                 </div>
               ) : null}
             </div>

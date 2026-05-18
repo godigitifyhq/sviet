@@ -118,7 +118,7 @@ export function AccreditationsPage() {
       >
         <div className=" mb-7 max-w-4xl text-left">
           <p className="text-xs font-semibold uppercase tracking-[0.28em]  md:text-sm">
-            About SVIET
+            About SVGOI
           </p>
           <h1
             id="accreditations-heading"
@@ -128,7 +128,7 @@ export function AccreditationsPage() {
             <span className="">&amp; Approvals</span>
           </h1>
           <p className=" mt-3 max-w-3xl text-sm leading-relaxed text-[#475569] md:text-base">
-            Recognitions that reflect SVIET&apos;s quality-first academic
+            Recognitions that reflect SVGOI&apos;s quality-first academic
             systems, regulatory compliance, and sustained excellence.
           </p>
         </div>
@@ -153,7 +153,7 @@ export function AccreditationsPage() {
               id="accreditation-status-heading"
               className="text-3xl font-bold text-[#111827]"
             >
-              SVIET Accreditation Status
+              SVGOI Accreditation Status
             </h2>
             <p className="mt-4 text-lg font-semibold text-[#111827]">
               NAAC Accredited with B++ Grade (2.94 Score, 2024)
@@ -175,7 +175,7 @@ export function AccreditationsPage() {
             <div className="relative h-24 w-60">
               <Image
                 src="http://naac.gov.in/templates/naac/images/header.png"
-                alt="SVIET accreditation logo"
+                alt="SVGOI accreditation logo"
                 fill
                 unoptimized
                 loading="lazy"
@@ -222,7 +222,7 @@ export function AccreditationsPage() {
             imageSrc="/assets/img/accred/ugc.jpg"
             imageAlt="University Grants Commission certificate preview"
             title="University Grants Commission (UGC)"
-            description="SVIET continues to operate in alignment with applicable UGC norms and quality expectations for higher education institutions. Official communications and notifications are maintained for transparency and reference."
+            description="SVGOI continues to operate in alignment with applicable UGC norms and quality expectations for higher education institutions. Official communications and notifications are maintained for transparency and reference."
             ctaLabel="null"
           />
         </div>

@@ -3,16 +3,16 @@ import Image from "next/image";
 const PLACEMENT_HIGHLIGHT_CARDS = [
   {
     imageSrc: "/assets/img/college/global_recognition.png",
-    imageAlt: "SVIET ranked first in North India",
+    imageAlt: "SVGOI ranked first in North India",
   },
   {
     imageSrc: "/assets/img/college/global_recognition.png",
-    imageAlt: "SVIET ranked fourth among top engineering colleges in Punjab",
+    imageAlt: "SVGOI ranked fourth among top engineering colleges in Punjab",
   },
   {
     imageSrc: "/assets/img/college/global_recognition.png",
     imageAlt:
-      "SVIET ranked eighth among outstanding engineering colleges in India",
+      "SVGOI ranked eighth among outstanding engineering colleges in India",
   },
   {
     imageSrc: "/assets/img/college/global_recognition.png",

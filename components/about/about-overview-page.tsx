@@ -238,7 +238,7 @@ const INFRASTRUCTURE = [
     description:
       "Program-specific labs equipped for practical learning, enabling students to build hands-on technical capabilities.",
     imageSrc: "/assets/img/section_card/Labo.jpeg",
-    imageAlt: "Program-specific technical laboratories at SVIET",
+    imageAlt: "Program-specific technical laboratories at SVGOI",
   },
   {
     title: "Playgrounds & Sports Facilities",
@@ -355,7 +355,7 @@ export function AboutOverviewPage() {
           </h1>
 
           <p className="mt-6 max-w-4xl text-lg leading-relaxed text-white/95 md:text-xl">
-            SVIET is built as a space where education goes beyond classrooms,
+            SVGOI is built as a space where education goes beyond classrooms,
             bringing together academic depth, practical exposure, and a culture
             of innovation for real-world readiness.
           </p>
@@ -416,7 +416,7 @@ export function AboutOverviewPage() {
               className="text-5xl font-semibold leading-tight md:text-7xl"
             >
               <span className="block text-[#1F2937]">About</span>
-              <span className="mt-2 block text-[#f7941d]">SVIET</span>
+              <span className="mt-2 block text-[#f7941d]">SVGOI</span>
             </h2>
 
             <div className="max-w-4xl space-y-7 text-lg leading-relaxed text-[#111827]">
@@ -429,13 +429,13 @@ export function AboutOverviewPage() {
 
               <p>
                 Established under the Shri Raghunath Rai Memorial Educational
-                and Charitable Trust, the journey began with SVIET in 2004 and
+                and Charitable Trust, the journey began with SVGOI in 2004 and
                 expanded into engineering, pharmacy, management, education,
                 polytechnic, IT, and law.
               </p>
 
               <p>
-                SVIET continues to evolve as a learning ecosystem that combines
+                SVGOI continues to evolve as a learning ecosystem that combines
                 academic structure with industry relevance, supporting students
                 through practical training, mentorship, and skill-based
                 development.
@@ -473,12 +473,71 @@ export function AboutOverviewPage() {
         </InfoCard>
       </SectionWrapper>
 
+      {/* 5 USP Cards */}
+      <SectionWrapper aria-labelledby="usp-heading" className="bg-[#111827] overflow-hidden">
+        <div className="mb-10 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#f7941d]">
+              Why SVGOI
+            </p>
+            <h2
+              id="usp-heading"
+              className="mt-2 text-3xl font-bold text-white md:text-4xl"
+            >
+              What Sets Us Apart
+            </h2>
+          </div>
+          <p className="max-w-sm text-sm leading-relaxed text-white/60">
+            Five reasons why thousands of students choose SVGOI every year.
+          </p>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {[
+            {
+              icon: "🏆",
+              heading: "NAAC B++ Accredited",
+              body: "Recognised with a 2.94 NAAC score (2024) — a benchmark of academic quality and institutional standards.",
+            },
+            {
+              icon: "💼",
+              heading: "60 LPA Highest Package",
+              body: "Our students secure top-tier roles across India's leading companies — from IT giants to global MNCs.",
+            },
+            {
+              icon: "👩‍🎓",
+              heading: "50,000+ Students",
+              body: "One of Punjab's largest multi-discipline campuses, nurturing talent from 28 states and beyond.",
+            },
+            {
+              icon: "📅",
+              heading: "20+ Years of Excellence",
+              body: "A trusted legacy institution delivering quality engineering, management, pharmacy, and law education since 2004.",
+            },
+            {
+              icon: "🚀",
+              heading: "Innovation Ecosystem",
+              body: "Startup incubation, research grants, IIC support, and 15+ student-led initiatives power our entrepreneurship culture.",
+            },
+          ].map((usp) => (
+            <article
+              key={usp.heading}
+              className="flex flex-col border-t-4 border-[#f7941d] bg-[#1f2937] p-6"
+            >
+              <div className="mb-4 text-4xl">{usp.icon}</div>
+              <h3 className="text-base font-bold text-white">{usp.heading}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/65">{usp.body}</p>
+            </article>
+          ))}
+        </div>
+      </SectionWrapper>
+
       <SectionWrapper aria-labelledby="initiatives-heading">
         <SectionHeader
           id="initiatives-heading"
           eyebrow="Institutional Focus"
           title="Institutional Focus & Achievements"
-          description="SVIET emphasizes consistent growth through structured initiatives that support academic quality and student success."
+          description="SVGOI emphasizes consistent growth through structured initiatives that support academic quality and student success."
           titleClassName="text-[#000000]"
           className="mb-8"
         />
@@ -503,7 +562,7 @@ export function AboutOverviewPage() {
           id="philosophy-heading"
           eyebrow="Vision & Direction"
           title="Our Philosophy"
-          description="SVIET aims to build a progressive learning environment that nurtures thinkers, innovators, and future leaders through relevant and responsible education."
+          description="SVGOI aims to build a progressive learning environment that nurtures thinkers, innovators, and future leaders through relevant and responsible education."
           className="mx-auto max-w-4xl text-center"
           titleClassName="text-[#000000]"
           descriptionClassName="text-[#4B5563]"

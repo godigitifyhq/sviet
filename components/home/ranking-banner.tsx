@@ -111,7 +111,7 @@ export function RankingBannerSection() {
                     <h3 className="text-xl font-bold text-foreground md:text-2xl">{slide.achievement}</h3>
                     <p className="mt-2 max-w-xl text-sm text-gray-600 md:text-base">{slide.description}</p>
                     <div className="mt-4 flex items-center gap-6">
-                      {["SVIET", slide.category].map((logo, idx) => (
+                      {["SVGOI", slide.category].map((logo, idx) => (
                         <div
                           key={idx}
                           className="h-10 rounded-lg bg-white px-3 flex items-center justify-center text-xs font-semibold text-gray-700"
@@ -126,7 +126,7 @@ export function RankingBannerSection() {
                   <div className="flex flex-col items-center text-center">
                     <div className="text-6xl font-extrabold text-black md:text-7xl">{slide.rank}</div>
                     <div className="mt-2 text-sm font-semibold text-foreground">{slide.category}</div>
-                    <div className="mt-1 text-xs text-gray-600">SVIET Official Recognition</div>
+                    <div className="mt-1 text-xs text-gray-600">SVGOI Official Recognition</div>
                   </div>
                 </div>
 

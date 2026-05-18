@@ -102,9 +102,9 @@ export function HomeFooter() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <section>
-            <p className="text-3xl font-bold">SVIET</p>
+            <p className="text-3xl font-bold">SVGOI</p>
             <p className="mt-4 text-sm font-medium leading-relaxed text-white/75">
-              Swami Vivekanand Institute of Engineering & Technology, Village Pamaur, Rajpura, Patiala, Punjab.
+              Swami Vivekanand Group of Institutes, Village Pamaur, Rajpura, Patiala, Punjab.
             </p>
           </section>
 

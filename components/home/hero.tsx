@@ -42,7 +42,7 @@ type HeroSlide = {
 
 export function HeroSection({
   imageSrc = "/assets/img/banner/sviet-tag.jpeg",
-  imageAlt = "SVIET Banner",
+  imageAlt = "SVGOI Banner",
 }: HeroSectionProps) {
   const VIDEO_SLIDE_INDEX = 2;
   const SLIDE_DURATION_MS = 8000;
@@ -51,7 +51,7 @@ export function HeroSection({
     { imageSrc, imageAlt },
     {
       imageSrc: "/assets/img/banner/banner_home_place2.jpeg",
-      imageAlt: "SVIET Campus Highlights",
+      imageAlt: "SVGOI Campus Highlights",
     },
   ];
 

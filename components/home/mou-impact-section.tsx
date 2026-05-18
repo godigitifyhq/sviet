@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
 
 type MouPartner = {
   name: string;
@@ -22,9 +22,9 @@ type MouGroup = {
 
 const SVIET_GROUP: MouGroup = {
   key: "SVIET",
-  title: "SVIET MoUs",
+  title: "SVGOI MoUs",
   description:
-    "Institutional and industry collaborations that strengthen training, outreach, and career pathways for SVIET students.",
+    "Institutional and industry collaborations that strengthen training, outreach, and career pathways for SVGOI students.",
   accent: "from-[#f7941d] to-[#ffb347]",
   highlight: "24 active collaborations",
   partners: [
@@ -287,174 +287,241 @@ const SVCP_GROUP: MouGroup = {
   ],
 };
 
-const MOU_GROUPS: MouGroup[] = [SVIET_GROUP, SVCP_GROUP];
+const MOU_HIGHLIGHTS = [
+  {
+    partner: "Focus College, Canada",
+    year: "2023",
+    type: "International Exchange",
+    description: "Student exchange and academic collaboration bridging SVGOI with a leading Canadian institution.",
+    image: "/assets/img/SVIET/SVIET%20Photos/Mou%20with%20HdWM%20%26%20IB/DSC03756.JPG",
+    accent: "from-[#f7941d] to-[#ffb347]",
+    category: "International",
+  },
+  {
+    partner: "Edupyramids / IIT Bombay SINE",
+    year: "2025",
+    type: "Research Collaboration",
+    description: "Deep tech research partnership through IIT Bombay's startup incubation ecosystem.",
+    image: "/assets/img/SVCP/MOU%20Pics/Amicus%20Healthcare/20260116_21111PMByGPSMapCamera.jpg",
+    accent: "from-[#1d4ed8] to-[#3b82f6]",
+    category: "Research",
+  },
+  {
+    partner: "Paras Healthcare, Panchkula",
+    year: "2025",
+    type: "Healthcare & Clinical",
+    description: "Clinical training and healthcare industry exposure for pharmacy and allied health students.",
+    image: "/assets/img/SVCP/MOU%20Pics/Paras%20Pharma/paras.jpg",
+    accent: "from-[#059669] to-[#34d399]",
+    category: "Healthcare",
+  },
+  {
+    partner: "Ellocent Lab IT Solutions, Mohali",
+    year: "2023",
+    type: "Industry Training",
+    description: "Research-led placement pathways with one of the region's leading IT solution providers.",
+    image: "/assets/img/SVIET/SVIET%20Photos/Kreativan%20Technologies/DSC02285.JPG",
+    accent: "from-[#7c3aed] to-[#a78bfa]",
+    category: "Technology",
+  },
+  {
+    partner: "Dharmayu Wellness, Derabassi",
+    year: "2025",
+    type: "Wellness & Pharma",
+    description: "Practical exposure in wellness and pharmaceutical distribution for SVCP students.",
+    image: "/assets/img/SVCP/MOU%20Pics/Dharmayu%20Wellness/dharmayu.jpg",
+    accent: "from-[#db2777] to-[#f472b6]",
+    category: "Pharma",
+  },
+  {
+    partner: "Career Guidance & Placements, Jammu",
+    year: "2023",
+    type: "Placement Support",
+    description: "Expanding student placement reach across Jammu and the wider northern India corridor.",
+    image: "/assets/img/SVIET/SVIET%20Photos/Coder%20Roots/DSC00975.JPG",
+    accent: "from-[#d97706] to-[#fbbf24]",
+    category: "Placements",
+  },
+];
 
-function MouGroupSection({ group }: { group: MouGroup }) {
-  const trackRef = useRef<HTMLDivElement>(null);
+const ALL_PARTNER_NAMES_ROW_1 = [
+  "Butterfly Labs", "Focus College", "Ellocent Lab IT", "Solitaire Infosys",
+  "Anvian Solutions", "Ominnos Technologies", "Codevision.io", "MindCode Lab",
+  "Talent O Mind", "SV Technologies", "Quipr HR Services", "AGCL Technologies",
+];
 
-  const scrollByAmount = (direction: "left" | "right") => {
-    const track = trackRef.current;
-    if (!track) {
-      return;
-    }
-
-    const offset = Math.round(track.clientWidth * 0.9);
-    track.scrollBy({
-      left: direction === "right" ? offset : -offset,
-      behavior: "smooth",
-    });
-  };
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      const track = trackRef.current;
-      if (!track) {
-        return;
-      }
-
-      const maxScrollLeft = track.scrollWidth - track.clientWidth;
-
-      if (track.scrollLeft >= maxScrollLeft - 4) {
-        track.scrollTo({ left: 0, behavior: "smooth" });
-        return;
-      }
-
-      scrollByAmount("right");
-    }, 3500);
-
-    return () => window.clearInterval(interval);
-  }, []);
-
-  return (
-    <section className="rounded-[28px] border border-[#e7e7ef] bg-white p-5  md:p-7">
-      <div className="flex flex-col gap-3 border-b border-[#ececf4] pb-5 md:flex-row md:items-end md:justify-between">
-        <div>
-          <div
-            className={`inline-flex items-center gap-2 rounded-full bg-linear-to-r ${group.accent} px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white`}
-          >
-            {group.key}
-          </div>
-          <h3 className="mt-3 text-2xl font-bold text-[#111827] md:text-3xl">
-            {group.title}
-          </h3>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-[#6b7280] md:text-base">
-            {group.description}
-          </p>
-        </div>
-
-        <div className="rounded-2xl bg-[#f8faff] px-4 py-3 text-left md:text-right">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#6b7280]">
-            {group.highlight}
-          </p>
-          <p className="mt-1 text-sm text-[#374151]">
-            Year-wise collaboration archive
-          </p>
-          <div className="mt-3 flex items-center gap-2 md:justify-end">
-            <button
-              type="button"
-              onClick={() => scrollByAmount("left")}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#e6e8f2] bg-white text-[#5047d8] transition hover:bg-[#f3f4ff]"
-              aria-label={`Show previous ${group.key} collaboration`}
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollByAmount("right")}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#e6e8f2] bg-white text-[#5047d8] transition hover:bg-[#f3f4ff]"
-              aria-label={`Show next ${group.key} collaboration`}
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div
-        ref={trackRef}
-        className="no-scrollbar mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scroll-smooth"
-      >
-        {group.partners.map((partner) => (
-          <article
-            key={partner.name}
-            className="group min-w-[88%] shrink-0 snap-start overflow-hidden rounded-2xl border border-[#ececf4] bg-[#fcfcff] transition duration-300  sm:min-w-[48%] xl:min-w-[24%]"
-          >
-            <div className="relative h-44 overflow-hidden bg-[#f1f5ff]">
-              <Image
-                src={partner.imageSrc}
-                alt={`${partner.name} MoU photo`}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                className="object-cover transition duration-500 "
-              />
-              <div className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-[#5047d8] ">
-                {partner.year}
-              </div>
-            </div>
-
-            <div className="space-y-2 p-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#f7941d]">
-                {group.key}
-              </p>
-              <h4 className="text-sm font-semibold leading-6 text-[#111827]">
-                {partner.name}
-              </h4>
-              <p className="text-xs text-[#6b7280]">{partner.note}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
+const ALL_PARTNER_NAMES_ROW_2 = [
+  "Paras Healthcare", "Dharmayu Wellness", "IIT Bombay SINE", "Amicus Healthcare",
+  "Gautam College of Pharmacy", "Krisa Healthcare", "Ion Healthcare",
+  "DS Cosmeceuticals", "Philadelphia Hospital", "Chandigarh Agritech",
+  "Katherine & Kyoor Pharma", "Koul Pharma Distributors",
+];
 
 export function MOUImpactSection() {
   return (
-    <section className="bg-[#f4f7fb] px-4 py-16 md:px-6 md:py-24">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-8 max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
-            MoU Network
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#111827] md:text-4xl">
-            MoU Collaborations Across SVIET and SVCP
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-[#6b7280] md:text-lg">
-            A structured view of the current MoU portfolio, split by institution
-            type so the homepage clearly separates SVIET and SVCP collaborations
-            and showcases supporting event photographs.
-          </p>
-        </div>
+    <>
+      <style>{`
+        .mou-swiper-pagination.swiper-pagination {
+          position: relative !important;
+          margin-top: 16px;
+        }
+        .mou-swiper-pagination .swiper-pagination-bullet {
+          background: #D1D5DB;
+          opacity: 1;
+        }
+        .mou-swiper-pagination .swiper-pagination-bullet-active {
+          background: #f7941d;
+        }
+        @keyframes mouSlideLeft {
+          from { transform: translate3d(0, 0, 0); }
+          to { transform: translate3d(-50%, 0, 0); }
+        }
+        @keyframes mouSlideRight {
+          from { transform: translate3d(-50%, 0, 0); }
+          to { transform: translate3d(0, 0, 0); }
+        }
+        .mou-animate-left {
+          animation: mouSlideLeft 28s linear infinite;
+          will-change: transform;
+        }
+        .mou-animate-right {
+          animation: mouSlideRight 28s linear infinite;
+          will-change: transform;
+        }
+      `}</style>
 
-        <div className="mb-8 grid gap-4 md:grid-cols-2">
-          {MOU_GROUPS.map((group) => (
-            <div
-              key={group.key}
-              className="rounded-2xl border border-[#e6e8f2] bg-white p-5 "
-            >
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6b7280]">
-                {group.key}
+      <section className="bg-[#f4f7fb] px-4 py-16 md:px-6 md:py-24">
+        <div className="mx-auto max-w-7xl">
+
+          {/* Part 1 — Description Block */}
+          <div className="mb-14 grid gap-10 lg:grid-cols-[1fr_340px] lg:items-center">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f7941d]">
+                MoU Network
               </p>
-              <div className="mt-2 flex items-end justify-between gap-4">
-                <h3 className="text-2xl font-bold text-[#111827]">
-                  {group.partners.length}
-                </h3>
-                <span className="rounded-full bg-[#f8faff] px-3 py-1 text-xs font-semibold text-[#5047d8]">
-                  {group.highlight}
-                </span>
-              </div>
-              <p className="mt-3 text-sm leading-6 text-[#6b7280]">
-                {group.description}
+              <h2 className="mt-3 text-3xl font-bold leading-tight text-[#111827] md:text-4xl lg:text-5xl">
+                Building Global
+                <br />
+                <span className="text-[#f7941d]">Partnerships</span>
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#6b7280] md:text-lg">
+                SVGOI has established <strong className="text-[#111827]">37+ active MoUs</strong> with leading
+                industry partners, academic institutions, and research organizations across
+                India and internationally — fostering knowledge exchange, placement pathways,
+                and collaborative innovation.
               </p>
             </div>
-          ))}
-        </div>
 
-        <div className="space-y-8">
-          <MouGroupSection group={SVIET_GROUP} />
-          <MouGroupSection group={SVCP_GROUP} />
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { value: "37+", label: "Active MoUs" },
+                { value: "2026", label: "Latest Partnership" },
+                { value: "India & International", label: "Reach" },
+                { value: "2018", label: "Partnership Since" },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-xl border border-[#e5e7eb] bg-white p-4 text-center shadow-sm"
+                >
+                  <p className="text-xl font-black text-[#f7941d] md:text-2xl">{stat.value}</p>
+                  <p className="mt-1 text-xs font-semibold text-[#6b7280]">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Part 2 — MOU Highlights Carousel */}
+          <div className="mb-14">
+            <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-[#9ca3af]">
+              Partnership Highlights
+            </p>
+
+            <Swiper
+              modules={[Pagination, Autoplay]}
+              spaceBetween={20}
+              slidesPerView={1.1}
+              pagination={{ clickable: true, el: ".mou-swiper-pagination" }}
+              autoplay={{ delay: 3200, disableOnInteraction: false }}
+              loop={true}
+              grabCursor={true}
+              breakpoints={{
+                640: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 24 },
+              }}
+              className="mou-swiper"
+            >
+              {MOU_HIGHLIGHTS.map((item, idx) => (
+                <SwiperSlide key={idx}>
+                  <article className="overflow-hidden rounded-2xl bg-white shadow-sm border border-[#e5e7eb]">
+                    <div className="relative h-44 overflow-hidden">
+                      <Image
+                        src={item.image}
+                        alt={`${item.partner} MoU signing`}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover"
+                      />
+                      <div className={`absolute inset-0 bg-linear-to-b from-transparent to-black/60`} />
+                      <div className={`absolute left-3 top-3 rounded-full bg-linear-to-r ${item.accent} px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white`}>
+                        {item.category}
+                      </div>
+                      <div className="absolute right-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-semibold text-[#374151]">
+                        {item.year}
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#f7941d]">
+                        {item.type}
+                      </p>
+                      <h3 className="mt-1 text-sm font-bold leading-snug text-[#111827]">
+                        {item.partner}
+                      </h3>
+                      <p className="mt-2 text-xs leading-relaxed text-[#6b7280]">
+                        {item.description}
+                      </p>
+                    </div>
+                  </article>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <div className="mou-swiper-pagination mt-6 flex justify-center" />
+          </div>
+
+          {/* Part 3 — Partner Name Marquee */}
+          <div>
+            <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-[#9ca3af]">
+              Our Partner Network
+            </p>
+            <div className="space-y-4 overflow-hidden">
+              <div className="overflow-hidden">
+                <div className="flex gap-4 mou-animate-left">
+                  {[...ALL_PARTNER_NAMES_ROW_1, ...ALL_PARTNER_NAMES_ROW_1].map((name, i) => (
+                    <div
+                      key={`r1-${i}`}
+                      className="shrink-0 whitespace-nowrap rounded-full border border-[#e5e7eb] bg-white px-4 py-2 text-xs font-semibold text-[#374151] shadow-sm"
+                    >
+                      {name}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="overflow-hidden">
+                <div className="flex gap-4 mou-animate-right">
+                  {[...ALL_PARTNER_NAMES_ROW_2, ...ALL_PARTNER_NAMES_ROW_2].map((name, i) => (
+                    <div
+                      key={`r2-${i}`}
+                      className="shrink-0 whitespace-nowrap rounded-full border border-[#e5e7eb] bg-white px-4 py-2 text-xs font-semibold text-[#374151] shadow-sm"
+                    >
+                      {name}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

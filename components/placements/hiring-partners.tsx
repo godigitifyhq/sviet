@@ -154,7 +154,7 @@ export function HiringPartners() {
         </div>
 
         <p className="mx-auto mb-10 max-w-4xl text-center text-sm leading-relaxed text-[#4b5563] md:text-base">
-          SVIET takes pride in building strong relationships with leading
+          SVGOI takes pride in building strong relationships with leading
           companies across industries. Our placement cell continuously expands
           its recruiter network to provide diverse career opportunities to
           students.

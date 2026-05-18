@@ -26,7 +26,7 @@ export async function CampusLifeUpcomingEventsSection() {
           </span>
         </h2>
         <p className="mt-4 max-w-3xl text-sm leading-relaxed text-[#424242] md:text-lg">
-          Stay updated on all upcoming events at SVIET. From concerts to
+          Stay updated on all upcoming events at SVGOI. From concerts to
           competitions, our event calendar is packed with activities throughout
           the year, ensuring there is always something fun to look forward to.
         </p>

@@ -36,10 +36,10 @@ const ABOUT_PAGE_DATA: Record<AboutPageKey, AboutPageData> = {
   overview: {
     title: "Overview",
     intro:
-      "Swami Vivekanand Institute of Engineering and Technology (SVIET) is a multidisciplinary institution focused on technical excellence, professional readiness, and responsible leadership.",
+      "Swami Vivekanand Institute of Engineering and Technology (SVGOI) is a multidisciplinary institution focused on technical excellence, professional readiness, and responsible leadership.",
     paragraphs: [
-      "The institution was established to provide outcome-driven education that connects classroom learning with industry expectations. Over the years, SVIET has built a strong academic ecosystem across engineering, management, computer applications, and allied disciplines.",
-      "SVIET follows a student-centered approach with an emphasis on conceptual clarity, practical exposure, and continuous mentoring. The academic environment is designed to support both foundational learning and advanced specialization.",
+      "The institution was established to provide outcome-driven education that connects classroom learning with industry expectations. Over the years, SVGOI has built a strong academic ecosystem across engineering, management, computer applications, and allied disciplines.",
+      "SVGOI follows a student-centered approach with an emphasis on conceptual clarity, practical exposure, and continuous mentoring. The academic environment is designed to support both foundational learning and advanced specialization.",
       "The mission is to nurture competent professionals with ethics, discipline, and social responsibility. The vision is to remain a trusted destination for quality higher education in North India.",
     ],
     stats: [
@@ -52,7 +52,7 @@ const ABOUT_PAGE_DATA: Record<AboutPageKey, AboutPageData> = {
   infrastructure: {
     title: "Infrastructure",
     intro:
-      "SVIET infrastructure is designed for practical learning, innovation, and everyday student development.",
+      "SVGOI infrastructure is designed for practical learning, innovation, and everyday student development.",
     paragraphs: [
       "Academic facilities include classrooms, laboratories, and learning spaces built to support concept clarity and hands-on application across disciplines.",
       "The campus also includes library resources, collaborative zones, and student support facilities that help maintain a focused and productive learning environment.",
@@ -67,7 +67,7 @@ const ABOUT_PAGE_DATA: Record<AboutPageKey, AboutPageData> = {
   accreditations: {
     title: "Accreditations & Approvals",
     intro:
-      "SVIET maintains institutional quality through recognized accreditations, approvals, and compliance-driven academic systems.",
+      "SVGOI maintains institutional quality through recognized accreditations, approvals, and compliance-driven academic systems.",
     paragraphs: [
       "Regulatory alignment is maintained across relevant programs through structured processes, documentation, and periodic review mechanisms.",
       "Quality standards are continuously monitored to strengthen curriculum delivery, academic governance, and student support practices.",
@@ -82,11 +82,11 @@ const ABOUT_PAGE_DATA: Record<AboutPageKey, AboutPageData> = {
   rankings: {
     title: "Rankings",
     intro:
-      "SVIET's ranking and recognition journey reflects consistent academic quality and institutional progress.",
+      "SVGOI's ranking and recognition journey reflects consistent academic quality and institutional progress.",
     paragraphs: [
       "Recognition is built through sustained improvements in curriculum outcomes, student development, infrastructure, and academic processes.",
       "Institutional evaluations are used as improvement benchmarks, helping teams refine strategy and strengthen quality systems year after year.",
-      "At SVIET, rankings are treated as indicators of direction and discipline, not end goals.",
+      "At SVGOI, rankings are treated as indicators of direction and discipline, not end goals.",
     ],
     stats: [
       { value: "20+", label: "Years of Academic Presence" },
@@ -98,7 +98,7 @@ const ABOUT_PAGE_DATA: Record<AboutPageKey, AboutPageData> = {
   placements: {
     title: "Placements",
     intro:
-      "SVIET's placement ecosystem focuses on readiness, confidence, and long-term career growth.",
+      "SVGOI's placement ecosystem focuses on readiness, confidence, and long-term career growth.",
     paragraphs: [
       "Students receive structured support through training sessions, aptitude preparation, interview practice, and career planning modules.",
       "Industry connections are strengthened through recruiter interactions, internships, and practice-oriented learning opportunities.",
@@ -114,7 +114,7 @@ const ABOUT_PAGE_DATA: Record<AboutPageKey, AboutPageData> = {
   alumni: {
     title: "Alumni",
     intro:
-      "SVIET alumni form a growing network of professionals, innovators, and entrepreneurs across sectors.",
+      "SVGOI alumni form a growing network of professionals, innovators, and entrepreneurs across sectors.",
     paragraphs: [
       "Graduates contribute across technology, business, healthcare, public service, and emerging startup ecosystems.",
       "Alumni interactions support current students through mentoring, career insights, and practical guidance on professional pathways.",
@@ -129,7 +129,7 @@ const ABOUT_PAGE_DATA: Record<AboutPageKey, AboutPageData> = {
   leadership: {
     title: "Leadership",
     intro:
-      "SVIET leadership combines institutional vision with execution-focused academic governance.",
+      "SVGOI leadership combines institutional vision with execution-focused academic governance.",
     paragraphs: [
       "Leadership teams align strategy, academic quality, and student-first planning to ensure meaningful and measurable outcomes.",
       "Cross-functional coordination between academic and administrative units strengthens consistency, accountability, and responsiveness.",
@@ -144,7 +144,7 @@ const ABOUT_PAGE_DATA: Record<AboutPageKey, AboutPageData> = {
   organization: {
     title: "Organization Structure",
     intro:
-      "SVIET operates through a structured model that connects leadership vision with department-level execution.",
+      "SVGOI operates through a structured model that connects leadership vision with department-level execution.",
     paragraphs: [
       "Academic heads, administrative teams, and support functions work through defined roles to maintain efficiency across core operations.",
       "Clear reporting channels and role clarity improve decision flow, policy implementation, and service delivery.",
@@ -159,7 +159,7 @@ const ABOUT_PAGE_DATA: Record<AboutPageKey, AboutPageData> = {
   location: {
     title: "Location",
     intro:
-      "SVIET benefits from a strategically connected location along the Chandigarh-Patiala corridor.",
+      "SVGOI benefits from a strategically connected location along the Chandigarh-Patiala corridor.",
     paragraphs: [
       "The campus offers convenient access from Chandigarh, Mohali, Panchkula, Ambala, and Patiala while preserving a focused academic setting.",
       "Its regional connectivity supports student commuting, industry interaction, and broader academic engagement.",
@@ -174,7 +174,7 @@ const ABOUT_PAGE_DATA: Record<AboutPageKey, AboutPageData> = {
   tour: {
     title: "Campus Tour",
     intro:
-      "The SVIET campus tour offers a practical view of learning spaces, support facilities, and student life infrastructure.",
+      "The SVGOI campus tour offers a practical view of learning spaces, support facilities, and student life infrastructure.",
     paragraphs: [
       "Visitors can explore classrooms, labs, library spaces, and activity zones to understand how the campus supports day-to-day learning.",
       "The tour helps students and families evaluate infrastructure quality, learning environment, and institutional support systems.",
@@ -208,7 +208,7 @@ export function AboutPageTemplate({ data }: { data: AboutPageData }) {
         <div className="absolute -right-36 -top-30 hidden h-80 w-80 bg-[#BFDBFE]/35 blur-3xl md:block" aria-hidden="true" />
         <div className="relative mx-auto flex min-h-80 max-w-7xl items-center px-4 py-14 md:px-6">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#f7941d]">About SVIET</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#f7941d]">About SVGOI</p>
             <h1 className="mt-3 text-4xl font-bold tracking-tight text-[#f7941d] md:text-5xl">{data.title}</h1>
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-[#6B7280]">{data.intro}</p>
           </div>

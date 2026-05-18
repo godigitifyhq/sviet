@@ -188,7 +188,7 @@ export function LeadershipPage() {
           <div className="relative aspect-5/2 w-full">
             <Image
               src="/assets/img/banner/leadership.jpeg"
-              alt="SVIET leadership banner"
+              alt="SVGOI leadership banner"
               fill
               priority
               sizes="100vw"
@@ -206,7 +206,7 @@ export function LeadershipPage() {
           id="leadership-priority-heading"
           eyebrow="Leadership Focus"
           title="How Leadership Translates Vision Into Outcomes"
-          description="The leadership model at SVIET connects policy, academic quality, and institutional planning with measurable student outcomes."
+          description="The leadership model at SVGOI connects policy, academic quality, and institutional planning with measurable student outcomes."
           className="mb-8"
           titleClassName="text-[#000000]"
           descriptionClassName="text-[#4B5563]"

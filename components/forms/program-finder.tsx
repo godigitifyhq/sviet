@@ -423,7 +423,7 @@ export function ProgramFinderForm({
       <footer className="px-4 py-8 border-t border-gray-200 bg-white">
         <div className="max-w-4xl mx-auto text-center text-xs text-gray-600">
           <p>
-            All programs at SVIET are designed with industry standards and
+            All programs at SVGOI are designed with industry standards and
             placement excellence in mind
           </p>
         </div>

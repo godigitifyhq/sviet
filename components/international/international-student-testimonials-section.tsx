@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const TESTIMONIALS = [
   {
-    title: "SVIET gave me confidence and global exposure to shape my future.",
+    title: "SVGOI gave me confidence and global exposure to shape my future.",
     name: "Rohit Banik",
   },
   {
@@ -13,7 +13,7 @@ const TESTIMONIALS = [
   },
   {
     title:
-      "I found mentorship, opportunities, and lifelong friendships at SVIET.",
+      "I found mentorship, opportunities, and lifelong friendships at SVGOI.",
     name: "Akash Pal",
   },
   {

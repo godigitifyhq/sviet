@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { listPublishedBlogPosts } from "@/lib/dal/cms";
 
 export const metadata: Metadata = {
-  title: "Blog | SVIET",
-  description: "Latest news, research insights, and stories from SVIET campus.",
+  title: "Blog | SVGOI",
+  description: "Latest news, research insights, and stories from SVGOI campus.",
 };
 
 export default async function BlogPage() {

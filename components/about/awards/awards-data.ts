@@ -16,7 +16,7 @@ export const AWARDS_RECORDS: AwardsRecord[] = [
     id: "times-interdisciplinary-2026",
     title: "Interdisciplinary Science Rankings 2026",
     description:
-      "SVIET has been listed in national interdisciplinary science rankings for academic research impact and collaboration.",
+      "SVGOI has been listed in national interdisciplinary science rankings for academic research impact and collaboration.",
     logoSrc: "",
     logoAlt: "Times Higher Education style ranking logo",
   },
@@ -113,7 +113,7 @@ export const AWARDS_RECORDS: AwardsRecord[] = [
     id: "naac-accreditation",
     title: "NAAC Accreditation Certificate",
     description:
-      "SVIET has been accredited by NAAC demonstrating sustained quality assurance and academic standards.",
+      "SVGOI has been accredited by NAAC demonstrating sustained quality assurance and academic standards.",
     logoSrc: "/assets/img/awards/NAAC Accreditation Certificate.jpg",
     logoAlt: "NAAC Accreditation",
     assetSrc: "/assets/img/awards/NAAC Accreditation Certificate.jpg",
@@ -124,7 +124,7 @@ export const AWARDS_RECORDS: AwardsRecord[] = [
     id: "ugc-2f-recognition",
     title: "UGC 2(f) Recognition",
     description:
-      "UGC 2(f) recognition granted to SVIET, marking an important milestone in institutional recognition.",
+      "UGC 2(f) recognition granted to SVGOI, marking an important milestone in institutional recognition.",
     logoSrc: "/assets/img/awards/UGC 2(f) Recognition.jpg",
     logoAlt: "UGC 2(f)",
     assetSrc: "/assets/img/awards/2F RecognitionLetter.pdf",
@@ -135,7 +135,7 @@ export const AWARDS_RECORDS: AwardsRecord[] = [
     id: "autonomous-status",
     title: "Autonomous Status Granted",
     description:
-      "SVIET granted autonomy by UGC/affiliating authorities (certificate available).",
+      "SVGOI granted autonomy by UGC/affiliating authorities (certificate available).",
     logoSrc: "/assets/img/awards/Autonomous post.jpg",
     logoAlt: "Autonomous status",
     assetSrc: "/assets/img/awards/Autonomous Letter.pdf",

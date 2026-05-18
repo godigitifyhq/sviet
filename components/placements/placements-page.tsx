@@ -15,6 +15,8 @@ import {
 } from "@/components/placements/placement-data";
 import { StatCard } from "@/components/placements/stat-card";
 import { TrainingCurriculumSection } from "@/components/placements/training-curriculum-section";
+import { DCATrainingPlacementSection } from "@/components/placements/dca-training-placement-section";
+import { CorporateConnectSection } from "@/components/placements/corporate-connect-section";
 
 const FAQ_ITEMS = [
   {
@@ -25,7 +27,7 @@ const FAQ_ITEMS = [
   {
     question: "Which companies visit campus?",
     answer:
-      "SVIET hosts recruiters from IT, consulting, manufacturing, banking, and service sectors, including national and multinational organizations.",
+      "SVGOI hosts recruiters from IT, consulting, manufacturing, banking, and service sectors, including national and multinational organizations.",
   },
   {
     question: "What is the average package?",
@@ -74,7 +76,7 @@ export function PlacementsPageComponent() {
         <SectionHeader
           id="placements-overview-heading"
           title="Placements Overview"
-          description="At SVIET, placements are driven by a structured system designed to transform students into industry-ready professionals. The Training & Placement Department continuously works to bridge the gap between academic learning and real-world industry requirements."
+          description="At SVGOI, placements are driven by a structured system designed to transform students into industry-ready professionals. The Training & Placement Department continuously works to bridge the gap between academic learning and real-world industry requirements."
         />
 
         <p className="mt-6 max-w-4xl text-base leading-relaxed text-gray-600">
@@ -88,7 +90,7 @@ export function PlacementsPageComponent() {
             Training &amp; Placement Cell
           </h3>
           <p className="mt-3 text-sm leading-relaxed text-gray-700 md:text-base">
-            The Training &amp; Placement Cell at SVIET actively collaborates
+            The Training &amp; Placement Cell at SVGOI actively collaborates
             with leading organizations across industries including IT,
             Manufacturing, Finance, Media, and Services.
           </p>
@@ -129,35 +131,73 @@ export function PlacementsPageComponent() {
       >
         <SectionHeader
           id="director-message-heading"
-          title="From the Desk of Director Placements"
+          title="Leadership — Placements &amp; Corporate Affairs"
         />
-        <article className="mt-6 grid min-h-120 overflow-hidden rounded-3xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] shadow-[0_8px_24px_rgba(30,42,120,0.06)] lg:grid-cols-4">
-          <div className="relative min-h-96 border-b border-[#DCE7FF] bg-[#EEF4FF] lg:col-span-1 lg:min-h-full lg:border-b-0 lg:border-r">
-            <Image
-              src="/assets/img/college/management/shubham-sir..jpg"
-              alt="Mr. Shubham Garg"
-              fill
-              sizes="(max-width: 1024px) 100vw, 25vw"
-              className="object-cover object-top"
-            />
-          </div>
-          <div className="p-6 md:p-8 lg:col-span-3">
-            <h3 className="text-xl font-bold text-[#111827] md:text-2xl">
-              Mr. Shubham Garg
-            </h3>
-            <p className="mt-4 text-sm leading-relaxed text-[#374151] md:text-base">
-              Our goal is to provide strong placement opportunities and
-              meaningful corporate exposure to students. Over the years, the
-              Training &amp; Placement Cell has successfully connected students
-              with reputed organizations across multiple industries.
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-[#374151] md:text-base">
-              We focus on building industry-ready professionals by aligning
-              academic learning with practical skills, ensuring students are
-              well-prepared to meet evolving career demands.
-            </p>
-          </div>
-        </article>
+
+        <div className="mt-6 grid gap-6 lg:grid-cols-2">
+          {/* Director Placements */}
+          <article className="overflow-hidden rounded-3xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] shadow-[0_8px_24px_rgba(30,42,120,0.06)]">
+            <div className="relative h-64 bg-[#EEF4FF]">
+              <Image
+                src="/assets/img/college/management/shubham-sir..jpg"
+                alt="Mr. Shubham Garg, Director Placements"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-top"
+              />
+            </div>
+            <div className="p-6 md:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
+                Director — Placements
+              </p>
+              <h3 className="mt-2 text-xl font-bold text-[#111827] md:text-2xl">
+                Mr. Shubham Garg
+              </h3>
+              <p className="mt-4 text-sm leading-relaxed text-[#374151] md:text-base">
+                Our goal is to provide strong placement opportunities and
+                meaningful corporate exposure to students. Over the years, the
+                Training &amp; Placement Cell has successfully connected students
+                with reputed organizations across multiple industries.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-[#374151] md:text-base">
+                We focus on building industry-ready professionals by aligning
+                academic learning with practical skills, ensuring students are
+                well-prepared to meet evolving career demands.
+              </p>
+            </div>
+          </article>
+
+          {/* Director Operations & Corporate Partnership */}
+          <article className="overflow-hidden rounded-3xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] shadow-[0_8px_24px_rgba(30,42,120,0.06)]">
+            <div className="relative h-64 bg-[#EEF4FF]">
+              <Image
+                src="/assets/img/college/management/ankur-sir.jpg"
+                alt="Mr. Ankur Gill, Director Operations & Corporate Partnership"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-top"
+              />
+            </div>
+            <div className="p-6 md:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
+                Director — Operations &amp; Corporate Partnership
+              </p>
+              <h3 className="mt-2 text-xl font-bold text-[#111827] md:text-2xl">
+                Mr. Ankur Gill
+              </h3>
+              <p className="mt-4 text-sm leading-relaxed text-[#374151] md:text-base">
+                Building strong corporate relationships is at the heart of SVGOI's placement success.
+                Our corporate connect strategy actively engages with leading companies across India
+                to open new doors for our students.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-[#374151] md:text-base">
+                Through structured industry partnerships and operational excellence, we ensure
+                every student receives the guidance and exposure needed to thrive in today's
+                competitive workforce.
+              </p>
+            </div>
+          </article>
+        </div>
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           <article className="rounded-2xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] p-6 shadow-[0_8px_24px_rgba(30,42,120,0.06)]">
@@ -190,7 +230,7 @@ export function PlacementsPageComponent() {
         <SectionHeader
           id="industrial-exposure-heading"
           title="Industrial Exposure"
-          description="SVIET provides continuous industry exposure through visits, training programs, expert sessions, and live interactions with professionals. These initiatives help students understand real-world work environments and industry expectations."
+          description="SVGOI provides continuous industry exposure through visits, training programs, expert sessions, and live interactions with professionals. These initiatives help students understand real-world work environments and industry expectations."
         />
 
         <article className="mt-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
@@ -220,6 +260,10 @@ export function PlacementsPageComponent() {
           </figcaption>
         </figure>
       </SectionWrapper>
+
+      <DCATrainingPlacementSection />
+
+      <CorporateConnectSection />
 
       <TrainingCurriculumSection />
 

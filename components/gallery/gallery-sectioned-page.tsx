@@ -315,7 +315,7 @@ function GalleryHero() {
       <div className="absolute inset-0">
         <Image
           src="/assets/img/college/auditorium.png"
-          alt="SVIET auditorium"
+          alt="SVGOI auditorium"
           fill
           priority
           sizes="100vw"
@@ -326,13 +326,13 @@ function GalleryHero() {
 
       <div className="relative mx-auto max-w-7xl px-4 py-24 md:px-6 md:py-32 lg:py-36">
         <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/70">
-          SVIET Visual Archive
+          SVGOI Visual Archive
         </p>
         <h1 className="mt-3 max-w-4xl text-4xl font-semibold tracking-tight text-white md:text-6xl">
           Gallery
         </h1>
         <p className="mt-5 max-w-3xl text-base leading-relaxed text-white/80 md:text-lg">
-          Explore life at SVIET through real campus moments, told in a
+          Explore life at SVGOI through real campus moments, told in a
           section-based experience that stays focused on campus visuals.
         </p>
       </div>

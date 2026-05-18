@@ -30,7 +30,7 @@ export function CampusLifeFreshersSection() {
         <p className="text-3xl font-medium text-[#111] md:text-4xl">Fresher&apos;s festival</p>
 
         <h2 className="mt-4 max-w-6xl text-4xl font-medium leading-tight text-[#161616] md:text-5xl">
-          A grand welcome to SVIET with the finest activities to enrich your journey -
+          A grand welcome to SVGOI with the finest activities to enrich your journey -
           <br />
           <span className="bg-linear-to-r from-[#1d4ed8] via-[#f7941d] to-[#1d4ed8] bg-clip-text font-semibold text-transparent">
             Freshers&apos; Festival
@@ -38,7 +38,7 @@ export function CampusLifeFreshersSection() {
         </h2>
 
         <p className="mt-6 max-w-5xl text-base leading-relaxed text-[#424242] md:text-xl">
-          Your journey at SVIET kicks off with an epic Freshers&apos; Fest - a vibrant celebration featuring live
+          Your journey at SVGOI kicks off with an epic Freshers&apos; Fest - a vibrant celebration featuring live
           performances, games, and a chance to meet new friends. Step into university life with a bang as we roll out
           the red carpet for you with the finest activities, concerts, and a thrilling experience.
         </p>

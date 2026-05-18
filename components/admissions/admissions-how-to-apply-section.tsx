@@ -16,9 +16,9 @@ const APPLY_STEPS = [
       "Once submitted, you will receive a unique Application ID for future reference.",
   },
   {
-    title: "Appear for SVIET-EEE or submit JEE score",
+    title: "Appear for SVGOI-EEE or submit JEE score",
     detail:
-      "Students may take the SVIET-EEE test or apply using valid JEE Main scores.",
+      "Students may take the SVGOI-EEE test or apply using valid JEE Main scores.",
   },
   {
     title: "Check merit list and qualification status",
@@ -50,7 +50,7 @@ const APPLY_STEPS = [
   },
   {
     title: "Begin your academic journey",
-    detail: "Join SVIET and start your classes with confidence and clarity.",
+    detail: "Join SVGOI and start your classes with confidence and clarity.",
   },
 ] as const;
 
@@ -106,7 +106,7 @@ export function AdmissionsHowToApplySection() {
         <div className="relative flex items-center justify-center bg-[#f5f7fb]">
           <Image
             src="/assets/img/banner/processform.png"
-            alt="SVIET admission process steps"
+            alt="SVGOI admission process steps"
             width={900}
             height={1200}
             className="h-auto w-full max-w-140 object-contain"

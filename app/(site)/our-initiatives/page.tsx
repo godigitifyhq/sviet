@@ -87,7 +87,7 @@ const SUPER60_POINTS = [
 
 const COMMUNITY_CARDS = [
   {
-    title: "ISTE SVIET Chapter",
+    title: "ISTE SVGOI Chapter",
     points: [
       "Technical workshops",
       "Leadership opportunities",
@@ -161,9 +161,9 @@ const SKILL_CARDS = [
 ] as const;
 
 export const metadata: Metadata = {
-  title: "Innovation & Student Initiatives | SVIET",
+  title: "Innovation & Student Initiatives | SVGOI",
   description:
-    "Explore innovation platforms, student initiatives, startup exposure, and professional communities at SVIET.",
+    "Explore innovation platforms, student initiatives, startup exposure, and professional communities at SVGOI.",
 };
 
 export default function OurInitiativesPage() {
@@ -363,7 +363,7 @@ export default function OurInitiativesPage() {
               Entrepreneurship and startup ecosystem.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[#4B5563] md:text-lg">
-              SVIET fosters innovation through hands-on startup exposure and
+              SVGOI fosters innovation through hands-on startup exposure and
               incubation support.
             </p>
           </div>
@@ -576,7 +576,7 @@ export default function OurInitiativesPage() {
       <section className="relative overflow-hidden bg-[#0f172a] py-16 md:py-20">
         <Image
           src="/assets/img/students/1.png"
-          alt="SVIET culture and student leadership"
+          alt="SVGOI culture and student leadership"
           fill
           className="object-cover"
           sizes="100vw"
@@ -591,7 +591,7 @@ export default function OurInitiativesPage() {
               A culture that builds future leaders.
             </h2>
             <p className="mt-5 text-sm leading-relaxed text-white/90 md:text-base">
-              SVIET&apos;s ecosystem encourages innovation, experimentation, and
+              SVGOI&apos;s ecosystem encourages innovation, experimentation, and
               student-led initiatives, preparing individuals to take on
               real-world challenges with confidence.
             </p>

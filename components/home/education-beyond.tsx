@@ -36,7 +36,7 @@ export function EducationBeyondSection() {
         </h2>
         <p className="mt-3 text-2xl font-medium leading-tight text-[#111827] md:text-4xl">Find what matters to you.</p>
         <p className="mt-6 max-w-3xl text-sm leading-relaxed text-[#6B7280] md:text-lg">
-          From placements and rankings to career-focused initiatives, get a clear view of what sets SVIET apart.
+          From placements and rankings to career-focused initiatives, get a clear view of what sets SVGOI apart.
         </p>
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">

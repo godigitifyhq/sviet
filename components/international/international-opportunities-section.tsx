@@ -38,7 +38,7 @@ export function InternationalOpportunitiesSection() {
             <h2 className="text-3xl font-semibold leading-tight text-[#111827] md:text-4xl">
               What else can{" "}
               <span className="font-extrabold">
-                you do while studying at SVIET
+                you do while studying at SVGOI
               </span>
             </h2>
             <p className="mt-5 text-xl font-medium text-[#111827] md:text-3xl">

@@ -18,7 +18,7 @@ export function InternationalCulturalDiversitySection() {
         <h2 className="mt-20 text-3xl font-semibold leading-tight text-[#111827] md:text-5xl">
           Making your education an adventure
           <br />
-          <span className="">with cultural diversity at SVIET</span>
+          <span className="">with cultural diversity at SVGOI</span>
         </h2>
         <p className="mt-4 text-base text-[#374151] md:text-lg">
           Our campus is a tapestry of cultures, fostering mutual respect and

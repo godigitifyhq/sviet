@@ -23,7 +23,7 @@ export function InternationalHeroIntroSection() {
               International Students
             </h3>
             <p className="mt-4 text-base leading-relaxed text-[#374151] md:text-lg">
-              At SVIET, we pride ourselves on being a melting pot of cultures,
+              At SVGOI, we pride ourselves on being a melting pot of cultures,
               ideas, and innovations. With students from 75+ countries, our
               campus offers a truly global experience.
             </p>
@@ -49,7 +49,7 @@ export function InternationalHeroIntroSection() {
 
             <div>
               <h3 className="text-2xl font-bold leading-tight text-[#111827] md:text-4xl">
-                Ready to Join the Global Learning Community At SVIET?
+                Ready to Join the Global Learning Community At SVGOI?
               </h3>
               <Link
                 href="/admissions"

@@ -35,13 +35,13 @@ export function CampusLifeConcertsSection() {
           dancing till dawn to soulful live concerts
         </h2>
         <p className="mt-6 max-w-5xl text-base leading-relaxed text-[#465064] md:text-xl">
-          Experience the thrill of live music with some of the biggest artists and DJs lighting up the stage at SVIET. Annually,
+          Experience the thrill of live music with some of the biggest artists and DJs lighting up the stage at SVGOI. Annually,
           our music festivals bring together genres from rock and pop to Bollywood fusion, ensuring there is something for everyone.
         </p>
 
         <div className="mt-10 flex items-center gap-3 text-2xl font-semibold text-[#1e1e1e] md:text-4xl">
           <span className="text-[#8e95ab]">▸</span>
-          A glimpse of SVIET concerts and EDM
+          A glimpse of SVGOI concerts and EDM
         </div>
 
         <div className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:mt-10 md:gap-5">

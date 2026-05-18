@@ -12,7 +12,7 @@ export function ProgramAlumniSection() {
         <div className="rounded-xl border border-[#e8e8e8] bg-white px-5 py-8 grid gap-3">
           <Quote className="h-6 w-6 text-[#f7941d]/30" />
           <p className="text-[#4d4d4d]">
-            &quot;SVIET gave me practical exposure and confidence to solve real problems. The placement training and support were exceptional.&quot;
+            &quot;SVGOI gave me practical exposure and confidence to solve real problems. The placement training and support were exceptional.&quot;
           </p>
           <p className="mt-4 text-xl font-bold">Arjun Sharma</p>
           <p className="text-xs text-[#777]">B.Tech CSE &apos;22 • Software Engineer at Infosys</p>

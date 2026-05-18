@@ -8,9 +8,9 @@ export function CampusLifeMemoriesSection() {
           Helping you turn every moment into lifetime memories
         </h2>
         <p className="mt-6 max-w-4xl text-sm leading-relaxed text-white/85 md:text-lg">
-          Welcome to your journey at SVIET, where student life transcends academics. We transform it into an extraordinary
+          Welcome to your journey at SVGOI, where student life transcends academics. We transform it into an extraordinary
           experience brimming with excitement, exploration, and rich cultural flair. With thrilling concerts and vibrant
-          student clubs, SVIET stands as the premier destination for enjoyment and involvement.
+          student clubs, SVGOI stands as the premier destination for enjoyment and involvement.
         </p>
 
         <div className="mt-10 grid gap-4 md:grid-cols-2">

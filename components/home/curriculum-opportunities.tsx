@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useRef } from "react";
 import { ChevronUp, ChevronDown, Play } from "lucide-react";
 
@@ -10,7 +11,7 @@ const curriculumEvents = [
     name: "Sportsmania 2025",
     mainCard: {
       title: "Sportsmania 2025",
-      description: "The annual sports festival of SVIET brings together students in a vibrant display of athleticism, teamwork and competitive spirit across events like football, basketball, and more.",
+      description: "The annual sports festival of SVGOI brings together students in a vibrant display of athleticism, teamwork and competitive spirit across events like football, basketball, and more.",
       image: "/assets/img/section_card/Sportsmania.jpeg",
       cta: "Learn more",
     },
@@ -23,7 +24,7 @@ const curriculumEvents = [
     videos: [
       {
         image: "/assets/img/section_card/Kabbadi.jpeg",
-        label: "SVIET Campus",
+        label: "SVGOI Campus",
       },
     ],
   },
@@ -45,7 +46,7 @@ const curriculumEvents = [
     videos: [
       {
         image: "/assets/img/section_card/Elevate3.jpeg",
-        label: "SVIET Campus",
+        label: "SVGOI Campus",
       },
     ],
   },
@@ -67,7 +68,7 @@ const curriculumEvents = [
     videos: [
       {
         image: "/assets/img/section_card/TEDx3.jpeg",
-        label: "SVIET Campus",
+        label: "SVGOI Campus",
       },
     ],
   },
@@ -89,7 +90,7 @@ const curriculumEvents = [
     videos: [
       {
         image: "/assets/img/section_card/Dev3.jpeg",
-        label: "SVIET Campus",
+        label: "SVGOI Campus",
       },
     ],
   },
@@ -120,7 +121,7 @@ const curriculumEvents = [
     name: "Spontania 2025",
     mainCard: {
       title: "Spontania 2025",
-      description: "The flagship cultural extravaganza of SVIET with a vibrant three-day celebration of art, culture, and talent featuring dance, music, theater and cultural showcases.",
+      description: "The flagship cultural extravaganza of SVGOI with a vibrant three-day celebration of art, culture, and talent featuring dance, music, theater and cultural showcases.",
       image: "/assets/img/section_card/Spont.jpeg",
       cta: "Learn more",
     },
@@ -155,7 +156,7 @@ const curriculumEvents = [
     videos: [
       {
         image: "/assets/img/section_card/GFS3.JPG",
-        label: "SVIET Auditorium",
+        label: "SVGOI Auditorium",
       },
     ],
   },
@@ -228,7 +229,7 @@ export function CurriculumOpportunitiesSection() {
             National-Level Exposure & Industry Platforms
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed text-[#6B7280] md:text-base">
-           SVIET builds its own ecosystem of innovation and creativity through large-scale, student-driven events that encourage participation, collaboration, and real-world problem-solving.
+           SVGOI builds its own ecosystem of innovation and creativity through large-scale, student-driven events that encourage participation, collaboration, and real-world problem-solving.
           </p>
         </div>
 
@@ -287,22 +288,28 @@ export function CurriculumOpportunitiesSection() {
                       {currentEvent.mainCard.description}
                     </p>
                   </div>
-                  {/* <button className="inline-flex items-center gap-2 rounded-full bg-white px-3 md:px-4 py-2 text-xs md:text-sm font-semibold text-[#f7941d] transition hover:bg-white/90">
-                    Learn more
+                  <Link
+                    href={`/events/${currentEvent.id}`}
+                    className="inline-flex items-center gap-2 rounded-full bg-white px-3 md:px-4 py-2 text-xs md:text-sm font-semibold text-[#f7941d] transition hover:bg-white/90"
+                  >
+                    View Event Details
                     <span aria-hidden="true">›</span>
-                  </button> */}
+                  </Link>
                 </div>
               </div>
 
-              <div className="relative overflow-hidden rounded-[20px] bg-black h-80 md:h-full">
+              <Link href={`/events/${currentEvent.id}`} className="relative overflow-hidden rounded-[20px] bg-black h-80 md:h-full block group">
                 <Image
                   src={resolveCurriculumImage(currentEvent.mainCard.image)}
                   alt={currentEvent.mainCard.title}
                   fill
-                  className="object-cover transition-all duration-500"
+                  className="object-cover transition-all duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/10" />
-              </div>
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-all" />
+                <div className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-[#111827] opacity-0 group-hover:opacity-100 transition-opacity">
+                  View Details →
+                </div>
+              </Link>
 
               <div className="space-y-4">
                 {currentEvent.stats.map((stat, idx) => (

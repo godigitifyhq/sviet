@@ -22,7 +22,7 @@ export function EventsSpeakersSection({ speakers }: EventsSpeakersSectionProps) 
             </span>
           </div>
 
-          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">Leaders Who Shared Their Insights at SVIET</h2>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">Leaders Who Shared Their Insights at SVGOI</h2>
           <p className="mt-3 max-w-4xl text-sm leading-relaxed text-white/85 md:text-base">
             Our events welcome practitioners, founders, and domain experts who mentor students through practical insights and
             career-focused conversations.
@@ -33,7 +33,7 @@ export function EventsSpeakersSection({ speakers }: EventsSpeakersSectionProps) 
               <article key={`${speaker.name}-${index}`} className="rounded-xl border border-white/20 bg-white/10 p-4">
                 <h3 className="text-lg font-semibold leading-snug text-white">{speaker.name}</h3>
                 <p className="mt-1 text-sm text-white/85">{speaker.designation || "Guest Speaker"}</p>
-                <p className="text-sm text-white/75">{speaker.company || "SVIET Event"}</p>
+                <p className="text-sm text-white/75">{speaker.company || "SVGOI Event"}</p>
               </article>
             ))}
           </div>

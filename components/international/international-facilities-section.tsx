@@ -14,7 +14,7 @@ export function InternationalFacilitiesSection() {
             Empowering Your Academic and Personal Growth
           </p>
           <p className="mt-2 text-base text-[#374151] md:text-lg">
-            SVIET is committed to providing an environment conducive to learning
+            SVGOI is committed to providing an environment conducive to learning
             and innovation.
           </p>
         </div>

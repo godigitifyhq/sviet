@@ -29,7 +29,7 @@ const FACILITY_ITEMS: FacilityItem[] = [
     summary: "Planned circulation and access systems designed for smooth academic movement.",
     highlights: ["Wide internal corridors", "Clear departmental zoning", "Student-first accessibility"],
     imageSrc: "/assets/img/college/main_gate.png",
-    imageAlt: "SVIET campus academic zone and entry corridor",
+    imageAlt: "SVGOI campus academic zone and entry corridor",
   },
   {
     title: "Student Interaction Spaces",
@@ -37,7 +37,7 @@ const FACILITY_ITEMS: FacilityItem[] = [
     summary: "Informal spaces for peer collaboration, clubs, and project discussions.",
     highlights: ["Collaborative seating", "Mentoring-friendly spaces", "Community engagement zones"],
     imageSrc: "/assets/img/college/1st.png",
-    imageAlt: "Student interaction areas across SVIET campus",
+    imageAlt: "Student interaction areas across SVGOI campus",
   },
   {
     title: "Open Learning Courtyards",
@@ -69,7 +69,7 @@ const FACILITY_ITEMS: FacilityItem[] = [
     summary: "Program-specific labs focused on hands-on skill development and experimentation.",
     highlights: ["Practice-ready lab setups", "Faculty-guided sessions", "Outcome-led practicals"],
     imageSrc: "/assets/img/college/4th.png",
-    imageAlt: "Program-specific technical laboratories at SVIET",
+    imageAlt: "Program-specific technical laboratories at SVGOI",
   },
   {
     title: "Research Centres",
@@ -143,7 +143,7 @@ const SUSTAINABILITY_ITEMS = [
     description:
       "Distributed solar systems support academic blocks and utilities, reducing dependency on conventional energy.",
     imageSrc: "/assets/img/college/scholarship.png",
-    imageAlt: "Renewable energy generation systems at SVIET",
+    imageAlt: "Renewable energy generation systems at SVGOI",
   },
   {
     title: "Waste Water Treatment",
@@ -157,14 +157,14 @@ const SUSTAINABILITY_ITEMS = [
     description:
       "Green belt planning and periodic plantation drives improve campus microclimate and ecological balance.",
     imageSrc: "/assets/img/college/1st.png",
-    imageAlt: "Tree plantation initiatives in the SVIET campus",
+    imageAlt: "Tree plantation initiatives in the SVGOI campus",
   },
   {
     title: "Rain Water Harvesting",
     description:
       "Catchment and storage systems support groundwater recharge and long-term water conservation goals.",
     imageSrc: "/assets/img/campus-life/image4.png",
-    imageAlt: "Rain water harvesting systems at SVIET",
+    imageAlt: "Rain water harvesting systems at SVGOI",
   },
   {
     title: "Waste Recycling",
@@ -214,7 +214,7 @@ export function InfrastructurePage() {
         <div className="absolute -right-32 -top-25 hidden h-72 w-72 bg-[#BFDBFE]/30 blur-3xl md:block" aria-hidden="true" />
         <div className="flex flex-wrap items-start justify-between gap-6">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#f7941d]">About SVIET</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#f7941d]">About SVGOI</p>
             <h1 id="infrastructure-heading" className="mt-3 text-4xl font-bold tracking-tight text-[#f7941d] md:text-5xl">
               Infrastructure
             </h1>
@@ -265,7 +265,7 @@ export function InfrastructurePage() {
         <SectionHeader
           id="sustainability-heading"
           title="Sustainability & Responsible Operations"
-          description="SVIET strengthens environmentally responsible campus systems across energy, water, waste, and mobility to support long-term resilience."
+          description="SVGOI strengthens environmentally responsible campus systems across energy, water, waste, and mobility to support long-term resilience."
         />
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

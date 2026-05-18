@@ -49,7 +49,7 @@ export function AdmissionsValueGridSection() {
           <span className="text-[#f7941d]"> Career Readiness</span>
         </h2>
         <p className="mt-5 max-w-4xl text-sm leading-relaxed text-[#4d4d57] md:text-base">
-          At SVIET, your journey extends beyond admission. The institution
+          At SVGOI, your journey extends beyond admission. The institution
           ensures continuous development through industry-integrated learning,
           internship opportunities, placement preparation programs, and startup
           and innovation support.

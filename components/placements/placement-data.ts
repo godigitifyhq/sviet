@@ -620,14 +620,12 @@ export const PLACEMENT_KEY_STATS = [
     label: "Student Placements",
   },
   {
-    value: `${Math.max(...PLACEMENT_RECORDS.map((placement) => placement.packageValue))} LPA`,
+    value: "60 LPA",
     label: "Highest Package",
   },
   {
-    value: String(
-      new Set(PLACEMENT_RECORDS.map((placement) => placement.company)).size,
-    ),
-    label: "Companies Represented",
+    value: "2,200+",
+    label: "Recruiting Companies",
   },
   {
     value: String(

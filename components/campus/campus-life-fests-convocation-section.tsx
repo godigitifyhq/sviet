@@ -11,7 +11,7 @@ type FestCard = {
 
 const FEST_CARDS: FestCard[] = [
   {
-    title: "SVIET Navratri",
+    title: "SVGOI Navratri",
     subtitle: "With traditional Garba nights",
     image: "/assets/img/campus-life/r1c1.png",
     className: "lg:col-span-2 lg:row-span-1",
@@ -56,7 +56,7 @@ export function CampusLifeFestsConvocationSection() {
             </span>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#2e2e2e] md:text-lg">
-            Experience the magic of SVIET&apos;s annual festivals, from
+            Experience the magic of SVGOI&apos;s annual festivals, from
             Navratri, Diwali, Holi, and Christmas celebrations to theme-based
             cultural events. Each festival brings a new wave of joy and
             unforgettable moments.
@@ -114,7 +114,7 @@ export function CampusLifeFestsConvocationSection() {
               </span>
             </h3>
             <p className="mt-5 text-base leading-relaxed text-[#2f2f2f] md:text-lg">
-              The annual Convocation Ceremony at SVIET is not just the end of an
+              The annual Convocation Ceremony at SVGOI is not just the end of an
               academic chapter; it is a monumental, grand-scale celebration that
               marks the beginning of your professional journey and a powerful
               tradition of excellence.
@@ -164,7 +164,7 @@ export function CampusLifeFestsConvocationSection() {
                 Never get lost
               </p>
               <h4 className="mt-2 text-3xl font-semibold leading-tight md:text-4xl">
-                Connect with the world of SVIET on Instagram
+                Connect with the world of SVGOI on Instagram
               </h4>
               <p className="mt-3 text-sm text-white/85 md:text-base">
                 Click the link or scan QR code to connect with us

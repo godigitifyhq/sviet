@@ -37,15 +37,15 @@ const NAV_ITEMS = [
 const NAV_LINK_IMAGES = [
   {
     src: "/assets/img/college/1st.png",
-    alt: "SVIET campus preview one",
+    alt: "SVGOI campus preview one",
   },
   {
     src: "/assets/img/college/4th.png",
-    alt: "SVIET campus preview two",
+    alt: "SVGOI campus preview two",
   },
   {
     src: "/assets/img/college/8th.png",
-    alt: "SVIET campus preview three",
+    alt: "SVGOI campus preview three",
   },
 ];
 
@@ -55,7 +55,7 @@ const PROGRAM_DROPDOWN_ITEMS = [
 
 const ABOUT_PANEL_GROUPS = [
   {
-    title: "Discover SVIET",
+    title: "Discover SVGOI",
     items: [
       { label: "Overview", href: "/about" },
       { label: "Leadership", href: "/about/leadership" },
@@ -71,7 +71,7 @@ const ABOUT_PANEL_GROUPS = [
     items: [
       // { label: "Infrastructure", href: "/about/infrastructure" },
       { label: "Placements", href: "/about/placements" },
-      { label: "Life at SVIET", href: "/campus-life" },
+      { label: "Life at SVGOI", href: "/campus-life" },
     ],
   },
 ] as const;
@@ -459,7 +459,7 @@ export function MainNavbar({
                   : "/assets/img/sviet_white.png"
                 : "/Logo.png"
             }
-            alt="SVIET logo"
+            alt="SVGOI logo"
             width={347}
             height={150}
             className={`main-navbar-logo h-8 md:h-10 w-auto transition-[filter] duration-300 ease-out object-contain `}
@@ -851,7 +851,7 @@ export function SiteFooter() {
             Shape Your Future with Us
           </h3>
           <p className="mt-4 text-sm leading-relaxed text-white/80 md:text-md">
-            Discover limitless opportunities at SVIET, where innovation,
+            Discover limitless opportunities at SVGOI, where innovation,
             learning, and industry connect.
           </p>
           <p className="text-sm leading-relaxed text-white/80 md:text-md">
@@ -875,7 +875,7 @@ export function SiteFooter() {
               <div className="flex items-center gap-3">
                 <Image
                   src="/assets/img/sviet_white.png"
-                  alt="SVIET logo"
+                  alt="SVGOI logo"
                   width={120}
                   height={40}
                   className="h-8 w-auto md:h-10"
@@ -993,10 +993,10 @@ export function SiteFooter() {
               <h4 className="text-lg font-semibold uppercase">Explore</h4>
               <ul className="mt-5 space-y-3 text-sm text-white/85">
                 {[
-                  "SVIET University, Punjab",
-                  "SVIET University, Himachal Pradesh",
-                  "SVIET International School",
-                  "SVIET Centre for Global Education",
+                  "SVGOI University, Punjab",
+                  "SVGOI University, Himachal Pradesh",
+                  "SVGOI International School",
+                  "SVGOI Centre for Global Education",
                   "Office of International Affairs",
                   "Career Advancement Services",
                   "Office of Student Affairs",
@@ -1021,7 +1021,7 @@ export function SiteFooter() {
 
         <div className="mt-12 border-t border-white/10 pt-5">
           <div className="flex flex-col items-center justify-between gap-2 text-xs text-white/65 md:flex-row">
-            <p>© {new Date().getFullYear()} SVIET. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} SVGOI. All rights reserved.</p>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ const APPLICATION_PATHS = ["JEE Main scores", "Merit-based selection"] as const;
 
 const SCHOLARSHIP_OPTIONS = [
   "Merit-Based Scholarships",
-  "SVIET-EEE Performance Scholarships",
+  "SVGOI-EEE Performance Scholarships",
   "Merit-Cum-Means Support",
   "Government & Category-Based Scholarships",
   "Financial Assistance for eligible students",
@@ -24,10 +24,10 @@ export function AdmissionsEntranceEligibilitySection() {
             Entrance &amp; Eligibility
           </p>
           <h2 className="mt-3 text-3xl font-bold leading-tight text-[#1a1a1f] md:text-5xl">
-            SVIET-EEE: One Exam, Multiple Opportunities
+            SVGOI-EEE: One Exam, Multiple Opportunities
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-[#4f4f5f] md:text-base">
-            SVIET conducts its own entrance and scholarship test - SVIET-EEE
+            SVGOI conducts its own entrance and scholarship test - SVGOI-EEE
             (Entrance Exam Eligibility Test).
           </p>
         </div>
@@ -75,7 +75,7 @@ export function AdmissionsEntranceEligibilitySection() {
               Scholarships &amp; Financial Support
             </h3>
             <p className="mt-4 text-sm leading-relaxed text-[#4f4f5f] md:text-base">
-              SVIET offers multiple scholarship pathways to support deserving
+              SVGOI offers multiple scholarship pathways to support deserving
               students and ensure access to quality education.
             </p>
 

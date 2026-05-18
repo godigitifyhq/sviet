@@ -8,9 +8,9 @@ const NEWS_ITEMS = [
     imageSrc: "/assets/img/college/management/shubham-sir..jpg",
   },
   {
-    title: "SVIET Welcomes Canadian Delegation from Humber College for Enhancing Global Ties",
+    title: "SVGOI Welcomes Canadian Delegation from Humber College for Enhancing Global Ties",
     description:
-      "SVIET is set to welcome a distinguished delegation from The Humber College Institute of Technology and Advanced Learning, Canada, as part of its visit...",
+      "SVGOI is set to welcome a distinguished delegation from The Humber College Institute of Technology and Advanced Learning, Canada, as part of its visit...",
     imageSrc: "/assets/img/campus-life/image2.png",
   },
   {
@@ -68,10 +68,10 @@ export function InternationalNewsUpdatesSection() {
               <div className="pointer-events-none absolute right-6 top-6 inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-white/12 text-4xl">💡</div>
 
               <h3 className="max-w-xl text-[1.25rem] font-bold leading-[1.3]">
-                SVIET Welcomes Canadian Delegation from Humber College for Enhancing Global Ties
+                SVGOI Welcomes Canadian Delegation from Humber College for Enhancing Global Ties
               </h3>
               <p className="mt-6 max-w-2xl text-base font-normal leading-[1.3] text-white/90">
-                SVIET is set to welcome a distinguished delegation from The Humber College Institute of Technology and Advanced Learning, Canada, as part of its visit...
+                SVGOI is set to welcome a distinguished delegation from The Humber College Institute of Technology and Advanced Learning, Canada, as part of its visit...
               </p>
               <Link href="/international" className="mt-6 inline-flex items-center gap-2 text-[1.25rem] font-bold leading-[1.3] text-white hover:text-[#e6e8ff]">
                 Read more <span aria-hidden="true" className="text-[1.5rem] leading-none">›</span>

@@ -338,7 +338,7 @@ export function ScholarshipSection() {
                 <span className="text-[#f7941d]">RNR Scholarship</span>
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-[#6B7280]">
-                SVIET offers need-cum-merit scholarships to deserving students. Check your eligibility in 60 seconds.
+                SVGOI offers need-cum-merit scholarships to deserving students. Check your eligibility in 60 seconds.
               </p>
               <p className="mt-4 font-semibold text-[#f7941d]">
                 Up to 100% fee waiver | 500+ scholarships awarded annually

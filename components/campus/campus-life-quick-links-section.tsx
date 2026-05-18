@@ -6,11 +6,11 @@ import { GraduationCap, ArrowUpRight } from "lucide-react";
 
 const CAMPUS_TABS = [
   { label: "Student Welfare", targetId: "campus-student-welfare" },
-  { label: "Events At SVIET", targetId: "campus-events" },
+  { label: "Events At SVGOI", targetId: "campus-events" },
   { label: "Student Clubs", targetId: "campus-student-clubs" },
   { label: "Campus Festivals", targetId: "campus-festivals" },
-  { label: "Bollywood At SVIET", targetId: "campus-bollywood" },
-  { label: "SVIET Hangouts", targetId: "campus-hangouts" },
+  { label: "Bollywood At SVGOI", targetId: "campus-bollywood" },
+  { label: "SVGOI Hangouts", targetId: "campus-hangouts" },
   { label: "Convocation", targetId: "campus-convocation" },
 ] as const;
 

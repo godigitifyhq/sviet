@@ -1,6 +1,6 @@
 const SCHOLARSHIP_OPTIONS = [
   "Merit-Based Scholarships",
-  "SVIET-EEE Performance Scholarships",
+  "SVGOI-EEE Performance Scholarships",
   "Merit-Cum-Means Support",
   "Government & Category-Based Scholarships",
   "Financial Assistance for eligible students",
@@ -16,7 +16,7 @@ export function AdmissionsScholarshipsSection() {
             Scholarships &amp; Financial Support
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-[#4f4f5f] md:text-base">
-            SVIET offers multiple scholarship pathways to support deserving students and ensure access to quality
+            SVGOI offers multiple scholarship pathways to support deserving students and ensure access to quality
             education.
           </p>
         </div>

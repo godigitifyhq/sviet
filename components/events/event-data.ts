@@ -31,7 +31,7 @@ function toCard(event: EventRecord, index: number): EventCard {
       FALLBACK_IMAGES[index % FALLBACK_IMAGES.length],
     ),
     date: normalizeText(event.date, "Date to be announced"),
-    venue: normalizeText(event.venue, "SVIET Campus"),
+    venue: normalizeText(event.venue, "SVGOI Campus"),
     overview: normalizeText(event.overview, FALLBACK_OVERVIEW),
   };
 }

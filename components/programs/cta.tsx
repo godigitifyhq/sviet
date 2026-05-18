@@ -11,7 +11,7 @@ export function ProgramCtaSection({ programTitle, slug }: ProgramCtaSectionProps
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">Ready To Begin?</p>
       <h2 className="mt-2 text-5xl font-extrabold">Start Your Journey with {programTitle}</h2>
       <p className="mx-auto mt-3 max-w-3xl text-[#555]">
-        Join 10,000+ students who have built their careers at SVIET. Admissions for 2025 batch are now open. Limited seats available.
+        Join 10,000+ students who have built their careers at SVGOI. Admissions for 2025 batch are now open. Limited seats available.
       </p>
       <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
         <Link href={`/admissions?program=${slug}`} className="rounded-lg bg-[#f7941d] px-6 py-3 font-semibold text-white">Start Application →</Link>

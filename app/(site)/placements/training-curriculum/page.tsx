@@ -4,9 +4,9 @@ import Link from "next/link";
 import { TrainingCurriculumSection } from "@/components/placements/training-curriculum-section";
 
 export const metadata: Metadata = {
-  title: "Training Curriculum | Placements | SVIET",
+  title: "Training Curriculum | Placements | SVGOI",
   description:
-    "Explore SVIET's phase-wise placement training curriculum from foundation learning to advanced role readiness.",
+    "Explore SVGOI's phase-wise placement training curriculum from foundation learning to advanced role readiness.",
 };
 
 export default function TrainingCurriculumPage() {

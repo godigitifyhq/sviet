@@ -34,10 +34,10 @@ export function AdmissionsEnrichingWaysSection() {
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 md:grid-cols-[1fr_360px] md:px-6 lg:grid-cols-[1fr_420px]">
         <div>
           <h2 className="text-4xl font-bold leading-tight text-[#1b1b22] md:text-5xl">
-            Why Choose <span className="text-[#2563EB]">SVIET</span>
+            Why Choose <span className="text-[#2563EB]">SVGOI</span>
           </h2>
           <p className="mt-4 max-w-xl text-sm text-[#4a4a58] md:text-base">
-            SVIET focuses on building capability, not just degrees.
+            SVGOI focuses on building capability, not just degrees.
           </p>
 
           <div className="mt-8 grid gap-5 md:grid-cols-2">
@@ -52,7 +52,7 @@ export function AdmissionsEnrichingWaysSection() {
 
         <div className="relative overflow-hidden rounded-xl">
           <Image
-            src="/assets/img/section_card/WhySVIET.jpeg"
+            src="/assets/img/section_card/WhySVGOI.jpeg"
             alt="Students learning"
             width={420}
             height={500}

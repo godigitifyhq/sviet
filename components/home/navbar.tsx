@@ -33,7 +33,7 @@ export function HomeNavbar() {
     >
       <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between px-4 md:px-6">
         <Link href="/" className="text-2xl font-bold tracking-tight text-foreground">
-          SVIET
+          SVGOI
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-[#1f1f1f] lg:flex">

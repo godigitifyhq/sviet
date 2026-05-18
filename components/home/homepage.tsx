@@ -9,6 +9,8 @@ import { OngoingResearchProjectsSection } from "@/components/home/ongoing-resear
 import { EntrepreneurshipSection } from "@/components/home/entrepreneurship";
 import { CorporateCollaborationSection } from "@/components/home/corporate-collaboration-section";
 import { MOUImpactSection } from "@/components/home/mou-impact-section";
+import { ClubsCommunitiesSection } from "@/components/home/clubs-communities-section";
+import { YouTubeChannelSection } from "@/components/home/youtube-channel-section";
 import { StudentTestimonialsSection } from "@/components/home/testimonials";
 import { FloatingApplyNow } from "@/components/home/floating-apply-now";
 
@@ -27,6 +29,8 @@ export function HomePage() {
       <ResearchInnovationsSection />
       <OngoingResearchProjectsSection />
       <EntrepreneurshipSection />
+      <ClubsCommunitiesSection />
+      <YouTubeChannelSection />
       <StudentTestimonialsSection />
       {/* <ScholarshipSection /> */}
     </div>

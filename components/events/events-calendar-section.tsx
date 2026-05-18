@@ -23,7 +23,7 @@ export function EventsCalendarSection({
             Event Calendar
           </p>
           <h2 className="mt-2 text-3xl font-semibold text-[#0f172a] md:text-5xl">
-            SVIET Event Highlights
+            SVGOI Event Highlights
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-[#334155] md:text-base">
             All events are completed. Revisit the flagship events that shaped
@@ -36,7 +36,7 @@ export function EventsCalendarSection({
             Recent Highlights
           </h3>
           <p className="mt-2 text-sm text-[#334155]">
-            A dedicated look at all completed SVIET events.
+            A dedicated look at all completed SVGOI events.
           </p>
 
           <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">

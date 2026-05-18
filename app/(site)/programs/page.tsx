@@ -4,9 +4,9 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 
 export const metadata: Metadata = {
-  title: "Programs | SVIET",
+  title: "Programs | SVGOI",
   description:
-    "Explore undergraduate and postgraduate programs at SVIET. Find the right program for your career goals.",
+    "Explore undergraduate and postgraduate programs at SVGOI. Find the right program for your career goals.",
 };
 
 function formatDuration(durationMonths: number) {
@@ -92,7 +92,7 @@ export default async function ProgramsPage() {
               >
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-700">
-                    {program.department ?? "SVIET Program"}
+                    {program.department ?? "SVGOI Program"}
                   </span>
                   <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
                     {formatMode(program.mode)}
@@ -146,7 +146,7 @@ export default async function ProgramsPage() {
               <article key={program.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
-                    {program.department ?? "SVIET Program"}
+                    {program.department ?? "SVGOI Program"}
                   </span>
                   <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
                     {formatMode(program.mode)}

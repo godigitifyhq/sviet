@@ -101,7 +101,7 @@ export function Results({ selections, recommendations, onRestart }: ResultsProps
     id: `${program.slug}-${index}`,
     slug: program.slug,
     title: program.title,
-    shortDescription: `${program.department} program at SVIET`,
+    shortDescription: `${program.department} program at SVGOI`,
     durationMonths: 0,
     tuitionCents: 0,
     duration: program.duration,

@@ -89,7 +89,7 @@ function MainNavbar() {
       <div className="mx-auto flex w-full max-w-300 items-center justify-between px-3 py-3 md:px-5">
         <Link href="/" className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-sm bg-[#1d65b9]" />
-          <span className="font-serif text-[42px] leading-none text-[#1d65b9]">SVIET</span>
+          <span className="font-serif text-[42px] leading-none text-[#1d65b9]">SVGOI</span>
         </Link>
         <nav className="hidden items-center gap-5 text-[11px] font-semibold tracking-wide text-[#1b1b1b] lg:flex">
           {NAV_ITEMS.map((item) => (
@@ -407,7 +407,7 @@ function CampusLifeSection() {
 
       <div className="mt-7 rounded-xl bg-black px-6 py-5 text-white">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="text-2xl font-semibold">APPLY NOW FOR SVIETEE - 2026</p>
+          <p className="text-2xl font-semibold">APPLY NOW FOR SVGOIEE - 2026</p>
           <button className="rounded border border-white/30 px-4 py-2 text-sm font-semibold">Apply Now ↗</button>
         </div>
       </div>
@@ -537,7 +537,7 @@ function SiteFooter() {
     <footer className="bg-black px-3 py-8 text-white md:px-5">
       <div className="mx-auto grid w-full max-w-300 gap-8 md:grid-cols-[1fr_1fr_0.7fr]">
         <div>
-          <p className="font-serif text-6xl leading-none">SVIET</p>
+          <p className="font-serif text-6xl leading-none">SVGOI</p>
           <p className="mt-3 max-w-sm text-sm text-white/70">
             Swami Vivekanand Institute Of Engineering & Technology Promoted By Raghunath Rai Memorial Trust.
           </p>
@@ -576,7 +576,7 @@ function EducationBlocks() {
     <section className="mx-auto mt-8 w-full max-w-300 px-3 md:px-5">
       <h3 className="text-4xl font-bold text-[#111] md:text-5xl">Education Beyond The Classroom</h3>
       <p className="mt-2 max-w-5xl text-sm text-[#505050] md:text-base">
-        Education at SVIET goes beyond traditional academics through the 360 Program and a range of unique experiential initiatives.
+        Education at SVGOI goes beyond traditional academics through the 360 Program and a range of unique experiential initiatives.
       </p>
       <div className="mt-4 overflow-hidden rounded-md border border-[#e7e7e7]">
         <div className="bg-[#b60f1b] px-4 py-2 text-sm font-semibold text-white">The Leadership Development Program</div>
@@ -765,7 +765,7 @@ export function EventsPageReplica() {
               </div>
               <h3 className="mt-2 text-lg font-bold">{event.title}</h3>
               <p className="mt-1 text-sm text-[#555]">{truncateToWords(event.subtitle, 30)}</p>
-              <p className="mt-2 text-xs text-[#777]">{event.venue ?? "SVIET Campus"}</p>
+              <p className="mt-2 text-xs text-[#777]">{event.venue ?? "SVGOI Campus"}</p>
               <a className="mt-3 inline-block text-sm font-semibold text-[#f7941d]">View Details →</a>
             </article>
           ))}
@@ -821,7 +821,7 @@ export function EventsPageReplica() {
             <span className="rounded-full bg-[#f7941d] px-3 py-1 text-xs font-bold uppercase text-white">Featured Event</span>
             <h3 className="mt-4 text-2xl font-black">TechVision 2026: Innovation Summit</h3>
             <p className="mt-2 text-sm text-[#555]">Annual flagship technology summit featuring industry leaders and cutting-edge innovations.</p>
-            <p className="mt-4 text-xs text-[#777]">April 15, 2026 · SVIET Main Auditorium</p>
+            <p className="mt-4 text-xs text-[#777]">April 15, 2026 · SVGOI Main Auditorium</p>
             <div className="mt-5 flex gap-3">
               <button className="rounded-lg bg-[#f7941d] px-4 py-2 text-sm font-semibold text-white">View Event</button>
               <button className="rounded-lg border border-[#f7941d] px-4 py-2 text-sm font-semibold text-[#f7941d]">Register Now</button>
@@ -847,7 +847,7 @@ export function EventsPageReplica() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
           <div className="absolute bottom-5 left-5 text-white">
             <h3 className="text-4xl font-extrabold">SPONTANIA</h3>
-            <p className="mt-2 max-w-lg text-sm">Explore our collection of memorable moments and events that capture the vibrant life at SVIET.</p>
+            <p className="mt-2 max-w-lg text-sm">Explore our collection of memorable moments and events that capture the vibrant life at SVGOI.</p>
           </div>
         </div>
       </section>
@@ -860,7 +860,7 @@ export function EventsPageReplica() {
               title: "Blockchain & Web3 Summit",
               description: "Explore decentralized technologies and future of digital finance.",
               date: "Mar 13, 2026",
-              location: "SVIET Tech Hub",
+              location: "SVGOI Tech Hub",
               image: "https://images.unsplash.com/photo-1558655146-364db4ea40e1?auto=format&fit=crop&w=1200&q=80",
             },
             {

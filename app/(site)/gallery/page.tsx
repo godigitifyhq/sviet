@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { GalleryPage as GalleryPageView } from "@/components/gallery/gallery-sectioned-page";
 
 export const metadata: Metadata = {
-  title: "Gallery | SVIET",
+  title: "Gallery | SVGOI",
   description:
-    "Browse SVIET campus visuals, category filters, achievements graphics, and immersive gallery highlights.",
+    "Browse SVGOI campus visuals, category filters, achievements graphics, and immersive gallery highlights.",
 };
 
 export default function GalleryPage() {
