@@ -53,10 +53,6 @@ export function HeroSection({
       imageSrc: "/assets/img/banner/banner_home_place2.jpeg",
       imageAlt: "SVIET Campus Highlights",
     },
-    {
-      videoSrc: "/assets/videos/hero_vedio.mp4",
-      imageAlt: "SVIET Video",
-    },
   ];
 
   const [requestForm, setRequestForm] =

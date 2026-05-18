@@ -176,7 +176,7 @@ export function ContactPageComponent() {
       {/* SECTION 1: HERO */}
       <section className="relative h-96 overflow-hidden md:h-[500px]">
         <Image
-          src="/assets/img/contact.jpg"
+          src="/assets/img/ contact.jpg"
           alt="SVIET campus"
           fill
           className="object-cover"
