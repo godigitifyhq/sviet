@@ -8,15 +8,19 @@ const dateString = z
     "Invalid date value.",
   );
 
-const baseEventSchema = z
+const eventSchemaFields = {
+  title: z.string().trim().min(3).max(180),
+  description: z.string().trim().min(10).max(2000),
+  image: z.string().trim().min(1).max(2000000),
+  startDate: dateString,
+  endDate: dateString.nullable().optional(),
+  category: z.string().trim().min(2).max(80),
+  isFeatured: z.boolean().optional().default(false),
+};
+
+const createEventBaseSchema = z
   .object({
-    title: z.string().trim().min(3).max(180),
-    description: z.string().trim().min(10).max(2000),
-    image: z.string().trim().min(1).max(2000000),
-    startDate: dateString,
-    endDate: dateString.nullable().optional(),
-    category: z.string().trim().min(2).max(80),
-    isFeatured: z.boolean().optional().default(false),
+    ...eventSchemaFields,
   })
   .refine(
     (data) => {
@@ -34,9 +38,12 @@ const baseEventSchema = z
     },
   );
 
-export const createEventSchema = baseEventSchema;
+export const createEventSchema = createEventBaseSchema;
 
-export const updateEventSchema = baseEventSchema
+export const updateEventSchema = z
+  .object({
+    ...eventSchemaFields,
+  })
   .partial()
   .refine(
     (data) => Object.keys(data).length > 0,

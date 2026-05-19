@@ -1,61 +1,36 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const CLUBS = [
   {
-    name: "Google Developer Student Club",
-    short: "GDSC",
+    name: "Google Developer Groups on Campus",
     tagline: "Build for everyone with Google technologies.",
-    bg: "bg-[#4285F4]",
-    text: "text-white",
+    logo: "/assets/img/club/GDGC.png",
+    bg: "bg-white",
   },
   {
     name: "Microsoft Learn Student Ambassadors",
-    short: "MLSA",
     tagline: "Lead, learn, and connect with Microsoft tools.",
-    bg: "bg-[#00a4ef]",
-    text: "text-white",
+    logo: "/assets/img/club/mlsa.webp",
+    bg: "bg-white",
   },
   {
     name: "GeeksForGeeks Campus Chapter",
-    short: "GFG",
     tagline: "Master DSA and competitive programming.",
-    bg: "bg-[#2f8d46]",
-    text: "text-white",
+    logo: "/assets/img/club/gfg.jpg",
+    bg: "bg-white",
   },
   {
     name: "CodeChef Campus Chapter",
-    short: "CC",
     tagline: "Compete, grow, and code at every level.",
-    bg: "bg-[#1a1a1a]",
-    text: "text-white",
+    logo: "/assets/img/club/cc.png",
+    bg: "bg-white",
   },
   {
     name: "IEEE Student Branch",
-    short: "IEEE",
     tagline: "Advancing technology for humanity.",
-    bg: "bg-[#00629B]",
-    text: "text-white",
-  },
-  {
-    name: "Photography Club",
-    short: "📷",
-    tagline: "Capture stories one frame at a time.",
-    bg: "bg-[#374151]",
-    text: "text-white",
-  },
-  {
-    name: "Drama & Theatre Club",
-    short: "🎭",
-    tagline: "Express, perform, and inspire on stage.",
-    bg: "bg-[#7c3aed]",
-    text: "text-white",
-  },
-  {
-    name: "Robotics Club",
-    short: "🤖",
-    tagline: "Design, build, and innovate with robotics.",
-    bg: "bg-[#0f172a]",
-    text: "text-white",
+    logo: "/assets/img/club/IEEE.jpg",
+    bg: "bg-white",
   },
 ];
 
@@ -84,18 +59,26 @@ export function ClubsCommunitiesSection() {
           </Link>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {CLUBS.map((club) => (
             <div
               key={club.name}
-              className="flex flex-col rounded-2xl border border-[#e0e7ff] bg-white overflow-hidden shadow-sm transition hover:shadow-md hover:-translate-y-0.5 duration-200"
+              className="flex flex-col overflow-hidden rounded-2xl border border-[#e0e7ff] bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
-              <div className={`flex h-16 items-center justify-center ${club.bg}`}>
-                <span className={`text-lg font-black tracking-tight ${club.text}`}>
-                  {club.short}
-                </span>
+              {/* Logo area */}
+              <div className="flex h-32 items-center justify-center p-6 bg-white">
+                <div className="relative h-full w-full">
+                  <Image
+                    src={club.logo}
+                    alt={`${club.name} logo`}
+                    fill
+                    sizes="(max-width: 640px) 50vw, 20vw"
+                    className="object-contain"
+                  />
+                </div>
               </div>
-              <div className="p-4">
+              {/* Info */}
+              <div className="border-t border-[#e0e7ff] p-4">
                 <h3 className="text-sm font-bold leading-snug text-[#111827]">{club.name}</h3>
                 <p className="mt-1 text-xs leading-relaxed text-[#6b7280]">{club.tagline}</p>
               </div>

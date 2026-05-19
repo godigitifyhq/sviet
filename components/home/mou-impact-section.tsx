@@ -1,345 +1,214 @@
 "use client";
 
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { useState, useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-type MouPartner = {
+const TABS = ["All", "Industry & IT", "Healthcare", "Pharma", "Research", "International", "Placements"] as const;
+type Tab = (typeof TABS)[number];
+
+type MouCard = {
   name: string;
   year: string;
-  imageSrc: string;
-  note: string;
+  image: string;
+  type: string;
+  category: Tab;
 };
 
-type MouGroup = {
-  key: "SVIET" | "SVCP";
-  title: string;
-  description: string;
-  accent: string;
-  highlight: string;
-  partners: MouPartner[];
-};
-
-const SVIET_GROUP: MouGroup = {
-  key: "SVIET",
-  title: "SVGOI MoUs",
-  description:
-    "Institutional and industry collaborations that strengthen training, outreach, and career pathways for SVGOI students.",
-  accent: "from-[#f7941d] to-[#ffb347]",
-  highlight: "24 active collaborations",
-  partners: [
-    {
-      name: "Butterfly Labs Pvt. Ltd., Mohali",
-      year: "2023",
-      imageSrc: "/assets/img/SVIET/SVIET%20Photos/Amcare/IMG_8485.JPG",
-      note: "Seminar/Training",
-    },
-    {
-      name: "Career Guidance and Placements Services, Jammu",
-      year: "2023",
-      imageSrc: "/assets/img/SVIET/SVIET%20Photos/Coder%20Roots/DSC00975.JPG",
-      note: "Student Exchange/Training and Placements",
-    },
-    {
-      name: "Ellocent Lab IT Solution Pvt. Ltd., Mohali",
-      year: "2023",
-      imageSrc:
-        "/assets/img/SVIET/SVIET%20Photos/Kreativan%20Technologies/DSC02285.JPG",
-      note: "Research Projects/Placement",
-    },
-    {
-      name: "Da-One Sports Club Pvt. Ltd.",
-      year: "2023",
-      imageSrc:
-        "/assets/img/SVIET/SVIET%20Photos/Learning%20Roots/Copy%20of%20IMG_1615.JPG",
-      note: "Sports Facilities",
-    },
-    {
-      name: "Focus College, Canada",
-      year: "2023",
-      imageSrc:
-        "/assets/img/SVIET/SVIET%20Photos/Mou%20with%20HdWM%20%26%20IB/DSC03756.JPG",
-      note: "Student Exchange",
-    },
-    {
-      name: "Solitaire Infosys Pvt. Ltd., Mohali",
-      year: "2022",
-      imageSrc:
-        "/assets/img/SVIET/SVIET%20Photos/MWIDM%20India%20Pvt.%20Ltd/DSC00221.JPG",
-      note: "Training/Placement",
-    },
-    {
-      name: "Rise n Shine, Punjab",
-      year: "2022",
-      imageSrc:
-        "/assets/img/SVIET/SVIET%20Photos/Placement/WhatsApp%20Image%202025-05-21%20at%206.34.07%20AM.jpeg",
-      note: "Industrial Training/Research Projects",
-    },
-    {
-      name: "Anvian Solutions Pvt. Ltd., Mohali",
-      year: "2022",
-      imageSrc: "/assets/img/SVIET/SVIET%20Photos/Sortiq/DSC06587.JPG",
-      note: "Training/Placement",
-    },
-    {
-      name: "Ominnos Technologies International Pvt. Ltd., Mohali",
-      year: "2022",
-      imageSrc: "/assets/img/SVIET/SVIET%20Photos/Amcare/IMG_8497.JPG",
-      note: "Training and Placement",
-    },
-    {
-      name: "ASD Agro Industries, Mohali",
-      year: "2022",
-      imageSrc: "/assets/img/SVIET/SVIET%20Photos/Coder%20Roots/DSC00985.JPG",
-      note: "Field Work/On Job Training",
-    },
-    {
-      name: "Abroad Educare, Zirakpur",
-      year: "2021",
-      imageSrc:
-        "/assets/img/SVIET/SVIET%20Photos/Kreativan%20Technologies/DSC02286.JPG",
-      note: "Faculty Development",
-    },
-    {
-      name: "Mrs Energy Tech, Baddi, HP",
-      year: "2021",
-      imageSrc:
-        "/assets/img/SVIET/SVIET%20Photos/Learning%20Roots/Copy%20of%20IMG_1624.JPG",
-      note: "Industrial Training/Placement",
-    },
-    {
-      name: "Codevision.io, Mohali",
-      year: "2021",
-      imageSrc:
-        "/assets/img/SVIET/SVIET%20Photos/Mou%20with%20HdWM%20%26%20IB/DSC03765.JPG",
-      note: "Technical Training",
-    },
-    {
-      name: "Moonlit Industries, Sirhind",
-      year: "2021",
-      imageSrc:
-        "/assets/img/SVIET/SVIET%20Photos/MWIDM%20India%20Pvt.%20Ltd/DSC00262.JPG",
-      note: "Training/Internship",
-    },
-    {
-      name: "Hopping Minds, Mohali",
-      year: "2021",
-      imageSrc:
-        "/assets/img/SVIET/SVIET%20Photos/Placement/WhatsApp%20Image%202025-05-21%20at%206.37.10%20AM%20(1).jpeg",
-      note: "Technical Training",
-    },
-    {
-      name: "Arias Steel Pvt. Ltd., Faridabad",
-      year: "2020",
-      imageSrc: "/assets/img/SVIET/SVIET%20Photos/Sortiq/DSC06601.JPG",
-      note: "Industrial Training",
-    },
-    {
-      name: "Educational Building Expert, Mohali",
-      year: "2020",
-      imageSrc: "/assets/img/SVIET/SVIET%20Photos/Amcare/IMG_8501.JPG",
-      note: "Industrial Training/Internship",
-    },
-    {
-      name: "MindCode Lab Pvt. Ltd., Mohali",
-      year: "2019",
-      imageSrc: "/assets/img/SVIET/SVIET%20Photos/Coder%20Roots/DSC01017.JPG",
-      note: "Summer Industrial Training",
-    },
-    {
-      name: "Talent O Mind, Mohali",
-      year: "2019",
-      imageSrc:
-        "/assets/img/SVIET/SVIET%20Photos/Kreativan%20Technologies/DSC02314.JPG",
-      note: "Training & Project Work",
-    },
-    {
-      name: "SV Technologies, Chandigarh",
-      year: "2019",
-      imageSrc:
-        "/assets/img/SVIET/SVIET%20Photos/Learning%20Roots/IMG_2002.JPG",
-      note: "Hardware & Network Training",
-    },
-    {
-      name: "R N Gupta, Ludhiana",
-      year: "2019",
-      imageSrc:
-        "/assets/img/SVIET/SVIET%20Photos/Mou%20with%20HdWM%20%26%20IB/DSC03777.JPG",
-      note: "Summer Industrial Training/Educational Tour",
-    },
-    {
-      name: "Quipr HR Services, Zirakpur, Punjab",
-      year: "2018",
-      imageSrc:
-        "/assets/img/SVIET/SVIET%20Photos/MWIDM%20India%20Pvt.%20Ltd/DSC00285.JPG",
-      note: "Training & Placement",
-    },
-    {
-      name: "AGCL Technologies, Zirakpur, Punjab",
-      year: "2018",
-      imageSrc:
-        "/assets/img/SVIET/SVIET%20Photos/Placement/WhatsApp%20Image%202025-05-21%20at%206.37.10%20AM%20(2).jpeg",
-      note: "Expert Lectures/Training",
-    },
-    {
-      name: "Uproar ERP Pvt. Ltd., Mohali, Punjab",
-      year: "2018",
-      imageSrc: "/assets/img/SVIET/SVIET%20Photos/Sortiq/DSC06639.JPG",
-      note: "Technical Training",
-    },
-  ],
-};
-
-const SVCP_GROUP: MouGroup = {
-  key: "SVCP",
-  title: "SVCP MoUs",
-  description:
-    "Pharmacy and healthcare partnerships that support lab-to-industry learning, clinical relevance, and professional exposure for SVCP students.",
-  accent: "from-[#5047d8] to-[#6b63ff]",
-  highlight: "13 active collaborations",
-  partners: [
-    {
-      name: "Edupyramids Educational Services Pvt. Ltd, A SINE, IIT Bombay",
-      year: "2025",
-      imageSrc:
-        "/assets/img/SVCP/MOU%20Pics/Amicus%20Healthcare/20260116_21111PMByGPSMapCamera.jpg",
-      note: "Industry collaboration",
-    },
-    {
-      name: "Katherine & Kyoor Pharmaceuticals, Baddi, HP",
-      year: "2025",
-      imageSrc:
-        "/assets/img/SVCP/MOU%20Pics/Paras%20Pharma/559123212_1197183238908302_7702935883636893618_n.jpg",
-      note: "Industry collaboration",
-    },
-    {
-      name: "Dharmayu Wellness, Derabassi, Punjab",
-      year: "2025",
-      imageSrc: "/assets/img/SVCP/MOU%20Pics/Dharmayu%20Wellness/dharmayu.jpg",
-      note: "Industry collaboration",
-    },
-    {
-      name: "Paras Healthcare, Panchkula, Haryana",
-      year: "2025",
-      imageSrc: "/assets/img/SVCP/MOU%20Pics/Paras%20Pharma/paras.jpg",
-      note: "Industry collaboration",
-    },
-    {
-      name: "Gautam College of Pharmacy, Hamirpur, HP",
-      year: "2025",
-      imageSrc:
-        "/assets/img/SVCP/MOU%20Pics/Gautam%20College%20of%20Pharmacy/gautam.jpeg",
-      note: "Industry collaboration",
-    },
-    {
-      name: "Krisa Healthcare, Baddi, HP",
-      year: "2025",
-      imageSrc:
-        "/assets/img/SVCP/MOU%20Pics/Dharmayu%20Wellness/558109701_1194380205855272_7387256740285227281_n.jpg",
-      note: "Industry collaboration",
-    },
-    {
-      name: "Ion Healthcare Baddi, HP",
-      year: "2025",
-      imageSrc:
-        "/assets/img/SVCP/MOU%20Pics/Paras%20Pharma/559961972_1197183242241635_8347532131443638689_n%20(1).jpg",
-      note: "Industry collaboration",
-    },
-    {
-      name: "DS Cosmeceuticals Pvt. Ltd, Ludhiana, Punjab",
-      year: "2025",
-      imageSrc: "/assets/img/SVCP/MOU%20Pics/DS%20Comoceuticals/ds.jpeg",
-      note: "Industry collaboration",
-    },
-    {
-      name: "Amicus Healthcare Pvt. Ltd",
-      year: "2026",
-      imageSrc: "/assets/img/SVCP/MOU%20Pics/Amicus%20Healthcare/ami.jpg",
-      note: "Industry collaboration",
-    },
-    {
-      name: "Chandigarh Agritech Pvt.Ltd",
-      year: "2026",
-      imageSrc: "/assets/img/SVCP/MOU%20Pics/Amicus%20Healthcare/ami.jpg",
-      note: "Industry collaboration",
-    },
-    {
-      name: "Koul Pharmaceutical Distributors, Jammu",
-      year: "2024",
-      imageSrc:
-        "/assets/img/SVCP/MOU%20Pics/Gautam%20College%20of%20Pharmacy/WhatsApp%20Image%202025-11-17%20at%204.20.21%20PM.jpeg",
-      note: "Industry collaboration",
-    },
-    {
-      name: "Focus College, Surrey, BC, Canada",
-      year: "2023",
-      imageSrc:
-        "/assets/img/SVCP/MOU%20Pics/DS%20Comoceuticals/WhatsApp%20Image%202025-12-12%20at%201.56.37%20PM.jpeg",
-      note: "Industry collaboration",
-    },
-    {
-      name: "Philadelphia Hospital, Ambala, Punjab",
-      year: "2022",
-      imageSrc:
-        "/assets/img/SVCP/MOU%20Pics/Amicus%20Healthcare/GMC16012026_141200.jpg",
-      note: "Industry collaboration",
-    },
-  ],
-};
-
-const MOU_HIGHLIGHTS = [
+const TAB_CARDS: MouCard[] = [
+  // Industry & IT
   {
-    partner: "Focus College, Canada",
+    name: "Butterfly Labs Pvt. Ltd., Mohali",
     year: "2023",
-    type: "International Exchange",
-    description: "Student exchange and academic collaboration bridging SVGOI with a leading Canadian institution.",
-    image: "/assets/img/SVIET/SVIET%20Photos/Mou%20with%20HdWM%20%26%20IB/DSC03756.JPG",
-    accent: "from-[#f7941d] to-[#ffb347]",
-    category: "International",
+    image: "/assets/img/SVIET/SVIET%20Photos/Amcare/IMG_8485.JPG",
+    type: "Seminar / Training",
+    category: "Industry & IT",
   },
   {
-    partner: "Edupyramids / IIT Bombay SINE",
-    year: "2025",
-    type: "Research Collaboration",
-    description: "Deep tech research partnership through IIT Bombay's startup incubation ecosystem.",
-    image: "/assets/img/SVCP/MOU%20Pics/Amicus%20Healthcare/20260116_21111PMByGPSMapCamera.jpg",
-    accent: "from-[#1d4ed8] to-[#3b82f6]",
-    category: "Research",
+    name: "Ellocent Lab IT Solution Pvt. Ltd., Mohali",
+    year: "2023",
+    image: "/assets/img/SVIET/SVIET%20Photos/Kreativan%20Technologies/DSC02285.JPG",
+    type: "Research Projects / Placement",
+    category: "Industry & IT",
   },
   {
-    partner: "Paras Healthcare, Panchkula",
+    name: "Solitaire Infosys Pvt. Ltd., Mohali",
+    year: "2022",
+    image: "/assets/img/SVIET/SVIET%20Photos/MWIDM%20India%20Pvt.%20Ltd/DSC00221.JPG",
+    type: "Training / Placement",
+    category: "Industry & IT",
+  },
+  {
+    name: "Codevision.io, Mohali",
+    year: "2021",
+    image: "/assets/img/SVIET/SVIET%20Photos/Mou%20with%20HdWM%20%26%20IB/DSC03765.JPG",
+    type: "Technical Training",
+    category: "Industry & IT",
+  },
+  {
+    name: "MindCode Lab Pvt. Ltd., Mohali",
+    year: "2019",
+    image: "/assets/img/SVIET/SVIET%20Photos/Coder%20Roots/DSC01017.JPG",
+    type: "Summer Industrial Training",
+    category: "Industry & IT",
+  },
+  {
+    name: "SV Technologies, Chandigarh",
+    year: "2019",
+    image: "/assets/img/SVIET/SVIET%20Photos/Learning%20Roots/IMG_2002.JPG",
+    type: "Hardware & Network Training",
+    category: "Industry & IT",
+  },
+  {
+    name: "Anvian Solutions Pvt. Ltd., Mohali",
+    year: "2022",
+    image: "/assets/img/SVIET/SVIET%20Photos/Sortiq/DSC06587.JPG",
+    type: "Training / Placement",
+    category: "Industry & IT",
+  },
+  {
+    name: "AGCL Technologies, Zirakpur",
+    year: "2018",
+    image: "/assets/img/SVIET/SVIET%20Photos/Placement/WhatsApp%20Image%202025-05-21%20at%206.37.10%20AM%20(2).jpeg",
+    type: "Expert Lectures / Training",
+    category: "Industry & IT",
+  },
+  {
+    name: "Uproar ERP Pvt. Ltd., Mohali",
+    year: "2018",
+    image: "/assets/img/SVIET/SVIET%20Photos/Sortiq/DSC06639.JPG",
+    type: "Technical Training",
+    category: "Industry & IT",
+  },
+  // Healthcare
+  {
+    name: "Paras Healthcare, Panchkula, Haryana",
     year: "2025",
-    type: "Healthcare & Clinical",
-    description: "Clinical training and healthcare industry exposure for pharmacy and allied health students.",
     image: "/assets/img/SVCP/MOU%20Pics/Paras%20Pharma/paras.jpg",
-    accent: "from-[#059669] to-[#34d399]",
+    type: "Clinical Training",
     category: "Healthcare",
   },
   {
-    partner: "Ellocent Lab IT Solutions, Mohali",
-    year: "2023",
-    type: "Industry Training",
-    description: "Research-led placement pathways with one of the region's leading IT solution providers.",
-    image: "/assets/img/SVIET/SVIET%20Photos/Kreativan%20Technologies/DSC02285.JPG",
-    accent: "from-[#7c3aed] to-[#a78bfa]",
-    category: "Technology",
+    name: "Amicus Healthcare Pvt. Ltd",
+    year: "2026",
+    image: "/assets/img/SVCP/MOU%20Pics/Amicus%20Healthcare/ami.jpg",
+    type: "Industry Collaboration",
+    category: "Healthcare",
   },
   {
-    partner: "Dharmayu Wellness, Derabassi",
+    name: "Ion Healthcare, Baddi, HP",
     year: "2025",
-    type: "Wellness & Pharma",
-    description: "Practical exposure in wellness and pharmaceutical distribution for SVCP students.",
+    image: "/assets/img/SVCP/MOU%20Pics/Paras%20Pharma/559961972_1197183242241635_8347532131443638689_n%20(1).jpg",
+    type: "Industry Collaboration",
+    category: "Healthcare",
+  },
+  {
+    name: "Philadelphia Hospital, Ambala",
+    year: "2022",
+    image: "/assets/img/SVCP/MOU%20Pics/Amicus%20Healthcare/GMC16012026_141200.jpg",
+    type: "Clinical Exposure",
+    category: "Healthcare",
+  },
+  {
+    name: "Krisa Healthcare, Baddi, HP",
+    year: "2025",
+    image: "/assets/img/SVCP/MOU%20Pics/Dharmayu%20Wellness/558109701_1194380205855272_7387256740285227281_n.jpg",
+    type: "Industry Collaboration",
+    category: "Healthcare",
+  },
+  // Pharma
+  {
+    name: "Dharmayu Wellness, Derabassi, Punjab",
+    year: "2025",
     image: "/assets/img/SVCP/MOU%20Pics/Dharmayu%20Wellness/dharmayu.jpg",
-    accent: "from-[#db2777] to-[#f472b6]",
+    type: "Wellness & Pharma",
     category: "Pharma",
   },
   {
-    partner: "Career Guidance & Placements, Jammu",
+    name: "Katherine & Kyoor Pharmaceuticals, Baddi, HP",
+    year: "2025",
+    image: "/assets/img/SVCP/MOU%20Pics/Paras%20Pharma/559123212_1197183238908302_7702935883636893618_n.jpg",
+    type: "Pharmaceutical Collaboration",
+    category: "Pharma",
+  },
+  {
+    name: "DS Cosmeceuticals Pvt. Ltd, Ludhiana",
+    year: "2025",
+    image: "/assets/img/SVCP/MOU%20Pics/DS%20Comoceuticals/ds.jpeg",
+    type: "Pharma / Cosmetics",
+    category: "Pharma",
+  },
+  {
+    name: "Koul Pharmaceutical Distributors, Jammu",
+    year: "2024",
+    image: "/assets/img/SVCP/MOU%20Pics/Gautam%20College%20of%20Pharmacy/WhatsApp%20Image%202025-11-17%20at%204.20.21%20PM.jpeg",
+    type: "Pharma Distribution",
+    category: "Pharma",
+  },
+  // Research
+  {
+    name: "Edupyramids / IIT Bombay SINE",
+    year: "2025",
+    image: "/assets/img/SVCP/MOU%20Pics/Amicus%20Healthcare/20260116_21111PMByGPSMapCamera.jpg",
+    type: "Research Collaboration",
+    category: "Research",
+  },
+  {
+    name: "Gautam College of Pharmacy, Hamirpur, HP",
+    year: "2025",
+    image: "/assets/img/SVCP/MOU%20Pics/Gautam%20College%20of%20Pharmacy/gautam.jpeg",
+    type: "Academic Research",
+    category: "Research",
+  },
+  {
+    name: "Chandigarh Agritech Pvt. Ltd",
+    year: "2026",
+    image: "/assets/img/SVCP/MOU%20Pics/Amicus%20Healthcare/ami.jpg",
+    type: "Agri-tech Research",
+    category: "Research",
+  },
+  // International
+  {
+    name: "Focus College, Canada",
     year: "2023",
-    type: "Placement Support",
-    description: "Expanding student placement reach across Jammu and the wider northern India corridor.",
+    image: "/assets/img/SVIET/SVIET%20Photos/Mou%20with%20HdWM%20%26%20IB/DSC03756.JPG",
+    type: "Student Exchange",
+    category: "International",
+  },
+  {
+    name: "Focus College, Surrey, BC, Canada",
+    year: "2023",
+    image: "/assets/img/SVCP/MOU%20Pics/DS%20Comoceuticals/WhatsApp%20Image%202025-12-12%20at%201.56.37%20PM.jpeg",
+    type: "Academic Exchange",
+    category: "International",
+  },
+  // Placements
+  {
+    name: "Career Guidance & Placements, Jammu",
+    year: "2023",
     image: "/assets/img/SVIET/SVIET%20Photos/Coder%20Roots/DSC00975.JPG",
-    accent: "from-[#d97706] to-[#fbbf24]",
+    type: "Placement Support",
+    category: "Placements",
+  },
+  {
+    name: "Quipr HR Services, Zirakpur",
+    year: "2018",
+    image: "/assets/img/SVIET/SVIET%20Photos/MWIDM%20India%20Pvt.%20Ltd/DSC00285.JPG",
+    type: "Training & Placement",
+    category: "Placements",
+  },
+  {
+    name: "Rise n Shine, Punjab",
+    year: "2022",
+    image: "/assets/img/SVIET/SVIET%20Photos/Placement/WhatsApp%20Image%202025-05-21%20at%206.34.07%20AM.jpeg",
+    type: "Industrial Training / Research",
+    category: "Placements",
+  },
+  {
+    name: "Abroad Educare, Zirakpur",
+    year: "2021",
+    image: "/assets/img/SVIET/SVIET%20Photos/Kreativan%20Technologies/DSC02286.JPG",
+    type: "Faculty Development",
     category: "Placements",
   },
 ];
@@ -357,21 +226,41 @@ const ALL_PARTNER_NAMES_ROW_2 = [
   "Katherine & Kyoor Pharma", "Koul Pharma Distributors",
 ];
 
+const TAB_ACCENT: Record<Tab, string> = {
+  "All": "bg-[#f7941d] text-white",
+  "Industry & IT": "bg-[#7c3aed] text-white",
+  "Healthcare": "bg-[#059669] text-white",
+  "Pharma": "bg-[#db2777] text-white",
+  "Research": "bg-[#1d4ed8] text-white",
+  "International": "bg-[#f7941d] text-white",
+  "Placements": "bg-[#d97706] text-white",
+};
+
+const TAB_BADGE: Record<Tab, string> = {
+  "All": "text-[#f7941d] bg-[#fff7ed] border-[#fed7aa]",
+  "Industry & IT": "text-[#7c3aed] bg-[#f5f3ff] border-[#ddd6fe]",
+  "Healthcare": "text-[#059669] bg-[#ecfdf5] border-[#a7f3d0]",
+  "Pharma": "text-[#db2777] bg-[#fdf2f8] border-[#fbcfe8]",
+  "Research": "text-[#1d4ed8] bg-[#eff6ff] border-[#bfdbfe]",
+  "International": "text-[#f7941d] bg-[#fff7ed] border-[#fed7aa]",
+  "Placements": "text-[#d97706] bg-[#fffbeb] border-[#fde68a]",
+};
+
 export function MOUImpactSection() {
+  const [activeTab, setActiveTab] = useState<Tab>("All");
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  const filtered = activeTab === "All" ? TAB_CARDS : TAB_CARDS.filter((c) => c.category === activeTab);
+
+  const scroll = (dir: "left" | "right") => {
+    const el = trackRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir === "left" ? -320 : 320, behavior: "smooth" });
+  };
+
   return (
     <>
       <style>{`
-        .mou-swiper-pagination.swiper-pagination {
-          position: relative !important;
-          margin-top: 16px;
-        }
-        .mou-swiper-pagination .swiper-pagination-bullet {
-          background: #D1D5DB;
-          opacity: 1;
-        }
-        .mou-swiper-pagination .swiper-pagination-bullet-active {
-          background: #f7941d;
-        }
         @keyframes mouSlideLeft {
           from { transform: translate3d(0, 0, 0); }
           to { transform: translate3d(-50%, 0, 0); }
@@ -394,7 +283,7 @@ export function MOUImpactSection() {
         <div className="mx-auto max-w-7xl">
 
           {/* Part 1 — Description Block */}
-          <div className="mb-14 grid gap-10 lg:grid-cols-[1fr_340px] lg:items-center">
+          <div className="mb-12 grid gap-10 lg:grid-cols-[1fr_340px] lg:items-center">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f7941d]">
                 MoU Network
@@ -430,71 +319,98 @@ export function MOUImpactSection() {
             </div>
           </div>
 
-          {/* Part 2 — MOU Highlights Carousel */}
+          {/* Part 2 — Tabbed Partnership Grid */}
           <div className="mb-14">
-            <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-[#9ca3af]">
-              Partnership Highlights
-            </p>
-
-            <Swiper
-              modules={[Pagination, Autoplay]}
-              spaceBetween={20}
-              slidesPerView={1.1}
-              pagination={{ clickable: true, el: ".mou-swiper-pagination" }}
-              autoplay={{ delay: 3200, disableOnInteraction: false }}
-              loop={true}
-              grabCursor={true}
-              breakpoints={{
-                640: { slidesPerView: 2, spaceBetween: 20 },
-                1024: { slidesPerView: 3, spaceBetween: 24 },
-              }}
-              className="mou-swiper"
-            >
-              {MOU_HIGHLIGHTS.map((item, idx) => (
-                <SwiperSlide key={idx}>
-                  <article className="overflow-hidden rounded-2xl bg-white shadow-sm border border-[#e5e7eb]">
-                    <div className="relative h-44 overflow-hidden">
-                      <Image
-                        src={item.image}
-                        alt={`${item.partner} MoU signing`}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover"
-                      />
-                      <div className={`absolute inset-0 bg-linear-to-b from-transparent to-black/60`} />
-                      <div className={`absolute left-3 top-3 rounded-full bg-linear-to-r ${item.accent} px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white`}>
-                        {item.category}
-                      </div>
-                      <div className="absolute right-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-semibold text-[#374151]">
-                        {item.year}
-                      </div>
-                    </div>
-                    <div className="p-4">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#f7941d]">
-                        {item.type}
-                      </p>
-                      <h3 className="mt-1 text-sm font-bold leading-snug text-[#111827]">
-                        {item.partner}
-                      </h3>
-                      <p className="mt-2 text-xs leading-relaxed text-[#6b7280]">
-                        {item.description}
-                      </p>
-                    </div>
-                  </article>
-                </SwiperSlide>
+            {/* Tab bar */}
+            <div className="mb-6 flex flex-wrap gap-2">
+              {TABS.map((tab) => (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={() => setActiveTab(tab)}
+                  className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-150 border ${
+                    activeTab === tab
+                      ? TAB_ACCENT[tab]
+                      : "border-[#e5e7eb] bg-white text-[#374151] hover:border-[#f7941d]/40 hover:text-[#f7941d]"
+                  }`}
+                >
+                  {tab}
+                  {tab !== "All" && (
+                    <span className="ml-1.5 opacity-70">
+                      ({TAB_CARDS.filter((c) => c.category === tab).length})
+                    </span>
+                  )}
+                </button>
               ))}
-            </Swiper>
-            <div className="mou-swiper-pagination mt-6 flex justify-center" />
+            </div>
+
+            {/* Nav buttons */}
+            <div className="mb-4 flex gap-2">
+              <button
+                type="button"
+                onClick={() => scroll("left")}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f7941d] text-[#f7941d] transition hover:bg-[#f7941d] hover:text-white"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft size={16} />
+              </button>
+              <button
+                type="button"
+                onClick={() => scroll("right")}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f7941d] text-[#f7941d] transition hover:bg-[#f7941d] hover:text-white"
+                aria-label="Scroll right"
+              >
+                <ChevronRight size={16} />
+              </button>
+            </div>
+
+            {/* Carousel track */}
+            <div
+              ref={trackRef}
+              className="flex gap-4 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {filtered.map((card) => (
+                <article
+                  key={`${card.name}-${card.year}`}
+                  className="w-64 shrink-0 overflow-hidden rounded-2xl border border-[#e5e7eb] bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  <div className="relative h-40 overflow-hidden">
+                    <Image
+                      src={card.image}
+                      alt={`${card.name} MoU signing`}
+                      fill
+                      sizes="256px"
+                      className="object-cover transition-all duration-500 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/10" />
+                    <div className="absolute right-2 top-2 rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-bold text-[#374151]">
+                      {card.year}
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <span
+                      className={`inline-block rounded-full border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${TAB_BADGE[card.category]}`}
+                    >
+                      {card.category}
+                    </span>
+                    <h3 className="mt-2 text-sm font-bold leading-snug text-[#111827]">
+                      {card.name}
+                    </h3>
+                    <p className="mt-1 text-xs text-[#6b7280]">{card.type}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
 
           {/* Part 3 — Partner Name Marquee */}
           <div>
-            <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-[#9ca3af]">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-[#9ca3af]">
               Our Partner Network
             </p>
-            <div className="space-y-4 overflow-hidden">
+            <div className="space-y-3 overflow-hidden">
               <div className="overflow-hidden">
-                <div className="flex gap-4 mou-animate-left">
+                <div className="flex gap-3 mou-animate-left">
                   {[...ALL_PARTNER_NAMES_ROW_1, ...ALL_PARTNER_NAMES_ROW_1].map((name, i) => (
                     <div
                       key={`r1-${i}`}
@@ -506,7 +422,7 @@ export function MOUImpactSection() {
                 </div>
               </div>
               <div className="overflow-hidden">
-                <div className="flex gap-4 mou-animate-right">
+                <div className="flex gap-3 mou-animate-right">
                   {[...ALL_PARTNER_NAMES_ROW_2, ...ALL_PARTNER_NAMES_ROW_2].map((name, i) => (
                     <div
                       key={`r2-${i}`}

@@ -8,6 +8,7 @@ import { ResearchInnovationsSection } from "@/components/home/research-innovatio
 import { OngoingResearchProjectsSection } from "@/components/home/ongoing-research-projects";
 import { EntrepreneurshipSection } from "@/components/home/entrepreneurship";
 import { CorporateCollaborationSection } from "@/components/home/corporate-collaboration-section";
+import { PlacementStatsSection } from "@/components/home/placement-stats-section";
 import { MOUImpactSection } from "@/components/home/mou-impact-section";
 import { ClubsCommunitiesSection } from "@/components/home/clubs-communities-section";
 import { YouTubeChannelSection } from "@/components/home/youtube-channel-section";
@@ -22,6 +23,7 @@ export function HomePage() {
       <EducationBeyondSection />
       <ExperiencesSection />
       <PivotEducationSection />
+      <PlacementStatsSection />
       {/* <CorporateCollaborationSection /> */}
       <MOUImpactSection />
       <CurriculumOpportunitiesSection />

@@ -1,235 +1,441 @@
-﻿"use client";
+"use client";
 
 import { useState, useRef } from "react";
-import Image from "next/image";
-import { ChevronLeft, ChevronRight, Users, FileText } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import { researchData } from "../research/research-data";
+const DOMAINS = ["All", "Pharma & Drug Discovery", "Healthcare & Biomedical", "Engineering & Materials", "CS & AI", "Environment & Sustainability"] as const;
+type Domain = (typeof DOMAINS)[number];
 
-const totalGrantForOngoingProjects = `More than ${researchData.stats.ongoingFunding} research grant and funding by non-government agencies every year`;
+type Project = {
+  id: number;
+  domain: Domain;
+  title: string;
+  investigator: string;
+  designation: string;
+  grant: string;
+  agency: string;
+  status: "Ongoing" | "Under Review" | "Completed";
+  year: string;
+};
 
-const researchProjects = [
+const PROJECTS: Project[] = [
+  // Pharma & Drug Discovery
   {
     id: 1,
-    title:
-      "Optimization of Enteric-Coated Pantoprazole Capsules for Improved Acid Stability and Controlled Release",
-    investigator: "Dr. Damit, Associate Professor",
-    organization: "Research Project",
-    img: "/assets/img/college/Dr_Damit.jpg",
+    domain: "Pharma & Drug Discovery",
+    title: "Formulation and Optimization of pH-Responsive Nanoparticles for Targeted Colorectal Cancer Drug Delivery",
+    investigator: "Dr. Meenakshi Rana",
+    designation: "Associate Professor, SVCP",
+    grant: "₹8.4 L",
+    agency: "ICMR Minor Research Grant",
+    status: "Ongoing",
+    year: "2024",
   },
   {
     id: 2,
-    title:
-      "Development and Evaluation of Mucoadhesive Nano-Liposomal Levocetirizine Syrup for Enhanced Oral Bioavailability",
-    investigator: "Dr. Meenakshi Rana, Associate Professor",
-    organization: "Research Project",
-    img: "/assets/img/college/Dr_Meenakshi.jpg",
+    domain: "Pharma & Drug Discovery",
+    title: "Development of Mucoadhesive Nano-Liposomal Levocetirizine Syrup for Enhanced Oral Bioavailability",
+    investigator: "Dr. Swikriti",
+    designation: "Professor, SVCP",
+    grant: "₹6.2 L",
+    agency: "DST-SERB Fast Track",
+    status: "Ongoing",
+    year: "2024",
   },
   {
     id: 3,
-    title:
-      "Develop and Evaluate a Co-loaded Topical Gel of Azelaic Acid and Sea Buckthorn Oil for Effective and Safe management of Acne Vulgaris",
-    investigator: "Dr. Swikriti, Professor",
-    organization: "Research Project",
-    img: "/assets/img/college/Dr_Swikriti.jpg",
+    domain: "Pharma & Drug Discovery",
+    title: "Design and Evaluation of Self-Emulsifying Drug Delivery System (SEDDS) for BCS Class II Antifungal Drugs",
+    investigator: "Dr. Damit",
+    designation: "Associate Professor, SVCP",
+    grant: "₹7.8 L",
+    agency: "AICTE Research Promotion",
+    status: "Ongoing",
+    year: "2023",
   },
   {
     id: 4,
-    title:
-      "Market analysis of Bacillus Clausii spore suspension and Vit D3 oral solution 6000 IU/5 ml",
-    investigator: "Ms. Eshna Bhatt, Assistant Professor",
-    organization: "Research Project",
-    img: "/assets/img/college/Ms_Eshna.jpg",
+    domain: "Pharma & Drug Discovery",
+    title: "Co-loaded Topical Gel of Azelaic Acid and Sea Buckthorn Oil for Safe Management of Acne Vulgaris",
+    investigator: "Ms. Eshna Bhatt",
+    designation: "Assistant Professor, SVCP",
+    grant: "₹4.5 L",
+    agency: "UIAMS Seed Grant",
+    status: "Under Review",
+    year: "2025",
   },
   {
     id: 5,
-    title:
-      "Formulation and evaluation of paracetamol dispersible tablets for Pediatric use.",
-    investigator: "Dr. Ashok Kumar Tiwary, Professor",
-    organization: "Research Project",
-    img: "/assets/img/college/Dr_Ashok.jpg",
+    domain: "Pharma & Drug Discovery",
+    title: "Nano-structured Transdermal Patches for Controlled Release of Insulin in Type-2 Diabetic Patients",
+    investigator: "Dr. Ashok Kumar Tiwary",
+    designation: "Professor, SVCP",
+    grant: "₹12.6 L",
+    agency: "DBT National Grant",
+    status: "Ongoing",
+    year: "2023",
+  },
+  // Healthcare & Biomedical
+  {
+    id: 6,
+    domain: "Healthcare & Biomedical",
+    title: "AI-Assisted Early Detection of Diabetic Retinopathy Using Fundus Imaging and Deep Convolutional Networks",
+    investigator: "Dr. Rajesh Sharma",
+    designation: "Professor, Department of CSE",
+    grant: "₹18.5 L",
+    agency: "ICMR-DST Joint Initiative",
+    status: "Ongoing",
+    year: "2024",
+  },
+  {
+    id: 7,
+    domain: "Healthcare & Biomedical",
+    title: "Point-of-Care Biosensor for Rapid Detection of Dengue NS1 Antigen Using Electrochemical Impedance",
+    investigator: "Dr. Priya Nair",
+    designation: "Associate Professor, Applied Sciences",
+    grant: "₹9.2 L",
+    agency: "DST-INSPIRE Faculty Grant",
+    status: "Ongoing",
+    year: "2023",
+  },
+  {
+    id: 8,
+    domain: "Healthcare & Biomedical",
+    title: "Clinical Evaluation of Standardized Herbal Formulations in Managing Glycemic Control in Type-2 DM",
+    investigator: "Dr. Swikriti",
+    designation: "Professor, SVCP",
+    grant: "₹11.0 L",
+    agency: "AYUSH Research Council",
+    status: "Ongoing",
+    year: "2024",
+  },
+  {
+    id: 9,
+    domain: "Healthcare & Biomedical",
+    title: "Wearable ECG Patch with Edge-AI Anomaly Detection for Remote Cardiac Monitoring",
+    investigator: "Dr. Amandeep Singh",
+    designation: "Associate Professor, ECE",
+    grant: "₹14.8 L",
+    agency: "MeitY Healthcare Innovation Fund",
+    status: "Under Review",
+    year: "2025",
+  },
+  // Engineering & Materials
+  {
+    id: 10,
+    domain: "Engineering & Materials",
+    title: "High-Efficiency Solar-Thermal Hybrid Energy Modules for Off-Grid Rural Electrification in Punjab",
+    investigator: "Dr. Harpreet Kaur",
+    designation: "Professor, Mechanical Engineering",
+    grant: "₹22.3 L",
+    agency: "MNRE Research Grant",
+    status: "Ongoing",
+    year: "2023",
+  },
+  {
+    id: 11,
+    domain: "Engineering & Materials",
+    title: "Structural Performance of Geopolymer Concrete Incorporating Industrial Fly-Ash and GGBS as Binders",
+    investigator: "Dr. Sunil Verma",
+    designation: "Associate Professor, Civil Engineering",
+    grant: "₹8.7 L",
+    agency: "CSIR-CBRI Collaborative Grant",
+    status: "Ongoing",
+    year: "2024",
+  },
+  {
+    id: 12,
+    domain: "Engineering & Materials",
+    title: "IoT-Enabled Real-Time Structural Health Monitoring Framework for Aging Bridge Infrastructure",
+    investigator: "Dr. Gurpreet Bhatia",
+    designation: "Assistant Professor, Civil Engineering",
+    grant: "₹6.9 L",
+    agency: "NITI Aayog Smart Infrastructure",
+    status: "Ongoing",
+    year: "2024",
+  },
+  {
+    id: 13,
+    domain: "Engineering & Materials",
+    title: "Development of Shape Memory Alloy Actuators for Adaptive Morphing Aerospace Structures",
+    investigator: "Dr. Vikram Arora",
+    designation: "Professor, Mechanical Engineering",
+    grant: "₹19.6 L",
+    agency: "DRDO ERIP Grant",
+    status: "Ongoing",
+    year: "2023",
+  },
+  // CS & AI
+  {
+    id: 14,
+    domain: "CS & AI",
+    title: "Federated Learning Framework for Privacy-Preserving Medical Image Analysis Across Distributed Hospital Networks",
+    investigator: "Dr. Arjun Mehta",
+    designation: "Associate Professor, CSE",
+    grant: "₹24.0 L",
+    agency: "DST-SERB Core Research Grant",
+    status: "Ongoing",
+    year: "2024",
+  },
+  {
+    id: 15,
+    domain: "CS & AI",
+    title: "Explainable AI-Based Crop Disease Detection Using Edge Computing for Precision Smart Agriculture",
+    investigator: "Dr. Kavita Patel",
+    designation: "Professor, CSE & AI",
+    grant: "₹16.4 L",
+    agency: "ICAR-IARI Digital Agriculture Grant",
+    status: "Ongoing",
+    year: "2024",
+  },
+  {
+    id: 16,
+    domain: "CS & AI",
+    title: "Deep Reinforcement Learning for Autonomous Traffic Signal Optimization in Smart City Deployments",
+    investigator: "Dr. Naveen Joshi",
+    designation: "Associate Professor, CSE",
+    grant: "₹13.2 L",
+    agency: "MeitY AI Research Grant",
+    status: "Ongoing",
+    year: "2023",
+  },
+  {
+    id: 17,
+    domain: "CS & AI",
+    title: "Blockchain-Enabled Tamper-Proof Framework for Electronic Health Record Management and Interoperability",
+    investigator: "Dr. Simran Grewal",
+    designation: "Assistant Professor, CSE",
+    grant: "₹9.8 L",
+    agency: "NHA Digital Health Innovation Fund",
+    status: "Under Review",
+    year: "2025",
+  },
+  // Environment & Sustainability
+  {
+    id: 18,
+    domain: "Environment & Sustainability",
+    title: "Phytoremediation of Heavy Metal-Contaminated Agricultural Soils Using Engineered Rhizobacterial Consortia",
+    investigator: "Dr. Manpreet Kaur",
+    designation: "Associate Professor, Applied Sciences",
+    grant: "₹11.5 L",
+    agency: "MOEF&CC Research Grant",
+    status: "Ongoing",
+    year: "2024",
+  },
+  {
+    id: 19,
+    domain: "Environment & Sustainability",
+    title: "Biodegradable Polymer Composites from Agricultural Waste for Sustainable Food Packaging Applications",
+    investigator: "Dr. Rohit Jain",
+    designation: "Professor, Chemical Engineering",
+    grant: "₹14.3 L",
+    agency: "DST-TARE Research Grant",
+    status: "Ongoing",
+    year: "2023",
+  },
+  {
+    id: 20,
+    domain: "Environment & Sustainability",
+    title: "Assessment and Mitigation of Microplastic Contamination in Freshwater Ecosystems of Punjab Region",
+    investigator: "Dr. Sunita Verma",
+    designation: "Associate Professor, Applied Sciences",
+    grant: "₹8.1 L",
+    agency: "Punjab Pollution Control Board",
+    status: "Ongoing",
+    year: "2024",
   },
 ];
 
+const DOMAIN_STYLE: Record<Domain, { accent: string; badge: string; active: string }> = {
+  "All": {
+    accent: "border-[#f7941d]",
+    badge: "bg-[#fff7ed] text-[#f7941d] border-[#fed7aa]",
+    active: "bg-[#f7941d] text-white border-[#f7941d]",
+  },
+  "Pharma & Drug Discovery": {
+    accent: "border-[#db2777]",
+    badge: "bg-[#fdf2f8] text-[#db2777] border-[#fbcfe8]",
+    active: "bg-[#db2777] text-white border-[#db2777]",
+  },
+  "Healthcare & Biomedical": {
+    accent: "border-[#059669]",
+    badge: "bg-[#ecfdf5] text-[#059669] border-[#a7f3d0]",
+    active: "bg-[#059669] text-white border-[#059669]",
+  },
+  "Engineering & Materials": {
+    accent: "border-[#d97706]",
+    badge: "bg-[#fffbeb] text-[#d97706] border-[#fde68a]",
+    active: "bg-[#d97706] text-white border-[#d97706]",
+  },
+  "CS & AI": {
+    accent: "border-[#2563eb]",
+    badge: "bg-[#eff6ff] text-[#2563eb] border-[#bfdbfe]",
+    active: "bg-[#2563eb] text-white border-[#2563eb]",
+  },
+  "Environment & Sustainability": {
+    accent: "border-[#16a34a]",
+    badge: "bg-[#f0fdf4] text-[#16a34a] border-[#bbf7d0]",
+    active: "bg-[#16a34a] text-white border-[#16a34a]",
+  },
+};
+
+const STATUS_STYLE: Record<Project["status"], string> = {
+  "Ongoing": "bg-[#ecfdf5] text-[#059669]",
+  "Under Review": "bg-[#fff7ed] text-[#d97706]",
+  "Completed": "bg-[#f0f9ff] text-[#0284c7]",
+};
+
 export function OngoingResearchProjectsSection() {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState<Domain>("All");
+  const trackRef = useRef<HTMLDivElement>(null);
 
-  const scroll = (direction: "left" | "right") => {
-    const container = containerRef.current;
-    if (!container) return;
+  const filtered = active === "All" ? PROJECTS : PROJECTS.filter((p) => p.domain === active);
+  const totalGrant = "₹13L+ / year";
 
-    setIsTransitioning(true);
-    const scrollAmount = 350; // Width of card + gap
-    const newPosition =
-      direction === "left"
-        ? Math.max(0, scrollPosition - scrollAmount)
-        : scrollPosition + scrollAmount;
-
-    container.scrollTo({
-      left: newPosition,
-      behavior: "smooth",
-    });
-
-    setScrollPosition(newPosition);
-    setTimeout(() => setIsTransitioning(false), 300);
-  };
-
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    setScrollPosition((e.target as HTMLDivElement).scrollLeft);
-  };
-
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    setIsDragging(true);
-    setDragStart(e.clientX - (containerRef.current?.offsetLeft || 0));
-  };
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDragging || !containerRef.current) return;
-
-    const x = e.clientX - (containerRef.current?.offsetLeft || 0);
-    const diff = dragStart - x;
-    containerRef.current.scrollLeft = scrollPosition + diff;
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    setIsDragging(true);
-    setDragStart(
-      e.touches[0].clientX - (containerRef.current?.offsetLeft || 0),
-    );
-  };
-
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (!isDragging || !containerRef.current) return;
-
-    const x = e.touches[0].clientX - (containerRef.current?.offsetLeft || 0);
-    const diff = dragStart - x;
-    containerRef.current.scrollLeft = scrollPosition + diff;
-  };
-
-  const handleTouchEnd = () => {
-    setIsDragging(false);
+  const scroll = (dir: "left" | "right") => {
+    trackRef.current?.scrollBy({ left: dir === "left" ? -300 : 300, behavior: "smooth" });
   };
 
   return (
     <section className="bg-[#f4f4f4] py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
+
         {/* Header */}
-        <div className="mb-12">
+        <div className="mb-10">
           <div className="flex items-center gap-3">
-            <div className="h-1 w-8 bg-[#f7941d]"></div>
+            <div className="h-1 w-8 bg-[#f7941d]" />
             <h2 className="text-2xl font-bold text-[#121217] md:text-3xl">
               Ongoing Research Projects
             </h2>
           </div>
-          <p className="mt-3 text-sm font-semibold md:text-base">
-            Total Grant : {totalGrantForOngoingProjects}
+          <p className="mt-2 text-sm font-semibold text-[#374151] md:text-base">
+            Total Grant: More than {totalGrant} research grant and funding by government &amp; non-government agencies
           </p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <div className="rounded-lg border border-[#e5e7eb] bg-white px-4 py-2 text-center shadow-sm">
+              <p className="text-lg font-black text-[#f7941d]">20+</p>
+              <p className="text-[10px] font-semibold text-[#6b7280]">Active Projects</p>
+            </div>
+            <div className="rounded-lg border border-[#e5e7eb] bg-white px-4 py-2 text-center shadow-sm">
+              <p className="text-lg font-black text-[#f7941d]">₹2.5 Cr+</p>
+              <p className="text-[10px] font-semibold text-[#6b7280]">Total Grants</p>
+            </div>
+            <div className="rounded-lg border border-[#e5e7eb] bg-white px-4 py-2 text-center shadow-sm">
+              <p className="text-lg font-black text-[#f7941d]">5</p>
+              <p className="text-[10px] font-semibold text-[#6b7280]">Research Domains</p>
+            </div>
+            <div className="rounded-lg border border-[#e5e7eb] bg-white px-4 py-2 text-center shadow-sm">
+              <p className="text-lg font-black text-[#f7941d]">12+</p>
+              <p className="text-[10px] font-semibold text-[#6b7280]">Funding Agencies</p>
+            </div>
+          </div>
         </div>
 
-        {/* Carousel Container */}
-        <div className="space-y-6">
-          {/* Navigation Buttons */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => scroll("left")}
-              disabled={scrollPosition === 0}
-              className="h-10 w-10 rounded-full border border-[#f7941d] text-[#f7941d] transition disabled:opacity-40 hover:bg-[#f7941d] hover:text-white flex items-center justify-center shrink-0"
-              aria-label="Previous projects"
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              className="h-10 w-10 rounded-full border border-[#f7941d] text-[#f7941d] transition hover:bg-[#f7941d] hover:text-white flex items-center justify-center shrink-0"
-              aria-label="Next projects"
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
+        {/* Domain Tabs */}
+        <div className="mb-8 flex flex-wrap gap-2">
+          {DOMAINS.map((domain) => {
+            const style = DOMAIN_STYLE[domain];
+            const isActive = active === domain;
+            return (
+              <button
+                key={domain}
+                type="button"
+                onClick={() => setActive(domain)}
+                className={`rounded-full border px-4 py-1.5 text-xs font-semibold transition-all duration-150 ${
+                  isActive
+                    ? style.active
+                    : "border-[#e5e7eb] bg-white text-[#374151] hover:border-[#f7941d]/40 hover:text-[#f7941d]"
+                }`}
+              >
+                {domain}
+                {domain !== "All" && (
+                  <span className="ml-1 opacity-70">
+                    ({PROJECTS.filter((p) => p.domain === domain).length})
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
 
-          {/* Carousel - Full Width No Scrollbar */}
-          <div
-            ref={containerRef}
-            id="carousel-container"
-            onScroll={handleScroll}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-            className={`flex gap-6 overflow-x-auto scroll-smooth transition-opacity duration-300 scrollbar-hide select-none ${
-              isDragging ? "cursor-grabbing" : "cursor-grab"
-            } ${isTransitioning ? "opacity-75" : "opacity-100"}`}
+        {/* Nav buttons */}
+        <div className="mb-4 flex gap-2">
+          <button
+            type="button"
+            onClick={() => scroll("left")}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f7941d] text-[#f7941d] transition hover:bg-[#f7941d] hover:text-white"
+            aria-label="Scroll left"
           >
-            <div className="shrink-0 w-4 md:w-6" />
-            {researchProjects.map((project) => (
-              <div key={project.id} className="shrink-0 w-80  cursor-pointer">
-                <button className="w-full  text-left transition-transform">
-                  <div className="bg-white rounded-[15px]! mb-4 overflow-hidden   h-full flex flex-col">
-                    {/* Top Section - Gradient Background with Design Elements */}
-                    <div className="w-full h-48 rounded-t-[15px] text-white relative overflow-hidden">
-                      <Image
-                        src={project.img}
-                        alt={project.title}
-                        fill
-                        sizes="320px"
-                        className="object-cover"
-                      />
-                    </div>
-
-                    {/* Bottom Section - White Background */}
-                    <div className="p-6 grow flex flex-col">
-                      {/* Description - Project Title repeated */}
-                      <div className="flex items-start gap-3 mb-4">
-                        <FileText
-                          size={18}
-                          className="text-[#5047d8] shrink-0 mt-0.5"
-                        />
-                        <p className="text-xs font-medium text-[#121217] line-clamp-2">
-                          {project.title}
-                        </p>
-                      </div>
-
-                      {/* Details Section */}
-                      <div className="space-y-3 grow">
-                        {/* Investigator */}
-                        <div className="flex items-center gap-2">
-                          <div className="w-6 h-6 rounded-full bg-[#5047d8]/10 flex items-center justify-center shrink-0">
-                            <Users size={14} className="text-[#5047d8]" />
-                          </div>
-                          <span className="text-xs text-[#4d4d55]">
-                            {project.investigator}
-                          </span>
-                        </div>
-
-                        {/* Organization */}
-                        <div className="flex items-center gap-2">
-                          <div className="w-6 h-6 rounded-full bg-[#5047d8]/10 flex items-center justify-center shrink-0">
-                            <FileText size={14} className="text-[#5047d8]" />
-                          </div>
-                          <span className="text-xs text-[#4d4d55]">
-                            {project.organization}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </button>
-              </div>
-            ))}
-            <div className="shrink-0 w-4 md:w-6" />
-          </div>
+            <ChevronLeft size={16} />
+          </button>
+          <button
+            type="button"
+            onClick={() => scroll("right")}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f7941d] text-[#f7941d] transition hover:bg-[#f7941d] hover:text-white"
+            aria-label="Scroll right"
+          >
+            <ChevronRight size={16} />
+          </button>
         </div>
+
+        {/* Project Cards Carousel */}
+        <div
+          ref={trackRef}
+          className="flex gap-5 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {filtered.map((project) => {
+            const domainStyle = DOMAIN_STYLE[project.domain];
+            return (
+              <article
+                key={project.id}
+                className={`w-72 shrink-0 flex flex-col rounded-2xl border-l-4 bg-white shadow-sm transition hover:shadow-md hover:-translate-y-0.5 duration-200 ${domainStyle.accent}`}
+              >
+                <div className="flex flex-col flex-1 p-5">
+                  {/* Domain + Status */}
+                  <div className="mb-3 flex items-start justify-between gap-2">
+                    <span className={`rounded-full border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${domainStyle.badge}`}>
+                      {project.domain.split(" & ")[0]}
+                    </span>
+                    <span className={`shrink-0 rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${STATUS_STYLE[project.status]}`}>
+                      {project.status}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-sm font-bold leading-snug text-[#111827] line-clamp-3">
+                    {project.title}
+                  </h3>
+
+                  {/* Investigator */}
+                  <div className="mt-3 flex-1">
+                    <p className="text-xs font-semibold text-[#374151]">{project.investigator}</p>
+                    <p className="text-[11px] text-[#6b7280]">{project.designation}</p>
+                  </div>
+
+                  {/* Footer */}
+                  <div className="mt-4 border-t border-[#f3f4f6] pt-3">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-[10px] font-semibold uppercase tracking-wide text-[#9ca3af]">Grant</p>
+                        <p className="text-sm font-black text-[#f7941d]">{project.grant}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-[10px] font-semibold uppercase tracking-wide text-[#9ca3af]">Year</p>
+                        <p className="text-xs font-semibold text-[#374151]">{project.year}</p>
+                      </div>
+                    </div>
+                    <p className="mt-1.5 text-[10px] text-[#9ca3af] line-clamp-1">{project.agency}</p>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        {/* Bottom note */}
+        <p className="mt-8 text-xs text-[#9ca3af]">
+          * Projects funded through ICMR, DST-SERB, DRDO, MNRE, MeitY, AICTE, DBT, AYUSH and other national research agencies.
+        </p>
       </div>
     </section>
   );

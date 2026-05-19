@@ -495,27 +495,27 @@ export function AboutOverviewPage() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {[
             {
-              icon: "🏆",
+             
               heading: "NAAC B++ Accredited",
               body: "Recognised with a 2.94 NAAC score (2024) — a benchmark of academic quality and institutional standards.",
             },
             {
-              icon: "💼",
+           
               heading: "60 LPA Highest Package",
               body: "Our students secure top-tier roles across India's leading companies — from IT giants to global MNCs.",
             },
             {
-              icon: "👩‍🎓",
+         
               heading: "50,000+ Students",
               body: "One of Punjab's largest multi-discipline campuses, nurturing talent from 28 states and beyond.",
             },
             {
-              icon: "📅",
+         
               heading: "20+ Years of Excellence",
               body: "A trusted legacy institution delivering quality engineering, management, pharmacy, and law education since 2004.",
             },
             {
-              icon: "🚀",
+         
               heading: "Innovation Ecosystem",
               body: "Startup incubation, research grants, IIC support, and 15+ student-led initiatives power our entrepreneurship culture.",
             },
@@ -524,7 +524,7 @@ export function AboutOverviewPage() {
               key={usp.heading}
               className="flex flex-col border-t-4 border-[#f7941d] bg-[#1f2937] p-6"
             >
-              <div className="mb-4 text-4xl">{usp.icon}</div>
+            
               <h3 className="text-base font-bold text-white">{usp.heading}</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/65">{usp.body}</p>
             </article>

@@ -213,37 +213,46 @@ function normalizeHighlightItems(value: unknown): ProgramHighlightItem[] {
     return [];
   }
 
-  return value
-    .map((item) => {
-      if (typeof item === "string") {
-        const [rawTitle, ...rest] = item.split(":");
-        return {
-          title: rawTitle.trim(),
-          description: rest.join(":").trim() || undefined,
-        };
+  const highlights: ProgramHighlightItem[] = [];
+
+  for (const item of value) {
+    if (typeof item === "string") {
+      const [rawTitle, ...rest] = item.split(":");
+      const title = rawTitle.trim();
+
+      if (!title) {
+        continue;
       }
 
-      if (typeof item !== "object" || item === null) {
-        return null;
-      }
+      highlights.push({
+        title,
+        description: rest.join(":").trim() || undefined,
+      });
+      continue;
+    }
 
-      if ("title" in item && typeof item.title === "string") {
-        const description =
-          "description" in item && typeof item.description === "string"
-            ? item.description
-            : undefined;
-        return { title: item.title, description };
-      }
+    if (typeof item !== "object" || item === null || !("title" in item)) {
+      continue;
+    }
 
-      if ("title" in item && "desc" in item && typeof item.title === "string") {
-        const description =
-          typeof item.desc === "string" ? item.desc : undefined;
-        return { title: item.title, description };
-      }
+    if (typeof item.title !== "string" || !item.title.trim()) {
+      continue;
+    }
 
-      return null;
-    })
-    .filter((item): item is ProgramHighlightItem => Boolean(item?.title));
+    const description =
+      "description" in item && typeof item.description === "string"
+        ? item.description
+        : "desc" in item && typeof item.desc === "string"
+          ? item.desc
+          : undefined;
+
+    highlights.push({
+      title: item.title,
+      description,
+    });
+  }
+
+  return highlights;
 }
 
 function normalizeOutcomeItems(value: unknown): ProgramOutcomeItem[] {
@@ -251,36 +260,39 @@ function normalizeOutcomeItems(value: unknown): ProgramOutcomeItem[] {
     return [];
   }
 
-  return value
-    .map((item, index) => {
-      if (typeof item === "string") {
-        return { title: item, description: undefined };
-      }
+  const outcomes: ProgramOutcomeItem[] = [];
 
-      if (typeof item !== "object" || item === null) {
-        return null;
-      }
+  value.forEach((item, index) => {
+    if (typeof item === "string") {
+      outcomes.push({ title: item, description: undefined });
+      return;
+    }
 
-      const title =
-        "title" in item && typeof item.title === "string"
-          ? item.title
-          : `Outcome ${index + 1}`;
-      const description =
-        "desc" in item && typeof item.desc === "string"
-          ? item.desc
-          : "description" in item && typeof item.description === "string"
-            ? item.description
-            : undefined;
-      const image =
-        "image" in item &&
-        typeof item.image === "string" &&
-        item.image.startsWith("/")
-          ? item.image
-          : null;
+    if (typeof item !== "object" || item === null) {
+      return;
+    }
 
-      return { title, description, image };
-    })
-    .filter((item): item is ProgramOutcomeItem => Boolean(item?.title));
+    const title =
+      "title" in item && typeof item.title === "string"
+        ? item.title
+        : `Outcome ${index + 1}`;
+    const description =
+      "desc" in item && typeof item.desc === "string"
+        ? item.desc
+        : "description" in item && typeof item.description === "string"
+          ? item.description
+          : undefined;
+    const image =
+      "image" in item &&
+      typeof item.image === "string" &&
+      item.image.startsWith("/")
+        ? item.image
+        : null;
+
+    outcomes.push({ title, description, image });
+  });
+
+  return outcomes;
 }
 
 function normalizeFacilityItems(value: unknown): ProgramFacilityItem[] {
@@ -288,34 +300,37 @@ function normalizeFacilityItems(value: unknown): ProgramFacilityItem[] {
     return [];
   }
 
-  return value
-    .map((item, index) => {
-      if (typeof item === "string") {
-        return { title: item, description: undefined, image: null };
-      }
+  const facilities: ProgramFacilityItem[] = [];
 
-      if (typeof item !== "object" || item === null) {
-        return null;
-      }
+  value.forEach((item, index) => {
+    if (typeof item === "string") {
+      facilities.push({ title: item, description: undefined, image: null });
+      return;
+    }
 
-      const title =
-        "title" in item && typeof item.title === "string"
-          ? item.title
-          : `Facility ${index + 1}`;
-      const description =
-        "description" in item && typeof item.description === "string"
-          ? item.description
-          : undefined;
-      const image =
-        "image" in item &&
-        typeof item.image === "string" &&
-        item.image.startsWith("/")
-          ? item.image
-          : null;
+    if (typeof item !== "object" || item === null) {
+      return;
+    }
 
-      return { title, description, image };
-    })
-    .filter((item): item is ProgramFacilityItem => Boolean(item?.title));
+    const title =
+      "title" in item && typeof item.title === "string"
+        ? item.title
+        : `Facility ${index + 1}`;
+    const description =
+      "description" in item && typeof item.description === "string"
+        ? item.description
+        : undefined;
+    const image =
+      "image" in item &&
+      typeof item.image === "string" &&
+      item.image.startsWith("/")
+        ? item.image
+        : null;
+
+    facilities.push({ title, description, image });
+  });
+
+  return facilities;
 }
 
 function normalizeFaqItems(value: unknown) {

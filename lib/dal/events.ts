@@ -18,6 +18,14 @@ export type CampusEventListItem = {
   createdAt: Date;
 };
 
+type LegacyEventListItem = Omit<
+  CampusEventListItem,
+  "endDate" | "isFeatured"
+> & {
+  endDate: Date;
+  isFeatured: false;
+};
+
 export type CampusEventsSectionData = {
   featuredEvent: CampusEventListItem | null;
   listEvents: CampusEventListItem[];
@@ -53,24 +61,34 @@ function parseLegacyEventDate(dateText?: string) {
     return new Date(directTimestamp);
   }
 
-  const monthYearMatch = normalized.match(new RegExp(`^(${months})\\s+(\\d{4})$`, "i"));
+  const monthYearMatch = normalized.match(
+    new RegExp(`^(${months})\\s+(\\d{4})$`, "i"),
+  );
 
   if (monthYearMatch) {
-    const fallbackTimestamp = Date.parse(`${monthYearMatch[1]} 1, ${monthYearMatch[2]}`);
+    const fallbackTimestamp = Date.parse(
+      `${monthYearMatch[1]} 1, ${monthYearMatch[2]}`,
+    );
     return Number.isNaN(fallbackTimestamp) ? null : new Date(fallbackTimestamp);
   }
 
-  const dayMonthYearMatch = normalized.match(new RegExp(`^(\\d{1,2})\\s+(${months})\\s+(\\d{4})$`, "i"));
+  const dayMonthYearMatch = normalized.match(
+    new RegExp(`^(\\d{1,2})\\s+(${months})\\s+(\\d{4})$`, "i"),
+  );
 
   if (dayMonthYearMatch) {
-    const fallbackTimestamp = Date.parse(`${dayMonthYearMatch[2]} ${dayMonthYearMatch[1]}, ${dayMonthYearMatch[3]}`);
+    const fallbackTimestamp = Date.parse(
+      `${dayMonthYearMatch[2]} ${dayMonthYearMatch[1]}, ${dayMonthYearMatch[3]}`,
+    );
     return Number.isNaN(fallbackTimestamp) ? null : new Date(fallbackTimestamp);
   }
 
   return null;
 }
 
-function getLatestLegacyCompletedEvent(todayStart: Date): CampusEventListItem | null {
+function getLatestLegacyCompletedEvent(
+  todayStart: Date,
+): CampusEventListItem | null {
   const legacyEvents = (eventsData as LegacyEvent[])
     .map((event) => {
       const parsedDate = parseLegacyEventDate(event.date);
@@ -89,9 +107,9 @@ function getLatestLegacyCompletedEvent(todayStart: Date): CampusEventListItem | 
         category: "campus",
         isFeatured: false,
         createdAt: parsedDate,
-      } satisfies CampusEventListItem;
+      } satisfies LegacyEventListItem;
     })
-    .filter((event): event is CampusEventListItem => event !== null)
+    .filter((event): event is LegacyEventListItem => event !== null)
     .sort((a, b) => b.startDate.getTime() - a.startDate.getTime());
 
   return legacyEvents[0] ?? null;
@@ -159,7 +177,8 @@ export async function getCampusEventsSectionData(): Promise<CampusEventsSectionD
         : [];
 
   return {
-    featuredEvent: featuredActive ?? latestUpcoming ?? latestLegacyCompletedEvent,
+    featuredEvent:
+      featuredActive ?? latestUpcoming ?? latestLegacyCompletedEvent,
     listEvents: hasUpcomingEvents ? upcomingEvents : fallbackCompletedEvents,
     listLabel: hasUpcomingEvents ? "Next big events" : "Recent events",
     hasUpcomingEvents,

@@ -137,7 +137,7 @@ export function PlacementsPageComponent() {
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
           {/* Director Placements */}
           <article className="overflow-hidden rounded-3xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] shadow-[0_8px_24px_rgba(30,42,120,0.06)]">
-            <div className="relative h-64 bg-[#EEF4FF]">
+            <div className="relative h-96 bg-[#EEF4FF]">
               <Image
                 src="/assets/img/college/management/shubham-sir..jpg"
                 alt="Mr. Shubham Garg, Director Placements"
@@ -169,7 +169,7 @@ export function PlacementsPageComponent() {
 
           {/* Director Operations & Corporate Partnership */}
           <article className="overflow-hidden rounded-3xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] shadow-[0_8px_24px_rgba(30,42,120,0.06)]">
-            <div className="relative h-64 bg-[#EEF4FF]">
+            <div className="relative h-96 bg-[#EEF4FF]">
               <Image
                 src="/assets/img/college/management/ankur-sir.jpg"
                 alt="Mr. Ankur Gill, Director Operations & Corporate Partnership"
