@@ -40,7 +40,7 @@ export function FounderSection({
         <div>
           <div className="inline-flex items-center gap-3">
             <span className="h-px w-8 bg-[#f7941d]/60" aria-hidden="true" />
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#6B7280]">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#6B7280]">
               Our Founder
             </p>
           </div>

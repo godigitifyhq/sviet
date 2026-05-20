@@ -13,7 +13,9 @@ export async function generateStaticParams() {
   return events.map((event) => ({ id: String(event.id) }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { id } = await params;
   const event = events.find((e) => String(e.id) === id);
   if (!event) return {};
@@ -58,7 +60,7 @@ export default async function EventDetailPage({ params }: PageProps) {
           <div className="mx-auto w-full max-w-5xl">
             <Link
               href="/events"
-              className="mb-4 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.18em] text-white/60 hover:text-white"
+              className="mb-4 inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-[0.18em] text-white/60 hover:text-white"
             >
               ← All Events
             </Link>
@@ -86,7 +88,7 @@ export default async function EventDetailPage({ params }: PageProps) {
         <div className="mx-auto max-w-5xl">
           <div className="grid gap-10 lg:grid-cols-[1fr_320px]">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#f7941d]">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#f7941d]">
                 Event Overview
               </p>
               <p className="mt-4 text-base leading-relaxed text-[#374151] md:text-lg">
@@ -113,20 +115,33 @@ export default async function EventDetailPage({ params }: PageProps) {
               <dl className="mt-4 space-y-4">
                 {event.date ? (
                   <div>
-                    <dt className="text-xs font-semibold text-[#9ca3af]">Date</dt>
-                    <dd className="mt-1 text-sm font-medium text-[#111827]">{event.date}</dd>
+                    <dt className="text-sm font-semibold text-[#9ca3af]">
+                      Date
+                    </dt>
+                    <dd className="mt-1 text-sm font-medium text-[#111827]">
+                      {event.date}
+                    </dd>
                   </div>
                 ) : null}
                 {event.venue ? (
                   <div>
-                    <dt className="text-xs font-semibold text-[#9ca3af]">Venue</dt>
-                    <dd className="mt-1 text-sm font-medium text-[#111827]">{event.venue}</dd>
+                    <dt className="text-sm font-semibold text-[#9ca3af]">
+                      Venue
+                    </dt>
+                    <dd className="mt-1 text-sm font-medium text-[#111827]">
+                      {event.venue}
+                    </dd>
                   </div>
                 ) : null}
                 {speakers.length > 0 ? (
                   <div>
-                    <dt className="text-xs font-semibold text-[#9ca3af]">Speakers</dt>
-                    <dd className="mt-1 text-sm font-medium text-[#111827]">{speakers.length} Speaker{speakers.length !== 1 ? "s" : ""}</dd>
+                    <dt className="text-sm font-semibold text-[#9ca3af]">
+                      Speakers
+                    </dt>
+                    <dd className="mt-1 text-sm font-medium text-[#111827]">
+                      {speakers.length} Speaker
+                      {speakers.length !== 1 ? "s" : ""}
+                    </dd>
                   </div>
                 ) : null}
               </dl>
@@ -139,7 +154,7 @@ export default async function EventDetailPage({ params }: PageProps) {
       {speakers.length > 0 ? (
         <section className="border-t border-[#e5e7eb] bg-[#f5f7fb] px-4 py-12 md:px-8 md:py-16">
           <div className="mx-auto max-w-5xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#f7941d]">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#f7941d]">
               Guest Speakers
             </p>
             <h2 className="mt-2 text-2xl font-bold text-[#111827] md:text-3xl">
@@ -168,17 +183,21 @@ export default async function EventDetailPage({ params }: PageProps) {
                       {speaker.name.charAt(0)}
                     </div>
                   )}
-                  <h3 className="text-base font-bold text-[#111827]">{speaker.name}</h3>
+                  <h3 className="text-base font-bold text-[#111827]">
+                    {speaker.name}
+                  </h3>
                   {speaker.designation ? (
-                    <p className="mt-0.5 text-xs font-semibold text-[#f7941d]">
+                    <p className="mt-0.5 text-sm font-semibold text-[#f7941d]">
                       {speaker.designation}
                     </p>
                   ) : null}
                   {speaker.company ? (
-                    <p className="mt-1 text-xs text-[#6b7280]">{speaker.company}</p>
+                    <p className="mt-1 text-sm text-[#6b7280]">
+                      {speaker.company}
+                    </p>
                   ) : null}
                   {speaker.bio ? (
-                    <p className="mt-3 text-xs leading-relaxed text-[#4b5563]">
+                    <p className="mt-3 text-sm leading-relaxed text-[#4b5563]">
                       {speaker.bio}
                     </p>
                   ) : null}
@@ -196,7 +215,8 @@ export default async function EventDetailPage({ params }: PageProps) {
             Experience SVGOI&apos;s Vibrant Campus Life
           </h2>
           <p className="mt-3 text-sm text-white/70">
-            Events like this are just one part of what makes SVGOI a hub for learning, innovation, and growth.
+            Events like this are just one part of what makes SVGOI a hub for
+            learning, innovation, and growth.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <Link

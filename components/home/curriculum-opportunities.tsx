@@ -11,7 +11,8 @@ const curriculumEvents = [
     name: "Sportsmania 2025",
     mainCard: {
       title: "Sportsmania 2025",
-      description: "The annual sports festival of SVGOI brings together students in a vibrant display of athleticism, teamwork and competitive spirit across events like football, basketball, and more.",
+      description:
+        "The annual sports festival of SVGOI brings together students in a vibrant display of athleticism, teamwork and competitive spirit across events like football, basketball, and more.",
       image: "/assets/img/section_card/Sportsmania.jpeg",
       cta: "Learn more",
     },
@@ -33,7 +34,8 @@ const curriculumEvents = [
     name: "Elevate 2.0",
     mainCard: {
       title: "Elevate 2.0",
-      description: "A flagship cultural & innovation fest bringing together creative minds, performances, workshops and peer-networking celebrating innovation, student talent and campus life.",
+      description:
+        "A flagship cultural & innovation fest bringing together creative minds, performances, workshops and peer-networking celebrating innovation, student talent and campus life.",
       image: "/assets/img/section_card/Elevate.jpeg",
       cta: "Learn more",
     },
@@ -55,7 +57,8 @@ const curriculumEvents = [
     name: "TEDx SVIET",
     mainCard: {
       title: "TEDx SVIET",
-      description: "TEDx SVIET 2025, under the theme 'The Power of One', featured thoughtful talks and inspiring conversations aimed at spreading ideas worth sharing.",
+      description:
+        "TEDx SVIET 2025, under the theme 'The Power of One', featured thoughtful talks and inspiring conversations aimed at spreading ideas worth sharing.",
       image: "/assets/img/section_card/TEDx.jpeg",
       cta: "Learn more",
     },
@@ -77,7 +80,8 @@ const curriculumEvents = [
     name: "DevFest Chandigarh 2025",
     mainCard: {
       title: "DevFest Chandigarh 2025",
-      description: "A power-packed tech fest bringing together technologists, developers and enthusiasts for learning, innovation, workshops and community networking focused on AI, Web, Cloud and emerging tech.",
+      description:
+        "A power-packed tech fest bringing together technologists, developers and enthusiasts for learning, innovation, workshops and community networking focused on AI, Web, Cloud and emerging tech.",
       image: "/assets/img/section_card/Dev1.jpeg",
       cta: "Learn more",
     },
@@ -99,7 +103,8 @@ const curriculumEvents = [
     name: "Graduation Ceremony 2025",
     mainCard: {
       title: "Graduation Ceremony 2025",
-      description: "The Graduation Ceremony 2025 marked a proud milestone for graduating batches, celebrating years of dedication, learning, and achievement with esteemed dignitaries.",
+      description:
+        "The Graduation Ceremony 2025 marked a proud milestone for graduating batches, celebrating years of dedication, learning, and achievement with esteemed dignitaries.",
       image: "/assets/img/section_card/Convo.jpeg",
       cta: "Learn more",
     },
@@ -121,7 +126,8 @@ const curriculumEvents = [
     name: "Spontania 2025",
     mainCard: {
       title: "Spontania 2025",
-      description: "The flagship cultural extravaganza of SVGOI with a vibrant three-day celebration of art, culture, and talent featuring dance, music, theater and cultural showcases.",
+      description:
+        "The flagship cultural extravaganza of SVGOI with a vibrant three-day celebration of art, culture, and talent featuring dance, music, theater and cultural showcases.",
       image: "/assets/img/section_card/Spont.jpeg",
       cta: "Learn more",
     },
@@ -143,7 +149,8 @@ const curriculumEvents = [
     name: "Global Futures Summit 2.0",
     mainCard: {
       title: "Global Futures Summit 2.0",
-      description: "Industry & HR Perspectives event bringing together thought leaders to discuss emerging trends, career pathways, and shaping the future workforce.",
+      description:
+        "Industry & HR Perspectives event bringing together thought leaders to discuss emerging trends, career pathways, and shaping the future workforce.",
       image: "/assets/img/section_card/GFS.JPG",
       cta: "Learn more",
     },
@@ -163,16 +170,24 @@ const curriculumEvents = [
 ];
 
 const curriculumImageMap: Record<string, string> = {
-  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumUFNaeJrVPFul6q2HRvZ8sMIWLa5xwjUytOhi": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumUFNaeJrVPFul6q2HRvZ8sMIWLa5xwjUytOhi",
-  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumQZ22PWyaj2Z1DfTG5xHuqnQog6vKB4FpJeI8": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumQZ22PWyaj2Z1DfTG5xHuqnQog6vKB4FpJeI8",
-  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumTJiOaxw6itj04AFlILkGvbdQPE8uOqWpHYsU": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumTJiOaxw6itj04AFlILkGvbdQPE8uOqWpHYsU",
-  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumZdCLf8nLS41ZsWrz2yX9qNdG5vVC7FuBlfa0": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumZdCLf8nLS41ZsWrz2yX9qNdG5vVC7FuBlfa0",
-  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumINSwyyR21jqluvKkFoRaDpPfCGTtxewIs74z": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumINSwyyR21jqluvKkFoRaDpPfCGTtxewIs74z",
-  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumIyCbVLR21jqluvKkFoRaDpPfCGTtxewIs74z": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumIyCbVLR21jqluvKkFoRaDpPfCGTtxewIs74z",
-  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumpKvXrQ6ntRyaQormsAvUSgqZTJcibOuXfBWd": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumpKvXrQ6ntRyaQormsAvUSgqZTJcibOuXfBWd",
+  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumUFNaeJrVPFul6q2HRvZ8sMIWLa5xwjUytOhi":
+    "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumUFNaeJrVPFul6q2HRvZ8sMIWLa5xwjUytOhi",
+  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumQZ22PWyaj2Z1DfTG5xHuqnQog6vKB4FpJeI8":
+    "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumQZ22PWyaj2Z1DfTG5xHuqnQog6vKB4FpJeI8",
+  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumTJiOaxw6itj04AFlILkGvbdQPE8uOqWpHYsU":
+    "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumTJiOaxw6itj04AFlILkGvbdQPE8uOqWpHYsU",
+  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumZdCLf8nLS41ZsWrz2yX9qNdG5vVC7FuBlfa0":
+    "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumZdCLf8nLS41ZsWrz2yX9qNdG5vVC7FuBlfa0",
+  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumINSwyyR21jqluvKkFoRaDpPfCGTtxewIs74z":
+    "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumINSwyyR21jqluvKkFoRaDpPfCGTtxewIs74z",
+  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumIyCbVLR21jqluvKkFoRaDpPfCGTtxewIs74z":
+    "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumIyCbVLR21jqluvKkFoRaDpPfCGTtxewIs74z",
+  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumpKvXrQ6ntRyaQormsAvUSgqZTJcibOuXfBWd":
+    "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumpKvXrQ6ntRyaQormsAvUSgqZTJcibOuXfBWd",
 };
 
-const resolveCurriculumImage = (imagePath: string) => curriculumImageMap[imagePath as keyof typeof curriculumImageMap] ?? imagePath;
+const resolveCurriculumImage = (imagePath: string) =>
+  curriculumImageMap[imagePath as keyof typeof curriculumImageMap] ?? imagePath;
 
 export function CurriculumOpportunitiesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -186,7 +201,7 @@ export function CurriculumOpportunitiesSection() {
   const handlePrev = () => {
     const newIndex = Math.max(0, activeIndex - 1);
     setActiveIndex(newIndex);
-    
+
     if (newIndex < scrollOffset) {
       setScrollOffset(newIndex);
     }
@@ -197,7 +212,7 @@ export function CurriculumOpportunitiesSection() {
   const handleNext = () => {
     const newIndex = Math.min(totalItems - 1, activeIndex + 1);
     setActiveIndex(newIndex);
-    
+
     if (newIndex >= scrollOffset + itemsPerView) {
       setScrollOffset(newIndex - itemsPerView + 1);
     }
@@ -219,7 +234,10 @@ export function CurriculumOpportunitiesSection() {
   };
 
   const currentEvent = curriculumEvents[activeIndex];
-  const visibleItems = curriculumEvents.slice(scrollOffset, scrollOffset + itemsPerView);
+  const visibleItems = curriculumEvents.slice(
+    scrollOffset,
+    scrollOffset + itemsPerView,
+  );
 
   return (
     <section className="bg-[#FFFFFF] px-4 py-16 md:px-6 md:py-24">
@@ -229,7 +247,9 @@ export function CurriculumOpportunitiesSection() {
             National-Level Exposure & Industry Platforms
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed text-[#6B7280] md:text-base">
-           SVGOI builds its own ecosystem of innovation and creativity through large-scale, student-driven events that encourage participation, collaboration, and real-world problem-solving.
+            SVGOI builds its own ecosystem of innovation and creativity through
+            large-scale, student-driven events that encourage participation,
+            collaboration, and real-world problem-solving.
           </p>
         </div>
 
@@ -261,21 +281,27 @@ export function CurriculumOpportunitiesSection() {
                 return (
                   <button
                     key={event.id}
-                    onClick={() => handleItemClick(curriculumEvents.indexOf(event))}
+                    onClick={() =>
+                      handleItemClick(curriculumEvents.indexOf(event))
+                    }
                     className={`w-full text-left px-3 py-2 rounded transition-all duration-200 ${
                       isActive
                         ? "text-[#f7941d] font-semibold bg-[#E5E7EB]"
                         : "text-[#6B7280] font-normal hover:text-[#f7941d] hover:bg-[#F3F4F6]"
                     }`}
                   >
-                    <div className="text-xs md:text-sm line-clamp-2">{event.name}</div>
+                    <div className="text-sm md:text-sm line-clamp-2">
+                      {event.name}
+                    </div>
                   </button>
                 );
               })}
             </div>
           </div>
 
-          <div className={`transition-opacity duration-300 ${isTransitioning ? "opacity-75" : "opacity-100"}`}>
+          <div
+            className={`transition-opacity duration-300 ${isTransitioning ? "opacity-75" : "opacity-100"}`}
+          >
             <div className="grid gap-6 lg:grid-cols-[1fr_1.5fr_1fr]">
               <div className="space-y-4">
                 <div className="overflow-hidden rounded-[20px] bg-[#f7941d] p-5 md:p-6 text-white h-full flex flex-col justify-between">
@@ -284,13 +310,13 @@ export function CurriculumOpportunitiesSection() {
                     <h3 className="mb-3 text-sm md:text-base font-bold leading-tight">
                       {currentEvent.mainCard.title}
                     </h3>
-                    <p className="mb-4 text-xs leading-relaxed text-white/90">
+                    <p className="mb-4 text-sm leading-relaxed text-white/90">
                       {currentEvent.mainCard.description}
                     </p>
                   </div>
                   <Link
                     href={`/events/${currentEvent.id}`}
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-3 md:px-4 py-2 text-xs md:text-sm font-semibold text-[#f7941d] transition hover:bg-white/90"
+                    className="inline-flex items-center gap-2 rounded-full bg-white px-3 md:px-4 py-2 text-sm md:text-sm font-semibold text-[#f7941d] transition hover:bg-white/90"
                   >
                     View Event Details
                     <span aria-hidden="true">›</span>
@@ -298,7 +324,10 @@ export function CurriculumOpportunitiesSection() {
                 </div>
               </div>
 
-              <Link href={`/events/${currentEvent.id}`} className="relative overflow-hidden rounded-[20px] bg-black h-80 md:h-full block group">
+              <Link
+                href={`/events/${currentEvent.id}`}
+                className="relative overflow-hidden rounded-[20px] bg-black h-80 md:h-full block group"
+              >
                 <Image
                   src={resolveCurriculumImage(currentEvent.mainCard.image)}
                   alt={currentEvent.mainCard.title}
@@ -306,14 +335,17 @@ export function CurriculumOpportunitiesSection() {
                   className="object-cover transition-all duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-all" />
-                <div className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-[#111827] opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1 text-sm font-semibold text-[#111827] opacity-0 group-hover:opacity-100 transition-opacity">
                   View Details →
                 </div>
               </Link>
 
               <div className="space-y-4">
                 {currentEvent.stats.map((stat, idx) => (
-                  <div key={idx} className="relative overflow-hidden rounded-[20px] bg-[#000000ba]  text-white h-40">
+                  <div
+                    key={idx}
+                    className="relative overflow-hidden rounded-[20px] bg-[#000000ba]  text-white h-40"
+                  >
                     <div className="relative h-full w-full">
                       <Image
                         src={resolveCurriculumImage(stat.image)}
@@ -323,14 +355,21 @@ export function CurriculumOpportunitiesSection() {
                       />
                     </div>
                     <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-6 text-right">
-                      <div className="text-2xl md:text-3xl font-bold">{stat.label.split("+")[0]}+</div>
-                      <div className="text-xs font-medium opacity-90">{stat.label.split("+")[1]?.trim() || "Participants"}</div>
+                      <div className="text-2xl md:text-3xl font-bold">
+                        {stat.label.split("+")[0]}+
+                      </div>
+                      <div className="text-sm font-medium opacity-90">
+                        {stat.label.split("+")[1]?.trim() || "Participants"}
+                      </div>
                     </div>
                   </div>
                 ))}
 
                 {currentEvent.videos.map((video, idx) => (
-                  <div key={idx} className="relative overflow-hidden rounded-[20px] bg-black h-40 group">
+                  <div
+                    key={idx}
+                    className="relative overflow-hidden rounded-[20px] bg-black h-40 group"
+                  >
                     <Image
                       src={resolveCurriculumImage(video.image)}
                       alt={video.label}
@@ -340,7 +379,9 @@ export function CurriculumOpportunitiesSection() {
                     <div className="absolute inset-0 bg-linear-to-b from-transparent via-black/20 to-black/80" />
                     <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4">
                       <div>
-                        <div className="text-xs md:text-sm font-semibold text-white">{video.label}</div>
+                        <div className="text-sm md:text-sm font-semibold text-white">
+                          {video.label}
+                        </div>
                       </div>
                       {/* <button
                         aria-label="Play video"

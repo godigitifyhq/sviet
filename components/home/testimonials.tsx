@@ -197,7 +197,7 @@ export function StudentTestimonialsSection() {
                       {testimonial.title}
                     </p>
                     {/* Name */}
-                    <p className="mt-3 text-xs text-[#6B7280]">
+                    <p className="mt-3 text-sm text-[#6B7280]">
                       {testimonial.name}
                     </p>
                   </div>
@@ -216,7 +216,7 @@ export function StudentTestimonialsSection() {
 
                     {/* Watch Video Button */}
                     <button className="flex items-center gap-2 rounded-full bg-[#f7941d] px-4 py-2 text-white hover:bg-[#2563EB] transition">
-                      <span className="text-xs font-semibold">Watch video</span>
+                      <span className="text-sm font-semibold">Watch video</span>
                       <Play
                         size={16}
                         className="fill-[#F4B740] text-[#F4B740]"

@@ -65,7 +65,7 @@ export function PlacementCardsMarqueeSection() {
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center bg-linear-to-b from-white/20 via-white/10 to-transparent">
-                    <span className="rounded-full border border-white/30 bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white md:text-sm">
+                    <span className="rounded-full border border-white/30 bg-white/15 px-4 py-2 text-sm font-semibold uppercase tracking-[0.2em] text-white md:text-sm">
                       Image coming soon
                     </span>
                   </div>

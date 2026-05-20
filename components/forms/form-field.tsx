@@ -20,7 +20,7 @@ export function FormField({
         {required ? <span className="ml-1 text-red-600">*</span> : null}
       </label>
       {children}
-      {error ? <p className="mt-1 text-xs text-red-600">{error}</p> : null}
+      {error ? <p className="mt-1 text-sm text-red-600">{error}</p> : null}
     </div>
   );
 }

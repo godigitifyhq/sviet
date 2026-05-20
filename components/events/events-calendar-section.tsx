@@ -54,7 +54,7 @@ export function EventsCalendarSection({
                   className="h-44 w-full object-cover object-[50%_30%]"
                 />
                 <div className="space-y-2 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-[#2563eb]">
+                  <p className="text-sm font-semibold uppercase tracking-wide text-[#2563eb]">
                     {event.date}
                   </p>
                   <h4 className="text-lg font-semibold leading-snug text-[#111827]">
@@ -95,7 +95,7 @@ export function EventsCalendarSection({
                   <h4 className="line-clamp-2 text-sm font-semibold text-[#0f172a]">
                     {event.title}
                   </h4>
-                  <p className="mt-1 text-xs uppercase tracking-wide text-[#2563eb]">
+                  <p className="mt-1 text-sm uppercase tracking-wide text-[#2563eb]">
                     {event.date}
                   </p>
                 </div>

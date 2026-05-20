@@ -50,7 +50,7 @@ export function EventsFeaturedSection({
                 className="h-52 w-full object-cover object-[50%_20%]"
               />
               <div className="space-y-3 p-5">
-                <p className="text-xs font-semibold uppercase tracking-wide text-[#f97316]">
+                <p className="text-sm font-semibold uppercase tracking-wide text-[#f97316]">
                   {event.date}
                 </p>
                 <h3 className="text-xl font-semibold leading-tight text-[#0f172a]">

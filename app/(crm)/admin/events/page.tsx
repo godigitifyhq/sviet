@@ -391,7 +391,7 @@ export default function AdminEventsPage() {
                           </td>
                           <td className="px-4 py-3">
                             <span
-                              className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold capitalize ${
+                              className={`inline-flex rounded-full px-2.5 py-1 text-sm font-semibold capitalize ${
                                 event.status === "upcoming"
                                   ? "bg-blue-100 text-blue-700"
                                   : event.status === "ongoing"
@@ -410,7 +410,7 @@ export default function AdminEventsPage() {
                               <button
                                 type="button"
                                 onClick={() => startEdit(event)}
-                                className="rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100"
+                                className="rounded-lg border border-slate-300 px-2.5 py-1.5 text-sm font-semibold text-slate-700 hover:bg-slate-100"
                               >
                                 Edit
                               </button>
@@ -418,7 +418,7 @@ export default function AdminEventsPage() {
                                 type="button"
                                 onClick={() => handleDelete(event.id)}
                                 disabled={deletingId === event.id}
-                                className="rounded-lg border border-rose-300 px-2.5 py-1.5 text-xs font-semibold text-rose-700 hover:bg-rose-50 disabled:cursor-not-allowed disabled:opacity-60"
+                                className="rounded-lg border border-rose-300 px-2.5 py-1.5 text-sm font-semibold text-rose-700 hover:bg-rose-50 disabled:cursor-not-allowed disabled:opacity-60"
                               >
                                 {deletingId === event.id
                                   ? "Deleting..."
@@ -483,13 +483,13 @@ export default function AdminEventsPage() {
               className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-800"
             />
 
-            <label className="block text-xs font-semibold uppercase tracking-wide text-slate-600">
+            <label className="block text-sm font-semibold uppercase tracking-wide text-slate-600">
               Upload image
               <input
                 type="file"
                 accept="image/*"
                 onChange={handleFileUpload}
-                className="mt-1 block w-full text-xs text-slate-700 file:mr-3 file:rounded-md file:border-0 file:bg-slate-100 file:px-3 file:py-1.5 file:font-semibold"
+                className="mt-1 block w-full text-sm text-slate-700 file:mr-3 file:rounded-md file:border-0 file:bg-slate-100 file:px-3 file:py-1.5 file:font-semibold"
               />
             </label>
 
@@ -524,7 +524,7 @@ export default function AdminEventsPage() {
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+              <label className="text-sm font-semibold uppercase tracking-wide text-slate-600">
                 Start date
                 <input
                   value={form.startDate}
@@ -540,7 +540,7 @@ export default function AdminEventsPage() {
                 />
               </label>
 
-              <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+              <label className="text-sm font-semibold uppercase tracking-wide text-slate-600">
                 End date
                 <input
                   value={form.endDate}

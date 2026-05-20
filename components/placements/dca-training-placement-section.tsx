@@ -23,7 +23,7 @@ export function DCATrainingPlacementSection() {
   return (
     <section className="bg-[#f8faff] px-4 py-16 md:px-6 md:py-20">
       <div className="mx-auto max-w-7xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f7941d]">
+        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#f7941d]">
           Department of Corporate Affairs &amp; Training
         </p>
         <div className="mt-3 grid gap-6 lg:grid-cols-[1fr_340px] lg:items-end">
@@ -32,13 +32,14 @@ export function DCATrainingPlacementSection() {
               DCA — Bridging Academia and Industry
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#6b7280]">
-              The Department of Corporate Affairs (DCA) at SVGOI is the engine behind
-              our placement success — designing and executing programs that turn students
-              into workplace-ready professionals before they even graduate.
+              The Department of Corporate Affairs (DCA) at SVGOI is the engine
+              behind our placement success — designing and executing programs
+              that turn students into workplace-ready professionals before they
+              even graduate.
             </p>
           </div>
           <div className="rounded-xl border border-[#dce7ff] bg-white p-5 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#9ca3af]">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#9ca3af]">
               DCA At a Glance
             </p>
             <div className="mt-3 space-y-2">
@@ -49,7 +50,9 @@ export function DCATrainingPlacementSection() {
               ].map(([val, label]) => (
                 <div key={label} className="flex items-center justify-between">
                   <span className="text-sm text-[#374151]">{label}</span>
-                  <span className="text-sm font-bold text-[#f7941d]">{val}</span>
+                  <span className="text-sm font-bold text-[#f7941d]">
+                    {val}
+                  </span>
                 </div>
               ))}
             </div>
@@ -63,7 +66,9 @@ export function DCATrainingPlacementSection() {
               className="rounded-2xl border border-[#dce7ff] bg-white p-6 shadow-sm"
             >
               <div className="mb-4 text-3xl">{feature.icon}</div>
-              <h3 className="text-base font-bold text-[#111827]">{feature.title}</h3>
+              <h3 className="text-base font-bold text-[#111827]">
+                {feature.title}
+              </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#6b7280]">
                 {feature.description}
               </p>

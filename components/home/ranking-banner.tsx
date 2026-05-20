@@ -6,13 +6,15 @@ const RANKING_SLIDES = [
   {
     achievement: "NIRF Ranking 2021",
     rank: "#104",
-    description: "Ranked 104th in India by National Institutional Ranking Framework",
+    description:
+      "Ranked 104th in India by National Institutional Ranking Framework",
     category: "Engineering",
   },
   {
     achievement: "Best Institution in North India",
     rank: "Top Rated",
-    description: "Consistently recognized as a premier institution across Punjab & North India",
+    description:
+      "Consistently recognized as a premier institution across Punjab & North India",
     category: "Excellence",
   },
   {
@@ -70,7 +72,10 @@ export function RankingBannerSection() {
 
     if (dragOffset > threshold && activeSlide > 0) {
       setActiveSlide(activeSlide - 1);
-    } else if (dragOffset < -threshold && activeSlide < RANKING_SLIDES.length - 1) {
+    } else if (
+      dragOffset < -threshold &&
+      activeSlide < RANKING_SLIDES.length - 1
+    ) {
       setActiveSlide(activeSlide + 1);
     }
 
@@ -103,18 +108,25 @@ export function RankingBannerSection() {
             }}
           >
             {RANKING_SLIDES.map((slide) => (
-              <div key={slide.achievement} className="min-w-full transition-all duration-500 ease-in-out flex flex-col gap-6">
+              <div
+                key={slide.achievement}
+                className="min-w-full transition-all duration-500 ease-in-out flex flex-col gap-6"
+              >
                 {/* Top Achievement Card */}
                 <div className="flex flex-col gap-6 rounded-2xl bg-gray-100 p-6 md:flex-row md:items-center md:justify-between md:p-8">
                   {/* Left Side */}
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-foreground md:text-2xl">{slide.achievement}</h3>
-                    <p className="mt-2 max-w-xl text-sm text-gray-600 md:text-base">{slide.description}</p>
+                    <h3 className="text-xl font-bold text-foreground md:text-2xl">
+                      {slide.achievement}
+                    </h3>
+                    <p className="mt-2 max-w-xl text-sm text-gray-600 md:text-base">
+                      {slide.description}
+                    </p>
                     <div className="mt-4 flex items-center gap-6">
                       {["SVGOI", slide.category].map((logo, idx) => (
                         <div
                           key={idx}
-                          className="h-10 rounded-lg bg-white px-3 flex items-center justify-center text-xs font-semibold text-gray-700"
+                          className="h-10 rounded-lg bg-white px-3 flex items-center justify-center text-sm font-semibold text-gray-700"
                         >
                           {logo}
                         </div>
@@ -124,9 +136,15 @@ export function RankingBannerSection() {
 
                   {/* Right Side - Big Badge */}
                   <div className="flex flex-col items-center text-center">
-                    <div className="text-6xl font-extrabold text-black md:text-7xl">{slide.rank}</div>
-                    <div className="mt-2 text-sm font-semibold text-foreground">{slide.category}</div>
-                    <div className="mt-1 text-xs text-gray-600">SVGOI Official Recognition</div>
+                    <div className="text-6xl font-extrabold text-black md:text-7xl">
+                      {slide.rank}
+                    </div>
+                    <div className="mt-2 text-sm font-semibold text-foreground">
+                      {slide.category}
+                    </div>
+                    <div className="mt-1 text-sm text-gray-600">
+                      SVGOI Official Recognition
+                    </div>
                   </div>
                 </div>
 
@@ -135,10 +153,18 @@ export function RankingBannerSection() {
                   <div className="flex h-full items-center justify-between px-8 md:px-12">
                     {/* Left Content */}
                     <div className="flex-1">
-                      <div className="text-sm text-white/80">{slide.category}</div>
-                      <h2 className="mt-2 text-xl font-semibold text-white md:text-2xl">{slide.achievement}</h2>
-                      <div className="mt-4 text-4xl font-extrabold tracking-wide text-white md:text-6xl">{slide.rank}</div>
-                      <div className="mt-2 text-white/80">{slide.description}</div>
+                      <div className="text-sm text-white/80">
+                        {slide.category}
+                      </div>
+                      <h2 className="mt-2 text-xl font-semibold text-white md:text-2xl">
+                        {slide.achievement}
+                      </h2>
+                      <div className="mt-4 text-4xl font-extrabold tracking-wide text-white md:text-6xl">
+                        {slide.rank}
+                      </div>
+                      <div className="mt-2 text-white/80">
+                        {slide.description}
+                      </div>
                     </div>
 
                     {/* Right Stats */}
@@ -149,8 +175,12 @@ export function RankingBannerSection() {
                         { value: "NBA", label: "Programs" },
                       ].map((stat, idx) => (
                         <div key={idx} className="text-right">
-                          <div className="text-3xl font-bold md:text-4xl">{stat.value}</div>
-                          <div className="text-xs text-white/70 md:text-sm">{stat.label}</div>
+                          <div className="text-3xl font-bold md:text-4xl">
+                            {stat.value}
+                          </div>
+                          <div className="text-sm text-white/70 md:text-sm">
+                            {stat.label}
+                          </div>
                         </div>
                       ))}
                     </div>

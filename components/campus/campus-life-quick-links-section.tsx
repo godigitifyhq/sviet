@@ -130,7 +130,7 @@ export function CampusLifeQuickLinksSection() {
   return (
     <section className="w-full bg-[#f7f7f9]">
       <div className="border-y border-white/10 bg-[#241a6b]">
-        <div className="mx-auto flex w-full max-w-7xl gap-6 overflow-x-auto px-4 py-4 text-xs font-semibold uppercase tracking-wide text-white/90 md:px-6">
+        <div className="mx-auto flex w-full max-w-7xl gap-6 overflow-x-auto px-4 py-4 text-sm font-semibold uppercase tracking-wide text-white/90 md:px-6">
           {CAMPUS_TABS.map((tab) => (
             <button
               key={tab.targetId}
@@ -168,7 +168,7 @@ export function CampusLifeQuickLinksSection() {
                   <h3 className="text-base font-semibold text-[#1a1a1a]">
                     {item.title}
                   </h3>
-                  <p className="mt-1 text-xs text-[#5a5a67]">
+                  <p className="mt-1 text-sm text-[#5a5a67]">
                     {item.description}
                   </p>
                 </div>

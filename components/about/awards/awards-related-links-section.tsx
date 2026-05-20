@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { ArrowUpRight, Building2, ChartNoAxesColumn, Users } from "lucide-react";
+import {
+  ArrowUpRight,
+  Building2,
+  ChartNoAxesColumn,
+  Users,
+} from "lucide-react";
 
 const RELATED_LINKS = [
   {
@@ -44,8 +49,12 @@ export function AwardsRelatedLinksSection() {
                 <div className="flex items-start gap-3">
                   <Icon className="mt-0.5 h-5 w-5 text-[#2563EB]" />
                   <div>
-                    <h3 className="text-base font-semibold text-[#1a1a1a]">{item.title}</h3>
-                    <p className="mt-1 text-xs text-[#5a5a67]">{item.description}</p>
+                    <h3 className="text-base font-semibold text-[#1a1a1a]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-[#5a5a67]">
+                      {item.description}
+                    </p>
                   </div>
                 </div>
                 <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#fff4ec] text-[#f7941d] transition group-hover:bg-[#f7941d] group-hover:text-white">

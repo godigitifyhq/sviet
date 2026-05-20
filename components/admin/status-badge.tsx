@@ -40,7 +40,9 @@ function getColorClass(type: BadgeType, normalizedStatus: string) {
   }
 
   if (type === "application") {
-    return applicationStatusColors[normalizedStatus] ?? "bg-slate-100 text-slate-700";
+    return (
+      applicationStatusColors[normalizedStatus] ?? "bg-slate-100 text-slate-700"
+    );
   }
 
   return sourceColors[normalizedStatus] ?? "bg-slate-100 text-slate-700";
@@ -59,7 +61,9 @@ export function StatusBadge({ status, type }: StatusBadgeProps) {
   const colorClass = getColorClass(type, normalizedStatus);
 
   return (
-    <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${colorClass}`}>
+    <span
+      className={`inline-flex items-center rounded-full px-2.5 py-1 text-sm font-semibold ${colorClass}`}
+    >
       {formatLabel(normalizedStatus)}
     </span>
   );

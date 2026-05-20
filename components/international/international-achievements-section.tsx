@@ -8,29 +8,16 @@ const ACHIEVERS = [
     imageSrc: "/assets/img/international/zimfest-01.jpg",
   },
   {
-    name: "ZimFest Highlight | Zimbabwe",
-    program: "ZimFest 2024",
-    description: "Moments from the ZimFest crowning and award ceremony.",
-    imageSrc: "/assets/img/international/zimfest-02.jpg",
-  },
-  {
-    name: "Afro Masala — Global Seed",
-    program: "Entrepreneurship (MCA)",
-    description:
-      "Showcase of Global Seed startup 'Afro Masala' founded by international students.",
-    imageSrc: "/assets/img/international/afro-masala-01.jpg",
-  },
-  {
     name: "Afro Masala — Launch",
     program: "Student Entrepreneurship",
     description: "On-campus launch and community engagement moments.",
     imageSrc: "/assets/img/international/afro-masala-02.jpg",
   },
   {
-    name: "Spotania Community Event",
+    name: "Spontania Community Event",
     program: "Cultural Exchange",
     description:
-      "Spotania cultural meetup and community dining at campus cafe.",
+      "Spontania cultural meetup and community dining at campus cafe.",
     imageSrc: "/assets/img/international/spotania-01.jpg",
   },
   {

@@ -4,9 +4,12 @@ export function CampusLifeGallerySection() {
   return (
     <section className="mt-15 mb-15 mx-auto w-full max-w-[1280px] px-2 pt-6 md:px-5 md:pt-8">
       <div className="mb-15 rounded-[10px] bg-black px-4 py-6 text-white md:px-8 md:py-20">
-        <h3 className="text-[46px] font-extrabold leading-none md:text-[58px]">GALLERY HIGHLIGHTS</h3>
+        <h3 className="text-[46px] font-extrabold leading-none md:text-[58px]">
+          GALLERY HIGHLIGHTS
+        </h3>
         <p className="mt-3 max-w-[760px] text-[10px] leading-[1.4] text-white/85 md:text-[14px]">
-          Explore our collection of memorable moments and events that capture the vibrant life at Swami Vivekanand Group of Institutions.
+          Explore our collection of memorable moments and events that capture
+          the vibrant life at Swami Vivekanand Group of Institutions.
         </p>
       </div>
 
@@ -41,7 +44,7 @@ export function CampusLifeGallerySection() {
             className="h-[130px] w-full object-cover md:h-[400px]"
           />
           <div className="absolute inset-0 bg-black/35" />
-          <p className="absolute bottom-3 left-1/2 inline-flex -translate-x-1/2 items-center gap-2 text-xs font-medium text-white md:bottom-5 md:text-[27px]">
+          <p className="absolute bottom-3 left-1/2 inline-flex -translate-x-1/2 items-center gap-2 text-sm font-medium text-white md:bottom-5 md:text-[27px]">
             <span>›</span> View More
           </p>
         </div>

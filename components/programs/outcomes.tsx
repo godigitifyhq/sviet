@@ -39,7 +39,7 @@ export function PlacementSection({
     >
       <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="text-xs font-semibold tracking-[0.08em] text-[#f7941d] uppercase">
+          <p className="text-sm font-semibold tracking-[0.08em] text-[#f7941d] uppercase">
             {eyebrow}
           </p>
           <h2 className="mt-2 text-4xl text-white font-extrabold">{heading}</h2>
@@ -75,7 +75,7 @@ export function PlacementSection({
                 <p className="text-sm text-[#666]">Career Outcome</p>
                 <p className="mt-2 text-2xl font-bold leading-tight">{title}</p>
                 {description ? (
-                  <p className="mt-1 text-xs text-[#7a7a7a]">{description}</p>
+                  <p className="mt-1 text-sm text-[#7a7a7a]">{description}</p>
                 ) : null}
               </div>
             </article>

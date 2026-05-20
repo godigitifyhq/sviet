@@ -37,7 +37,7 @@ export function FacilitiesSection({
       id={id}
       className="mx-auto mt-30 mb-15 w-full max-w-300 px-3 md:px-5"
     >
-      <p className="text-xs font-semibold tracking-[0.08em] text-[#f7941d] uppercase">
+      <p className="text-sm font-semibold tracking-[0.08em] text-[#f7941d] uppercase">
         {eyebrow}
       </p>
       <h2 className="mt-2 text-4xl font-extrabold">{heading}</h2>
@@ -68,7 +68,7 @@ export function FacilitiesSection({
                   <p className="text-sm font-semibold">{title}</p>
                 </div>
                 {description ? (
-                  <p className="text-xs text-[#666]">{description}</p>
+                  <p className="text-sm text-[#666]">{description}</p>
                 ) : null}
               </div>
             </article>

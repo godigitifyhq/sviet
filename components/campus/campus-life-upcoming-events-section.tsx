@@ -52,7 +52,7 @@ export async function CampusLifeUpcomingEventsSection() {
                     className="h-72 w-full object-cover transition duration-500 hover:scale-[1.03] md:h-96"
                   />
                 </div>
-                <div className="mt-5 inline-flex rounded-full bg-[#eef2ff] px-3 py-1 text-xs font-semibold tracking-wide text-[#3348b8]">
+                <div className="mt-5 inline-flex rounded-full bg-[#eef2ff] px-3 py-1 text-sm font-semibold tracking-wide text-[#3348b8]">
                   Featured event
                 </div>
                 <h3 className="mt-4 text-3xl font-semibold leading-tight text-[#111827] md:text-4xl">
@@ -65,7 +65,7 @@ export async function CampusLifeUpcomingEventsSection() {
                   <p className="text-sm font-semibold text-[#6b7280]">
                     {formatEventDate(sectionData.featuredEvent.startDate)}
                   </p>
-                  <span className="inline-flex rounded-full bg-[#f8f0e5] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#b45309]">
+                  <span className="inline-flex rounded-full bg-[#f8f0e5] px-3 py-1 text-sm font-semibold uppercase tracking-wide text-[#b45309]">
                     {sectionData.featuredEvent.category}
                   </span>
                 </div>
@@ -109,10 +109,10 @@ export async function CampusLifeUpcomingEventsSection() {
                         {event.description}
                       </p>
                       <div className="mt-3 flex items-center justify-between">
-                        <p className="text-xs font-semibold tracking-wide text-[#6b7280]">
+                        <p className="text-sm font-semibold tracking-wide text-[#6b7280]">
                           {formatEventDate(event.startDate)}
                         </p>
-                        <span className="text-xs font-semibold capitalize text-[#1d4ed8] transition group-hover:text-[#f7941d]">
+                        <span className="text-sm font-semibold capitalize text-[#1d4ed8] transition group-hover:text-[#f7941d]">
                           {event.category}
                         </span>
                       </div>

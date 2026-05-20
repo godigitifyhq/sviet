@@ -148,7 +148,11 @@ export function InternationalIconsSection() {
                   {featuredEvent?.image ? (
                     <div className="relative mb-5 h-40 overflow-hidden rounded-2xl border border-white/15 bg-white/10 md:h-44">
                       <Image
-                        src={featuredEvent.image}
+                        src={
+                          group.category === "sports"
+                            ? "/assets/img/pic-14.jpeg"
+                            : featuredEvent.image
+                        }
                         alt={featuredEvent.title}
                         fill
                         sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
@@ -159,7 +163,7 @@ export function InternationalIconsSection() {
                   ) : null}
 
                   <div className="flex flex-1 flex-col">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
                       {CATEGORY_LABELS[group.category]}
                     </p>
                     <h3 className="mt-2 text-xl font-semibold leading-tight md:text-[1.35rem]">

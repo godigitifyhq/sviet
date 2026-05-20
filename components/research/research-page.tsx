@@ -744,7 +744,7 @@ export function ResearchPageComponent() {
       {/* About Research Section */}
       <section className={`${sectionClass} ${containerClass}`}>
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
             Research Vision
           </p>
           <h2
@@ -768,7 +768,7 @@ export function ResearchPageComponent() {
       {/* Research Domains Section */}
       <section className={`${sectionClass} ${containerClass}`}>
         <div className="mb-12 lg:mb-16">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
             Research Areas
           </p>
           <h2
@@ -803,7 +803,7 @@ export function ResearchPageComponent() {
       <section id="committee" className="bg-gray-50 py-20 lg:py-24">
         <div className={containerClass}>
           <div className="mb-12 lg:mb-16">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
               Leadership
             </p>
             <h2
@@ -842,12 +842,12 @@ export function ResearchPageComponent() {
                     {/* Department */}
                     <div className="flex items-start gap-3">
                       <div className="w-6 h-6 rounded-full bg-[#f7941d]/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <span className="text-xs text-[#f7941d] font-bold">
+                        <span className="text-sm text-[#f7941d] font-bold">
                           📚
                         </span>
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xs font-semibold text-gray-500">
+                        <span className="text-sm font-semibold text-gray-500">
                           Department
                         </span>
                         <span className="text-sm text-gray-700">
@@ -859,12 +859,12 @@ export function ResearchPageComponent() {
                     {/* Designation */}
                     <div className="flex items-start gap-3 border-t pt-3">
                       <div className="w-6 h-6 rounded-full bg-[#f7941d]/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <span className="text-xs text-[#f7941d] font-bold">
+                        <span className="text-sm text-[#f7941d] font-bold">
                           ⭐
                         </span>
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xs font-semibold text-gray-500">
+                        <span className="text-sm font-semibold text-gray-500">
                           Designation
                         </span>
                         <span className="text-sm font-semibold text-[#f7941d]">
@@ -884,7 +884,7 @@ export function ResearchPageComponent() {
       <section id="projects" className="bg-gray-900 py-20 lg:py-24">
         <div className={containerClass}>
           <div className="mb-12 lg:mb-16">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
               Achievements
             </p>
             <h2
@@ -918,7 +918,7 @@ export function ResearchPageComponent() {
       {/* Research Publications Section */}
       <section className={`${sectionClass} ${containerClass}`}>
         <div className="mb-12 lg:mb-16">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
             Scholarly Output
           </p>
           <h2
@@ -980,7 +980,7 @@ export function ResearchPageComponent() {
       {/* Patents Section */}
       <section id="patents" className={`${sectionClass} ${containerClass}`}>
         <div className="mb-12 lg:mb-16">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
             IP Portfolio
           </p>
           <h2
@@ -999,7 +999,7 @@ export function ResearchPageComponent() {
               key={patent.applicationNo}
               className="group rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-[#f7941d]/50 "
             >
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+              <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
                 Ref: {patent.applicationNo}
               </p>
               <h3 className="mt-4 text-lg font-semibold text-gray-900 group-hover:text-[#f7941d]">
@@ -1013,7 +1013,7 @@ export function ResearchPageComponent() {
       {/* Research Collaborations Section */}
       <section className={`${sectionClass} ${containerClass}`}>
         <div className="mb-12 lg:mb-16">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
             Partnerships
           </p>
           <h2
@@ -1043,7 +1043,7 @@ export function ResearchPageComponent() {
           {/* Infrastructure */}
           <div>
             <div className="mb-8">
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+              <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
                 Facilities
               </p>
               <h2 className="mt-2 text-3xl font-bold text-gray-900 lg:text-4xl">
@@ -1071,7 +1071,7 @@ export function ResearchPageComponent() {
           {/* Books & Chapters */}
           <div>
             <div className="mb-8">
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+              <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
                 Publications
               </p>
               <h2 className="mt-2 text-3xl font-bold text-gray-900 lg:text-4xl">
@@ -1084,13 +1084,13 @@ export function ResearchPageComponent() {
             </p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               <div className="rounded-2xl border border-gray-200 bg-white p-4">
-                <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+                <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
                   Books published
                 </p>
                 <p className="mt-2 text-2xl font-bold text-gray-900">50+</p>
               </div>
               <div className="rounded-2xl border border-gray-200 bg-white p-4">
-                <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+                <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
                   Book chapters
                 </p>
                 <p className="mt-2 text-2xl font-bold text-gray-900">1800+</p>
@@ -1113,8 +1113,8 @@ export function ResearchPageComponent() {
                   <h4 className="text-sm font-semibold text-gray-900">
                     {b.title}
                   </h4>
-                  <p className="mt-1 text-xs text-gray-600">{b.authors}</p>
-                  <p className="mt-2 text-xs font-mono text-gray-500">
+                  <p className="mt-1 text-sm text-gray-600">{b.authors}</p>
+                  <p className="mt-2 text-sm font-mono text-gray-500">
                     ISBN: {b.isbn}
                   </p>
                 </div>
@@ -1155,13 +1155,13 @@ export function ResearchPageComponent() {
                         <td className="px-4 py-3 text-gray-700">
                           {book.title}
                         </td>
-                        <td className="px-4 py-3 text-gray-700 text-xs">
+                        <td className="px-4 py-3 text-gray-700 text-sm">
                           {book.author}
                         </td>
-                        <td className="px-4 py-3 text-gray-700 text-xs whitespace-nowrap">
+                        <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
                           {book.type}
                         </td>
-                        <td className="px-4 py-3 text-gray-700 text-xs whitespace-nowrap">
+                        <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
                           {book.isbn}
                         </td>
                       </tr>
@@ -1177,7 +1177,7 @@ export function ResearchPageComponent() {
       {/* Research Activities & Services Section */}
       <section className={`${sectionClass} ${containerClass}`}>
         <div className="mb-12 lg:mb-16">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#f7941d]">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
             Support Systems
           </p>
           <h2

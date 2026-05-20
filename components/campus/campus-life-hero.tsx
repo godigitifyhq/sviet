@@ -35,7 +35,7 @@ export function CampusLifeHeroSection() {
                 Technology Enhanced Experimental Learning With Advance Learning
                 Centers & Labs.
               </p>
-              {/* <button className="mt-3 inline-flex items-center gap-2 rounded-md bg-[#f7941d] px-4 py-2 text-xs font-semibold text-white md:mt-5 md:px-5 md:py-3 md:text-[18px]">
+              {/* <button className="mt-3 inline-flex items-center gap-2 rounded-md bg-[#f7941d] px-4 py-2 text-sm font-semibold text-white md:mt-5 md:px-5 md:py-3 md:text-[18px]">
                 Video Tour
                 <FaArrowRight className="text-[11px]" />
               </button> */}

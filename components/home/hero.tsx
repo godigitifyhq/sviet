@@ -318,7 +318,7 @@ export function HeroSection({
                     className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-2.5 text-sm font-medium text-[#111827] placeholder-[#9CA3AF] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                   />
                   {requestErrors.fullName ? (
-                    <p className="mt-1 text-xs text-red-600">
+                    <p className="mt-1 text-sm text-red-600">
                       {requestErrors.fullName}
                     </p>
                   ) : null}
@@ -335,7 +335,7 @@ export function HeroSection({
                     className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-2.5 text-sm font-medium text-[#111827] placeholder-[#9CA3AF] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                   />
                   {requestErrors.email ? (
-                    <p className="mt-1 text-xs text-red-600">
+                    <p className="mt-1 text-sm text-red-600">
                       {requestErrors.email}
                     </p>
                   ) : null}
@@ -360,7 +360,7 @@ export function HeroSection({
                     />
                   </div>
                   {requestErrors.phone ? (
-                    <p className="mt-1 text-xs text-red-600">
+                    <p className="mt-1 text-sm text-red-600">
                       {requestErrors.phone}
                     </p>
                   ) : null}
@@ -483,7 +483,7 @@ export function HeroSection({
                         className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm font-medium text-[#111827] placeholder-[#9CA3AF] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                       />
                       {requestErrors.fullName ? (
-                        <p className="mt-1 text-xs text-red-600">
+                        <p className="mt-1 text-sm text-red-600">
                           {requestErrors.fullName}
                         </p>
                       ) : null}
@@ -507,7 +507,7 @@ export function HeroSection({
                         className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm font-medium text-[#111827] placeholder-[#9CA3AF] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                       />
                       {requestErrors.email ? (
-                        <p className="mt-1 text-xs text-red-600">
+                        <p className="mt-1 text-sm text-red-600">
                           {requestErrors.email}
                         </p>
                       ) : null}
@@ -542,7 +542,7 @@ export function HeroSection({
                         />
                       </div>
                       {requestErrors.phone ? (
-                        <p className="mt-1 text-xs text-red-600">
+                        <p className="mt-1 text-sm text-red-600">
                           {requestErrors.phone}
                         </p>
                       ) : null}

@@ -53,7 +53,7 @@ export function TrainingCurriculumSection() {
               key={item.title}
               className="rounded-2xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] p-6"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#f7941d]">
+              <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#f7941d]">
                 {item.phase}
               </p>
               <h3 className="mt-2 text-xl font-semibold text-[#111827]">

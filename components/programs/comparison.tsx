@@ -3,10 +3,13 @@ import { COMPARISON_ROWS } from "@/components/programs/data";
 export function ProgramComparisonSection() {
   return (
     <section className="mx-auto mt-30 w-full max-w-300 px-3 md:px-5">
-      <p className="text-xs font-semibold tracking-[0.08em] text-[#f7941d] uppercase">Program Comparison</p>
-       <h2 className="mt-2 text-4xl font-extrabold">Compare with Other Programs</h2>
+      <p className="text-sm font-semibold tracking-[0.08em] text-[#f7941d] uppercase">
+        Program Comparison
+      </p>
+      <h2 className="mt-2 text-4xl font-extrabold">
+        Compare with Other Programs
+      </h2>
       <div className="overflow-hidden mt-10 rounded-xl border border-[#e9e9e9] bg-white">
-        
         <table className="w-full text-left text-sm">
           <thead className="border-t py-8 border-[#efefef] bg-white text-[#666]">
             <tr>
@@ -30,7 +33,9 @@ export function ProgramComparisonSection() {
           </tbody>
         </table>
       </div>
-      <p className="mt-6 text-xs text-[#999]">* Data based on 2023-24 placements. Fees subject to revision.</p>
+      <p className="mt-6 text-sm text-[#999]">
+        * Data based on 2023-24 placements. Fees subject to revision.
+      </p>
     </section>
   );
 }

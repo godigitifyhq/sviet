@@ -9,7 +9,14 @@ type ImageCardProps = {
   isActive?: boolean;
 };
 
-export function ImageCard({ title, summary, imageSrc, imageAlt, onClick, isActive = false }: ImageCardProps) {
+export function ImageCard({
+  title,
+  summary,
+  imageSrc,
+  imageAlt,
+  onClick,
+  isActive = false,
+}: ImageCardProps) {
   return (
     <article
       className={`group overflow-hidden border bg-white shadow-[0_8px_24px_rgba(30,42,120,0.08)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(30,42,120,0.14)] ${
@@ -28,12 +35,16 @@ export function ImageCard({ title, summary, imageSrc, imageAlt, onClick, isActiv
       </div>
       <div className="px-4 py-4">
         <h3 className="text-lg font-semibold text-[#f7941d]">{title}</h3>
-        {summary ? <p className="mt-2 text-sm leading-relaxed text-[#6B7280]">{summary}</p> : null}
+        {summary ? (
+          <p className="mt-2 text-sm leading-relaxed text-[#6B7280]">
+            {summary}
+          </p>
+        ) : null}
         {onClick ? (
           <button
             type="button"
             onClick={onClick}
-            className="mt-4 inline-flex items-center rounded-md border border-[#BFDBFE] bg-white px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#111827] transition hover:bg-[#EFF6FF]"
+            className="mt-4 inline-flex items-center rounded-md border border-[#BFDBFE] bg-white px-3 py-2 text-sm font-semibold uppercase tracking-[0.12em] text-[#111827] transition hover:bg-[#EFF6FF]"
           >
             View Details
           </button>

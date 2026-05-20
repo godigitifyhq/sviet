@@ -52,13 +52,17 @@ export function AdmissionsRecognitionsSection() {
               className={`relative overflow-hidden rounded-xl bg-linear-to-br p-5 text-white shadow-lg md:p-6 ${item.tone}`}
             >
               <div className="absolute -right-14 -top-14 h-40 w-40 rounded-full border border-white/10" />
-              <h3 className="relative text-2xl font-bold leading-tight md:text-3xl">{item.title}</h3>
-              <p className="relative mt-3 text-sm leading-relaxed text-white/85">{item.description}</p>
+              <h3 className="relative text-2xl font-bold leading-tight md:text-3xl">
+                {item.title}
+              </h3>
+              <p className="relative mt-3 text-sm leading-relaxed text-white/85">
+                {item.description}
+              </p>
             </article>
           ))}
         </div>
 
-        <div className="mt-4 text-center text-xs text-[#4b5563] md:text-sm">
+        <div className="mt-4 text-center text-sm text-[#4b5563] md:text-sm">
           Figures represent cumulative institutional data.
         </div>
       </div>

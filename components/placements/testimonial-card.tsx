@@ -38,7 +38,7 @@ export function TestimonialCard({
         <div>
           <p className="text-base font-semibold text-gray-900">{name}</p>
           <p className="text-sm text-gray-600">{subtitle}</p>
-          <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
+          <p className="text-sm font-medium uppercase tracking-wide text-gray-500">
             {company}
           </p>
         </div>

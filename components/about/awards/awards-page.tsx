@@ -198,7 +198,7 @@ export function AwardsPage() {
                       </svg>
                       <div className="text-center">
                         <div className="text-sm font-semibold">Document</div>
-                        <div className="text-xs text-slate-500">PDF</div>
+                        <div className="text-sm text-slate-500">PDF</div>
                       </div>
                     </div>
                   </div>
@@ -267,7 +267,7 @@ export function AwardsPage() {
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                             <polyline points="14 2 14 8 20 8" />
                           </svg>
-                          <div className="text-xs text-slate-500">PDF</div>
+                          <div className="text-sm text-slate-500">PDF</div>
                         </div>
                       </div>
                     )}
@@ -277,7 +277,7 @@ export function AwardsPage() {
                     <h4 className="text-sm font-semibold text-slate-900">
                       {it.title}
                     </h4>
-                    <p className="mt-1 text-xs text-slate-600">{it.subtitle}</p>
+                    <p className="mt-1 text-sm text-slate-600">{it.subtitle}</p>
                     <div className="mt-auto">
                       {it.href ? (
                         <a

@@ -50,7 +50,6 @@ export function CorporateConnectSection() {
   return (
     <section className="bg-[#0a0a0a] px-4 py-16 md:px-6 md:py-24">
       <div className="mx-auto max-w-7xl">
-
         {/* Header */}
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
@@ -69,7 +68,9 @@ export function CorporateConnectSection() {
                 Connect
               </h2>
               <div className="flex flex-col border border-white/30 px-2 py-0.5">
-                <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/60">Series</span>
+                <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/60">
+                  Series
+                </span>
               </div>
             </div>
 
@@ -94,7 +95,7 @@ export function CorporateConnectSection() {
               ].map((badge) => (
                 <span
                   key={badge}
-                  className="border border-[#f7941d]/40 bg-[#f7941d]/10 px-4 py-1.5 text-xs font-semibold text-[#f7941d]"
+                  className="border border-[#f7941d]/40 bg-[#f7941d]/10 px-4 py-1.5 text-sm font-semibold text-[#f7941d]"
                 >
                   {badge}
                 </span>
@@ -165,7 +166,7 @@ export function CorporateConnectSection() {
         </div>
 
         {/* Bottom quote */}
-        <p className="mt-8 text-center text-xs leading-relaxed text-gray-600 md:text-sm">
+        <p className="mt-8 text-center text-sm leading-relaxed text-gray-600 md:text-sm">
           Our directors and placement team actively visit leading companies
           across India — every handshake is a career pathway for our students.
         </p>

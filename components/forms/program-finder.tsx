@@ -97,7 +97,7 @@ function ContactCaptureStep({
             className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium outline-none transition focus:border-[#FF6A00]"
           />
           {errors.fullName ? (
-            <p className="mt-1 text-xs text-red-600">{errors.fullName}</p>
+            <p className="mt-1 text-sm text-red-600">{errors.fullName}</p>
           ) : null}
         </div>
 
@@ -110,7 +110,7 @@ function ContactCaptureStep({
             className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium outline-none transition focus:border-[#FF6A00]"
           />
           {errors.email ? (
-            <p className="mt-1 text-xs text-red-600">{errors.email}</p>
+            <p className="mt-1 text-sm text-red-600">{errors.email}</p>
           ) : null}
         </div>
 
@@ -123,7 +123,7 @@ function ContactCaptureStep({
             className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium outline-none transition focus:border-[#FF6A00]"
           />
           {errors.phone ? (
-            <p className="mt-1 text-xs text-red-600">{errors.phone}</p>
+            <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
           ) : null}
         </div>
 
@@ -421,7 +421,7 @@ export function ProgramFinderForm({
 
       {/* Footer */}
       <footer className="px-4 py-8 border-t border-gray-200 bg-white">
-        <div className="max-w-4xl mx-auto text-center text-xs text-gray-600">
+        <div className="max-w-4xl mx-auto text-center text-sm text-gray-600">
           <p>
             All programs at SVGOI are designed with industry standards and
             placement excellence in mind

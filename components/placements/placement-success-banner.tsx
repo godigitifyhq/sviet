@@ -20,7 +20,7 @@ export function PlacementSuccessBanner() {
     <section className="w-full bg-[#f8fafc] pt-12 md:pt-16">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
             Placement Spotlight
           </p>
           <h2 className="mt-3 text-4xl font-extrabold leading-tight text-[#0b3b8f] md:text-6xl">
@@ -39,7 +39,7 @@ export function PlacementSuccessBanner() {
 
             <div className="grid h-full items-center gap-6 md:grid-cols-[1fr_1.2fr_0.95fr] md:gap-6">
               <div className="relative z-10 flex flex-col justify-center md:pr-2">
-                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-white/80 md:text-xs">
+                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-white/80 md:text-sm">
                   Our Top Placements
                 </p>
                 <p className="mt-3 max-w-60 text-[2.1rem] font-extrabold leading-[0.98] tracking-[-0.02em] text-[#fea700] md:max-w-65 md:text-[2.5rem]">
@@ -66,7 +66,7 @@ export function PlacementSuccessBanner() {
                   <p className="text-sm font-semibold leading-tight text-white md:text-[1.05rem]">
                     {topPlacement.company}
                   </p>
-                  <p className="mt-1 text-xs font-medium uppercase tracking-[0.14em] text-white/80 md:text-sm">
+                  <p className="mt-1 text-sm font-medium uppercase tracking-[0.14em] text-white/80 md:text-sm">
                     2027 Batch
                   </p>
                 </div>

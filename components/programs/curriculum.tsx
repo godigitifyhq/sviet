@@ -35,7 +35,9 @@ function normalizeCurriculum(curriculum: CurriculumMap) {
   );
 }
 
-export function ProgramCurriculumSection({ curriculum }: ProgramCurriculumSectionProps) {
+export function ProgramCurriculumSection({
+  curriculum,
+}: ProgramCurriculumSectionProps) {
   const normalizedCurriculum = normalizeCurriculum(curriculum);
   const yearTabs = Object.keys(normalizedCurriculum);
   const [activeYear, setActiveYear] = useState<string>(yearTabs[0] ?? "Year 1");
@@ -44,15 +46,19 @@ export function ProgramCurriculumSection({ curriculum }: ProgramCurriculumSectio
 
   return (
     <section className="mx-auto mt-30 w-full max-w-300 px-3 md:px-5">
-      <p className="text-xs font-semibold tracking-[0.08em] text-[#f7941d] uppercase">Curriculum</p>
+      <p className="text-sm font-semibold tracking-[0.08em] text-[#f7941d] uppercase">
+        Curriculum
+      </p>
       <h2 className="mt-2 text-4xl font-extrabold">What You&apos;ll Study</h2>
-      <p className="mt-5 text-sm text-[#555]">160 credits across 8 semesters · Updated to industry standards</p>
+      <p className="mt-5 text-sm text-[#555]">
+        160 credits across 8 semesters · Updated to industry standards
+      </p>
       <div className="mt-12 inline-flex gap-1 rounded-xl border border-[#eaeaea] bg-[#f5f5f5] p-1">
         {yearTabs.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveYear(tab)}
-            className={`rounded-lg px-4 py-1.5 text-xs font-semibold transition ${activeYear === tab ? "bg-[#f7941d] text-white" : "text-[#666]"}`}
+            className={`rounded-lg px-4 py-1.5 text-sm font-semibold transition ${activeYear === tab ? "bg-[#f7941d] text-white" : "text-[#666]"}`}
           >
             {tab}
           </button>
@@ -71,7 +77,9 @@ export function ProgramCurriculumSection({ curriculum }: ProgramCurriculumSectio
             {activeRows.map((row) => (
               <tr key={row.code} className="border-t border-[#efefef]">
                 <td className="px-4 py-3">
-                  <span className="rounded bg-[#fff4ec] px-2 py-1 text-xs font-semibold text-[#f7941d]">{row.code}</span>
+                  <span className="rounded bg-[#fff4ec] px-2 py-1 text-sm font-semibold text-[#f7941d]">
+                    {row.code}
+                  </span>
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
@@ -85,9 +93,13 @@ export function ProgramCurriculumSection({ curriculum }: ProgramCurriculumSectio
           </tbody>
         </table>
       </div>
-      <div className="mt-8 flex items-center justify-between text-xs text-[#777]">
-        <p>Showing {activeRows.length} courses for {activeYear}</p>
-        <a href="#" className="font-medium text-[#f7941d]">Download full syllabus →</a>
+      <div className="mt-8 flex items-center justify-between text-sm text-[#777]">
+        <p>
+          Showing {activeRows.length} courses for {activeYear}
+        </p>
+        <a href="#" className="font-medium text-[#f7941d]">
+          Download full syllabus →
+        </a>
       </div>
     </section>
   );

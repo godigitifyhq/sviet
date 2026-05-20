@@ -146,7 +146,7 @@ export function AdmissionsCareerProgramsSection({
           <button
             type="button"
             onClick={() => setExpanded((previous) => !previous)}
-            className="text-xs font-semibold uppercase tracking-wide text-[#2563EB]"
+            className="text-sm font-semibold uppercase tracking-wide text-[#2563EB]"
           >
             {expanded ? "Collapse all" : "Expand all"}
           </button>
@@ -167,7 +167,7 @@ export function AdmissionsCareerProgramsSection({
                   {program.title}
                 </h3>
                 <p
-                  className={`mt-2 text-xs leading-relaxed text-[#4b4b57] ${expanded ? "line-clamp-none" : "line-clamp-4"}`}
+                  className={`mt-2 text-sm leading-relaxed text-[#4b4b57] ${expanded ? "line-clamp-none" : "line-clamp-4"}`}
                 >
                   {cardSummary(program)}
                 </p>

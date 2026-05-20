@@ -176,7 +176,7 @@ export function ContactPageComponent() {
       {/* SECTION 1: HERO */}
       <section className="relative h-96 overflow-hidden md:h-[500px]">
         <Image
-          src="/assets/img/ contact.jpg"
+          src="/assets/img/contact.jpg"
           alt="SVGOI campus"
           fill
           className="object-cover"
@@ -229,7 +229,7 @@ export function ContactPageComponent() {
                     className={inputClass}
                   />
                   {errors.name ? (
-                    <p className="mt-1 text-xs text-red-600">{errors.name}</p>
+                    <p className="mt-1 text-sm text-red-600">{errors.name}</p>
                   ) : null}
                 </div>
                 <div>
@@ -250,7 +250,7 @@ export function ContactPageComponent() {
                     className={inputClass}
                   />
                   {errors.email ? (
-                    <p className="mt-1 text-xs text-red-600">{errors.email}</p>
+                    <p className="mt-1 text-sm text-red-600">{errors.email}</p>
                   ) : null}
                 </div>
                 <div>
@@ -271,7 +271,7 @@ export function ContactPageComponent() {
                     className={inputClass}
                   />
                   {errors.subject ? (
-                    <p className="mt-1 text-xs text-red-600">
+                    <p className="mt-1 text-sm text-red-600">
                       {errors.subject}
                     </p>
                   ) : null}
@@ -293,7 +293,7 @@ export function ContactPageComponent() {
                     className={inputClass}
                   />
                   {errors.phone ? (
-                    <p className="mt-1 text-xs text-red-600">{errors.phone}</p>
+                    <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
                   ) : null}
                 </div>
                 <div>
@@ -314,7 +314,7 @@ export function ContactPageComponent() {
                     className={inputClass}
                   />
                   {errors.message ? (
-                    <p className="mt-1 text-xs text-red-600">
+                    <p className="mt-1 text-sm text-red-600">
                       {errors.message}
                     </p>
                   ) : null}
@@ -322,7 +322,7 @@ export function ContactPageComponent() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`${primaryButtonClass} w-full md:w-auto disabled:opacity-50`}
+                  className={`${primaryButtonClass} w-full md:w-auto text-white disabled:opacity-50`}
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </button>

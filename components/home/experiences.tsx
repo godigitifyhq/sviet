@@ -130,7 +130,7 @@ export function ExperiencesSection() {
               {/* Left Content */}
               <div className="space-y-3 flex flex-col justify-center md:pr-4">
                 <div>
-                  <h2 className="text-xs font-semibold text-[#f7941d] md:text-sm">
+                  <h2 className="text-sm font-semibold text-[#f7941d] md:text-sm">
                     {placement.heading}
                   </h2>
                   {placement.title ? (
@@ -163,7 +163,7 @@ export function ExperiencesSection() {
                       {placement.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full border border-[#f7941d] bg-[#fff7ed] px-3 py-1 text-xs font-semibold text-[#b45309]"
+                          className="rounded-full border border-[#f7941d] bg-[#fff7ed] px-3 py-1 text-sm font-semibold text-[#b45309]"
                         >
                           {tag}
                         </span>
@@ -204,7 +204,7 @@ export function ExperiencesSection() {
                     <p className="text-sm font-semibold text-[#111827] md:text-base">
                       {placement.studentName}
                     </p>
-                    <div className="space-y-0.5 text-xs leading-tight text-[#6B7280]">
+                    <div className="space-y-0.5 text-sm leading-tight text-[#6B7280]">
                       <p className="font-medium">{placement.company}</p>
                       <p className="font-light line-clamp-2">
                         {placement.position}

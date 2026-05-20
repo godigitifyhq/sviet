@@ -116,10 +116,13 @@ function parseEligibilityResult(input: unknown): EligibilityResult | null {
   const value = input as Record<string, unknown>;
   return {
     eligible: typeof value.eligible === "boolean" ? value.eligible : undefined,
-    percentage: typeof value.percentage === "number" ? value.percentage : undefined,
+    percentage:
+      typeof value.percentage === "number" ? value.percentage : undefined,
     reason: typeof value.reason === "string" ? value.reason : undefined,
     conditions: Array.isArray(value.conditions)
-      ? value.conditions.filter((condition): condition is string => typeof condition === "string")
+      ? value.conditions.filter(
+          (condition): condition is string => typeof condition === "string",
+        )
       : undefined,
   };
 }
@@ -158,7 +161,9 @@ export default function AdminLeadDetailsPage() {
       }
 
       try {
-        const response = await fetch(`/api/crm/leads/${leadId}`, { cache: "no-store" });
+        const response = await fetch(`/api/crm/leads/${leadId}`, {
+          cache: "no-store",
+        });
         if (!response.ok) {
           throw new Error("Unable to load lead.");
         }
@@ -217,7 +222,8 @@ export default function AdminLeadDetailsPage() {
   );
 
   const recommendedProgramTitles = useMemo(
-    () => parseRecommendedProgramTitles(lead?.programFinder?.recommendedPrograms),
+    () =>
+      parseRecommendedProgramTitles(lead?.programFinder?.recommendedPrograms),
     [lead?.programFinder?.recommendedPrograms],
   );
 
@@ -274,7 +280,9 @@ export default function AdminLeadDetailsPage() {
         body: JSON.stringify({ counselorId: assignedTo }),
       });
 
-      const payload = (await response.json().catch(() => null)) as AssignApiResponse | null;
+      const payload = (await response
+        .json()
+        .catch(() => null)) as AssignApiResponse | null;
 
       if (!response.ok || !payload?.ok) {
         throw new Error(payload?.error?.message ?? "Assignment failed.");
@@ -334,7 +342,9 @@ export default function AdminLeadDetailsPage() {
         previous
           ? {
               ...previous,
-              notes: previous.notes.map((note) => (note.id === tempId ? savedNote : note)),
+              notes: previous.notes.map((note) =>
+                note.id === tempId ? savedNote : note,
+              ),
             }
           : previous,
       );
@@ -365,7 +375,10 @@ export default function AdminLeadDetailsPage() {
     return (
       <AdminLayout title="Lead Details">
         <p className="text-sm text-rose-600">{error ?? "Lead not found."}</p>
-        <Link href="/admin/leads" className="mt-4 inline-flex text-sm font-semibold text-slate-700 hover:underline">
+        <Link
+          href="/admin/leads"
+          className="mt-4 inline-flex text-sm font-semibold text-slate-700 hover:underline"
+        >
           Back to Leads
         </Link>
       </AdminLayout>
@@ -375,7 +388,10 @@ export default function AdminLeadDetailsPage() {
   return (
     <AdminLayout title="Lead Details">
       <div className="space-y-6">
-        <Link href="/admin/leads" className="inline-flex text-sm font-semibold text-slate-700 hover:underline">
+        <Link
+          href="/admin/leads"
+          className="inline-flex text-sm font-semibold text-slate-700 hover:underline"
+        >
           ← Back to Leads
         </Link>
 
@@ -386,21 +402,30 @@ export default function AdminLeadDetailsPage() {
                 {lead.firstName} {lead.lastName}
               </h1>
               <p className="mt-2 text-sm text-slate-600">{lead.email}</p>
-              <p className="text-sm text-slate-600">{lead.phone ?? "No phone"}</p>
+              <p className="text-sm text-slate-600">
+                {lead.phone ?? "No phone"}
+              </p>
 
               <div className="mt-4 flex flex-wrap items-center gap-2">
                 <StatusBadge status={lead.source} type="source" />
                 <StatusBadge status={lead.status} type="lead" />
-                <span className="text-xs text-slate-500">Created {format(new Date(lead.createdAt), "dd MMM yyyy, p")}</span>
+                <span className="text-sm text-slate-500">
+                  Created {format(new Date(lead.createdAt), "dd MMM yyyy, p")}
+                </span>
               </div>
             </section>
 
             <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-              <h2 className="text-lg font-semibold text-slate-900">Form Submission Data</h2>
+              <h2 className="text-lg font-semibold text-slate-900">
+                Form Submission Data
+              </h2>
 
               {lead.source === "APPLY_NOW" ? (
                 <p className="mt-3 text-sm text-slate-700">
-                  Applied For: <span className="font-semibold">{lead.intendedProgram?.title ?? "Not specified"}</span>
+                  Applied For:{" "}
+                  <span className="font-semibold">
+                    {lead.intendedProgram?.title ?? "Not specified"}
+                  </span>
                 </p>
               ) : null}
 
@@ -409,15 +434,21 @@ export default function AdminLeadDetailsPage() {
                   <div className="grid gap-3 sm:grid-cols-3">
                     <div className="rounded-lg border border-slate-200 p-3 text-sm">
                       <p className="text-slate-500">Academic Score</p>
-                      <p className="font-semibold text-slate-800">{lead.scholarship.academicScore}</p>
+                      <p className="font-semibold text-slate-800">
+                        {lead.scholarship.academicScore}
+                      </p>
                     </div>
                     <div className="rounded-lg border border-slate-200 p-3 text-sm">
                       <p className="text-slate-500">Family Income (LPA)</p>
-                      <p className="font-semibold text-slate-800">{lead.scholarship.familyIncomeLPA}</p>
+                      <p className="font-semibold text-slate-800">
+                        {lead.scholarship.familyIncomeLPA}
+                      </p>
                     </div>
                     <div className="rounded-lg border border-slate-200 p-3 text-sm">
                       <p className="text-slate-500">Category</p>
-                      <p className="font-semibold text-slate-800">{lead.scholarship.category}</p>
+                      <p className="font-semibold text-slate-800">
+                        {lead.scholarship.category}
+                      </p>
                     </div>
                   </div>
 
@@ -447,10 +478,15 @@ export default function AdminLeadDetailsPage() {
               {lead.source === "PROGRAM_FINDER" && lead.programFinder ? (
                 <div className="mt-4 space-y-3 text-sm text-slate-700">
                   <div>
-                    <p className="mb-1 font-semibold text-slate-900">Interests</p>
+                    <p className="mb-1 font-semibold text-slate-900">
+                      Interests
+                    </p>
                     <div className="flex flex-wrap gap-2">
                       {lead.programFinder.interests.map((interest) => (
-                        <span key={interest} className="rounded-full bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700">
+                        <span
+                          key={interest}
+                          className="rounded-full bg-slate-100 px-2 py-1 text-sm font-medium text-slate-700"
+                        >
                           {interest}
                         </span>
                       ))}
@@ -458,10 +494,15 @@ export default function AdminLeadDetailsPage() {
                   </div>
 
                   <div>
-                    <p className="mb-1 font-semibold text-slate-900">Career Goals</p>
+                    <p className="mb-1 font-semibold text-slate-900">
+                      Career Goals
+                    </p>
                     <div className="flex flex-wrap gap-2">
                       {lead.programFinder.careers.map((career) => (
-                        <span key={career} className="rounded-full bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700">
+                        <span
+                          key={career}
+                          className="rounded-full bg-slate-100 px-2 py-1 text-sm font-medium text-slate-700"
+                        >
                           {career}
                         </span>
                       ))}
@@ -470,20 +511,30 @@ export default function AdminLeadDetailsPage() {
 
                   <div className="grid gap-3 sm:grid-cols-2">
                     <p>
-                      Preferred Mode: <span className="font-medium">{lead.programFinder.preferredMode ?? "-"}</span>
+                      Preferred Mode:{" "}
+                      <span className="font-medium">
+                        {lead.programFinder.preferredMode ?? "-"}
+                      </span>
                     </p>
                     <p>
-                      Budget Range: <span className="font-medium">{lead.programFinder.budgetRange ?? "-"}</span>
+                      Budget Range:{" "}
+                      <span className="font-medium">
+                        {lead.programFinder.budgetRange ?? "-"}
+                      </span>
                     </p>
                   </div>
 
                   <div>
-                    <p className="mb-1 font-semibold text-slate-900">Recommended Programs</p>
+                    <p className="mb-1 font-semibold text-slate-900">
+                      Recommended Programs
+                    </p>
                     <ul className="list-disc space-y-1 pl-5">
                       {recommendedProgramTitles.map((program) => (
                         <li key={program}>{program}</li>
                       ))}
-                      {recommendedProgramTitles.length === 0 ? <li>-</li> : null}
+                      {recommendedProgramTitles.length === 0 ? (
+                        <li>-</li>
+                      ) : null}
                     </ul>
                   </div>
                 </div>
@@ -492,9 +543,14 @@ export default function AdminLeadDetailsPage() {
               {lead.source === "CONTACT_ENQUIRY" && lead.contactEnquiry ? (
                 <div className="mt-4 space-y-3 text-sm text-slate-700">
                   <p>
-                    Subject: <span className="font-semibold text-slate-900">{lead.contactEnquiry.subject}</span>
+                    Subject:{" "}
+                    <span className="font-semibold text-slate-900">
+                      {lead.contactEnquiry.subject}
+                    </span>
                   </p>
-                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">{lead.contactEnquiry.message}</div>
+                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
+                    {lead.contactEnquiry.message}
+                  </div>
                 </div>
               ) : null}
             </section>
@@ -509,7 +565,9 @@ export default function AdminLeadDetailsPage() {
                   placeholder="Add an internal note..."
                   className="min-h-24 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
                 />
-                {noteError ? <p className="text-sm text-rose-600">{noteError}</p> : null}
+                {noteError ? (
+                  <p className="text-sm text-rose-600">{noteError}</p>
+                ) : null}
                 <button
                   type="submit"
                   disabled={postingNote || !newNote.trim()}
@@ -521,24 +579,35 @@ export default function AdminLeadDetailsPage() {
 
               <div className="mt-5 space-y-3">
                 {lead.notes.map((note) => (
-                  <article key={note.id} className="rounded-lg border border-slate-200 p-3">
-                    <div className="mb-1 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
+                  <article
+                    key={note.id}
+                    className="rounded-lg border border-slate-200 p-3"
+                  >
+                    <div className="mb-1 flex flex-wrap items-center justify-between gap-2 text-sm text-slate-500">
                       <span>
-                        {note.author ? `${note.author.firstName} ${note.author.lastName}` : "System"}
+                        {note.author
+                          ? `${note.author.firstName} ${note.author.lastName}`
+                          : "System"}
                       </span>
-                      <span>{format(new Date(note.createdAt), "dd MMM yyyy, p")}</span>
+                      <span>
+                        {format(new Date(note.createdAt), "dd MMM yyyy, p")}
+                      </span>
                     </div>
                     <p className="text-sm text-slate-800">{note.body}</p>
                   </article>
                 ))}
-                {lead.notes.length === 0 ? <p className="text-sm text-slate-500">No notes yet.</p> : null}
+                {lead.notes.length === 0 ? (
+                  <p className="text-sm text-slate-500">No notes yet.</p>
+                ) : null}
               </div>
             </section>
           </div>
 
           <div className="space-y-6 lg:col-span-2">
             <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-              <h2 className="text-lg font-semibold text-slate-900">Status Management</h2>
+              <h2 className="text-lg font-semibold text-slate-900">
+                Status Management
+              </h2>
               <div className="mt-3">
                 <StatusBadge status={lead.status} type="lead" />
               </div>
@@ -563,7 +632,9 @@ export default function AdminLeadDetailsPage() {
                   className="min-h-20 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
                 />
 
-                {statusError ? <p className="text-sm text-rose-600">{statusError}</p> : null}
+                {statusError ? (
+                  <p className="text-sm text-rose-600">{statusError}</p>
+                ) : null}
 
                 <button
                   type="submit"
@@ -576,11 +647,15 @@ export default function AdminLeadDetailsPage() {
             </section>
 
             <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-              <h2 className="text-lg font-semibold text-slate-900">Assignment</h2>
+              <h2 className="text-lg font-semibold text-slate-900">
+                Assignment
+              </h2>
               <p className="mt-2 text-sm text-slate-600">
                 Assigned To:{" "}
                 <span className="font-semibold text-slate-900">
-                  {lead.ownerCounselor ? `${lead.ownerCounselor.firstName} ${lead.ownerCounselor.lastName}` : "Unassigned"}
+                  {lead.ownerCounselor
+                    ? `${lead.ownerCounselor.firstName} ${lead.ownerCounselor.lastName}`
+                    : "Unassigned"}
                 </span>
               </p>
 
@@ -598,8 +673,12 @@ export default function AdminLeadDetailsPage() {
                   ))}
                 </select>
 
-                {assignError ? <p className="text-sm text-rose-600">{assignError}</p> : null}
-                {assignMessage ? <p className="text-sm text-emerald-600">{assignMessage}</p> : null}
+                {assignError ? (
+                  <p className="text-sm text-rose-600">{assignError}</p>
+                ) : null}
+                {assignMessage ? (
+                  <p className="text-sm text-emerald-600">{assignMessage}</p>
+                ) : null}
 
                 <button
                   type="submit"
@@ -612,7 +691,9 @@ export default function AdminLeadDetailsPage() {
             </section>
 
             <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-              <h2 className="text-lg font-semibold text-slate-900">Quick Info</h2>
+              <h2 className="text-lg font-semibold text-slate-900">
+                Quick Info
+              </h2>
               <dl className="mt-3 space-y-2 text-sm text-slate-700">
                 <div>
                   <dt className="text-slate-500">Lead ID</dt>

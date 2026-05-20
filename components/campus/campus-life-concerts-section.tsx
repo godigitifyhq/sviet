@@ -31,17 +31,21 @@ export function CampusLifeConcertsSection() {
           Concerts & EDMs
         </p>
         <h2 className="mt-5 max-w-6xl text-4xl font-semibold leading-tight tracking-[-0.02em] text-[#161616] md:text-6xl">
-          <span className="bg-linear-to-r from-[#1d4ed8] to-[#f7941d] bg-clip-text text-transparent">From EDM nights</span> that keep you
-          dancing till dawn to soulful live concerts
+          <span className="bg-linear-to-r from-[#1d4ed8] to-[#f7941d] bg-clip-text text-transparent">
+            From EDM nights
+          </span>{" "}
+          that keep you dancing till dawn to soulful live concerts
         </h2>
         <p className="mt-6 max-w-5xl text-base leading-relaxed text-[#465064] md:text-xl">
-          Experience the thrill of live music with some of the biggest artists and DJs lighting up the stage at SVGOI. Annually,
-          our music festivals bring together genres from rock and pop to Bollywood fusion, ensuring there is something for everyone.
+          Experience the thrill of live music with some of the biggest artists
+          and DJs lighting up the stage at SVGOI. Annually, our music festivals
+          bring together genres from rock and pop to Bollywood fusion, ensuring
+          there is something for everyone.
         </p>
 
         <div className="mt-10 flex items-center gap-3 text-2xl font-semibold text-[#1e1e1e] md:text-4xl">
-          <span className="text-[#8e95ab]">▸</span>
-          A glimpse of SVGOI concerts and EDM
+          <span className="text-[#8e95ab]">▸</span>A glimpse of SVGOI concerts
+          and EDM
         </div>
 
         <div className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:mt-10 md:gap-5">
@@ -58,7 +62,7 @@ export function CampusLifeConcertsSection() {
                 className="object-cover transition duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-black/8" />
-              {/* <div className="absolute left-4 top-4 inline-flex rounded-full bg-white/20 px-3 py-1 text-xs font-semibold tracking-wide text-white backdrop-blur-sm md:left-5 md:top-5">
+              {/* <div className="absolute left-4 top-4 inline-flex rounded-full bg-white/20 px-3 py-1 text-sm font-semibold tracking-wide text-white backdrop-blur-sm md:left-5 md:top-5">
                 Live event {String(index + 1).padStart(2, "0")}
               </div>
               <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/20 bg-white/12 p-4 backdrop-blur-sm md:inset-x-5 md:bottom-5 md:p-5">

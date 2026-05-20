@@ -70,7 +70,7 @@ export function ProgramHeroSection({
             {title}
           </h1>
           <p className="mt-3 max-w-3xl text-[#4b4b4b]">{shortDescription}</p>
-          <div className="mt-4 flex flex-wrap gap-2 text-xs">
+          <div className="mt-4 flex flex-wrap gap-2 text-sm">
             {chips.map((chip) => (
               <span
                 key={chip}
@@ -114,7 +114,7 @@ export function ProgramHeroSection({
           <button className="w-full rounded border border-[#e6e6e6] px-4 py-2.5 font-semibold text-[#555]">
             Enquire
           </button>
-          <div className="space-y-5 pb-5 border-t border-[#eaeaea] pt-7 mt-3 text-xs">
+          <div className="space-y-5 pb-5 border-t border-[#eaeaea] pt-7 mt-3 text-sm">
             <div className="flex items-center justify-between">
               <span className="text-[#888]">Duration</span>
               <span className="font-medium text-[#222]">
@@ -136,7 +136,7 @@ export function ProgramHeroSection({
               <span className="font-medium text-[#222]">AICTE Approved</span>
             </div>
           </div>
-          <div className="rounded bg-[#fff6ee] p-3 text-xs text-[#8d5522]">
+          <div className="rounded bg-[#fff6ee] p-3 text-sm text-[#8d5522]">
             75% scholarship seats available for early applicants.
           </div>
         </aside>

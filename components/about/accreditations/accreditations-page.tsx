@@ -117,15 +117,14 @@ export function AccreditationsPage() {
         className="relative overflow-hidden border-b border-[#E5E7EB] bg-white"
       >
         <div className=" mb-7 max-w-4xl text-left">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em]  md:text-sm">
+          <p className="text-sm font-semibold uppercase tracking-[0.28em]  md:text-sm">
             About SVGOI
           </p>
           <h1
             id="accreditations-heading"
             className="mt-3 text-3xl font-black tracking-tight md:text-5xl"
           >
-            Accreditations{" "}
-            <span className="">&amp; Approvals</span>
+            Accreditations <span className="">&amp; Approvals</span>
           </h1>
           <p className=" mt-3 max-w-3xl text-sm leading-relaxed text-[#475569] md:text-base">
             Recognitions that reflect SVGOI&apos;s quality-first academic

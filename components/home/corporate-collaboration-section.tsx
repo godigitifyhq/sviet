@@ -121,7 +121,7 @@ export function CorporateCollaborationSection() {
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-[#0f172a]/28 via-transparent to-transparent" />
                 </div>
-                <figcaption className="flex flex-wrap items-center justify-between gap-2 border-t border-[#E5E7EB] px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-[#6B7280]">
+                <figcaption className="flex flex-wrap items-center justify-between gap-2 border-t border-[#E5E7EB] px-5 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-[#6B7280]">
                   <span>{selectedPartner.name} Partnership</span>
                   <span className="text-[#f7941d]">
                     Outcome-driven collaboration

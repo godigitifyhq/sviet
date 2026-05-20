@@ -145,7 +145,7 @@ export function AdminLayout({ children, title }: AdminLayoutProps) {
       >
         <div className="flex items-center justify-between border-b border-slate-700 px-5 py-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-300">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-300">
               SVGOI
             </p>
             <p className="text-lg font-semibold text-white">CRM</p>
@@ -208,7 +208,7 @@ export function AdminLayout({ children, title }: AdminLayoutProps) {
                 <p className="text-sm font-semibold text-slate-800">
                   {user ? `${user.firstName} ${user.lastName}` : "Loading..."}
                 </p>
-                <p className="text-xs uppercase tracking-wide text-slate-500">
+                <p className="text-sm uppercase tracking-wide text-slate-500">
                   {user?.role ?? ""}
                 </p>
               </div>

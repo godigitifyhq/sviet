@@ -81,7 +81,9 @@ export default function AdminLeadsPage() {
           params.set("source", sourceFilter);
         }
 
-        const response = await fetch(`/api/crm/leads?${params.toString()}`, { cache: "no-store" });
+        const response = await fetch(`/api/crm/leads?${params.toString()}`, {
+          cache: "no-store",
+        });
         const payload = (await response.json()) as LeadsResponse;
 
         if (!active) {
@@ -116,7 +118,10 @@ export default function AdminLeadsPage() {
     };
   }, [page, search, statusFilter, sourceFilter]);
 
-  const resultLabel = useMemo(() => `Showing ${leads.length} of ${total} leads`, [leads.length, total]);
+  const resultLabel = useMemo(
+    () => `Showing ${leads.length} of ${total} leads`,
+    [leads.length, total],
+  );
 
   function clearFilters() {
     setSearchInput("");
@@ -176,27 +181,48 @@ export default function AdminLeadsPage() {
 
         <p className="text-sm font-medium text-slate-600">{resultLabel}</p>
 
-        {error ? <p className="text-sm font-medium text-rose-600">{error}</p> : null}
+        {error ? (
+          <p className="text-sm font-medium text-rose-600">{error}</p>
+        ) : null}
 
         <section className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-slate-200 text-sm">
               <thead className="bg-slate-50">
                 <tr>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-600">Name</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-600">Email</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-600">Phone</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-600">Source</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-600">Status</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-600">Program</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-600">Date</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-600">Actions</th>
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Name
+                  </th>
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Email
+                  </th>
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Phone
+                  </th>
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Source
+                  </th>
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Status
+                  </th>
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Program
+                  </th>
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Date
+                  </th>
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {loading ? (
                   <tr>
-                    <td colSpan={8} className="px-4 py-8 text-center text-slate-500">
+                    <td
+                      colSpan={8}
+                      className="px-4 py-8 text-center text-slate-500"
+                    >
                       Loading leads...
                     </td>
                   </tr>
@@ -204,7 +230,10 @@ export default function AdminLeadsPage() {
 
                 {!loading && leads.length === 0 ? (
                   <tr>
-                    <td colSpan={8} className="px-4 py-8 text-center text-slate-500">
+                    <td
+                      colSpan={8}
+                      className="px-4 py-8 text-center text-slate-500"
+                    >
                       No leads found.
                     </td>
                   </tr>
@@ -214,26 +243,35 @@ export default function AdminLeadsPage() {
                   ? leads.map((lead) => (
                       <tr key={lead.id} className="hover:bg-slate-50">
                         <td className="whitespace-nowrap px-4 py-3 font-medium text-slate-900">
-                          <Link href={`/admin/leads/${lead.id}`} className="hover:underline">
+                          <Link
+                            href={`/admin/leads/${lead.id}`}
+                            className="hover:underline"
+                          >
                             {lead.firstName} {lead.lastName}
                           </Link>
                         </td>
-                        <td className="whitespace-nowrap px-4 py-3 text-slate-700">{lead.email}</td>
-                        <td className="whitespace-nowrap px-4 py-3 text-slate-700">{lead.phone ?? "-"}</td>
+                        <td className="whitespace-nowrap px-4 py-3 text-slate-700">
+                          {lead.email}
+                        </td>
+                        <td className="whitespace-nowrap px-4 py-3 text-slate-700">
+                          {lead.phone ?? "-"}
+                        </td>
                         <td className="whitespace-nowrap px-4 py-3">
                           <StatusBadge status={lead.source} type="source" />
                         </td>
                         <td className="whitespace-nowrap px-4 py-3">
                           <StatusBadge status={lead.status} type="lead" />
                         </td>
-                        <td className="whitespace-nowrap px-4 py-3 text-slate-700">{lead.intendedProgram?.title ?? "-"}</td>
+                        <td className="whitespace-nowrap px-4 py-3 text-slate-700">
+                          {lead.intendedProgram?.title ?? "-"}
+                        </td>
                         <td className="whitespace-nowrap px-4 py-3 text-slate-700">
                           {format(new Date(lead.createdAt), "dd MMM yyyy")}
                         </td>
                         <td className="whitespace-nowrap px-4 py-3">
                           <Link
                             href={`/admin/leads/${lead.id}`}
-                            className="inline-flex items-center rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100"
+                            className="inline-flex items-center rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-semibold text-slate-700 hover:bg-slate-100"
                           >
                             View
                           </Link>
@@ -260,7 +298,11 @@ export default function AdminLeadsPage() {
           </p>
           <button
             type="button"
-            onClick={() => setPage((current) => Math.min(Math.max(totalPages, 1), current + 1))}
+            onClick={() =>
+              setPage((current) =>
+                Math.min(Math.max(totalPages, 1), current + 1),
+              )
+            }
             disabled={page >= totalPages || loading}
             className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60"
           >

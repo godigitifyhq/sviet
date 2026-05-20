@@ -65,7 +65,10 @@ export default function AdminProgramsPage() {
     };
   }, []);
 
-  async function handleToggleProgram(programSlug: string, currentIsActive: boolean) {
+  async function handleToggleProgram(
+    programSlug: string,
+    currentIsActive: boolean,
+  ) {
     if (toggleUnavailable) {
       return;
     }
@@ -81,7 +84,9 @@ export default function AdminProgramsPage() {
 
       if (response.status === 404 || response.status === 405) {
         setToggleUnavailable(true);
-        setToggleError("Toggle endpoint unavailable. Displaying programs in read-only mode.");
+        setToggleError(
+          "Toggle endpoint unavailable. Displaying programs in read-only mode.",
+        );
         return;
       }
 
@@ -119,25 +124,42 @@ export default function AdminProgramsPage() {
           </button>
         </div>
 
-        {error ? <p className="text-sm font-medium text-rose-600">{error}</p> : null}
-        {toggleError ? <p className="text-sm font-medium text-amber-700">{toggleError}</p> : null}
+        {error ? (
+          <p className="text-sm font-medium text-rose-600">{error}</p>
+        ) : null}
+        {toggleError ? (
+          <p className="text-sm font-medium text-amber-700">{toggleError}</p>
+        ) : null}
 
         <section className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-slate-200 text-sm">
               <thead className="bg-slate-50">
                 <tr>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-600">Title</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-600">Duration</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-600">Fees</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-600">Active</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-600">Actions</th>
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Title
+                  </th>
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Duration
+                  </th>
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Fees
+                  </th>
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Active
+                  </th>
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {loading ? (
                   <tr>
-                    <td colSpan={5} className="px-4 py-8 text-center text-slate-500">
+                    <td
+                      colSpan={5}
+                      className="px-4 py-8 text-center text-slate-500"
+                    >
                       Loading programs...
                     </td>
                   </tr>
@@ -145,7 +167,10 @@ export default function AdminProgramsPage() {
 
                 {!loading && programs.length === 0 ? (
                   <tr>
-                    <td colSpan={5} className="px-4 py-8 text-center text-slate-500">
+                    <td
+                      colSpan={5}
+                      className="px-4 py-8 text-center text-slate-500"
+                    >
                       No programs found.
                     </td>
                   </tr>
@@ -156,13 +181,24 @@ export default function AdminProgramsPage() {
                       const active = program.isActive ?? true;
                       return (
                         <tr key={program.id} className="hover:bg-slate-50">
-                          <td className="whitespace-nowrap px-4 py-3 font-medium text-slate-900">{program.title}</td>
-                          <td className="whitespace-nowrap px-4 py-3 text-slate-700">{program.durationMonths} months</td>
-                          <td className="whitespace-nowrap px-4 py-3 text-slate-700">₹{(program.tuitionCents / 100).toLocaleString("en-IN")}</td>
+                          <td className="whitespace-nowrap px-4 py-3 font-medium text-slate-900">
+                            {program.title}
+                          </td>
+                          <td className="whitespace-nowrap px-4 py-3 text-slate-700">
+                            {program.durationMonths} months
+                          </td>
+                          <td className="whitespace-nowrap px-4 py-3 text-slate-700">
+                            ₹
+                            {(program.tuitionCents / 100).toLocaleString(
+                              "en-IN",
+                            )}
+                          </td>
                           <td className="whitespace-nowrap px-4 py-3">
                             <span
-                              className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${
-                                active ? "bg-green-100 text-green-700" : "bg-slate-200 text-slate-700"
+                              className={`inline-flex items-center rounded-full px-2.5 py-1 text-sm font-semibold ${
+                                active
+                                  ? "bg-green-100 text-green-700"
+                                  : "bg-slate-200 text-slate-700"
                               }`}
                             >
                               {active ? "Active" : "Inactive"}
@@ -170,12 +206,16 @@ export default function AdminProgramsPage() {
                           </td>
                           <td className="whitespace-nowrap px-4 py-3">
                             {toggleUnavailable ? (
-                              <span className="text-xs font-medium text-slate-500">Read-only</span>
+                              <span className="text-sm font-medium text-slate-500">
+                                Read-only
+                              </span>
                             ) : (
                               <button
                                 type="button"
-                                onClick={() => handleToggleProgram(program.slug, active)}
-                                className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100"
+                                onClick={() =>
+                                  handleToggleProgram(program.slug, active)
+                                }
+                                className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-semibold text-slate-700 hover:bg-slate-100"
                               >
                                 Toggle Active
                               </button>

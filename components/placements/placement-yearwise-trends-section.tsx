@@ -61,8 +61,9 @@ export function PlacementYearwiseTrendsSection() {
             A transparent, year-on-year view of placement volumes and salary
             growth based on aggregate records across all SVGOI colleges.
           </p>
-          <p className="mt-2 text-xs text-[#9ca3af]">
-            * Data represents aggregate placement outcomes across all colleges under SVGOI Group.
+          <p className="mt-2 text-sm text-[#9ca3af]">
+            * Data represents aggregate placement outcomes across all colleges
+            under SVGOI Group.
           </p>
         </div>
 
@@ -72,18 +73,33 @@ export function PlacementYearwiseTrendsSection() {
             <h3 className="text-base font-semibold text-[#111827]">
               Companies Visited
             </h3>
-            <p className="mt-0.5 text-xs text-[#9ca3af]">Year-wise recruiter count</p>
+            <p className="mt-0.5 text-sm text-[#9ca3af]">
+              Year-wise recruiter count
+            </p>
             <div className="mt-5 h-64 w-full">
               <ResponsiveContainer>
                 <BarChart data={COMPANIES_DATA} barSize={28}>
                   <defs>
                     <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stopColor="#f7941d" stopOpacity={1} />
-                      <stop offset="100%" stopColor="#ffb347" stopOpacity={0.7} />
+                      <stop
+                        offset="100%"
+                        stopColor="#ffb347"
+                        stopOpacity={0.7}
+                      />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" vertical={false} />
-                  <XAxis dataKey="year" tick={AXIS_STYLE} axisLine={false} tickLine={false} />
+                  <CartesianGrid
+                    stroke="#E5E7EB"
+                    strokeDasharray="3 3"
+                    vertical={false}
+                  />
+                  <XAxis
+                    dataKey="year"
+                    tick={AXIS_STYLE}
+                    axisLine={false}
+                    tickLine={false}
+                  />
                   <YAxis
                     domain={[200, 400]}
                     tick={AXIS_STYLE}
@@ -95,7 +111,11 @@ export function PlacementYearwiseTrendsSection() {
                     contentStyle={TOOLTIP_STYLE}
                     formatter={(value) => [`${value} companies`, "Recruiters"]}
                   />
-                  <Bar dataKey="companies" fill="url(#barGrad)" radius={[4, 4, 0, 0]} />
+                  <Bar
+                    dataKey="companies"
+                    fill="url(#barGrad)"
+                    radius={[4, 4, 0, 0]}
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -106,12 +126,19 @@ export function PlacementYearwiseTrendsSection() {
             <h3 className="text-base font-semibold text-[#111827]">
               Highest Package
             </h3>
-            <p className="mt-0.5 text-xs text-[#9ca3af]">Peak offer per year (LPA)</p>
+            <p className="mt-0.5 text-sm text-[#9ca3af]">
+              Peak offer per year (LPA)
+            </p>
             <div className="mt-5 h-64 w-full">
               <ResponsiveContainer>
                 <LineChart data={HIGHEST_PACKAGE_DATA}>
                   <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" />
-                  <XAxis dataKey="year" tick={AXIS_STYLE} axisLine={false} tickLine={false} />
+                  <XAxis
+                    dataKey="year"
+                    tick={AXIS_STYLE}
+                    axisLine={false}
+                    tickLine={false}
+                  />
                   <YAxis
                     domain={[0, 70]}
                     tick={AXIS_STYLE}
@@ -142,18 +169,29 @@ export function PlacementYearwiseTrendsSection() {
             <h3 className="text-base font-semibold text-[#111827]">
               Average Package
             </h3>
-            <p className="mt-0.5 text-xs text-[#9ca3af]">Mean CTC trend (LPA)</p>
+            <p className="mt-0.5 text-sm text-[#9ca3af]">
+              Mean CTC trend (LPA)
+            </p>
             <div className="mt-5 h-64 w-full">
               <ResponsiveContainer>
                 <AreaChart data={AVERAGE_PACKAGE_DATA}>
                   <defs>
                     <linearGradient id="avgGrad" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="#2563EB" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="#2563EB" stopOpacity={0.03} />
+                      <stop
+                        offset="95%"
+                        stopColor="#2563EB"
+                        stopOpacity={0.03}
+                      />
                     </linearGradient>
                   </defs>
                   <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" />
-                  <XAxis dataKey="year" tick={AXIS_STYLE} axisLine={false} tickLine={false} />
+                  <XAxis
+                    dataKey="year"
+                    tick={AXIS_STYLE}
+                    axisLine={false}
+                    tickLine={false}
+                  />
                   <YAxis
                     domain={[2, 7]}
                     tick={AXIS_STYLE}
@@ -183,19 +221,19 @@ export function PlacementYearwiseTrendsSection() {
         {/* Summary strip */}
         <div className="mt-6 grid gap-4 sm:grid-cols-3">
           <article className="rounded-xl border border-[#DCE7FF] bg-white p-4">
-            <p className="text-xs uppercase tracking-[0.14em] text-[#6B7280]">
+            <p className="text-sm uppercase tracking-[0.14em] text-[#6B7280]">
               Companies Visited (2026)
             </p>
             <p className="mt-2 text-2xl font-bold text-[#111827]">350+</p>
           </article>
           <article className="rounded-xl border border-[#DCE7FF] bg-white p-4">
-            <p className="text-xs uppercase tracking-[0.14em] text-[#6B7280]">
+            <p className="text-sm uppercase tracking-[0.14em] text-[#6B7280]">
               Highest Package (2026)
             </p>
             <p className="mt-2 text-2xl font-bold text-[#111827]">60 LPA</p>
           </article>
           <article className="rounded-xl border border-[#DCE7FF] bg-white p-4">
-            <p className="text-xs uppercase tracking-[0.14em] text-[#6B7280]">
+            <p className="text-sm uppercase tracking-[0.14em] text-[#6B7280]">
               Average Package (2026)
             </p>
             <p className="mt-2 text-2xl font-bold text-[#111827]">5.8 LPA</p>

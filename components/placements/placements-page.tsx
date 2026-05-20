@@ -112,7 +112,7 @@ export function PlacementsPageComponent() {
               className="object-cover object-center "
             />
           </div>
-          <figcaption className="flex items-center justify-between gap-4 border-t border-gray-200 bg-white px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-gray-500 md:px-6">
+          <figcaption className="flex items-center justify-between gap-4 border-t border-gray-200 bg-white px-4 py-3 text-sm font-medium uppercase tracking-[0.18em] text-gray-500 md:px-6">
             <span>Training &amp; Placement Cell</span>
             <span className="text-[#f7941d]">Industry-ready outcomes</span>
           </figcaption>
@@ -147,7 +147,7 @@ export function PlacementsPageComponent() {
               />
             </div>
             <div className="p-6 md:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
                 Director — Placements
               </p>
               <h3 className="mt-2 text-xl font-bold text-[#111827] md:text-2xl">
@@ -156,8 +156,8 @@ export function PlacementsPageComponent() {
               <p className="mt-4 text-sm leading-relaxed text-[#374151] md:text-base">
                 Our goal is to provide strong placement opportunities and
                 meaningful corporate exposure to students. Over the years, the
-                Training &amp; Placement Cell has successfully connected students
-                with reputed organizations across multiple industries.
+                Training &amp; Placement Cell has successfully connected
+                students with reputed organizations across multiple industries.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-[#374151] md:text-base">
                 We focus on building industry-ready professionals by aligning
@@ -179,21 +179,22 @@ export function PlacementsPageComponent() {
               />
             </div>
             <div className="p-6 md:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
                 Director — Operations &amp; Corporate Partnership
               </p>
               <h3 className="mt-2 text-xl font-bold text-[#111827] md:text-2xl">
                 Mr. Ankur Gill
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-[#374151] md:text-base">
-                Building strong corporate relationships is at the heart of SVGOI's placement success.
-                Our corporate connect strategy actively engages with leading companies across India
-                to open new doors for our students.
+                Building strong corporate relationships is at the heart of
+                SVGOI's placement success. Our corporate connect strategy
+                actively engages with leading companies across India to open new
+                doors for our students.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-[#374151] md:text-base">
-                Through structured industry partnerships and operational excellence, we ensure
-                every student receives the guidance and exposure needed to thrive in today's
-                competitive workforce.
+                Through structured industry partnerships and operational
+                excellence, we ensure every student receives the guidance and
+                exposure needed to thrive in today's competitive workforce.
               </p>
             </div>
           </article>
@@ -201,7 +202,7 @@ export function PlacementsPageComponent() {
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           <article className="rounded-2xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] p-6 shadow-[0_8px_24px_rgba(30,42,120,0.06)]">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
               Philosophy
             </p>
             <h3 className="mt-2 text-lg font-bold text-[#111827]">Vision</h3>
@@ -210,7 +211,7 @@ export function PlacementsPageComponent() {
             </p>
           </article>
           <article className="rounded-2xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] p-6 shadow-[0_8px_24px_rgba(30,42,120,0.06)]">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
               Philosophy
             </p>
             <h3 className="mt-2 text-lg font-bold text-[#111827]">Mission</h3>
@@ -254,7 +255,7 @@ export function PlacementsPageComponent() {
               className="object-cover object-center"
             />
           </div>
-          <figcaption className="flex items-center justify-between gap-4 border-t border-gray-200 bg-white px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-gray-500 md:px-6">
+          <figcaption className="flex items-center justify-between gap-4 border-t border-gray-200 bg-white px-4 py-3 text-sm font-medium uppercase tracking-[0.18em] text-gray-500 md:px-6">
             <span>Industrial Exposure</span>
             <span className="text-[#f7941d]">Real-world engagement</span>
           </figcaption>

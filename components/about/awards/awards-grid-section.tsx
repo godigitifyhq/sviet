@@ -110,7 +110,7 @@ export function AwardsGridSection() {
           <span className="text-[#111827]"> Recognition Highlights</span>
         </h2>
 
-        <div className="mt-8 inline-flex rounded-full border border-[#c7d2fe] bg-[#eef2ff] px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#1e3a8a]">
+        <div className="mt-8 inline-flex rounded-full border border-[#c7d2fe] bg-[#eef2ff] px-4 py-2 text-sm font-semibold uppercase tracking-[0.08em] text-[#1e3a8a]">
           Institutional Milestones
         </div>
 

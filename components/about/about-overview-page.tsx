@@ -309,7 +309,7 @@ function PhilosophyTimeline({ points }: { points: PhilosophyPoint[] }) {
       />
       {points.map((point, index) => (
         <li key={point.title} className="relative pl-16">
-          <span className="absolute left-0 top-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#f7941d] text-xs font-semibold text-white">
+          <span className="absolute left-0 top-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#f7941d] text-sm font-semibold text-white">
             {index + 1}
           </span>
 
@@ -474,10 +474,13 @@ export function AboutOverviewPage() {
       </SectionWrapper>
 
       {/* 5 USP Cards */}
-      <SectionWrapper aria-labelledby="usp-heading" className="bg-[#111827] overflow-hidden">
+      <SectionWrapper
+        aria-labelledby="usp-heading"
+        className="bg-[#111827] overflow-hidden"
+      >
         <div className="mb-10 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#f7941d]">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#f7941d]">
               Why SVGOI
             </p>
             <h2
@@ -495,27 +498,22 @@ export function AboutOverviewPage() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {[
             {
-             
               heading: "NAAC B++ Accredited",
               body: "Recognised with a 2.94 NAAC score (2024) — a benchmark of academic quality and institutional standards.",
             },
             {
-           
               heading: "60 LPA Highest Package",
               body: "Our students secure top-tier roles across India's leading companies — from IT giants to global MNCs.",
             },
             {
-         
               heading: "50,000+ Students",
               body: "One of Punjab's largest multi-discipline campuses, nurturing talent from 28 states and beyond.",
             },
             {
-         
               heading: "20+ Years of Excellence",
               body: "A trusted legacy institution delivering quality engineering, management, pharmacy, and law education since 2004.",
             },
             {
-         
               heading: "Innovation Ecosystem",
               body: "Startup incubation, research grants, IIC support, and 15+ student-led initiatives power our entrepreneurship culture.",
             },
@@ -524,9 +522,10 @@ export function AboutOverviewPage() {
               key={usp.heading}
               className="flex flex-col border-t-4 border-[#f7941d] bg-[#1f2937] p-6"
             >
-            
               <h3 className="text-base font-bold text-white">{usp.heading}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/65">{usp.body}</p>
+              <p className="mt-2 text-sm leading-relaxed text-white/65">
+                {usp.body}
+              </p>
             </article>
           ))}
         </div>

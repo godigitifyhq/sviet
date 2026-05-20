@@ -147,7 +147,7 @@ export function CampusLifeHangoutsSportsClubsSection() {
                   <p className="mt-2 text-sm leading-relaxed text-[#4b5563] md:text-base">
                     {item.description}
                   </p>
-                  {/* <p className="mt-5 text-xs font-semibold tracking-wide text-[#1d4ed8] transition group-hover:text-[#f7941d]">
+                  {/* <p className="mt-5 text-sm font-semibold tracking-wide text-[#1d4ed8] transition group-hover:text-[#f7941d]">
                     Explore activities ›
                   </p> */}
                 </article>
@@ -177,7 +177,7 @@ export function CampusLifeHangoutsSportsClubsSection() {
               energy flowing.
             </p>
           </div>
-{/* 
+          {/* 
           <div className="grid grid-cols-2 gap-3 self-end">
             <div className="relative h-44 overflow-hidden rounded-xl md:h-56">
               <Image

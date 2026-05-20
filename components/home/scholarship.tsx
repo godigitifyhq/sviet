@@ -15,7 +15,9 @@ type ScholarshipFormState = {
   category: "" | "GENERAL" | "OBC" | "SC" | "ST";
 };
 
-type ScholarshipFormErrors = Partial<Record<keyof ScholarshipFormState, string>>;
+type ScholarshipFormErrors = Partial<
+  Record<keyof ScholarshipFormState, string>
+>;
 
 type ScholarshipEligibility = {
   eligible: boolean;
@@ -45,15 +47,24 @@ function splitNameForScholarship(name: string) {
 }
 
 export function ScholarshipSection() {
-  const [form, setForm] = useState<ScholarshipFormState>(initialScholarshipForm);
+  const [form, setForm] = useState<ScholarshipFormState>(
+    initialScholarshipForm,
+  );
   const [errors, setErrors] = useState<ScholarshipFormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-  const [eligibilityResult, setEligibilityResult] = useState<ScholarshipEligibility | null>(null);
+  const [eligibilityResult, setEligibilityResult] =
+    useState<ScholarshipEligibility | null>(null);
 
-  const handleFieldChange = (field: keyof ScholarshipFormState, value: string) => {
-    setForm((prev) => ({ ...prev, [field]: value as ScholarshipFormState[keyof ScholarshipFormState] }));
+  const handleFieldChange = (
+    field: keyof ScholarshipFormState,
+    value: string,
+  ) => {
+    setForm((prev) => ({
+      ...prev,
+      [field]: value as ScholarshipFormState[keyof ScholarshipFormState],
+    }));
     setErrors((prev) => ({ ...prev, [field]: "" }));
     setSubmitError("");
   };
@@ -113,7 +124,10 @@ export function ScholarshipSection() {
 
     try {
       const { firstName, lastName } = splitNameForScholarship(form.name);
-      const response = await postJson<{ leadId: string; eligibility: ScholarshipEligibility }>("/api/leads/scholarship", {
+      const response = await postJson<{
+        leadId: string;
+        eligibility: ScholarshipEligibility;
+      }>("/api/leads/scholarship", {
         firstName,
         lastName,
         email: form.email.trim(),
@@ -124,9 +138,12 @@ export function ScholarshipSection() {
         category: form.category,
       });
 
-      const isSuccessful = response.success === true || (response as { ok?: boolean }).ok === true;
+      const isSuccessful =
+        response.success === true || (response as { ok?: boolean }).ok === true;
       if (!isSuccessful || !response.data?.eligibility) {
-        setSubmitError(response.error?.message ?? "Unable to check eligibility right now.");
+        setSubmitError(
+          response.error?.message ?? "Unable to check eligibility right now.",
+        );
         return;
       }
 
@@ -140,7 +157,10 @@ export function ScholarshipSection() {
   };
 
   const percentage = eligibilityResult?.percentage ?? 0;
-  const isPartiallyEligible = (eligibilityResult?.eligible ?? false) && percentage >= 30 && percentage < 60;
+  const isPartiallyEligible =
+    (eligibilityResult?.eligible ?? false) &&
+    percentage >= 30 &&
+    percentage < 60;
   const eligibilityTone = !eligibilityResult
     ? ""
     : !eligibilityResult.eligible
@@ -158,7 +178,8 @@ export function ScholarshipSection() {
             <span className="text-[#f7941d]">Find Your Scholarship</span>
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed text-[#6B7280] md:text-base">
-            Check your scholarship eligibility based on your academic performance and family income.
+            Check your scholarship eligibility based on your academic
+            performance and family income.
           </p>
         </div>
 
@@ -174,8 +195,12 @@ export function ScholarshipSection() {
               }`}
             >
               <p className="font-semibold">Scholarship Eligibility</p>
-              <p className="mt-4 text-5xl font-bold">{eligibilityResult.percentage}%</p>
-              <p className="mt-4 text-sm leading-relaxed">{eligibilityResult.reason}</p>
+              <p className="mt-4 text-5xl font-bold">
+                {eligibilityResult.percentage}%
+              </p>
+              <p className="mt-4 text-sm leading-relaxed">
+                {eligibilityResult.reason}
+              </p>
               {eligibilityResult.conditions.length > 0 ? (
                 <ul className="mt-4 space-y-2">
                   {eligibilityResult.conditions.map((condition) => (
@@ -188,9 +213,15 @@ export function ScholarshipSection() {
               ) : null}
             </div>
           ) : (
-            <form className="flex w-full max-w-md flex-col gap-6" onSubmit={handleSubmit}>
+            <form
+              className="flex w-full max-w-md flex-col gap-6"
+              onSubmit={handleSubmit}
+            >
               <div>
-                <label className="mb-2 block text-xs font-semibold text-[#6B7280]" htmlFor="scholarship-name">
+                <label
+                  className="mb-2 block text-sm font-semibold text-[#6B7280]"
+                  htmlFor="scholarship-name"
+                >
                   Full Name
                 </label>
                 <input
@@ -199,14 +230,21 @@ export function ScholarshipSection() {
                   type="text"
                   placeholder="Enter your full name"
                   value={form.name}
-                  onChange={(event) => handleFieldChange("name", event.target.value)}
+                  onChange={(event) =>
+                    handleFieldChange("name", event.target.value)
+                  }
                   className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
                 />
-                {errors.name ? <p className="mt-1 text-xs text-red-600">{errors.name}</p> : null}
+                {errors.name ? (
+                  <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+                ) : null}
               </div>
 
               <div>
-                <label className="mb-2 block text-xs font-semibold text-[#6B7280]" htmlFor="scholarship-phone">
+                <label
+                  className="mb-2 block text-sm font-semibold text-[#6B7280]"
+                  htmlFor="scholarship-phone"
+                >
                   Phone Number
                 </label>
                 <input
@@ -215,14 +253,21 @@ export function ScholarshipSection() {
                   type="tel"
                   placeholder="Enter your 10-digit phone number"
                   value={form.phone}
-                  onChange={(event) => handleFieldChange("phone", event.target.value)}
+                  onChange={(event) =>
+                    handleFieldChange("phone", event.target.value)
+                  }
                   className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
                 />
-                {errors.phone ? <p className="mt-1 text-xs text-red-600">{errors.phone}</p> : null}
+                {errors.phone ? (
+                  <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+                ) : null}
               </div>
 
               <div>
-                <label className="mb-2 block text-xs font-semibold text-[#6B7280]" htmlFor="scholarship-email">
+                <label
+                  className="mb-2 block text-sm font-semibold text-[#6B7280]"
+                  htmlFor="scholarship-email"
+                >
                   Email Address
                 </label>
                 <input
@@ -231,21 +276,30 @@ export function ScholarshipSection() {
                   type="email"
                   placeholder="Enter your email"
                   value={form.email}
-                  onChange={(event) => handleFieldChange("email", event.target.value)}
+                  onChange={(event) =>
+                    handleFieldChange("email", event.target.value)
+                  }
                   className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
                 />
-                {errors.email ? <p className="mt-1 text-xs text-red-600">{errors.email}</p> : null}
+                {errors.email ? (
+                  <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                ) : null}
               </div>
 
               <div>
-                <label className="mb-2 block text-xs font-semibold text-[#6B7280]" htmlFor="scholarship-course">
+                <label
+                  className="mb-2 block text-sm font-semibold text-[#6B7280]"
+                  htmlFor="scholarship-course"
+                >
                   Select Your Course
                 </label>
                 <select
                   id="scholarship-course"
                   name="course"
                   value={form.course}
-                  onChange={(event) => handleFieldChange("course", event.target.value)}
+                  onChange={(event) =>
+                    handleFieldChange("course", event.target.value)
+                  }
                   className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
                 >
                   <option value="" disabled>
@@ -261,11 +315,16 @@ export function ScholarshipSection() {
                   <option value="bhmct">BHMCT</option>
                   <option value="polytechnic">Polytechnic</option>
                 </select>
-                {errors.course ? <p className="mt-1 text-xs text-red-600">{errors.course}</p> : null}
+                {errors.course ? (
+                  <p className="mt-1 text-sm text-red-600">{errors.course}</p>
+                ) : null}
               </div>
 
               <div>
-                <label className="mb-2 block text-xs font-semibold text-[#6B7280]" htmlFor="scholarship-academic-score">
+                <label
+                  className="mb-2 block text-sm font-semibold text-[#6B7280]"
+                  htmlFor="scholarship-academic-score"
+                >
                   Academic Score (%)
                 </label>
                 <input
@@ -276,14 +335,23 @@ export function ScholarshipSection() {
                   max={100}
                   placeholder="Enter percentage (0-100)"
                   value={form.academicScore}
-                  onChange={(event) => handleFieldChange("academicScore", event.target.value)}
+                  onChange={(event) =>
+                    handleFieldChange("academicScore", event.target.value)
+                  }
                   className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
                 />
-                {errors.academicScore ? <p className="mt-1 text-xs text-red-600">{errors.academicScore}</p> : null}
+                {errors.academicScore ? (
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.academicScore}
+                  </p>
+                ) : null}
               </div>
 
               <div>
-                <label className="mb-2 block text-xs font-semibold text-[#6B7280]" htmlFor="scholarship-family-income">
+                <label
+                  className="mb-2 block text-sm font-semibold text-[#6B7280]"
+                  htmlFor="scholarship-family-income"
+                >
                   Family Annual Income (LPA)
                 </label>
                 <input
@@ -293,21 +361,32 @@ export function ScholarshipSection() {
                   min={0}
                   placeholder="Enter family income in lakhs"
                   value={form.familyIncomeLPA}
-                  onChange={(event) => handleFieldChange("familyIncomeLPA", event.target.value)}
+                  onChange={(event) =>
+                    handleFieldChange("familyIncomeLPA", event.target.value)
+                  }
                   className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
                 />
-                {errors.familyIncomeLPA ? <p className="mt-1 text-xs text-red-600">{errors.familyIncomeLPA}</p> : null}
+                {errors.familyIncomeLPA ? (
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.familyIncomeLPA}
+                  </p>
+                ) : null}
               </div>
 
               <div>
-                <label className="mb-2 block text-xs font-semibold text-[#6B7280]" htmlFor="scholarship-category">
+                <label
+                  className="mb-2 block text-sm font-semibold text-[#6B7280]"
+                  htmlFor="scholarship-category"
+                >
                   Category
                 </label>
                 <select
                   id="scholarship-category"
                   name="category"
                   value={form.category}
-                  onChange={(event) => handleFieldChange("category", event.target.value)}
+                  onChange={(event) =>
+                    handleFieldChange("category", event.target.value)
+                  }
                   className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
                 >
                   <option value="" disabled>
@@ -318,7 +397,9 @@ export function ScholarshipSection() {
                   <option value="SC">SC</option>
                   <option value="ST">ST</option>
                 </select>
-                {errors.category ? <p className="mt-1 text-xs text-red-600">{errors.category}</p> : null}
+                {errors.category ? (
+                  <p className="mt-1 text-sm text-red-600">{errors.category}</p>
+                ) : null}
               </div>
 
               <button
@@ -326,9 +407,15 @@ export function ScholarshipSection() {
                 disabled={isSubmitting}
                 className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#f7941d] px-6 py-3 font-semibold text-white transition hover:bg-[#2563EB] disabled:opacity-60"
               >
-                <span>{isSubmitting ? "Checking Eligibility..." : "Check My Eligibility"}</span>
+                <span>
+                  {isSubmitting
+                    ? "Checking Eligibility..."
+                    : "Check My Eligibility"}
+                </span>
               </button>
-              {submitError && <p className="text-sm text-red-600">{submitError}</p>}
+              {submitError && (
+                <p className="text-sm text-red-600">{submitError}</p>
+              )}
             </form>
           )}
 
@@ -338,7 +425,8 @@ export function ScholarshipSection() {
                 <span className="text-[#f7941d]">RNR Scholarship</span>
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-[#6B7280]">
-                SVGOI offers need-cum-merit scholarships to deserving students. Check your eligibility in 60 seconds.
+                SVGOI offers need-cum-merit scholarships to deserving students.
+                Check your eligibility in 60 seconds.
               </p>
               <p className="mt-4 font-semibold text-[#f7941d]">
                 Up to 100% fee waiver | 500+ scholarships awarded annually

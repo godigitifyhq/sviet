@@ -55,7 +55,7 @@ export function AdmissionsHeroSection({
 
       <div className="relative mx-auto grid max-w-7xl gap-8 px-4 pb-16 pt-36 md:grid-cols-[1fr_360px] md:px-6 md:pb-20 md:pt-40 lg:pb-24 lg:pt-44">
         <div className="text-white">
-          <p className="text-xs font-medium text-white/80">
+          <p className="text-sm font-medium text-white/80">
             <Link href="/" className="hover:text-white">
               Home
             </Link>{" "}
@@ -93,7 +93,7 @@ export function AdmissionsHeroSection({
           ) : (
             <form className="mt-4 space-y-3" onSubmit={onSubmit}>
               <div>
-                <label className="mb-1 block text-xs font-semibold text-[#333]">
+                <label className="mb-1 block text-sm font-semibold text-[#333]">
                   Full name
                 </label>
                 <input
@@ -106,12 +106,12 @@ export function AdmissionsHeroSection({
                   className={inputClass}
                 />
                 {errors.name ? (
-                  <p className="mt-1 text-xs text-red-600">{errors.name}</p>
+                  <p className="mt-1 text-sm text-red-600">{errors.name}</p>
                 ) : null}
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-semibold text-[#333]">
+                <label className="mb-1 block text-sm font-semibold text-[#333]">
                   Program
                 </label>
                 <select
@@ -132,14 +132,14 @@ export function AdmissionsHeroSection({
                   ))}
                 </select>
                 {errors.programId ? (
-                  <p className="mt-1 text-xs text-red-600">
+                  <p className="mt-1 text-sm text-red-600">
                     {errors.programId}
                   </p>
                 ) : null}
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-semibold text-[#333]">
+                <label className="mb-1 block text-sm font-semibold text-[#333]">
                   Phone number
                 </label>
                 <input
@@ -152,12 +152,12 @@ export function AdmissionsHeroSection({
                   className={inputClass}
                 />
                 {errors.phone ? (
-                  <p className="mt-1 text-xs text-red-600">{errors.phone}</p>
+                  <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
                 ) : null}
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-semibold text-[#333]">
+                <label className="mb-1 block text-sm font-semibold text-[#333]">
                   Email
                 </label>
                 <input
@@ -170,7 +170,7 @@ export function AdmissionsHeroSection({
                   className={inputClass}
                 />
                 {errors.email ? (
-                  <p className="mt-1 text-xs text-red-600">{errors.email}</p>
+                  <p className="mt-1 text-sm text-red-600">{errors.email}</p>
                 ) : null}
               </div>
 

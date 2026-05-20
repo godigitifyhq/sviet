@@ -1,12 +1,20 @@
-import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { motion } from "framer-motion";
+import { ArrowLeft } from "lucide-react";
 
 const careers = [
-  { id: "software-engineer", label: "Software Engineer / Developer", icon: "💻" },
+  {
+    id: "software-engineer",
+    label: "Software Engineer / Developer",
+    icon: "💻",
+  },
   { id: "entrepreneur", label: "Entrepreneur / Startup Founder", icon: "🚀" },
   { id: "manager", label: "Business Manager / MBA Professional", icon: "📈" },
   { id: "researcher", label: "Researcher / Scientist", icon: "🔬" },
-  { id: "doctor-pharma", label: "Pharmaceutical / Healthcare Professional", icon: "💊" },
+  {
+    id: "doctor-pharma",
+    label: "Pharmaceutical / Healthcare Professional",
+    icon: "💊",
+  },
   { id: "hotelier", label: "Hospitality & Tourism Professional", icon: "🏨" },
   { id: "legal", label: "Lawyer / Legal Professional", icon: "⚖️" },
   { id: "educator", label: "Teacher / Educator", icon: "📚" },
@@ -40,8 +48,12 @@ export function StepTwo({ selected, onSelect, onNext, onBack }: StepTwoProps) {
         <span className="text-sm">Back</span>
       </button>
 
-      <h2 className="text-lg md:text-xl font-light mb-3 text-gray-900">Preferred career outcome</h2>
-      <p className="text-sm text-gray-600 mb-12">What role do you see yourself in?</p>
+      <h2 className="text-lg md:text-xl font-light mb-3 text-gray-900">
+        Preferred career outcome
+      </h2>
+      <p className="text-sm text-gray-600 mb-12">
+        What role do you see yourself in?
+      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {careers.map((career, index) => {
@@ -58,8 +70,8 @@ export function StepTwo({ selected, onSelect, onNext, onBack }: StepTwoProps) {
               onClick={() => handleSelect(career.id)}
               className={`group relative p-6 rounded-2xl border-2 transition-all duration-300 text-left ${
                 isSelected
-                  ? 'border-[#FF6A00] bg-[#FF6A00]/5 shadow-lg shadow-[#FF6A00]/10'
-                  : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-md'
+                  ? "border-[#FF6A00] bg-[#FF6A00]/5 shadow-lg shadow-[#FF6A00]/10"
+                  : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-md"
               }`}
             >
               <div className="absolute inset-0 bg-linear-to-br from-gray-50/50 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -68,14 +80,16 @@ export function StepTwo({ selected, onSelect, onNext, onBack }: StepTwoProps) {
                 <div
                   className={`inline-flex p-3 rounded-xl mb-4 transition-all duration-300 ${
                     isSelected
-                      ? 'bg-[#FF6A00] text-white shadow-lg shadow-[#FF6A00]/20'
-                      : 'bg-gray-100 text-gray-700 group-hover:bg-[#FF6A00]/10'
+                      ? "bg-[#FF6A00] text-white shadow-lg shadow-[#FF6A00]/20"
+                      : "bg-gray-100 text-gray-700 group-hover:bg-[#FF6A00]/10"
                   }`}
                 >
                   <span className="text-xl leading-none">{career.icon}</span>
                 </div>
 
-                <h3 className="font-medium mb-1 text-gray-900">{career.label}</h3>
+                <h3 className="font-medium mb-1 text-gray-900">
+                  {career.label}
+                </h3>
 
                 {isSelected && (
                   <motion.div
@@ -83,7 +97,7 @@ export function StepTwo({ selected, onSelect, onNext, onBack }: StepTwoProps) {
                     animate={{ scale: 1 }}
                     className="absolute top-4 right-4 w-6 h-6 bg-[#FF6A00] rounded-full flex items-center justify-center"
                   >
-                    <span className="text-white text-xs">✓</span>
+                    <span className="text-white text-sm">✓</span>
                   </motion.div>
                 )}
               </div>

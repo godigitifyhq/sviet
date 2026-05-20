@@ -56,9 +56,7 @@ function useCountUp(
       const progress = Math.min((timestamp - startTime) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = target * eased;
-      setCount(
-        isDecimal ? Math.round(current * 10) / 10 : Math.floor(current),
-      );
+      setCount(isDecimal ? Math.round(current * 10) / 10 : Math.floor(current));
       if (progress < 1) requestAnimationFrame(step);
     };
 
@@ -70,12 +68,11 @@ function useCountUp(
 
 function StatItem({ stat, triggered }: { stat: Stat; triggered: boolean }) {
   const count = useCountUp(stat.value, 2200, stat.isDecimal, triggered);
-  const display =
-    stat.isDecimal
-      ? count.toFixed(1)
-      : count >= 1000
-        ? count.toLocaleString()
-        : String(count);
+  const display = stat.isDecimal
+    ? count.toFixed(1)
+    : count >= 1000
+      ? count.toLocaleString()
+      : String(count);
 
   return (
     <div className="flex flex-1 flex-col gap-3 border-t-2 border-[#f7941d] pt-6">
@@ -87,7 +84,7 @@ function StatItem({ stat, triggered }: { stat: Stat; triggered: boolean }) {
         <p className="text-sm font-bold text-[#111827] md:text-base">
           {stat.label}
         </p>
-        <p className="mt-0.5 text-xs text-[#6b7280]">{stat.sublabel}</p>
+        <p className="mt-0.5 text-sm text-[#6b7280]">{stat.sublabel}</p>
       </div>
     </div>
   );
@@ -114,20 +111,18 @@ export function PlacementStatsSection() {
   return (
     <section ref={sectionRef} className="bg-white px-4 py-16 md:px-6 md:py-24">
       <div className="mx-auto max-w-7xl">
-
         {/* Top row: left label+image / right headline */}
         <div className="grid gap-10 md:grid-cols-[260px_1fr] md:gap-16">
-
           {/* Left — label + image */}
           <div className="flex flex-col gap-4">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.32em] text-[#f7941d]">
+              <p className="text-sm font-black uppercase tracking-[0.32em] text-[#f7941d]">
                 PLACEMENTS
               </p>
               <div className="mt-1.5 h-[3px] w-14 bg-[#f7941d]" />
             </div>
             {/* Image fills the rest of the left column */}
-            <div className="relative h-56 w-full overflow-hidden md:h-72">
+            {/* <div className="relative h-56 w-full overflow-hidden md:h-72">
               <Image
                 src="/assets/img/banner/s60.jpeg"
                 alt="SVGOI placement achievement — 60 LPA"
@@ -135,21 +130,21 @@ export function PlacementStatsSection() {
                 sizes="(max-width: 768px) 100vw, 260px"
                 className="object-cover object-center"
               />
-              {/* Subtle dark overlay with stat badge */}
+              
               <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
               <div className="absolute bottom-4 left-4">
                 <p className="text-2xl font-black text-white">₹60 LPA</p>
-                <p className="text-xs font-semibold text-[#f7941d]">
+                <p className="text-sm font-semibold text-[#f7941d]">
                   Highest Package 2026
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Right — headline + description */}
           <div className="flex flex-col justify-center">
             <h2 className="text-4xl font-bold leading-tight text-[#111827] md:text-5xl lg:text-6xl">
-              Explore the top recruiters
+              Explore the Top Recruiters
             </h2>
             <h3 className="mt-1 text-3xl font-light text-[#374151] md:text-4xl lg:text-5xl">
               who choose SVGOI talent
@@ -166,12 +161,14 @@ export function PlacementStatsSection() {
         {/* Stats row — full width */}
         <div className="mt-14 flex flex-wrap gap-8 md:flex-nowrap md:gap-0 md:divide-x md:divide-gray-200">
           {STATS.map((stat) => (
-            <div key={stat.label} className="flex-1 px-0 md:px-10 first:md:pl-0 last:md:pr-0">
+            <div
+              key={stat.label}
+              className="flex-1 px-0 md:px-10 first:md:pl-0 last:md:pr-0"
+            >
               <StatItem stat={stat} triggered={triggered} />
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

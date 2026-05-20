@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 interface ProgressBarProps {
   currentStep: number;
@@ -10,11 +10,13 @@ export function ProgressBar({ currentStep, totalSteps }: ProgressBarProps) {
 
   return (
     <div className="space-y-3">
-      <div className="flex justify-between items-center text-xs">
+      <div className="flex justify-between items-center text-sm">
         <span className="text-gray-600">
           Step {currentStep} of {totalSteps}
         </span>
-        <span className="text-[#FF6A00] font-medium">{Math.round(progress)}% Complete</span>
+        <span className="text-[#FF6A00] font-medium">
+          {Math.round(progress)}% Complete
+        </span>
       </div>
       <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
         <motion.div

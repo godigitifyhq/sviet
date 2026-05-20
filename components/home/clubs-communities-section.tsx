@@ -38,7 +38,7 @@ export function ClubsCommunitiesSection() {
   return (
     <section className="bg-[#eef2ff] px-4 py-16 md:px-6 md:py-24">
       <div className="mx-auto max-w-7xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f7941d]">
+        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#f7941d]">
           Campus Life
         </p>
         <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -47,8 +47,8 @@ export function ClubsCommunitiesSection() {
               Student Clubs &amp; Communities
             </h2>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#6b7280] md:text-base">
-              Active student ecosystem — learn, build, and grow together across technology,
-              arts, and culture.
+              Active student ecosystem — learn, build, and grow together across
+              technology, arts, and culture.
             </p>
           </div>
           <Link
@@ -79,8 +79,12 @@ export function ClubsCommunitiesSection() {
               </div>
               {/* Info */}
               <div className="border-t border-[#e0e7ff] p-4">
-                <h3 className="text-sm font-bold leading-snug text-[#111827]">{club.name}</h3>
-                <p className="mt-1 text-xs leading-relaxed text-[#6b7280]">{club.tagline}</p>
+                <h3 className="text-sm font-bold leading-snug text-[#111827]">
+                  {club.name}
+                </h3>
+                <p className="mt-1 text-sm leading-relaxed text-[#6b7280]">
+                  {club.tagline}
+                </p>
               </div>
             </div>
           ))}

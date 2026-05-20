@@ -111,7 +111,7 @@ type ProgramsApiResponse = {
 const UTILITY_MESSAGES = [
   " Admissions Open 2026 — Apply Now",
   "Admission Helpline: +91-94652-33333 | Toll Free: 1800-120-1200",
-  "NIRF Ranked #104 | NBA & NAAC Accredited",
+  "NAAC Accredited",
 ];
 
 const HEADER_SCROLL_ENTER_THRESHOLD = 56;
@@ -276,7 +276,7 @@ export function TopUtilityBar({
 
   return (
     <div
-      className={`utility-bar w-full border-b px-3 py-2 text-[10px] md:px-5 md:text-xs ${utilityToneClass} ${isUtilityHidden ? "utility-hidden" : ""}`}
+      className={`utility-bar w-full border-b px-3 py-2 text-[10px] md:px-5 md:text-sm ${utilityToneClass} ${isUtilityHidden ? "utility-hidden" : ""}`}
     >
       <div className="mx-auto flex w-full max-w-300 items-center justify-between">
         <div className="relative min-w-0 flex-1 pr-3">
@@ -324,8 +324,8 @@ export function TopUtilityBar({
             <FaWhatsapp className="text-[10px]" />
             <span>WhatsApp</span>
           </a>
-          <FaFacebookF className="text-[10px] md:text-xs" />
-          <FaInstagram className="text-[10px] md:text-xs" />
+          <FaFacebookF className="text-[10px] md:text-sm" />
+          <FaInstagram className="text-[10px] md:text-sm" />
         </div>
       </div>
     </div>
@@ -741,7 +741,7 @@ export function MainNavbar({
                     >
                       <span>{item.label}</span>
                       <span
-                        className={`text-xs transition ${isMobileAboutOpen ? "rotate-180" : "rotate-0"}`}
+                        className={`text-sm transition ${isMobileAboutOpen ? "rotate-180" : "rotate-0"}`}
                       >
                         ▾
                       </span>
@@ -784,7 +784,7 @@ export function MainNavbar({
                     >
                       <span>{item.label}</span>
                       <span
-                        className={`text-xs transition ${isMobileProgramsOpen ? "rotate-180" : "rotate-0"}`}
+                        className={`text-sm transition ${isMobileProgramsOpen ? "rotate-180" : "rotate-0"}`}
                       >
                         ▾
                       </span>
@@ -930,7 +930,9 @@ export function SiteFooter() {
                     Village Ramnagar, Near Banur, Tehsil Rajpura, Patiala,
                     Punjab - 140601
                   </p>
-                  <p className="mt-3">Phone: +91-94652-33333</p>
+                  <p className="mt-3">
+                    Admission helpline Number : +91-94652-33333
+                  </p>
                   <p>Toll Free: 1800-120-1200</p>
                   <p>Email: admission@sviet.ac.in | info@sviet.ac.in</p>
                   <p>Website: www.sviet.ac.in</p>
@@ -939,79 +941,65 @@ export function SiteFooter() {
             </section>
 
             <section>
-              <h4 className="text-lg font-semibold uppercase">
-                <Link href="/admissions" className="hover:text-white">
-                  Admissions
-                </Link>
-              </h4>
+              <h4 className="text-lg font-semibold uppercase">Quick Links</h4>
               <ul className="mt-5 space-y-3 text-sm text-white/85">
                 {[
-                  "Downloadable Brochures",
-                  "Important Contact Numbers",
-                  "Application Form Sale Outlets",
-                  "Admission Procedure",
-                  "Fee Structure",
-                  "International Students",
-                  "Downloadable Forms & Formats",
-                  "FAQ",
+                  { label: "Student ERP Login", href: "#" },
+                  { label: "Faculty ERP Login", href: "#" },
+                  { label: "SVGOI in your town", href: "#" },
+                  { label: "E-Brochure", href: "#" },
+                  { label: "How to Apply", href: "#" },
+                  { label: "SVIET - ITI", href: "#" },
+                  { label: "Careers", href: "#" },
+                  { label: "Research", href: "/research" },
                 ].map((item) => (
-                  <li key={item}>
-                    {item === "Admission Procedure" ? (
-                      <Link href="/admissions" className="hover:text-white">
-                        {item}
-                      </Link>
-                    ) : (
-                      item
-                    )}
+                  <li key={item.label}>
+                    <Link href={item.href} className="hover:text-white transition-colors">
+                      {item.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
             </section>
 
             <section>
-              <h4 className="text-lg font-semibold uppercase">
-                Important Info
-              </h4>
+              <h4 className="text-lg font-semibold uppercase">Quick Links</h4>
               <ul className="mt-5 space-y-3 text-sm text-white/85">
                 {[
-                  "Grievance Redressal",
-                  "NIRF Report",
-                  "University National Academic Depository (NAD) Cell",
-                  "UGC Mandatory Disclosures",
-                  "www.pmydisha2mci.co.in/",
-                  "Academic Bank of Credits (ABC)",
-                  "Request for Educational Verification",
-                  "RTI",
-                  "Agnipath Yojana",
+                  { label: "Placement Overview", href: "#" },
+                  { label: "Photo Gallery", href: "#" },
+                  { label: "Grievances/Enquiry", href: "#" },
+                  { label: "Final Year 2023 Group Pictures", href: "#" },
+                  { label: "NAAC", href: "#" },
+                  { label: "ISTE Sviet Chapter", href: "#" },
                 ].map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item.label}>
+                    <Link href={item.href} className="hover:text-white transition-colors">
+                      {item.label}
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </section>
 
             <section>
-              <h4 className="text-lg font-semibold uppercase">Explore</h4>
+              <h4 className="text-lg font-semibold uppercase">Quick Links</h4>
               <ul className="mt-5 space-y-3 text-sm text-white/85">
                 {[
-                  "SVGOI University, Punjab",
-                  "SVGOI University, Himachal Pradesh",
-                  "SVGOI International School",
-                  "SVGOI Centre for Global Education",
-                  "Office of International Affairs",
-                  "Career Advancement Services",
-                  "Office of Student Affairs",
-                  "University Sports Board",
-                  "Research",
-                  "Blogs",
+                  { label: "NCC Registration", href: "#" },
+                  { label: "SVGOI Advantages", href: "#" },
+                  { label: "RNR Scholarship", href: "#" },
+                  { label: "Contact-us", href: "/contact" },
+                  { label: "Scholarship", href: "#" },
+                  { label: "Refund Policy", href: "#" },
+                  { label: "ERP APP", href: "#" },
+                  { label: "Privacy Policy", href: "#" },
+                  { label: "Terms & Conditions", href: "#" },
                 ].map((item) => (
-                  <li key={item}>
-                    {item === "Research" ? (
-                      <Link href="/research" className="hover:text-white">
-                        {item}
-                      </Link>
-                    ) : (
-                      item
-                    )}
+                  <li key={item.label}>
+                    <Link href={item.href} className="hover:text-white transition-colors">
+                      {item.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -1020,7 +1008,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-5">
-          <div className="flex flex-col items-center justify-between gap-2 text-xs text-white/65 md:flex-row">
+          <div className="flex flex-col items-center justify-between gap-2 text-sm text-white/65 md:flex-row">
             <p>© {new Date().getFullYear()} SVGOI. All rights reserved.</p>
           </div>
         </div>

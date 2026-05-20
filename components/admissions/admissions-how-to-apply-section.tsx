@@ -80,7 +80,7 @@ export function AdmissionsHowToApplySection() {
                     className="flex w-full items-start justify-between gap-3 text-left"
                   >
                     <div className="flex items-start gap-3">
-                      <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#fed7aa] text-xs font-semibold text-[#f7941d]">
+                      <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#fed7aa] text-sm font-semibold text-[#f7941d]">
                         {index + 1}
                       </span>
                       <p className="text-base font-semibold text-[#16161d] md:text-lg">

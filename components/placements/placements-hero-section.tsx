@@ -102,7 +102,7 @@ export function PlacementsHeroSection() {
 
         <div className="mx-auto w-full max-w-7xl px-4 py-4 md:pointer-events-none md:absolute md:inset-0 md:flex md:items-start md:px-6 md:py-0">
           <div className="w-full md:pointer-events-auto md:pt-24 lg:pt-10">
-            <p className="text-xs font-semibold tracking-wide text-[#1f2937] md:text-sm">
+            <p className="text-sm font-semibold tracking-wide text-[#1f2937] md:text-sm">
               <Link href="/" className="hover:text-[#111827]">
                 Home
               </Link>{" "}
@@ -183,7 +183,7 @@ export function PlacementsHeroSection() {
             ) : (
               <form className="mt-4 space-y-3" onSubmit={handleSubmit}>
                 <div>
-                  <label className="mb-1 block text-xs font-semibold text-[#333]">
+                  <label className="mb-1 block text-sm font-semibold text-[#333]">
                     Full name
                   </label>
                   <input
@@ -196,12 +196,12 @@ export function PlacementsHeroSection() {
                     className={inputClass}
                   />
                   {errors.name ? (
-                    <p className="mt-1 text-xs text-red-600">{errors.name}</p>
+                    <p className="mt-1 text-sm text-red-600">{errors.name}</p>
                   ) : null}
                 </div>
 
                 <div>
-                  <label className="mb-1 block text-xs font-semibold text-[#333]">
+                  <label className="mb-1 block text-sm font-semibold text-[#333]">
                     Program
                   </label>
                   <select
@@ -222,14 +222,14 @@ export function PlacementsHeroSection() {
                     ))}
                   </select>
                   {errors.programId ? (
-                    <p className="mt-1 text-xs text-red-600">
+                    <p className="mt-1 text-sm text-red-600">
                       {errors.programId}
                     </p>
                   ) : null}
                 </div>
 
                 <div>
-                  <label className="mb-1 block text-xs font-semibold text-[#333]">
+                  <label className="mb-1 block text-sm font-semibold text-[#333]">
                     Phone number
                   </label>
                   <input
@@ -242,12 +242,12 @@ export function PlacementsHeroSection() {
                     className={inputClass}
                   />
                   {errors.phone ? (
-                    <p className="mt-1 text-xs text-red-600">{errors.phone}</p>
+                    <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
                   ) : null}
                 </div>
 
                 <div>
-                  <label className="mb-1 block text-xs font-semibold text-[#333]">
+                  <label className="mb-1 block text-sm font-semibold text-[#333]">
                     Email
                   </label>
                   <input
@@ -260,7 +260,7 @@ export function PlacementsHeroSection() {
                     className={inputClass}
                   />
                   {errors.email ? (
-                    <p className="mt-1 text-xs text-red-600">{errors.email}</p>
+                    <p className="mt-1 text-sm text-red-600">{errors.email}</p>
                   ) : null}
                 </div>
 

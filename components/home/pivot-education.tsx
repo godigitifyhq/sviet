@@ -11,7 +11,7 @@ const educationPillars = [
     title: "Global & Future-Focused Platforms",
     description:
       "Through programs like the Global Future Summit, students engage with emerging ideas, global perspectives, and forward-thinking discussions shaping tomorrow's industries.",
-    image: "/assets/img/section_card/GFS.JPG.jpeg",
+    image: "/assets/img/section_card/GFS.JPG",
   },
   {
     title: "Insights from Industry Leaders",
@@ -40,7 +40,9 @@ export function PivotEducationSection() {
             Beyond the Classroom
           </h3>
           <p className="max-w-2xl text-sm leading-relaxed text-gray-300 md:text-base">
-            At SVGOI, growth extends far beyond classrooms. Through high-impact events, industry interactions, and student-led initiatives, we create an environment where ideas turn into action.
+            At SVGOI, growth extends far beyond classrooms. Through high-impact
+            events, industry interactions, and student-led initiatives, we
+            create an environment where ideas turn into action.
           </p>
         </div>
 

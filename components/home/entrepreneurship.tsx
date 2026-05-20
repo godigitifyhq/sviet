@@ -38,37 +38,44 @@ const GOVERNMENT_PARTNERS = [
 const INITIATIVE_TILES = [
   {
     title: "Startup Work Environment",
-    description: "Students work on live products in a real startup-style lab — desks, dev tools, and deadlines included.",
+    description:
+      "Students work on live products in a real startup-style lab — desks, dev tools, and deadlines included.",
     image: "/assets/img/section_card/Labo.jpeg",
   },
   {
     title: "Innovation & Incubation",
-    description: "On-campus incubation with mentorship in product, marketing, and go-to-market strategy.",
+    description:
+      "On-campus incubation with mentorship in product, marketing, and go-to-market strategy.",
     image: "/assets/img/section_card/ResearchCenter.jpeg",
   },
   {
     title: "BharatTech Xperience",
-    description: "An annual tech-entrepreneurship festival where students pitch, hack, and build alongside industry leaders.",
+    description:
+      "An annual tech-entrepreneurship festival where students pitch, hack, and build alongside industry leaders.",
     image: "/assets/img/section_card/BharatTech.JPG.jpeg",
   },
   {
     title: "Global Futures Summit",
-    description: "Industry & HR leaders gather to shape the future workforce — students get front-row access.",
+    description:
+      "Industry & HR leaders gather to shape the future workforce — students get front-row access.",
     image: "/assets/img/section_card/GFS.JPG",
   },
   {
     title: "Corporate & Startup Meets",
-    description: "Regular roundtables with founders, VCs, and corporate leaders drive real-world exposure.",
+    description:
+      "Regular roundtables with founders, VCs, and corporate leaders drive real-world exposure.",
     image: "/assets/img/section_card/GFS2.JPG",
   },
   {
     title: "Training & Skill Labs",
-    description: "Structured programs in product thinking, lean startup, coding, and communication for aspiring founders.",
+    description:
+      "Structured programs in product thinking, lean startup, coding, and communication for aspiring founders.",
     image: "/assets/img/training_cell.jpeg",
   },
   {
     title: "Stand Up India Initiative",
-    description: "SVGOI actively supports students under Stand Up India and related government-backed startup schemes.",
+    description:
+      "SVGOI actively supports students under Stand Up India and related government-backed startup schemes.",
     image: "/assets/img/college/lab.jpeg",
   },
 ];
@@ -77,15 +84,17 @@ export function EntrepreneurshipSection() {
   const trackRef = useRef<HTMLDivElement>(null);
 
   const scroll = (dir: "left" | "right") => {
-    trackRef.current?.scrollBy({ left: dir === "left" ? -320 : 320, behavior: "smooth" });
+    trackRef.current?.scrollBy({
+      left: dir === "left" ? -320 : 320,
+      behavior: "smooth",
+    });
   };
 
   return (
     <section className="bg-[#000000d7] py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
-
         {/* Header */}
-        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#f7941d]">
+        <p className="mb-2 text-sm font-semibold uppercase tracking-[0.28em] text-[#f7941d]">
           Startup Zone
         </p>
         <h2 className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">
@@ -95,14 +104,15 @@ export function EntrepreneurshipSection() {
           Where Ideas Become Ventures
         </h3>
         <p className="mb-12 mt-4 max-w-3xl text-sm leading-relaxed text-gray-300 md:text-base">
-          Backed by government grants, industry mentors, and a thriving innovation culture,
-          SVGOI has built one of Punjab's most active student startup ecosystems — turning
-          campus ideas into real, impactful ventures.
+          Backed by government grants, industry mentors, and a thriving
+          innovation culture, SVGOI has built one of Punjab's most active
+          student startup ecosystems — turning campus ideas into real, impactful
+          ventures.
         </p>
 
         {/* Government Partnership Logos */}
         <div className="mb-12">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-gray-500">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-gray-500">
             Supported By
           </p>
           <div className="flex flex-wrap items-center gap-4">
@@ -121,8 +131,12 @@ export function EntrepreneurshipSection() {
                   />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-800">{partner.name}</p>
-                  <p className="text-[10px] text-gray-500">{partner.subtitle}</p>
+                  <p className="text-sm font-bold text-gray-800">
+                    {partner.name}
+                  </p>
+                  <p className="text-[10px] text-gray-500">
+                    {partner.subtitle}
+                  </p>
                 </div>
               </div>
             ))}
@@ -136,8 +150,12 @@ export function EntrepreneurshipSection() {
               key={stat.label}
               className="border-l-2 border-[#f7941d] bg-black/50 p-5 backdrop-blur"
             >
-              <div className="text-3xl font-black text-[#f7941d]">{stat.value}</div>
-              <p className="mt-1 text-xs font-semibold text-gray-300">{stat.label}</p>
+              <div className="text-3xl font-black text-[#f7941d]">
+                {stat.value}
+              </div>
+              <p className="mt-1 text-sm font-semibold text-gray-300">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>
@@ -196,7 +214,7 @@ export function EntrepreneurshipSection() {
                 <h3 className="text-sm font-bold leading-snug text-white">
                   {tile.title}
                 </h3>
-                <p className="mt-1.5 text-xs leading-relaxed text-white/75 line-clamp-2">
+                <p className="mt-1.5 text-sm leading-relaxed text-white/75 line-clamp-2">
                   {tile.description}
                 </p>
               </div>
@@ -205,7 +223,6 @@ export function EntrepreneurshipSection() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

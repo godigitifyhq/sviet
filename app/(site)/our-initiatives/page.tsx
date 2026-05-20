@@ -172,7 +172,7 @@ export default function OurInitiativesPage() {
       <section className="relative overflow-hidden border-b border-[#E5E7EB] bg-[linear-gradient(180deg,#FFF7ED_0%,#FFFFFF_38%,#FFFFFF_100%)]">
         <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-12 md:px-6 md:py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-12 lg:py-20">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#f7941d] md:text-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.34em] text-[#f7941d] md:text-sm">
               Our Initiatives
             </p>
             <h1 className="mt-4 text-4xl font-black leading-[0.95] tracking-[-0.05em] text-[#0f172a] md:text-6xl lg:text-[4.65rem]">
@@ -184,10 +184,10 @@ export default function OurInitiativesPage() {
               journeys.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 md:mt-9">
-              <span className="inline-flex items-center border border-[#f7941d]/20 bg-[#fff4e8] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#f7941d]">
+              <span className="inline-flex items-center border border-[#f7941d]/20 bg-[#fff4e8] px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#f7941d]">
                 Live startup exposure
               </span>
-              <span className="inline-flex items-center border border-[#dbeafe] bg-[#eff6ff] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#1d4ed8]">
+              <span className="inline-flex items-center border border-[#dbeafe] bg-[#eff6ff] px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#1d4ed8]">
                 Industry-oriented learning
               </span>
             </div>
@@ -243,7 +243,7 @@ export default function OurInitiativesPage() {
       <section className="bg-white py-16 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 md:px-6 lg:grid-cols-2 lg:items-center">
           <div className="order-2 lg:order-1">
-            <div className="inline-flex rounded-full border border-[#dbeafe] bg-[#eff6ff] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#1d4ed8]">
+            <div className="inline-flex rounded-full border border-[#dbeafe] bg-[#eff6ff] px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#1d4ed8]">
               Real-World Growth
             </div>
             <h2 className="mt-5 text-3xl font-bold leading-tight text-[#111827] md:text-5xl">
@@ -290,7 +290,7 @@ export default function OurInitiativesPage() {
       <section className="bg-[#F8FAFF] py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f7941d] md:text-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#f7941d] md:text-sm">
               The Uniques
             </p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#111827] md:text-5xl">
@@ -356,7 +356,7 @@ export default function OurInitiativesPage() {
       <section className="bg-white py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f7941d] md:text-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#f7941d] md:text-sm">
               Entrepreneurship
             </p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#111827] md:text-5xl">
@@ -405,7 +405,7 @@ export default function OurInitiativesPage() {
       <section className="bg-[#F8FAFF] py-16 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 md:px-6 lg:grid-cols-[1fr_0.95fr] lg:items-center">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f7941d] md:text-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#f7941d] md:text-sm">
               Super 60
             </p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#111827] md:text-5xl">
@@ -453,7 +453,7 @@ export default function OurInitiativesPage() {
       <section className="bg-white py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f7941d] md:text-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#f7941d] md:text-sm">
               Communities
             </p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#111827] md:text-5xl">
@@ -496,7 +496,7 @@ export default function OurInitiativesPage() {
       <section className="bg-[#F8FAFF] py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f7941d] md:text-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#f7941d] md:text-sm">
               Flagship events
             </p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#111827] md:text-5xl">
@@ -540,7 +540,7 @@ export default function OurInitiativesPage() {
       <section className="bg-white py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f7941d] md:text-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#f7941d] md:text-sm">
               Skills and creativity
             </p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#111827] md:text-5xl">
@@ -584,7 +584,7 @@ export default function OurInitiativesPage() {
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative mx-auto max-w-7xl px-4 md:px-6">
           <div className="max-w-3xl border-l-4 border-[#f7941d] bg-black/20 p-6 backdrop-blur-[2px] md:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f7941d] md:text-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#f7941d] md:text-sm">
               Student culture
             </p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-white md:text-5xl">

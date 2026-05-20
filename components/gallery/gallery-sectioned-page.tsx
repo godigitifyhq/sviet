@@ -136,7 +136,7 @@ function GallerySectionHeader({
 }) {
   return (
     <div className="max-w-3xl">
-      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#2563eb]">
+      <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#2563eb]">
         {eyebrow}
       </p>
       <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#0f172a] md:text-4xl">
@@ -269,7 +269,7 @@ function Lightbox({
 
           <div className="flex flex-col justify-between gap-6 border-t border-white/10 bg-[#0b1220] p-5 text-white lg:border-t-0 lg:border-l lg:p-6">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#fbbf24]">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#fbbf24]">
                 Caption
               </p>
               <p className="mt-3 text-base leading-relaxed text-white/80">
@@ -325,7 +325,7 @@ function GalleryHero() {
       <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/40 to-black/15" />
 
       <div className="relative mx-auto max-w-7xl px-4 py-24 md:px-6 md:py-32 lg:py-36">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/70">
+        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-white/70">
           SVGOI Visual Archive
         </p>
         <h1 className="mt-3 max-w-4xl text-4xl font-semibold tracking-tight text-white md:text-6xl">

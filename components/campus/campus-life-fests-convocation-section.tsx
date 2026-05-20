@@ -62,7 +62,7 @@ export function CampusLifeFestsConvocationSection() {
             unforgettable moments.
           </p>
         </header> */}
-{/* 
+        {/* 
         <div className="mt-10 grid grid-cols-1 gap-6 auto-rows-[260px] sm:grid-cols-2 lg:grid-cols-3 lg:grid-flow-dense lg:gap-6">
           {FEST_CARDS.map((card) => (
             <article
@@ -96,7 +96,7 @@ export function CampusLifeFestsConvocationSection() {
                 <h3 className="text-lg font-semibold leading-tight text-white md:text-2xl">
                   {card.title}
                 </h3>
-                <p className="mt-1 text-xs leading-relaxed text-white/85 md:text-sm">
+                <p className="mt-1 text-sm leading-relaxed text-white/85 md:text-sm">
                   {card.subtitle}
                 </p>
               </div>

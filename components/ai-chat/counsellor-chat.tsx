@@ -4,7 +4,14 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
-import { Bot, MessageCircle, ChevronDown, Send, ThumbsUp, ThumbsDown } from "lucide-react";
+import {
+  Bot,
+  MessageCircle,
+  ChevronDown,
+  Send,
+  ThumbsUp,
+  ThumbsDown,
+} from "lucide-react";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 
 type DisplayMessage = {
@@ -79,7 +86,8 @@ export function CounsellorChat({ mode = "widget" }: CounsellorChatProps) {
       .filter((message): message is DisplayMessage => message !== null);
   }, [messages]);
 
-  const displayMessages = sentMessages.length > 0 ? sentMessages : FALLBACK_MESSAGES;
+  const displayMessages =
+    sentMessages.length > 0 ? sentMessages : FALLBACK_MESSAGES;
   const showPanel = isPageMode || isOpen;
 
   useEffect(() => {
@@ -96,7 +104,10 @@ export function CounsellorChat({ mode = "widget" }: CounsellorChatProps) {
     }
   }, [isPageMode, isOpen]);
 
-  const canSubmit = useMemo(() => input.trim().length > 0 && !isLoading, [input, isLoading]);
+  const canSubmit = useMemo(
+    () => input.trim().length > 0 && !isLoading,
+    [input, isLoading],
+  );
 
   function closeChat() {
     setIsOpen(false);
@@ -151,7 +162,7 @@ export function CounsellorChat({ mode = "widget" }: CounsellorChatProps) {
             <p className="text-lg font-bold text-white">SIVI</p>
             <div className="flex items-center gap-1.5">
               <span className="inline-flex h-2 w-2 rounded-full bg-[#10B981]" />
-              <span className="text-xs text-white/90">Online</span>
+              <span className="text-sm text-white/90">Online</span>
             </div>
           </div>
         </div>
@@ -169,11 +180,16 @@ export function CounsellorChat({ mode = "widget" }: CounsellorChatProps) {
       </header>
 
       {/* Messages Container */}
-      <div ref={scrollerRef} className="flex-1 space-y-4 overflow-y-auto bg-[#F8FAFC] px-4 py-4 sm:px-6 sm:py-5">
+      <div
+        ref={scrollerRef}
+        className="flex-1 space-y-4 overflow-y-auto bg-[#F8FAFC] px-4 py-4 sm:px-6 sm:py-5"
+      >
         {displayMessages.map((message, index) => {
           const isAssistant = message.role === "assistant";
-          const isLatestAssistant = isAssistant && index === displayMessages.length - 1;
-          const showActions = sentMessages.length > 0 && isLatestAssistant && !isLoading;
+          const isLatestAssistant =
+            isAssistant && index === displayMessages.length - 1;
+          const showActions =
+            sentMessages.length > 0 && isLatestAssistant && !isLoading;
 
           return (
             <div
@@ -194,7 +210,9 @@ export function CounsellorChat({ mode = "widget" }: CounsellorChatProps) {
                       : "bg-[#E5E7EB] text-[#111827]"
                   }`}
                 >
-                  <p className="whitespace-pre-line wrap-break-word">{message.text}</p>
+                  <p className="whitespace-pre-line wrap-break-word">
+                    {message.text}
+                  </p>
                 </div>
 
                 {showActions ? (
@@ -219,7 +237,13 @@ export function CounsellorChat({ mode = "widget" }: CounsellorChatProps) {
 
               {!isAssistant ? (
                 <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#E5E7EB]">
-                  <Image src="/Logo.png" alt="SVGOI" width={32} height={32} className="h-7 w-7 rounded-full object-contain" />
+                  <Image
+                    src="/Logo.png"
+                    alt="SVGOI"
+                    width={32}
+                    height={32}
+                    className="h-7 w-7 rounded-full object-contain"
+                  />
                 </div>
               ) : null}
             </div>
@@ -252,9 +276,11 @@ export function CounsellorChat({ mode = "widget" }: CounsellorChatProps) {
               type="button"
               onClick={() => onQuickPromptClick(prompt.label)}
               disabled={isLoading}
-              className="shrink-0 rounded-full border border-[#E2E8F0] bg-[#F1F5F9] px-3 py-2 text-xs font-medium text-[#111827] transition hover:bg-[#E2E8F0] disabled:cursor-not-allowed disabled:opacity-50"
+              className="shrink-0 rounded-full border border-[#E2E8F0] bg-[#F1F5F9] px-3 py-2 text-sm font-medium text-[#111827] transition hover:bg-[#E2E8F0] disabled:cursor-not-allowed disabled:opacity-50"
             >
-              <span aria-hidden="true" className="mr-1.5">{prompt.icon}</span>
+              <span aria-hidden="true" className="mr-1.5">
+                {prompt.icon}
+              </span>
               {prompt.label}
             </button>
           ))}
