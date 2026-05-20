@@ -350,7 +350,7 @@ export function MOUImpactSection() {
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-xl border border-[#e5e7eb] bg-white p-4 text-center shadow-sm"
+                  className="rounded-xl border border-[#e5e7eb]  p-4 text-center"
                 >
                   <p className="text-xl font-black text-[#f7941d] md:text-2xl">
                     {stat.value}
