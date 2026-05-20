@@ -10,7 +10,7 @@ const milestonePlacements = [
     description:
       "Two of our students, Laxmi and Vaishnavi, secured roles at Caelius Consulting-setting a new benchmark of excellence.",
     points: [
-      "Average Package: 4-6 LPA",
+      "Average Package: 5.8 LPA",
       "Consistent placement support across multiple career paths.",
     ],
     tags: ["19lpa laxmi", "19lpa vaishnavi"],
@@ -101,7 +101,7 @@ export function ExperiencesSection() {
             </div>
             <p className="text-sm text-[#6B7280] md:text-base">
               Highest package and average packages of{" "}
-              <span className="text-[#f7941d]">4-6 LPA</span>.
+              <span className="text-[#f7941d]">5.8 LPA</span>.
             </p>
           </div>
 
