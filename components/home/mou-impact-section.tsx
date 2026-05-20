@@ -237,34 +237,29 @@ const TAB_CARDS: MouCard[] = [
   },
 ];
 
-const ALL_PARTNER_NAMES_ROW_1 = [
-  "Butterfly Labs",
-  "Focus College",
-  "Ellocent Lab IT",
-  "Solitaire Infosys",
-  "Anvian Solutions",
-  "Ominnos Technologies",
-  "Codevision.io",
-  "MindCode Lab",
-  "Talent O Mind",
-  "SV Technologies",
-  "Quipr HR Services",
-  "AGCL Technologies",
+const PARTNER_LOGOS_ROW_1 = [
+  { name: "Butterfly Labs", src: "/assets/img/mou/butterfly_labs.png" },
+  { name: "Focus College", src: "/assets/img/mou/Focus_College.png" },
+  { name: "Ellocent Lab IT", src: "/assets/img/mou/ellocent_labs_logo.jpg" },
+  { name: "Solitaire Infosys", src: "/assets/img/mou/Solitaire_Infosys.png" },
+  { name: "Anviam Solutions", src: "/assets/img/mou/anviam.png" },
+  { name: "Ominnos Technologies", src: "/assets/img/mou/Ominnos_Technologies.png" },
+  { name: "Codevision.io", src: "/assets/img/mou/Codevision.io.webp" },
+  { name: "MindCode Lab", src: "/assets/img/mou/mindcodelab.jpg" },
+  { name: "Talent O Mind", src: "/assets/img/mou/TalentOMind.png" },
+  { name: "SV Technologies", src: "/assets/img/mou/svtechnoogy.png" },
+  { name: "AGCL Technologies", src: "/assets/img/mou/agcl_technologies_logo.jpg" },
 ];
 
-const ALL_PARTNER_NAMES_ROW_2 = [
-  "Paras Healthcare",
-  "Dharmayu Wellness",
-  "IIT Bombay SINE",
-  "Amicus Healthcare",
-  "Gautam College of Pharmacy",
-  "Krisa Healthcare",
-  "Ion Healthcare",
-  "DS Cosmeceuticals",
-  "Philadelphia Hospital",
-  "Chandigarh Agritech",
-  "Katherine & Kyoor Pharma",
-  "Koul Pharma Distributors",
+const PARTNER_LOGOS_ROW_2 = [
+  { name: "Paras Healthcare", src: "/assets/img/mou/Paras_Healthcare.svg" },
+  { name: "Dharmayu Wellness", src: "/assets/img/mou/Dharmayu_Wellness.jpg" },
+  { name: "IIT Bombay SINE", src: "/assets/img/mou/IIT_Bombay_SINE.png" },
+  { name: "Gautam College of Pharmacy", src: "/assets/img/mou/GautamCollegeofPharmacy.png" },
+  { name: "Krisa Healthcare", src: "/assets/img/mou/krisa-healthcare.webp" },
+  { name: "Ion Healthcare", src: "/assets/img/mou/Ion_Healthcare.png" },
+  { name: "DS Cosmeceuticals", src: "/assets/img/mou/DS_Cosmeceuticals.avif" },
+  { name: "Philadelphia Hospital", src: "/assets/img/mou/Philadelphia_Hospital.png" },
 ];
 
 const TAB_ACCENT: Record<Tab, string> = {
@@ -452,35 +447,47 @@ export function MOUImpactSection() {
             </div>
           </div>
 
-          {/* Part 3 — Partner Name Marquee */}
+          {/* Part 3 — Partner Logo Marquee */}
           <div>
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#9ca3af]">
               Our Partner Network
             </p>
-            <div className="space-y-3 overflow-hidden">
+            <div className="space-y-4 overflow-hidden">
               <div className="overflow-hidden">
-                <div className="flex gap-3 mou-animate-left">
-                  {[...ALL_PARTNER_NAMES_ROW_1, ...ALL_PARTNER_NAMES_ROW_1].map(
-                    (name, i) => (
+                <div className="flex gap-4 mou-animate-left">
+                  {[...PARTNER_LOGOS_ROW_1, ...PARTNER_LOGOS_ROW_1].map(
+                    (logo, i) => (
                       <div
                         key={`r1-${i}`}
-                        className="shrink-0 whitespace-nowrap rounded-full border border-[#e5e7eb] bg-white px-4 py-2 text-sm font-semibold text-[#374151] shadow-sm"
+                        className="shrink-0 flex h-16 w-36 items-center justify-center rounded-xl border border-[#e5e7eb] bg-white px-4 py-2 shadow-sm"
                       >
-                        {name}
+                        <Image
+                          src={logo.src}
+                          alt={logo.name}
+                          width={120}
+                          height={48}
+                          className="h-10 w-auto max-w-full object-contain"
+                        />
                       </div>
                     ),
                   )}
                 </div>
               </div>
               <div className="overflow-hidden">
-                <div className="flex gap-3 mou-animate-right">
-                  {[...ALL_PARTNER_NAMES_ROW_2, ...ALL_PARTNER_NAMES_ROW_2].map(
-                    (name, i) => (
+                <div className="flex gap-4 mou-animate-right">
+                  {[...PARTNER_LOGOS_ROW_2, ...PARTNER_LOGOS_ROW_2].map(
+                    (logo, i) => (
                       <div
                         key={`r2-${i}`}
-                        className="shrink-0 whitespace-nowrap rounded-full border border-[#e5e7eb] bg-white px-4 py-2 text-sm font-semibold text-[#374151] shadow-sm"
+                        className="shrink-0 flex h-16 w-36 items-center justify-center rounded-xl border border-[#e5e7eb] bg-white px-4 py-2 shadow-sm"
                       >
-                        {name}
+                        <Image
+                          src={logo.src}
+                          alt={logo.name}
+                          width={120}
+                          height={48}
+                          className="h-10 w-auto max-w-full object-contain"
+                        />
                       </div>
                     ),
                   )}
