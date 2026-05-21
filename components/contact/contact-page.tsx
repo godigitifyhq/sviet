@@ -373,7 +373,7 @@ export function ContactPageComponent() {
             Quick Contact Options
           </h2>
         </div>
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2">
           {/* Card 1: Call */}
           <div className="rounded-2xl border border-gray-100 p-8 text-center transition hover:border-gray-300">
             <div className="mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
@@ -409,7 +409,7 @@ export function ContactPageComponent() {
           </div>
 
           {/* Card 3: Visit */}
-          <div className="rounded-2xl border border-gray-100 p-8 text-center transition hover:border-gray-300">
+          {/* <div className="rounded-2xl border border-gray-100 p-8 text-center transition hover:border-gray-300">
             <div className="mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
               <FaMapMarkerAlt className="text-2xl text-gray-900" />
             </div>
@@ -420,7 +420,7 @@ export function ContactPageComponent() {
             <button className="mt-4 font-semibold text-black hover:text-gray-700">
               Schedule Visit →
             </button>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -459,14 +459,14 @@ export function ContactPageComponent() {
       <section className="py-16">
         <div className="relative h-96 w-full overflow-hidden rounded-2xl md:h-[500px]">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3426.1234567890123!2d76.8234567!3d31.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390f1234567890ab%3A0x1234567890abcdef!2sSVGOI%20Punjab!5e0!3m2!1sen!2sin!4v1234567890123"
+            src="https://maps.google.com/maps?q=Swami%20Vivekanand%20Institute%20of%20Engineering%20%26%20Technology%2C%20Zirakpur-Patiala%20Highway%2C%20Ram%20Nagar%2C%20Banur%2C%20Punjab%20140601&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0, position: "absolute", top: 0, left: 0 }}
             allowFullScreen={true}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="SVGOI Campus Location"
+            title="Swami Vivekanand Institute Location"
           />
         </div>
       </section>
