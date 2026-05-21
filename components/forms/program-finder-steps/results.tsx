@@ -240,7 +240,12 @@ export function Results({
   }));
 
   const displayRecommendations: DisplayRecommendation[] =
-    recommendations.length > 0 ? recommendations : fallbackRecommendations;
+    recommendations.length > 0
+      ? recommendations.map((recommendation) => ({
+          ...recommendation,
+          department: recommendation.department ?? undefined,
+        }))
+      : fallbackRecommendations;
 
   return (
     <motion.div

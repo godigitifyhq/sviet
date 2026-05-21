@@ -7,16 +7,26 @@ const prisma = new PrismaClient({ adapter });
 
 async function main() {
   const all = await prisma.program.findMany({
-    orderBy: [{ department: "asc" }, { title: "asc" }],
-    select: { title: true, department: true, isActive: true },
+    orderBy: [{ department: { name: "asc" } }, { title: "asc" }],
+    select: {
+      title: true,
+      isActive: true,
+      department: {
+        select: {
+          name: true,
+        },
+      },
+    },
   });
 
   const byDept: Record<string, typeof all> = {};
   for (const p of all) {
-    (byDept[p.department] ??= []).push(p);
+    const departmentName = p.department?.name ?? "Unassigned";
+    (byDept[departmentName] ??= []).push(p);
   }
 
-  let total = 0, active = 0;
+  let total = 0,
+    active = 0;
   for (const [dept, progs] of Object.entries(byDept)) {
     console.log(`\n── ${dept} (${progs.length}) ──`);
     for (const p of progs) {
@@ -26,9 +36,14 @@ async function main() {
       if (p.isActive) active++;
     }
   }
-  console.log(`\nTotal: ${total}  Active: ${active}  Inactive: ${total - active}`);
+  console.log(
+    `\nTotal: ${total}  Active: ${active}  Inactive: ${total - active}`,
+  );
 }
 
 main()
-  .catch((e) => { console.error(e); process.exit(1); })
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
   .finally(() => prisma.$disconnect());

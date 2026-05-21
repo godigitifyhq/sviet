@@ -450,10 +450,10 @@ export async function generateMetadata({
 
   return {
     title: `${program.title} | SVGOI`,
-    description: program.shortDescription,
+    description: program.shortDescription ?? undefined,
     openGraph: {
       title: `${program.title} | SVGOI`,
-      description: program.shortDescription,
+      description: program.shortDescription ?? undefined,
       type: "website",
     },
   };
