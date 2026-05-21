@@ -53,7 +53,10 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   User: 'User',
   AuthSession: 'AuthSession',
+  Department: 'Department',
+  Specialization: 'Specialization',
   Program: 'Program',
+  ProgramSpecialization: 'ProgramSpecialization',
   Intake: 'Intake',
   Lead: 'Lead',
   Applicant: 'Applicant',
@@ -65,9 +68,14 @@ export const ModelName = {
   ActivityLog: 'ActivityLog',
   Enrollment: 'Enrollment',
   Event: 'Event',
+  EventSpeaker: 'EventSpeaker',
   EventRegistration: 'EventRegistration',
   BlogPost: 'BlogPost',
-  Announcement: 'Announcement'
+  Announcement: 'Announcement',
+  LeadNote: 'LeadNote',
+  ScholarshipInquiry: 'ScholarshipInquiry',
+  ProgramFinderSubmission: 'ProgramFinderSubmission',
+  ContactEnquiry: 'ContactEnquiry'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -114,11 +122,53 @@ export const AuthSessionScalarFieldEnum = {
 export type AuthSessionScalarFieldEnum = (typeof AuthSessionScalarFieldEnum)[keyof typeof AuthSessionScalarFieldEnum]
 
 
+export const DepartmentScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name',
+  description: 'description',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DepartmentScalarFieldEnum = (typeof DepartmentScalarFieldEnum)[keyof typeof DepartmentScalarFieldEnum]
+
+
+export const SpecializationScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name',
+  description: 'description',
+  departmentId: 'departmentId',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SpecializationScalarFieldEnum = (typeof SpecializationScalarFieldEnum)[keyof typeof SpecializationScalarFieldEnum]
+
+
 export const ProgramScalarFieldEnum = {
   id: 'id',
   slug: 'slug',
   title: 'title',
   shortDescription: 'shortDescription',
+  departmentId: 'departmentId',
+  level: 'level',
+  mode: 'mode',
+  fullDescription: 'fullDescription',
+  highlights: 'highlights',
+  eligibility: 'eligibility',
+  curriculum: 'curriculum',
+  outcomes: 'outcomes',
+  facilities: 'facilities',
+  faqs: 'faqs',
+  seoTitle: 'seoTitle',
+  seoDescription: 'seoDescription',
+  metadata: 'metadata',
+  isFeatured: 'isFeatured',
   durationMonths: 'durationMonths',
   tuitionCents: 'tuitionCents',
   isActive: 'isActive',
@@ -127,6 +177,17 @@ export const ProgramScalarFieldEnum = {
 } as const
 
 export type ProgramScalarFieldEnum = (typeof ProgramScalarFieldEnum)[keyof typeof ProgramScalarFieldEnum]
+
+
+export const ProgramSpecializationScalarFieldEnum = {
+  programId: 'programId',
+  specializationId: 'specializationId',
+  isPrimary: 'isPrimary',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt'
+} as const
+
+export type ProgramSpecializationScalarFieldEnum = (typeof ProgramSpecializationScalarFieldEnum)[keyof typeof ProgramSpecializationScalarFieldEnum]
 
 
 export const IntakeScalarFieldEnum = {
@@ -154,7 +215,7 @@ export const LeadScalarFieldEnum = {
   status: 'status',
   intendedProgramId: 'intendedProgramId',
   ownerCounselorId: 'ownerCounselorId',
-  notes: 'notes',
+  aiScore: 'aiScore',
   nextFollowUpAt: 'nextFollowUpAt',
   convertedAt: 'convertedAt',
   createdAt: 'createdAt',
@@ -291,17 +352,37 @@ export const EventScalarFieldEnum = {
   id: 'id',
   slug: 'slug',
   title: 'title',
-  summary: 'summary',
+  description: 'description',
+  image: 'image',
   venue: 'venue',
-  startsAt: 'startsAt',
-  endsAt: 'endsAt',
-  capacity: 'capacity',
-  isPublished: 'isPublished',
+  images: 'images',
+  driveGalleryUrl: 'driveGalleryUrl',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  category: 'category',
+  isFeatured: 'isFeatured',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
+
+
+export const EventSpeakerScalarFieldEnum = {
+  id: 'id',
+  eventId: 'eventId',
+  name: 'name',
+  photo: 'photo',
+  bio: 'bio',
+  linkedin: 'linkedin',
+  twitter: 'twitter',
+  company: 'company',
+  designation: 'designation',
+  displayOrder: 'displayOrder',
+  createdAt: 'createdAt'
+} as const
+
+export type EventSpeakerScalarFieldEnum = (typeof EventSpeakerScalarFieldEnum)[keyof typeof EventSpeakerScalarFieldEnum]
 
 
 export const EventRegistrationScalarFieldEnum = {
@@ -347,6 +428,60 @@ export const AnnouncementScalarFieldEnum = {
 export type AnnouncementScalarFieldEnum = (typeof AnnouncementScalarFieldEnum)[keyof typeof AnnouncementScalarFieldEnum]
 
 
+export const LeadNoteScalarFieldEnum = {
+  id: 'id',
+  leadId: 'leadId',
+  authorId: 'authorId',
+  body: 'body',
+  createdAt: 'createdAt'
+} as const
+
+export type LeadNoteScalarFieldEnum = (typeof LeadNoteScalarFieldEnum)[keyof typeof LeadNoteScalarFieldEnum]
+
+
+export const ScholarshipInquiryScalarFieldEnum = {
+  id: 'id',
+  leadId: 'leadId',
+  programId: 'programId',
+  familyIncomeLPA: 'familyIncomeLPA',
+  academicScore: 'academicScore',
+  category: 'category',
+  eligibilityResult: 'eligibilityResult',
+  aiScore: 'aiScore',
+  createdAt: 'createdAt'
+} as const
+
+export type ScholarshipInquiryScalarFieldEnum = (typeof ScholarshipInquiryScalarFieldEnum)[keyof typeof ScholarshipInquiryScalarFieldEnum]
+
+
+export const ProgramFinderSubmissionScalarFieldEnum = {
+  id: 'id',
+  leadId: 'leadId',
+  interests: 'interests',
+  careers: 'careers',
+  academicPreference: 'academicPreference',
+  preferredMode: 'preferredMode',
+  budgetRange: 'budgetRange',
+  recommendedPrograms: 'recommendedPrograms',
+  createdAt: 'createdAt'
+} as const
+
+export type ProgramFinderSubmissionScalarFieldEnum = (typeof ProgramFinderSubmissionScalarFieldEnum)[keyof typeof ProgramFinderSubmissionScalarFieldEnum]
+
+
+export const ContactEnquiryScalarFieldEnum = {
+  id: 'id',
+  leadId: 'leadId',
+  subject: 'subject',
+  message: 'message',
+  repliedAt: 'repliedAt',
+  repliedById: 'repliedById',
+  createdAt: 'createdAt'
+} as const
+
+export type ContactEnquiryScalarFieldEnum = (typeof ContactEnquiryScalarFieldEnum)[keyof typeof ContactEnquiryScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -355,19 +490,19 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-export const JsonNullValueInput = {
-  JsonNull: JsonNull
-} as const
-
-export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
-
-
 export const NullableJsonNullValueInput = {
   DbNull: DbNull,
   JsonNull: JsonNull
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {

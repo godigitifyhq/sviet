@@ -29,12 +29,18 @@ export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus]
 
 
 export const LeadSource = {
-  WEBSITE: 'WEBSITE',
+  APPLY_NOW: 'APPLY_NOW',
+  SCHOLARSHIP_CHECK: 'SCHOLARSHIP_CHECK',
+  PROGRAM_FINDER: 'PROGRAM_FINDER',
+  CONTACT_ENQUIRY: 'CONTACT_ENQUIRY',
+  EVENT_REGISTRATION: 'EVENT_REGISTRATION',
+  CAMPUS_VISIT: 'CAMPUS_VISIT',
   PHONE: 'PHONE',
   REFERRAL: 'REFERRAL',
-  EVENT: 'EVENT',
+  WALK_IN: 'WALK_IN',
   SOCIAL: 'SOCIAL',
-  WALK_IN: 'WALK_IN'
+  WEBSITE: 'WEBSITE',
+  EVENT: 'EVENT'
 } as const
 
 export type LeadSource = (typeof LeadSource)[keyof typeof LeadSource]
@@ -140,6 +146,18 @@ export const ContentStatus = {
 } as const
 
 export type ContentStatus = (typeof ContentStatus)[keyof typeof ContentStatus]
+
+
+export const CourseLevel = {
+  UG: 'UG',
+  PG: 'PG',
+  DIPLOMA: 'DIPLOMA',
+  VOCATIONAL: 'VOCATIONAL',
+  PROFESSIONAL: 'PROFESSIONAL',
+  CERTIFICATE: 'CERTIFICATE'
+} as const
+
+export type CourseLevel = (typeof CourseLevel)[keyof typeof CourseLevel]
 
 
 export const AnnouncementLevel = {

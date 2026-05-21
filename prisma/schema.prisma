@@ -21,12 +21,18 @@ enum UserStatus {
 }
 
 enum LeadSource {
-  WEBSITE
+  APPLY_NOW
+  SCHOLARSHIP_CHECK
+  PROGRAM_FINDER
+  CONTACT_ENQUIRY
+  EVENT_REGISTRATION
+  CAMPUS_VISIT
   PHONE
   REFERRAL
-  EVENT
-  SOCIAL
   WALK_IN
+  SOCIAL
+  WEBSITE
+  EVENT
 }
 
 enum LeadStatus {
@@ -104,6 +110,15 @@ enum ContentStatus {
   ARCHIVED
 }
 
+enum CourseLevel {
+  UG
+  PG
+  DIPLOMA
+  VOCATIONAL
+  PROFESSIONAL
+  CERTIFICATE
+}
+
 enum AnnouncementLevel {
   INFO
   SUCCESS
@@ -129,6 +144,8 @@ model User {
   applicantDocuments      Document[]                 @relation("DocumentApplicant")
   uploadedDocuments       Document[]                 @relation("DocumentUploadedBy")
   verifiedDocuments       Document[]                 @relation("DocumentVerifiedBy")
+  leadNotes               LeadNote[]                 @relation("LeadNoteAuthor")
+  contactReplies          ContactEnquiry[]           @relation("ContactEnquiryRepliedBy")
   sessions                AuthSession[]
   statusChanges           ApplicationStatusHistory[] @relation("StatusChangedBy")
   activityLogs            ActivityLog[]              @relation("ActivityActor")
@@ -148,20 +165,83 @@ model AuthSession {
   @@index([userId, expiresAt])
 }
 
+model Department {
+  id              String             @id @default(uuid())
+  slug            String             @unique
+  name            String
+  description     String?
+  sortOrder       Int                @default(0)
+  isActive        Boolean            @default(true)
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  programs        Program[]
+  specializations Specialization[]
+
+  @@index([sortOrder, isActive])
+}
+
+model Specialization {
+  id           String                @id @default(uuid())
+  slug         String                @unique
+  name         String
+  description  String?
+  departmentId String?
+  isActive     Boolean               @default(true)
+  createdAt    DateTime              @default(now())
+  updatedAt    DateTime              @updatedAt
+  department   Department?           @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  programs     ProgramSpecialization[]
+
+  @@index([departmentId, isActive])
+}
+
 model Program {
-  id               String      @id @default(uuid())
-  slug             String      @unique
-  title            String
-  shortDescription String
-  durationMonths   Int
-  tuitionCents     Int
-  isActive         Boolean     @default(true)
-  createdAt        DateTime    @default(now())
-  updatedAt        DateTime    @updatedAt
-  leads            Lead[]
-  applicants       Applicant[]
-  intakes          Intake[]
-  applications     Application[]
+  id                   String                  @id @default(uuid())
+  slug                 String                  @unique
+  title                String
+  shortDescription     String?
+  departmentId         String?
+  level                CourseLevel
+  mode                 String?
+  fullDescription      String?
+  highlights           Json?                   @db.JsonB
+  eligibility          String?
+  curriculum           Json?                   @db.JsonB
+  outcomes             Json?                   @db.JsonB
+  facilities           Json?                   @db.JsonB
+  faqs                 Json?                   @db.JsonB
+  seoTitle             String?
+  seoDescription       String?
+  metadata             Json?                   @db.JsonB
+  isFeatured           Boolean                 @default(false)
+  durationMonths       Int
+  tuitionCents         Int?
+  isActive             Boolean                 @default(true)
+  createdAt            DateTime                @default(now())
+  updatedAt            DateTime                @updatedAt
+  department           Department?             @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  specializations      ProgramSpecialization[]
+  leads                Lead[]
+  applicants           Applicant[]
+  intakes              Intake[]
+  applications         Application[]
+  scholarshipInquiries ScholarshipInquiry[]
+
+  @@index([departmentId, level, isActive])
+  @@index([slug, isActive])
+}
+
+model ProgramSpecialization {
+  programId        String
+  specializationId String
+  isPrimary        Boolean        @default(true)
+  sortOrder        Int            @default(0)
+  createdAt        DateTime       @default(now())
+  program          Program        @relation(fields: [programId], references: [id], onDelete: Cascade)
+  specialization   Specialization @relation(fields: [specializationId], references: [id], onDelete: Cascade)
+
+  @@id([programId, specializationId])
+  @@index([specializationId, isPrimary])
 }
 
 model Intake {
@@ -191,7 +271,11 @@ model Lead {
   status            LeadStatus  @default(NEW)
   intendedProgramId String?
   ownerCounselorId  String?
-  notes             String?
+  notes             LeadNote[]
+  aiScore           Int?
+  scholarship       ScholarshipInquiry?
+  programFinder     ProgramFinderSubmission?
+  contactEnquiry    ContactEnquiry?
   nextFollowUpAt    DateTime?
   convertedAt       DateTime?
   createdAt         DateTime    @default(now())
@@ -350,20 +434,45 @@ model Enrollment {
 }
 
 model Event {
-  id            String              @id @default(uuid())
-  slug          String              @unique
-  title         String
-  summary       String
-  venue         String
-  startsAt      DateTime
-  endsAt        DateTime
-  capacity      Int
-  isPublished   Boolean             @default(false)
-  createdAt     DateTime            @default(now())
-  updatedAt     DateTime            @updatedAt
-  registrations EventRegistration[]
+  id              String              @id @default(uuid())
+  slug            String              @unique
+  title           String
+  description     String
+  image           String
+  venue           String?
+  images          String[]
+  driveGalleryUrl String?
+  startDate       DateTime
+  endDate         DateTime?
+  category        String
+  isFeatured      Boolean             @default(false)
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+  registrations   EventRegistration[]
+  speakers        EventSpeaker[]
 
-  @@index([startsAt])
+  @@index([startDate])
+  @@index([endDate])
+  @@index([category])
+  @@index([isFeatured, startDate])
+  @@index([slug])
+}
+
+model EventSpeaker {
+  id           String   @id @default(uuid())
+  eventId      String
+  name         String
+  photo        String?
+  bio          String?
+  linkedin     String?
+  twitter      String?
+  company      String?
+  designation  String?
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+  event        Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@index([eventId, displayOrder])
 }
 
 model EventRegistration {
@@ -405,4 +514,55 @@ model Announcement {
   updatedAt   DateTime          @updatedAt
 
   @@index([pinned, publishFrom])
+}
+
+model LeadNote {
+  id        String   @id @default(uuid())
+  leadId    String
+  authorId  String?
+  body      String
+  createdAt DateTime @default(now())
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  author    User?    @relation("LeadNoteAuthor", fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@index([leadId, createdAt])
+}
+
+model ScholarshipInquiry {
+  id                String   @id @default(uuid())
+  leadId            String   @unique
+  programId         String?
+  familyIncomeLPA   Float
+  academicScore     Float
+  category          String
+  eligibilityResult Json?    @db.JsonB
+  aiScore           Int?
+  createdAt         DateTime @default(now())
+  lead              Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  program           Program? @relation(fields: [programId], references: [id], onDelete: SetNull)
+}
+
+model ProgramFinderSubmission {
+  id                  String   @id @default(uuid())
+  leadId              String   @unique
+  interests           String[]
+  careers             String[]
+  academicPreference  String?
+  preferredMode       String?
+  budgetRange         String?
+  recommendedPrograms Json?    @db.JsonB
+  createdAt           DateTime @default(now())
+  lead                Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+}
+
+model ContactEnquiry {
+  id          String    @id @default(uuid())
+  leadId      String    @unique
+  subject     String
+  message     String
+  repliedAt   DateTime?
+  repliedById String?
+  createdAt   DateTime  @default(now())
+  lead        Lead      @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  repliedBy   User?     @relation("ContactEnquiryRepliedBy", fields: [repliedById], references: [id], onDelete: SetNull)
 }

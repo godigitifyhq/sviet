@@ -41,12 +41,17 @@ export function withApiHandler<T>(handler: () => Promise<T>) {
         );
       }
 
+      console.error("[API] Unhandled error:", error);
+
       return NextResponse.json(
         {
           ok: false,
           error: {
             code: "INTERNAL_ERROR",
-            message: "Unexpected server error.",
+            message:
+              process.env.NODE_ENV === "development" && error instanceof Error
+                ? error.message
+                : "Unexpected server error.",
           },
         },
         { status: 500 },

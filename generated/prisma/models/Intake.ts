@@ -186,7 +186,7 @@ export type IntakeGroupByOutputType = {
   _max: IntakeMaxAggregateOutputType | null
 }
 
-type GetIntakeGroupByPayload<T extends IntakeGroupByArgs> = Prisma.PrismaPromise<
+export type GetIntakeGroupByPayload<T extends IntakeGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<IntakeGroupByOutputType, T['by']> &
       {

@@ -41,6 +41,14 @@ export type ProgramMinAggregateOutputType = {
   slug: string | null
   title: string | null
   shortDescription: string | null
+  departmentId: string | null
+  level: $Enums.CourseLevel | null
+  mode: string | null
+  fullDescription: string | null
+  eligibility: string | null
+  seoTitle: string | null
+  seoDescription: string | null
+  isFeatured: boolean | null
   durationMonths: number | null
   tuitionCents: number | null
   isActive: boolean | null
@@ -53,6 +61,14 @@ export type ProgramMaxAggregateOutputType = {
   slug: string | null
   title: string | null
   shortDescription: string | null
+  departmentId: string | null
+  level: $Enums.CourseLevel | null
+  mode: string | null
+  fullDescription: string | null
+  eligibility: string | null
+  seoTitle: string | null
+  seoDescription: string | null
+  isFeatured: boolean | null
   durationMonths: number | null
   tuitionCents: number | null
   isActive: boolean | null
@@ -65,6 +81,20 @@ export type ProgramCountAggregateOutputType = {
   slug: number
   title: number
   shortDescription: number
+  departmentId: number
+  level: number
+  mode: number
+  fullDescription: number
+  highlights: number
+  eligibility: number
+  curriculum: number
+  outcomes: number
+  facilities: number
+  faqs: number
+  seoTitle: number
+  seoDescription: number
+  metadata: number
+  isFeatured: number
   durationMonths: number
   tuitionCents: number
   isActive: number
@@ -89,6 +119,14 @@ export type ProgramMinAggregateInputType = {
   slug?: true
   title?: true
   shortDescription?: true
+  departmentId?: true
+  level?: true
+  mode?: true
+  fullDescription?: true
+  eligibility?: true
+  seoTitle?: true
+  seoDescription?: true
+  isFeatured?: true
   durationMonths?: true
   tuitionCents?: true
   isActive?: true
@@ -101,6 +139,14 @@ export type ProgramMaxAggregateInputType = {
   slug?: true
   title?: true
   shortDescription?: true
+  departmentId?: true
+  level?: true
+  mode?: true
+  fullDescription?: true
+  eligibility?: true
+  seoTitle?: true
+  seoDescription?: true
+  isFeatured?: true
   durationMonths?: true
   tuitionCents?: true
   isActive?: true
@@ -113,6 +159,20 @@ export type ProgramCountAggregateInputType = {
   slug?: true
   title?: true
   shortDescription?: true
+  departmentId?: true
+  level?: true
+  mode?: true
+  fullDescription?: true
+  highlights?: true
+  eligibility?: true
+  curriculum?: true
+  outcomes?: true
+  facilities?: true
+  faqs?: true
+  seoTitle?: true
+  seoDescription?: true
+  metadata?: true
+  isFeatured?: true
   durationMonths?: true
   tuitionCents?: true
   isActive?: true
@@ -211,9 +271,23 @@ export type ProgramGroupByOutputType = {
   id: string
   slug: string
   title: string
-  shortDescription: string
+  shortDescription: string | null
+  departmentId: string | null
+  level: $Enums.CourseLevel
+  mode: string | null
+  fullDescription: string | null
+  highlights: runtime.JsonValue | null
+  eligibility: string | null
+  curriculum: runtime.JsonValue | null
+  outcomes: runtime.JsonValue | null
+  facilities: runtime.JsonValue | null
+  faqs: runtime.JsonValue | null
+  seoTitle: string | null
+  seoDescription: string | null
+  metadata: runtime.JsonValue | null
+  isFeatured: boolean
   durationMonths: number
-  tuitionCents: number
+  tuitionCents: number | null
   isActive: boolean
   createdAt: Date
   updatedAt: Date
@@ -224,7 +298,7 @@ export type ProgramGroupByOutputType = {
   _max: ProgramMaxAggregateOutputType | null
 }
 
-type GetProgramGroupByPayload<T extends ProgramGroupByArgs> = Prisma.PrismaPromise<
+export type GetProgramGroupByPayload<T extends ProgramGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ProgramGroupByOutputType, T['by']> &
       {
@@ -246,32 +320,66 @@ export type ProgramWhereInput = {
   id?: Prisma.StringFilter<"Program"> | string
   slug?: Prisma.StringFilter<"Program"> | string
   title?: Prisma.StringFilter<"Program"> | string
-  shortDescription?: Prisma.StringFilter<"Program"> | string
+  shortDescription?: Prisma.StringNullableFilter<"Program"> | string | null
+  departmentId?: Prisma.StringNullableFilter<"Program"> | string | null
+  level?: Prisma.EnumCourseLevelFilter<"Program"> | $Enums.CourseLevel
+  mode?: Prisma.StringNullableFilter<"Program"> | string | null
+  fullDescription?: Prisma.StringNullableFilter<"Program"> | string | null
+  highlights?: Prisma.JsonNullableFilter<"Program">
+  eligibility?: Prisma.StringNullableFilter<"Program"> | string | null
+  curriculum?: Prisma.JsonNullableFilter<"Program">
+  outcomes?: Prisma.JsonNullableFilter<"Program">
+  facilities?: Prisma.JsonNullableFilter<"Program">
+  faqs?: Prisma.JsonNullableFilter<"Program">
+  seoTitle?: Prisma.StringNullableFilter<"Program"> | string | null
+  seoDescription?: Prisma.StringNullableFilter<"Program"> | string | null
+  metadata?: Prisma.JsonNullableFilter<"Program">
+  isFeatured?: Prisma.BoolFilter<"Program"> | boolean
   durationMonths?: Prisma.IntFilter<"Program"> | number
-  tuitionCents?: Prisma.IntFilter<"Program"> | number
+  tuitionCents?: Prisma.IntNullableFilter<"Program"> | number | null
   isActive?: Prisma.BoolFilter<"Program"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Program"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Program"> | Date | string
+  department?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.DepartmentWhereInput> | null
+  specializations?: Prisma.ProgramSpecializationListRelationFilter
   leads?: Prisma.LeadListRelationFilter
   applicants?: Prisma.ApplicantListRelationFilter
   intakes?: Prisma.IntakeListRelationFilter
   applications?: Prisma.ApplicationListRelationFilter
+  scholarshipInquiries?: Prisma.ScholarshipInquiryListRelationFilter
 }
 
 export type ProgramOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  shortDescription?: Prisma.SortOrder
+  shortDescription?: Prisma.SortOrderInput | Prisma.SortOrder
+  departmentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  level?: Prisma.SortOrder
+  mode?: Prisma.SortOrderInput | Prisma.SortOrder
+  fullDescription?: Prisma.SortOrderInput | Prisma.SortOrder
+  highlights?: Prisma.SortOrderInput | Prisma.SortOrder
+  eligibility?: Prisma.SortOrderInput | Prisma.SortOrder
+  curriculum?: Prisma.SortOrderInput | Prisma.SortOrder
+  outcomes?: Prisma.SortOrderInput | Prisma.SortOrder
+  facilities?: Prisma.SortOrderInput | Prisma.SortOrder
+  faqs?: Prisma.SortOrderInput | Prisma.SortOrder
+  seoTitle?: Prisma.SortOrderInput | Prisma.SortOrder
+  seoDescription?: Prisma.SortOrderInput | Prisma.SortOrder
+  metadata?: Prisma.SortOrderInput | Prisma.SortOrder
+  isFeatured?: Prisma.SortOrder
   durationMonths?: Prisma.SortOrder
-  tuitionCents?: Prisma.SortOrder
+  tuitionCents?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  department?: Prisma.DepartmentOrderByWithRelationInput
+  specializations?: Prisma.ProgramSpecializationOrderByRelationAggregateInput
   leads?: Prisma.LeadOrderByRelationAggregateInput
   applicants?: Prisma.ApplicantOrderByRelationAggregateInput
   intakes?: Prisma.IntakeOrderByRelationAggregateInput
   applications?: Prisma.ApplicationOrderByRelationAggregateInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryOrderByRelationAggregateInput
 }
 
 export type ProgramWhereUniqueInput = Prisma.AtLeast<{
@@ -281,25 +389,56 @@ export type ProgramWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.ProgramWhereInput[]
   NOT?: Prisma.ProgramWhereInput | Prisma.ProgramWhereInput[]
   title?: Prisma.StringFilter<"Program"> | string
-  shortDescription?: Prisma.StringFilter<"Program"> | string
+  shortDescription?: Prisma.StringNullableFilter<"Program"> | string | null
+  departmentId?: Prisma.StringNullableFilter<"Program"> | string | null
+  level?: Prisma.EnumCourseLevelFilter<"Program"> | $Enums.CourseLevel
+  mode?: Prisma.StringNullableFilter<"Program"> | string | null
+  fullDescription?: Prisma.StringNullableFilter<"Program"> | string | null
+  highlights?: Prisma.JsonNullableFilter<"Program">
+  eligibility?: Prisma.StringNullableFilter<"Program"> | string | null
+  curriculum?: Prisma.JsonNullableFilter<"Program">
+  outcomes?: Prisma.JsonNullableFilter<"Program">
+  facilities?: Prisma.JsonNullableFilter<"Program">
+  faqs?: Prisma.JsonNullableFilter<"Program">
+  seoTitle?: Prisma.StringNullableFilter<"Program"> | string | null
+  seoDescription?: Prisma.StringNullableFilter<"Program"> | string | null
+  metadata?: Prisma.JsonNullableFilter<"Program">
+  isFeatured?: Prisma.BoolFilter<"Program"> | boolean
   durationMonths?: Prisma.IntFilter<"Program"> | number
-  tuitionCents?: Prisma.IntFilter<"Program"> | number
+  tuitionCents?: Prisma.IntNullableFilter<"Program"> | number | null
   isActive?: Prisma.BoolFilter<"Program"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Program"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Program"> | Date | string
+  department?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.DepartmentWhereInput> | null
+  specializations?: Prisma.ProgramSpecializationListRelationFilter
   leads?: Prisma.LeadListRelationFilter
   applicants?: Prisma.ApplicantListRelationFilter
   intakes?: Prisma.IntakeListRelationFilter
   applications?: Prisma.ApplicationListRelationFilter
+  scholarshipInquiries?: Prisma.ScholarshipInquiryListRelationFilter
 }, "id" | "slug">
 
 export type ProgramOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  shortDescription?: Prisma.SortOrder
+  shortDescription?: Prisma.SortOrderInput | Prisma.SortOrder
+  departmentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  level?: Prisma.SortOrder
+  mode?: Prisma.SortOrderInput | Prisma.SortOrder
+  fullDescription?: Prisma.SortOrderInput | Prisma.SortOrder
+  highlights?: Prisma.SortOrderInput | Prisma.SortOrder
+  eligibility?: Prisma.SortOrderInput | Prisma.SortOrder
+  curriculum?: Prisma.SortOrderInput | Prisma.SortOrder
+  outcomes?: Prisma.SortOrderInput | Prisma.SortOrder
+  facilities?: Prisma.SortOrderInput | Prisma.SortOrder
+  faqs?: Prisma.SortOrderInput | Prisma.SortOrder
+  seoTitle?: Prisma.SortOrderInput | Prisma.SortOrder
+  seoDescription?: Prisma.SortOrderInput | Prisma.SortOrder
+  metadata?: Prisma.SortOrderInput | Prisma.SortOrder
+  isFeatured?: Prisma.SortOrder
   durationMonths?: Prisma.SortOrder
-  tuitionCents?: Prisma.SortOrder
+  tuitionCents?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -317,9 +456,23 @@ export type ProgramScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Program"> | string
   slug?: Prisma.StringWithAggregatesFilter<"Program"> | string
   title?: Prisma.StringWithAggregatesFilter<"Program"> | string
-  shortDescription?: Prisma.StringWithAggregatesFilter<"Program"> | string
+  shortDescription?: Prisma.StringNullableWithAggregatesFilter<"Program"> | string | null
+  departmentId?: Prisma.StringNullableWithAggregatesFilter<"Program"> | string | null
+  level?: Prisma.EnumCourseLevelWithAggregatesFilter<"Program"> | $Enums.CourseLevel
+  mode?: Prisma.StringNullableWithAggregatesFilter<"Program"> | string | null
+  fullDescription?: Prisma.StringNullableWithAggregatesFilter<"Program"> | string | null
+  highlights?: Prisma.JsonNullableWithAggregatesFilter<"Program">
+  eligibility?: Prisma.StringNullableWithAggregatesFilter<"Program"> | string | null
+  curriculum?: Prisma.JsonNullableWithAggregatesFilter<"Program">
+  outcomes?: Prisma.JsonNullableWithAggregatesFilter<"Program">
+  facilities?: Prisma.JsonNullableWithAggregatesFilter<"Program">
+  faqs?: Prisma.JsonNullableWithAggregatesFilter<"Program">
+  seoTitle?: Prisma.StringNullableWithAggregatesFilter<"Program"> | string | null
+  seoDescription?: Prisma.StringNullableWithAggregatesFilter<"Program"> | string | null
+  metadata?: Prisma.JsonNullableWithAggregatesFilter<"Program">
+  isFeatured?: Prisma.BoolWithAggregatesFilter<"Program"> | boolean
   durationMonths?: Prisma.IntWithAggregatesFilter<"Program"> | number
-  tuitionCents?: Prisma.IntWithAggregatesFilter<"Program"> | number
+  tuitionCents?: Prisma.IntNullableWithAggregatesFilter<"Program"> | number | null
   isActive?: Prisma.BoolWithAggregatesFilter<"Program"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Program"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Program"> | Date | string
@@ -329,73 +482,151 @@ export type ProgramCreateInput = {
   id?: string
   slug: string
   title: string
-  shortDescription: string
+  shortDescription?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
-  tuitionCents: number
+  tuitionCents?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  department?: Prisma.DepartmentCreateNestedOneWithoutProgramsInput
+  specializations?: Prisma.ProgramSpecializationCreateNestedManyWithoutProgramInput
   leads?: Prisma.LeadCreateNestedManyWithoutIntendedProgramInput
   applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
   intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUncheckedCreateInput = {
   id?: string
   slug: string
   title: string
-  shortDescription: string
+  shortDescription?: string | null
+  departmentId?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
-  tuitionCents: number
+  tuitionCents?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  specializations?: Prisma.ProgramSpecializationUncheckedCreateNestedManyWithoutProgramInput
   leads?: Prisma.LeadUncheckedCreateNestedManyWithoutIntendedProgramInput
   applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
   intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
-  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  department?: Prisma.DepartmentUpdateOneWithoutProgramsNestedInput
+  specializations?: Prisma.ProgramSpecializationUpdateManyWithoutProgramNestedInput
   leads?: Prisma.LeadUpdateManyWithoutIntendedProgramNestedInput
   applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
   intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
-  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  specializations?: Prisma.ProgramSpecializationUncheckedUpdateManyWithoutProgramNestedInput
   leads?: Prisma.LeadUncheckedUpdateManyWithoutIntendedProgramNestedInput
   applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
   intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramCreateManyInput = {
   id?: string
   slug: string
   title: string
-  shortDescription: string
+  shortDescription?: string | null
+  departmentId?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
-  tuitionCents: number
+  tuitionCents?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -405,9 +636,22 @@ export type ProgramUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
-  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -417,12 +661,36 @@ export type ProgramUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
-  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ProgramListRelationFilter = {
+  every?: Prisma.ProgramWhereInput
+  some?: Prisma.ProgramWhereInput
+  none?: Prisma.ProgramWhereInput
+}
+
+export type ProgramOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type ProgramCountOrderByAggregateInput = {
@@ -430,6 +698,20 @@ export type ProgramCountOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   title?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
+  departmentId?: Prisma.SortOrder
+  level?: Prisma.SortOrder
+  mode?: Prisma.SortOrder
+  fullDescription?: Prisma.SortOrder
+  highlights?: Prisma.SortOrder
+  eligibility?: Prisma.SortOrder
+  curriculum?: Prisma.SortOrder
+  outcomes?: Prisma.SortOrder
+  facilities?: Prisma.SortOrder
+  faqs?: Prisma.SortOrder
+  seoTitle?: Prisma.SortOrder
+  seoDescription?: Prisma.SortOrder
+  metadata?: Prisma.SortOrder
+  isFeatured?: Prisma.SortOrder
   durationMonths?: Prisma.SortOrder
   tuitionCents?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
@@ -447,6 +729,14 @@ export type ProgramMaxOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   title?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
+  departmentId?: Prisma.SortOrder
+  level?: Prisma.SortOrder
+  mode?: Prisma.SortOrder
+  fullDescription?: Prisma.SortOrder
+  eligibility?: Prisma.SortOrder
+  seoTitle?: Prisma.SortOrder
+  seoDescription?: Prisma.SortOrder
+  isFeatured?: Prisma.SortOrder
   durationMonths?: Prisma.SortOrder
   tuitionCents?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
@@ -459,6 +749,14 @@ export type ProgramMinOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   title?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
+  departmentId?: Prisma.SortOrder
+  level?: Prisma.SortOrder
+  mode?: Prisma.SortOrder
+  fullDescription?: Prisma.SortOrder
+  eligibility?: Prisma.SortOrder
+  seoTitle?: Prisma.SortOrder
+  seoDescription?: Prisma.SortOrder
+  isFeatured?: Prisma.SortOrder
   durationMonths?: Prisma.SortOrder
   tuitionCents?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
@@ -481,16 +779,72 @@ export type ProgramNullableScalarRelationFilter = {
   isNot?: Prisma.ProgramWhereInput | null
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
+export type ProgramCreateNestedManyWithoutDepartmentInput = {
+  create?: Prisma.XOR<Prisma.ProgramCreateWithoutDepartmentInput, Prisma.ProgramUncheckedCreateWithoutDepartmentInput> | Prisma.ProgramCreateWithoutDepartmentInput[] | Prisma.ProgramUncheckedCreateWithoutDepartmentInput[]
+  connectOrCreate?: Prisma.ProgramCreateOrConnectWithoutDepartmentInput | Prisma.ProgramCreateOrConnectWithoutDepartmentInput[]
+  createMany?: Prisma.ProgramCreateManyDepartmentInputEnvelope
+  connect?: Prisma.ProgramWhereUniqueInput | Prisma.ProgramWhereUniqueInput[]
+}
+
+export type ProgramUncheckedCreateNestedManyWithoutDepartmentInput = {
+  create?: Prisma.XOR<Prisma.ProgramCreateWithoutDepartmentInput, Prisma.ProgramUncheckedCreateWithoutDepartmentInput> | Prisma.ProgramCreateWithoutDepartmentInput[] | Prisma.ProgramUncheckedCreateWithoutDepartmentInput[]
+  connectOrCreate?: Prisma.ProgramCreateOrConnectWithoutDepartmentInput | Prisma.ProgramCreateOrConnectWithoutDepartmentInput[]
+  createMany?: Prisma.ProgramCreateManyDepartmentInputEnvelope
+  connect?: Prisma.ProgramWhereUniqueInput | Prisma.ProgramWhereUniqueInput[]
+}
+
+export type ProgramUpdateManyWithoutDepartmentNestedInput = {
+  create?: Prisma.XOR<Prisma.ProgramCreateWithoutDepartmentInput, Prisma.ProgramUncheckedCreateWithoutDepartmentInput> | Prisma.ProgramCreateWithoutDepartmentInput[] | Prisma.ProgramUncheckedCreateWithoutDepartmentInput[]
+  connectOrCreate?: Prisma.ProgramCreateOrConnectWithoutDepartmentInput | Prisma.ProgramCreateOrConnectWithoutDepartmentInput[]
+  upsert?: Prisma.ProgramUpsertWithWhereUniqueWithoutDepartmentInput | Prisma.ProgramUpsertWithWhereUniqueWithoutDepartmentInput[]
+  createMany?: Prisma.ProgramCreateManyDepartmentInputEnvelope
+  set?: Prisma.ProgramWhereUniqueInput | Prisma.ProgramWhereUniqueInput[]
+  disconnect?: Prisma.ProgramWhereUniqueInput | Prisma.ProgramWhereUniqueInput[]
+  delete?: Prisma.ProgramWhereUniqueInput | Prisma.ProgramWhereUniqueInput[]
+  connect?: Prisma.ProgramWhereUniqueInput | Prisma.ProgramWhereUniqueInput[]
+  update?: Prisma.ProgramUpdateWithWhereUniqueWithoutDepartmentInput | Prisma.ProgramUpdateWithWhereUniqueWithoutDepartmentInput[]
+  updateMany?: Prisma.ProgramUpdateManyWithWhereWithoutDepartmentInput | Prisma.ProgramUpdateManyWithWhereWithoutDepartmentInput[]
+  deleteMany?: Prisma.ProgramScalarWhereInput | Prisma.ProgramScalarWhereInput[]
+}
+
+export type ProgramUncheckedUpdateManyWithoutDepartmentNestedInput = {
+  create?: Prisma.XOR<Prisma.ProgramCreateWithoutDepartmentInput, Prisma.ProgramUncheckedCreateWithoutDepartmentInput> | Prisma.ProgramCreateWithoutDepartmentInput[] | Prisma.ProgramUncheckedCreateWithoutDepartmentInput[]
+  connectOrCreate?: Prisma.ProgramCreateOrConnectWithoutDepartmentInput | Prisma.ProgramCreateOrConnectWithoutDepartmentInput[]
+  upsert?: Prisma.ProgramUpsertWithWhereUniqueWithoutDepartmentInput | Prisma.ProgramUpsertWithWhereUniqueWithoutDepartmentInput[]
+  createMany?: Prisma.ProgramCreateManyDepartmentInputEnvelope
+  set?: Prisma.ProgramWhereUniqueInput | Prisma.ProgramWhereUniqueInput[]
+  disconnect?: Prisma.ProgramWhereUniqueInput | Prisma.ProgramWhereUniqueInput[]
+  delete?: Prisma.ProgramWhereUniqueInput | Prisma.ProgramWhereUniqueInput[]
+  connect?: Prisma.ProgramWhereUniqueInput | Prisma.ProgramWhereUniqueInput[]
+  update?: Prisma.ProgramUpdateWithWhereUniqueWithoutDepartmentInput | Prisma.ProgramUpdateWithWhereUniqueWithoutDepartmentInput[]
+  updateMany?: Prisma.ProgramUpdateManyWithWhereWithoutDepartmentInput | Prisma.ProgramUpdateManyWithWhereWithoutDepartmentInput[]
+  deleteMany?: Prisma.ProgramScalarWhereInput | Prisma.ProgramScalarWhereInput[]
+}
+
+export type EnumCourseLevelFieldUpdateOperationsInput = {
+  set?: $Enums.CourseLevel
+}
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
+export type ProgramCreateNestedOneWithoutSpecializationsInput = {
+  create?: Prisma.XOR<Prisma.ProgramCreateWithoutSpecializationsInput, Prisma.ProgramUncheckedCreateWithoutSpecializationsInput>
+  connectOrCreate?: Prisma.ProgramCreateOrConnectWithoutSpecializationsInput
+  connect?: Prisma.ProgramWhereUniqueInput
+}
+
+export type ProgramUpdateOneRequiredWithoutSpecializationsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProgramCreateWithoutSpecializationsInput, Prisma.ProgramUncheckedCreateWithoutSpecializationsInput>
+  connectOrCreate?: Prisma.ProgramCreateOrConnectWithoutSpecializationsInput
+  upsert?: Prisma.ProgramUpsertWithoutSpecializationsInput
+  connect?: Prisma.ProgramWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProgramUpdateToOneWithWhereWithoutSpecializationsInput, Prisma.ProgramUpdateWithoutSpecializationsInput>, Prisma.ProgramUncheckedUpdateWithoutSpecializationsInput>
 }
 
 export type ProgramCreateNestedOneWithoutIntakesInput = {
@@ -551,34 +905,339 @@ export type ProgramUpdateOneRequiredWithoutApplicationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProgramUpdateToOneWithWhereWithoutApplicationsInput, Prisma.ProgramUpdateWithoutApplicationsInput>, Prisma.ProgramUncheckedUpdateWithoutApplicationsInput>
 }
 
+export type ProgramCreateNestedOneWithoutScholarshipInquiriesInput = {
+  create?: Prisma.XOR<Prisma.ProgramCreateWithoutScholarshipInquiriesInput, Prisma.ProgramUncheckedCreateWithoutScholarshipInquiriesInput>
+  connectOrCreate?: Prisma.ProgramCreateOrConnectWithoutScholarshipInquiriesInput
+  connect?: Prisma.ProgramWhereUniqueInput
+}
+
+export type ProgramUpdateOneWithoutScholarshipInquiriesNestedInput = {
+  create?: Prisma.XOR<Prisma.ProgramCreateWithoutScholarshipInquiriesInput, Prisma.ProgramUncheckedCreateWithoutScholarshipInquiriesInput>
+  connectOrCreate?: Prisma.ProgramCreateOrConnectWithoutScholarshipInquiriesInput
+  upsert?: Prisma.ProgramUpsertWithoutScholarshipInquiriesInput
+  disconnect?: Prisma.ProgramWhereInput | boolean
+  delete?: Prisma.ProgramWhereInput | boolean
+  connect?: Prisma.ProgramWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProgramUpdateToOneWithWhereWithoutScholarshipInquiriesInput, Prisma.ProgramUpdateWithoutScholarshipInquiriesInput>, Prisma.ProgramUncheckedUpdateWithoutScholarshipInquiriesInput>
+}
+
+export type ProgramCreateWithoutDepartmentInput = {
+  id?: string
+  slug: string
+  title: string
+  shortDescription?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
+  durationMonths: number
+  tuitionCents?: number | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  specializations?: Prisma.ProgramSpecializationCreateNestedManyWithoutProgramInput
+  leads?: Prisma.LeadCreateNestedManyWithoutIntendedProgramInput
+  applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
+  intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryCreateNestedManyWithoutProgramInput
+}
+
+export type ProgramUncheckedCreateWithoutDepartmentInput = {
+  id?: string
+  slug: string
+  title: string
+  shortDescription?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
+  durationMonths: number
+  tuitionCents?: number | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  specializations?: Prisma.ProgramSpecializationUncheckedCreateNestedManyWithoutProgramInput
+  leads?: Prisma.LeadUncheckedCreateNestedManyWithoutIntendedProgramInput
+  applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
+  intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedCreateNestedManyWithoutProgramInput
+}
+
+export type ProgramCreateOrConnectWithoutDepartmentInput = {
+  where: Prisma.ProgramWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProgramCreateWithoutDepartmentInput, Prisma.ProgramUncheckedCreateWithoutDepartmentInput>
+}
+
+export type ProgramCreateManyDepartmentInputEnvelope = {
+  data: Prisma.ProgramCreateManyDepartmentInput | Prisma.ProgramCreateManyDepartmentInput[]
+  skipDuplicates?: boolean
+}
+
+export type ProgramUpsertWithWhereUniqueWithoutDepartmentInput = {
+  where: Prisma.ProgramWhereUniqueInput
+  update: Prisma.XOR<Prisma.ProgramUpdateWithoutDepartmentInput, Prisma.ProgramUncheckedUpdateWithoutDepartmentInput>
+  create: Prisma.XOR<Prisma.ProgramCreateWithoutDepartmentInput, Prisma.ProgramUncheckedCreateWithoutDepartmentInput>
+}
+
+export type ProgramUpdateWithWhereUniqueWithoutDepartmentInput = {
+  where: Prisma.ProgramWhereUniqueInput
+  data: Prisma.XOR<Prisma.ProgramUpdateWithoutDepartmentInput, Prisma.ProgramUncheckedUpdateWithoutDepartmentInput>
+}
+
+export type ProgramUpdateManyWithWhereWithoutDepartmentInput = {
+  where: Prisma.ProgramScalarWhereInput
+  data: Prisma.XOR<Prisma.ProgramUpdateManyMutationInput, Prisma.ProgramUncheckedUpdateManyWithoutDepartmentInput>
+}
+
+export type ProgramScalarWhereInput = {
+  AND?: Prisma.ProgramScalarWhereInput | Prisma.ProgramScalarWhereInput[]
+  OR?: Prisma.ProgramScalarWhereInput[]
+  NOT?: Prisma.ProgramScalarWhereInput | Prisma.ProgramScalarWhereInput[]
+  id?: Prisma.StringFilter<"Program"> | string
+  slug?: Prisma.StringFilter<"Program"> | string
+  title?: Prisma.StringFilter<"Program"> | string
+  shortDescription?: Prisma.StringNullableFilter<"Program"> | string | null
+  departmentId?: Prisma.StringNullableFilter<"Program"> | string | null
+  level?: Prisma.EnumCourseLevelFilter<"Program"> | $Enums.CourseLevel
+  mode?: Prisma.StringNullableFilter<"Program"> | string | null
+  fullDescription?: Prisma.StringNullableFilter<"Program"> | string | null
+  highlights?: Prisma.JsonNullableFilter<"Program">
+  eligibility?: Prisma.StringNullableFilter<"Program"> | string | null
+  curriculum?: Prisma.JsonNullableFilter<"Program">
+  outcomes?: Prisma.JsonNullableFilter<"Program">
+  facilities?: Prisma.JsonNullableFilter<"Program">
+  faqs?: Prisma.JsonNullableFilter<"Program">
+  seoTitle?: Prisma.StringNullableFilter<"Program"> | string | null
+  seoDescription?: Prisma.StringNullableFilter<"Program"> | string | null
+  metadata?: Prisma.JsonNullableFilter<"Program">
+  isFeatured?: Prisma.BoolFilter<"Program"> | boolean
+  durationMonths?: Prisma.IntFilter<"Program"> | number
+  tuitionCents?: Prisma.IntNullableFilter<"Program"> | number | null
+  isActive?: Prisma.BoolFilter<"Program"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"Program"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Program"> | Date | string
+}
+
+export type ProgramCreateWithoutSpecializationsInput = {
+  id?: string
+  slug: string
+  title: string
+  shortDescription?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
+  durationMonths: number
+  tuitionCents?: number | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  department?: Prisma.DepartmentCreateNestedOneWithoutProgramsInput
+  leads?: Prisma.LeadCreateNestedManyWithoutIntendedProgramInput
+  applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
+  intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryCreateNestedManyWithoutProgramInput
+}
+
+export type ProgramUncheckedCreateWithoutSpecializationsInput = {
+  id?: string
+  slug: string
+  title: string
+  shortDescription?: string | null
+  departmentId?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
+  durationMonths: number
+  tuitionCents?: number | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  leads?: Prisma.LeadUncheckedCreateNestedManyWithoutIntendedProgramInput
+  applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
+  intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedCreateNestedManyWithoutProgramInput
+}
+
+export type ProgramCreateOrConnectWithoutSpecializationsInput = {
+  where: Prisma.ProgramWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProgramCreateWithoutSpecializationsInput, Prisma.ProgramUncheckedCreateWithoutSpecializationsInput>
+}
+
+export type ProgramUpsertWithoutSpecializationsInput = {
+  update: Prisma.XOR<Prisma.ProgramUpdateWithoutSpecializationsInput, Prisma.ProgramUncheckedUpdateWithoutSpecializationsInput>
+  create: Prisma.XOR<Prisma.ProgramCreateWithoutSpecializationsInput, Prisma.ProgramUncheckedCreateWithoutSpecializationsInput>
+  where?: Prisma.ProgramWhereInput
+}
+
+export type ProgramUpdateToOneWithWhereWithoutSpecializationsInput = {
+  where?: Prisma.ProgramWhereInput
+  data: Prisma.XOR<Prisma.ProgramUpdateWithoutSpecializationsInput, Prisma.ProgramUncheckedUpdateWithoutSpecializationsInput>
+}
+
+export type ProgramUpdateWithoutSpecializationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  department?: Prisma.DepartmentUpdateOneWithoutProgramsNestedInput
+  leads?: Prisma.LeadUpdateManyWithoutIntendedProgramNestedInput
+  applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
+  intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUpdateManyWithoutProgramNestedInput
+}
+
+export type ProgramUncheckedUpdateWithoutSpecializationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leads?: Prisma.LeadUncheckedUpdateManyWithoutIntendedProgramNestedInput
+  applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
+  intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedUpdateManyWithoutProgramNestedInput
+}
+
 export type ProgramCreateWithoutIntakesInput = {
   id?: string
   slug: string
   title: string
-  shortDescription: string
+  shortDescription?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
-  tuitionCents: number
+  tuitionCents?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  department?: Prisma.DepartmentCreateNestedOneWithoutProgramsInput
+  specializations?: Prisma.ProgramSpecializationCreateNestedManyWithoutProgramInput
   leads?: Prisma.LeadCreateNestedManyWithoutIntendedProgramInput
   applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUncheckedCreateWithoutIntakesInput = {
   id?: string
   slug: string
   title: string
-  shortDescription: string
+  shortDescription?: string | null
+  departmentId?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
-  tuitionCents: number
+  tuitionCents?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  specializations?: Prisma.ProgramSpecializationUncheckedCreateNestedManyWithoutProgramInput
   leads?: Prisma.LeadUncheckedCreateNestedManyWithoutIntendedProgramInput
   applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramCreateOrConnectWithoutIntakesInput = {
@@ -601,60 +1260,124 @@ export type ProgramUpdateWithoutIntakesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
-  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  department?: Prisma.DepartmentUpdateOneWithoutProgramsNestedInput
+  specializations?: Prisma.ProgramSpecializationUpdateManyWithoutProgramNestedInput
   leads?: Prisma.LeadUpdateManyWithoutIntendedProgramNestedInput
   applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramUncheckedUpdateWithoutIntakesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
-  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  specializations?: Prisma.ProgramSpecializationUncheckedUpdateManyWithoutProgramNestedInput
   leads?: Prisma.LeadUncheckedUpdateManyWithoutIntendedProgramNestedInput
   applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramCreateWithoutLeadsInput = {
   id?: string
   slug: string
   title: string
-  shortDescription: string
+  shortDescription?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
-  tuitionCents: number
+  tuitionCents?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  department?: Prisma.DepartmentCreateNestedOneWithoutProgramsInput
+  specializations?: Prisma.ProgramSpecializationCreateNestedManyWithoutProgramInput
   applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
   intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUncheckedCreateWithoutLeadsInput = {
   id?: string
   slug: string
   title: string
-  shortDescription: string
+  shortDescription?: string | null
+  departmentId?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
-  tuitionCents: number
+  tuitionCents?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  specializations?: Prisma.ProgramSpecializationUncheckedCreateNestedManyWithoutProgramInput
   applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
   intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramCreateOrConnectWithoutLeadsInput = {
@@ -677,60 +1400,124 @@ export type ProgramUpdateWithoutLeadsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
-  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  department?: Prisma.DepartmentUpdateOneWithoutProgramsNestedInput
+  specializations?: Prisma.ProgramSpecializationUpdateManyWithoutProgramNestedInput
   applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
   intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramUncheckedUpdateWithoutLeadsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
-  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  specializations?: Prisma.ProgramSpecializationUncheckedUpdateManyWithoutProgramNestedInput
   applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
   intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramCreateWithoutApplicantsInput = {
   id?: string
   slug: string
   title: string
-  shortDescription: string
+  shortDescription?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
-  tuitionCents: number
+  tuitionCents?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  department?: Prisma.DepartmentCreateNestedOneWithoutProgramsInput
+  specializations?: Prisma.ProgramSpecializationCreateNestedManyWithoutProgramInput
   leads?: Prisma.LeadCreateNestedManyWithoutIntendedProgramInput
   intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUncheckedCreateWithoutApplicantsInput = {
   id?: string
   slug: string
   title: string
-  shortDescription: string
+  shortDescription?: string | null
+  departmentId?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
-  tuitionCents: number
+  tuitionCents?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  specializations?: Prisma.ProgramSpecializationUncheckedCreateNestedManyWithoutProgramInput
   leads?: Prisma.LeadUncheckedCreateNestedManyWithoutIntendedProgramInput
   intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramCreateOrConnectWithoutApplicantsInput = {
@@ -753,60 +1540,124 @@ export type ProgramUpdateWithoutApplicantsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
-  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  department?: Prisma.DepartmentUpdateOneWithoutProgramsNestedInput
+  specializations?: Prisma.ProgramSpecializationUpdateManyWithoutProgramNestedInput
   leads?: Prisma.LeadUpdateManyWithoutIntendedProgramNestedInput
   intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramUncheckedUpdateWithoutApplicantsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
-  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  specializations?: Prisma.ProgramSpecializationUncheckedUpdateManyWithoutProgramNestedInput
   leads?: Prisma.LeadUncheckedUpdateManyWithoutIntendedProgramNestedInput
   intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramCreateWithoutApplicationsInput = {
   id?: string
   slug: string
   title: string
-  shortDescription: string
+  shortDescription?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
-  tuitionCents: number
+  tuitionCents?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  department?: Prisma.DepartmentCreateNestedOneWithoutProgramsInput
+  specializations?: Prisma.ProgramSpecializationCreateNestedManyWithoutProgramInput
   leads?: Prisma.LeadCreateNestedManyWithoutIntendedProgramInput
   applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
   intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramUncheckedCreateWithoutApplicationsInput = {
   id?: string
   slug: string
   title: string
-  shortDescription: string
+  shortDescription?: string | null
+  departmentId?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
   durationMonths: number
-  tuitionCents: number
+  tuitionCents?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  specializations?: Prisma.ProgramSpecializationUncheckedCreateNestedManyWithoutProgramInput
   leads?: Prisma.LeadUncheckedCreateNestedManyWithoutIntendedProgramInput
   applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
   intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedCreateNestedManyWithoutProgramInput
 }
 
 export type ProgramCreateOrConnectWithoutApplicationsInput = {
@@ -829,30 +1680,314 @@ export type ProgramUpdateWithoutApplicationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
-  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  department?: Prisma.DepartmentUpdateOneWithoutProgramsNestedInput
+  specializations?: Prisma.ProgramSpecializationUpdateManyWithoutProgramNestedInput
   leads?: Prisma.LeadUpdateManyWithoutIntendedProgramNestedInput
   applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
   intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUpdateManyWithoutProgramNestedInput
 }
 
 export type ProgramUncheckedUpdateWithoutApplicationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
-  tuitionCents?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  specializations?: Prisma.ProgramSpecializationUncheckedUpdateManyWithoutProgramNestedInput
   leads?: Prisma.LeadUncheckedUpdateManyWithoutIntendedProgramNestedInput
   applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
   intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedUpdateManyWithoutProgramNestedInput
+}
+
+export type ProgramCreateWithoutScholarshipInquiriesInput = {
+  id?: string
+  slug: string
+  title: string
+  shortDescription?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
+  durationMonths: number
+  tuitionCents?: number | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  department?: Prisma.DepartmentCreateNestedOneWithoutProgramsInput
+  specializations?: Prisma.ProgramSpecializationCreateNestedManyWithoutProgramInput
+  leads?: Prisma.LeadCreateNestedManyWithoutIntendedProgramInput
+  applicants?: Prisma.ApplicantCreateNestedManyWithoutProgramInput
+  intakes?: Prisma.IntakeCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutProgramInput
+}
+
+export type ProgramUncheckedCreateWithoutScholarshipInquiriesInput = {
+  id?: string
+  slug: string
+  title: string
+  shortDescription?: string | null
+  departmentId?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
+  durationMonths: number
+  tuitionCents?: number | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  specializations?: Prisma.ProgramSpecializationUncheckedCreateNestedManyWithoutProgramInput
+  leads?: Prisma.LeadUncheckedCreateNestedManyWithoutIntendedProgramInput
+  applicants?: Prisma.ApplicantUncheckedCreateNestedManyWithoutProgramInput
+  intakes?: Prisma.IntakeUncheckedCreateNestedManyWithoutProgramInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutProgramInput
+}
+
+export type ProgramCreateOrConnectWithoutScholarshipInquiriesInput = {
+  where: Prisma.ProgramWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProgramCreateWithoutScholarshipInquiriesInput, Prisma.ProgramUncheckedCreateWithoutScholarshipInquiriesInput>
+}
+
+export type ProgramUpsertWithoutScholarshipInquiriesInput = {
+  update: Prisma.XOR<Prisma.ProgramUpdateWithoutScholarshipInquiriesInput, Prisma.ProgramUncheckedUpdateWithoutScholarshipInquiriesInput>
+  create: Prisma.XOR<Prisma.ProgramCreateWithoutScholarshipInquiriesInput, Prisma.ProgramUncheckedCreateWithoutScholarshipInquiriesInput>
+  where?: Prisma.ProgramWhereInput
+}
+
+export type ProgramUpdateToOneWithWhereWithoutScholarshipInquiriesInput = {
+  where?: Prisma.ProgramWhereInput
+  data: Prisma.XOR<Prisma.ProgramUpdateWithoutScholarshipInquiriesInput, Prisma.ProgramUncheckedUpdateWithoutScholarshipInquiriesInput>
+}
+
+export type ProgramUpdateWithoutScholarshipInquiriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  department?: Prisma.DepartmentUpdateOneWithoutProgramsNestedInput
+  specializations?: Prisma.ProgramSpecializationUpdateManyWithoutProgramNestedInput
+  leads?: Prisma.LeadUpdateManyWithoutIntendedProgramNestedInput
+  applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
+  intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
+}
+
+export type ProgramUncheckedUpdateWithoutScholarshipInquiriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  specializations?: Prisma.ProgramSpecializationUncheckedUpdateManyWithoutProgramNestedInput
+  leads?: Prisma.LeadUncheckedUpdateManyWithoutIntendedProgramNestedInput
+  applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
+  intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
+}
+
+export type ProgramCreateManyDepartmentInput = {
+  id?: string
+  slug: string
+  title: string
+  shortDescription?: string | null
+  level: $Enums.CourseLevel
+  mode?: string | null
+  fullDescription?: string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: string | null
+  seoDescription?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: boolean
+  durationMonths: number
+  tuitionCents?: number | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type ProgramUpdateWithoutDepartmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  specializations?: Prisma.ProgramSpecializationUpdateManyWithoutProgramNestedInput
+  leads?: Prisma.LeadUpdateManyWithoutIntendedProgramNestedInput
+  applicants?: Prisma.ApplicantUpdateManyWithoutProgramNestedInput
+  intakes?: Prisma.IntakeUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUpdateManyWithoutProgramNestedInput
+}
+
+export type ProgramUncheckedUpdateWithoutDepartmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  specializations?: Prisma.ProgramSpecializationUncheckedUpdateManyWithoutProgramNestedInput
+  leads?: Prisma.LeadUncheckedUpdateManyWithoutIntendedProgramNestedInput
+  applicants?: Prisma.ApplicantUncheckedUpdateManyWithoutProgramNestedInput
+  intakes?: Prisma.IntakeUncheckedUpdateManyWithoutProgramNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutProgramNestedInput
+  scholarshipInquiries?: Prisma.ScholarshipInquiryUncheckedUpdateManyWithoutProgramNestedInput
+}
+
+export type ProgramUncheckedUpdateManyWithoutDepartmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  level?: Prisma.EnumCourseLevelFieldUpdateOperationsInput | $Enums.CourseLevel
+  mode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  highlights?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  eligibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  outcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  facilities?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  faqs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
+  tuitionCents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -861,17 +1996,21 @@ export type ProgramUncheckedUpdateWithoutApplicationsInput = {
  */
 
 export type ProgramCountOutputType = {
+  specializations: number
   leads: number
   applicants: number
   intakes: number
   applications: number
+  scholarshipInquiries: number
 }
 
 export type ProgramCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  specializations?: boolean | ProgramCountOutputTypeCountSpecializationsArgs
   leads?: boolean | ProgramCountOutputTypeCountLeadsArgs
   applicants?: boolean | ProgramCountOutputTypeCountApplicantsArgs
   intakes?: boolean | ProgramCountOutputTypeCountIntakesArgs
   applications?: boolean | ProgramCountOutputTypeCountApplicationsArgs
+  scholarshipInquiries?: boolean | ProgramCountOutputTypeCountScholarshipInquiriesArgs
 }
 
 /**
@@ -882,6 +2021,13 @@ export type ProgramCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
    * Select specific fields to fetch from the ProgramCountOutputType
    */
   select?: Prisma.ProgramCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ProgramCountOutputType without action
+ */
+export type ProgramCountOutputTypeCountSpecializationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProgramSpecializationWhereInput
 }
 
 /**
@@ -912,21 +2058,45 @@ export type ProgramCountOutputTypeCountApplicationsArgs<ExtArgs extends runtime.
   where?: Prisma.ApplicationWhereInput
 }
 
+/**
+ * ProgramCountOutputType without action
+ */
+export type ProgramCountOutputTypeCountScholarshipInquiriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ScholarshipInquiryWhereInput
+}
+
 
 export type ProgramSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   slug?: boolean
   title?: boolean
   shortDescription?: boolean
+  departmentId?: boolean
+  level?: boolean
+  mode?: boolean
+  fullDescription?: boolean
+  highlights?: boolean
+  eligibility?: boolean
+  curriculum?: boolean
+  outcomes?: boolean
+  facilities?: boolean
+  faqs?: boolean
+  seoTitle?: boolean
+  seoDescription?: boolean
+  metadata?: boolean
+  isFeatured?: boolean
   durationMonths?: boolean
   tuitionCents?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  department?: boolean | Prisma.Program$departmentArgs<ExtArgs>
+  specializations?: boolean | Prisma.Program$specializationsArgs<ExtArgs>
   leads?: boolean | Prisma.Program$leadsArgs<ExtArgs>
   applicants?: boolean | Prisma.Program$applicantsArgs<ExtArgs>
   intakes?: boolean | Prisma.Program$intakesArgs<ExtArgs>
   applications?: boolean | Prisma.Program$applicationsArgs<ExtArgs>
+  scholarshipInquiries?: boolean | Prisma.Program$scholarshipInquiriesArgs<ExtArgs>
   _count?: boolean | Prisma.ProgramCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["program"]>
 
@@ -935,11 +2105,26 @@ export type ProgramSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   slug?: boolean
   title?: boolean
   shortDescription?: boolean
+  departmentId?: boolean
+  level?: boolean
+  mode?: boolean
+  fullDescription?: boolean
+  highlights?: boolean
+  eligibility?: boolean
+  curriculum?: boolean
+  outcomes?: boolean
+  facilities?: boolean
+  faqs?: boolean
+  seoTitle?: boolean
+  seoDescription?: boolean
+  metadata?: boolean
+  isFeatured?: boolean
   durationMonths?: boolean
   tuitionCents?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  department?: boolean | Prisma.Program$departmentArgs<ExtArgs>
 }, ExtArgs["result"]["program"]>
 
 export type ProgramSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -947,11 +2132,26 @@ export type ProgramSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   slug?: boolean
   title?: boolean
   shortDescription?: boolean
+  departmentId?: boolean
+  level?: boolean
+  mode?: boolean
+  fullDescription?: boolean
+  highlights?: boolean
+  eligibility?: boolean
+  curriculum?: boolean
+  outcomes?: boolean
+  facilities?: boolean
+  faqs?: boolean
+  seoTitle?: boolean
+  seoDescription?: boolean
+  metadata?: boolean
+  isFeatured?: boolean
   durationMonths?: boolean
   tuitionCents?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  department?: boolean | Prisma.Program$departmentArgs<ExtArgs>
 }, ExtArgs["result"]["program"]>
 
 export type ProgramSelectScalar = {
@@ -959,6 +2159,20 @@ export type ProgramSelectScalar = {
   slug?: boolean
   title?: boolean
   shortDescription?: boolean
+  departmentId?: boolean
+  level?: boolean
+  mode?: boolean
+  fullDescription?: boolean
+  highlights?: boolean
+  eligibility?: boolean
+  curriculum?: boolean
+  outcomes?: boolean
+  facilities?: boolean
+  faqs?: boolean
+  seoTitle?: boolean
+  seoDescription?: boolean
+  metadata?: boolean
+  isFeatured?: boolean
   durationMonths?: boolean
   tuitionCents?: boolean
   isActive?: boolean
@@ -966,32 +2180,56 @@ export type ProgramSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ProgramOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "title" | "shortDescription" | "durationMonths" | "tuitionCents" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["program"]>
+export type ProgramOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "title" | "shortDescription" | "departmentId" | "level" | "mode" | "fullDescription" | "highlights" | "eligibility" | "curriculum" | "outcomes" | "facilities" | "faqs" | "seoTitle" | "seoDescription" | "metadata" | "isFeatured" | "durationMonths" | "tuitionCents" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["program"]>
 export type ProgramInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  department?: boolean | Prisma.Program$departmentArgs<ExtArgs>
+  specializations?: boolean | Prisma.Program$specializationsArgs<ExtArgs>
   leads?: boolean | Prisma.Program$leadsArgs<ExtArgs>
   applicants?: boolean | Prisma.Program$applicantsArgs<ExtArgs>
   intakes?: boolean | Prisma.Program$intakesArgs<ExtArgs>
   applications?: boolean | Prisma.Program$applicationsArgs<ExtArgs>
+  scholarshipInquiries?: boolean | Prisma.Program$scholarshipInquiriesArgs<ExtArgs>
   _count?: boolean | Prisma.ProgramCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type ProgramIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type ProgramIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type ProgramIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  department?: boolean | Prisma.Program$departmentArgs<ExtArgs>
+}
+export type ProgramIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  department?: boolean | Prisma.Program$departmentArgs<ExtArgs>
+}
 
 export type $ProgramPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Program"
   objects: {
+    department: Prisma.$DepartmentPayload<ExtArgs> | null
+    specializations: Prisma.$ProgramSpecializationPayload<ExtArgs>[]
     leads: Prisma.$LeadPayload<ExtArgs>[]
     applicants: Prisma.$ApplicantPayload<ExtArgs>[]
     intakes: Prisma.$IntakePayload<ExtArgs>[]
     applications: Prisma.$ApplicationPayload<ExtArgs>[]
+    scholarshipInquiries: Prisma.$ScholarshipInquiryPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     slug: string
     title: string
-    shortDescription: string
+    shortDescription: string | null
+    departmentId: string | null
+    level: $Enums.CourseLevel
+    mode: string | null
+    fullDescription: string | null
+    highlights: runtime.JsonValue | null
+    eligibility: string | null
+    curriculum: runtime.JsonValue | null
+    outcomes: runtime.JsonValue | null
+    facilities: runtime.JsonValue | null
+    faqs: runtime.JsonValue | null
+    seoTitle: string | null
+    seoDescription: string | null
+    metadata: runtime.JsonValue | null
+    isFeatured: boolean
     durationMonths: number
-    tuitionCents: number
+    tuitionCents: number | null
     isActive: boolean
     createdAt: Date
     updatedAt: Date
@@ -1389,10 +2627,13 @@ readonly fields: ProgramFieldRefs;
  */
 export interface Prisma__ProgramClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  department<T extends Prisma.Program$departmentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Program$departmentArgs<ExtArgs>>): Prisma.Prisma__DepartmentClient<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  specializations<T extends Prisma.Program$specializationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Program$specializationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProgramSpecializationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   leads<T extends Prisma.Program$leadsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Program$leadsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   applicants<T extends Prisma.Program$applicantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Program$applicantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApplicantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   intakes<T extends Prisma.Program$intakesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Program$intakesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$IntakePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   applications<T extends Prisma.Program$applicationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Program$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  scholarshipInquiries<T extends Prisma.Program$scholarshipInquiriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Program$scholarshipInquiriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ScholarshipInquiryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1426,6 +2667,20 @@ export interface ProgramFieldRefs {
   readonly slug: Prisma.FieldRef<"Program", 'String'>
   readonly title: Prisma.FieldRef<"Program", 'String'>
   readonly shortDescription: Prisma.FieldRef<"Program", 'String'>
+  readonly departmentId: Prisma.FieldRef<"Program", 'String'>
+  readonly level: Prisma.FieldRef<"Program", 'CourseLevel'>
+  readonly mode: Prisma.FieldRef<"Program", 'String'>
+  readonly fullDescription: Prisma.FieldRef<"Program", 'String'>
+  readonly highlights: Prisma.FieldRef<"Program", 'Json'>
+  readonly eligibility: Prisma.FieldRef<"Program", 'String'>
+  readonly curriculum: Prisma.FieldRef<"Program", 'Json'>
+  readonly outcomes: Prisma.FieldRef<"Program", 'Json'>
+  readonly facilities: Prisma.FieldRef<"Program", 'Json'>
+  readonly faqs: Prisma.FieldRef<"Program", 'Json'>
+  readonly seoTitle: Prisma.FieldRef<"Program", 'String'>
+  readonly seoDescription: Prisma.FieldRef<"Program", 'String'>
+  readonly metadata: Prisma.FieldRef<"Program", 'Json'>
+  readonly isFeatured: Prisma.FieldRef<"Program", 'Boolean'>
   readonly durationMonths: Prisma.FieldRef<"Program", 'Int'>
   readonly tuitionCents: Prisma.FieldRef<"Program", 'Int'>
   readonly isActive: Prisma.FieldRef<"Program", 'Boolean'>
@@ -1685,6 +2940,10 @@ export type ProgramCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    */
   data: Prisma.ProgramCreateManyInput | Prisma.ProgramCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProgramIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1755,6 +3014,10 @@ export type ProgramUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    * Limit how many Programs to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProgramIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1821,6 +3084,49 @@ export type ProgramDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Limit how many Programs to delete.
    */
   limit?: number
+}
+
+/**
+ * Program.department
+ */
+export type Program$departmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Department
+   */
+  select?: Prisma.DepartmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Department
+   */
+  omit?: Prisma.DepartmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DepartmentInclude<ExtArgs> | null
+  where?: Prisma.DepartmentWhereInput
+}
+
+/**
+ * Program.specializations
+ */
+export type Program$specializationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProgramSpecialization
+   */
+  select?: Prisma.ProgramSpecializationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProgramSpecialization
+   */
+  omit?: Prisma.ProgramSpecializationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProgramSpecializationInclude<ExtArgs> | null
+  where?: Prisma.ProgramSpecializationWhereInput
+  orderBy?: Prisma.ProgramSpecializationOrderByWithRelationInput | Prisma.ProgramSpecializationOrderByWithRelationInput[]
+  cursor?: Prisma.ProgramSpecializationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProgramSpecializationScalarFieldEnum | Prisma.ProgramSpecializationScalarFieldEnum[]
 }
 
 /**
@@ -1917,6 +3223,30 @@ export type Program$applicationsArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.ApplicationScalarFieldEnum | Prisma.ApplicationScalarFieldEnum[]
+}
+
+/**
+ * Program.scholarshipInquiries
+ */
+export type Program$scholarshipInquiriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ScholarshipInquiry
+   */
+  select?: Prisma.ScholarshipInquirySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ScholarshipInquiry
+   */
+  omit?: Prisma.ScholarshipInquiryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ScholarshipInquiryInclude<ExtArgs> | null
+  where?: Prisma.ScholarshipInquiryWhereInput
+  orderBy?: Prisma.ScholarshipInquiryOrderByWithRelationInput | Prisma.ScholarshipInquiryOrderByWithRelationInput[]
+  cursor?: Prisma.ScholarshipInquiryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ScholarshipInquiryScalarFieldEnum | Prisma.ScholarshipInquiryScalarFieldEnum[]
 }
 
 /**

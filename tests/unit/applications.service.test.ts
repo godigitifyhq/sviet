@@ -1,6 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { ApiError } from "@/services/api-errors";
 import { createApplication, updateApplicationStatus } from "@/modules/applications/applications.service";
 
 const mockPrisma = vi.hoisted(() => ({
@@ -36,7 +35,7 @@ describe("applications service", () => {
           role: "APPLICANT",
         },
       ),
-    ).rejects.toMatchObject<ApiError>({
+    ).rejects.toMatchObject({
       code: "FORBIDDEN",
       statusCode: 403,
     });
@@ -59,7 +58,7 @@ describe("applications service", () => {
           role: "ADMIN",
         },
       ),
-    ).rejects.toMatchObject<ApiError>({
+    ).rejects.toMatchObject({
       code: "DUPLICATE_APPLICATION",
       statusCode: 409,
     });
@@ -85,7 +84,7 @@ describe("applications service", () => {
           role: "COUNSELOR",
         },
       ),
-    ).rejects.toMatchObject<ApiError>({
+    ).rejects.toMatchObject({
       code: "INVALID_STATUS_TRANSITION",
       statusCode: 422,
     });

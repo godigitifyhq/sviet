@@ -52,10 +52,25 @@ export type User = Prisma.UserModel
  */
 export type AuthSession = Prisma.AuthSessionModel
 /**
+ * Model Department
+ * 
+ */
+export type Department = Prisma.DepartmentModel
+/**
+ * Model Specialization
+ * 
+ */
+export type Specialization = Prisma.SpecializationModel
+/**
  * Model Program
  * 
  */
 export type Program = Prisma.ProgramModel
+/**
+ * Model ProgramSpecialization
+ * 
+ */
+export type ProgramSpecialization = Prisma.ProgramSpecializationModel
 /**
  * Model Intake
  * 
@@ -112,6 +127,11 @@ export type Enrollment = Prisma.EnrollmentModel
  */
 export type Event = Prisma.EventModel
 /**
+ * Model EventSpeaker
+ * 
+ */
+export type EventSpeaker = Prisma.EventSpeakerModel
+/**
  * Model EventRegistration
  * 
  */
@@ -126,3 +146,23 @@ export type BlogPost = Prisma.BlogPostModel
  * 
  */
 export type Announcement = Prisma.AnnouncementModel
+/**
+ * Model LeadNote
+ * 
+ */
+export type LeadNote = Prisma.LeadNoteModel
+/**
+ * Model ScholarshipInquiry
+ * 
+ */
+export type ScholarshipInquiry = Prisma.ScholarshipInquiryModel
+/**
+ * Model ProgramFinderSubmission
+ * 
+ */
+export type ProgramFinderSubmission = Prisma.ProgramFinderSubmissionModel
+/**
+ * Model ContactEnquiry
+ * 
+ */
+export type ContactEnquiry = Prisma.ContactEnquiryModel

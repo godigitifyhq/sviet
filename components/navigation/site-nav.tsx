@@ -12,12 +12,12 @@ export function SiteNav() {
   return (
     <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
       <Link href="/" className="text-lg font-bold tracking-tight">
-        SVIET Platform
+        SVGOI Platform
       </Link>
-      <ul className="flex items-center gap-5 text-sm font-medium text-[var(--ink-700)]">
+      <ul className="flex items-center gap-5 text-sm font-medium text-neutral-600">
         {navItems.map((item) => (
           <li key={item.href}>
-            <Link className="transition hover:text-[var(--ink-900)]" href={item.href}>
+            <Link className="transition hover:text-foreground" href={item.href}>
               {item.label}
             </Link>
           </li>

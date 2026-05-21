@@ -200,7 +200,7 @@ export type UserGroupByOutputType = {
   _max: UserMaxAggregateOutputType | null
 }
 
-type GetUserGroupByPayload<T extends UserGroupByArgs> = Prisma.PrismaPromise<
+export type GetUserGroupByPayload<T extends UserGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<UserGroupByOutputType, T['by']> &
       {
@@ -236,6 +236,8 @@ export type UserWhereInput = {
   applicantDocuments?: Prisma.DocumentListRelationFilter
   uploadedDocuments?: Prisma.DocumentListRelationFilter
   verifiedDocuments?: Prisma.DocumentListRelationFilter
+  leadNotes?: Prisma.LeadNoteListRelationFilter
+  contactReplies?: Prisma.ContactEnquiryListRelationFilter
   sessions?: Prisma.AuthSessionListRelationFilter
   statusChanges?: Prisma.ApplicationStatusHistoryListRelationFilter
   activityLogs?: Prisma.ActivityLogListRelationFilter
@@ -259,6 +261,8 @@ export type UserOrderByWithRelationInput = {
   applicantDocuments?: Prisma.DocumentOrderByRelationAggregateInput
   uploadedDocuments?: Prisma.DocumentOrderByRelationAggregateInput
   verifiedDocuments?: Prisma.DocumentOrderByRelationAggregateInput
+  leadNotes?: Prisma.LeadNoteOrderByRelationAggregateInput
+  contactReplies?: Prisma.ContactEnquiryOrderByRelationAggregateInput
   sessions?: Prisma.AuthSessionOrderByRelationAggregateInput
   statusChanges?: Prisma.ApplicationStatusHistoryOrderByRelationAggregateInput
   activityLogs?: Prisma.ActivityLogOrderByRelationAggregateInput
@@ -285,6 +289,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   applicantDocuments?: Prisma.DocumentListRelationFilter
   uploadedDocuments?: Prisma.DocumentListRelationFilter
   verifiedDocuments?: Prisma.DocumentListRelationFilter
+  leadNotes?: Prisma.LeadNoteListRelationFilter
+  contactReplies?: Prisma.ContactEnquiryListRelationFilter
   sessions?: Prisma.AuthSessionListRelationFilter
   statusChanges?: Prisma.ApplicationStatusHistoryListRelationFilter
   activityLogs?: Prisma.ActivityLogListRelationFilter
@@ -342,6 +348,8 @@ export type UserCreateInput = {
   applicantDocuments?: Prisma.DocumentCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutActorInput
@@ -365,6 +373,8 @@ export type UserUncheckedCreateInput = {
   applicantDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionUncheckedCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutActorInput
@@ -388,6 +398,8 @@ export type UserUpdateInput = {
   applicantDocuments?: Prisma.DocumentUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUpdateManyWithoutActorNestedInput
@@ -411,6 +423,8 @@ export type UserUncheckedUpdateInput = {
   applicantDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUncheckedUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutActorNestedInput
@@ -672,6 +686,38 @@ export type UserUpdateOneWithoutActivityLogsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutActivityLogsInput, Prisma.UserUpdateWithoutActivityLogsInput>, Prisma.UserUncheckedUpdateWithoutActivityLogsInput>
 }
 
+export type UserCreateNestedOneWithoutLeadNotesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLeadNotesInput, Prisma.UserUncheckedCreateWithoutLeadNotesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLeadNotesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutLeadNotesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLeadNotesInput, Prisma.UserUncheckedCreateWithoutLeadNotesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLeadNotesInput
+  upsert?: Prisma.UserUpsertWithoutLeadNotesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLeadNotesInput, Prisma.UserUpdateWithoutLeadNotesInput>, Prisma.UserUncheckedUpdateWithoutLeadNotesInput>
+}
+
+export type UserCreateNestedOneWithoutContactRepliesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutContactRepliesInput, Prisma.UserUncheckedCreateWithoutContactRepliesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutContactRepliesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutContactRepliesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutContactRepliesInput, Prisma.UserUncheckedCreateWithoutContactRepliesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutContactRepliesInput
+  upsert?: Prisma.UserUpsertWithoutContactRepliesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutContactRepliesInput, Prisma.UserUpdateWithoutContactRepliesInput>, Prisma.UserUncheckedUpdateWithoutContactRepliesInput>
+}
+
 export type UserCreateWithoutSessionsInput = {
   id?: string
   email: string
@@ -690,6 +736,8 @@ export type UserCreateWithoutSessionsInput = {
   applicantDocuments?: Prisma.DocumentCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryCreateNestedManyWithoutRepliedByInput
   statusChanges?: Prisma.ApplicationStatusHistoryCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutActorInput
 }
@@ -712,6 +760,8 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   applicantDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedCreateNestedManyWithoutRepliedByInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutActorInput
 }
@@ -750,6 +800,8 @@ export type UserUpdateWithoutSessionsInput = {
   applicantDocuments?: Prisma.DocumentUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUpdateManyWithoutRepliedByNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUpdateManyWithoutActorNestedInput
 }
@@ -772,6 +824,8 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   applicantDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedUpdateManyWithoutRepliedByNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutActorNestedInput
 }
@@ -793,6 +847,8 @@ export type UserCreateWithoutLeadsOwnedInput = {
   applicantDocuments?: Prisma.DocumentCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutActorInput
@@ -815,6 +871,8 @@ export type UserUncheckedCreateWithoutLeadsOwnedInput = {
   applicantDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionUncheckedCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutActorInput
@@ -853,6 +911,8 @@ export type UserUpdateWithoutLeadsOwnedInput = {
   applicantDocuments?: Prisma.DocumentUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUpdateManyWithoutActorNestedInput
@@ -875,6 +935,8 @@ export type UserUncheckedUpdateWithoutLeadsOwnedInput = {
   applicantDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUncheckedUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutActorNestedInput
@@ -897,6 +959,8 @@ export type UserCreateWithoutApplicationsAsApplicantInput = {
   applicantDocuments?: Prisma.DocumentCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutActorInput
@@ -919,6 +983,8 @@ export type UserUncheckedCreateWithoutApplicationsAsApplicantInput = {
   applicantDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionUncheckedCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutActorInput
@@ -946,6 +1012,8 @@ export type UserCreateWithoutApplicationsAssignedInput = {
   applicantDocuments?: Prisma.DocumentCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutActorInput
@@ -968,6 +1036,8 @@ export type UserUncheckedCreateWithoutApplicationsAssignedInput = {
   applicantDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionUncheckedCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutActorInput
@@ -1006,6 +1076,8 @@ export type UserUpdateWithoutApplicationsAsApplicantInput = {
   applicantDocuments?: Prisma.DocumentUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUpdateManyWithoutActorNestedInput
@@ -1028,6 +1100,8 @@ export type UserUncheckedUpdateWithoutApplicationsAsApplicantInput = {
   applicantDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUncheckedUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutActorNestedInput
@@ -1061,6 +1135,8 @@ export type UserUpdateWithoutApplicationsAssignedInput = {
   applicantDocuments?: Prisma.DocumentUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUpdateManyWithoutActorNestedInput
@@ -1083,6 +1159,8 @@ export type UserUncheckedUpdateWithoutApplicationsAssignedInput = {
   applicantDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUncheckedUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutActorNestedInput
@@ -1105,6 +1183,8 @@ export type UserCreateWithoutApplicantDocumentsInput = {
   applicationsAssigned?: Prisma.ApplicationCreateNestedManyWithoutAssignedCounselorInput
   uploadedDocuments?: Prisma.DocumentCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutActorInput
@@ -1127,6 +1207,8 @@ export type UserUncheckedCreateWithoutApplicantDocumentsInput = {
   applicationsAssigned?: Prisma.ApplicationUncheckedCreateNestedManyWithoutAssignedCounselorInput
   uploadedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionUncheckedCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutActorInput
@@ -1154,6 +1236,8 @@ export type UserCreateWithoutUploadedDocumentsInput = {
   applicationsAssigned?: Prisma.ApplicationCreateNestedManyWithoutAssignedCounselorInput
   applicantDocuments?: Prisma.DocumentCreateNestedManyWithoutApplicantInput
   verifiedDocuments?: Prisma.DocumentCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutActorInput
@@ -1176,6 +1260,8 @@ export type UserUncheckedCreateWithoutUploadedDocumentsInput = {
   applicationsAssigned?: Prisma.ApplicationUncheckedCreateNestedManyWithoutAssignedCounselorInput
   applicantDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutApplicantInput
   verifiedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionUncheckedCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutActorInput
@@ -1203,6 +1289,8 @@ export type UserCreateWithoutVerifiedDocumentsInput = {
   applicationsAssigned?: Prisma.ApplicationCreateNestedManyWithoutAssignedCounselorInput
   applicantDocuments?: Prisma.DocumentCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentCreateNestedManyWithoutUploadedByInput
+  leadNotes?: Prisma.LeadNoteCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutActorInput
@@ -1225,6 +1313,8 @@ export type UserUncheckedCreateWithoutVerifiedDocumentsInput = {
   applicationsAssigned?: Prisma.ApplicationUncheckedCreateNestedManyWithoutAssignedCounselorInput
   applicantDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutUploadedByInput
+  leadNotes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionUncheckedCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedCreateNestedManyWithoutChangedByInput
   activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutActorInput
@@ -1263,6 +1353,8 @@ export type UserUpdateWithoutApplicantDocumentsInput = {
   applicationsAssigned?: Prisma.ApplicationUpdateManyWithoutAssignedCounselorNestedInput
   uploadedDocuments?: Prisma.DocumentUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUpdateManyWithoutActorNestedInput
@@ -1285,6 +1377,8 @@ export type UserUncheckedUpdateWithoutApplicantDocumentsInput = {
   applicationsAssigned?: Prisma.ApplicationUncheckedUpdateManyWithoutAssignedCounselorNestedInput
   uploadedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUncheckedUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutActorNestedInput
@@ -1318,6 +1412,8 @@ export type UserUpdateWithoutUploadedDocumentsInput = {
   applicationsAssigned?: Prisma.ApplicationUpdateManyWithoutAssignedCounselorNestedInput
   applicantDocuments?: Prisma.DocumentUpdateManyWithoutApplicantNestedInput
   verifiedDocuments?: Prisma.DocumentUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUpdateManyWithoutActorNestedInput
@@ -1340,6 +1436,8 @@ export type UserUncheckedUpdateWithoutUploadedDocumentsInput = {
   applicationsAssigned?: Prisma.ApplicationUncheckedUpdateManyWithoutAssignedCounselorNestedInput
   applicantDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutApplicantNestedInput
   verifiedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUncheckedUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutActorNestedInput
@@ -1373,6 +1471,8 @@ export type UserUpdateWithoutVerifiedDocumentsInput = {
   applicationsAssigned?: Prisma.ApplicationUpdateManyWithoutAssignedCounselorNestedInput
   applicantDocuments?: Prisma.DocumentUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUpdateManyWithoutUploadedByNestedInput
+  leadNotes?: Prisma.LeadNoteUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUpdateManyWithoutActorNestedInput
@@ -1395,6 +1495,8 @@ export type UserUncheckedUpdateWithoutVerifiedDocumentsInput = {
   applicationsAssigned?: Prisma.ApplicationUncheckedUpdateManyWithoutAssignedCounselorNestedInput
   applicantDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutUploadedByNestedInput
+  leadNotes?: Prisma.LeadNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUncheckedUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedUpdateManyWithoutChangedByNestedInput
   activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutActorNestedInput
@@ -1418,6 +1520,8 @@ export type UserCreateWithoutStatusChangesInput = {
   applicantDocuments?: Prisma.DocumentCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutActorInput
 }
@@ -1440,6 +1544,8 @@ export type UserUncheckedCreateWithoutStatusChangesInput = {
   applicantDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutActorInput
 }
@@ -1478,6 +1584,8 @@ export type UserUpdateWithoutStatusChangesInput = {
   applicantDocuments?: Prisma.DocumentUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogUpdateManyWithoutActorNestedInput
 }
@@ -1500,6 +1608,8 @@ export type UserUncheckedUpdateWithoutStatusChangesInput = {
   applicantDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutActorNestedInput
 }
@@ -1522,6 +1632,8 @@ export type UserCreateWithoutActivityLogsInput = {
   applicantDocuments?: Prisma.DocumentCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryCreateNestedManyWithoutChangedByInput
 }
@@ -1544,6 +1656,8 @@ export type UserUncheckedCreateWithoutActivityLogsInput = {
   applicantDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutApplicantInput
   uploadedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutUploadedByInput
   verifiedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutAuthorInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedCreateNestedManyWithoutRepliedByInput
   sessions?: Prisma.AuthSessionUncheckedCreateNestedManyWithoutUserInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedCreateNestedManyWithoutChangedByInput
 }
@@ -1582,6 +1696,8 @@ export type UserUpdateWithoutActivityLogsInput = {
   applicantDocuments?: Prisma.DocumentUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUpdateManyWithoutChangedByNestedInput
 }
@@ -1604,8 +1720,234 @@ export type UserUncheckedUpdateWithoutActivityLogsInput = {
   applicantDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutApplicantNestedInput
   uploadedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutUploadedByNestedInput
   verifiedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedUpdateManyWithoutRepliedByNestedInput
   sessions?: Prisma.AuthSessionUncheckedUpdateManyWithoutUserNestedInput
   statusChanges?: Prisma.ApplicationStatusHistoryUncheckedUpdateManyWithoutChangedByNestedInput
+}
+
+export type UserCreateWithoutLeadNotesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  passwordHash?: string | null
+  firstName: string
+  lastName: string
+  role: $Enums.UserRole
+  status?: $Enums.UserStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  leadsOwned?: Prisma.LeadCreateNestedManyWithoutOwnerCounselorInput
+  applicationsAsApplicant?: Prisma.ApplicationCreateNestedManyWithoutApplicantInput
+  applicationsAssigned?: Prisma.ApplicationCreateNestedManyWithoutAssignedCounselorInput
+  applicantDocuments?: Prisma.DocumentCreateNestedManyWithoutApplicantInput
+  uploadedDocuments?: Prisma.DocumentCreateNestedManyWithoutUploadedByInput
+  verifiedDocuments?: Prisma.DocumentCreateNestedManyWithoutVerifiedByInput
+  contactReplies?: Prisma.ContactEnquiryCreateNestedManyWithoutRepliedByInput
+  sessions?: Prisma.AuthSessionCreateNestedManyWithoutUserInput
+  statusChanges?: Prisma.ApplicationStatusHistoryCreateNestedManyWithoutChangedByInput
+  activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutActorInput
+}
+
+export type UserUncheckedCreateWithoutLeadNotesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  passwordHash?: string | null
+  firstName: string
+  lastName: string
+  role: $Enums.UserRole
+  status?: $Enums.UserStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  leadsOwned?: Prisma.LeadUncheckedCreateNestedManyWithoutOwnerCounselorInput
+  applicationsAsApplicant?: Prisma.ApplicationUncheckedCreateNestedManyWithoutApplicantInput
+  applicationsAssigned?: Prisma.ApplicationUncheckedCreateNestedManyWithoutAssignedCounselorInput
+  applicantDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutApplicantInput
+  uploadedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutUploadedByInput
+  verifiedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutVerifiedByInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedCreateNestedManyWithoutRepliedByInput
+  sessions?: Prisma.AuthSessionUncheckedCreateNestedManyWithoutUserInput
+  statusChanges?: Prisma.ApplicationStatusHistoryUncheckedCreateNestedManyWithoutChangedByInput
+  activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutActorInput
+}
+
+export type UserCreateOrConnectWithoutLeadNotesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutLeadNotesInput, Prisma.UserUncheckedCreateWithoutLeadNotesInput>
+}
+
+export type UserUpsertWithoutLeadNotesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLeadNotesInput, Prisma.UserUncheckedUpdateWithoutLeadNotesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLeadNotesInput, Prisma.UserUncheckedCreateWithoutLeadNotesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutLeadNotesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLeadNotesInput, Prisma.UserUncheckedUpdateWithoutLeadNotesInput>
+}
+
+export type UserUpdateWithoutLeadNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leadsOwned?: Prisma.LeadUpdateManyWithoutOwnerCounselorNestedInput
+  applicationsAsApplicant?: Prisma.ApplicationUpdateManyWithoutApplicantNestedInput
+  applicationsAssigned?: Prisma.ApplicationUpdateManyWithoutAssignedCounselorNestedInput
+  applicantDocuments?: Prisma.DocumentUpdateManyWithoutApplicantNestedInput
+  uploadedDocuments?: Prisma.DocumentUpdateManyWithoutUploadedByNestedInput
+  verifiedDocuments?: Prisma.DocumentUpdateManyWithoutVerifiedByNestedInput
+  contactReplies?: Prisma.ContactEnquiryUpdateManyWithoutRepliedByNestedInput
+  sessions?: Prisma.AuthSessionUpdateManyWithoutUserNestedInput
+  statusChanges?: Prisma.ApplicationStatusHistoryUpdateManyWithoutChangedByNestedInput
+  activityLogs?: Prisma.ActivityLogUpdateManyWithoutActorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutLeadNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leadsOwned?: Prisma.LeadUncheckedUpdateManyWithoutOwnerCounselorNestedInput
+  applicationsAsApplicant?: Prisma.ApplicationUncheckedUpdateManyWithoutApplicantNestedInput
+  applicationsAssigned?: Prisma.ApplicationUncheckedUpdateManyWithoutAssignedCounselorNestedInput
+  applicantDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutApplicantNestedInput
+  uploadedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutUploadedByNestedInput
+  verifiedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutVerifiedByNestedInput
+  contactReplies?: Prisma.ContactEnquiryUncheckedUpdateManyWithoutRepliedByNestedInput
+  sessions?: Prisma.AuthSessionUncheckedUpdateManyWithoutUserNestedInput
+  statusChanges?: Prisma.ApplicationStatusHistoryUncheckedUpdateManyWithoutChangedByNestedInput
+  activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutActorNestedInput
+}
+
+export type UserCreateWithoutContactRepliesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  passwordHash?: string | null
+  firstName: string
+  lastName: string
+  role: $Enums.UserRole
+  status?: $Enums.UserStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  leadsOwned?: Prisma.LeadCreateNestedManyWithoutOwnerCounselorInput
+  applicationsAsApplicant?: Prisma.ApplicationCreateNestedManyWithoutApplicantInput
+  applicationsAssigned?: Prisma.ApplicationCreateNestedManyWithoutAssignedCounselorInput
+  applicantDocuments?: Prisma.DocumentCreateNestedManyWithoutApplicantInput
+  uploadedDocuments?: Prisma.DocumentCreateNestedManyWithoutUploadedByInput
+  verifiedDocuments?: Prisma.DocumentCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteCreateNestedManyWithoutAuthorInput
+  sessions?: Prisma.AuthSessionCreateNestedManyWithoutUserInput
+  statusChanges?: Prisma.ApplicationStatusHistoryCreateNestedManyWithoutChangedByInput
+  activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutActorInput
+}
+
+export type UserUncheckedCreateWithoutContactRepliesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  passwordHash?: string | null
+  firstName: string
+  lastName: string
+  role: $Enums.UserRole
+  status?: $Enums.UserStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  leadsOwned?: Prisma.LeadUncheckedCreateNestedManyWithoutOwnerCounselorInput
+  applicationsAsApplicant?: Prisma.ApplicationUncheckedCreateNestedManyWithoutApplicantInput
+  applicationsAssigned?: Prisma.ApplicationUncheckedCreateNestedManyWithoutAssignedCounselorInput
+  applicantDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutApplicantInput
+  uploadedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutUploadedByInput
+  verifiedDocuments?: Prisma.DocumentUncheckedCreateNestedManyWithoutVerifiedByInput
+  leadNotes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutAuthorInput
+  sessions?: Prisma.AuthSessionUncheckedCreateNestedManyWithoutUserInput
+  statusChanges?: Prisma.ApplicationStatusHistoryUncheckedCreateNestedManyWithoutChangedByInput
+  activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutActorInput
+}
+
+export type UserCreateOrConnectWithoutContactRepliesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutContactRepliesInput, Prisma.UserUncheckedCreateWithoutContactRepliesInput>
+}
+
+export type UserUpsertWithoutContactRepliesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutContactRepliesInput, Prisma.UserUncheckedUpdateWithoutContactRepliesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutContactRepliesInput, Prisma.UserUncheckedCreateWithoutContactRepliesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutContactRepliesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutContactRepliesInput, Prisma.UserUncheckedUpdateWithoutContactRepliesInput>
+}
+
+export type UserUpdateWithoutContactRepliesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leadsOwned?: Prisma.LeadUpdateManyWithoutOwnerCounselorNestedInput
+  applicationsAsApplicant?: Prisma.ApplicationUpdateManyWithoutApplicantNestedInput
+  applicationsAssigned?: Prisma.ApplicationUpdateManyWithoutAssignedCounselorNestedInput
+  applicantDocuments?: Prisma.DocumentUpdateManyWithoutApplicantNestedInput
+  uploadedDocuments?: Prisma.DocumentUpdateManyWithoutUploadedByNestedInput
+  verifiedDocuments?: Prisma.DocumentUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUpdateManyWithoutAuthorNestedInput
+  sessions?: Prisma.AuthSessionUpdateManyWithoutUserNestedInput
+  statusChanges?: Prisma.ApplicationStatusHistoryUpdateManyWithoutChangedByNestedInput
+  activityLogs?: Prisma.ActivityLogUpdateManyWithoutActorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutContactRepliesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leadsOwned?: Prisma.LeadUncheckedUpdateManyWithoutOwnerCounselorNestedInput
+  applicationsAsApplicant?: Prisma.ApplicationUncheckedUpdateManyWithoutApplicantNestedInput
+  applicationsAssigned?: Prisma.ApplicationUncheckedUpdateManyWithoutAssignedCounselorNestedInput
+  applicantDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutApplicantNestedInput
+  uploadedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutUploadedByNestedInput
+  verifiedDocuments?: Prisma.DocumentUncheckedUpdateManyWithoutVerifiedByNestedInput
+  leadNotes?: Prisma.LeadNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  sessions?: Prisma.AuthSessionUncheckedUpdateManyWithoutUserNestedInput
+  statusChanges?: Prisma.ApplicationStatusHistoryUncheckedUpdateManyWithoutChangedByNestedInput
+  activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutActorNestedInput
 }
 
 
@@ -1620,6 +1962,8 @@ export type UserCountOutputType = {
   applicantDocuments: number
   uploadedDocuments: number
   verifiedDocuments: number
+  leadNotes: number
+  contactReplies: number
   sessions: number
   statusChanges: number
   activityLogs: number
@@ -1632,6 +1976,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   applicantDocuments?: boolean | UserCountOutputTypeCountApplicantDocumentsArgs
   uploadedDocuments?: boolean | UserCountOutputTypeCountUploadedDocumentsArgs
   verifiedDocuments?: boolean | UserCountOutputTypeCountVerifiedDocumentsArgs
+  leadNotes?: boolean | UserCountOutputTypeCountLeadNotesArgs
+  contactReplies?: boolean | UserCountOutputTypeCountContactRepliesArgs
   sessions?: boolean | UserCountOutputTypeCountSessionsArgs
   statusChanges?: boolean | UserCountOutputTypeCountStatusChangesArgs
   activityLogs?: boolean | UserCountOutputTypeCountActivityLogsArgs
@@ -1692,6 +2038,20 @@ export type UserCountOutputTypeCountVerifiedDocumentsArgs<ExtArgs extends runtim
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountLeadNotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LeadNoteWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountContactRepliesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ContactEnquiryWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.AuthSessionWhereInput
 }
@@ -1729,6 +2089,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   applicantDocuments?: boolean | Prisma.User$applicantDocumentsArgs<ExtArgs>
   uploadedDocuments?: boolean | Prisma.User$uploadedDocumentsArgs<ExtArgs>
   verifiedDocuments?: boolean | Prisma.User$verifiedDocumentsArgs<ExtArgs>
+  leadNotes?: boolean | Prisma.User$leadNotesArgs<ExtArgs>
+  contactReplies?: boolean | Prisma.User$contactRepliesArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   statusChanges?: boolean | Prisma.User$statusChangesArgs<ExtArgs>
   activityLogs?: boolean | Prisma.User$activityLogsArgs<ExtArgs>
@@ -1785,6 +2147,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   applicantDocuments?: boolean | Prisma.User$applicantDocumentsArgs<ExtArgs>
   uploadedDocuments?: boolean | Prisma.User$uploadedDocumentsArgs<ExtArgs>
   verifiedDocuments?: boolean | Prisma.User$verifiedDocumentsArgs<ExtArgs>
+  leadNotes?: boolean | Prisma.User$leadNotesArgs<ExtArgs>
+  contactReplies?: boolean | Prisma.User$contactRepliesArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   statusChanges?: boolean | Prisma.User$statusChangesArgs<ExtArgs>
   activityLogs?: boolean | Prisma.User$activityLogsArgs<ExtArgs>
@@ -1802,6 +2166,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     applicantDocuments: Prisma.$DocumentPayload<ExtArgs>[]
     uploadedDocuments: Prisma.$DocumentPayload<ExtArgs>[]
     verifiedDocuments: Prisma.$DocumentPayload<ExtArgs>[]
+    leadNotes: Prisma.$LeadNotePayload<ExtArgs>[]
+    contactReplies: Prisma.$ContactEnquiryPayload<ExtArgs>[]
     sessions: Prisma.$AuthSessionPayload<ExtArgs>[]
     statusChanges: Prisma.$ApplicationStatusHistoryPayload<ExtArgs>[]
     activityLogs: Prisma.$ActivityLogPayload<ExtArgs>[]
@@ -2218,6 +2584,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   applicantDocuments<T extends Prisma.User$applicantDocumentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$applicantDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   uploadedDocuments<T extends Prisma.User$uploadedDocumentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$uploadedDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   verifiedDocuments<T extends Prisma.User$verifiedDocumentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$verifiedDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  leadNotes<T extends Prisma.User$leadNotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$leadNotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeadNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  contactReplies<T extends Prisma.User$contactRepliesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$contactRepliesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContactEnquiryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sessions<T extends Prisma.User$sessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuthSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   statusChanges<T extends Prisma.User$statusChangesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$statusChangesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApplicationStatusHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   activityLogs<T extends Prisma.User$activityLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$activityLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ActivityLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2795,6 +3163,54 @@ export type User$verifiedDocumentsArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.DocumentScalarFieldEnum | Prisma.DocumentScalarFieldEnum[]
+}
+
+/**
+ * User.leadNotes
+ */
+export type User$leadNotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the LeadNote
+   */
+  select?: Prisma.LeadNoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the LeadNote
+   */
+  omit?: Prisma.LeadNoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LeadNoteInclude<ExtArgs> | null
+  where?: Prisma.LeadNoteWhereInput
+  orderBy?: Prisma.LeadNoteOrderByWithRelationInput | Prisma.LeadNoteOrderByWithRelationInput[]
+  cursor?: Prisma.LeadNoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LeadNoteScalarFieldEnum | Prisma.LeadNoteScalarFieldEnum[]
+}
+
+/**
+ * User.contactReplies
+ */
+export type User$contactRepliesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ContactEnquiry
+   */
+  select?: Prisma.ContactEnquirySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ContactEnquiry
+   */
+  omit?: Prisma.ContactEnquiryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactEnquiryInclude<ExtArgs> | null
+  where?: Prisma.ContactEnquiryWhereInput
+  orderBy?: Prisma.ContactEnquiryOrderByWithRelationInput | Prisma.ContactEnquiryOrderByWithRelationInput[]
+  cursor?: Prisma.ContactEnquiryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ContactEnquiryScalarFieldEnum | Prisma.ContactEnquiryScalarFieldEnum[]
 }
 
 /**

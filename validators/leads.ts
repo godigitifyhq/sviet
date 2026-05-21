@@ -1,14 +1,66 @@
 import { z } from "zod";
 
-export const createLeadSchema = z.object({
-  firstName: z.string().trim().min(2).max(80),
-  lastName: z.string().trim().min(2).max(80),
-  email: z.email().transform((value) => value.toLowerCase()),
-  phone: z.string().trim().min(7).max(20).optional(),
-  source: z.enum(["WEBSITE", "PHONE", "REFERRAL", "EVENT", "SOCIAL", "WALK_IN"]),
-  intendedProgramId: z.uuid().optional(),
+export const BaseLeadSchema = z.object({
+  firstName: z.string().min(2, "First name must be at least 2 characters"),
+  lastName: z.string().min(2, "Last name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  phone: z
+    .string()
+    .min(10, "Phone must be at least 10 digits")
+    .regex(/^[6-9]\d{9}$/, "Enter a valid Indian mobile number"),
+  city: z.string().optional(),
+});
+
+export const ApplyNowSchema = BaseLeadSchema.extend({
+  programId: z.string().uuid().optional(),
+  programSlug: z.string().trim().min(1).max(120).optional(),
+  message: z.string().max(500).optional(),
+  course: z.string().optional(),
+});
+
+export const ScholarshipCheckSchema = BaseLeadSchema.extend({
+  programId: z.string().uuid().optional(),
+  course: z.string().optional(),
+  familyIncomeLPA: z.coerce.number().min(0).max(100),
+  academicScore: z.coerce.number().min(0).max(100),
+  category: z.enum(["GENERAL", "OBC", "SC", "ST"]),
+});
+
+export const ProgramFinderSchema = BaseLeadSchema.extend({
+  interests: z.array(z.string()).min(1, "Select at least one interest"),
+  careers: z.array(z.string()).optional().default([]),
+  academicPreference: z.string().optional(),
+  preferredMode: z.string().optional(),
+  budgetRange: z.string().optional(),
+});
+
+export const ContactEnquirySchema = BaseLeadSchema.extend({
+  subject: z.string().min(3).max(200),
+  message: z.string().min(10).max(2000),
+});
+
+export const EventRegistrationSchema = BaseLeadSchema.extend({
+  eventId: z.string().uuid(),
+});
+
+export const createLeadSchema = BaseLeadSchema.extend({
+  source: z.enum([
+    "APPLY_NOW",
+    "SCHOLARSHIP_CHECK",
+    "PROGRAM_FINDER",
+    "CONTACT_ENQUIRY",
+    "EVENT_REGISTRATION",
+    "CAMPUS_VISIT",
+    "PHONE",
+    "REFERRAL",
+    "WALK_IN",
+    "SOCIAL",
+    "WEBSITE",
+    "EVENT",
+  ]),
+  intendedProgramId: z.string().uuid().optional(),
   notes: z.string().trim().max(1000).optional(),
-  nextFollowUpAt: z.iso.datetime().optional(),
+  nextFollowUpAt: z.string().datetime().optional(),
 });
 
 export const updateLeadSchema = createLeadSchema.partial().extend({
@@ -18,7 +70,7 @@ export const updateLeadSchema = createLeadSchema.partial().extend({
 });
 
 export const assignLeadSchema = z.object({
-  counselorId: z.uuid(),
+  counselorId: z.string().uuid(),
 });
 
 export const leadQuerySchema = z.object({

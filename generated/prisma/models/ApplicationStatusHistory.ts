@@ -175,7 +175,7 @@ export type ApplicationStatusHistoryGroupByOutputType = {
   _max: ApplicationStatusHistoryMaxAggregateOutputType | null
 }
 
-type GetApplicationStatusHistoryGroupByPayload<T extends ApplicationStatusHistoryGroupByArgs> = Prisma.PrismaPromise<
+export type GetApplicationStatusHistoryGroupByPayload<T extends ApplicationStatusHistoryGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ApplicationStatusHistoryGroupByOutputType, T['by']> &
       {

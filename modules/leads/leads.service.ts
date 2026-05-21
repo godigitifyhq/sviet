@@ -58,6 +58,8 @@ export async function listLeads(filters: ListLeadFilters) {
 }
 
 export async function createLead(input: CreateLeadInput, actor: Actor) {
+  const noteBody = input.notes?.trim();
+
   const lead = await prisma.lead.create({
     data: {
       firstName: input.firstName,
@@ -66,7 +68,14 @@ export async function createLead(input: CreateLeadInput, actor: Actor) {
       phone: input.phone,
       source: input.source,
       intendedProgramId: input.intendedProgramId,
-      notes: input.notes,
+      notes: noteBody
+        ? {
+            create: {
+              body: noteBody,
+              authorId: actor.id,
+            },
+          }
+        : undefined,
       nextFollowUpAt: input.nextFollowUpAt ? new Date(input.nextFollowUpAt) : undefined,
     },
   });
@@ -83,6 +92,8 @@ export async function createLead(input: CreateLeadInput, actor: Actor) {
 }
 
 export async function updateLead(leadId: string, input: UpdateLeadInput, actor: Actor) {
+  const noteBody = input.notes?.trim();
+
   const lead = await prisma.lead.update({
     where: { id: leadId },
     data: {
@@ -92,7 +103,14 @@ export async function updateLead(leadId: string, input: UpdateLeadInput, actor: 
       phone: input.phone,
       source: input.source,
       status: input.status,
-      notes: input.notes,
+      notes: noteBody
+        ? {
+            create: {
+              body: noteBody,
+              authorId: actor.id,
+            },
+          }
+        : undefined,
       intendedProgramId: input.intendedProgramId,
       nextFollowUpAt: input.nextFollowUpAt ? new Date(input.nextFollowUpAt) : undefined,
     },

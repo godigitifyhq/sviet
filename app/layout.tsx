@@ -1,24 +1,34 @@
 import type { Metadata } from "next";
-import { Fraunces, Space_Grotesk } from "next/font/google";
-
-import { SiteNav } from "@/components/navigation/site-nav";
+import { Montserrat, Poppins } from "next/font/google";
 
 import "./globals.css";
 
-const displayFont = Fraunces({
+const displayFont = Montserrat({
   variable: "--font-display",
   subsets: ["latin"],
+  weight: ["600", "700", "800", "900"],
 });
 
-const sansFont = Space_Grotesk({
+const sansFont = Poppins({
   variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "SVIET College Platform",
-  description:
-    "Admissions funnel, events, CMS, and admin dashboard built with Next.js App Router and Server Actions.",
+  metadataBase: new URL("https://sviet.ac.in"),
+  title: {
+    default: "SVGOI | Swami Vivekanand Group of Institutes",
+    template: "%s | SVGOI",
+  },
+  description: "Premier engineering and management college group in Punjab, India.",
+  keywords: [
+    "SVGOI",
+    "engineering college Punjab",
+    "B.Tech admissions",
+    "MBA college Punjab",
+    "SVGOI Banur",
+  ],
 };
 
 export default function RootLayout({
@@ -27,15 +37,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${displayFont.variable} ${sansFont.variable} h-full antialiased`}>
-      <body className="min-h-full bg-[var(--surface)] text-[var(--ink-900)]">
-        <SiteNav />
-        <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 pb-10">
-          {children}
-        </main>
-        <footer className="mx-auto w-full max-w-6xl border-t border-[var(--line)] px-6 py-6 text-sm text-[var(--ink-700)]">
-          Built for scalable admissions, content, and events operations.
-        </footer>
+    <html
+      lang="en"
+      className={`${displayFont.variable} ${sansFont.variable} h-full antialiased`}
+    >
+      <body
+        suppressHydrationWarning
+        className="min-h-full bg-background text-foreground"
+      >
+        {children}
       </body>
     </html>
   );

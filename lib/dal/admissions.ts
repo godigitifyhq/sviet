@@ -17,6 +17,8 @@ export async function listActivePrograms(limit?: number) {
 }
 
 export async function createLead(data: CreateLeadInput) {
+  const noteBody = data.notes?.trim();
+
   return prisma.lead.create({
     data: {
       firstName: data.firstName,
@@ -24,7 +26,13 @@ export async function createLead(data: CreateLeadInput) {
       email: data.email,
       phone: data.phone,
       source: data.source,
-      notes: data.notes,
+      notes: noteBody
+        ? {
+            create: {
+              body: noteBody,
+            },
+          }
+        : undefined,
       intendedProgramId:
         data.intendedProgramId && data.intendedProgramId.length > 0
           ? data.intendedProgramId
