@@ -1,8 +1,6 @@
 import { PrismaPg } from "@prisma/adapter-pg";
-import { loadEnvConfig } from "@next/env";
+import "dotenv/config";
 import { PrismaClient } from "../generated/prisma/client";
-
-loadEnvConfig(process.cwd());
 
 const databaseUrl = process.env.DIRECT_URL;
 if (!databaseUrl) throw new Error("DIRECT_URL required");
