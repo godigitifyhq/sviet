@@ -53,7 +53,10 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   User: 'User',
   AuthSession: 'AuthSession',
+  Department: 'Department',
+  Specialization: 'Specialization',
   Program: 'Program',
+  ProgramSpecialization: 'ProgramSpecialization',
   Intake: 'Intake',
   Lead: 'Lead',
   Applicant: 'Applicant',
@@ -65,6 +68,7 @@ export const ModelName = {
   ActivityLog: 'ActivityLog',
   Enrollment: 'Enrollment',
   Event: 'Event',
+  EventSpeaker: 'EventSpeaker',
   EventRegistration: 'EventRegistration',
   BlogPost: 'BlogPost',
   Announcement: 'Announcement',
@@ -118,12 +122,41 @@ export const AuthSessionScalarFieldEnum = {
 export type AuthSessionScalarFieldEnum = (typeof AuthSessionScalarFieldEnum)[keyof typeof AuthSessionScalarFieldEnum]
 
 
+export const DepartmentScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name',
+  description: 'description',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DepartmentScalarFieldEnum = (typeof DepartmentScalarFieldEnum)[keyof typeof DepartmentScalarFieldEnum]
+
+
+export const SpecializationScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name',
+  description: 'description',
+  departmentId: 'departmentId',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SpecializationScalarFieldEnum = (typeof SpecializationScalarFieldEnum)[keyof typeof SpecializationScalarFieldEnum]
+
+
 export const ProgramScalarFieldEnum = {
   id: 'id',
   slug: 'slug',
   title: 'title',
   shortDescription: 'shortDescription',
-  department: 'department',
+  departmentId: 'departmentId',
+  level: 'level',
   mode: 'mode',
   fullDescription: 'fullDescription',
   highlights: 'highlights',
@@ -132,6 +165,9 @@ export const ProgramScalarFieldEnum = {
   outcomes: 'outcomes',
   facilities: 'facilities',
   faqs: 'faqs',
+  seoTitle: 'seoTitle',
+  seoDescription: 'seoDescription',
+  metadata: 'metadata',
   isFeatured: 'isFeatured',
   durationMonths: 'durationMonths',
   tuitionCents: 'tuitionCents',
@@ -141,6 +177,17 @@ export const ProgramScalarFieldEnum = {
 } as const
 
 export type ProgramScalarFieldEnum = (typeof ProgramScalarFieldEnum)[keyof typeof ProgramScalarFieldEnum]
+
+
+export const ProgramSpecializationScalarFieldEnum = {
+  programId: 'programId',
+  specializationId: 'specializationId',
+  isPrimary: 'isPrimary',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt'
+} as const
+
+export type ProgramSpecializationScalarFieldEnum = (typeof ProgramSpecializationScalarFieldEnum)[keyof typeof ProgramSpecializationScalarFieldEnum]
 
 
 export const IntakeScalarFieldEnum = {
@@ -303,9 +350,13 @@ export type EnrollmentScalarFieldEnum = (typeof EnrollmentScalarFieldEnum)[keyof
 
 export const EventScalarFieldEnum = {
   id: 'id',
+  slug: 'slug',
   title: 'title',
   description: 'description',
   image: 'image',
+  venue: 'venue',
+  images: 'images',
+  driveGalleryUrl: 'driveGalleryUrl',
   startDate: 'startDate',
   endDate: 'endDate',
   category: 'category',
@@ -315,6 +366,23 @@ export const EventScalarFieldEnum = {
 } as const
 
 export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
+
+
+export const EventSpeakerScalarFieldEnum = {
+  id: 'id',
+  eventId: 'eventId',
+  name: 'name',
+  photo: 'photo',
+  bio: 'bio',
+  linkedin: 'linkedin',
+  twitter: 'twitter',
+  company: 'company',
+  designation: 'designation',
+  displayOrder: 'displayOrder',
+  createdAt: 'createdAt'
+} as const
+
+export type EventSpeakerScalarFieldEnum = (typeof EventSpeakerScalarFieldEnum)[keyof typeof EventSpeakerScalarFieldEnum]
 
 
 export const EventRegistrationScalarFieldEnum = {

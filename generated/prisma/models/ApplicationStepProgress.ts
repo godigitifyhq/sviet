@@ -165,7 +165,7 @@ export type ApplicationStepProgressGroupByOutputType = {
   _max: ApplicationStepProgressMaxAggregateOutputType | null
 }
 
-type GetApplicationStepProgressGroupByPayload<T extends ApplicationStepProgressGroupByArgs> = Prisma.PrismaPromise<
+export type GetApplicationStepProgressGroupByPayload<T extends ApplicationStepProgressGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ApplicationStepProgressGroupByOutputType, T['by']> &
       {

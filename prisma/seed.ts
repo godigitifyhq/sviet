@@ -2,26 +2,39 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { loadEnvConfig } from "@next/env";
 import { randomBytes, scryptSync } from "node:crypto";
 
-import { PrismaClient, type Prisma } from "../generated/prisma/client";
+import courseCatalog from "../data/courses.json";
+import { PrismaClient } from "../generated/prisma/client";
+import { DbNull } from "../generated/prisma/internal/prismaNamespace";
+import type { InputJsonValue } from "../generated/prisma/internal/prismaNamespace";
+import type { CourseLevel } from "../generated/prisma/enums";
+import { toSlug } from "../lib/course-catalog";
 
 loadEnvConfig(process.cwd());
 
-const databaseUrl = process.env.DATABASE_URL;
+const databaseUrl = process.env.DIRECT_URL;
 
 if (!databaseUrl) {
-  throw new Error("DATABASE_URL is required to run seed.");
+  throw new Error("DIRECT_URL is required to run seed.");
 }
 
 const adapter = new PrismaPg({ connectionString: databaseUrl });
 const prisma = new PrismaClient({ adapter });
 
-const CRM_SEED_EMAIL = (process.env.CRM_SEED_USER_EMAIL ?? "crm.admin@sviet.edu").trim().toLowerCase();
+const CRM_SEED_EMAIL = (
+  process.env.CRM_SEED_USER_EMAIL ?? "crm.admin@sviet.edu"
+)
+  .trim()
+  .toLowerCase();
 const CRM_SEED_PASSWORD = process.env.CRM_SEED_USER_PASSWORD ?? "ChangeMe123!";
-const CRM_SEED_FIRST_NAME = (process.env.CRM_SEED_USER_FIRST_NAME ?? "CRM").trim() || "CRM";
-const CRM_SEED_LAST_NAME = (process.env.CRM_SEED_USER_LAST_NAME ?? "Admin").trim() || "Admin";
+const CRM_SEED_FIRST_NAME =
+  (process.env.CRM_SEED_USER_FIRST_NAME ?? "CRM").trim() || "CRM";
+const CRM_SEED_LAST_NAME =
+  (process.env.CRM_SEED_USER_LAST_NAME ?? "Admin").trim() || "Admin";
 const CRM_SEED_ROLE = parseCrmSeedRole(process.env.CRM_SEED_USER_ROLE);
 
-function parseCrmSeedRole(input: string | undefined): "COUNSELOR" | "ADMIN" | "SUPER_ADMIN" {
+function parseCrmSeedRole(
+  input: string | undefined,
+): "COUNSELOR" | "ADMIN" | "SUPER_ADMIN" {
   const normalized = input?.trim().toUpperCase();
 
   if (normalized === "COUNSELOR" || normalized === "SUPER_ADMIN") {
@@ -37,532 +50,617 @@ function makePasswordHash(password: string): string {
   return `scrypt$${salt.toString("hex")}$${hash.toString("hex")}`;
 }
 
-type ProgramSeedInput = {
-  slug: string;
-  title: string;
-  shortDescription: string;
-  department: string;
-  durationMonths: number;
-  tuitionCents: number;
-  mode: string;
-  isActive: boolean;
-  isFeatured: boolean;
-  fullDescription: string;
-  highlights: string[];
-  eligibility: string;
-  outcomes: string[];
-  facilities: string[];
-  curriculum: Prisma.InputJsonValue;
-  faqs: Prisma.InputJsonValue;
+// ─── Event seed data ─────────────────────────────────────────────────────────
+
+type EventSpeakerSeedInput = {
+  name: string;
+  photo?: string;
+  bio?: string;
+  company?: string;
+  designation?: string;
+  linkedin?: string;
+  twitter?: string;
+  displayOrder: number;
 };
 
-type SourceProgramInput = {
+type EventSeedInput = {
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  venue: string;
+  images: string[];
+  startDate: Date;
+  endDate?: Date;
   category: string;
-  course: string;
-  slug: string;
-  title: string;
-  imagePath: string;
+  isFeatured: boolean;
+  speakers: EventSpeakerSeedInput[];
 };
 
-const PROGRAMS: ProgramSeedInput[] = [
+const EVENTS: EventSeedInput[] = [
+  // ── First 5 are FEATURED ────────────────────────────────────────────────────
   {
-    slug: "btech-cse",
-    title: "B.Tech Computer Science & Engineering",
-    shortDescription:
-      "Future-ready engineering program with strong coding foundations, AI exposure, and placement-focused training.",
-    department: "Engineering",
-    durationMonths: 48,
-    tuitionCents: 12000000,
-    mode: "OFFLINE",
-    isActive: true,
+    slug: "bharattech-xperience-3-0",
+    title: "BharatTech Xperience 3.0",
+    description:
+      "BharatTech Xperience 3.0 is a high-energy technology experience built around collaboration, workshops, and practical building. It spotlights students, creators, and new ideas across the campus tech community.",
+    image:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsY9xZiMOLQEscoVG7ryk0KAYaUJpWN4xSbuZeL",
+    venue: "SVIET Campus",
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYU8D9rhwKjfi8uhsKxnXHeGdyogSFONZtzVcD",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYmB0UctPHDsU9RwYGrqvX5B1hVAISkWueEa6M",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYDpuh5nsi5PNEuIRfFChjSVrYp6deqMUavx7c",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYCuYfICtJBiYlgsTDkf9pRwjru5CG4ILEHW83",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYH7Sz0EJeDSMPgAiCuspvaQ56t0BVWRlcLTwz",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYvouJlH6zNM7hJpLFY6XCtjfnIGb4W5cBSZER",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYufBtCQVHcU0MSN1JvoltFR2C3Dp6k8TqwyAX",
+    ],
+    startDate: new Date("2026-03-04T09:00:00.000Z"),
+    endDate: new Date("2026-04-04T18:00:00.000Z"),
+    category: "tech",
     isFeatured: true,
-    fullDescription:
-      "Our B.Tech CSE program prepares students for careers in software development, AI research, and technology leadership. With state-of-the-art labs and industry partnerships, students gain hands-on experience from day one.",
-    highlights: [
-      "100% Placement Assistance",
-      "Industry Mentorship Program",
-      "Live Project Experience",
-      "AI & ML Specialization",
-      "International Exposure",
-    ],
-    eligibility:
-      "10+2 with Physics, Chemistry, Mathematics. Minimum 60% aggregate. Valid JEE score preferred.",
-    outcomes: [
-      "Software Engineer",
-      "AI/ML Engineer",
-      "Cloud Architect",
-      "Product Manager",
-      "Research Scientist",
-    ],
-    facilities: ["AI Research Lab", "Cloud Computing Centre", "Innovation Hub", "Digital Library"],
-    curriculum: {
-      "Year 1": [
-        "Engineering Mathematics",
-        "Physics",
-        "Programming Fundamentals",
-        "Digital Logic",
-      ],
-      "Year 2": [
-        "Data Structures",
-        "Algorithms",
-        "Database Systems",
-        "Computer Networks",
-      ],
-      "Year 3": [
-        "AI & Machine Learning",
-        "Cloud Computing",
-        "Software Engineering",
-        "Minor Project",
-      ],
-      "Year 4": [
-        "Major Project",
-        "Industry Internship",
-        "Electives",
-        "Research Thesis",
-      ],
-    },
-    faqs: [
-      { q: "What is the intake capacity?", a: "120 seats per batch" },
-      { q: "Is hostel available?", a: "Yes, separate hostels for boys and girls" },
-    ],
+    speakers: [],
   },
   {
-    slug: "mba",
-    title: "Master of Business Administration",
-    shortDescription:
-      "Industry-integrated MBA focused on leadership, strategy, and real-world business decision making.",
-    department: "Management",
-    durationMonths: 24,
-    tuitionCents: 8000000,
-    mode: "OFFLINE",
-    isActive: true,
+    slug: "dev-fest",
+    title: "Dev Fest",
+    description:
+      "Dev Fest brings developers and curious builders together for learning, sharing, and community-driven exploration. The event focuses on practical sessions, collaboration, and a strong maker mindset.",
+    image:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYrxKyFzqoMNr6b1wlSu5GiFCkHdzj0LePTqVt",
+    venue: "SVIET Campus",
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYrxKyFzqoMNr6b1wlSu5GiFCkHdzj0LePTqVt",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYNdoGV9XbQmCYde4BtEfUM8WbDvRPVA7HGyxZ",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYzI60MAYTPIJ264RrtnxVQhFgN9aZHkwbfOyo",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYMSaONzl4xe5F6EkQ8YycI0SR2Up7JwWuTHMB",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYgzoyxh9BFeNJ2ZMVAWUapCPRyrO6X7dH9wuT",
+    ],
+    startDate: new Date("2025-11-08T09:00:00.000Z"),
+    category: "tech",
     isFeatured: true,
-    fullDescription:
-      "SVIET's MBA program blends academic rigour with real-world business exposure. Our industry-integrated curriculum, live case studies, and corporate mentorship prepare graduates for leadership roles.",
-    highlights: [
-      "45 LPA Highest Package",
-      "Fortune 500 Recruiters",
-      "International Case Competitions",
-      "Dual Specialization Option",
+    speakers: [],
+  },
+  {
+    slug: "global-futures-summit-3-0",
+    title: "Global Futures Summit 3.0",
+    description:
+      "Global Futures Summit 3.0 is an industry and career-focused summit designed to connect students with professionals, trends, and future-ready skills. It highlights conversations around growth, hiring, and the evolving workplace.",
+    image:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYRgBz2rxN0PKhtXz9MUrsZk7RHEdAmSYVnOBC",
+    venue: "SVIET Campus",
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYryfoZrqoMNr6b1wlSu5GiFCkHdzj0LePTqVt",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYxukMqWWhO0zqfeid894GjHvnrBMcZtNlmhLX",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYdpiXnYoYExaLcHRhujgineWf06PN1JrSAbQC",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsY9ERlYJLQEscoVG7ryk0KAYaUJpWN4xSbuZeL",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYz8yB07TPIJ264RrtnxVQhFgN9aZHkwbfOyo0",
     ],
-    eligibility:
-      "Any bachelor's degree with minimum 50% aggregate. Valid CAT/MAT/CMAT score preferred.",
-    outcomes: [
-      "Marketing Manager",
-      "Financial Analyst",
-      "HR Business Partner",
-      "Operations Manager",
-      "Entrepreneur",
+    startDate: new Date("2026-11-04T09:00:00.000Z"),
+    category: "summit",
+    isFeatured: true,
+    speakers: [],
+  },
+  {
+    slug: "google-ideate-3-0",
+    title: "Google Ideate 3.0",
+    description:
+      "Google Ideate 3.0 is centered on ideas, prototyping, and collaborative problem solving. It creates a space for students to turn concepts into working demonstrations and meaningful discussion.",
+    image:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYS5Ss5pMjkuGA1bHqB8WwVO5vUPF9fe0xo4zg",
+    venue: "SVIET Campus",
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsY5eZ1YoFkLnYW2symx7BolS8caE4UvAIG5DdT",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsY4XnXukQ6tWRmroBId1upCJLxNa8g3YPDz7qQ",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYCPGrmbTtJBiYlgsTDkf9pRwjru5CG4ILEHW8",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYi2XeFq10SWfZz1b6Kjy5olJ249gEaMFUxCVR",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYdJJdb30oYExaLcHRhujgineWf06PN1JrSAbQ",
     ],
-    facilities: [
-      "Business Incubation Centre",
-      "Bloomberg Terminal Access",
-      "Conference Hall",
-      "Case Study Room",
+    startDate: new Date("2026-10-04T09:00:00.000Z"),
+    category: "tech",
+    isFeatured: true,
+    speakers: [],
+  },
+  {
+    slug: "icmsrf",
+    title: "ICMSRF",
+    description:
+      "ICMSRF is a research and academic forum highlighting student work, scholarly exchange, and technical ideas. It supports knowledge sharing through presentations, discussion, and innovation.",
+    image:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYTz9q4Ty7HsbdWzFU5fMpwvogX8NKPGVDQehT",
+    venue: "SVIET Campus",
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsY56kj9zFkLnYW2symx7BolS8caE4UvAIG5DdT",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYtGrgCam1oaK0jhUNXR3BJLnxv45GdeFDpH7u",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYsmCwODgqsH4lP02UW8OnVAe5EiIXwpZDLhvJ",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYHxf3Z6JeDSMPgAiCuspvaQ56t0BVWRlcLTwz",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYtKPYGrm1oaK0jhUNXR3BJLnxv45GdeFDpH7u",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYJ5OyB6ngANXwUZ3mETaFYjzIBWiGHQfh0K8u",
     ],
-    curriculum: {
-      "Semester 1": [
-        "Management Principles",
-        "Financial Accounting",
-        "Business Statistics",
-        "Organizational Behaviour",
-      ],
-      "Semester 2": [
-        "Marketing Management",
-        "Corporate Finance",
-        "Business Communication",
-        "Operations Management",
-      ],
-      "Semester 3": [
-        "Strategic Management",
-        "Specialization Electives",
-        "Industry Project",
-      ],
-      "Semester 4": [
-        "Dissertation",
-        "Corporate Internship",
-        "Leadership Practicum",
-      ],
-    },
-    faqs: [
+    startDate: new Date("2026-02-21T09:00:00.000Z"),
+    category: "research",
+    isFeatured: true,
+    speakers: [],
+  },
+  // ── Remaining events (not featured) ────────────────────────────────────────
+  {
+    slug: "inkspire",
+    title: "Inkspire",
+    description:
+      "Inkspire is a creative event focused on expression, visual storytelling, and student talent. It gives space for art-driven ideas, campus creativity, and inspired participation.",
+    image:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYIYRWxO4QpoVeB1qd7z0Zrcu3UfjhOn9SxEbG",
+    venue: "SVIET Campus",
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYMY2BV1l4xe5F6EkQ8YycI0SR2Up7JwWuTHMB",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYQZdMkMBDxqtdGnRcXmoL4a28i5KgWrVA9pwP",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYl8iO5LUWepS18mVjyY7fEN40w2LbKqhCxdRn",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYtunhXpm1oaK0jhUNXR3BJLnxv45GdeFDpH7u",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYuXMrQmVHcU0MSN1JvoltFR2C3Dp6k8TqwyAX",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYWv695jPu6vbj5KWTePcNtGLE4sUZad32OAgm",
+    ],
+    startDate: new Date("2026-04-26T09:00:00.000Z"),
+    endDate: new Date("2026-04-27T18:00:00.000Z"),
+    category: "cultural",
+    isFeatured: false,
+    speakers: [],
+  },
+  {
+    slug: "lohri-2026",
+    title: "Lohri 2026",
+    description:
+      "Lohri 2026 celebrates cultural warmth, music, dance, and campus togetherness. The event captures the spirit of tradition through a lively and festive student gathering.",
+    image:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsY9bRez4LQEscoVG7ryk0KAYaUJpWN4xSbuZeL",
+    venue: "SVIET Campus",
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYIvJM6E4QpoVeB1qd7z0Zrcu3UfjhOn9SxEbG",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYCPPvn2ItJBiYlgsTDkf9pRwjru5CG4ILEHW8",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYCFifYotJBiYlgsTDkf9pRwjru5CG4ILEHW83",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYSU1dKqLMjkuGA1bHqB8WwVO5vUPF9fe0xo4z",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYBf9hjrR7OGvlJpMfcNHj90CrxzQAwPW12VhE",
+    ],
+    startDate: new Date("2026-01-13T09:00:00.000Z"),
+    category: "cultural",
+    isFeatured: false,
+    speakers: [],
+  },
+  {
+    slug: "spontania-2026",
+    title: "Spontania 2026",
+    description:
+      "Spontania 2026 is a cultural showcase built around performances, creativity, and student energy. It celebrates expression, stage presence, and a memorable campus experience.",
+    image:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYJtXjQO9ngANXwUZ3mETaFYjzIBWiGHQfh0K8",
+    venue: "SVIET Campus",
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYLYLqDf5roTRpjU3lCxnuBwkNfXe4IPA9dJ82",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYcidnxQkeJx7HnktlXwPsUQZL5p0I4BaA8T96",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYSU0n82wMjkuGA1bHqB8WwVO5vUPF9fe0xo4z",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYvrdBeCT6zNM7hJpLFY6XCtjfnIGb4W5cBSZE",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYhVZBLXgWlkGPT9nydDBIxrmKQ4cu6Y1paX5z",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYFTQ7YIfE6pcCm12AMPsuOKDlifhkxg5ELSG0",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYggcuge9BFeNJ2ZMVAWUapCPRyrO6X7dH9wuT",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYMSZfgul4xe5F6EkQ8YycI0SR2Up7JwWuTHMB",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYIZ6WkR4QpoVeB1qd7z0Zrcu3UfjhOn9SxEbG",
+    ],
+    startDate: new Date("2026-04-17T09:00:00.000Z"),
+    endDate: new Date("2026-04-18T18:00:00.000Z"),
+    category: "cultural",
+    isFeatured: false,
+    speakers: [],
+  },
+  {
+    slug: "sportiva-2026",
+    title: "Sportiva 2026",
+    description:
+      "Sportiva 2026 is the annual sports festival celebrating competition, teamwork, and fitness culture at SVIET. It brings energy to the campus through matches, participation, and school spirit.",
+    image:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYdImtUQoYExaLcHRhujgineWf06PN1JrSAbQC",
+    venue: "SVIET Campus",
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYNdSf2ylbQmCYde4BtEfUM8WbDvRPVA7HGyxZ",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYqVxtAIaXgqYmbC9npAwIjW2ie5J7ay1Z3TDF",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsY9JOQseLQEscoVG7ryk0KAYaUJpWN4xSbuZeL",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYrpkQNrxqoMNr6b1wlSu5GiFCkHdzj0LePTqV",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYFT6tcpSE6pcCm12AMPsuOKDlifhkxg5ELSG0",
+    ],
+    startDate: new Date("2026-02-07T09:00:00.000Z"),
+    category: "sports",
+    isFeatured: false,
+    speakers: [],
+  },
+  {
+    slug: "ai-impact-summit-2025",
+    title: "AI Impact Summit 2025",
+    description:
+      "AI Impact Summit 2025 brings students together for talks, demos, and hands-on ideas around artificial intelligence, practical problem solving, and emerging technology.",
+    image:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYqOdAVy4aXgqYmbC9npAwIjW2ie5J7ay1Z3TD",
+    venue: "SVIET Campus",
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYoNuBfeHm2OEPZ1j9yC0lTwVDnApIH3eqiv6K",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYdx8Jf7oYExaLcHRhujgineWf06PN1JrSAbQC",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYytOs2EISv4oIGnhDUdKeZTNytcxLJaOAp8wP",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYzI62fFHTPIJ264RrtnxVQhFgN9aZHkwbfOyo",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYbGJPmPZorOfuMl60DKUHtA2d34LVPgYzCTR7",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYmSGle1rPHDsU9RwYGrqvX5B1hVAISkWueEa6",
+    ],
+    startDate: new Date("2025-12-08T09:00:00.000Z"),
+    category: "tech",
+    isFeatured: false,
+    speakers: [],
+  },
+  {
+    slug: "sportsmania-2025",
+    title: "Sportsmania 2025",
+    description:
+      "Sportsmania 2025 — the annual sports festival of SVIET — brings together students in a vibrant display of athleticism, teamwork and competitive spirit across events like football, basketball, and more.",
+    image:
+      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumUFNaeJrVPFul6q2HRvZ8sMIWLa5xwjUytOhi",
+    venue: "SVIET Campus",
+    images: [],
+    startDate: new Date("2025-10-17T09:00:00.000Z"),
+    endDate: new Date("2025-10-18T18:00:00.000Z"),
+    category: "sports",
+    isFeatured: false,
+    speakers: [],
+  },
+  {
+    slug: "elevate-2-0",
+    title: "Elevate 2.0",
+    description:
+      "Elevate 2.0 — a flagship cultural & innovation fest at SVIET — brings together creative minds, performances, workshops and peer-networking. The event celebrates innovation, student talent and campus life.",
+    image:
+      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumQZ22PWyaj2Z1DfTG5xHuqnQog6vKB4FpJeI8",
+    venue: "SVIET Campus",
+    images: [],
+    startDate: new Date("2025-09-11T09:00:00.000Z"),
+    endDate: new Date("2025-09-13T18:00:00.000Z"),
+    category: "cultural",
+    isFeatured: false,
+    speakers: [],
+  },
+  {
+    slug: "tedx-sviet",
+    title: "TEDx SVIET",
+    description:
+      'TEDx SVIET 2025, under the theme "The Power of One", featured thoughtful talks, ideas worth spreading, and engaging conversations aimed at inspiring students.',
+    image:
+      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumTJiOaxw6itj04AFlILkGvbdQPE8uOqWpHYsU",
+    venue: "SVIET Campus",
+    images: [],
+    startDate: new Date("2025-08-23T09:00:00.000Z"),
+    category: "talks",
+    isFeatured: false,
+    speakers: [],
+  },
+  {
+    slug: "graduation-ceremony-2025",
+    title: "Graduation Ceremony 2025",
+    description:
+      "The Graduation Ceremony 2025 at SVIET marked a proud milestone for the graduating batches of 2024 & 2025, celebrated with esteemed dignitaries and inspiring speeches.",
+    image:
+      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumINSwyyR21jqluvKkFoRaDpPfCGTtxewIs74z",
+    venue: "SVIET Campus",
+    images: [],
+    startDate: new Date("2025-05-01T09:00:00.000Z"),
+    category: "ceremony",
+    isFeatured: false,
+    speakers: [
       {
-        q: "What specializations are offered?",
-        a: "Marketing, Finance, HR, Operations, and International Business",
+        name: "Dr. Gurpreet Kaur Mann",
+        company: "",
+        designation: "Chief Guest (Wife of Hon'ble Chief Minister of Punjab)",
+        bio: "Dr. Gurpreet Kaur Mann graced the 15th Graduation Ceremony of SVIET as Chief Guest, inspiring graduates to pursue excellence.",
+        displayOrder: 0,
       },
     ],
   },
   {
-    slug: "bca",
-    title: "Bachelor of Computer Applications",
-    shortDescription:
-      "Application-oriented computing degree with practical training in software, web, and emerging technologies.",
-    department: "Computer Applications",
-    durationMonths: 36,
-    tuitionCents: 6000000,
-    mode: "OFFLINE",
-    isActive: true,
+    slug: "spontania-2025",
+    title: "Spontania 2025",
+    description:
+      "Spontania 2025, the flagship cultural extravaganza of SVIET, captivated hearts with its vibrant three-day celebration of art, culture, and talent with participation from over 600 students.",
+    image:
+      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumIyCbVLR21jqluvKkFoRaDpPfCGTtxewIs74z",
+    venue: "SVIET Campus",
+    images: [],
+    startDate: new Date("2025-04-15T09:00:00.000Z"),
+    endDate: new Date("2025-04-17T18:00:00.000Z"),
+    category: "cultural",
     isFeatured: false,
-    fullDescription:
-      "BCA at SVIET provides a strong foundation in computer science and application development. Students learn modern web technologies, mobile app development, and database management.",
-    highlights: [
-      "Industry-Ready Curriculum",
-      "Live Project Training",
-      "Placement Support",
-      "Coding Bootcamps",
-    ],
-    eligibility: "10+2 in any stream with Mathematics. Minimum 55% aggregate.",
-    outcomes: [
-      "Web Developer",
-      "Mobile App Developer",
-      "Database Administrator",
-      "System Analyst",
-    ],
-    facilities: ["Programming Lab", "Web Development Studio", "Open Source Lab"],
-    curriculum: {
-      "Year 1": [
-        "Programming in C",
-        "Web Technologies",
-        "Mathematics",
-        "Communication Skills",
-      ],
-      "Year 2": [
-        "Java Programming",
-        "Database Management",
-        "Data Structures",
-        "Operating Systems",
-      ],
-      "Year 3": [
-        "Advanced Web Development",
-        "Mobile Applications",
-        "Project Work",
-        "Internship",
-      ],
-    },
-    faqs: [
+    speakers: [
       {
-        q: "Can I pursue MCA after BCA?",
-        a: "Yes, BCA graduates are eligible for direct MCA admission",
+        name: "Ms. Neena Mittal",
+        company: "Punjab Legislative Assembly",
+        designation: "MLA Rajpura",
+        bio: "Ms. Neena Mittal, a distinguished political leader and MLA from Rajpura.",
+        displayOrder: 0,
+      },
+      {
+        name: "Sh. Kultar Singh Sandhwan",
+        company: "Punjab Vidhan Sabha",
+        designation: "Hon'ble Speaker",
+        bio: "As the Hon'ble Speaker of Punjab Vidhan Sabha, Sh. Kultar Singh Sandhwan brings legislative wisdom.",
+        displayOrder: 1,
       },
     ],
   },
   {
-    slug: "btech-ai",
-    title: "B.Tech Artificial Intelligence & Machine Learning",
-    shortDescription:
-      "Specialized B.Tech program in AI and ML with hands-on labs, projects, and industry-aligned curriculum.",
-    department: "Engineering",
-    durationMonths: 48,
-    tuitionCents: 12500000,
-    mode: "OFFLINE",
-    isActive: true,
-    isFeatured: true,
-    fullDescription:
-      "The B.Tech AI & ML program builds deep technical expertise in data science, machine learning, and intelligent systems. Students gain practical exposure through labs, projects, and mentorship from experienced faculty.",
-    highlights: [
-      "AI and ML Focused Curriculum",
-      "Real-World Project Experience",
-      "Placement Preparation and Mentorship",
-      "Modern Computing Labs",
-      "Industry Interaction Sessions",
-    ],
-    eligibility:
-      "10+2 with Physics, Chemistry, Mathematics. Minimum 60% aggregate. Valid JEE score preferred.",
-    outcomes: [
-      "Machine Learning Engineer",
-      "Data Analyst",
-      "AI Developer",
-      "NLP Engineer",
-      "Research Associate",
-    ],
-    facilities: ["AI Lab", "Data Science Lab", "Innovation Centre", "Digital Library"],
-    curriculum: {
-      "Year 1": ["Engineering Mathematics", "Programming Fundamentals", "Digital Electronics", "Communication Skills"],
-      "Year 2": ["Data Structures", "Probability & Statistics", "Database Systems", "Computer Networks"],
-      "Year 3": ["Machine Learning", "Deep Learning", "Data Mining", "Minor Project"],
-      "Year 4": ["Advanced AI Electives", "Major Project", "Industry Internship", "Professional Ethics"],
-    },
-    faqs: [
-      { q: "Is coding experience required before admission?", a: "No, foundational coding is taught from the first semester." },
+    slug: "global-futures-summit-2-0",
+    title: "Global Futures Summit 2.0",
+    description:
+      "Global Futures Summit 2.0 is a premier industry-academia collaboration event bridging students, professionals, and industry leaders with discussions on workforce trends and career growth.",
+    image:
+      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumpKvXrQ6ntRyaQormsAvUSgqZTJcibOuXfBWd",
+    venue: "SVIET Auditorium, Chandigarh",
+    images: [],
+    startDate: new Date("2025-03-08T09:00:00.000Z"),
+    category: "summit",
+    isFeatured: false,
+    speakers: [
+      {
+        name: "Ms. Sonia Aswani",
+        company: "Google, Hyderabad",
+        designation: "Senior Staffing Lead",
+        bio: "Ms. Sonia Aswani brings extensive experience in recruitment and talent acquisition in the tech industry.",
+        displayOrder: 0,
+      },
+      {
+        name: "Vani Matta",
+        company: "Accenture",
+        designation: "Senior Analyst, Talent Acquisition",
+        bio: "Vani Matta specializes in talent acquisition and management.",
+        displayOrder: 1,
+      },
+      {
+        name: "Ms. Parul Kataria",
+        company: "Lenskart",
+        designation: "Talent Acquisition",
+        bio: "Ms. Parul Kataria leads talent acquisition at Lenskart.",
+        displayOrder: 2,
+      },
+      {
+        name: "Dhruv Pratap Singh",
+        company: "Swaraj By Mahindra",
+        designation: "Dy.GM-HR",
+        bio: "Dhruv Pratap Singh brings expertise in human resources and organizational development.",
+        displayOrder: 3,
+      },
+      {
+        name: "Sanjeev Kumar Mehra",
+        company: "Aplicar",
+        designation: "Head Of HR",
+        bio: "Sanjeev Kumar Mehra leads HR strategies at Aplicar.",
+        displayOrder: 4,
+      },
+      {
+        name: "Mr. Arvind Singh",
+        company: "TCS",
+        designation: "Project Release Manager",
+        bio: "Arvind Singh leads projects that enable seamless execution in tech environments.",
+        displayOrder: 5,
+      },
     ],
   },
   {
-    slug: "bba",
-    title: "Bachelor of Business Administration",
-    shortDescription:
-      "Career-focused management program covering finance, marketing, operations, and entrepreneurial skills.",
-    department: "Management",
-    durationMonths: 36,
-    tuitionCents: 6500000,
-    mode: "OFFLINE",
-    isActive: true,
+    slug: "bharattech-xperience-2-0",
+    title: "Bharat TechXperience 2.0",
+    description:
+      "Bharat TechXperience 2.0 is a premier national-level 30-hour hackathon that brings together tech enthusiasts, innovators, and problem solvers to create cutting-edge solutions for real-world challenges.",
+    image:
+      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumPkm0NoZ89C4GnNKHTXFvruVyAOm6ZwU2Sibo",
+    venue: "SVIET Auditorium, Chandigarh",
+    images: [],
+    startDate: new Date("2025-03-08T09:00:00.000Z"),
+    category: "tech",
     isFeatured: false,
-    fullDescription:
-      "BBA at SVIET develops strong business fundamentals with practical case-based learning, communication training, and exposure to contemporary management practices.",
-    highlights: [
-      "Industry-Relevant Business Curriculum",
-      "Case Study and Presentation Training",
-      "Personality and Communication Development",
-      "Internship Support",
-    ],
-    eligibility: "10+2 in any stream with minimum 50% aggregate.",
-    outcomes: [
-      "Business Development Executive",
-      "Marketing Associate",
-      "Operations Executive",
-      "HR Executive",
-      "Entrepreneur",
-    ],
-    facilities: ["Management Labs", "Seminar Hall", "Digital Library", "Incubation Support"],
-    curriculum: {
-      "Year 1": ["Principles of Management", "Business Communication", "Microeconomics", "Accounting Basics"],
-      "Year 2": ["Marketing Management", "Financial Management", "Human Resource Management", "Business Statistics"],
-      "Year 3": ["Strategic Management", "Entrepreneurship", "Project Work", "Industry Internship"],
-    },
-    faqs: [
-      { q: "Can BBA students pursue MBA later?", a: "Yes, BBA provides an excellent foundation for MBA and related postgraduate programs." },
-    ],
-  },
-  {
-    slug: "bpharm",
-    title: "Bachelor of Pharmacy",
-    shortDescription:
-      "Comprehensive pharmacy program with strong laboratory practice, clinical orientation, and industry readiness.",
-    department: "Pharmacy",
-    durationMonths: 48,
-    tuitionCents: 9000000,
-    mode: "OFFLINE",
-    isActive: true,
-    isFeatured: false,
-    fullDescription:
-      "The B.Pharm program at SVIET combines pharmaceutical sciences, practical lab training, and patient-focused learning to prepare students for healthcare and pharma careers.",
-    highlights: [
-      "Modern Pharmaceutical Laboratories",
-      "Experienced Faculty and Mentorship",
-      "Hospital and Industry Exposure",
-      "Regulatory and Clinical Orientation",
-    ],
-    eligibility: "10+2 with Physics, Chemistry, and Biology/Mathematics. Minimum 50% aggregate.",
-    outcomes: [
-      "Pharmacist",
-      "Quality Control Analyst",
-      "Medical Representative",
-      "Clinical Research Associate",
-      "Drug Safety Associate",
-    ],
-    facilities: ["Pharmaceutics Lab", "Pharmacology Lab", "Medicinal Chemistry Lab", "Digital Library"],
-    curriculum: {
-      "Year 1": ["Human Anatomy and Physiology", "Pharmaceutics", "Pharmaceutical Analysis", "Communication Skills"],
-      "Year 2": ["Pathophysiology", "Pharmaceutical Organic Chemistry", "Pharmacology", "Biochemistry"],
-      "Year 3": ["Medicinal Chemistry", "Pharmaceutical Microbiology", "Pharmacognosy", "Industrial Pharmacy"],
-      "Year 4": ["Clinical Pharmacy", "Pharmacy Practice", "Project Work", "Hospital Training"],
-    },
-    faqs: [
-      { q: "Is practical training included in B.Pharm?", a: "Yes, the program includes extensive lab work and practical exposure." },
+    speakers: [
+      {
+        name: "Vikram R Singh",
+        company: "Antier Solutions",
+        designation: "Global CEO",
+        bio: "",
+        displayOrder: 0,
+      },
+      {
+        name: "Shashi Pal",
+        company: "Antier Solutions",
+        designation: "COO",
+        bio: "",
+        displayOrder: 1,
+      },
     ],
   },
 ];
 
-const SOURCE_PROGRAMS: SourceProgramInput[] = [
-  { category: "BTech", course: "civil", slug: "btech-civil", title: "B.Tech Civil Engineering", imagePath: "/assets/programs/BTech/civil/civil.png" },
-  { category: "BTech", course: "cse", slug: "btech-cse", title: "B.Tech Computer Science & Engineering", imagePath: "/assets/programs/BTech/cse/CSEheader.jpg" },
-  { category: "BTech", course: "ece", slug: "btech-ece", title: "B.Tech Electronics & Communication Engineering", imagePath: "/assets/programs/BTech/ece/Header.jpg" },
-  { category: "BTech", course: "ee", slug: "btech-ee", title: "B.Tech Electrical Engineering", imagePath: "/assets/programs/BTech/ee/EEheader.jpg" },
-  { category: "BTech", course: "me", slug: "btech-me", title: "B.Tech Mechanical Engineering", imagePath: "/assets/programs/BTech/me/MEheader.jpg" },
-  { category: "Business", course: "BBA", slug: "bba", title: "Bachelor of Business Administration", imagePath: "/assets/programs/Business/BBA/bbaHeader.jpg" },
-  { category: "Business", course: "commerce", slug: "bcom", title: "Bachelor of Commerce", imagePath: "/assets/programs/Business/commerce/commerce.jpg" },
-  { category: "Business", course: "MBA", slug: "mba", title: "Master of Business Administration", imagePath: "/assets/programs/Business/MBA/mba.jpg" },
-  { category: "CA", course: "CA", slug: "ca", title: "Chartered Accountancy", imagePath: "/assets/programs/CA/data.avif" },
-  { category: "ComputerApp", course: "BCA", slug: "bca", title: "Bachelor of Computer Applications", imagePath: "/assets/programs/ComputerApp/BCA/data.jpg" },
-  { category: "ComputerApp", course: "BscIt", slug: "bsc-it", title: "B.Sc Information Technology", imagePath: "/assets/programs/ComputerApp/BscIt/cyber.avif" },
-  { category: "ComputerApp", course: "MCA", slug: "mca", title: "Master of Computer Applications", imagePath: "/assets/programs/ComputerApp/MCA/cloud.avif" },
-  { category: "ComputerApp", course: "pgdca", slug: "pgdca", title: "Post Graduate Diploma in Computer Applications", imagePath: "/assets/programs/ComputerApp/pgdca/consultant.avif" },
-  { category: "diploma", course: "civil", slug: "diploma-civil", title: "Diploma in Civil Engineering", imagePath: "/assets/programs/diploma/civil/civilheader.jpg" },
-  { category: "diploma", course: "cse", slug: "diploma-cse", title: "Diploma in Computer Science Engineering", imagePath: "/assets/programs/diploma/cse/cse.jpg" },
-  { category: "diploma", course: "ee", slug: "diploma-ee", title: "Diploma in Electrical Engineering", imagePath: "/assets/programs/diploma/ee/ee.jpg" },
-  { category: "diploma", course: "me", slug: "diploma-me", title: "Diploma in Mechanical Engineering", imagePath: "/assets/programs/diploma/me/me.jpg" },
-  { category: "Education", course: "Arts", slug: "education-arts", title: "Bachelor of Arts", imagePath: "/assets/programs/Education/Arts/curriculum.avif" },
-  { category: "Education", course: "BA", slug: "ba", title: "B.A. Program", imagePath: "/assets/programs/Education/BA/comms.avif" },
-  { category: "Education", course: "Bachelor", slug: "bed", title: "Bachelor of Education", imagePath: "/assets/programs/Education/Bachelor/expertise.avif" },
-  { category: "Education", course: "Masters", slug: "med", title: "Master of Education", imagePath: "/assets/programs/Education/Masters/header.avif" },
-  { category: "HM", course: "Bsc", slug: "bsc-hm", title: "B.Sc in Hospitality & Nutrition", imagePath: "/assets/programs/HM/Bsc/header.jpg" },
-  { category: "HM", course: "BVoc", slug: "bvoc-hospitality", title: "B.Voc in Hospitality", imagePath: "/assets/programs/HM/BVoc/Bvoc.jpg" },
-  { category: "HM", course: "catering", slug: "catering-hospitality", title: "Catering & Hospitality Management", imagePath: "/assets/programs/HM/catering/catering.jpg" },
-  { category: "HM", course: "mhmct", slug: "mhmct", title: "MHMCT", imagePath: "/assets/programs/HM/mhmct/Mhmct.jpg" },
-  { category: "Law", course: "Bachelors", slug: "ba-llb", title: "B.A. LL.B", imagePath: "/assets/programs/Law/Bachelors/header.avif" },
-  { category: "Law", course: "LLB", slug: "llb", title: "Bachelor of Law (LLB)", imagePath: "/assets/programs/Law/LLB/header.avif" },
-  { category: "MTech", course: "civil", slug: "mtech-civil", title: "M.Tech Civil Engineering", imagePath: "/assets/programs/MTech/civil/header.avif" },
-  { category: "MTech", course: "cse", slug: "mtech-cse", title: "M.Tech Computer Science Engineering", imagePath: "/assets/programs/MTech/cse/Header.jpg" },
-  { category: "MTech", course: "ee", slug: "mtech-ee", title: "M.Tech Electrical Engineering", imagePath: "/assets/programs/MTech/ee/Header.jpg" },
-  { category: "paramedical", course: "Anasthesia", slug: "paramedical-anasthesia", title: "Anasthesia Technology", imagePath: "/assets/programs/paramedical/Anasthesia/header.avif" },
-  { category: "paramedical", course: "Anesthesia", slug: "paramedical-anesthesia", title: "Anesthesia Technology", imagePath: "/assets/programs/paramedical/Anesthesia/anestehsia.jpg" },
-  { category: "paramedical", course: "Cardiac", slug: "paramedical-cardiac", title: "Cardiac Care Technology", imagePath: "/assets/programs/paramedical/Cardiac/header.avif" },
-  { category: "paramedical", course: "DMLT", slug: "dmlt", title: "Diploma in Medical Laboratory Technology", imagePath: "/assets/programs/paramedical/DMLT/header.avif" },
-  { category: "paramedical", course: "Lab", slug: "paramedical-lab", title: "Medical Lab Sciences", imagePath: "/assets/programs/paramedical/Lab/header.avif" },
-  { category: "paramedical", course: "MLS", slug: "mls", title: "Medical Laboratory Science", imagePath: "/assets/programs/paramedical/MLS/mls.jpg" },
-  { category: "paramedical", course: "Optometry", slug: "optometry", title: "Optometry", imagePath: "/assets/programs/paramedical/Optometry/header.avif" },
-  { category: "paramedical", course: "OT", slug: "ot", title: "Operation Theatre Technology", imagePath: "/assets/programs/paramedical/OT/ot.jpg" },
-  { category: "paramedical", course: "Physiotherapy", slug: "physiotherapy", title: "Physiotherapy", imagePath: "/assets/programs/paramedical/Physiotherapy/header.avif" },
-  { category: "paramedical", course: "Radiology", slug: "radiology", title: "Radiology & Imaging Technology", imagePath: "/assets/programs/paramedical/Radiology/radiology.jpg" },
-  { category: "pharmacy", course: "diploma", slug: "dpharm", title: "Diploma in Pharmacy", imagePath: "/assets/programs/pharmacy/diploma/Diploma.jpg" },
-  { category: "pharmacy", course: "Mpharma", slug: "mpharm", title: "Master of Pharmacy", imagePath: "/assets/programs/pharmacy/Mpharma/Mpharma.jpg" },
-  { category: "pharmacy", course: "pharm", slug: "bpharm", title: "Bachelor of Pharmacy", imagePath: "/assets/programs/pharmacy/pharm/Bpharma.jpg" },
-  { category: "pharmacy", course: "pharmD", slug: "pharmd", title: "Pharm.D", imagePath: "/assets/programs/pharmacy/pharmD/pharmd.jpg" },
-  { category: "Science", course: "Chemistry", slug: "chemistry", title: "Chemistry", imagePath: "/assets/programs/Science/Chemistry/header.avif" },
-  { category: "Science", course: "Maths", slug: "maths", title: "Mathematics", imagePath: "/assets/programs/Science/Maths/header.avif" },
-  { category: "Science", course: "Non-medical", slug: "non-medical", title: "Non-Medical Sciences", imagePath: "/assets/programs/Science/Non-medical/header.avif" },
-  { category: "Science", course: "Physics", slug: "physics", title: "Physics", imagePath: "/assets/programs/Science/Physics/header.avif" },
-];
+// ─── End event seed data ──────────────────────────────────────────────────────
 
-function inferDurationMonths(title: string, category: string) {
-  const normalizedTitle = title.toLowerCase();
-  const normalizedCategory = category.toLowerCase();
+type NormalizedCourse = {
+  slug: string;
+  title: string;
+  department: { slug: string; name: string };
+  level: string;
+  specializations: { slug: string; name: string }[];
+  shortDescription: string | null;
+  fullDescription: string | null;
+  durationMonths: number;
+  tuitionCents: number | null;
+  mode: string | null;
+  eligibility: string | null;
+  highlights: string[] | null;
+  outcomes: string[] | null;
+  facilities: string[] | null;
+  curriculum: InputJsonValue | null;
+  faqs: InputJsonValue | null;
+  seoTitle: string | null;
+  seoDescription: string | null;
+  metadata: InputJsonValue | null;
+  isFeatured: boolean;
+};
 
-  if (normalizedTitle.includes("pharm.d")) {
-    return 72;
+const COURSES = courseCatalog as NormalizedCourse[];
+
+async function seedDepartments() {
+  const departments = new Map<string, { slug: string; name: string }>();
+
+  for (const course of COURSES) {
+    departments.set(course.department.slug, course.department);
   }
 
-  if (normalizedTitle.startsWith("post graduate") || normalizedTitle.includes("pgdca")) {
-    return 12;
+  for (const department of departments.values()) {
+    await prisma.department.upsert({
+      where: { slug: department.slug },
+      update: { name: department.name, isActive: true },
+      create: department,
+    });
   }
 
-  if (normalizedTitle.includes("master") || normalizedTitle.startsWith("mba") || normalizedTitle.startsWith("m.tech") || normalizedTitle.startsWith("mca") || normalizedTitle.startsWith("mhmct") || normalizedTitle.startsWith("m.pharm")) {
-    return 24;
-  }
-
-  if (normalizedCategory === "diploma" || normalizedTitle.startsWith("diploma")) {
-    return 36;
-  }
-
-  if (normalizedTitle.startsWith("b.tech") || normalizedTitle.startsWith("b.pharm") || normalizedTitle.includes("ll.b")) {
-    return 48;
-  }
-
-  return 36;
-}
-
-function inferTuitionCents(durationMonths: number) {
-  if (durationMonths >= 72) {
-    return 11000000;
-  }
-
-  if (durationMonths >= 48) {
-    return 9000000;
-  }
-
-  if (durationMonths >= 36) {
-    return 6500000;
-  }
-
-  if (durationMonths >= 24) {
-    return 7500000;
-  }
-
-  return 4500000;
-}
-
-function normalizeDepartment(category: string) {
-  const map: Record<string, string> = {
-    btech: "Engineering",
-    mtech: "Engineering",
-    business: "Management",
-    ca: "Commerce",
-    computerapp: "Computer Applications",
-    diploma: "Diploma",
-    education: "Education",
-    hm: "Hotel Management",
-    law: "Law",
-    paramedical: "Paramedical",
-    pharmacy: "Pharmacy",
-    science: "Science",
-  };
-
-  return map[category.toLowerCase()] ?? category;
-}
-
-function normalizeSourceProgram(input: SourceProgramInput): ProgramSeedInput {
-  const durationMonths = inferDurationMonths(input.title, input.category);
-
-  return {
-    slug: input.slug,
-    title: input.title,
-    shortDescription: `${input.title} program at SVIET with practical learning and career support.`,
-    department: normalizeDepartment(input.category),
-    durationMonths,
-    tuitionCents: inferTuitionCents(durationMonths),
-    mode: "OFFLINE",
-    isActive: true,
-    isFeatured: false,
-    fullDescription: `${input.title} is offered under the ${normalizeDepartment(input.category)} stream at SVIET. Please connect with admissions for detailed curriculum and fee breakup.`,
-    highlights: [
-      "Industry-aligned academic delivery",
-      "Hands-on learning and lab exposure",
-      "Placement and career guidance support",
-    ],
-    eligibility: "Eligibility varies by course. Contact admissions for detailed criteria.",
-    outcomes: [
-      "Domain specialist roles",
-      "Higher education pathways",
-      "Industry and practical career readiness",
-    ],
-    facilities: [
-      "Modern labs and infrastructure",
-      "Experienced faculty guidance",
-      "Career support ecosystem",
-    ],
-    curriculum: {
-      overview: [
-        "Foundation modules",
-        "Core domain subjects",
-        "Practical training",
-        "Project-based learning",
-      ],
-    },
-    faqs: [
-      { q: "Where can I view course details?", a: "Please contact admissions for latest curriculum and intake information." },
-      { q: "heroImage", a: input.imagePath },
-    ],
-  };
-}
-
-function withImageFaq(program: ProgramSeedInput) {
-  const sourceMatch = SOURCE_PROGRAMS.find((sourceProgram) => sourceProgram.slug === program.slug);
-
-  if (!sourceMatch) {
-    return program;
-  }
-
-  const currentFaqs = Array.isArray(program.faqs) ? [...program.faqs] : [];
-  const hasHeroImageEntry = currentFaqs.some(
-    (item) =>
-      typeof item === "object" &&
-      item !== null &&
-      "q" in item &&
-      "a" in item &&
-      (item as { q?: unknown }).q === "heroImage",
+  return new Map(
+    (
+      await prisma.department.findMany({
+        where: { slug: { in: [...departments.keys()] } },
+        select: { id: true, slug: true },
+      })
+    ).map((department) => [department.slug, department.id] as const),
   );
+}
 
-  if (!hasHeroImageEntry) {
-    currentFaqs.push({ q: "heroImage", a: sourceMatch.imagePath });
+async function seedSpecializations(departmentIdsBySlug: Map<string, string>) {
+  const specializations = new Map<
+    string,
+    { slug: string; name: string; departmentSlug: string | null }
+  >();
+
+  for (const course of COURSES) {
+    for (const specialization of course.specializations) {
+      specializations.set(specialization.slug, {
+        slug: specialization.slug,
+        name: specialization.name,
+        departmentSlug: course.department.slug,
+      });
+    }
   }
 
-  return {
-    ...program,
-    faqs: currentFaqs,
-  };
+  for (const specialization of specializations.values()) {
+    const departmentId = specialization.departmentSlug
+      ? (departmentIdsBySlug.get(specialization.departmentSlug) ?? null)
+      : null;
+
+    await prisma.specialization.upsert({
+      where: { slug: specialization.slug },
+      update: { name: specialization.name, departmentId, isActive: true },
+      create: {
+        slug: specialization.slug,
+        name: specialization.name,
+        departmentId,
+      },
+    });
+  }
+
+  return new Map(
+    (
+      await prisma.specialization.findMany({
+        where: { slug: { in: [...specializations.keys()] } },
+        select: { id: true, slug: true },
+      })
+    ).map(
+      (specialization) => [specialization.slug, specialization.id] as const,
+    ),
+  );
 }
 
-const SOURCE_PROGRAM_SEEDS = SOURCE_PROGRAMS.map(normalizeSourceProgram);
-const PROGRAM_MAP = new Map<string, ProgramSeedInput>();
+async function seedCourses(
+  departmentIdsBySlug: Map<string, string>,
+  specializationIdsBySlug: Map<string, string>,
+) {
+  let created = 0;
+  let updated = 0;
 
-for (const sourceProgram of SOURCE_PROGRAM_SEEDS) {
-  PROGRAM_MAP.set(sourceProgram.slug, sourceProgram);
+  for (const course of COURSES) {
+    const departmentId =
+      departmentIdsBySlug.get(course.department.slug) ?? null;
+
+    const upserted = await prisma.program.upsert({
+      where: { slug: course.slug },
+      update: {
+        title: course.title,
+        shortDescription: course.shortDescription,
+        departmentId,
+        level: course.level as CourseLevel,
+        mode: course.mode,
+        fullDescription: course.fullDescription,
+        highlights: course.highlights ?? DbNull,
+        eligibility: course.eligibility,
+        curriculum: course.curriculum ?? DbNull,
+        outcomes: course.outcomes ?? DbNull,
+        facilities: course.facilities ?? DbNull,
+        faqs: course.faqs ?? DbNull,
+        seoTitle: course.seoTitle,
+        seoDescription: course.seoDescription,
+        metadata: course.metadata ?? DbNull,
+        isFeatured: course.isFeatured,
+        durationMonths: course.durationMonths,
+        tuitionCents: course.tuitionCents,
+        isActive: true,
+      },
+      create: {
+        slug: course.slug,
+        title: course.title,
+        shortDescription: course.shortDescription,
+        departmentId,
+        level: course.level as CourseLevel,
+        mode: course.mode,
+        fullDescription: course.fullDescription,
+        highlights: course.highlights ?? DbNull,
+        eligibility: course.eligibility,
+        curriculum: course.curriculum ?? DbNull,
+        outcomes: course.outcomes ?? DbNull,
+        facilities: course.facilities ?? DbNull,
+        faqs: course.faqs ?? DbNull,
+        seoTitle: course.seoTitle,
+        seoDescription: course.seoDescription,
+        metadata: course.metadata ?? DbNull,
+        isFeatured: course.isFeatured,
+        durationMonths: course.durationMonths,
+        tuitionCents: course.tuitionCents,
+        isActive: true,
+      },
+    });
+
+    await prisma.programSpecialization.deleteMany({
+      where: { programId: upserted.id },
+    });
+
+    if (course.specializations.length > 0) {
+      await prisma.programSpecialization.createMany({
+        data: course.specializations.map((specialization, index) => ({
+          programId: upserted.id,
+          specializationId:
+            specializationIdsBySlug.get(specialization.slug) ??
+            specializationIdsBySlug.get(toSlug(specialization.name)) ??
+            (() => {
+              throw new Error(
+                `Missing specialization seed for ${specialization.name}`,
+              );
+            })(),
+          isPrimary: index === 0,
+          sortOrder: index,
+        })),
+      });
+    }
+
+    if (upserted.createdAt.getTime() === upserted.updatedAt.getTime()) {
+      created++;
+    } else {
+      updated++;
+    }
+  }
+
+  return { created, updated };
 }
-
-for (const program of PROGRAMS) {
-  PROGRAM_MAP.set(program.slug, withImageFaq(program));
-}
-
-const ALL_PROGRAMS = [...PROGRAM_MAP.values()];
 
 async function main() {
   await prisma.user.upsert({
@@ -584,17 +682,37 @@ async function main() {
     },
   });
 
-  for (const program of ALL_PROGRAMS) {
-    const { slug, ...data } = program;
+  const departmentIdsBySlug = await seedDepartments();
+  const specializationIdsBySlug =
+    await seedSpecializations(departmentIdsBySlug);
+  const courseStats = await seedCourses(
+    departmentIdsBySlug,
+    specializationIdsBySlug,
+  );
 
-    await prisma.program.upsert({
+  // ── Seed events ────────────────────────────────────────────────────────────
+  for (const event of EVENTS) {
+    const { speakers, slug, ...eventData } = event;
+
+    const upserted = await prisma.event.upsert({
       where: { slug },
-      update: data,
-      create: {
+      update: {
+        ...eventData,
         slug,
-        ...data,
+      },
+      create: {
+        ...eventData,
+        slug,
       },
     });
+
+    // Upsert speakers: delete all existing and re-insert (simplest idempotent approach)
+    if (speakers.length > 0) {
+      await prisma.eventSpeaker.deleteMany({ where: { eventId: upserted.id } });
+      await prisma.eventSpeaker.createMany({
+        data: speakers.map((speaker) => ({ ...speaker, eventId: upserted.id })),
+      });
+    }
   }
 
   if (!process.env.CRM_SEED_USER_PASSWORD) {
@@ -604,7 +722,9 @@ async function main() {
   }
 
   console.log(`CRM seed user ready: ${CRM_SEED_EMAIL} (${CRM_SEED_ROLE})`);
-  console.log(`Seed complete: upserted ${ALL_PROGRAMS.length} programs.`);
+  console.log(
+    `Seed complete: upserted ${COURSES.length} courses, ${EVENTS.length} events.`,
+  );
 }
 
 main()

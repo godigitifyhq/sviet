@@ -19,25 +19,42 @@ export async function PATCH(
 
     const data = {
       ...(payload.title !== undefined ? { title: payload.title } : {}),
-      ...(payload.description !== undefined
-        ? { description: payload.description }
-        : {}),
+      ...(payload.slug !== undefined ? { slug: payload.slug } : {}),
+      ...(payload.description !== undefined ? { description: payload.description } : {}),
       ...(payload.image !== undefined ? { image: payload.image } : {}),
-      ...(payload.startDate !== undefined
-        ? { startDate: new Date(payload.startDate) }
-        : {}),
-      ...(payload.endDate !== undefined
-        ? { endDate: payload.endDate ? new Date(payload.endDate) : null }
-        : {}),
+      ...(payload.venue !== undefined ? { venue: payload.venue ?? null } : {}),
+      ...(payload.images !== undefined ? { images: payload.images } : {}),
+      ...(payload.driveGalleryUrl !== undefined ? { driveGalleryUrl: payload.driveGalleryUrl ?? null } : {}),
+      ...(payload.startDate !== undefined ? { startDate: new Date(payload.startDate) } : {}),
+      ...(payload.endDate !== undefined ? { endDate: payload.endDate ? new Date(payload.endDate) : null } : {}),
       ...(payload.category !== undefined ? { category: payload.category } : {}),
-      ...(payload.isFeatured !== undefined
-        ? { isFeatured: payload.isFeatured }
-        : {}),
+      ...(payload.isFeatured !== undefined ? { isFeatured: payload.isFeatured } : {}),
     };
 
-    return prisma.event.update({
+    const event = await prisma.event.update({ where: { id }, data });
+
+    if (payload.speakers !== undefined) {
+      await prisma.eventSpeaker.deleteMany({ where: { eventId: id } });
+      if (payload.speakers.length > 0) {
+        await prisma.eventSpeaker.createMany({
+          data: payload.speakers.map((s) => ({
+            eventId: id,
+            name: s.name,
+            photo: s.photo ?? null,
+            bio: s.bio ?? null,
+            company: s.company ?? null,
+            designation: s.designation ?? null,
+            linkedin: s.linkedin ?? null,
+            twitter: s.twitter ?? null,
+            displayOrder: s.displayOrder ?? 0,
+          })),
+        });
+      }
+    }
+
+    return prisma.event.findUnique({
       where: { id },
-      data,
+      include: { speakers: { orderBy: { displayOrder: "asc" } } },
     });
   });
 }

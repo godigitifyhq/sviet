@@ -2,7 +2,15 @@ import Image from "next/image";
 
 import eventsData from "@/data/data/event";
 
-import type { EventRecord } from "@/components/events/types";
+type RawEventJs = {
+  id: number;
+  name: string;
+  headerImage?: string;
+  logo?: string;
+  overview?: string;
+  date?: string;
+  venue?: string;
+};
 
 type EventCategory = "tech" | "summit" | "cultural" | "sports";
 
@@ -63,7 +71,7 @@ const CARD_GROUPS: Array<{
   },
 ] as const;
 
-function normalizeEvent(event: EventRecord): InternationalEvent | null {
+function normalizeEvent(event: RawEventJs): InternationalEvent | null {
   const title = event.name.trim();
   const description = (event.overview ?? "").trim();
   const image = event.headerImage || event.logo || undefined;
@@ -92,7 +100,7 @@ function formatEventTitles(events: InternationalEvent[], fallback: string) {
   return titles.length > 0 ? titles.join(", ") : fallback;
 }
 
-const internationalEvents = (eventsData as EventRecord[])
+const internationalEvents = (eventsData as RawEventJs[])
   .map(normalizeEvent)
   .filter((event): event is InternationalEvent => Boolean(event));
 

@@ -85,7 +85,7 @@ export default function AdmissionsPage() {
       <div className="mt-20"></div>
       <AdmissionsRecognitionsSection />
       <AdmissionsStudyOverviewSection />
-      <AdmissionsEntranceEligibilitySection />
+      {/* <AdmissionsEntranceEligibilitySection /> */}
       <AdmissionsHowToApplySection />
       <AdmissionsCareerProgramsSection programs={programs} />
       <AdmissionsValueGridSection />

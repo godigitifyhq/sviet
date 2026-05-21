@@ -224,7 +224,7 @@ export type ScholarshipInquiryGroupByOutputType = {
   _max: ScholarshipInquiryMaxAggregateOutputType | null
 }
 
-type GetScholarshipInquiryGroupByPayload<T extends ScholarshipInquiryGroupByArgs> = Prisma.PrismaPromise<
+export type GetScholarshipInquiryGroupByPayload<T extends ScholarshipInquiryGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ScholarshipInquiryGroupByOutputType, T['by']> &
       {

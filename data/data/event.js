@@ -1,77 +1,286 @@
 const events = [
   {
-    "id": 1,
-    "headerImage": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumUFNaeJrVPFul6q2HRvZ8sMIWLa5xwjUytOhi",  
-    "name": "Sportsmania 2025",
-    "logo": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumUFNaeJrVPFul6q2HRvZ8sMIWLa5xwjUytOhi",
-    "date": "October 17–18, 2025",
-    "venue": "SVIET Campus",
-    "overview": "Sportsmania 2025 — the annual sports festival of SVIET — brings together students in a vibrant display of athleticism, teamwork and competitive spirit across events like football, basketball, and more. It aims to foster camaraderie, healthy competition, and overall fitness culture among students.",
-    "photogallery": "",
-    "speakers": []
+    id: 1,
+    headerImage:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsY9xZiMOLQEscoVG7ryk0KAYaUJpWN4xSbuZeL",
+    name: "BharatTech Xperience 3.0",
+    logo: "",
+    date: "2026",
+    venue: "SVIET Campus",
+    overview:
+      "BharatTech Xperience 3.0 is a high-energy technology experience built around collaboration, workshops, and practical building. It spotlights students, creators, and new ideas across the campus tech community.",
+    
+    speakers: [],
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYU8D9rhwKjfi8uhsKxnXHeGdyogSFONZtzVcD",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYmB0UctPHDsU9RwYGrqvX5B1hVAISkWueEa6M",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYDpuh5nsi5PNEuIRfFChjSVrYp6deqMUavx7c",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYCuYfICtJBiYlgsTDkf9pRwjru5CG4ILEHW83",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYH7Sz0EJeDSMPgAiCuspvaQ56t0BVWRlcLTwz",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYvouJlH6zNM7hJpLFY6XCtjfnIGb4W5cBSZER",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYufBtCQVHcU0MSN1JvoltFR2C3Dp6k8TqwyAX",
+    ],
   },
   {
-    "id": 2,
-    "headerImage": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumQZ22PWyaj2Z1DfTG5xHuqnQog6vKB4FpJeI8",
-    "name": "Elevate 2.0",
-    "logo": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumQZ22PWyaj2Z1DfTG5xHuqnQog6vKB4FpJeI8",
-    "date": "September 11–13, 2025",
-    "venue": "SVIET Campus",
-    "overview": "Elevate 2.0 — a flagship cultural & innovation fest at SVIET — brings together creative minds, performances, workshops and peer-networking. The event celebrates innovation, student talent and campus life, offering a platform for expression and collaboration.",
-    "photogallery": "",
-    "speakers": []
+    id: 2,
+    headerImage: "",
+    name: "Dev fest",
+    logo: "",
+    date: "2026",
+    venue: "SVIET Campus",
+    overview:
+      "Dev fest brings developers and curious builders together for learning, sharing, and community-driven exploration. The event focuses on practical sessions, collaboration, and a strong maker mindset.",
+    
+    speakers: [],
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYrxKyFzqoMNr6b1wlSu5GiFCkHdzj0LePTqVt",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYNdoGV9XbQmCYde4BtEfUM8WbDvRPVA7HGyxZ",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYzI60MAYTPIJ264RrtnxVQhFgN9aZHkwbfOyo",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYMSaONzl4xe5F6EkQ8YycI0SR2Up7JwWuTHMB",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYgzoyxh9BFeNJ2ZMVAWUapCPRyrO6X7dH9wuT",
+    ],
   },
   {
-    "id": 3,
-    "headerImage": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumTJiOaxw6itj04AFlILkGvbdQPE8uOqWpHYsU",
-    "name": "TEDx SVIET",
-    "logo": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumTJiOaxw6itj04AFlILkGvbdQPE8uOqWpHYsU",
-    "date": "August 23, 2025",
-    "venue": "SVIET Campus",
-    "overview": "TEDx SVIET 2025, under the theme “The Power of One”, featured thoughtful talks, ideas worth spreading, and engaging conversations aimed at inspiring students and attendees to make a difference — one idea at a time.",
-    "photogallery": "",
-    "speakers": []
+    id: 3,
+    headerImage:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYRgBz2rxN0PKhtXz9MUrsZk7RHEdAmSYVnOBC",
+    name: "Global Futures Summit 3.0",
+    logo: "",
+    date: "2026",
+    venue: "SVIET Campus",
+    overview:
+      "Global Futures Summit 3.0 is an industry and career-focused summit designed to connect students with professionals, trends, and future-ready skills. It highlights conversations around growth, hiring, and the evolving workplace.",
+    
+    speakers: [],
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYryfoZrqoMNr6b1wlSu5GiFCkHdzj0LePTqVt",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYxukMqWWhO0zqfeid894GjHvnrBMcZtNlmhLX",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYdpiXnYoYExaLcHRhujgineWf06PN1JrSAbQC",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsY9ERlYJLQEscoVG7ryk0KAYaUJpWN4xSbuZeL",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYz8yB07TPIJ264RrtnxVQhFgN9aZHkwbfOyo0",
+    ],
   },
   {
-    "id": 4,
-    "headerImage": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumZdCLf8nLS41ZsWrz2yX9qNdG5vVC7FuBlfa0",
-    "name": "DevFest Chandigarh 2025",
-    "logo": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumZdCLf8nLS41ZsWrz2yX9qNdG5vVC7FuBlfa0",
-    "date": "November 8, 2025",
-    "venue": "SVIET Campus",
-    "overview": "DevFest Chandigarh 2025 was a power-packed tech fest at SVIET, bringing together technologists, developers and enthusiasts for a day of learning, innovation, workshops and community networking. A hub for exploring AI, Web, Cloud and other emerging technologies.",
-    "photogallery": "",
-    "speakers": []
+    id: 4,
+    headerImage:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYS5Ss5pMjkuGA1bHqB8WwVO5vUPF9fe0xo4zg",
+    name: "Google Ideate 3.0",
+    logo: "",
+    date: "2026",
+    venue: "SVIET Campus",
+    overview:
+      "Google Ideate 3.0 is centered on ideas, prototyping, and collaborative problem solving. It creates a space for students to turn concepts into working demonstrations and meaningful discussion.",
+    
+    speakers: [],
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsY5eZ1YoFkLnYW2symx7BolS8caE4UvAIG5DdT",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsY4XnXukQ6tWRmroBId1upCJLxNa8g3YPDz7qQ",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYCPGrmbTtJBiYlgsTDkf9pRwjru5CG4ILEHW8",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYi2XeFq10SWfZz1b6Kjy5olJ249gEaMFUxCVR",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYdJJdb30oYExaLcHRhujgineWf06PN1JrSAbQ",
+    ],
   },
   {
-  "id": 5,
-  "headerImage": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumINSwyyR21jqluvKkFoRaDpPfCGTtxewIs74z",
-  "name": "Graduation Ceremony 2025",
-  "logo": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumINSwyyR21jqluvKkFoRaDpPfCGTtxewIs74z",
-  "date": "May 2025",
-  "venue": "SVIET Campus",
-  "overview": "The Graduation Ceremony 2025 at SVIET marked a proud milestone for the graduating batches of 2024 & 2025. The event celebrated years of dedication, learning, and achievement, and was graced by esteemed dignitaries, honouring students for their academic efforts and ushering them into their professional journeys with inspiration and pride.",
-  "photogallery": "",
-  "speakers": [
-    {
-      "id": 1,
-      "image": "",
-      "name": "Dr. Gurpreet Kaur Mann",
-      "company": "",
-      "designation": "Chief Guest (Wife of Hon’ble Chief Minister of Punjab)",
-      "bio": "Dr. Gurpreet Kaur Mann graced the 15th Graduation Ceremony of SVIET as Chief Guest, inspiring graduates to pursue excellence and contribute positively to society."
-    }
-  ]
-},
+    id: 5,
+    headerImage:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYTz9q4Ty7HsbdWzFU5fMpwvogX8NKPGVDQehT",
+    name: "ICMSRF",
+    logo: "",
+    date: "2026",
+    venue: "SVIET Campus",
+    overview:
+      "ICMSRF is a research and academic forum highlighting student work, scholarly exchange, and technical ideas. It supports knowledge sharing through presentations, discussion, and innovation.",
+    
+    speakers: [],
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsY56kj9zFkLnYW2symx7BolS8caE4UvAIG5DdT",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYtGrgCam1oaK0jhUNXR3BJLnxv45GdeFDpH7u",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYsmCwODgqsH4lP02UW8OnVAe5EiIXwpZDLhvJ",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYHxf3Z6JeDSMPgAiCuspvaQ56t0BVWRlcLTwz",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYtKPYGrm1oaK0jhUNXR3BJLnxv45GdeFDpH7u",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYJ5OyB6ngANXwUZ3mETaFYjzIBWiGHQfh0K8u",
+    ],
+  },
   {
     id: 6,
-    headerImage: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumIyCbVLR21jqluvKkFoRaDpPfCGTtxewIs74z",
+    headerImage:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYIYRWxO4QpoVeB1qd7z0Zrcu3UfjhOn9SxEbG",
+    name: "Inkspire",
+    logo: "",
+    date: "2026",
+    venue: "SVIET Campus",
+    overview:
+      "Inkspire is a creative event focused on expression, visual storytelling, and student talent. It gives space for art-driven ideas, campus creativity, and inspired participation.",
+    
+    speakers: [],
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYMY2BV1l4xe5F6EkQ8YycI0SR2Up7JwWuTHMB",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYQZdMkMBDxqtdGnRcXmoL4a28i5KgWrVA9pwP",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYl8iO5LUWepS18mVjyY7fEN40w2LbKqhCxdRn",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYtunhXpm1oaK0jhUNXR3BJLnxv45GdeFDpH7u",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYuXMrQmVHcU0MSN1JvoltFR2C3Dp6k8TqwyAX",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYWv695jPu6vbj5KWTePcNtGLE4sUZad32OAgm",
+    ],
+  },
+  {
+    id: 7,
+    headerImage:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsY9bRez4LQEscoVG7ryk0KAYaUJpWN4xSbuZeL",
+    name: "Lohri 2026",
+    logo: "",
+    date: "2026",
+    venue: "SVIET Campus",
+    overview:
+      "Lohri 2026 celebrates cultural warmth, music, dance, and campus togetherness. The event captures the spirit of tradition through a lively and festive student gathering.",
+    
+    speakers: [],
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYIvJM6E4QpoVeB1qd7z0Zrcu3UfjhOn9SxEbG",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYCPPvn2ItJBiYlgsTDkf9pRwjru5CG4ILEHW8",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYCFifYotJBiYlgsTDkf9pRwjru5CG4ILEHW83",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYSU1dKqLMjkuGA1bHqB8WwVO5vUPF9fe0xo4z",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYBf9hjrR7OGvlJpMfcNHj90CrxzQAwPW12VhE",
+    ],
+  },
+  {
+    id: 8,
+    headerImage:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYJtXjQO9ngANXwUZ3mETaFYjzIBWiGHQfh0K8",
+    name: "Spontania 2026",
+    logo: "",
+    date: "2026",
+    venue: "SVIET Campus",
+    overview:
+      "Spontania 2026 is a cultural showcase built around performances, creativity, and student energy. It celebrates expression, stage presence, and a memorable campus experience.",
+    
+    speakers: [],
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYLYLqDf5roTRpjU3lCxnuBwkNfXe4IPA9dJ82",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYcidnxQkeJx7HnktlXwPsUQZL5p0I4BaA8T96",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYSU0n82wMjkuGA1bHqB8WwVO5vUPF9fe0xo4z",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYvrdBeCT6zNM7hJpLFY6XCtjfnIGb4W5cBSZE",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYhVZBLXgWlkGPT9nydDBIxrmKQ4cu6Y1paX5z",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYFTQ7YIfE6pcCm12AMPsuOKDlifhkxg5ELSG0",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYggcuge9BFeNJ2ZMVAWUapCPRyrO6X7dH9wuT",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYMSZfgul4xe5F6EkQ8YycI0SR2Up7JwWuTHMB",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYIZ6WkR4QpoVeB1qd7z0Zrcu3UfjhOn9SxEbG",
+    ],
+  },
+  {
+    id: 9,
+    headerImage:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYdImtUQoYExaLcHRhujgineWf06PN1JrSAbQC",
+    name: "Sportiva 2026",
+    logo: "",
+    date: "2026",
+    venue: "SVIET Campus",
+    overview:
+      "Sportiva 2026 is the annual sports festival celebrating competition, teamwork, and fitness culture at SVIET. It brings energy to the campus through matches, participation, and school spirit.",
+    
+    speakers: [],
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYNdSf2ylbQmCYde4BtEfUM8WbDvRPVA7HGyxZ",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYqVxtAIaXgqYmbC9npAwIjW2ie5J7ay1Z3TDF",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsY9JOQseLQEscoVG7ryk0KAYaUJpWN4xSbuZeL",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYrpkQNrxqoMNr6b1wlSu5GiFCkHdzj0LePTqV",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYFT6tcpSE6pcCm12AMPsuOKDlifhkxg5ELSG0",
+    ],
+  },
+  {
+    id: 10,
+    headerImage:
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYqOdAVy4aXgqYmbC9npAwIjW2ie5J7ay1Z3TD",
+    name: "AI Impact Summit 2025",
+    logo: "",
+    date: "2026",
+    venue: "SVIET Campus",
+    overview:
+      "AI Impact Summit 2025 brings students together for talks, demos, and hands-on ideas around artificial intelligence, practical problem solving, and emerging technology. It showcases how AI can shape learning, research, and campus innovation.",
+    
+    speakers: [],
+    images: [
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYoNuBfeHm2OEPZ1j9yC0lTwVDnApIH3eqiv6K",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYdx8Jf7oYExaLcHRhujgineWf06PN1JrSAbQC",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYytOs2EISv4oIGnhDUdKeZTNytcxLJaOAp8wP",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYzI62fFHTPIJ264RrtnxVQhFgN9aZHkwbfOyo",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYbGJPmPZorOfuMl60DKUHtA2d34LVPgYzCTR7",
+      "https://faggo00g17.ufs.sh/f/nu74sAC4PEsYmSGle1rPHDsU9RwYGrqvX5B1hVAISkWueEa6",
+    ],
+  },
+  {
+    id: 11,
+    headerImage:
+      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumUFNaeJrVPFul6q2HRvZ8sMIWLa5xwjUytOhi",
+    name: "Sportsmania 2025",
+    logo: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumUFNaeJrVPFul6q2HRvZ8sMIWLa5xwjUytOhi",
+    date: "October 17–18, 2025",
+    venue: "SVIET Campus",
+    overview:
+      "Sportsmania 2025 — the annual sports festival of SVIET — brings together students in a vibrant display of athleticism, teamwork and competitive spirit across events like football, basketball, and more. It aims to foster camaraderie, healthy competition, and overall fitness culture among students.",
+    
+    speakers: [],
+    images: [],
+  },
+  {
+    id: 12,
+    headerImage:
+      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumQZ22PWyaj2Z1DfTG5xHuqnQog6vKB4FpJeI8",
+    name: "Elevate 2.0",
+    logo: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumQZ22PWyaj2Z1DfTG5xHuqnQog6vKB4FpJeI8",
+    date: "September 11–13, 2025",
+    venue: "SVIET Campus",
+    overview:
+      "Elevate 2.0 — a flagship cultural & innovation fest at SVIET — brings together creative minds, performances, workshops and peer-networking. The event celebrates innovation, student talent and campus life, offering a platform for expression and collaboration.",
+    
+    speakers: [],
+    images: [],
+  },
+  {
+    id: 13,
+    headerImage:
+      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumTJiOaxw6itj04AFlILkGvbdQPE8uOqWpHYsU",
+    name: "TEDx SVIET",
+    logo: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumTJiOaxw6itj04AFlILkGvbdQPE8uOqWpHYsU",
+    date: "August 23, 2025",
+    venue: "SVIET Campus",
+    overview:
+      "TEDx SVIET 2025, under the theme “The Power of One”, featured thoughtful talks, ideas worth spreading, and engaging conversations aimed at inspiring students and attendees to make a difference — one idea at a time.",
+    
+    speakers: [],
+    images: [],
+  },
+  {
+    id: 14,
+    headerImage:
+      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumINSwyyR21jqluvKkFoRaDpPfCGTtxewIs74z",
+    name: "Graduation Ceremony 2025",
+    logo: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumINSwyyR21jqluvKkFoRaDpPfCGTtxewIs74z",
+    date: "May 2025",
+    venue: "SVIET Campus",
+    overview:
+      "The Graduation Ceremony 2025 at SVIET marked a proud milestone for the graduating batches of 2024 & 2025. The event celebrated years of dedication, learning, and achievement, and was graced by esteemed dignitaries, honouring students for their academic efforts and ushering them into their professional journeys with inspiration and pride.",
+    
+    speakers: [
+      {
+        id: 1,
+        image: "",
+        name: "Dr. Gurpreet Kaur Mann",
+        company: "",
+        designation: "Chief Guest (Wife of Hon’ble Chief Minister of Punjab)",
+        bio: "Dr. Gurpreet Kaur Mann graced the 15th Graduation Ceremony of SVIET as Chief Guest, inspiring graduates to pursue excellence and contribute positively to society.",
+      },
+    ],
+  },
+  {
+    id: 15,
+    headerImage:
+      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumIyCbVLR21jqluvKkFoRaDpPfCGTtxewIs74z",
     name: "Spontania 2025",
     logo: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumIyCbVLR21jqluvKkFoRaDpPfCGTtxewIs74z",
     date: "April 15-17, 2025",
     venue: "SVIET Campus",
-    overview: "Spontania 2025, the flagship cultural extravaganza of SVIET, is set to captivate hearts with its vibrant three-day celebration of art, culture, and talent. With participation from over 600 students across departments, this cultural fest promises an unforgettable experience featuring dance competitions, musical performances, theatrical displays, and various cultural showcases. The event aims to provide a platform for students to express their creativity, build lasting connections, and create memorable moments in their college journey.",
-    photogallery: "https://drive.google.com/drive/u/4/folders/151lMVmfcBn5tF6Q3mXa63TmS7Nqrpnj7",
+    overview:
+      "Spontania 2025, the flagship cultural extravaganza of SVIET, is set to captivate hearts with its vibrant three-day celebration of art, culture, and talent. With participation from over 600 students across departments, this cultural fest promises an unforgettable experience featuring dance competitions, musical performances, theatrical displays, and various cultural showcases. The event aims to provide a platform for students to express their creativity, build lasting connections, and create memorable moments in their college journey.",
     speakers: [
       {
         id: 1,
@@ -79,7 +288,7 @@ const events = [
         name: "Ms. Neena Mittal",
         company: "Punjab Legislative Assembly",
         designation: "MLA Rajpura",
-        bio: "Ms. Neena Mittal, a distinguished political leader and MLA from Rajpura, brings her vast experience in public service and cultural development to inspire the next generation."
+        bio: "Ms. Neena Mittal, a distinguished political leader and MLA from Rajpura, brings her vast experience in public service and cultural development to inspire the next generation.",
       },
       {
         id: 2,
@@ -87,418 +296,421 @@ const events = [
         name: "Sh. Kultar Singh Sandhwan",
         company: "Punjab Vidhan Sabha",
         designation: "Hon'ble Speaker",
-        bio: "As the Hon'ble Speaker of Punjab Vidhan Sabha, Sh. Kultar Singh Sandhwan brings legislative wisdom and leadership to inspire the next generation of leaders."
+        bio: "As the Hon'ble Speaker of Punjab Vidhan Sabha, Sh. Kultar Singh Sandhwan brings legislative wisdom and leadership to inspire the next generation of leaders.",
       },
-    ]
+    ],
   },
   {
-    "id": 7,
-    "headerImage": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumpKvXrQ6ntRyaQormsAvUSgqZTJcibOuXfBWd",
-    "name": "Global Futures Summit 2.0 - Industry & HR Perspectives 2025",
-    "logo": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumGmR8Ob9IoeyaO1d7xYQMuBsK0zrR9WmSiLvE",
-    "date": "8th March 2025",
-    "venue": "SVIET Auditorium, Chandigarh",
-    "overview": "Global Futures Summit 2.0 is a premier industry-academia collaboration event designed to bridge the gap between students, professionals, and industry leaders. Hosted at Swami Vivekanand Institute of Engineering and Technology (SVIET), this summit serves as a catalyst for discussions on workforce trends, industry expectations, and career growth in an evolving job landscape.",
-    "photogallery": "https://drive.google.com/drive/u/4/folders/1rj0GD5CZJxu71WzLT587LnwnnDlYHOBf",
-    "speakers": [
+    id: 16,
+    headerImage:
+      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumpKvXrQ6ntRyaQormsAvUSgqZTJcibOuXfBWd",
+    name: "Global Futures Summit 2.0 - Industry & HR Perspectives 2025",
+    logo: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumGmR8Ob9IoeyaO1d7xYQMuBsK0zrR9WmSiLvE",
+    date: "8th March 2025",
+    venue: "SVIET Auditorium, Chandigarh",
+    overview:
+      "Global Futures Summit 2.0 is a premier industry-academia collaboration event designed to bridge the gap between students, professionals, and industry leaders. Hosted at Swami Vivekanand Institute of Engineering and Technology (SVIET), this summit serves as a catalyst for discussions on workforce trends, industry expectations, and career growth in an evolving job landscape.",
+    speakers: [
       {
-        "id": 1,
-        "image": "",
-        "name": "Ms. Sonia Aswani",
-        "company": "Google, Hyderabad",
-        "designation": "Senior Staffing Lead",
-        "bio": "Ms. Sonia Aswani, Senior Staffing Lead at Google, Hyderabad, brings extensive experience in recruitment and talent acquisition in the tech industry."
+        id: 1,
+        image: "",
+        name: "Ms. Sonia Aswani",
+        company: "Google, Hyderabad",
+        designation: "Senior Staffing Lead",
+        bio: "Ms. Sonia Aswani, Senior Staffing Lead at Google, Hyderabad, brings extensive experience in recruitment and talent acquisition in the tech industry.",
       },
       {
-        "id": 2,
-        "image": "",
-        "name": "Vani Matta",
-        "company": "Accenture",
-        "designation": "Senior Analyst, Talent Acquisition & Management",
-        "bio": "Vani Matta, Senior Analyst at Accenture, specializes in talent acquisition and management, helping shape the workforce of tomorrow."
+        id: 2,
+        image: "",
+        name: "Vani Matta",
+        company: "Accenture",
+        designation: "Senior Analyst, Talent Acquisition & Management",
+        bio: "Vani Matta, Senior Analyst at Accenture, specializes in talent acquisition and management, helping shape the workforce of tomorrow.",
       },
       {
-        "id": 3,
-        "image": "",
-        "name": "Ms. Parul Kataria",
-        "company": "Lenskart",
-        "designation": "Talent Acquisition",
-        "bio": "Ms. Parul Kataria leads talent acquisition at Lenskart, bringing innovative strategies to attract and retain top talent."
+        id: 3,
+        image: "",
+        name: "Ms. Parul Kataria",
+        company: "Lenskart",
+        designation: "Talent Acquisition",
+        bio: "Ms. Parul Kataria leads talent acquisition at Lenskart, bringing innovative strategies to attract and retain top talent.",
       },
       {
-        "id": 4,
-        "image": "",
-        "name": "Aashi Sharma",
-        "company": "Worked at InsuranceDekho and Housing.com",
-        "designation": "HR Consultant",
-        "bio": "Aashi Sharma, HR Consultant, has worked with leading firms like InsuranceDekho and Housing.com, shaping HR strategies and culture."
+        id: 4,
+        image: "",
+        name: "Aashi Sharma",
+        company: "Worked at InsuranceDekho and Housing.com",
+        designation: "HR Consultant",
+        bio: "Aashi Sharma, HR Consultant, has worked with leading firms like InsuranceDekho and Housing.com, shaping HR strategies and culture.",
       },
       {
-        "id": 5,
-        "image": "",
-        "name": "Sonali Varshney",
-        "company": "HCL Tech",
-        "designation": "HR Executive",
-        "bio": "Sonali Varshney, HR Executive at HCL Tech, works on shaping the HR policies that promote organizational growth and employee well-being."
+        id: 5,
+        image: "",
+        name: "Sonali Varshney",
+        company: "HCL Tech",
+        designation: "HR Executive",
+        bio: "Sonali Varshney, HR Executive at HCL Tech, works on shaping the HR policies that promote organizational growth and employee well-being.",
       },
       {
-        "id": 6,
-        "image": "",
-        "name": "Dhruv Pratap Singh",
-        "company": "Swaraj By Mahindra",
-        "designation": "Dy.GM-HR",
-        "bio": "Dhruv Pratap Singh, Deputy General Manager at Swaraj By Mahindra, brings expertise in human resources and organizational development."
+        id: 6,
+        image: "",
+        name: "Dhruv Pratap Singh",
+        company: "Swaraj By Mahindra",
+        designation: "Dy.GM-HR",
+        bio: "Dhruv Pratap Singh, Deputy General Manager at Swaraj By Mahindra, brings expertise in human resources and organizational development.",
       },
       {
-        "id": 7,
-        "image": "",
-        "name": "Sanjeev Kumar Mehra",
-        "company": "Aplicar",
-        "designation": "Head Of HR",
-        "bio": "Sanjeev Kumar Mehra, Head of HR at Aplicar, is responsible for leading HR strategies and driving talent management at the organization."
+        id: 7,
+        image: "",
+        name: "Sanjeev Kumar Mehra",
+        company: "Aplicar",
+        designation: "Head Of HR",
+        bio: "Sanjeev Kumar Mehra, Head of HR at Aplicar, is responsible for leading HR strategies and driving talent management at the organization.",
       },
       {
-        "id": 8,
-        "image": "",
-        "name": "Ms. Nikita Kaur",
-        "company": "Fortis Healthcare",
-        "designation": "Sr.HR",
-        "bio": "Ms. Nikita Kaur, Senior HR professional at Fortis Healthcare, is passionate about talent management and driving a positive workplace culture."
+        id: 8,
+        image: "",
+        name: "Ms. Nikita Kaur",
+        company: "Fortis Healthcare",
+        designation: "Sr.HR",
+        bio: "Ms. Nikita Kaur, Senior HR professional at Fortis Healthcare, is passionate about talent management and driving a positive workplace culture.",
       },
       {
-        "id": 9,
-        "image": "",
-        "name": "Mr. Sandeep Kumar Rajput",
-        "company": "Royal Orchid & Regenta Hotels",
-        "designation": "Vice President- Sales",
-        "bio": "Mr. Sandeep Kumar Rajput, Vice President of Sales at Royal Orchid & Regenta Hotels, excels in building relationships and driving revenue."
+        id: 9,
+        image: "",
+        name: "Mr. Sandeep Kumar Rajput",
+        company: "Royal Orchid & Regenta Hotels",
+        designation: "Vice President- Sales",
+        bio: "Mr. Sandeep Kumar Rajput, Vice President of Sales at Royal Orchid & Regenta Hotels, excels in building relationships and driving revenue.",
       },
       {
-        "id": 10,
-        "image": "",
-        "name": "PVS Balasubramanyam",
-        "company": "IRA Automation Private Limited",
-        "designation": "Chief Executive Officer",
-        "bio": "PVS Balasubramanyam, CEO at IRA Automation Private Limited, is known for his contributions to industrial automation and technological innovation."
+        id: 10,
+        image: "",
+        name: "PVS Balasubramanyam",
+        company: "IRA Automation Private Limited",
+        designation: "Chief Executive Officer",
+        bio: "PVS Balasubramanyam, CEO at IRA Automation Private Limited, is known for his contributions to industrial automation and technological innovation.",
       },
       {
-        "id": 11,
-        "image": "",
-        "name": "Mr. Arvind Singh",
-        "company": "TCS",
-        "designation": "Project Release Manager",
-        "bio": "Arvind Singh, Project Release Manager at TCS, leads projects that enable seamless execution and delivery in tech environments."
+        id: 11,
+        image: "",
+        name: "Mr. Arvind Singh",
+        company: "TCS",
+        designation: "Project Release Manager",
+        bio: "Arvind Singh, Project Release Manager at TCS, leads projects that enable seamless execution and delivery in tech environments.",
       },
       {
-        "id": 12,
-        "image": "",
-        "name": "Mr. Bala Krishna",
-        "company": "BPS, Hyderabad",
-        "designation": "Expert & Training Consultant in Game Development Industry",
-        "bio": "Mr. Bala Krishna is a seasoned expert and training consultant specializing in the game development industry."
+        id: 12,
+        image: "",
+        name: "Mr. Bala Krishna",
+        company: "BPS, Hyderabad",
+        designation:
+          "Expert & Training Consultant in Game Development Industry",
+        bio: "Mr. Bala Krishna is a seasoned expert and training consultant specializing in the game development industry.",
       },
       {
-        "id": 13,
-        "image": "",
-        "name": "Surbhi Kumar",
-        "company": "HCLTech",
-        "designation": "Manager, People Partner & Talent Development",
-        "bio": "Surbhi Kumar is a talent development manager at HCLTech, where she focuses on shaping organizational culture and developing people strategies."
+        id: 13,
+        image: "",
+        name: "Surbhi Kumar",
+        company: "HCLTech",
+        designation: "Manager, People Partner & Talent Development",
+        bio: "Surbhi Kumar is a talent development manager at HCLTech, where she focuses on shaping organizational culture and developing people strategies.",
       },
       {
-        "id": 14,
-        "image": "",
-        "name": "Mr. Prateek Kumar",
-        "company": "Larsen & Toubro",
-        "designation": "Head – P&M, FGD and TS &OE",
-        "bio": "Mr. Prateek Kumar, Head of P&M, FGD and TS &OE at Larsen & Toubro, excels in project management and strategic business solutions."
+        id: 14,
+        image: "",
+        name: "Mr. Prateek Kumar",
+        company: "Larsen & Toubro",
+        designation: "Head – P&M, FGD and TS &OE",
+        bio: "Mr. Prateek Kumar, Head of P&M, FGD and TS &OE at Larsen & Toubro, excels in project management and strategic business solutions.",
       },
       {
-        "id": 15,
-        "image": "",
-        "name": "Vinay Chaturvedi",
-        "company": "Royal Orchid & Regenta Hotels",
-        "designation": "Speaker",
-        "bio": "Vinay Chaturvedi is a senior professional with vast experience in hospitality and sales management at Royal Orchid & Regenta Hotels."
-      }
-    ]
+        id: 15,
+        image: "",
+        name: "Vinay Chaturvedi",
+        company: "Royal Orchid & Regenta Hotels",
+        designation: "Speaker",
+        bio: "Vinay Chaturvedi is a senior professional with vast experience in hospitality and sales management at Royal Orchid & Regenta Hotels.",
+      },
+    ],
   },
   {
-    "id": 8,
-    "headerImage": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumPkm0NoZ89C4GnNKHTXFvruVyAOm6ZwU2Sibo",
-    "name": "Bharat TechXperience 2.0",
-    "logo": "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAum9SyRH7oJQ5AcTPoua6UY3sS7XMiGqmnIVwtL",
-    "date": "8th March 2025",
-    "venue": "SVIET Auditorium, Chandigarh",
-    "overview": "Bharat TechXperience 2.0 is a premier national-level 30-hour hackathon that brings together tech enthusiasts, innovators, and problem solvers to create cutting-edge solutions for real-world challenges. The event features workshops, mentorship, and networking opportunities, fostering a comprehensive ecosystem for innovation. With a prize pool worth ₹1,00,000, it celebrates creativity, collaboration, and the transformative power of technology.",
-    "photogallery": "https://drive.google.com/drive/u/4/folders/1lWHSPUZCaDPiQxXBFG-JtJCBP62jMacW",
-    "speakers": [
+    id: 17,
+    headerImage:
+      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumPkm0NoZ89C4GnNKHTXFvruVyAOm6ZwU2Sibo",
+    name: "Bharat TechXperience 2.0",
+    logo: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAum9SyRH7oJQ5AcTPoua6UY3sS7XMiGqmnIVwtL",
+    date: "8th March 2025",
+    venue: "SVIET Auditorium, Chandigarh",
+    overview:
+      "Bharat TechXperience 2.0 is a premier national-level 30-hour hackathon that brings together tech enthusiasts, innovators, and problem solvers to create cutting-edge solutions for real-world challenges. The event features workshops, mentorship, and networking opportunities, fostering a comprehensive ecosystem for innovation. With a prize pool worth ₹1,00,000, it celebrates creativity, collaboration, and the transformative power of technology.",
+    speakers: [
       {
-        "id": 1,
-        "image": "",
-        "name": "Vikram R Singh",
-        "company": "Antier Solutions",
-        "designation": "Global CEO",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 1,
+        image: "",
+        name: "Vikram R Singh",
+        company: "Antier Solutions",
+        designation: "Global CEO",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 2,
-        "image": "",
-        "name": "Shashi Pal",
-        "company": "Antier Solutions",
-        "designation": "COO",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 2,
+        image: "",
+        name: "Shashi Pal",
+        company: "Antier Solutions",
+        designation: "COO",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 3,
-        "image": "",
-        "name": "Devdutta Sarma",
-        "company": "Larsen & Toubro",
-        "designation": "Head HR",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 3,
+        image: "",
+        name: "Devdutta Sarma",
+        company: "Larsen & Toubro",
+        designation: "Head HR",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 4,
-        "image": "",
-        "name": "Kapil Narula",
-        "company": "Caelius Consulting",
-        "designation": "Senior Manager",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 4,
+        image: "",
+        name: "Kapil Narula",
+        company: "Caelius Consulting",
+        designation: "Senior Manager",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 5,
-        "image": "",
-        "name": "Dr Bhanu Pratap Singh",
-        "company": "IGNOU",
-        "designation": "Senior Regional Director",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 5,
+        image: "",
+        name: "Dr Bhanu Pratap Singh",
+        company: "IGNOU",
+        designation: "Senior Regional Director",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 6,
-        "image": "",
-        "name": "Jaswant Singh",
-        "company": "Larsen & Toubro",
-        "designation": "Branch Manager",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 6,
+        image: "",
+        name: "Jaswant Singh",
+        company: "Larsen & Toubro",
+        designation: "Branch Manager",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 7,
-        "image": "",
-        "name": "Vishal Sharma",
-        "company": "ASB Academy",
-        "designation": "Head - Learning & Development",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 7,
+        image: "",
+        name: "Vishal Sharma",
+        company: "ASB Academy",
+        designation: "Head - Learning & Development",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 8,
-        "image": "",
-        "name": "Amanpreet Kaur",
-        "company": "Intellisense Technology",
-        "designation": "Mobile App Developer",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 8,
+        image: "",
+        name: "Amanpreet Kaur",
+        company: "Intellisense Technology",
+        designation: "Mobile App Developer",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 9,
-        "image": "",
-        "name": "Mr. Veer Pratap Singh",
-        "company": "Antier Solutions",
-        "designation": "Tech Lead",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 9,
+        image: "",
+        name: "Mr. Veer Pratap Singh",
+        company: "Antier Solutions",
+        designation: "Tech Lead",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 10,
-        "image": "",
-        "name": "Mansi Lakra",
-        "company": "Antier Solutions",
-        "designation": "Blockchain Consultant",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 10,
+        image: "",
+        name: "Mansi Lakra",
+        company: "Antier Solutions",
+        designation: "Blockchain Consultant",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 11,
-        "image": "",
-        "name": "Udayveer Singh",
-        "company": "StreamNFT",
-        "designation": "Senior Blockchain Engineer",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 11,
+        image: "",
+        name: "Udayveer Singh",
+        company: "StreamNFT",
+        designation: "Senior Blockchain Engineer",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 12,
-        "image": "",
-        "name": "Mr. Simar Preet Singh",
-        "company": "Redaptive, Inc.",
-        "designation": "Front-end Engineer",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 12,
+        image: "",
+        name: "Mr. Simar Preet Singh",
+        company: "Redaptive, Inc.",
+        designation: "Front-end Engineer",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 13,
-        "image": "",
-        "name": "Pranav Singh Parmar",
-        "company": "iapp Technology LLP",
-        "designation": "Mobile App Developer",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 13,
+        image: "",
+        name: "Pranav Singh Parmar",
+        company: "iapp Technology LLP",
+        designation: "Mobile App Developer",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 14,
-        "image": "",
-        "name": "Suraj Mani",
-        "company": "TFUG Jalandhar",
-        "designation": "Community Organiser",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 14,
+        image: "",
+        name: "Suraj Mani",
+        company: "TFUG Jalandhar",
+        designation: "Community Organiser",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 15,
-        "image": "",
-        "name": "Viswateja Yetukuri",
-        "company": "Antier Solutions",
-        "designation": "Senior Blockchain Developer",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 15,
+        image: "",
+        name: "Viswateja Yetukuri",
+        company: "Antier Solutions",
+        designation: "Senior Blockchain Developer",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 16,
-        "image": "",
-        "name": "Loveleen Kaur",
-        "company": "Astrotalk",
-        "designation": "Senior Software Engineer",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 16,
+        image: "",
+        name: "Loveleen Kaur",
+        company: "Astrotalk",
+        designation: "Senior Software Engineer",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 17,
-        "image": "",
-        "name": "Pranav Kumar",
-        "company": "Nagarro",
-        "designation": "Senior Engineer",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 17,
+        image: "",
+        name: "Pranav Kumar",
+        company: "Nagarro",
+        designation: "Senior Engineer",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 18,
-        "image": "",
-        "name": "Santosh Kumar Mishra",
-        "company": "Microsoft",
-        "designation": "Software Engineer",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 18,
+        image: "",
+        name: "Santosh Kumar Mishra",
+        company: "Microsoft",
+        designation: "Software Engineer",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 19,
-        "image": "",
-        "name": "Saumya Awasthi",
-        "company": "Kigen",
-        "designation": "Software Engineer",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 19,
+        image: "",
+        name: "Saumya Awasthi",
+        company: "Kigen",
+        designation: "Software Engineer",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 20,
-        "image": "",
-        "name": "Anish Giri",
-        "company": "Fidelity Investments",
-        "designation": "Senior Frontend Developer",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 20,
+        image: "",
+        name: "Anish Giri",
+        company: "Fidelity Investments",
+        designation: "Senior Frontend Developer",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 21,
-        "image": "",
-        "name": "Pankaj Judge",
-        "company": "Chai Thela",
-        "designation": "Founder",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 21,
+        image: "",
+        name: "Pankaj Judge",
+        company: "Chai Thela",
+        designation: "Founder",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 22,
-        "image": "",
-        "name": "Aditya Garg",
-        "company": "Shure Audio Technologies",
-        "designation": "Associate Consultant",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 22,
+        image: "",
+        name: "Aditya Garg",
+        company: "Shure Audio Technologies",
+        designation: "Associate Consultant",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 23,
-        "image": "",
-        "name": "Mankesh Dadhwal",
-        "company": "Caelius Consulting",
-        "designation": "Co-Founder & COO",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
+        id: 23,
+        image: "",
+        name: "Mankesh Dadhwal",
+        company: "Caelius Consulting",
+        designation: "Co-Founder & COO",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
       },
       {
-        "id": 24,
-        "image": "",
-        "name": "Gourav Mahipal",
-        "company": "Veritos Infosolutions Pvt. Ltd.",
-        "designation": "Managing Director",
-        "profile": "",
-        "twitter": "",
-        "linkedin": "",
-        "bio": ""
-      }
-    ]
-  },  
+        id: 24,
+        image: "",
+        name: "Gourav Mahipal",
+        company: "Veritos Infosolutions Pvt. Ltd.",
+        designation: "Managing Director",
+        profile: "",
+        twitter: "",
+        linkedin: "",
+        bio: "",
+      },
+    ],
+  },
   // {
   //   "id": 4,
   //   "headerImage": "https://utfs.io/f/nsz3ps3WUZRL7ac5bSyZPFew0cpClJ4f9O3RUWHjaDvbq6AN",
@@ -508,7 +720,7 @@ const events = [
   //   "venue": "SVIET Campus, Chandigarh",
   //   "overview": "Elevate 2024 is a 3-day induction program designed to inspire and empower the next generation of students at SVIET. Featuring captivating panel discussions, startup showcases, and thought leadership sessions, Elevate provides a platform for students to connect with industry experts and gain valuable insights into their academic and professional journeys.",
   //   "photogallery": "https://drive.google.com/drive/folders/14k6RVCfVimh_ZEOZUKzuINLGxaVuYfHU?usp=sharing",
-    
+
   //     "speakers": [
   //       {
   //         "id": 1,
@@ -518,7 +730,7 @@ const events = [
   //         "designation": "Co-Founder",
   //         "bio": "Ashneer Grover, co-founder of BharatPe, is a visionary in fintech, known for disrupting traditional payment systems."
   //       },
-        
+
   //       {
   //         "id": 2,
   //         "image": "https://utfs.io/f/nsz3ps3WUZRLfQH3o855DMmwulAEzVI0Hb4NKoTFOCeRP8Bn",
@@ -631,7 +843,7 @@ const events = [
   //         "designation": "Director of Placement",
   //         "bio": "Shubham Garg, the Director of Placement at SVIET, helps students land their dream jobs while shaping futures at Alliance International School."
   //       },
-        
+
   //       {
   //         "id": 17,
   //         "image": "https://utfs.io/f/2087d9a4-9175-4270-801c-2b9d18677bb6-hce9dq.jpg",
@@ -673,8 +885,7 @@ const events = [
   //         "bio": "Vivek Atray, an ex-bureaucrat and author, is a renowned motivational speaker inspiring people to live happier and more meaningful lives."
   //       }
   //     ]
-    
-    
+
   // },
   // {
   //   id: 5,
@@ -758,7 +969,7 @@ const events = [
   //   headerImage: "https://utfs.io/f/9a08b157-a1bd-4310-b37e-b1582b2a156c-inzo76.jpg",
   //   name: "Global Futures Summit 2024",
   //   logo: "https://media.licdn.com/dms/image/D4E22AQHG3lpve4KsoA/feedshare-shrink_1280/0/1710927341125?e=1715212800&v=beta&t=3Xj3TaewuFj1Lgo7luHp8duirsCX7vLgiDmUjg2uQFw",
-      
+
   //   date: "23rd March 2024",
   //   venue: "SVIET Auditorium",
   //   overview: "The Global Futures Summit 2024 promises to be a seminal event, uniquely focused on the evolving dynamics between industry trends and human resources strategies. Interactive workshops and breakout sessions are set to form a core component of the summit, focusing on practical skills and knowledge essential for the modern workforce. These sessions will be tailored to equip attendees with the latest tools and techniques in HR management, from talent acquisition and retention strategies to enhancing employee engagement and fostering a culture of innovation.",
@@ -899,7 +1110,6 @@ const events = [
   //       bio: "Yatin is a Project Engineer by profession having 3+ years of experience in corporate field. Learning new technology and implementing them is his goal. Along with his daily life, he also try to give back to the society by sharing information to peers."
   //     },
 
-
   //   ],
   // },
   // {
@@ -946,7 +1156,6 @@ const events = [
   //       bio: "Yatin is a Project Engineer by profession having 3+ years of experience in corporate field. Learning new technology and implementing them is his goal. Along with his daily life, he also try to give back to the society by sharing information to peers."
   //     },
 
-
   //   ],
   // },
   // {
@@ -957,7 +1166,7 @@ const events = [
   //   date: "17th February 2023",
   //   venue: "SVIET Campus",
   //   overview: " Google Ideate 2024 is set to be an extraordinary event, hosted by GDSC (Google Developer Student Clubs), where creativity, collaboration, and coding converge to bring innovative ideas to life. This event is designed as a platform for thinkers, creators, and developers to push the boundaries of technology and digital solutions. Whether you're a seasoned coder, an aspiring innovator, or a creative thinker, Google Ideate 2024 offers an incredible opportunity to engage with like-minded individuals and industry leaders in a dynamic environment. Google Ideate 2024 is also a perfect venue for networking. Attendees will meet other enthusiastic developers, potential mentors, and industry professionals who share a passion for technology and innovation. These interactions can lead to future collaborations, career opportunities, or even start-up ventures.",
-  //   photogallery: "https://drive.google.com/drive/folders/1gF29apgamOy5dR_sgf4YhMWzVVINB8pB?usp=sharing  ",
+  //   nnn    "https://drive.google.com/drive/folders/1gF29apgamOy5dR_sgf4YhMWzVVINB8pB?usp=sharing  ",
   //   speakers: [
   //     {
   //       id: 1,
@@ -997,25 +1206,27 @@ const events = [
   //   ],
   // },
   {
-    id: 11,
-    headerImage: "https://utfs.io/f/e7c0f77c-7315-4b1d-b9de-ac3030eb842e-6hvi1d.webp",
+    id: 18,
+    headerImage:
+      "https://utfs.io/f/e7c0f77c-7315-4b1d-b9de-ac3030eb842e-6hvi1d.webp",
     name: "Convocation 14th",
-    logo:"https://scontent.faip1-1.fna.fbcdn.net/v/t39.30808-6/438878175_865935622244132_1187202176504504856_n.jpg?stp=dst-jpg_p960x960&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Un5xo0o6ktwAb5ATt47&_nc_ht=scontent.faip1-1.fna&oh=00_AfB6ZkqM5mELp-DwQ92biNWzyuAZ4sGOj80c3ePHHMVVQQ&oe=662DD7CD",
+    logo: "https://scontent.faip1-1.fna.fbcdn.net/v/t39.30808-6/438878175_865935622244132_1187202176504504856_n.jpg?stp=dst-jpg_p960x960&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Un5xo0o6ktwAb5ATt47&_nc_ht=scontent.faip1-1.fna&oh=00_AfB6ZkqM5mELp-DwQ92biNWzyuAZ4sGOj80c3ePHHMVVQQ&oe=662DD7CD",
     date: "20th April 2024",
     venue: "SVIET Campus",
-    overview: "Convocation 14 emerged as a hallmark of academic excellence and inspirational milestones, enchanting attendees with its dignified atmosphere and profound ceremonial moments. From the opening procession to the final farewell, the event was imbued with a sense of achievement and scholarly pride, drawing together graduates, academics, and proud family members. Convocation 14 was more than just a ceremony; it was a celebration of educational accomplishments and personal growth. By honoring the hard work and dedication of its students, it not only marked the culmination of their current academic journeys but also set the stage for future endeavors. As the graduates moved their tassels and stepped into new beginnings, they carried with them not only their degrees but also a deep-seated inspiration to shape and innovate the future.",
-    photogallery: "https://drive.google.com/drive/folders/1IqmUhyinq7CjRaz9T-TRHiu3tJDfZJ4Y?usp=sharing",
+    overview:
+      "Convocation 14 emerged as a hallmark of academic excellence and inspirational milestones, enchanting attendees with its dignified atmosphere and profound ceremonial moments. From the opening procession to the final farewell, the event was imbued with a sense of achievement and scholarly pride, drawing together graduates, academics, and proud family members. Convocation 14 was more than just a ceremony; it was a celebration of educational accomplishments and personal growth. By honoring the hard work and dedication of its students, it not only marked the culmination of their current academic journeys but also set the stage for future endeavors. As the graduates moved their tassels and stepped into new beginnings, they carried with them not only their degrees but also a deep-seated inspiration to shape and innovate the future.",
     speakers: [
       {
         id: 2,
-        image: "https://media.licdn.com/dms/image/C4D03AQG4yr0qNjCtvA/profile-displayphoto-shrink_800_800/0/1605448978739?e=1719446400&v=beta&t=5AJSxI3QZOTFmgtUXVc-XXYxo5KvSqnWejFmE2mBRnk",
+        image:
+          "https://media.licdn.com/dms/image/C4D03AQG4yr0qNjCtvA/profile-displayphoto-shrink_800_800/0/1605448978739?e=1719446400&v=beta&t=5AJSxI3QZOTFmgtUXVc-XXYxo5KvSqnWejFmE2mBRnk",
         name: "Dr. Sumit Goyal",
         company: "Infosys",
         designation: "Director-Software Products & Platforms Engineering",
         profile: "",
         twitter: "https://twitter.com/hifiveyatin",
         linkedin: "https://www.linkedin.com/in/hifiveyatin/",
-        bio: "Yatin is a Project Engineer by profession having 3+ years of experience in corporate field. Learning new technology and implementing them is his goal. Along with his daily life, he also try to give back to the society by sharing information to peers."
+        bio: "Yatin is a Project Engineer by profession having 3+ years of experience in corporate field. Learning new technology and implementing them is his goal. Along with his daily life, he also try to give back to the society by sharing information to peers.",
       },
       {
         id: 3,
@@ -1026,8 +1237,9 @@ const events = [
         profile: "",
         twitter: "https://twitter.com/hifiveyatin",
         linkedin: "https://www.linkedin.com/in/hifiveyatin/",
-        bio: "Yatin is a Project Engineer by profession having 3+ years of experience in corporate field. Learning new technology and implementing them is his goal. Along with his daily life, he also try to give back to the society by sharing information to peers."
-      }]
+        bio: "Yatin is a Project Engineer by profession having 3+ years of experience in corporate field. Learning new technology and implementing them is his goal. Along with his daily life, he also try to give back to the society by sharing information to peers.",
+      },
+    ],
   },
   // {
   //   "id": 19,
@@ -1038,7 +1250,7 @@ const events = [
   //   "venue": "SVIET Campus, Chandigarh",
   //   "overview": "Elevate 2024 is a 3-day induction program designed to inspire and empower the next generation of students at SVIET. Featuring captivating panel discussions, startup showcases, and thought leadership sessions, Elevate provides a platform for students to connect with industry experts and gain valuable insights into their academic and professional journeys.",
   //   "photogallery": "https://drive.google.com/drive/folders/14k6RVCfVimh_ZEOZUKzuINLGxaVuYfHU?usp=sharing",
-    
+
   //     "speakers": [
   //       {
   //         "id": 1,
@@ -1048,7 +1260,7 @@ const events = [
   //         "designation": "Co-Founder",
   //         "bio": "Ashneer Grover, co-founder of BharatPe, is a visionary in fintech, known for disrupting traditional payment systems."
   //       },
-        
+
   //       {
   //         "id": 2,
   //         "image": "https://utfs.io/f/nsz3ps3WUZRLfQH3o855DMmwulAEzVI0Hb4NKoTFOCeRP8Bn",
@@ -1161,7 +1373,7 @@ const events = [
   //         "designation": "Director of Placement",
   //         "bio": "Shubham Garg, the Director of Placement at SVIET, helps students land their dream jobs while shaping futures at Alliance International School."
   //       },
-        
+
   //       {
   //         "id": 17,
   //         "image": "https://utfs.io/f/2087d9a4-9175-4270-801c-2b9d18677bb6-hce9dq.jpg",
@@ -1203,11 +1415,8 @@ const events = [
   //         "bio": "Vivek Atray, an ex-bureaucrat and author, is a renowned motivational speaker inspiring people to live happier and more meaningful lives."
   //       }
   //     ]
-    
-    
+
   // }
-  
+];
 
-]
-
-export default events
+export default events;

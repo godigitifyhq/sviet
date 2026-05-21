@@ -95,7 +95,7 @@ export function YouTubeChannelSection() {
                   />
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all" />
                   {/* Play button */}
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  {/* <div className="absolute inset-0 flex items-center justify-center">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FF0000]/90 shadow-lg transition group-hover:scale-110">
                       <svg
                         viewBox="0 0 24 24"
@@ -104,7 +104,7 @@ export function YouTubeChannelSection() {
                         <path d="M8 5v14l11-7z" />
                       </svg>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="p-2.5">
                   <p className="text-[11px] font-semibold leading-snug text-gray-200 line-clamp-2">

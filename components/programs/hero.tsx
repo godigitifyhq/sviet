@@ -8,9 +8,9 @@ type ProgramHeroSectionProps = {
   title: string;
   department?: string | null;
   durationMonths: number;
-  tuitionCents: number;
+  tuitionCents: number | null;
   mode?: string | null;
-  shortDescription: string;
+  shortDescription?: string | null;
   heroImage?: string | null;
 };
 
@@ -26,7 +26,11 @@ function formatMode(mode?: string | null) {
     .join(" ");
 }
 
-function formatCurrency(valueInCents: number) {
+function formatCurrency(valueInCents: number | null) {
+  if (valueInCents == null) {
+    return null;
+  }
+
   return `₹${(valueInCents / 100).toLocaleString("en-IN")}`;
 }
 
@@ -69,7 +73,9 @@ export function ProgramHeroSection({
           <h1 className="mt-2 text-5xl font-extrabold leading-tight">
             {title}
           </h1>
-          <p className="mt-3 max-w-3xl text-[#4b4b4b]">{shortDescription}</p>
+          <p className="mt-3 max-w-3xl text-[#4b4b4b]">
+            {shortDescription ?? "Contact admissions for full program details."}
+          </p>
           <div className="mt-4 flex flex-wrap gap-2 text-sm">
             {chips.map((chip) => (
               <span

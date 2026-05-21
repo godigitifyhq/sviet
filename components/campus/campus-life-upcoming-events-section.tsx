@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { getCampusEventsSectionData } from "@/lib/dal/events";
 
@@ -10,9 +11,7 @@ function formatEventDate(date: Date) {
   }).format(date);
 }
 
-function shouldBypassOptimization(src: string) {
-  return src.includes(".ufs.sh/") || src.startsWith("data:image/");
-}
+import { shouldBypassOptimization } from "@/lib/image-utils";
 
 export async function CampusLifeUpcomingEventsSection() {
   const sectionData = await getCampusEventsSectionData();
@@ -22,13 +21,13 @@ export async function CampusLifeUpcomingEventsSection() {
       <div className="mx-auto w-full max-w-360 px-4 md:px-6">
         <h2 className="text-4xl font-bold leading-tight tracking-[-0.02em] md:text-5xl">
           <span className="bg-linear-to-r from-[#f7941d] to-[#1d4ed8] bg-clip-text text-transparent">
-            Upcoming events
+            Recent events
           </span>
         </h2>
         <p className="mt-4 max-w-3xl text-sm leading-relaxed text-[#424242] md:text-lg">
-          Stay updated on all upcoming events at SVGOI. From concerts to
-          competitions, our event calendar is packed with activities throughout
-          the year, ensuring there is always something fun to look forward to.
+          Relive the best moments from SVGOI campus events. From tech summits to
+          cultural fests, our events bring together students, faculty, and industry
+          leaders throughout the year.
         </p>
 
         <div className="mt-8 flex items-center gap-2 text-2xl font-medium text-[#111827] md:text-3xl">
@@ -39,7 +38,7 @@ export async function CampusLifeUpcomingEventsSection() {
         <div className="mt-6 grid gap-8 lg:grid-cols-[1.08fr_0.92fr]">
           <article className="rounded-2xl border border-[#d9ddea] bg-white p-4 shadow-[0_12px_34px_rgba(17,24,39,0.08)] md:p-5">
             {sectionData.featuredEvent ? (
-              <>
+              <Link href={`/events/${sectionData.featuredEvent.slug}`} className="group block">
                 <div className="overflow-hidden rounded-xl">
                   <Image
                     src={sectionData.featuredEvent.image}
@@ -49,13 +48,13 @@ export async function CampusLifeUpcomingEventsSection() {
                     unoptimized={shouldBypassOptimization(
                       sectionData.featuredEvent.image,
                     )}
-                    className="h-72 w-full object-cover transition duration-500 hover:scale-[1.03] md:h-96"
+                    className="h-72 w-full object-cover transition duration-500 group-hover:scale-[1.03] md:h-96"
                   />
                 </div>
                 <div className="mt-5 inline-flex rounded-full bg-[#eef2ff] px-3 py-1 text-sm font-semibold tracking-wide text-[#3348b8]">
                   Featured event
                 </div>
-                <h3 className="mt-4 text-3xl font-semibold leading-tight text-[#111827] md:text-4xl">
+                <h3 className="mt-4 text-3xl font-semibold leading-tight text-[#111827] group-hover:text-[#1d4ed8] md:text-4xl">
                   {sectionData.featuredEvent.title}
                 </h3>
                 <p className="mt-3 text-sm text-[#4b5563] md:text-base">
@@ -69,7 +68,7 @@ export async function CampusLifeUpcomingEventsSection() {
                     {sectionData.featuredEvent.category}
                   </span>
                 </div>
-              </>
+              </Link>
             ) : (
               <div className="flex h-full min-h-72 flex-col items-center justify-center rounded-xl border border-dashed border-[#d7dcef] bg-[#f8faff] p-8 text-center">
                 <p className="text-xl font-semibold text-[#1f2937]">
@@ -87,8 +86,9 @@ export async function CampusLifeUpcomingEventsSection() {
             <div className="max-h-170 overflow-y-auto pr-1 [scrollbar-color:#b7b7d5_transparent] [scrollbar-width:thin]">
               {sectionData.listEvents.length > 0 ? (
                 sectionData.listEvents.map((event) => (
-                  <article
+                  <Link
                     key={event.id}
+                    href={`/events/${event.slug}`}
                     className="group grid gap-4 rounded-xl px-2 py-3 transition hover:bg-[#f8faff] sm:grid-cols-[180px_1fr] md:px-3"
                   >
                     <div className="overflow-hidden rounded-lg">
@@ -102,7 +102,7 @@ export async function CampusLifeUpcomingEventsSection() {
                       />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold leading-snug text-[#111827]">
+                      <h4 className="text-lg font-semibold leading-snug text-[#111827] group-hover:text-[#1d4ed8]">
                         {event.title}
                       </h4>
                       <p className="mt-2 line-clamp-2 text-sm text-[#4b5563]">
@@ -117,7 +117,7 @@ export async function CampusLifeUpcomingEventsSection() {
                         </span>
                       </div>
                     </div>
-                  </article>
+                  </Link>
                 ))
               ) : (
                 <div className="rounded-xl border border-dashed border-[#d7dcef] bg-[#f8faff] p-6 text-center">

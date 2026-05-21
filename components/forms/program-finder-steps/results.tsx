@@ -1,46 +1,165 @@
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Clock, IndianRupee, RefreshCw, TrendingUp } from 'lucide-react';
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Clock, IndianRupee, RefreshCw, TrendingUp } from "lucide-react";
 
-const programMap: Record<string, { title: string; duration: string; department: string; slug: string }[]> = {
+const programMap: Record<
+  string,
+  { title: string; duration: string; department: string; slug: string }[]
+> = {
   engineering: [
-    { title: "B.Tech Computer Science Engineering", duration: "4 Years", department: "Engineering", slug: "btech-cse" },
-    { title: "B.Tech Artificial Intelligence", duration: "4 Years", department: "Engineering", slug: "btech-ai" },
-    { title: "B.Tech Electronics & Communication", duration: "4 Years", department: "Engineering", slug: "btech-ece" },
-    { title: "B.Tech Mechanical Engineering", duration: "4 Years", department: "Engineering", slug: "btech-me" },
-    { title: "B.Tech Civil Engineering", duration: "4 Years", department: "Engineering", slug: "btech-civil" },
+    {
+      title: "B.Tech Computer Science Engineering",
+      duration: "4 Years",
+      department: "Engineering",
+      slug: "btech-computer-science-engineering",
+    },
+    {
+      title: "B.Tech Artificial Intelligence",
+      duration: "4 Years",
+      department: "Engineering",
+      slug: "btech-artificial-intelligence",
+    },
+    {
+      title: "B.Tech Electronics & Communication Engineering",
+      duration: "4 Years",
+      department: "Engineering",
+      slug: "btech-electronics-communication-engineering",
+    },
+    {
+      title: "B.Tech Mechanical Engineering",
+      duration: "4 Years",
+      department: "Engineering",
+      slug: "btech-mechanical-engineering",
+    },
+    {
+      title: "B.Tech Civil Engineering",
+      duration: "4 Years",
+      department: "Engineering",
+      slug: "btech-civil-engineering",
+    },
+    {
+      title: "M.Tech Computer Science Engineering",
+      duration: "2 Years",
+      department: "Engineering",
+      slug: "mtech-computer-science-engineering",
+    },
   ],
   management: [
-    { title: "MBA", duration: "2 Years", department: "Business Studies", slug: "mba" },
-    { title: "BBA", duration: "3 Years", department: "Business Studies", slug: "bba" },
-    { title: "B.Com Honours", duration: "3 Years", department: "Business Studies", slug: "bcom" },
+    {
+      title: "Master of Business Administration",
+      duration: "2 Years",
+      department: "Management",
+      slug: "master-of-business-administration",
+    },
+    {
+      title: "Bachelor of Business Administration",
+      duration: "3 Years",
+      department: "Management",
+      slug: "bachelor-of-business-administration",
+    },
+    {
+      title: "Masters of Commerce",
+      duration: "2 Years",
+      department: "Commerce",
+      slug: "masters-of-commerce",
+    },
   ],
   pharmacy: [
-    { title: "B.Pharm", duration: "4 Years", department: "Pharmacy", slug: "bpharm" },
-    { title: "Pharm.D", duration: "6 Years", department: "Pharmacy", slug: "pharmd" },
-    { title: "M.Pharm", duration: "2 Years", department: "Pharmacy", slug: "mpharm" },
+    {
+      title: "B.Pharmacy",
+      duration: "4 Years",
+      department: "Pharmacy",
+      slug: "bpharmacy",
+    },
+    {
+      title: "Pharma.D",
+      duration: "6 Years",
+      department: "Pharmacy",
+      slug: "pharmad",
+    },
+    {
+      title: "M.Pharmaceutics",
+      duration: "2 Years",
+      department: "Pharmacy",
+      slug: "mpharmaceutics",
+    },
   ],
   computer: [
-    { title: "BCA", duration: "3 Years", department: "Computer Applications", slug: "bca" },
-    { title: "MCA", duration: "2 Years", department: "Computer Applications", slug: "mca" },
-    { title: "B.Sc Information Technology", duration: "3 Years", department: "Computer Applications", slug: "bsc-it" },
+    {
+      title: "Bachelor of Computer Applications",
+      duration: "3 Years",
+      department: "Computer Applications",
+      slug: "bachelor-of-computer-applications",
+    },
+    {
+      title: "Master of Computer Applications",
+      duration: "2 Years",
+      department: "Computer Applications",
+      slug: "master-of-computer-applications",
+    },
+    {
+      title: "B.Sc Information Technology",
+      duration: "3 Years",
+      department: "Computer Applications",
+      slug: "bsc-information-technology",
+    },
   ],
   hospitality: [
-    { title: "BHMCT", duration: "4 Years", department: "Hotel Management", slug: "bhmct" },
-    { title: "B.Voc in Hospitality", duration: "3 Years", department: "Hotel Management", slug: "bvoc-hospitality" },
+    {
+      title: "Bachelor of Hotel Management & Catering Technology",
+      duration: "4 Years",
+      department: "Hotel Management",
+      slug: "bachelor-of-hotel-management-catering-technology",
+    },
+    {
+      title: "B.Voc (Hotel Management & Catering)",
+      duration: "3 Years",
+      department: "Hotel Management",
+      slug: "bvoc-hotel-management-catering",
+    },
   ],
   law: [
-    { title: "Bachelor of Law (LLB)", duration: "3 Years", department: "Law", slug: "llb" },
-    { title: "BA + LLB", duration: "5 Years", department: "Law", slug: "ba-llb" },
+    { title: "LLB", duration: "3 Years", department: "Law", slug: "llb" },
+    {
+      title: "B.A L.L.B",
+      duration: "5 Years",
+      department: "Law",
+      slug: "ba-llb",
+    },
   ],
   education: [
-    { title: "B.Ed", duration: "2 Years", department: "Education", slug: "bed" },
-    { title: "B.A.", duration: "3 Years", department: "Arts", slug: "ba" },
+    {
+      title: "Bachelor in Education",
+      duration: "2 Years",
+      department: "Education",
+      slug: "bachelor-in-education",
+    },
+    {
+      title: "Bachelor of Arts",
+      duration: "3 Years",
+      department: "Arts & Education",
+      slug: "bachelor-of-arts",
+    },
   ],
   paramedical: [
-    { title: "B.Sc Physiotherapy", duration: "4.5 Years", department: "Paramedical", slug: "bsc-physiotherapy" },
-    { title: "B.Sc Medical Laboratory Science", duration: "4 Years", department: "Paramedical", slug: "bsc-mls" },
-    { title: "B.Sc Radio Imaging Technology", duration: "4 Years", department: "Paramedical", slug: "bsc-rit" },
+    {
+      title: "Bachelor of Physiotherapy",
+      duration: "4.5 Years",
+      department: "Medical Sciences & Allied Health",
+      slug: "bachelor-of-physiotherapy",
+    },
+    {
+      title: "B.Sc Medical Lab Sciences",
+      duration: "3 Years",
+      department: "Medical Sciences & Allied Health",
+      slug: "bsc-medical-lab-sciences",
+    },
+    {
+      title: "B.Sc Radiology & Imaging Technology",
+      duration: "3 Years",
+      department: "Medical Sciences & Allied Health",
+      slug: "bsc-radiology-imaging-technology",
+    },
   ],
 };
 
@@ -56,9 +175,11 @@ export interface ProgramRecommendation {
   id: string;
   slug: string;
   title: string;
-  shortDescription: string;
+  shortDescription?: string | null;
   durationMonths: number;
-  tuitionCents: number;
+  tuitionCents: number | null;
+  department?: string | null;
+  level?: string | null;
 }
 
 type DisplayRecommendation = ProgramRecommendation & {
@@ -72,11 +193,15 @@ interface ResultsProps {
   onRestart: () => void;
 }
 
-function formatTuitionFromCents(tuitionCents: number) {
+function formatTuitionFromCents(tuitionCents: number | null) {
+  if (tuitionCents == null) {
+    return "Contact Admissions";
+  }
+
   const rupees = Math.round(tuitionCents / 100);
-  return new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
+  return new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
     maximumFractionDigits: 0,
   }).format(rupees);
 }
@@ -86,18 +211,24 @@ function formatDuration(durationMonths: number) {
   const months = durationMonths % 12;
 
   if (years > 0 && months > 0) {
-    return `${years} year${years > 1 ? 's' : ''} ${months} month${months > 1 ? 's' : ''}`;
+    return `${years} year${years > 1 ? "s" : ""} ${months} month${months > 1 ? "s" : ""}`;
   }
 
   if (years > 0) {
-    return `${years} year${years > 1 ? 's' : ''}`;
+    return `${years} year${years > 1 ? "s" : ""}`;
   }
 
   return `${durationMonths} months`;
 }
 
-export function Results({ selections, recommendations, onRestart }: ResultsProps) {
-  const fallbackRecommendations: DisplayRecommendation[] = (programMap[selections.interest ?? ""] ?? []).map((program, index) => ({
+export function Results({
+  selections,
+  recommendations,
+  onRestart,
+}: ResultsProps) {
+  const fallbackRecommendations: DisplayRecommendation[] = (
+    programMap[selections.interest ?? ""] ?? []
+  ).map((program, index) => ({
     id: `${program.slug}-${index}`,
     slug: program.slug,
     title: program.title,
@@ -108,10 +239,15 @@ export function Results({ selections, recommendations, onRestart }: ResultsProps
     department: program.department,
   }));
 
-  const displayRecommendations: DisplayRecommendation[] = recommendations.length > 0 ? recommendations : fallbackRecommendations;
+  const displayRecommendations: DisplayRecommendation[] =
+    recommendations.length > 0 ? recommendations : fallbackRecommendations;
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="min-h-screen bg-gray-50">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="min-h-screen bg-gray-50"
+    >
       <div className="border-b border-gray-200 bg-white">
         <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
           <motion.div
@@ -121,12 +257,17 @@ export function Results({ selections, recommendations, onRestart }: ResultsProps
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FF6A00]/10 border border-[#FF6A00]/30 mb-6">
               <TrendingUp className="w-4 h-4 text-[#FF6A00]" />
-              <span className="text-sm text-[#FF6A00] font-medium">Results Ready</span>
+              <span className="text-sm text-[#FF6A00] font-medium">
+                Results Ready
+              </span>
             </div>
 
-            <h1 className="text-2xl md:text-3xl font-light mb-4 text-gray-900">Your Recommended Programs</h1>
+            <h1 className="text-2xl md:text-3xl font-light mb-4 text-gray-900">
+              Your Recommended Programs
+            </h1>
             <p className="text-sm text-gray-600 max-w-2xl">
-              Based on your selections, we&apos;ve found {displayRecommendations.length} programs that match your goals.
+              Based on your selections, we&apos;ve found{" "}
+              {displayRecommendations.length} programs that match your goals.
             </p>
           </motion.div>
         </div>
@@ -139,10 +280,14 @@ export function Results({ selections, recommendations, onRestart }: ResultsProps
           transition={{ delay: 0.2 }}
           className="mb-12 p-6 rounded-2xl bg-[#FF6A00]/5 border border-[#FF6A00]/20"
         >
-          <h3 className="text-sm font-medium text-[#FF6A00] mb-2">WHY THESE PROGRAMS?</h3>
+          <h3 className="text-sm font-medium text-[#FF6A00] mb-2">
+            WHY THESE PROGRAMS?
+          </h3>
           <p className="text-gray-700">
-            Based on your interest in{' '}
-            <span className="text-[#FF6A00] font-medium capitalize">{selections.interest ?? 'your selected field'}</span>{' '}
+            Based on your interest in{" "}
+            <span className="text-[#FF6A00] font-medium capitalize">
+              {selections.interest ?? "your selected field"}
+            </span>{" "}
             and career goals, these recommendations offer the best fit.
           </p>
         </motion.div>
@@ -163,8 +308,13 @@ export function Results({ selections, recommendations, onRestart }: ResultsProps
               >
                 <div className="p-8">
                   <div className="mb-6">
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">{program.title}</h3>
-                    <p className="text-sm text-gray-600">{program.shortDescription}</p>
+                    <h3 className="text-lg font-medium text-gray-900 mb-2">
+                      {program.title}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      {program.shortDescription ??
+                        `${program.department ?? "Program"} program at SVGOI`}
+                    </p>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -172,7 +322,10 @@ export function Results({ selections, recommendations, onRestart }: ResultsProps
                       <Clock className="w-5 h-5 text-[#FF6A00] shrink-0 mt-1" />
                       <div>
                         <p className="text-sm text-gray-600">Duration</p>
-                        <p className="font-medium text-gray-900">{program.duration ?? formatDuration(program.durationMonths)}</p>
+                        <p className="font-medium text-gray-900">
+                          {program.duration ??
+                            formatDuration(program.durationMonths)}
+                        </p>
                       </div>
                     </div>
 
@@ -180,7 +333,12 @@ export function Results({ selections, recommendations, onRestart }: ResultsProps
                       <IndianRupee className="w-5 h-5 text-[#FF6A00] shrink-0 mt-1" />
                       <div>
                         <p className="text-sm text-gray-600">Fees</p>
-                        <p className="font-medium text-gray-900">{program.tuitionCents > 0 ? formatTuitionFromCents(program.tuitionCents) : 'Contact Admissions'}</p>
+                        <p className="font-medium text-gray-900">
+                          {program.tuitionCents != null &&
+                          program.tuitionCents > 0
+                            ? formatTuitionFromCents(program.tuitionCents)
+                            : "Contact Admissions"}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -204,6 +362,7 @@ export function Results({ selections, recommendations, onRestart }: ResultsProps
           className="mt-12 flex justify-center"
         >
           <button
+            type="button"
             onClick={onRestart}
             className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-xl border-2 border-gray-200 font-medium text-gray-900 hover:border-[#FF6A00] hover:text-[#FF6A00] transition-all"
           >

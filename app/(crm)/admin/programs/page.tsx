@@ -8,9 +8,9 @@ type ProgramListItem = {
   id: string;
   slug: string;
   title: string;
-  shortDescription: string;
+  shortDescription?: string | null;
   durationMonths: number;
-  tuitionCents: number;
+  tuitionCents: number | null;
   isActive?: boolean;
 };
 
@@ -188,10 +188,9 @@ export default function AdminProgramsPage() {
                             {program.durationMonths} months
                           </td>
                           <td className="whitespace-nowrap px-4 py-3 text-slate-700">
-                            ₹
-                            {(program.tuitionCents / 100).toLocaleString(
-                              "en-IN",
-                            )}
+                            {program.tuitionCents == null
+                              ? "Contact Admissions"
+                              : `₹${(program.tuitionCents / 100).toLocaleString("en-IN")}`}
                           </td>
                           <td className="whitespace-nowrap px-4 py-3">
                             <span

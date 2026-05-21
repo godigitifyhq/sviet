@@ -11,9 +11,7 @@ import {
   type GalleryItem,
 } from "./gallery-data";
 
-function shouldBypassOptimization(src: string) {
-  return src.includes(".ufs.sh/");
-}
+import { shouldBypassOptimization } from "@/lib/image-utils";
 
 function getItemByTitle(title: string) {
   const item = galleryItems.find((entry) => entry.title === title);

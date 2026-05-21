@@ -59,7 +59,82 @@ export function ClubsCommunitiesSection() {
           </Link>
         </div>
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        {/* UNIQUES & Super60 — two feature cards */}
+        <div className="mt-10 grid gap-5 sm:grid-cols-2">
+          {/* UNIQUES */}
+          <div className="flex flex-col overflow-hidden rounded-2xl border border-[#e0e7ff] bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
+            <div className="relative h-72 overflow-hidden md:h-80">
+              <Image
+                src="/assets/img/college/lab.jpeg"
+                alt="The Uniques — lab"
+                fill
+                sizes="(max-width: 640px) 100vw, 50vw"
+                className="object-cover transition duration-500 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
+              <div className="absolute bottom-4 left-5">
+                <Image
+                  src="/assets/img/uniques_logo.png"
+                  alt="The Uniques logo"
+                  width={120}
+                  height={48}
+                  className="object-contain brightness-0 invert"
+                />
+              </div>
+            </div>
+            <div className="border-t border-[#e0e7ff] p-6">
+              <h3 className="text-lg font-bold leading-snug text-[#111827]">
+                The Uniques Community
+              </h3>
+              <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-[#1d4ed8]">
+                Learn, Build, and Grow Together
+              </p>
+              <p className="mt-2.5 text-sm leading-relaxed text-[#6b7280]">
+                A community where everyone is welcome. We help students bridge
+                the gap between theory and practice through peer-to-peer
+                learning, workshops, study jams, and building solutions for
+                local businesses.
+              </p>
+           
+            </div>
+          </div>
+
+          {/* Super60 */}
+          <div className="flex flex-col overflow-hidden rounded-2xl border border-[#e0e7ff] bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
+            <div className="relative h-72 overflow-hidden md:h-80">
+              <Image
+                src="/assets/img/s60.jpg"
+                alt="Super60 batch"
+                fill
+                sizes="(max-width: 640px) 100vw, 50vw"
+                className="object-cover object-top transition duration-500 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
+              <div className="absolute bottom-4 left-5">
+                <Image
+                  src="/assets/img/s60.png"
+                  alt="Super60 logo"
+                  width={120}
+                  height={48}
+                  className="object-contain"
+                />
+              </div>
+            </div>
+            <div className="border-t border-[#e0e7ff] p-6">
+              <h3 className="text-lg font-bold leading-snug text-[#111827]">
+                Super60 — Elite CSE Batch
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-[#6b7280]">
+                30–60 first-year CSE students selected annually for enriched
+                learning — reasoning, quant, communication, personality
+                development, and cutting-edge tech — guaranteeing 100% campus
+                placement.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {CLUBS.map((club) => (
             <div
               key={club.name}

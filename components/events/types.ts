@@ -1,29 +1,41 @@
 export type EventSpeaker = {
-  id: number;
-  image?: string;
+  id: string;
   name: string;
-  company?: string;
-  designation?: string;
-  bio?: string;
+  photo?: string | null;
+  company?: string | null;
+  designation?: string | null;
+  bio?: string | null;
+  linkedin?: string | null;
+  twitter?: string | null;
+  displayOrder: number;
 };
 
 export type EventRecord = {
-  id: number;
-  name: string;
-  headerImage?: string;
-  logo?: string;
-  date?: string;
-  venue?: string;
-  overview?: string;
-  photogallery?: string;
-  speakers?: EventSpeaker[];
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  venue?: string | null;
+  images: string[];
+  driveGalleryUrl?: string | null;
+  startDate: string;
+  endDate?: string | null;
+  category: string;
+  isFeatured: boolean;
+  speakers: EventSpeaker[];
 };
 
 export type EventCard = {
-  id: number;
+  id: string;
+  slug: string;
   title: string;
   image: string;
   date: string;
   venue: string;
   overview: string;
+  category: string;
+  isFeatured: boolean;
+  images: string[];
+  speakers: EventSpeaker[];
 };

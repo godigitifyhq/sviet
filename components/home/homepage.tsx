@@ -3,7 +3,7 @@ import { ExperiencesSection } from "@/components/home/experiences";
 import { HeroSection } from "@/components/home/hero";
 import { DistinguishedLeadersSection } from "@/components/home/leaders";
 import { PivotEducationSection } from "@/components/home/pivot-education";
-import { CurriculumOpportunitiesSection } from "@/components/home/curriculum-opportunities";
+import { NationalLevelEventsSection } from "@/components/home/national-level-events-section";
 import { ResearchInnovationsSection } from "@/components/home/research-innovations";
 import { OngoingResearchProjectsSection } from "@/components/home/ongoing-research-projects";
 import { EntrepreneurshipSection } from "@/components/home/entrepreneurship";
@@ -14,6 +14,7 @@ import { ClubsCommunitiesSection } from "@/components/home/clubs-communities-sec
 import { YouTubeChannelSection } from "@/components/home/youtube-channel-section";
 import { StudentTestimonialsSection } from "@/components/home/testimonials";
 import { FloatingApplyNow } from "@/components/home/floating-apply-now";
+import { HomepageEventsSection } from "@/components/home/homepage-events-section";
 
 export function HomePage() {
   return (
@@ -26,7 +27,7 @@ export function HomePage() {
       <PlacementStatsSection />
       {/* <CorporateCollaborationSection /> */}
       <MOUImpactSection />
-      <CurriculumOpportunitiesSection />
+      <NationalLevelEventsSection />
       <DistinguishedLeadersSection />
       <ResearchInnovationsSection />
       <OngoingResearchProjectsSection />

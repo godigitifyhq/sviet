@@ -615,10 +615,7 @@ export const YEARLY_PLACEMENT_TRENDS = [
   });
 
 export const PLACEMENT_KEY_STATS = [
-  {
-    value: String(PLACEMENT_RECORDS.length),
-    label: "Student Placements",
-  },
+  
   {
     value: "60 LPA",
     label: "Highest Package",
@@ -626,12 +623,6 @@ export const PLACEMENT_KEY_STATS = [
   {
     value: "2,200+",
     label: "Recruiting Companies",
-  },
-  {
-    value: String(
-      new Set(PLACEMENT_RECORDS.map((placement) => placement.year)).size,
-    ),
-    label: "Batches Represented",
   },
 ] as const;
 

@@ -28,6 +28,26 @@ function detectLevel(title: string) {
   return "Undergraduate";
 }
 
+function formatLevel(level?: string | null, title?: string) {
+  if (level === "PG") {
+    return "Postgraduate";
+  }
+
+  if (level === "UG") {
+    return "Undergraduate";
+  }
+
+  if (level === "DIPLOMA") {
+    return "Diploma";
+  }
+
+  if (level === "VOCATIONAL") {
+    return "Vocational";
+  }
+
+  return detectLevel(title ?? "");
+}
+
 function cardSummary(program: ProgramOption) {
   return (
     program.eligibility ||
@@ -46,7 +66,7 @@ export function AdmissionsCareerProgramsSection({
 
   const levels = useMemo(() => {
     const values = new Set(
-      programs.map((program) => detectLevel(program.title)),
+      programs.map((program) => formatLevel(program.level, program.title)),
     );
     return ["All levels", ...Array.from(values)];
   }, [programs]);
@@ -74,7 +94,7 @@ export function AdmissionsCareerProgramsSection({
 
       const matchesLevel =
         selectedLevel === "All levels" ||
-        detectLevel(program.title) === selectedLevel;
+        formatLevel(program.level, program.title) === selectedLevel;
       const matchesFaculty =
         selectedFaculty === "All faculties" ||
         (program.department || "Unassigned").trim() === selectedFaculty;

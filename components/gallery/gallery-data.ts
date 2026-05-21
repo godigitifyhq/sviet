@@ -35,7 +35,7 @@ export const galleryItems: GalleryItem[] = [
     id: 1,
     title: "Main Campus Gate",
     category: "Campus",
-    src: "/assets/img/college/main_gate.png",
+    src: "/assets/img/maingate.jpg",
     alt: "SVGOI main campus gate",
     caption: "The primary campus entrance and arrival point.",
     aspectClass: "aspect-[4/5]",

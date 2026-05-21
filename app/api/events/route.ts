@@ -10,6 +10,15 @@ import {
   listEventsQuerySchema,
 } from "@/validators/admin-events";
 
+function toSlug(title: string) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+}
+
 export async function GET(request: NextRequest) {
   return withApiHandler(async () => {
     const user = await requireAuthUser(request);
@@ -22,6 +31,7 @@ export async function GET(request: NextRequest) {
       where: category ? { category } : undefined,
       orderBy: [{ startDate: "desc" }, { createdAt: "desc" }],
       take,
+      include: { speakers: { orderBy: { displayOrder: "asc" } } },
     });
 
     return events.map((event) => ({
@@ -37,17 +47,43 @@ export async function POST(request: NextRequest) {
     assertHasRole(user.role, ["ADMIN", "SUPER_ADMIN"]);
 
     const payload = createEventSchema.parse(await request.json());
+    const slug = payload.slug ?? toSlug(payload.title);
 
-    return prisma.event.create({
+    const event = await prisma.event.create({
       data: {
+        slug,
         title: payload.title,
         description: payload.description,
         image: payload.image,
+        venue: payload.venue ?? null,
+        images: payload.images ?? [],
+        driveGalleryUrl: payload.driveGalleryUrl ?? null,
         startDate: new Date(payload.startDate),
         endDate: payload.endDate ? new Date(payload.endDate) : null,
         category: payload.category,
         isFeatured: payload.isFeatured ?? false,
       },
+    });
+
+    if (payload.speakers && payload.speakers.length > 0) {
+      await prisma.eventSpeaker.createMany({
+        data: payload.speakers.map((s) => ({
+          eventId: event.id,
+          name: s.name,
+          photo: s.photo ?? null,
+          bio: s.bio ?? null,
+          company: s.company ?? null,
+          designation: s.designation ?? null,
+          linkedin: s.linkedin ?? null,
+          twitter: s.twitter ?? null,
+          displayOrder: s.displayOrder ?? 0,
+        })),
+      });
+    }
+
+    return prisma.event.findUnique({
+      where: { id: event.id },
+      include: { speakers: { orderBy: { displayOrder: "asc" } } },
     });
   });
 }

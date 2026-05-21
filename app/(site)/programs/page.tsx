@@ -14,7 +14,11 @@ function formatDuration(durationMonths: number) {
   return `${Number.isInteger(years) ? years : years.toFixed(1)} Years`;
 }
 
-function formatFeesPerYear(tuitionCents: number) {
+function formatFeesPerYear(tuitionCents: number | null) {
+  if (tuitionCents == null) {
+    return "Contact Admissions";
+  }
+
   const annualRupees = tuitionCents / 100;
   const annualLakhs = annualRupees / 100000;
   return `₹${annualLakhs.toFixed(1)} Lakh/year`;
@@ -37,10 +41,11 @@ export default async function ProgramsPage() {
     id: string;
     slug: string;
     title: string;
-    shortDescription: string;
+    shortDescription: string | null;
     department: string | null;
+    level: string | null;
     durationMonths: number;
-    tuitionCents: number;
+    tuitionCents: number | null;
     mode: string | null;
     isFeatured: boolean;
   };
@@ -48,7 +53,7 @@ export default async function ProgramsPage() {
   let error: string | null = null;
 
   try {
-    programs = await prisma.program.findMany({
+    const rawPrograms = await prisma.program.findMany({
       where: { isActive: true },
       orderBy: [{ isFeatured: "desc" }, { title: "asc" }],
       select: {
@@ -56,13 +61,23 @@ export default async function ProgramsPage() {
         slug: true,
         title: true,
         shortDescription: true,
-        department: true,
+        level: true,
+        department: {
+          select: {
+            name: true,
+          },
+        },
         durationMonths: true,
         tuitionCents: true,
         mode: true,
         isFeatured: true,
       },
     });
+
+    programs = rawPrograms.map((program) => ({
+      ...program,
+      department: program.department?.name ?? null,
+    }));
   } catch (err) {
     console.warn("Failed to load programs from database:", err);
     error = "Unable to load programs at this time.";
@@ -100,7 +115,7 @@ export default async function ProgramsPage() {
                     {program.department ?? "SVGOI Program"}
                   </span>
                   <span className="rounded-full bg-slate-100 px-3 py-1 text-sm font-semibold text-slate-700">
-                    {formatMode(program.mode)}
+                    {program.level ?? formatMode(program.mode)}
                   </span>
                 </div>
 
@@ -108,7 +123,8 @@ export default async function ProgramsPage() {
                   {program.title}
                 </h3>
                 <p className="mt-3 text-sm text-slate-600">
-                  {program.shortDescription}
+                  {program.shortDescription ??
+                    "Details available on the program page."}
                 </p>
 
                 <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
@@ -165,7 +181,7 @@ export default async function ProgramsPage() {
                     {program.department ?? "SVGOI Program"}
                   </span>
                   <span className="rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-700">
-                    {formatMode(program.mode)}
+                    {program.level ?? formatMode(program.mode)}
                   </span>
                 </div>
 
@@ -173,7 +189,8 @@ export default async function ProgramsPage() {
                   {program.title}
                 </h3>
                 <p className="mt-2 text-sm text-slate-600">
-                  {program.shortDescription}
+                  {program.shortDescription ??
+                    "Details available on the program page."}
                 </p>
 
                 <div className="mt-4 grid grid-cols-2 gap-3 text-sm text-slate-700">

@@ -55,13 +55,6 @@ const OTHER_APPROVALS = [
     logoAlt: "NCTE approval logo",
   },
   {
-    title: "Pharmacy Council Standards",
-    description:
-      "Academic delivery and laboratory infrastructure are benchmarked against pharmacy council guidelines.",
-    logoSrc: "https://pci.gov.in/static/images/PCI_logo_1.png",
-    logoAlt: "Pharmacy council logo",
-  },
-  {
     title: "Bar Council Framework",
     description:
       "Legal education offerings are aligned to professional standards for law and applied legal studies.",
@@ -109,7 +102,19 @@ const MEMBERSHIPS = [
   },
 ];
 
+const AP_LOGO_MARQUEE = [
+  { src: "/assets/img/ap_logs/NAAC.png", alt: "NAAC logo" },
+  { src: "/assets/img/ap_logs/pci.png", alt: "Pharmacy Council of India logo" },
+  { src: "/assets/img/ap_logs/bci.png", alt: "Bar Council of India logo" },
+  { src: "/assets/img/ap_logs/iste.jpg", alt: "ISTE logo" },
+  { src: "/assets/img/ap_logs/1.png", alt: "Approval logo one" },
+  { src: "/assets/img/ap_logs/4.png", alt: "Approval logo four" },
+  { src: "/assets/img/ap_logs/8.png", alt: "Approval logo eight" },
+] as const;
+
 export function AccreditationsPage() {
+  const marqueeLogos = [...AP_LOGO_MARQUEE, ...AP_LOGO_MARQUEE];
+
   return (
     <main className="bg-white">
       <SectionWrapper
@@ -131,16 +136,28 @@ export function AccreditationsPage() {
             systems, regulatory compliance, and sustained excellence.
           </p>
         </div>
-        <div className="relative mx-auto w-full max-w-7xl overflow-hidden border border-[#E5E7EB] bg-white">
-          <div className="relative aspect-2048/878 w-full">
-            <Image
-              src="/assets/img/banner/accred.jpeg"
-              alt="Accredited and approved banner highlighting NAAC B++ and AICTE approved recognitions"
-              fill
-              priority
-              sizes="(max-width: 1280px) 100vw, 1280px"
-              className="object-contain"
-            />
+        <div
+          className="corporate-marquee-shell mx-auto w-full max-w-7xl bg-transparent py-2"
+          aria-label="Accreditation and approval logos"
+        >
+          <div className="corporate-marquee overflow-hidden">
+            <div className="corporate-marquee-track items-center gap-6 md:gap-8">
+              {marqueeLogos.map((logo, index) => (
+                <div
+                  key={`${logo.src}-${index}`}
+                  className="relative h-14 w-28 flex-none md:h-36 md:w-46"
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 768px) 112px, 144px"
+                    className="object-contain"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </SectionWrapper>
@@ -155,7 +172,7 @@ export function AccreditationsPage() {
               SVGOI Accreditation Status
             </h2>
             <p className="mt-4 text-lg font-semibold text-[#111827]">
-              NAAC Accredited with B++ Grade (2.94 Score, 2024)
+              NAAC Accredited
             </p>
             <p className="mt-4 text-base leading-relaxed text-[#6B7280]">
               The accreditation reflects sustained institutional commitment to

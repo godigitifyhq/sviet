@@ -174,7 +174,7 @@ export type ProgramFinderSubmissionGroupByOutputType = {
   _max: ProgramFinderSubmissionMaxAggregateOutputType | null
 }
 
-type GetProgramFinderSubmissionGroupByPayload<T extends ProgramFinderSubmissionGroupByArgs> = Prisma.PrismaPromise<
+export type GetProgramFinderSubmissionGroupByPayload<T extends ProgramFinderSubmissionGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ProgramFinderSubmissionGroupByOutputType, T['by']> &
       {

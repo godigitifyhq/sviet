@@ -148,6 +148,18 @@ export const ContentStatus = {
 export type ContentStatus = (typeof ContentStatus)[keyof typeof ContentStatus]
 
 
+export const CourseLevel = {
+  UG: 'UG',
+  PG: 'PG',
+  DIPLOMA: 'DIPLOMA',
+  VOCATIONAL: 'VOCATIONAL',
+  PROFESSIONAL: 'PROFESSIONAL',
+  CERTIFICATE: 'CERTIFICATE'
+} as const
+
+export type CourseLevel = (typeof CourseLevel)[keyof typeof CourseLevel]
+
+
 export const AnnouncementLevel = {
   INFO: 'INFO',
   SUCCESS: 'SUCCESS',

@@ -6,10 +6,11 @@ export const runtime = "edge";
 
 type ProgramSummary = {
   title: string;
-  shortDescription: string;
+  shortDescription: string | null;
   durationMonths: number;
-  tuitionCents: number;
+  tuitionCents: number | null;
   department?: string | null;
+  level?: string | null;
   eligibility?: string | null;
 };
 
@@ -28,12 +29,13 @@ async function loadProgramContext(req: NextRequest) {
       data?: ProgramSummary[];
     };
 
-    const programs = payload.success && Array.isArray(payload.data) ? payload.data : [];
+    const programs =
+      payload.success && Array.isArray(payload.data) ? payload.data : [];
 
     return programs
       .map(
         (program) =>
-          `- ${program.title} (${program.department ?? "Department TBA"}, ${program.durationMonths / 12} years, ₹${(program.tuitionCents / 100000).toFixed(0)} Lakh): ${program.shortDescription}. Eligibility: ${program.eligibility || "Contact admissions"}`,
+          `- ${program.title} (${program.department ?? "Department TBA"}, ${program.level ?? "Level TBA"}, ${program.durationMonths / 12} years, ${program.tuitionCents ? `₹${(program.tuitionCents / 100000).toFixed(0)} Lakh` : "Contact admissions"}): ${program.shortDescription ?? "Details available on the program page"}. Eligibility: ${program.eligibility || "Contact admissions"}`,
       )
       .join("\n");
   } catch {

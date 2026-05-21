@@ -5,7 +5,9 @@ import { prisma } from "@/lib/prisma";
 import { rateLimit } from "@/lib/rate-limit";
 import { ProgramFinderSchema } from "@/validators/leads";
 
-function withPublicApiHandler(handler: (req: NextRequest) => Promise<Response>) {
+function withPublicApiHandler(
+  handler: (req: NextRequest) => Promise<Response>,
+) {
   const wrapped = withApiHandler as unknown as (
     handler: () => Promise<Response>,
     options: { isPublic: boolean },
@@ -46,12 +48,27 @@ export const POST = withPublicApiHandler(async (req: NextRequest) => {
       slug: true,
       title: true,
       shortDescription: true,
+      department: {
+        select: {
+          name: true,
+        },
+      },
+      level: true,
       durationMonths: true,
       tuitionCents: true,
     },
   });
 
-  const recommended = allPrograms.slice(0, 3);
+  const recommended = allPrograms.slice(0, 3).map((program) => ({
+    id: program.id,
+    slug: program.slug,
+    title: program.title,
+    shortDescription: program.shortDescription,
+    department: program.department?.name ?? null,
+    level: program.level,
+    durationMonths: program.durationMonths,
+    tuitionCents: program.tuitionCents,
+  }));
 
   const lead = await prisma.$transaction(async (tx) => {
     const created = await tx.lead.create({

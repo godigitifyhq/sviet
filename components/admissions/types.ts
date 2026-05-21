@@ -4,6 +4,10 @@ export type ProgramOption = {
   title: string;
   shortDescription?: string | null;
   department?: string | null;
+  departmentSlug?: string | null;
+  specialization?: string | null;
+  specializationSlug?: string | null;
+  level?: string | null;
   eligibility?: string | null;
   mode?: string | null;
   durationMonths?: number | null;

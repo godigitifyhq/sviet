@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowUpRight,
   Award,
@@ -10,6 +11,10 @@ import {
 import type { Leader } from "@/components/about/leader-card";
 import { AboutHeroVideoBackground } from "@/components/about/about-hero-video-background";
 import { InfoCard } from "@/components/about/info-card";
+import {
+  InstitutionsCoursesSection,
+  type InstitutionCoursesData,
+} from "@/components/about/institutions-courses-section";
 import { LeadershipCarousel } from "@/components/about/leadership-carousel";
 import { SectionHeader } from "@/components/about/section-header";
 import { SectionWrapper } from "@/components/about/section-wrapper";
@@ -192,9 +197,9 @@ const LEADERSHIP_DESK: Leader[] = [
     name: "Mr. Ankur Gill",
     title: "Director Operations",
     description:
-      "As the Director of Operations at Swami Vivekanand Institute of Engineering and Technology, I am deeply committed to excellence, innovation, and growth.",
+      "As the Director of Operations at SVGOI, I am deeply committed to excellence, innovation, and growth.",
     messageParagraphs: [
-      "As the Director of Operations at Swami Vivekanand Institute of Engineering and Technology, I am deeply committed to fostering an environment of excellence, innovation, and growth within our institution.",
+      "As the Director of Operations at SVGOI, I am deeply committed to fostering an environment of excellence, innovation, and growth within our institution.",
       "With a focus on providing top-notch education and opportunities for our students, I am honored to collaborate with such dedicated professionals who share a passion for academic advancement and student success.",
       "Our mission is to empower students with knowledge, skills, and values to thrive in an ever-evolving world. We strive to create an ecosystem where creativity flourishes, ideas are nurtured, and aspirations are realized.",
       "I am confident that with unwavering support and dedication, the institute will continue to reach new heights of success and distinction.",
@@ -220,32 +225,100 @@ const CULTURE_STATS = [
 
 const INFRASTRUCTURE = [
   {
-    title: "Research Centres",
+    title: "Administrative Block",
     description:
-      "Spaces dedicated to innovation, experimentation, and interdisciplinary collaboration that encourage students to explore ideas beyond curriculum boundaries.",
-    imageSrc: "/assets/img/section_card/ResearchCenter.jpeg",
-    imageAlt: "Research centres for experimentation and applied learning",
+      "The main academic and administrative core that anchors campus operations and student support.",
+    imageSrc: "/assets/img/infrastructure/buildings/admin.jpg",
+    imageAlt: "Administrative block at SVGOI",
+    spanClassName: "xl:col-span-5 xl:row-span-2",
   },
   {
-    title: "Library",
+    title: "Academic Auditorium",
     description:
-      "A structured learning environment with access to academic resources, references, and digital tools for focused study and research.",
-    imageSrc: "/assets/img/section_card/Library.jpeg",
-    imageAlt: "Library and study resources for focused academic work",
+      "A shared venue for lectures, seminars, cultural events, and institution-wide gatherings.",
+    imageSrc: "/assets/img/infrastructure/buildings/audi.jpg",
+    imageAlt: "Academic auditorium at SVGOI",
+    spanClassName: "xl:col-span-4 xl:row-span-1",
   },
   {
-    title: "Laboratories",
+    title: "Campus Canteen",
     description:
-      "Program-specific labs equipped for practical learning, enabling students to build hands-on technical capabilities.",
-    imageSrc: "/assets/img/section_card/Labo.jpeg",
-    imageAlt: "Program-specific technical laboratories at SVGOI",
+      "A lively social space where students and staff connect between classes and activities.",
+    imageSrc: "/assets/img/infrastructure/buildings/canteen.jpg",
+    imageAlt: "Campus canteen at SVGOI",
+    spanClassName: "xl:col-span-3 xl:row-span-1",
   },
   {
-    title: "Playgrounds & Sports Facilities",
+    title: "Civil Labs",
     description:
-      "Open spaces and sports infrastructure that promote physical activity, teamwork, and a balanced campus lifestyle.",
-    imageSrc: "/assets/img/section_card/Playground.jpeg",
-    imageAlt: "Sports facilities promoting teamwork and well-being",
+      "Hands-on spaces where students learn by testing, building, and observing practical outcomes.",
+    imageSrc: "/assets/img/infrastructure/buildings/civil labs.jpg",
+    imageAlt: "Civil engineering laboratory facilities",
+    spanClassName: "xl:col-span-4 xl:row-span-1",
+  },
+  {
+    title: "Corporate Connect Space",
+    description:
+      "A professional setting for industry interactions, placement activity, and collaborative meetings.",
+    imageSrc: "/assets/img/infrastructure/buildings/coorporate_in_campus.jpg",
+    imageAlt: "Corporate interaction space inside campus",
+    spanClassName: "xl:col-span-5 xl:row-span-2",
+  },
+  {
+    title: "Computer Science Block",
+    description:
+      "Technology-focused learning spaces built to support programming, labs, and project work.",
+    imageSrc: "/assets/img/infrastructure/buildings/cse.jpg",
+    imageAlt: "Computer science block at SVGOI",
+    spanClassName: "xl:col-span-3 xl:row-span-1",
+  },
+  {
+    title: "Hostel",
+    description:
+      "Residential infrastructure designed to support a comfortable and disciplined student life.",
+    imageSrc: "/assets/img/infrastructure/buildings/hostel.jpg",
+    imageAlt: "Student hostel at SVGOI",
+    spanClassName: "xl:col-span-4 xl:row-span-1",
+  },
+  {
+    title: "Mechanical Engineering Block",
+    description:
+      "Specialised academic infrastructure supporting design, fabrication, and practical engineering learning.",
+    imageSrc: "/assets/img/infrastructure/buildings/mechanical_eng.jpg",
+    imageAlt: "Mechanical engineering block at SVGOI",
+    spanClassName: "xl:col-span-4 xl:row-span-2",
+  },
+  {
+    title: "Pharmacy Block",
+    description:
+      "A dedicated environment for pharmacy instruction, labs, and discipline-specific study.",
+    imageSrc: "/assets/img/infrastructure/buildings/pharmacy_block.jpg",
+    imageAlt: "Pharmacy block at SVGOI",
+    spanClassName: "xl:col-span-3 xl:row-span-1",
+  },
+  {
+    title: "Innovation Lab",
+    description:
+      "A maker-style learning space for experimentation, group work, and practical discovery.",
+    imageSrc: "/assets/img/infrastructure/labs/the_unique.jpg",
+    imageAlt: "Innovation lab at SVGOI",
+    spanClassName: "xl:col-span-5 xl:row-span-1",
+  },
+  {
+    title: "Smart Lab",
+    description:
+      "A technical lab setup that supports applied learning, project builds, and skill development.",
+    imageSrc: "/assets/img/infrastructure/labs/lab2.jpg",
+    imageAlt: "Smart laboratory at SVGOI",
+    spanClassName: "xl:col-span-4 xl:row-span-1",
+  },
+  {
+    title: "Practical Lab",
+    description:
+      "Another hands-on learning environment supporting demonstrations and focused practice.",
+    imageSrc: "/assets/img/infrastructure/labs/1.JPG",
+    imageAlt: "Practical laboratory at SVGOI",
+    spanClassName: "xl:col-span-3 xl:row-span-2",
   },
 ];
 
@@ -325,7 +398,11 @@ function PhilosophyTimeline({ points }: { points: PhilosophyPoint[] }) {
   );
 }
 
-export function AboutOverviewPage() {
+export function AboutOverviewPage({
+  institutions,
+}: {
+  institutions: InstitutionCoursesData[];
+}) {
   return (
     <main className="bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] text-[#111827]">
       <section
@@ -498,7 +575,7 @@ export function AboutOverviewPage() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {[
             {
-              heading: "NAAC B++ Accredited",
+              heading: "NAAC Accredited",
               body: "Recognised with a 2.94 NAAC score (2024) — a benchmark of academic quality and institutional standards.",
             },
             {
@@ -600,6 +677,13 @@ export function AboutOverviewPage() {
       </SectionWrapper>
 
       <SectionWrapper
+        aria-labelledby="institutions-programs-heading"
+        className="bg-[#F5F7FB]"
+      >
+        <InstitutionsCoursesSection institutions={institutions} />
+      </SectionWrapper>
+
+      <SectionWrapper
         aria-labelledby="culture-diversity-heading"
         className="bg-[#F8FAFF]"
       >
@@ -644,17 +728,92 @@ export function AboutOverviewPage() {
           titleClassName="text-[#000000]"
         />
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {INFRASTRUCTURE.map((item) => (
-            <InfoCard
-              key={item.title}
-              title={item.title}
-              description={item.description}
-              imageSrc={item.imageSrc}
-              imageAlt={item.imageAlt}
-            />
-          ))}
+        <div className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
+          <article className="group relative overflow-hidden border border-[#E5E7EB] bg-white shadow-[0_10px_28px_rgba(30,42,120,0.08)] lg:min-h-136">
+            <div className="relative min-h-96 lg:h-full">
+              <Image
+                src={INFRASTRUCTURE[0].imageSrc}
+                alt={INFRASTRUCTURE[0].imageAlt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="object-cover transition duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/25 to-transparent" />
+            </div>
+
+            <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 text-white">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/80">
+                Campus Infrastructure
+              </p>
+              <h3 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">
+                {INFRASTRUCTURE[0].title}
+              </h3>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/90 md:text-base">
+                {INFRASTRUCTURE[0].description}
+              </p>
+            </div>
+          </article>
+
+          <div className="grid gap-5">
+            {INFRASTRUCTURE.slice(1, 3).map((item) => (
+              <article
+                key={item.title}
+                className="group relative overflow-hidden border border-[#E5E7EB] bg-white shadow-[0_10px_28px_rgba(30,42,120,0.08)] lg:min-h-65.5"
+              >
+                <div className="relative min-h-64">
+                  <Image
+                    src={item.imageSrc}
+                    alt={item.imageAlt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/78 via-black/20 to-transparent" />
+                </div>
+
+                <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
+                    {item.title}
+                  </p>
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-white/85">
+                    {item.description}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
+
+        {INFRASTRUCTURE.length > 3 ? (
+          <div className="mt-5 grid grid-flow-dense gap-5 sm:grid-cols-2 xl:grid-cols-12 xl:auto-rows-[180px]">
+            {INFRASTRUCTURE.slice(3).map((item) => (
+              <article
+                key={item.title}
+                className={`group relative overflow-hidden border border-[#E5E7EB] bg-white shadow-[0_10px_28px_rgba(30,42,120,0.08)] ${item.spanClassName ?? ""}`}
+              >
+                <div className="relative min-h-64 h-full">
+                  <Image
+                    src={item.imageSrc}
+                    alt={item.imageAlt}
+                    fill
+                    sizes="(max-width: 1280px) 100vw, 33vw"
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/78 via-black/20 to-transparent" />
+                </div>
+
+                <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
+                    {item.title}
+                  </p>
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-white/85">
+                    {item.description}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : null}
       </SectionWrapper>
     </main>
   );

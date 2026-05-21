@@ -32,9 +32,9 @@ const FEATURED: Tile[] = [
     id: "iste-chapter",
     title: "Best ISTE Faculty Chapter",
     subtitle: "National ISTE recognition",
-    src: "/assets/img/awards/ISTE Best Faculty Chapter Award – SVGOI 2025.jpg",
+    src: "/assets/img/awards/ISTE Best Faculty Chapter Award – SVIET 2025.jpg",
     type: "image",
-    href: "/assets/img/awards/ISTE Best Faculty Chapter Award – SVGOI 2025.jpg",
+    href: "/assets/img/awards/ISTE Best Faculty Chapter Award – SVIET 2025.jpg",
   },
   {
     id: "csr-ranking",

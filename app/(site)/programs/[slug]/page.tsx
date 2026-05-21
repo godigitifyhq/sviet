@@ -337,6 +337,106 @@ function normalizeFaqItems(value: unknown) {
   return parseFaqEntries(value);
 }
 
+const PROGRAM_HERO_IMAGES: Record<string, string> = {
+  // Pharmacy
+  bpharmacy: "/assets/programs/pharmacy/pharm/Bpharma.jpg",
+  pharmad: "/assets/programs/pharmacy/pharmD/pharmd.jpg",
+  "mpharmacy-pharmaceutics": "/assets/programs/pharmacy/Mpharma/Mpharma.jpg",
+  "mpharmacy-pharmacology": "/assets/programs/pharmacy/Mpharma/Mpharma.jpg",
+  // Diploma
+  "diploma-in-pharmacy": "/assets/programs/pharmacy/diploma/Diploma.jpg",
+  "diploma-in-mechanical-engineering": "/assets/programs/diploma/me/me.jpg",
+  "diploma-in-civil-engineering":
+    "/assets/programs/diploma/civil/civilheader.jpg",
+  "diploma-in-electrical-engineering": "/assets/programs/diploma/ee/ee.jpg",
+  "diploma-computer-science-engineering":
+    "/assets/programs/diploma/cse/cse.jpg",
+  "diploma-in-medical-lab-technology":
+    "/assets/programs/paramedical/DMLT/header.avif",
+  // B.Tech
+  "btech-civil-engineering": "/assets/programs/BTech/civil/CivilHeader.jpg",
+  "btech-computer-science-engineering":
+    "/assets/programs/BTech/cse/CSEheader.jpg",
+  "btech-electrical-engineering": "/assets/programs/BTech/ee/EEheader.jpg",
+  "btech-electronics-communication-engineering":
+    "/assets/programs/BTech/ece/Header.jpg",
+  "btech-mechanical-engineering": "/assets/programs/BTech/me/MEheader.jpg",
+  "btech-artificial-intelligence": "/assets/programs/BTech/cse/CSEheader.jpg",
+  // M.Tech
+  "mtech-computer-science-engineering": "/assets/programs/MTech/cse/Header.jpg",
+  "mtech-mechanical-engineering": "/assets/programs/BTech/me/MEheader.jpg",
+  "mtech-electronics-communication-engineering":
+    "/assets/programs/MTech/ee/Header.jpg",
+  "mtech-civil-engineering": "/assets/programs/MTech/civil/header.avif",
+  // Computer Applications
+  "master-of-computer-applications":
+    "/assets/programs/ComputerApp/MCA/software.avif",
+  "bachelor-of-computer-applications":
+    "/assets/programs/ComputerApp/BCA/data.jpg",
+  "post-graduate-diploma-in-computer-application":
+    "/assets/programs/ComputerApp/pgdca/programmer.avif",
+  "bsc-information-technology":
+    "/assets/programs/ComputerApp/BscIt/software.jpg",
+  "bachelor-of-arts-computer-science":
+    "/assets/programs/Education/Arts/tech.avif",
+  // Management
+  "master-of-business-administration": "/assets/programs/Business/MBA/mba.jpg",
+  "bachelor-of-business-administration":
+    "/assets/programs/Business/BBA/bbaHeader.jpg",
+  // Commerce
+  "master-of-commerce": "/assets/programs/Business/commerce/mcom.jpg",
+  "bachelor-of-commerce": "/assets/programs/Business/commerce/commerce.jpg",
+  // Hotel Management
+  "bachelor-of-hotel-management-catering-technology":
+    "/assets/programs/HM/catering/catering.jpg",
+  "master-of-hotel-management-catering-technology":
+    "/assets/programs/HM/mhmct/Mhmct.jpg",
+  "bvoc-hotel-management-catering": "/assets/programs/HM/BVoc/Bvoc.jpg",
+  "bsc-honors-in-nutrition-and-dietetics": "/assets/programs/HM/Bsc/header.jpg",
+  // Medical Sciences & Allied Health
+  "bsc-medical-lab-sciences": "/assets/programs/paramedical/Lab/header.avif",
+  "bsc-radiology-imaging-technology":
+    "/assets/programs/paramedical/Radiology/radiology.jpg",
+  "bsc-operation-theater-technology": "/assets/programs/paramedical/OT/ot.jpg",
+  "bsc-cardiac-care-technology":
+    "/assets/programs/paramedical/Cardiac/header.avif",
+  "bsc-hons-operation-theatre-technology":
+    "/assets/programs/paramedical/OT/ot.jpg",
+  "bsc-hons-anesthesia-technology":
+    "/assets/programs/paramedical/Anesthesia/anestehsia.jpg",
+  "bsc-hons-optometry": "/assets/programs/paramedical/Optometry/header.avif",
+  "msc-medical-lab-science-clinical-biochemistry":
+    "/assets/programs/paramedical/MLS/mls.jpg",
+  "msc-anesthesia-operation-theater-technology":
+    "/assets/programs/paramedical/Anasthesia/anasthesia.jpg",
+  "bachelor-of-physiotherapy":
+    "/assets/programs/paramedical/Physiotherapy/header.avif",
+  "msc-cardiac-care-technology":
+    "/assets/programs/paramedical/Cardiac/header.avif",
+  "msc-medical-microbiology": "/assets/programs/paramedical/Lab/header.avif",
+  "msc-radiology-and-imaging-technology":
+    "/assets/programs/paramedical/Radiology/radiology.jpg",
+  "bachelor-in-hospital-administration":
+    "/assets/programs/paramedical/Lab/header.avif",
+  "diploma-in-nursing-assistant":
+    "/assets/programs/paramedical/Lab/header.avif",
+  // Science
+  "msc-physics": "/assets/programs/Science/Physics/header.avif",
+  "msc-math": "/assets/programs/Science/Maths/header.avif",
+  "msc-chemistry": "/assets/programs/Science/Chemistry/header.avif",
+  "bsc-non-medical": "/assets/programs/Science/Non-medical/header.avif",
+  // Arts & Education
+  "bachelor-of-arts": "/assets/programs/Education/BA/cultural.avif",
+  "ba-journalism-and-mass-communication":
+    "/assets/programs/Education/BA/comms.avif",
+  "bachelor-in-education": "/assets/programs/Education/Bachelor/research.jpg",
+  "ma-education": "/assets/programs/Education/Masters/header.avif",
+  "masters-in-education": "/assets/programs/Education/Masters/header.avif",
+  // Law
+  llb: "/assets/programs/Law/LLB/header.avif",
+  "b-a-l-l-b": "/assets/programs/Law/Bachelors/header.avif",
+};
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
@@ -381,9 +481,15 @@ export default async function ProgramSlugPage({ params }: PageProps) {
   const program = await prisma.program.findUnique({
     where: { slug },
     select: {
+      id: true,
       slug: true,
       title: true,
-      department: true,
+      department: {
+        select: {
+          name: true,
+          slug: true,
+        },
+      },
       durationMonths: true,
       tuitionCents: true,
       mode: true,
@@ -413,11 +519,12 @@ export default async function ProgramSlugPage({ params }: PageProps) {
   const enrichedProgram = {
     slug: program.slug,
     title: program.title,
-    department: program.department ?? catalogProgram?.category ?? null,
+    department: program.department?.name ?? catalogProgram?.category ?? null,
     durationMonths: program.durationMonths,
     tuitionCents: program.tuitionCents,
     mode: program.mode,
-    shortDescription: program.shortDescription,
+    shortDescription:
+      program.shortDescription ?? catalogProgram?.program_description ?? null,
     fullDescription:
       program.fullDescription ?? catalogProgram?.program_description ?? null,
     eligibility:
@@ -439,7 +546,8 @@ export default async function ProgramSlugPage({ params }: PageProps) {
       catalogProgram?.labs ?? program.facilities,
     ),
     faqs: normalizeFaqItems(program.faqs),
-    heroImage: parseHeroImage(program.faqs),
+    heroImage:
+      parseHeroImage(program.faqs) ?? PROGRAM_HERO_IMAGES[program.slug] ?? null,
   };
 
   return <ProgramDetailPage program={enrichedProgram} />;

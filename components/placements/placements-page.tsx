@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FAQAccordion } from "@/components/placements/faq-accordion";
 import { HiringPartners } from "@/components/placements/hiring-partners";
 import { PlacementCardsMarqueeSection } from "@/components/placements/placement-cards-marquee-section";
-import { PlacementSuccessBanner } from "@/components/placements/placement-success-banner";
+import { PlacementSuccessBanner, PlacementSecondaryBanner } from "@/components/placements/placement-success-banner";
 import { PlacementStudentSpeakSection } from "@/components/placements/placement-student-speak-section";
 import { PlacementYearwiseTrendsSection } from "@/components/placements/placement-yearwise-trends-section";
 import { PlacementsHeroSection } from "@/components/placements/placements-hero-section";
@@ -124,6 +124,8 @@ export function PlacementsPageComponent() {
       <PlacementCardsMarqueeSection />
 
       <HiringPartners />
+
+      <PlacementSecondaryBanner />
 
       <SectionWrapper
         aria-labelledby="director-message-heading"

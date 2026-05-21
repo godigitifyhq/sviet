@@ -79,36 +79,12 @@ const researchDomains = [
 ];
 
 const rdCommittee = [
-  {
-    name: "Dr. Neeraj Kumar",
-    department: "Business Administration",
-    designation: "Research Coordinator",
-  },
-  {
-    name: "Dr. Indu Batra",
-    department: "Applied Sciences",
-    designation: "Member",
-  },
-  {
-    name: "Dr. Manpreet Kaur",
-    department: "Business Administration",
-    designation: "Member",
-  },
-  {
-    name: "Mr. Kaushik Bharti",
-    department: "Mechanical Engineering",
-    designation: "Member",
-  },
-  {
-    name: "Mr. Manish",
-    department: "Computer Applications",
-    designation: "Member",
-  },
-  {
-    name: "Ms. Suvidha",
-    department: "Computer Science & Engineering",
-    designation: "Member",
-  },
+  "Dr. Neeraj Kumar",
+  "Dr. Indu Batra",
+  "Dr. Manpreet Kaur",
+  "Mr. Kaushik Bharti",
+  "Mr. Manish",
+  "Ms. Suvidha",
 ];
 
 const innovativeProjects = [
@@ -816,64 +792,18 @@ export function ResearchPageComponent() {
               direction.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {rdCommittee.map((member) => (
               <div
-                key={member.name}
-                className="bg-white rounded-2xl overflow-hidden h-full flex flex-col  "
+                key={member}
+                className="flex items-center border border-gray-200 bg-white px-5 py-4 text-gray-900 shadow-sm"
               >
-                {/* Top Section - Gradient Background */}
-                <div className="w-full h-40 bg-linear-to-br from-[#f7941d]/20 via-[#f7941d]/10 to-transparent p-6 flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-5 bg-pattern" />
-                  <div className="w-20 h-20 rounded-full bg-[#f7941d]/20 border-2 border-[#f7941d] flex items-center justify-center text-2xl font-bold text-[#f7941d]">
-                    {member.name.charAt(0)}
-                  </div>
-                </div>
-
-                {/* Bottom Section - White Background */}
-                <div className="p-6 grow flex flex-col">
-                  {/* Name */}
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                    {member.name}
-                  </h3>
-
-                  {/* Details */}
-                  <div className="space-y-3 grow">
-                    {/* Department */}
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-[#f7941d]/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <span className="text-sm text-[#f7941d] font-bold">
-                          📚
-                        </span>
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-sm font-semibold text-gray-500">
-                          Department
-                        </span>
-                        <span className="text-sm text-gray-700">
-                          {member.department}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Designation */}
-                    <div className="flex items-start gap-3 border-t pt-3">
-                      <div className="w-6 h-6 rounded-full bg-[#f7941d]/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <span className="text-sm text-[#f7941d] font-bold">
-                          ⭐
-                        </span>
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-sm font-semibold text-gray-500">
-                          Designation
-                        </span>
-                        <span className="text-sm font-semibold text-[#f7941d]">
-                          {member.designation}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <span className="mr-4 inline-flex h-10 w-10 shrink-0 items-center justify-center bg-[#f7941d]/10 text-sm font-semibold text-[#f7941d]">
+                  R&D
+                </span>
+                <span className="text-base font-medium leading-snug">
+                  {member}
+                </span>
               </div>
             ))}
           </div>

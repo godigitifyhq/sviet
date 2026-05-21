@@ -1,27 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
+import {
+  BarChart2,
+  Download,
+  FileBarChart,
+  FileText,
+  GraduationCap,
+  IndianRupee,
+  Phone,
+} from "lucide-react";
 
-import {
-  FacilitiesSection,
-  type ProgramFacilityItem,
-} from "@/components/programs/facilities";
-import {
-  PlacementSection,
-  type ProgramOutcomeItem,
-} from "@/components/programs/outcomes";
-import {
-  WhyStudySection,
-  type ProgramHighlightItem,
-} from "@/components/programs/highlights";
+import type { ProgramFacilityItem } from "@/components/programs/facilities";
+import type { ProgramOutcomeItem } from "@/components/programs/outcomes";
+import type { ProgramHighlightItem } from "@/components/programs/highlights";
+
+// ─── Types ────────────────────────────────────────────────────────────────────
 
 export type ProgramDetailData = {
   slug: string;
   title: string;
   department?: string | null;
   durationMonths: number;
-  tuitionCents: number;
+  tuitionCents: number | null;
   mode?: string | null;
-  shortDescription: string;
+  shortDescription?: string | null;
   fullDescription?: string | null;
   eligibility?: string | null;
   highlights: ProgramHighlightItem[];
@@ -41,610 +43,1061 @@ type ProgramDetailPageProps = {
   program: ProgramDetailData;
 };
 
-const PAGE_TABS = [
-  { label: "Program Details", id: "program-details" },
-  { label: "How To Study", id: "how-to-study" },
-  { label: "Why Study", id: "why-study" },
-  { label: "Careers", id: "careers" },
-  { label: "Important Info", id: "important-info" },
-  { label: "Placements", id: "placements" },
-  { label: "Facilities", id: "facilities" },
-  { label: "Scholarships", id: "scholarships" },
-  // { label: "Trends", id: "trends" },
+// ─── Document links ───────────────────────────────────────────────────────────
+
+const DOCS = {
+  brochure: "/assets/docs/SVIET-Brochure-2025.pdf",
+  feeStructure: "/assets/docs/Fee_Structure2026.pdf",
+  placementReport: "/assets/docs/placement-report.pdf",
+} as const;
+
+// ─── Placement data ───────────────────────────────────────────────────────────
+
+const PLACEMENT_STATS = [
+  { label: "Highest Package", value: "60 LPA", sub: "offered to our students" },
+  {
+    label: "Average Package",
+    value: "5.8 LPA",
+    sub: "consistent year-on-year growth",
+  },
+  {
+    label: "Recruiting Companies",
+    value: "2,200+",
+    sub: "hired SVGOI students",
+  },
+  { label: "Placement Rate", value: "95%+", sub: "students placed every year" },
 ] as const;
 
-function formatDuration(durationMonths: number) {
-  const years = durationMonths / 12;
+type PlacementStudent = {
+  name: string;
+  company: string;
+  batch: string;
+  image: string;
+};
 
-  if (Number.isInteger(years)) {
-    return `${years} year program`;
-  }
+const PLACEMENT_POOL: Record<string, PlacementStudent[]> = {
+  cse: [
+    {
+      name: "Prateek Kumar",
+      company: "Byju's",
+      batch: "2022",
+      image: "/assets/img/stu/Prateek.png",
+    },
+    {
+      name: "Naveen Jaiswal",
+      company: "Entab Infotech",
+      batch: "2025",
+      image: "/assets/img/stu/Naveen.png",
+    },
+    {
+      name: "Kshitij Raj",
+      company: "Caelius Consulting",
+      batch: "2027",
+      image: "/assets/img/stu/Kshiti.png",
+    },
+    {
+      name: "Shikha Singh",
+      company: "Byju's",
+      batch: "2022",
+      image: "/assets/img/stu/Shikha.png",
+    },
+  ],
+  mba: [
+    {
+      name: "Utkarsh Kumar",
+      company: "Byju's",
+      batch: "2022",
+      image: "/assets/img/stu/Utkarsh.png",
+    },
+    {
+      name: "Pallavi Sharma",
+      company: "Extra Marks",
+      batch: "2021",
+      image: "/assets/img/stu/Pallavi.png",
+    },
+    {
+      name: "Priyanshi Sharma",
+      company: "Caelius Consulting",
+      batch: "2025",
+      image: "/assets/img/stu/Priyanshi.png",
+    },
+    {
+      name: "Anam Rashid",
+      company: "Skillkart",
+      batch: "2025",
+      image: "/assets/img/stu/Anam.png",
+    },
+  ],
+  mca: [
+    {
+      name: "Parvesh Sharma",
+      company: "Byju's",
+      batch: "2022",
+      image: "/assets/img/stu/Parvesh.png",
+    },
+    {
+      name: "Naveen Jaiswal",
+      company: "Entab Infotech",
+      batch: "2025",
+      image: "/assets/img/stu/Naveen.png",
+    },
+    {
+      name: "Taniya Singh",
+      company: "Caelius Consulting",
+      batch: "2027",
+      image: "/assets/img/stu/Taniya.png",
+    },
+    {
+      name: "Mantasha",
+      company: "Healthcare",
+      batch: "2025",
+      image: "/assets/img/stu/Mantasha.png",
+    },
+  ],
+  civil: [
+    {
+      name: "Kshitij Raj",
+      company: "Caelius Consulting",
+      batch: "2027",
+      image: "/assets/img/stu/Kshiti.png",
+    },
+    {
+      name: "Prateek Kumar",
+      company: "Byju's",
+      batch: "2022",
+      image: "/assets/img/stu/Prateek.png",
+    },
+    {
+      name: "Naveen Jaiswal",
+      company: "Entab Infotech",
+      batch: "2025",
+      image: "/assets/img/stu/Naveen.png",
+    },
+    {
+      name: "Parvesh Sharma",
+      company: "Byju's",
+      batch: "2022",
+      image: "/assets/img/stu/Parvesh.png",
+    },
+  ],
+  pharmacy: [
+    {
+      name: "Anam Rashid",
+      company: "Ucertify",
+      batch: "2025",
+      image: "/assets/img/stu/Anam.png",
+    },
+    {
+      name: "Parveen Jaiswal",
+      company: "Entab Infotech",
+      batch: "2025",
+      image: "/assets/img/stu/Parveen.png",
+    },
+    {
+      name: "Mantasha",
+      company: "Healthcare",
+      batch: "2025",
+      image: "/assets/img/stu/Mantasha.png",
+    },
+    {
+      name: "Muntaha Tabassum",
+      company: "Healthcare",
+      batch: "2025",
+      image: "/assets/img/stu/Muntaha.png",
+    },
+  ],
+  default: [
+    {
+      name: "Taniya Singh",
+      company: "Caelius Consulting",
+      batch: "2027",
+      image: "/assets/img/stu/Taniya.png",
+    },
+    {
+      name: "Kshitij Raj",
+      company: "Caelius Consulting",
+      batch: "2027",
+      image: "/assets/img/stu/Kshiti.png",
+    },
+    {
+      name: "Mantasha",
+      company: "Healthcare",
+      batch: "2025",
+      image: "/assets/img/stu/Mantasha.png",
+    },
+    {
+      name: "Parveen Jaiswal",
+      company: "Entab Infotech",
+      batch: "2025",
+      image: "/assets/img/stu/Parveen.png",
+    },
+  ],
+};
 
-  return `${years.toFixed(1)} year program`;
+function getPlacementData(slug: string) {
+  if (
+    slug === "btech-computer-science-engineering" ||
+    slug === "btech-artificial-intelligence" ||
+    slug === "mtech-computer-science-engineering"
+  )
+    return PLACEMENT_POOL.cse;
+  if (
+    slug === "master-of-computer-applications" ||
+    slug === "bachelor-of-computer-applications" ||
+    slug === "bsc-information-technology" ||
+    slug === "post-graduate-diploma-in-computer-application" ||
+    slug === "bachelor-of-arts-computer-science"
+  )
+    return PLACEMENT_POOL.mca;
+  if (slug.includes("civil")) return PLACEMENT_POOL.civil;
+  if (
+    slug === "master-of-business-administration" ||
+    slug === "bachelor-of-business-administration" ||
+    slug === "master-of-commerce" ||
+    slug === "bachelor-of-commerce"
+  )
+    return PLACEMENT_POOL.mba;
+  if (
+    slug === "bpharmacy" ||
+    slug === "pharmad" ||
+    slug === "mpharmacy-pharmaceutics" ||
+    slug === "mpharmacy-pharmacology" ||
+    slug === "diploma-in-pharmacy"
+  )
+    return PLACEMENT_POOL.pharmacy;
+  return PLACEMENT_POOL.default;
 }
 
-function formatCurrencyPerYear(valueInCents: number) {
-  return `₹${(valueInCents / 100).toLocaleString("en-IN")}/- Per Annum`;
+// ─── Activities data ──────────────────────────────────────────────────────────
+
+type ActivityCard = { title: string; description: string; image: string };
+type FeaturedActivity = { title: string; date: string; description: string };
+type ActivityPool = { cards: ActivityCard[]; featured: FeaturedActivity };
+
+const ACTIVITIES_POOL: Record<string, ActivityPool> = {
+  engineering: {
+    cards: [
+      {
+        title: "Industrial Visit",
+        description:
+          "Live industry exposure at leading tech & manufacturing plants",
+        image: "/assets/img/section_card/Industrial%20Visit.jpeg",
+      },
+      {
+        title: "ISTE Convention 2025",
+        description: "National summit for engineering educators and innovators",
+        image: "/assets/img/section_card/ISTE25.JPG.jpeg",
+      },
+      {
+        title: "TEDx SVIET",
+        description: "Ideas worth spreading — campus TED experience",
+        image: "/assets/img/section_card/TEDx.jpeg",
+      },
+    ],
+    featured: {
+      title: "IDS Infotech Campus Drive",
+      date: "Feb 4, 2024",
+      description:
+        "Industry leaders from IDS Infotech visited campus for a direct recruitment drive. Students from B.Tech, MCA, and BCA participated in technical assessments and HR rounds, with multiple offer letters rolled out on the same day.",
+    },
+  },
+  management: {
+    cards: [
+      {
+        title: "Elevate — Leadership Meet",
+        description:
+          "Industry leaders share insights on strategy and leadership",
+        image: "/assets/img/section_card/Elevate.jpeg",
+      },
+      {
+        title: "Global Finance Summit",
+        description: "Perspectives on global markets, banking, and finance",
+        image: "/assets/img/section_card/GFS.JPG",
+      },
+      {
+        title: "Industry Interaction",
+        description: "Live interaction sessions with corporate professionals",
+        image: "/assets/img/section_card/Dev2.jpeg",
+      },
+    ],
+    featured: {
+      title: "Elevate Leadership Conclave 2025",
+      date: "March 15, 2025",
+      description:
+        "Senior executives from Fortune 500 companies joined SVIET's annual leadership conclave, sharing real-world insights on management, entrepreneurship, and the evolving business landscape for the 2025 batch.",
+    },
+  },
+  medical: {
+    cards: [
+      {
+        title: "Research Centre",
+        description:
+          "Hands-on sessions at SVIET's advanced research laboratory",
+        image: "/assets/img/section_card/ResearchCenter.jpeg",
+      },
+      {
+        title: "Laboratory Sessions",
+        description: "Practical training in state-of-the-art pharma labs",
+        image: "/assets/img/section_card/Labo.jpeg",
+      },
+      {
+        title: "Industrial Visit",
+        description: "Visits to hospitals, clinics, and pharmaceutical plants",
+        image: "/assets/img/section_card/Industrial%20Visit.jpeg",
+      },
+    ],
+    featured: {
+      title: "Healthcare Industry Interaction",
+      date: "Jan 20, 2025",
+      description:
+        "Senior healthcare professionals and hospital administrators visited campus for a panel discussion on emerging trends in allied health sciences, diagnostics, and pharmaceutical research opportunities for students.",
+    },
+  },
+  hospitality: {
+    cards: [
+      {
+        title: "Spontaneous Events",
+        description:
+          "Surprise challenges that build real-time hospitality skills",
+        image: "/assets/img/section_card/Spont.jpeg",
+      },
+      {
+        title: "Elevate — Leadership Meet",
+        description: "Grooming future leaders in tourism and hotel management",
+        image: "/assets/img/section_card/Elevate2.jpeg",
+      },
+      {
+        title: "Campus Life",
+        description: "Cultural fests, food fairs, and lifetime campus memories",
+        image: "/assets/img/section_card/LifetimeMemory.jpeg",
+      },
+    ],
+    featured: {
+      title: "International Tourism Week 2025",
+      date: "Feb 12, 2025",
+      description:
+        "SVIET's Hotel Management department hosted a week-long industry immersion with chefs, hotel GMs, and travel executives sharing live insights on hospitality operations, guest experience, and career pathways.",
+    },
+  },
+  law: {
+    cards: [
+      {
+        title: "Convocation Ceremony",
+        description:
+          "Annual celebration of academic excellence and achievement",
+        image: "/assets/img/section_card/Convo.jpeg",
+      },
+      {
+        title: "Industry Interaction",
+        description:
+          "Legal professionals share real-world courtroom experience",
+        image: "/assets/img/section_card/Dev3.jpeg",
+      },
+      {
+        title: "TEDx SVIET",
+        description:
+          "Thought leadership talks covering justice, policy, and law",
+        image: "/assets/img/section_card/TEDx3.jpeg",
+      },
+    ],
+    featured: {
+      title: "National Moot Court Competition",
+      date: "April 5, 2025",
+      description:
+        "Students from law schools across North India competed at SVIET's annual Moot Court. High Court advocates served as judges, evaluating legal arguments and courtroom advocacy skills in a real-world courtroom simulation.",
+    },
+  },
+  default: {
+    cards: [
+      {
+        title: "TEDx SVIET",
+        description: "Ideas worth spreading — campus TED experience",
+        image: "/assets/img/section_card/TEDx.jpeg",
+      },
+      {
+        title: "Industrial Visit",
+        description:
+          "Live industry exposure at leading plants and organisations",
+        image: "/assets/img/section_card/Industrial%20Visit.jpeg",
+      },
+      {
+        title: "Elevate — Leadership Meet",
+        description: "Industry leaders share insights on strategy and careers",
+        image: "/assets/img/section_card/Elevate.jpeg",
+      },
+    ],
+    featured: {
+      title: "TEDx SVIET 2025",
+      date: "March 10, 2025",
+      description:
+        "SVIET's flagship TEDx event brought together innovators, entrepreneurs, and academics to share transformative ideas. Students engaged in live Q&A sessions with speakers from technology, social impact, and creative industries.",
+    },
+  },
+};
+
+function getActivities(slug: string): ActivityPool {
+  if (
+    slug.includes("engineering") ||
+    slug.includes("btech") ||
+    slug.includes("mtech") ||
+    slug.includes("diploma") ||
+    slug.includes("information-technology") ||
+    slug.includes("computer-applications") ||
+    slug.includes("master-of-computer") ||
+    slug.includes("bachelor-of-computer")
+  )
+    return ACTIVITIES_POOL.engineering;
+  if (
+    slug.includes("business") ||
+    slug.includes("commerce") ||
+    slug.includes("mba") ||
+    slug.includes("bba")
+  )
+    return ACTIVITIES_POOL.management;
+  if (
+    slug.includes("pharmacy") ||
+    slug.includes("pharma") ||
+    slug.includes("medical") ||
+    slug.includes("physiotherapy") ||
+    slug.includes("cardiac") ||
+    slug.includes("radiology") ||
+    slug.includes("anesthesia") ||
+    slug.includes("optometry") ||
+    slug.includes("operation") ||
+    slug.includes("microbiology") ||
+    slug.includes("nursing") ||
+    slug.includes("hospital")
+  )
+    return ACTIVITIES_POOL.medical;
+  if (
+    slug.includes("hotel") ||
+    slug.includes("catering") ||
+    slug.includes("bvoc") ||
+    slug.includes("nutrition")
+  )
+    return ACTIVITIES_POOL.hospitality;
+  if (slug.includes("llb") || slug.includes("law") || slug.includes("b-a-l"))
+    return ACTIVITIES_POOL.law;
+  return ACTIVITIES_POOL.default;
+}
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+function formatDuration(months: number) {
+  const y = months / 12;
+  return Number.isInteger(y) ? `${y} Years` : `${y.toFixed(1)} Years`;
+}
+
+function formatFees(cents: number | null) {
+  if (!cents) return "Contact Admissions";
+  return `₹${(cents / 100).toLocaleString("en-IN")} / Year`;
 }
 
 function formatMode(mode?: string | null) {
-  if (!mode) {
-    return "Full-time";
-  }
-
+  if (!mode) return "Full-time";
   return mode
     .toLowerCase()
     .split("_")
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
     .join(" ");
 }
 
 function getHeroImage(heroImage?: string | null) {
-  if (heroImage && heroImage.startsWith("/")) {
-    return heroImage;
-  }
-
-  return "/assets/img/banner_hero.jpg";
+  return heroImage && heroImage.startsWith("/") ? heroImage : null;
 }
 
-function getCurriculumSummary(curriculum: Record<string, string[]>) {
-  const years = Object.keys(curriculum);
+function parseEligibility(eligibility?: string | null) {
+  if (!eligibility) return [];
+  // Normalize common separators to newlines, then split into lines/sentences
+  const normalized = String(eligibility)
+    .replace(/\s*[-–—]\s*/g, "\n")
+    .replace(/\s*;\s*/g, "\n")
+    .replace(/\r\n|\r/g, "\n");
 
-  if (years.length === 0) {
-    return "The curriculum is updated program by program and delivered through a mix of theory, practical work, and project-based learning.";
-  }
+  const parts = normalized
+    .split(/\n|(?<=[.?!])\s+/)
+    .map((p) => p.trim())
+    .filter(Boolean);
 
-  return `The curriculum is structured across ${years.join(", ")} with outcomes designed around the skills and careers relevant to this program.`;
+  return parts;
 }
 
-function getImportantInfoItems(program: ProgramDetailData) {
-  const curriculumYears = Object.keys(program.curriculum).length;
+// ─── Accent header helper ─────────────────────────────────────────────────────
 
-  return [
-    {
-      title: "Eligibility",
-      description:
-        program.eligibility ??
-        "Eligibility details are confirmed during admissions counselling for this program.",
-      cta: "View",
-    },
-    {
-      title: "Duration",
-      description: formatDuration(program.durationMonths),
-      cta: "View",
-    },
-    {
-      title: "Annual Tuition",
-      description: formatCurrencyPerYear(program.tuitionCents),
-      cta: "View",
-    },
-    {
-      title: "Curriculum",
-      description:
-        curriculumYears > 0
-          ? `${curriculumYears} curriculum blocks are available for this program.`
-          : "Curriculum blocks are reviewed program by program.",
-      cta: "View",
-    },
-  ];
-}
-
-function getFundingItems(program: ProgramDetailData) {
-  const scholarshipFaqs = (program.faqs ?? []).filter((entry) =>
-    /scholar|fee|fund|waiver|support/i.test(`${entry.q} ${entry.a}`),
+function SectionLabel({ text }: { text: string }) {
+  return (
+    <div className="flex items-center gap-3">
+      <div className="h-1 w-8 rounded-full bg-[#f7941d]" />
+      <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#f7941d]">
+        {text}
+      </p>
+    </div>
   );
-
-  if (scholarshipFaqs.length > 0) {
-    return scholarshipFaqs.slice(0, 4).map((entry) => ({
-      title: entry.q,
-      description: entry.a,
-    }));
-  }
-
-  return [
-    {
-      title: "Annual Tuition",
-      description: formatCurrencyPerYear(program.tuitionCents),
-    },
-    {
-      title: "Eligibility Review",
-      description:
-        program.eligibility ??
-        "Funding support is reviewed during admissions counselling for the active intake.",
-    },
-    {
-      title: "Program Mode",
-      description: formatMode(program.mode),
-    },
-  ];
 }
+
+// ─── Component ────────────────────────────────────────────────────────────────
 
 export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
   const heroImage = getHeroImage(program.heroImage);
-  const overviewCopy = program.fullDescription ?? program.shortDescription;
-  const curriculumSummary = getCurriculumSummary(program.curriculum);
-  const importantInfoItems = getImportantInfoItems(program);
-  const fundingItems = getFundingItems(program);
-  const whyStudyIntro =
-    program.fullDescription ??
-    `Study ${program.title} through a program-specific blend of theory, practice, and guided learning.`;
+  const students = getPlacementData(program.slug);
+  const activityPool = getActivities(program.slug);
+  const overviewCopy =
+    program.fullDescription ?? program.shortDescription ?? "";
+  const majorTracks = program.outcomes
+    .slice(0, 8)
+    .map((o) => o.title)
+    .filter(Boolean);
 
   return (
-    <main className="bg-[#FFFFFF] text-[#111827]">
-      <section className="-mt-30 w-full bg-black pt-30 text-white">
-        <div className="relative w-full overflow-hidden">
-          <div className="relative min-h-120 w-full overflow-hidden md:min-h-150 lg:min-h-180">
+    <main className="bg-white text-[#111827]">
+      {/* ── Hero ──────────────────────────────────────────────────────────────── */}
+      <section className="-mt-30 w-full bg-[#050d1f] pt-30 text-white">
+        <div className="relative min-h-125 w-full overflow-hidden md:min-h-145 lg:min-h-170">
+          {heroImage && (
             <Image
               src={heroImage}
               alt={program.title}
               fill
               priority
               sizes="100vw"
-              className="object-cover"
+              className="object-cover object-center"
             />
-            <div
-              className="absolute inset-0 bg-linear-to-r from-black/95 via-black/68 to-black/52"
-              aria-hidden="true"
-            />
+          )}
+          {/* Decorative rings */}
+          <div className="pointer-events-none absolute -right-28 -top-28 h-[480px] w-[480px] rounded-full border border-white/5" />
+          <div className="pointer-events-none absolute -right-14 -top-14 h-72 w-72 rounded-full border border-white/5" />
+          <div className="absolute inset-0 bg-linear-to-r from-black/95 via-black/78 to-black/30" />
 
-            <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-34 md:px-6 md:pb-20 md:pt-38 lg:grid-cols-[1.1fr_360px] lg:items-center lg:pb-24 lg:pt-42">
-              <div>
-                <p className="text-sm text-white/80">
-                  Program / {program.department ?? "Programs"} /{" "}
-                  <span className="font-semibold text-white">
-                    {program.title}
-                  </span>
-                </p>
-                <h1 className="mt-5 max-w-4xl text-4xl font-bold leading-tight md:text-5xl">
-                  {program.title}
-                </h1>
-                <p className="mt-5 max-w-3xl text-lg leading-relaxed text-white/90">
-                  {program.shortDescription}
-                </p>
-
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Link
-                    href={`/admissions?program=${program.slug}`}
-                    className="inline-flex items-center border border-[#f7941d] bg-[#f7941d] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#F97316]"
-                  >
-                    Apply Now
-                  </Link>
-                  {/* <button
-                    type="button"
-                    className="inline-flex items-center border border-white/40 bg-transparent px-6 py-3 text-sm font-semibold text-white transition hover:border-white"
-                  >
-                    Download Brochure
-                  </button> */}
-                </div>
-              </div>
-
-              <aside className="border border-black/10 bg-white p-6 text-black shadow-[0_20px_35px_rgba(0,0,0,0.2)]">
-                <h2 className="text-2xl font-bold md:text-3xl">
-                  Want to know more?
-                </h2>
-                <p className="mt-2 text-sm text-black/65">
-                  Discover more information about the program.
-                </p>
-
-                <form className="mt-5 grid gap-3">
-                  <label
-                    className="text-sm font-semibold"
-                    htmlFor="program-name"
-                  >
-                    Full name
-                  </label>
-                  <input
-                    id="program-name"
-                    className="border border-black/15 bg-white px-3 py-2.5 text-sm outline-none"
-                    placeholder="Enter your full name"
-                  />
-
-                  <label
-                    className="text-sm font-semibold"
-                    htmlFor="program-email"
-                  >
-                    Email
-                  </label>
-                  <input
-                    id="program-email"
-                    type="email"
-                    className="border border-black/15 bg-white px-3 py-2.5 text-sm outline-none"
-                    placeholder="Enter your email"
-                  />
-
-                  <label
-                    className="text-sm font-semibold"
-                    htmlFor="program-phone"
-                  >
-                    Phone number
-                  </label>
-                  <input
-                    id="program-phone"
-                    className="border border-black/15 bg-white px-3 py-2.5 text-sm outline-none"
-                    placeholder="(000) 000-0000"
-                  />
-
-                  <button
-                    type="button"
-                    className="mt-2 inline-flex items-center justify-center border border-[#6366F1] bg-[#6366F1] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#4F46E5]"
-                  >
-                    Request Callback
-                  </button>
-                </form>
-              </aside>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <nav
-        className="sticky top-14 z-40 border-y border-black/10 bg-[#111827] text-white md:top-17"
-        aria-label="Program section navigation"
-      >
-        <div className="mx-auto max-w-7xl overflow-x-auto px-4 md:px-6">
-          <ul className="flex min-w-max items-center">
-            {PAGE_TABS.map((tab) => (
-              <li key={tab.id}>
-                <a
-                  href={`#${tab.id}`}
-                  className="inline-flex items-center px-4 py-4 text-sm font-semibold transition hover:bg-white/10 hover:text-white"
-                >
-                  {tab.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </nav>
-
-      <section
-        id="program-details"
-        className="scroll-mt-30 border-b border-black/8 bg-[#FFFFFF] md:scroll-mt-32"
-      >
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 md:grid-cols-[320px_1fr] md:px-6 md:py-20">
-          <h2 className="text-4xl font-medium leading-tight md:text-5xl">
-            Program details
-            <span className="mt-1 block font-bold text-[#f7941d]">
-              overview
-            </span>
-          </h2>
-
-          <div>
-            <h3 className="text-3xl font-semibold text-[#111827] md:text-4xl">
-              {program.title}
-            </h3>
-            <p className="mt-5 text-base leading-relaxed text-black/75 md:text-lg">
-              {overviewCopy}
-            </p>
-            <p className="mt-6 text-base leading-relaxed text-black/75 md:text-lg">
-              This {formatDuration(program.durationMonths)} program is shaped by
-              a curriculum that spans{" "}
-              {Object.keys(program.curriculum).length > 0
-                ? Object.keys(program.curriculum).join(", ")
-                : "program-specific modules"}{" "}
-              and balances theory, practice, and career readiness.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="how-to-study"
-        className="scroll-mt-30 bg-[#f1f1f4] md:scroll-mt-32"
-      >
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:px-6 md:py-20 lg:grid-cols-[0.95fr_1.05fr]">
-          <div>
-            <h2 className="text-xl font-semibold leading-[1.03] tracking-[-0.02em] md:text-3xl lg:text-[3.1rem]">
-              <span className="block text-[#111827]">Here is how you can</span>
-              <span className="mt-2 block text-black">study this program</span>
-            </h2>
-
-            <div className="mt-7 inline-flex rounded-full border border-[#b5b1d3] bg-[#cdcae3] px-6 py-2.5 text-sm font-semibold tracking-wide text-[#24222e] md:text-base">
-              {formatDuration(program.durationMonths).toUpperCase()}
-            </div>
-
-            <div className="mt-10 flex flex-wrap items-center gap-3">
-              <span className="text-[.75rem] text-[#1aa8af]">▶</span>
-              <h3 className="text-xl font-medium tracking-[-0.01em] text-[#111827] md:text-[1.3rem]">
+          <div className="relative mx-auto grid max-w-7xl gap-8 px-4 pb-16 pt-28 md:px-6 md:pb-20 md:pt-36 lg:grid-cols-[1.2fr_340px] lg:items-end lg:pb-24 lg:pt-44">
+            <div>
+              {program.department && (
+                <span className="inline-block rounded-full border border-[#f7941d]/40 bg-[#f7941d]/15 px-4 py-1 text-xs font-bold uppercase tracking-widest text-[#f7941d]">
+                  {program.department}
+                </span>
+              )}
+              <h1 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl lg:text-6xl">
                 {program.title}
-              </h3>
-            </div>
-
-            <p className="mt-8 max-w-xl text-base leading-[1.85] text-black/72 md:text-[1.06rem]">
-              {overviewCopy} {curriculumSummary}
-            </p>
-          </div>
-
-          <article className="rounded-2xl border border-black/15 bg-white p-4 shadow-[0_10px_28px_rgba(0,0,0,0.05)] md:p-5">
-            <div className="rounded-xl bg-[#2f2d91] px-4 py-4 text-center text-white md:py-5">
-              <p className="text-xl font-semibold">Secure your place</p>
-              <p className="mt-1 text-4xl font-bold leading-tight md:text-[2.35rem]">
-                Deadline to be announced
+              </h1>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/68 md:text-lg">
+                {program.shortDescription ??
+                  "Contact admissions for full program details."}
               </p>
-            </div>
 
-            <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-7 text-base text-black/85 md:grid-cols-3 md:text-[1.02rem]">
-              <div>
-                <p className="font-medium text-black">Applicable deadline</p>
-                <p className="mt-1 font-semibold text-black">To be announced</p>
-              </div>
-              <div>
-                <p className="font-medium text-black">Starting date</p>
-                <p className="mt-1 font-semibold text-black">To be announced</p>
-              </div>
-              <div>
-                <p className="font-medium text-black">Duration</p>
-                <p className="mt-1 font-semibold text-black">
-                  {formatDuration(program.durationMonths)}
-                </p>
-              </div>
-              <div>
-                <p className="font-medium text-black">Credits</p>
-                <p className="mt-1 font-semibold text-black">180</p>
-              </div>
-              <div>
-                <p className="font-medium text-black">Seats</p>
-                <p className="mt-1 font-semibold text-black">60</p>
-              </div>
-              <div>
-                <p className="font-medium text-black">Fee</p>
-                <p className="mt-1 font-semibold text-black">
-                  {formatCurrencyPerYear(program.tuitionCents)}
-                </p>
-              </div>
-              <div>
-                <p className="font-medium text-black">Language</p>
-                <p className="mt-1 font-semibold text-black">English</p>
-              </div>
-            </div>
-
-            <div className="mt-8 border-t border-black/12 pt-5">
-              <p className="text-[1.75rem] font-semibold leading-tight text-black">
-                Eligibility Criteria
-              </p>
-              <p className="mt-2 text-base leading-relaxed text-black/85 md:text-[1.02rem]">
-                Candidates shall have passed BPT degree from recognized
-                institutions where the mode of study is a full-time program,
-                with minimum 4 1/2 years duration and with not less than 50% of
-                marks in aggregate.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2 text-sm text-black/70">
-                <span className="rounded-full border border-black/12 bg-black/3 px-3 py-1">
-                  {formatMode(program.mode)}
-                </span>
-                <span className="rounded-full border border-black/12 bg-black/3 px-3 py-1">
-                  Program open for 2026 intake
-                </span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <WhyStudySection
-        id="why-study"
-        items={program.highlights}
-        eyebrow={`Why study ${program.title}`}
-        heading={`What sets ${program.title} apart`}
-        intro={whyStudyIntro}
-      />
-
-      {/* <section id="careers" className="scroll-mt-30 bg-linear-to-b from-[#2d1f52] to-[#1f1545] py-16 md:scroll-mt-32 md:py-24">
-        <div className="mx-auto w-full max-w-[65%] px-4 md:px-6">
-          <div className="rounded-3xl bg-linear-to-b from-[#3a2968] to-[#2d1f52] p-8 md:p-12 lg:p-16">
-            <h2 className="mx-auto max-w-3xl text-center text-3xl font-semibold leading-snug tracking-[-0.01em] md:text-4xl lg:text-5xl">
-              <span className="text-[#e8857d]">What you can</span>
-              <span className="ml-2 text-[#f7941d]">become</span>
-              <span className="ml-2 text-white">after Studying</span>
-              <br />
-              <span className="text-[#f7941d]">{program.title.split(" ").slice(0, 3).join(" ")}?</span>
-            </h2>
-
-            <div className="relative mt-12 flex flex-col items-center md:mt-16">
-              <div className="relative h-80 w-64 md:h-96 md:w-80">
-                <div className="absolute inset-0 rounded-full border-4 border-[#6366F1]/30 blur-xl" aria-hidden="true" />
-                <div className="relative h-full w-full overflow-hidden rounded-full border-8 border-[#6366F1]">
-                  <Image
-                    src="/assets/img/Mockup-19.png"
-                    alt="Career pathway"
-                    fill
-                    sizes="320px"
-                    className="object-cover object-center"
-                  />
-                </div>
-              </div>
-
-              <div className="relative mt-12 w-full max-w-2xl md:mt-16">
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-6">
-                  {careers.slice(0, 3).map((career, index) => (
-                    <div
-                      key={`${career}-left-${index}`}
-                      className="group flex transform items-center justify-start gap-3 rounded-full border border-[#6366F1]/50 bg-[#3a2968]/80 px-5 py-3 backdrop-blur-sm transition hover:border-[#6366F1] hover:bg-[#4a3978] md:justify-end md:pr-8 lg:text-lg"
-                    >
-                      <div className="flex h-10 w-10 flex-none items-center justify-center rounded-full border-2 border-[#f7941d] bg-[#6366F1]/20">
-                        <div className="h-4 w-4 rounded-full bg-[#f7941d]" />
-                      </div>
-                      <span className="text-sm font-medium text-white md:text-base">{career}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-6">
-                  {careers.slice(3, 6).map((career, index) => (
-                    <div
-                      key={`${career}-right-${index}`}
-                      className="group flex transform items-center justify-start gap-3 rounded-full border border-[#6366F1]/50 bg-[#3a2968]/80 px-5 py-3 backdrop-blur-sm transition hover:border-[#6366F1] hover:bg-[#4a3978] md:justify-start md:pl-8 lg:text-lg"
-                    >
-                      <span className="text-sm font-medium text-white md:text-base">{career}</span>
-                      <div className="flex h-10 w-10 flex-none items-center justify-center rounded-full border-2 border-[#f7941d] bg-[#6366F1]/20">
-                        <div className="h-4 w-4 rounded-full bg-[#f7941d]" />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      <section
-        id="important-info"
-        className="scroll-mt-30 border-y border-black/8 bg-[#F5F7FB] md:scroll-mt-32"
-      >
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 md:px-6 md:py-20 lg:grid-cols-[300px_1fr]">
-          <div>
-            <h2 className="text-4xl font-semibold leading-tight text-[#f7941d] md:text-5xl">
-              Important
-              <span className="block text-[#111827]">program details</span>
-              <span className="block text-black">for {program.title}</span>
-            </h2>
-            <p className="mt-6 text-base leading-relaxed text-black/75 md:text-lg">
-              Find the key academic and admission details that are specific to
-              this program.
-            </p>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {importantInfoItems.map((item) => (
-              <article
-                key={item.title}
-                className="border border-black/15 bg-white p-3"
-              >
-                <h3 className="mt-4 text-2xl font-semibold leading-tight md:text-[1.75rem]">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-base leading-relaxed text-black/70">
-                  {item.description}
-                </p>
-                {/* <button
-                  type="button"
-                  className="mt-5 inline-flex w-full items-center justify-between border border-[#f7941d]/40 bg-[#fff7ef] px-4 py-3 text-base font-semibold text-[#111827] transition hover:bg-[#fff2df]"
+              {/* 3 CTA buttons */}
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link
+                  href={`/admissions?program=${program.slug}`}
+                  className="inline-flex items-center gap-2 bg-[#f7941d] px-7 py-3 text-sm font-bold text-white transition hover:bg-[#e07b12]"
                 >
-                  {item.cta}
-                  <span>↓</span>
-                </button> */}
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+                  <GraduationCap className="h-4 w-4" />
+                  Apply Now
+                </Link>
+                <a
+                  href={DOCS.brochure}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-white/30 bg-white/8 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-white/55 hover:bg-white/15"
+                >
+                  <Download className="h-4 w-4" />
+                  Download Brochure
+                </a>
+                <a
+                  href={DOCS.feeStructure}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-[#f7941d]/40 bg-[#f7941d]/10 px-6 py-3 text-sm font-semibold text-[#fbbf6f] backdrop-blur-sm transition hover:bg-[#f7941d]/20"
+                >
+                  <IndianRupee className="h-4 w-4" />
+                  Fee Structure
+                </a>
+              </div>
 
-      <section
-        id="placements"
-        className="scroll-mt-30 bg-linear-to-b from-[#2d1f52] to-[#1f1545] py-20 md:scroll-mt-32 md:py-28"
-      >
-        <PlacementSection
-          data={program.outcomes}
-          eyebrow={`Placement outcomes for ${program.title}`}
-          heading={`${program.title} career pathways`}
-          intro={program.fullDescription ?? program.shortDescription}
-        />
-      </section>
+              {/* Quick facts */}
+              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-t border-white/10 pt-6 text-sm text-white/55">
+                <span>⏱ {formatDuration(program.durationMonths)}</span>
+                <span>✓ AICTE Approved</span>
+                <span>🏛 IKGPTU Affiliated</span>
+              </div>
+            </div>
 
-      <section
-        id="facilities"
-        className="scroll-mt-30 bg-[#FFFFFF] py-16 md:scroll-mt-32 md:py-20"
-      >
-        <FacilitiesSection
-          items={program.facilities}
-          eyebrow={`Infrastructure for ${program.title}`}
-          heading={`${program.title} facilities`}
-          intro={program.fullDescription ?? program.shortDescription}
-        />
-      </section>
-
-      <section
-        id="scholarships"
-        className="scroll-mt-30 border-y border-black/8 bg-[#F5F7FB] md:scroll-mt-32"
-      >
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 md:px-6 md:py-20 lg:grid-cols-[1fr_1.2fr]">
-          <div>
-            <h2 className="text-4xl font-semibold leading-tight text-[#f7941d] md:text-5xl">
-              Scholarships & funding
-            </h2>
-            <p className="mt-4 text-xl leading-relaxed md:text-2xl">
-              Program-specific support and fee details
-            </p>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-black/70 md:text-lg">
-              The funding summary below is built from this program&apos;s own
-              tuition, eligibility, and FAQ data.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            {fundingItems.map((item) => (
-              <article
-                key={item.title}
-                className="relative overflow-hidden bg-[#111827] p-5 text-white"
+            {/* Sidebar quick-info card */}
+            <aside className="border border-white/12 bg-black/52 p-5 backdrop-blur-md">
+              <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-[#f7941d]">
+                Program Details
+              </p>
+              <dl className="space-y-3 text-sm">
+                {[
+                  {
+                    label: "Duration",
+                    value: formatDuration(program.durationMonths),
+                  },
+                  { label: "Mode", value: formatMode(program.mode) },
+                  { label: "Affiliation", value: "IKGPTU, Jalandhar" },
+                  { label: "Approval", value: "AICTE Approved" },
+                ].map(({ label, value }) => (
+                  <div
+                    key={label}
+                    className="flex items-center justify-between border-b border-white/8 pb-3 last:border-0 last:pb-0"
+                  >
+                    <dt className="text-white/48">{label}</dt>
+                    <dd className="font-semibold text-white">{value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <Link
+                href={`/admissions?program=${program.slug}`}
+                className="mt-4 block w-full bg-[#f7941d] py-2.5 text-center text-sm font-bold text-white transition hover:bg-[#e07b12]"
               >
-                <h3 className="text-2xl font-semibold md:text-3xl">
-                  {item.title}
-                </h3>
-                <p className="mt-3 max-w-2xl text-base text-white/90 md:text-lg">
-                  {item.description}
-                </p>
-              </article>
-            ))}
+                Apply for 2026-27
+              </Link>
+            </aside>
           </div>
         </div>
       </section>
 
-      {/* <section
-        id="trends"
-        className="scroll-mt-30 bg-[#FFFFFF] py-16 md:scroll-mt-32 md:py-20"
-      >
+      {/* ── Program Overview ──────────────────────────────────────────────────── */}
+      <section className="bg-white py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
-          <h2 className="text-4xl font-semibold leading-tight md:text-5xl">
-            Stay up to date with
-            <span className="block text-[#f7941d]">
-              {program.title.split(" ").slice(0, 2).join(" ")} trends
-            </span>
-          </h2>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {TREND_ITEMS.map((item) => (
-              <article
-                key={item.title}
-                className="border border-black/12 bg-white p-3"
-              >
-                <div className="relative aspect-video overflow-hidden border border-black/10">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 1280px) 50vw, 25vw"
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="mt-4 text-xl font-semibold leading-snug md:text-2xl">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-base leading-relaxed text-black/70">
-                  {item.description}
+          <div className="grid gap-12 lg:grid-cols-[1fr_300px]">
+            <div>
+              <SectionLabel text="Program Overview" />
+              <h2 className="mt-3 text-3xl font-extrabold text-[#0b3b8f] md:text-4xl">
+                {program.title}
+              </h2>
+              {overviewCopy && (
+                <p className="mt-5 text-base leading-relaxed text-gray-600 md:text-[1.05rem]">
+                  {overviewCopy}
                 </p>
-                <button
-                  type="button"
-                  className="mt-3 text-base font-semibold text-[#f7941d] hover:text-[#F97316]"
+              )}
+              {majorTracks.length > 0 && (
+                <div className="mt-8">
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400">
+                    Major Tracks / Specialisations
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {majorTracks.map((track) => (
+                      <span
+                        key={track}
+                        className="rounded-full border border-[#0b3b8f]/20 bg-[#0b3b8f]/5 px-4 py-1.5 text-sm font-medium text-[#0b3b8f] transition hover:bg-[#0b3b8f]/10"
+                      >
+                        {track}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="space-y-3">
+              {program.eligibility && (
+                <div className="rounded-2xl border-l-4 border-[#f7941d] bg-[#fff8f0] p-5">
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#f7941d]">
+                    Eligibility Criteria
+                  </p>
+                  {(() => {
+                    const points = parseEligibility(program.eligibility);
+                    if (points.length > 0) {
+                      return (
+                        <ul className="mt-3 space-y-2 text-sm text-gray-700 list-disc pl-5">
+                          {points.map((pt, i) => (
+                            <li key={i} className="leading-relaxed">
+                              {pt.replace(/[.\s]+$/, "")}
+                            </li>
+                          ))}
+                        </ul>
+                      );
+                    }
+                    return (
+                      <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                        {program.eligibility}
+                      </p>
+                    );
+                  })()}
+                </div>
+              )}
+              <div className="rounded-2xl border-l-4 border-[#0b3b8f] bg-[#f0f5ff] p-5">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#0b3b8f]">
+                  Affiliations &amp; Approval
+                </p>
+                <div className="mt-2 space-y-1 text-sm font-medium text-gray-700">
+                  <p>Affiliated to IKGPTU, Jalandhar</p>
+                  <p>Approved by AICTE</p>
+                </div>
+              </div>
+              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-5">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">
+                  Mode of Admission
+                </p>
+                <p className="mt-2 text-sm text-gray-700">
+                  Apply online or visit campus. Admissions open for 2026-27.
+                </p>
+                <Link
+                  href={`/admissions?program=${program.slug}`}
+                  className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-[#f7941d] hover:underline"
                 >
-                  Read more ›
-                </button>
-              </article>
-            ))}
+                  Apply Now →
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
-      <section className="border-t border-black/10 bg-[#111827] py-4 text-white">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-4 px-4 text-sm font-semibold md:px-6">
-          <span>Open for admission year 2026-27</span>
-          <span>|</span>
-          <Link
-            href={`/admissions?program=${program.slug}`}
-            className="text-[#f7941d] hover:text-[#F97316]"
-          >
-            Apply now ›
-          </Link>
+      {/* ── Career Outcomes ───────────────────────────────────────────────────── */}
+      {program.outcomes.length > 0 && (
+        <section className="bg-[#f8faff] py-16 md:py-20">
+          <div className="mx-auto max-w-7xl px-4 md:px-6">
+            <SectionLabel text="Career Pathways" />
+            <h2 className="mt-3 text-3xl font-extrabold text-[#0b3b8f] md:text-4xl">
+              What can you become?
+            </h2>
+            {program.shortDescription && (
+              <p className="mt-2 max-w-2xl text-base text-gray-500">
+                {program.shortDescription}
+              </p>
+            )}
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {program.outcomes.map((outcome, i) => (
+                <article
+                  key={outcome.title}
+                  className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                >
+                  {outcome.image && outcome.image.startsWith("/") ? (
+                    <div className="relative h-44 overflow-hidden">
+                      <Image
+                        src={outcome.image}
+                        alt={outcome.title}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        className="object-cover transition duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                      <span className="absolute bottom-3 left-3 rounded-full bg-[#f7941d] px-2.5 py-0.5 text-xs font-bold text-white">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex h-20 items-center bg-linear-to-br from-[#0b3b8f]/8 to-[#f7941d]/8 px-4">
+                      <span className="text-4xl font-black text-[#0b3b8f]/15">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                  )}
+                  <div className="p-4">
+                    <h3 className="font-bold text-[#111827]">
+                      {outcome.title}
+                    </h3>
+                    {outcome.description && (
+                      <p className="mt-1.5 text-sm leading-relaxed text-gray-500">
+                        {outcome.description}
+                      </p>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Program Highlights ────────────────────────────────────────────────── */}
+      {program.highlights.length > 0 && (
+        <section className="relative overflow-hidden bg-[#0b3b8f] py-16 text-white md:py-20">
+          <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full border-2 border-white/10" />
+          <div className="pointer-events-none absolute -bottom-12 -left-12 h-48 w-48 rounded-full border border-white/8" />
+          <div className="pointer-events-none absolute -right-16 top-1/2 h-52 w-52 -translate-y-1/2 rounded-full border border-[#f7941d]/15" />
+
+          <div className="relative mx-auto max-w-7xl px-4 md:px-6">
+            <div className="grid gap-10 lg:grid-cols-[300px_1fr]">
+              <div className="flex flex-col">
+                <SectionLabel text="Why This Program" />
+                <h2 className="mt-3 text-3xl font-extrabold leading-tight md:text-4xl">
+                  Program
+                  <br />
+                  Highlights
+                </h2>
+                <p className="mt-4 text-sm leading-relaxed text-white/55">
+                  Built to develop industry-ready professionals through
+                  structured learning and real-world exposure.
+                </p>
+              </div>
+
+              <ul className="grid gap-3 sm:grid-cols-2">
+                {program.highlights.map((h) => (
+                  <li
+                    key={h.title}
+                    className="flex items-start gap-3 rounded-xl border border-white/8 bg-white/5 p-4 transition hover:bg-white/8"
+                  >
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#f7941d] text-xs font-bold text-white">
+                      ✓
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-white">
+                        {h.title}
+                      </p>
+                      {h.description && (
+                        <p className="mt-0.5 text-xs text-white/50">
+                          {h.description}
+                        </p>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Laboratories & Facilities ─────────────────────────────────────────── */}
+      {program.facilities.length > 0 && (
+        <section className="bg-white py-16 md:py-20">
+          <div className="mx-auto max-w-7xl px-4 md:px-6">
+            <SectionLabel text="Infrastructure" />
+            <h2 className="mt-3 text-3xl font-extrabold text-[#0b3b8f] md:text-4xl">
+              Laboratories &amp; Facilities
+            </h2>
+            <p className="mt-1 text-base text-gray-400">
+              Where theories meet hands-on practice
+            </p>
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {program.facilities.map((facility) => (
+                <article
+                  key={facility.title}
+                  className="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200 transition hover:-translate-y-1 hover:shadow-lg hover:ring-[#0b3b8f]/25"
+                >
+                  {facility.image && facility.image.startsWith("/") ? (
+                    <div className="relative h-44 overflow-hidden">
+                      <Image
+                        src={facility.image}
+                        alt={facility.title}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        className="object-cover transition duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex h-24 items-center justify-center bg-linear-to-br from-[#f0f5ff] to-[#e8f0fe]">
+                      <span className="text-3xl">🔬</span>
+                    </div>
+                  )}
+                  <div className="border-t-2 border-[#f7941d] p-4">
+                    <h3 className="font-bold text-[#111827]">
+                      {facility.title}
+                    </h3>
+                    {facility.description && (
+                      <p className="mt-1 text-sm text-gray-500">
+                        {facility.description}
+                      </p>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Placement Overview ────────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-[#050d1f] py-16 text-white md:py-20">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-[480px] w-[480px] rounded-full border border-[#f7941d]/12" />
+        <div className="pointer-events-none absolute -right-12 -top-12 h-72 w-72 rounded-full border border-[#f7941d]/8" />
+
+        <div className="relative mx-auto max-w-7xl px-4 md:px-6">
+          <SectionLabel text="Placement Spotlight" />
+          <h2 className="mt-3 text-3xl font-extrabold md:text-4xl">
+            Placement Overview
+          </h2>
+          <p className="mt-2 max-w-xl text-sm text-white/50">
+            Key takeaways from 2022–26 placement sessions
+          </p>
+
+          <div className="mt-10 grid gap-10 lg:grid-cols-[360px_1fr]">
+            {/* Left — stats + actions */}
+            <div className="flex flex-col gap-6">
+              <div className="grid grid-cols-2 gap-3">
+                {PLACEMENT_STATS.map(({ label, value, sub }) => (
+                  <div
+                    key={label}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm"
+                  >
+                    <p className="text-2xl font-extrabold text-[#f7941d]">
+                      {value}
+                    </p>
+                    <p className="mt-1 text-xs font-semibold text-white/80">
+                      {label}
+                    </p>
+                    <p className="text-[10px] text-white/38">{sub}</p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-sm leading-relaxed text-white/55">
+                Our students consistently secure roles at leading organisations.
+                The Training &amp; Placement Cell bridges academic learning with
+                industry expectations through structured preparation and
+                corporate connect.
+              </p>
+
+              <div className="flex flex-col gap-2">
+                <a
+                  href={DOCS.placementReport}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-[#f7941d] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#e07b12]"
+                >
+                  <FileBarChart className="h-4 w-4" />
+                  View Placement Report
+                </a>
+                <Link
+                  href="/placements"
+                  className="inline-flex items-center justify-center gap-2 border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+                >
+                  See All Placements →
+                </Link>
+              </div>
+            </div>
+
+            {/* Right — 2×2 student photo grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {students.map((student) => (
+                <div
+                  key={student.name}
+                  className="group relative overflow-hidden rounded-2xl bg-gray-900"
+                >
+                  <div className="relative h-64 w-full overflow-hidden md:h-72">
+                    <Image
+                      src={student.image}
+                      alt={student.name}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 35vw, 20vw"
+                      className="object-contain object-top transition duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/88 via-black/20 to-transparent" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="text-sm font-bold leading-tight text-white">
+                      {student.name}
+                    </p>
+                    <div className="mt-1.5 inline-flex items-center rounded-full bg-[#f7941d] px-2.5 py-0.5">
+                      <span className="text-[11px] font-bold text-white">
+                        {student.company}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-[11px] font-medium text-white/48">
+                      Class of {student.batch}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Activities & Events ───────────────────────────────────────────────── */}
+      <section className="bg-white py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 md:px-6">
+          <SectionLabel text="Campus Life" />
+          <h2 className="mt-3 text-3xl font-extrabold text-[#0b3b8f] md:text-4xl">
+            Activities &amp; Events
+          </h2>
+          <p className="mt-3 max-w-2xl text-base text-gray-500">
+            Life at SVIET extends beyond the classroom — through expert talks,
+            industry interactions, cultural festivals, and more.
+          </p>
+
+          <div className="mt-10 grid gap-4 lg:grid-cols-[1fr_300px] lg:items-stretch">
+            {/* Left — 3 image cards */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {activityPool.cards.map((card) => (
+                <div
+                  key={card.title}
+                  className="group relative overflow-hidden rounded-2xl shadow-sm"
+                >
+                  <div className="relative h-64 w-full overflow-hidden">
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 22vw"
+                      className="object-cover transition duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/88 via-black/30 to-transparent" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="text-sm font-bold leading-tight">
+                      {card.title}
+                    </p>
+                    <p className="mt-1 text-xs leading-snug text-black/68">
+                      {card.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Right — featured event (dark navy) */}
+            <div className="relative flex flex-col justify-between overflow-hidden rounded-2xl bg-[#0b3b8f] p-6">
+              <div className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full border border-white/10" />
+              <div className="pointer-events-none absolute -right-5 -top-5 h-22 w-22 rounded-full border border-white/8" />
+              <div>
+                <span className="inline-block rounded-full bg-[#f7941d]/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#f7941d]">
+                  {activityPool.featured.date}
+                </span>
+                <h3 className="mt-3 text-xl font-extrabold leading-tight text-white">
+                  {activityPool.featured.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-white/62">
+                  {activityPool.featured.description}
+                </p>
+              </div>
+              <Link
+                href="/events"
+                className="mt-6 inline-flex w-full items-center justify-center gap-2 bg-[#f7941d] py-3 text-sm font-bold text-white transition hover:bg-[#e07b12]"
+              >
+                Know More →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Final CTA Strip ───────────────────────────────────────────────────── */}
+      <section className="bg-[#0b3b8f] py-6 text-white">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 md:px-6">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-white/48">
+              Admissions Open · 2026-27
+            </p>
+            <p className="mt-0.5 text-lg font-bold">
+              Apply for {program.title} before seats fill
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href={DOCS.feeStructure}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-white/22 bg-white/8 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/15"
+            >
+              Fee Structure
+            </a>
+            <a
+              href={DOCS.placementReport}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-white/22 bg-white/8 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/15"
+            >
+              Placement Report
+            </a>
+            <Link
+              href={`/admissions?program=${program.slug}`}
+              className="bg-[#f7941d] px-7 py-2.5 text-sm font-bold text-white transition hover:bg-[#e07b12]"
+            >
+              Apply Now →
+            </Link>
+          </div>
         </div>
       </section>
     </main>

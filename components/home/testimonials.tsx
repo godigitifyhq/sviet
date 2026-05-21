@@ -2,37 +2,39 @@
 
 import Image from "next/image";
 import { useState, useRef } from "react";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
     id: 1,
     name: "Neha Sharma",
-    title: '"Why I chose to study at SVGOI"',
+    title: '"I chose SVGOI because it felt like the right place to grow"',
     image: "/assets/img/students/stu1.png",
   },
   {
     id: 2,
     name: "Amarpreet Kaur",
-    title: '"My student life at SVGOI"',
+    title:
+      '"My student life at SVGOI has been full of growth and memorable moments"',
     image: "/assets/img/students/stu2.png",
   },
   {
     id: 3,
     name: "Juhi Lakhani",
-    title: '"My journey as a BDes student at SVGOI"',
+    title: '"As a Pharma D. student at SVGOI, I found the space to grow creatively"',
     image: "/assets/img/students/stu3.png",
   },
   {
     id: 4,
     name: "Kunal",
-    title: '"My learning journey at SVGOI"',
+    title:
+      '"SVGOI strengthened my learning and helped me build real confidence"',
     image: "/assets/img/students/stu4.png",
   },
   {
     id: 5,
     name: "Rahul Sharma",
-    title: '"How SVGOI shaped my career path"',
+    title: '"SVGOI shaped my career path and prepared me for what came next"',
     image: "/assets/img/students/stu5.png",
   },
 ];
@@ -190,7 +192,7 @@ export function StudentTestimonialsSection() {
                   <div>
                     {/* Quote Mark */}
                     <div className="mb-3 text-4xl text-[#F4B740] font-bold">
-                      "
+                      &ldquo;
                     </div>
                     {/* Quote Title */}
                     <p className="text-sm font-semibold leading-tight">
@@ -215,13 +217,13 @@ export function StudentTestimonialsSection() {
                     </div>
 
                     {/* Watch Video Button */}
-                    <button className="flex items-center gap-2 rounded-full bg-[#f7941d] px-4 py-2 text-white hover:bg-[#2563EB] transition">
+                    {/* <button className="flex items-center gap-2 rounded-full bg-[#f7941d] px-4 py-2 text-white hover:bg-[#2563EB] transition">
                       <span className="text-sm font-semibold">Watch video</span>
                       <Play
                         size={16}
                         className="fill-[#F4B740] text-[#F4B740]"
                       />
-                    </button>
+                    </button> */}
                   </div>
 
                   {/* Decorative Elements */}

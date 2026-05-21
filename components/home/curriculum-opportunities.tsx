@@ -3,193 +3,118 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
-import { ChevronUp, ChevronDown, Play } from "lucide-react";
+import { ChevronUp, ChevronDown } from "lucide-react";
 
-const curriculumEvents = [
+export type CurriculumEvent = {
+  id: number | string;
+  slug: string;
+  name: string;
+  mainCard: { title: string; description: string; image: string };
+  stats: Array<{ image: string; label: string }>;
+  videos: Array<{ image: string; label: string }>;
+};
+
+const STATIC_EVENTS: CurriculumEvent[] = [
   {
     id: 1,
+    slug: "sportsmania-2025",
     name: "Sportsmania 2025",
     mainCard: {
       title: "Sportsmania 2025",
       description:
         "The annual sports festival of SVGOI brings together students in a vibrant display of athleticism, teamwork and competitive spirit across events like football, basketball, and more.",
       image: "/assets/img/section_card/Sportsmania.jpeg",
-      cta: "Learn more",
     },
-    stats: [
-      {
-        image: "/assets/img/section_card/Cricket.jpeg",
-        label: "October 17–18, 2025",
-      },
-    ],
-    videos: [
-      {
-        image: "/assets/img/section_card/Kabbadi.jpeg",
-        label: "SVGOI Campus",
-      },
-    ],
+    stats: [{ image: "/assets/img/section_card/Cricket.jpeg", label: "October 17–18, 2025" }],
+    videos: [{ image: "/assets/img/section_card/Kabbadi.jpeg", label: "SVGOI Campus" }],
   },
   {
     id: 2,
+    slug: "elevate-2-0",
     name: "Elevate 2.0",
     mainCard: {
       title: "Elevate 2.0",
       description:
         "A flagship cultural & innovation fest bringing together creative minds, performances, workshops and peer-networking celebrating innovation, student talent and campus life.",
       image: "/assets/img/section_card/Elevate.jpeg",
-      cta: "Learn more",
     },
-    stats: [
-      {
-        image: "/assets/img/section_card/Elevate2.jpeg",
-        label: "September 11–13, 2025",
-      },
-    ],
-    videos: [
-      {
-        image: "/assets/img/section_card/Elevate3.jpeg",
-        label: "SVGOI Campus",
-      },
-    ],
+    stats: [{ image: "/assets/img/section_card/Elevate2.jpeg", label: "September 11–13, 2025" }],
+    videos: [{ image: "/assets/img/section_card/Elevate3.jpeg", label: "SVGOI Campus" }],
   },
   {
     id: 3,
+    slug: "tedx-sviet",
     name: "TEDx SVIET",
     mainCard: {
       title: "TEDx SVIET",
       description:
         "TEDx SVIET 2025, under the theme 'The Power of One', featured thoughtful talks and inspiring conversations aimed at spreading ideas worth sharing.",
       image: "/assets/img/section_card/TEDx.jpeg",
-      cta: "Learn more",
     },
-    stats: [
-      {
-        image: "/assets/img/section_card/TEDx2.jpeg",
-        label: "August 23, 2025",
-      },
-    ],
-    videos: [
-      {
-        image: "/assets/img/section_card/TEDx3.jpeg",
-        label: "SVGOI Campus",
-      },
-    ],
+    stats: [{ image: "/assets/img/section_card/TEDx2.jpeg", label: "August 23, 2025" }],
+    videos: [{ image: "/assets/img/section_card/TEDx3.jpeg", label: "SVGOI Campus" }],
   },
   {
     id: 4,
-    name: "DevFest Chandigarh 2025",
+    slug: "dev-fest",
+    name: "Dev Fest",
     mainCard: {
-      title: "DevFest Chandigarh 2025",
+      title: "Dev Fest",
       description:
-        "A power-packed tech fest bringing together technologists, developers and enthusiasts for learning, innovation, workshops and community networking focused on AI, Web, Cloud and emerging tech.",
+        "A power-packed tech fest bringing together developers, enthusiasts and community builders for learning, innovation, workshops and networking focused on AI, Web, Cloud and emerging tech.",
       image: "/assets/img/section_card/Dev1.jpeg",
-      cta: "Learn more",
     },
-    stats: [
-      {
-        image: "/assets/img/section_card/Dev2.jpeg",
-        label: "November 8, 2025",
-      },
-    ],
-    videos: [
-      {
-        image: "/assets/img/section_card/Dev3.jpeg",
-        label: "SVGOI Campus",
-      },
-    ],
+    stats: [{ image: "/assets/img/section_card/Dev2.jpeg", label: "November 8, 2025" }],
+    videos: [{ image: "/assets/img/section_card/Dev3.jpeg", label: "SVGOI Campus" }],
   },
   {
     id: 5,
+    slug: "graduation-ceremony-2025",
     name: "Graduation Ceremony 2025",
     mainCard: {
       title: "Graduation Ceremony 2025",
       description:
         "The Graduation Ceremony 2025 marked a proud milestone for graduating batches, celebrating years of dedication, learning, and achievement with esteemed dignitaries.",
       image: "/assets/img/section_card/Convo.jpeg",
-      cta: "Learn more",
     },
-    stats: [
-      {
-        image: "/assets/img/section_card/Convo2.jpeg",
-        label: "May 2025",
-      },
-    ],
-    videos: [
-      {
-        image: "/assets/img/section_card/Convo3.jpeg",
-        label: "Chief Guest: Dr. Gurpreet Kaur Mann",
-      },
-    ],
+    stats: [{ image: "/assets/img/section_card/Convo2.jpeg", label: "May 2025" }],
+    videos: [{ image: "/assets/img/section_card/Convo3.jpeg", label: "Chief Guest: Dr. Gurpreet Kaur Mann" }],
   },
   {
     id: 6,
+    slug: "spontania-2025",
     name: "Spontania 2025",
     mainCard: {
       title: "Spontania 2025",
       description:
         "The flagship cultural extravaganza of SVGOI with a vibrant three-day celebration of art, culture, and talent featuring dance, music, theater and cultural showcases.",
       image: "/assets/img/section_card/Spont.jpeg",
-      cta: "Learn more",
     },
-    stats: [
-      {
-        image: "/assets/img/section_card/Spont2.jpeg",
-        label: "April 15-17, 2025",
-      },
-    ],
-    videos: [
-      {
-        image: "/assets/img/section_card/Spont3.jpeg",
-        label: "600+ Students",
-      },
-    ],
+    stats: [{ image: "/assets/img/section_card/Spont2.jpeg", label: "April 15-17, 2025" }],
+    videos: [{ image: "/assets/img/section_card/Spont3.jpeg", label: "600+ Students" }],
   },
   {
     id: 7,
+    slug: "global-futures-summit-2-0",
     name: "Global Futures Summit 2.0",
     mainCard: {
       title: "Global Futures Summit 2.0",
       description:
         "Industry & HR Perspectives event bringing together thought leaders to discuss emerging trends, career pathways, and shaping the future workforce.",
       image: "/assets/img/section_card/GFS.JPG",
-      cta: "Learn more",
     },
-    stats: [
-      {
-        image: "/assets/img/section_card/GFS2.JPG",
-        label: "8th March 2025",
-      },
-    ],
-    videos: [
-      {
-        image: "/assets/img/section_card/GFS3.JPG",
-        label: "SVGOI Auditorium",
-      },
-    ],
+    stats: [{ image: "/assets/img/section_card/GFS2.JPG", label: "8th March 2025" }],
+    videos: [{ image: "/assets/img/section_card/GFS3.JPG", label: "SVGOI Auditorium" }],
   },
 ];
 
-const curriculumImageMap: Record<string, string> = {
-  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumUFNaeJrVPFul6q2HRvZ8sMIWLa5xwjUytOhi":
-    "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumUFNaeJrVPFul6q2HRvZ8sMIWLa5xwjUytOhi",
-  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumQZ22PWyaj2Z1DfTG5xHuqnQog6vKB4FpJeI8":
-    "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumQZ22PWyaj2Z1DfTG5xHuqnQog6vKB4FpJeI8",
-  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumTJiOaxw6itj04AFlILkGvbdQPE8uOqWpHYsU":
-    "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumTJiOaxw6itj04AFlILkGvbdQPE8uOqWpHYsU",
-  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumZdCLf8nLS41ZsWrz2yX9qNdG5vVC7FuBlfa0":
-    "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumZdCLf8nLS41ZsWrz2yX9qNdG5vVC7FuBlfa0",
-  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumINSwyyR21jqluvKkFoRaDpPfCGTtxewIs74z":
-    "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumINSwyyR21jqluvKkFoRaDpPfCGTtxewIs74z",
-  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumIyCbVLR21jqluvKkFoRaDpPfCGTtxewIs74z":
-    "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumIyCbVLR21jqluvKkFoRaDpPfCGTtxewIs74z",
-  "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumpKvXrQ6ntRyaQormsAvUSgqZTJcibOuXfBWd":
-    "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumpKvXrQ6ntRyaQormsAvUSgqZTJcibOuXfBWd",
-};
+type Props = { events?: CurriculumEvent[] };
 
-const resolveCurriculumImage = (imagePath: string) =>
-  curriculumImageMap[imagePath as keyof typeof curriculumImageMap] ?? imagePath;
+import { shouldBypassOptimization } from "@/lib/image-utils";
 
-export function CurriculumOpportunitiesSection() {
+export function CurriculumOpportunitiesSection({ events }: Props) {
+  const curriculumEvents = events && events.length > 0 ? events : STATIC_EVENTS;
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [scrollOffset, setScrollOffset] = useState(0);
@@ -201,10 +126,7 @@ export function CurriculumOpportunitiesSection() {
   const handlePrev = () => {
     const newIndex = Math.max(0, activeIndex - 1);
     setActiveIndex(newIndex);
-
-    if (newIndex < scrollOffset) {
-      setScrollOffset(newIndex);
-    }
+    if (newIndex < scrollOffset) setScrollOffset(newIndex);
     setIsTransitioning(true);
     setTimeout(() => setIsTransitioning(false), 300);
   };
@@ -212,10 +134,7 @@ export function CurriculumOpportunitiesSection() {
   const handleNext = () => {
     const newIndex = Math.min(totalItems - 1, activeIndex + 1);
     setActiveIndex(newIndex);
-
-    if (newIndex >= scrollOffset + itemsPerView) {
-      setScrollOffset(newIndex - itemsPerView + 1);
-    }
+    if (newIndex >= scrollOffset + itemsPerView) setScrollOffset(newIndex - itemsPerView + 1);
     setIsTransitioning(true);
     setTimeout(() => setIsTransitioning(false), 300);
   };
@@ -223,21 +142,13 @@ export function CurriculumOpportunitiesSection() {
   const handleItemClick = (index: number) => {
     setIsTransitioning(true);
     setActiveIndex(index);
-
-    if (index < scrollOffset) {
-      setScrollOffset(index);
-    } else if (index >= scrollOffset + itemsPerView) {
-      setScrollOffset(index - itemsPerView + 1);
-    }
-
+    if (index < scrollOffset) setScrollOffset(index);
+    else if (index >= scrollOffset + itemsPerView) setScrollOffset(index - itemsPerView + 1);
     setTimeout(() => setIsTransitioning(false), 300);
   };
 
   const currentEvent = curriculumEvents[activeIndex];
-  const visibleItems = curriculumEvents.slice(
-    scrollOffset,
-    scrollOffset + itemsPerView,
-  );
+  const visibleItems = curriculumEvents.slice(scrollOffset, scrollOffset + itemsPerView);
 
   return (
     <section className="bg-[#FFFFFF] px-4 py-16 md:px-6 md:py-24">
@@ -259,7 +170,7 @@ export function CurriculumOpportunitiesSection() {
               <button
                 onClick={handlePrev}
                 disabled={activeIndex === 0}
-                className="h-8 w-8 rounded-full border border-[#f7941d] text-[#f7941d] transition disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#f7941d] hover:text-white flex items-center justify-center"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-[#f7941d] text-[#f7941d] transition disabled:cursor-not-allowed disabled:opacity-40 hover:bg-[#f7941d] hover:text-white"
                 aria-label="Scroll up"
               >
                 <ChevronUp size={16} />
@@ -267,47 +178,41 @@ export function CurriculumOpportunitiesSection() {
               <button
                 onClick={handleNext}
                 disabled={activeIndex === totalItems - 1}
-                className="h-8 w-8 rounded-full border border-[#f7941d] text-[#f7941d] transition disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#f7941d] hover:text-white flex items-center justify-center"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-[#f7941d] text-[#f7941d] transition disabled:cursor-not-allowed disabled:opacity-40 hover:bg-[#f7941d] hover:text-white"
                 aria-label="Scroll down"
               >
                 <ChevronDown size={16} />
               </button>
             </div>
 
-            <div ref={containerRef} className="space-y-2 h-96 overflow-hidden">
+            <div ref={containerRef} className="h-96 space-y-2 overflow-hidden">
               {visibleItems.map((event) => {
                 const isActive = event.id === curriculumEvents[activeIndex].id;
-
                 return (
                   <button
                     key={event.id}
-                    onClick={() =>
-                      handleItemClick(curriculumEvents.indexOf(event))
-                    }
-                    className={`w-full text-left px-3 py-2 rounded transition-all duration-200 ${
+                    onClick={() => handleItemClick(curriculumEvents.indexOf(event))}
+                    className={`w-full rounded px-3 py-2 text-left transition-all duration-200 ${
                       isActive
-                        ? "text-[#f7941d] font-semibold bg-[#E5E7EB]"
-                        : "text-[#6B7280] font-normal hover:text-[#f7941d] hover:bg-[#F3F4F6]"
+                        ? "bg-[#E5E7EB] font-semibold text-[#f7941d]"
+                        : "font-normal text-[#6B7280] hover:bg-[#F3F4F6] hover:text-[#f7941d]"
                     }`}
                   >
-                    <div className="text-sm md:text-sm line-clamp-2">
-                      {event.name}
-                    </div>
+                    <div className="line-clamp-2 text-sm">{event.name}</div>
                   </button>
                 );
               })}
             </div>
           </div>
 
-          <div
-            className={`transition-opacity duration-300 ${isTransitioning ? "opacity-75" : "opacity-100"}`}
-          >
+          <div className={`transition-opacity duration-300 ${isTransitioning ? "opacity-75" : "opacity-100"}`}>
             <div className="grid gap-6 lg:grid-cols-[1fr_1.5fr_1fr]">
+              {/* Info card */}
               <div className="space-y-4">
-                <div className="overflow-hidden rounded-[20px] bg-[#f7941d] p-5 md:p-6 text-white h-full flex flex-col justify-between">
+                <div className="flex h-full flex-col justify-between overflow-hidden rounded-[20px] bg-[#f7941d] p-5 text-white md:p-6">
                   <div>
                     <div className="mb-3 h-10 w-10 rounded-lg bg-white/20" />
-                    <h3 className="mb-3 text-sm md:text-base font-bold leading-tight">
+                    <h3 className="mb-3 text-sm font-bold leading-tight md:text-base">
                       {currentEvent.mainCard.title}
                     </h3>
                     <p className="mb-4 text-sm leading-relaxed text-white/90">
@@ -315,8 +220,8 @@ export function CurriculumOpportunitiesSection() {
                     </p>
                   </div>
                   <Link
-                    href={`/events/${currentEvent.id}`}
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-3 md:px-4 py-2 text-sm md:text-sm font-semibold text-[#f7941d] transition hover:bg-white/90"
+                    href={`/events/${currentEvent.slug}`}
+                    className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-sm font-semibold text-[#f7941d] transition hover:bg-white/90 md:px-4"
                   >
                     View Event Details
                     <span aria-hidden="true">›</span>
@@ -324,42 +229,46 @@ export function CurriculumOpportunitiesSection() {
                 </div>
               </div>
 
+              {/* Main image */}
               <Link
-                href={`/events/${currentEvent.id}`}
-                className="relative overflow-hidden rounded-[20px] bg-black h-80 md:h-full block group"
+                href={`/events/${currentEvent.slug}`}
+                className="group relative block h-80 overflow-hidden rounded-[20px] bg-black md:h-full"
               >
                 <Image
-                  src={resolveCurriculumImage(currentEvent.mainCard.image)}
+                  src={currentEvent.mainCard.image}
                   alt={currentEvent.mainCard.title}
                   fill
+                  unoptimized={shouldBypassOptimization(currentEvent.mainCard.image)}
                   className="object-cover transition-all duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-all" />
-                <div className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1 text-sm font-semibold text-[#111827] opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute inset-0 bg-black/10 transition-all group-hover:bg-black/25" />
+                <div className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1 text-sm font-semibold text-[#111827] opacity-0 transition-opacity group-hover:opacity-100">
                   View Details →
                 </div>
               </Link>
 
+              {/* Side cards */}
               <div className="space-y-4">
                 {currentEvent.stats.map((stat, idx) => (
                   <div
                     key={idx}
-                    className="relative overflow-hidden rounded-[20px] bg-[#000000ba]  text-white h-40"
+                    className="relative h-40 overflow-hidden rounded-[20px] bg-[#000000ba] text-white"
                   >
-                    <div className="relative h-full w-full">
-                      <Image
-                        src={resolveCurriculumImage(stat.image)}
-                        alt={stat.label}
-                        fill
-                        className="object-cover opacity-30 absolute"
-                      />
-                    </div>
-                    <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-6 text-right">
-                      <div className="text-2xl md:text-3xl font-bold">
-                        {stat.label.split("+")[0]}+
+                    <Image
+                      src={stat.image}
+                      alt={stat.label}
+                      fill
+                      unoptimized={shouldBypassOptimization(stat.image)}
+                      className="absolute object-cover opacity-30"
+                    />
+                    <div className="absolute inset-0 flex flex-col justify-end p-5 text-right md:p-6">
+                      <div className="text-2xl font-bold md:text-3xl">
+                        {stat.label.split("+")[0]}{stat.label.includes("+") ? "+" : ""}
                       </div>
                       <div className="text-sm font-medium opacity-90">
-                        {stat.label.split("+")[1]?.trim() || "Participants"}
+                        {stat.label.includes("+")
+                          ? stat.label.split("+")[1]?.trim() || "Participants"
+                          : "Date"}
                       </div>
                     </div>
                   </div>
@@ -368,27 +277,18 @@ export function CurriculumOpportunitiesSection() {
                 {currentEvent.videos.map((video, idx) => (
                   <div
                     key={idx}
-                    className="relative overflow-hidden rounded-[20px] bg-black h-40 group"
+                    className="group relative h-40 overflow-hidden rounded-[20px] bg-black"
                   >
                     <Image
-                      src={resolveCurriculumImage(video.image)}
+                      src={video.image}
                       alt={video.label}
                       fill
+                      unoptimized={shouldBypassOptimization(video.image)}
                       className="object-cover transition-all duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-linear-to-b from-transparent via-black/20 to-black/80" />
                     <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4">
-                      <div>
-                        <div className="text-sm md:text-sm font-semibold text-white">
-                          {video.label}
-                        </div>
-                      </div>
-                      {/* <button
-                        aria-label="Play video"
-                        className="flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-full bg-[#7c4dff] transition hover:bg-[#6a3cde]"
-                      >
-                        <Play size={16} className="text-white md:w-5 md:h-5" />
-                      </button> */}
+                      <div className="text-sm font-semibold text-white md:text-sm">{video.label}</div>
                     </div>
                   </div>
                 ))}

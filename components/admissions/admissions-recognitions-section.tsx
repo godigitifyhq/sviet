@@ -35,7 +35,7 @@ const TRUST_STATS = [
     tone: "from-[#0b3b8f] to-[#1d4ed8]",
   },
   {
-    title: "₹45 Lakh+ Startup Support",
+    title: "₹2.5 Cr+ Startup Support",
     description: "Entrepreneurship ecosystem",
     tone: "from-[#374151] to-[#111827]",
   },

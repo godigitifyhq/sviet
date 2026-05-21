@@ -21,6 +21,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "**.ufs.sh",
+      },
+      {
+        protocol: "https",
         hostname: "utfs.io",
       },
       {
@@ -70,6 +74,14 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "www.barcouncilofindia.org",
+      },
+      {
+        protocol: "https",
+        hostname: "drive.google.com",
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
       },
     ],
     formats: ["image/avif", "image/webp"],

@@ -129,25 +129,7 @@ export function CampusLifeQuickLinksSection() {
 
   return (
     <section className="w-full bg-[#f7f7f9]">
-      <div className="border-y border-white/10 bg-[#241a6b]">
-        <div className="mx-auto flex w-full max-w-7xl gap-6 overflow-x-auto px-4 py-4 text-sm font-semibold uppercase tracking-wide text-white/90 md:px-6">
-          {CAMPUS_TABS.map((tab) => (
-            <button
-              key={tab.targetId}
-              type="button"
-              onClick={() => handleTabClick(tab.targetId)}
-              aria-current={activeTabId === tab.targetId ? "true" : undefined}
-              className={`whitespace-nowrap border-b-2 pb-2 transition ${
-                activeTabId === tab.targetId
-                  ? "border-[#ff9f1a] text-white"
-                  : "border-transparent hover:text-white"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-      </div>
+      
 
       <div className="mx-auto w-full max-w-7xl px-4 py-10 md:px-6 md:py-12">
         <p className="flex items-center gap-2 text-sm font-semibold text-[#1f1f1f]">

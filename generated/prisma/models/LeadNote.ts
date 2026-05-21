@@ -158,7 +158,7 @@ export type LeadNoteGroupByOutputType = {
   _max: LeadNoteMaxAggregateOutputType | null
 }
 
-type GetLeadNoteGroupByPayload<T extends LeadNoteGroupByArgs> = Prisma.PrismaPromise<
+export type GetLeadNoteGroupByPayload<T extends LeadNoteGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<LeadNoteGroupByOutputType, T['by']> &
       {

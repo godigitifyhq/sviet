@@ -1,22 +1,29 @@
-import { EventsCalendarSection } from "@/components/events/events-calendar-section";
-import {
-  COMPLETED_EVENTS,
-  FEATURED_EVENTS,
-  EVENT_SPEAKERS,
-} from "@/components/events/event-data";
+import { listFeaturedEvents, listAllEvents } from "@/lib/dal/events";
+import { EventsAllSection } from "@/components/events/events-calendar-section";
 import { EventsFeaturedSection } from "@/components/events/events-featured-section";
 import { EventsHeroSection } from "@/components/events/events-hero-section";
-import { EventsSpeakersSection } from "@/components/events/events-speakers-section";
 import { DistinguishedLeadersSection } from "@/components/home/leaders";
 
-export function EventsPage() {
+export async function EventsPage() {
+  const [featured, all] = await Promise.all([
+    listFeaturedEvents(5),
+    listAllEvents(50),
+  ]);
+
+  const otherEvents = all.filter((e) => !e.isFeatured);
+
+  // Collect gallery images first, then fall back to cover images
+  const allImages = all
+    .flatMap((e) => (e.images.length > 0 ? e.images : [e.image]))
+    .filter(Boolean)
+    .slice(0, 18);
+
   return (
     <div className="bg-white text-[#111827]">
       <EventsHeroSection />
-      <EventsFeaturedSection featuredEvents={FEATURED_EVENTS} />
-      <EventsCalendarSection pastEvents={COMPLETED_EVENTS} />
+      <EventsFeaturedSection featuredEvents={featured} />
+      <EventsAllSection events={otherEvents} allImages={allImages} />
       <DistinguishedLeadersSection />
-      <EventsSpeakersSection speakers={EVENT_SPEAKERS} />
     </div>
   );
 }

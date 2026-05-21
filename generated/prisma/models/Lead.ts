@@ -255,7 +255,7 @@ export type LeadGroupByOutputType = {
   _max: LeadMaxAggregateOutputType | null
 }
 
-type GetLeadGroupByPayload<T extends LeadGroupByArgs> = Prisma.PrismaPromise<
+export type GetLeadGroupByPayload<T extends LeadGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<LeadGroupByOutputType, T['by']> &
       {
@@ -703,14 +703,6 @@ export type EnumLeadSourceFieldUpdateOperationsInput = {
 
 export type EnumLeadStatusFieldUpdateOperationsInput = {
   set?: $Enums.LeadStatus
-}
-
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
 }
 
 export type LeadCreateNestedOneWithoutApplicantInput = {

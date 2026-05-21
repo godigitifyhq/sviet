@@ -112,6 +112,7 @@ const UTILITY_MESSAGES = [
   " Admissions Open 2026 — Apply Now",
   "Admission Helpline: +91-94652-33333 | Toll Free: 1800-120-1200",
   "NAAC Accredited",
+  "Autonomous Institute",
 ];
 
 const HEADER_SCROLL_ENTER_THRESHOLD = 56;
@@ -409,16 +410,16 @@ export function MainNavbar({
     return accumulator;
   }, {});
 
+  const DEPARTMENT_ORDER: Record<string, number> = {
+    Explore: 0,
+    Engineering: 1,
+  };
+
   const orderedProgramGroups = Object.entries(groupedProgramItems).sort(
     ([left], [right]) => {
-      if (left === "Explore") {
-        return -1;
-      }
-
-      if (right === "Explore") {
-        return 1;
-      }
-
+      const leftOrder = DEPARTMENT_ORDER[left] ?? 99;
+      const rightOrder = DEPARTMENT_ORDER[right] ?? 99;
+      if (leftOrder !== rightOrder) return leftOrder - rightOrder;
       return left.localeCompare(right);
     },
   );
@@ -626,9 +627,7 @@ export function MainNavbar({
                                     {groupName}
                                   </p>
                                   <div className="mt-3 space-y-1.5">
-                                    {groupItems
-                                      .slice(0, 6)
-                                      .map((dropdownItem) => {
+                                    {groupItems.map((dropdownItem) => {
                                         const isCurrent =
                                           pathname === dropdownItem.href;
 

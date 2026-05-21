@@ -72,13 +72,7 @@ export function PlacementCardsMarqueeSection() {
                 )}
               </div>
 
-              <div className="absolute left-1/2 top-[70%] z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-lg font-bold text-white md:h-16 md:w-16 md:text-xl">
-                <div
-                  className={`flex h-full w-full items-center justify-center rounded-full ${card.badgeTone} ${card.badgeTone === "bg-white" ? "text-[#0b3b8f]" : "text-white"}`}
-                >
-                  <span className="leading-none">{card.iconLabel}</span>
-                </div>
-              </div>
+            
 
               <div className="absolute inset-x-0 bottom-0">
                 <div className="rounded-2xl border border-[#2f266d] bg-[#f2f2f2] px-3 py-2.5 text-center text-[0.6rem] font-medium leading-tight text-black md:px-4 md:py-3 md:text-[1.55rem]">
