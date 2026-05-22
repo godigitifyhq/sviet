@@ -28,11 +28,6 @@ const RELATED_LINKS = [
     href: "/programs",
   },
   {
-    title: "Dual degree programs",
-    description: "Earn twice the credentials",
-    href: "/programs",
-  },
-  {
     title: "Bachelor programs",
     description: "What you can study after 12th",
     href: "/programs",
@@ -102,16 +97,14 @@ export function CampusLifeQuickLinksSection() {
       passive: true,
     });
 
-    const hashRafId = window.requestAnimationFrame(syncFromHash);
-    const rafId = window.requestAnimationFrame(syncFromScrollPosition);
+    syncFromHash();
+    syncFromScrollPosition();
 
     return () => {
       targets.forEach((target) => observer.unobserve(target));
       observer.disconnect();
       window.removeEventListener("hashchange", syncFromHash);
       window.removeEventListener("scroll", syncFromScrollPosition);
-      window.cancelAnimationFrame(hashRafId);
-      window.cancelAnimationFrame(rafId);
     };
   }, []);
 
@@ -129,8 +122,6 @@ export function CampusLifeQuickLinksSection() {
 
   return (
     <section className="w-full bg-[#f7f7f9]">
-      
-
       <div className="mx-auto w-full max-w-7xl px-4 py-10 md:px-6 md:py-12">
         <p className="flex items-center gap-2 text-sm font-semibold text-[#1f1f1f]">
           <span className="text-[#1ca1b8]">▸</span>
