@@ -184,7 +184,7 @@ export function LeadershipPage() {
         <h1 id="leadership-hero-heading" className="sr-only">
           Leadership
         </h1>
-        <div className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden">
+        <div className="relative mt-20 left-1/2 w-screen -translate-x-1/2 overflow-hidden">
           <div className="relative aspect-5/2 w-full">
             <Image
               src="/assets/img/banner/leadership.jpeg"
