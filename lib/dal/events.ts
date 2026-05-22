@@ -27,10 +27,39 @@ export type CampusEventsSectionData = {
   hasUpcomingEvents: boolean;
 };
 
+type EventDeduplicationKey = {
+  title: string;
+  startDate: Date;
+  endDate: Date | null;
+};
+
+export function getEventDeduplicationKey(event: EventDeduplicationKey) {
+  return [
+    event.title.trim().toLowerCase(),
+    event.startDate.toISOString(),
+    event.endDate?.toISOString() ?? "",
+  ].join("|");
+}
+
+export function dedupeEvents<T extends EventDeduplicationKey>(events: T[]) {
+  const seen = new Set<string>();
+
+  return events.filter((event) => {
+    const key = getEventDeduplicationKey(event);
+
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+}
+
 export async function listUpcomingEvents(limit?: number) {
   const todayStart = getTodayStart();
 
-  return safeRead(
+  const events = await safeRead(
     () =>
       prisma.event.findMany({
         where: { startDate: { gte: todayStart } },
@@ -39,10 +68,12 @@ export async function listUpcomingEvents(limit?: number) {
       }),
     [],
   );
+
+  return dedupeEvents(events);
 }
 
 export async function listRecentEvents(limit = 6) {
-  return safeRead(
+  const events = await safeRead(
     () =>
       prisma.event.findMany({
         orderBy: { startDate: "desc" },
@@ -50,10 +81,12 @@ export async function listRecentEvents(limit = 6) {
       }),
     [],
   );
+
+  return dedupeEvents(events);
 }
 
 export async function listFeaturedEvents(limit = 5) {
-  return safeRead(
+  const events = await safeRead(
     () =>
       prisma.event.findMany({
         where: { isFeatured: true },
@@ -63,10 +96,12 @@ export async function listFeaturedEvents(limit = 5) {
       }),
     [],
   );
+
+  return dedupeEvents(events);
 }
 
 export async function listAllEvents(limit = 50) {
-  return safeRead(
+  const events = await safeRead(
     () =>
       prisma.event.findMany({
         orderBy: { startDate: "desc" },
@@ -75,6 +110,8 @@ export async function listAllEvents(limit = 50) {
       }),
     [],
   );
+
+  return dedupeEvents(events);
 }
 
 export async function getEventBySlug(slug: string) {
@@ -115,8 +152,8 @@ export async function getCampusEventsSectionData(): Promise<CampusEventsSectionD
   const hero = featuredEvent ?? upcomingEvents[0] ?? recentEvents[0] ?? null;
   const hasUpcomingEvents = upcomingEvents.length > 0;
 
-  // Upcoming first, then recent past — exclude the hero card to avoid duplication
-  const listEvents = [...upcomingEvents, ...recentEvents]
+  // Upcoming first, then recent past — exclude the hero card and duplicates.
+  const listEvents = dedupeEvents([...upcomingEvents, ...recentEvents])
     .filter((e) => e.id !== hero?.id)
     .slice(0, 4);
 

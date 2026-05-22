@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 
+import { dedupeEvents } from "@/lib/dal/events";
 import { prisma } from "@/lib/prisma";
 import { withApiHandler } from "@/services/api-handler";
 
@@ -18,6 +19,6 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    return events;
+    return dedupeEvents(events);
   });
 }

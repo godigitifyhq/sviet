@@ -1,4 +1,8 @@
-import { listFeaturedEvents, listAllEvents } from "@/lib/dal/events";
+import {
+  getEventDeduplicationKey,
+  listFeaturedEvents,
+  listAllEvents,
+} from "@/lib/dal/events";
 import { EventsAllSection } from "@/components/events/events-calendar-section";
 import { EventsFeaturedSection } from "@/components/events/events-featured-section";
 import { EventsHeroSection } from "@/components/events/events-hero-section";
@@ -10,11 +14,15 @@ export async function EventsPage() {
     listAllEvents(50),
   ]);
 
-  const otherEvents = all.filter((e) => !e.isFeatured);
+  const featuredKeys = new Set(featured.map(getEventDeduplicationKey));
+  const otherEvents = all.filter(
+    (event) =>
+      !event.isFeatured && !featuredKeys.has(getEventDeduplicationKey(event)),
+  );
 
   // Collect gallery images first, then fall back to cover images
   const allImages = all
-    .flatMap((e) => (e.images.length > 0 ? e.images : [e.image]))
+    .flatMap((e) => e.images)
     .filter(Boolean)
     .slice(0, 18);
 

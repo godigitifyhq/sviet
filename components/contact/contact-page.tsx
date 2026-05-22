@@ -58,11 +58,6 @@ const faqItems = [
     answer:
       "SVGOI has a near 100% placement record with a highest package of 45 LPA. 500+ companies visit campus annually including Amazon, TCS, Infosys, Wipro, and Deloitte.",
   },
-  {
-    question: "Is SVGOI NAAC accredited?",
-    answer:
-      "Yes, SVGOI is NBA and NAAC accredited. SVGOI was ranked 104 in NIRF 2021. The institution is approved by AICTE, PCI, and INC.",
-  },
 ];
 
 type ContactFormErrors = Partial<

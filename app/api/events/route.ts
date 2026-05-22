@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 
 import { assertHasRole } from "@/modules/auth/rbac";
+import { dedupeEvents } from "@/lib/dal/events";
 import { prisma } from "@/lib/prisma";
 import { getEventStatus } from "@/lib/events/status";
 import { withApiHandler } from "@/services/api-handler";
@@ -34,7 +35,7 @@ export async function GET(request: NextRequest) {
       include: { speakers: { orderBy: { displayOrder: "asc" } } },
     });
 
-    return events.map((event) => ({
+    return dedupeEvents(events).map((event) => ({
       ...event,
       status: getEventStatus(event),
     }));

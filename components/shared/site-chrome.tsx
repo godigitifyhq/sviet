@@ -457,7 +457,7 @@ export function MainNavbar({
               isTransparent
                 ? isLeadershipPage
                   ? "/Logo.png"
-                  : "/assets/img/sviet_white.png"
+                  : "/Logo.png"
                 : "/Logo.png"
             }
             alt="SVGOI logo"
