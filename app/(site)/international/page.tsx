@@ -90,7 +90,7 @@ export default function InternationalPage() {
       <InternationalProgramPathwaysSection />
       {/* <InternationalNewsUpdatesSection /> */}
       <InternationalSupportServicesSection />
-      <InternationalCulturalDiversitySection />
+      {/* <InternationalCulturalDiversitySection /> */}
       <InternationalFacilitiesSection />
       <InternationalOpportunitiesSection />
       <InternationalAchievementsSection />

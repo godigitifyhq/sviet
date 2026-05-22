@@ -15,6 +15,26 @@ body {
   background: #f6f6f6;
 }
 
+.our-initiatives-hero-grid {
+  background-image:
+    linear-gradient(rgba(16, 24, 40, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 24, 40, 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.our-initiatives-founder-grid {
+  background-image:
+    linear-gradient(rgba(16, 24, 40, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 24, 40, 0.03) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.our-initiatives-cta-glow {
+  background:
+    radial-gradient(circle at 20% 50%, rgba(247, 148, 29, 0.16) 0%, transparent 42%),
+    radial-gradient(circle at 80% 50%, rgba(0, 48, 135, 0.12) 0%, transparent 42%);
+}
+
 /* Global sharp-corner override: remove rounded corners across the site. */
 :root {
   --radius: 0px;

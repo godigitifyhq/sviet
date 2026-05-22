@@ -158,7 +158,7 @@ export function InternationalIconsSection() {
                       <Image
                         src={
                           group.category === "sports"
-                            ? "/assets/img/pic-14.jpeg"
+                            ? "/assets/img/section_card/Sportsmania.jpeg"
                             : featuredEvent.image
                         }
                         alt={featuredEvent.title}
