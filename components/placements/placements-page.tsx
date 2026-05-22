@@ -3,7 +3,10 @@ import Image from "next/image";
 import { FAQAccordion } from "@/components/placements/faq-accordion";
 import { HiringPartners } from "@/components/placements/hiring-partners";
 import { PlacementCardsMarqueeSection } from "@/components/placements/placement-cards-marquee-section";
-import { PlacementSuccessBanner, PlacementSecondaryBanner } from "@/components/placements/placement-success-banner";
+import {
+  PlacementSuccessBanner,
+  PlacementSecondaryBanner,
+} from "@/components/placements/placement-success-banner";
 import { PlacementStudentSpeakSection } from "@/components/placements/placement-student-speak-section";
 import { PlacementYearwiseTrendsSection } from "@/components/placements/placement-yearwise-trends-section";
 import { PlacementsHeroSection } from "@/components/placements/placements-hero-section";
@@ -47,7 +50,7 @@ const FAQ_ITEMS = [
 
 export function PlacementsPageComponent() {
   return (
-    <main className="bg-white">
+    <main className="overflow-x-hidden bg-white">
       <PlacementsHeroSection />
 
       <SectionWrapper
@@ -59,7 +62,7 @@ export function PlacementsPageComponent() {
           title="Placement Achievements"
         />
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {PLACEMENT_KEY_STATS.map((item) => (
             <StatCard key={item.label} value={item.value} label={item.label} />
           ))}
@@ -85,7 +88,7 @@ export function PlacementsPageComponent() {
           student outcomes across 2022 to 2027.
         </p>
 
-        <article className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-6">
+        <article className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5 sm:p-6">
           <h3 className="text-xl font-bold text-gray-900">
             Training &amp; Placement Cell
           </h3>
@@ -103,7 +106,7 @@ export function PlacementsPageComponent() {
         </article>
 
         <figure className="mt-6 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
-          <div className="relative rounded-3xl aspect-21/8 w-full">
+          <div className="relative h-64 w-full rounded-3xl sm:h-80 lg:h-96">
             <Image
               src="/assets/img/training_cell.jpeg"
               alt="Training and Placement Cell showcase"
@@ -139,7 +142,7 @@ export function PlacementsPageComponent() {
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
           {/* Director Placements */}
           <article className="overflow-hidden rounded-3xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] shadow-[0_8px_24px_rgba(30,42,120,0.06)]">
-            <div className="relative h-96 bg-[#EEF4FF]">
+            <div className="relative h-64 bg-[#EEF4FF] sm:h-80 lg:h-96">
               <Image
                 src="/assets/img/college/management/shubham-sir..jpg"
                 alt="Mr. Shubham Garg, Director Placements"
@@ -171,7 +174,7 @@ export function PlacementsPageComponent() {
 
           {/* Director Operations & Corporate Partnership */}
           <article className="overflow-hidden rounded-3xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] shadow-[0_8px_24px_rgba(30,42,120,0.06)]">
-            <div className="relative h-96 bg-[#EEF4FF]">
+            <div className="relative h-64 bg-[#EEF4FF] sm:h-80 lg:h-96">
               <Image
                 src="/assets/img/college/management/ankur-sir.jpg"
                 alt="Mr. Ankur Gill, Director Operations & Corporate Partnership"
@@ -189,14 +192,14 @@ export function PlacementsPageComponent() {
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-[#374151] md:text-base">
                 Building strong corporate relationships is at the heart of
-                SVGOI's placement success. Our corporate connect strategy
+                SVGOI&apos;s placement success. Our corporate connect strategy
                 actively engages with leading companies across India to open new
                 doors for our students.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-[#374151] md:text-base">
                 Through structured industry partnerships and operational
                 excellence, we ensure every student receives the guidance and
-                exposure needed to thrive in today's competitive workforce.
+                exposure needed to thrive in today&apos;s competitive workforce.
               </p>
             </div>
           </article>
@@ -236,7 +239,7 @@ export function PlacementsPageComponent() {
           description="SVGOI provides continuous industry exposure through visits, training programs, expert sessions, and live interactions with professionals. These initiatives help students understand real-world work environments and industry expectations."
         />
 
-        <article className="mt-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+        <article className="mt-6 rounded-lg border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
           <h3 className="text-xl font-bold text-gray-900">
             Real-World Engagement
           </h3>
@@ -249,7 +252,7 @@ export function PlacementsPageComponent() {
         </article>
 
         <figure className="mt-6 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
-          <div className="relative rounded-3xl aspect-21/8 w-full">
+          <div className="relative h-64 w-full rounded-3xl sm:h-80 lg:h-96">
             <Image
               src="/assets/img/section_card/Industrial Visit.jpeg"
               alt="Students participating in industry exposure and placement activities"

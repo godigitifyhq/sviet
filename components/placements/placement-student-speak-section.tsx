@@ -66,12 +66,12 @@ export function PlacementStudentSpeakSection() {
   };
 
   return (
-    <section className="mt-12 pb-1 md:mt-14">
+    <section className="mt-8 pb-1 md:mt-12">
       <div className="text-center">
-        <p className="text-xl font-medium leading-none text-black md:text-2xl">
+        <p className="text-lg font-medium leading-none text-black sm:text-xl md:text-2xl">
           Our students speak
         </p>
-        <h3 className="mt-2 text-3xl font-bold leading-none tracking-[-0.02em] text-[#0b3b8f] md:text-5xl">
+        <h3 className="mt-2 text-2xl font-bold leading-none tracking-[-0.02em] text-[#0b3b8f] sm:text-3xl md:text-5xl">
           empowering the future
         </h3>
       </div>
@@ -101,13 +101,13 @@ export function PlacementStudentSpeakSection() {
 
         <div
           ref={trackRef}
-          className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-[6vw] pb-3 pt-1 scroll-smooth md:gap-4 md:px-[12vw]"
+          className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 pt-1 scroll-smooth sm:px-[6vw] md:gap-4 md:px-[12vw]"
           aria-label="Student stories carousel"
         >
           {STUDENT_SPEAK_SLIDES.map((slide) => (
             <article
               key={slide.imageSrc}
-              className="w-[62vw] shrink-0 snap-center overflow-hidden rounded-2xl border border-[#0b3b8f]/10 md:w-[42vw] lg:w-[28vw]"
+              className="w-[78vw] shrink-0 snap-center overflow-hidden rounded-2xl border border-[#0b3b8f]/10 sm:w-[62vw] md:w-[42vw] lg:w-[28vw]"
             >
               <div className="relative aspect-858/768 w-full">
                 <Image

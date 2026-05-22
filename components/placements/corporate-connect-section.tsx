@@ -48,7 +48,7 @@ export function CorporateConnectSection() {
   };
 
   return (
-    <section className="bg-[#0a0a0a] px-4 py-16 md:px-6 md:py-24">
+    <section className="bg-[#0a0a0a] px-4 py-10 md:px-6 md:py-24">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -60,11 +60,11 @@ export function CorporateConnectSection() {
               </p>
             </div>
 
-            <h2 className="text-4xl font-black uppercase tracking-tight text-white md:text-5xl lg:text-6xl">
+            <h2 className="text-3xl font-black uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
               Corporate
             </h2>
             <div className="flex items-baseline gap-4">
-              <h2 className="text-4xl font-black uppercase tracking-tight text-white md:text-5xl lg:text-6xl">
+              <h2 className="text-3xl font-black uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
                 Connect
               </h2>
               <div className="flex flex-col border border-white/30 px-2 py-0.5">
@@ -104,7 +104,7 @@ export function CorporateConnectSection() {
           </div>
 
           {/* Nav buttons */}
-          <div className="flex shrink-0 gap-2">
+          <div className="flex shrink-0 gap-2 self-start md:self-auto">
             <button
               type="button"
               onClick={() => scroll("left")}
@@ -127,20 +127,20 @@ export function CorporateConnectSection() {
         {/* Carousel */}
         <div
           ref={trackRef}
-          className="flex gap-4 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="scrollbar-none flex gap-4 overflow-x-auto scroll-smooth pb-2 [&::-webkit-scrollbar]:hidden"
         >
           {SLIDES.map((slide) => (
             <div
               key={slide.src}
-              className="group relative w-120 shrink-0 overflow-hidden"
+              className="group relative w-[82vw] shrink-0 overflow-hidden sm:w-[70vw] md:w-120"
             >
               {/* Image */}
-              <div className="relative h-72 w-full overflow-hidden">
+              <div className="relative h-56 w-full overflow-hidden sm:h-64 md:h-72">
                 <Image
                   src={slide.src}
                   alt={slide.caption}
                   fill
-                  sizes="480px"
+                  sizes="(max-width: 640px) 82vw, (max-width: 768px) 70vw, 480px"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 {/* Overlay */}

@@ -2,7 +2,14 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { FaChevronLeft, FaChevronRight, FaFacebookF, FaGlobe, FaLinkedinIn } from "react-icons/fa";
+import { usePathname } from "next/navigation";
+import {
+  FaChevronLeft,
+  FaChevronRight,
+  FaFacebookF,
+  FaGlobe,
+  FaLinkedinIn,
+} from "react-icons/fa";
 
 import { cn } from "@/lib/utils";
 
@@ -13,20 +20,40 @@ type LeadershipCarouselProps = {
   className?: string;
 };
 
-export function LeadershipCarousel({ leaders, className }: LeadershipCarouselProps) {
+export function LeadershipCarousel({
+  leaders,
+  className,
+}: LeadershipCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const thumbnailStripRef = useRef<HTMLDivElement>(null);
-  const normalizedActiveIndex = leaders.length === 0 ? 0 : activeIndex % leaders.length;
+  const normalizedActiveIndex =
+    leaders.length === 0 ? 0 : activeIndex % leaders.length;
+
+  const pathname = usePathname();
 
   useEffect(() => {
+    // Only auto-scroll the thumbnail into view when on the dedicated
+    // leadership page. When this carousel appears on other pages (for
+    // example the Overview page) we should not force the browser to
+    // jump to the carousel section.
+    if (pathname !== "/about/leadership") {
+      return;
+    }
+
     const container = thumbnailStripRef.current;
     if (!container) {
       return;
     }
 
-    const activeThumbnail = container.querySelector<HTMLButtonElement>(`[data-leader-index=\"${normalizedActiveIndex}\"]`);
-    activeThumbnail?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-  }, [normalizedActiveIndex]);
+    const activeThumbnail = container.querySelector<HTMLButtonElement>(
+      `[data-leader-index="${normalizedActiveIndex}"]`,
+    );
+    activeThumbnail?.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
+  }, [normalizedActiveIndex, pathname]);
 
   const moveBy = (delta: number) => {
     setActiveIndex((previous) => {
@@ -76,11 +103,18 @@ export function LeadershipCarousel({ leaders, className }: LeadershipCarouselPro
             />
           </div>
 
-          <div id="active-management-card" className="p-6 sm:p-7 md:py-8 md:pl-8 md:pr-12 xl:pr-16">
+          <div
+            id="active-management-card"
+            className="p-6 sm:p-7 md:py-8 md:pl-8 md:pr-12 xl:pr-16"
+          >
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
-                <h3 className="text-3xl font-bold md:text-4xl">{activeLeader.name}</h3>
-                <p className="mt-2 text-lg font-semibold text-[#BFDBFE]">{activeLeader.title}</p>
+                <h3 className="text-3xl font-bold md:text-4xl">
+                  {activeLeader.name}
+                </h3>
+                <p className="mt-2 text-lg font-semibold text-[#BFDBFE]">
+                  {activeLeader.title}
+                </p>
               </div>
 
               <div className="flex items-center gap-2">
@@ -105,7 +139,10 @@ export function LeadershipCarousel({ leaders, className }: LeadershipCarouselPro
 
             <div className="mt-6 max-w-4xl space-y-4">
               {messageParagraphs.map((paragraph) => (
-                <p key={paragraph} className="text-sm leading-relaxed text-[#E2E8F0] md:text-base">
+                <p
+                  key={paragraph}
+                  className="text-sm leading-relaxed text-[#E2E8F0] md:text-base"
+                >
                   {paragraph}
                 </p>
               ))}
@@ -137,9 +174,13 @@ export function LeadershipCarousel({ leaders, className }: LeadershipCarouselPro
 
             {activeLeader.quote ? (
               <blockquote className="mt-5 border-l-2 border-[#93C5FD] pl-4 text-[#E2E8F0]">
-                <p className="text-lg italic">&quot;{activeLeader.quote}&quot;</p>
+                <p className="text-lg italic">
+                  &quot;{activeLeader.quote}&quot;
+                </p>
                 {activeLeader.quoteAttribution ? (
-                  <footer className="mt-3 text-sm font-medium text-[#BFDBFE]">- {activeLeader.quoteAttribution}</footer>
+                  <footer className="mt-3 text-sm font-medium text-[#BFDBFE]">
+                    - {activeLeader.quoteAttribution}
+                  </footer>
                 ) : null}
               </blockquote>
             ) : null}
@@ -147,7 +188,11 @@ export function LeadershipCarousel({ leaders, className }: LeadershipCarouselPro
         </div>
       </article>
 
-      <div ref={thumbnailStripRef} className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2" aria-label="Management profiles">
+      <div
+        ref={thumbnailStripRef}
+        className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2"
+        aria-label="Management profiles"
+      >
         {leaders.map((leader, index) => (
           <LeaderCard
             key={`${leader.name}-${leader.title}`}

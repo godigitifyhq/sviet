@@ -48,7 +48,7 @@ const TOOLTIP_STYLE = {
 
 export function PlacementYearwiseTrendsSection() {
   return (
-    <section className="px-4 py-16 md:px-6 md:py-20">
+    <section className="px-4 py-10 md:px-6 md:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
@@ -76,7 +76,7 @@ export function PlacementYearwiseTrendsSection() {
             <p className="mt-0.5 text-sm text-[#9ca3af]">
               Year-wise recruiter count
             </p>
-            <div className="mt-5 h-64 w-full">
+            <div className="mt-5 h-56 w-full sm:h-64">
               <ResponsiveContainer>
                 <BarChart data={COMPANIES_DATA} barSize={28}>
                   <defs>
@@ -129,7 +129,7 @@ export function PlacementYearwiseTrendsSection() {
             <p className="mt-0.5 text-sm text-[#9ca3af]">
               Peak offer per year (LPA)
             </p>
-            <div className="mt-5 h-64 w-full">
+            <div className="mt-5 h-56 w-full sm:h-64">
               <ResponsiveContainer>
                 <LineChart data={HIGHEST_PACKAGE_DATA}>
                   <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" />
@@ -172,7 +172,7 @@ export function PlacementYearwiseTrendsSection() {
             <p className="mt-0.5 text-sm text-[#9ca3af]">
               Mean CTC trend (LPA)
             </p>
-            <div className="mt-5 h-64 w-full">
+            <div className="mt-5 h-56 w-full sm:h-64">
               <ResponsiveContainer>
                 <AreaChart data={AVERAGE_PACKAGE_DATA}>
                   <defs>
