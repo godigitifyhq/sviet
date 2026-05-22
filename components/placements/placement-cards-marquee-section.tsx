@@ -4,7 +4,7 @@ import { TOP_PLACEMENT_CARDS } from "@/components/placements/placement-data";
 
 export function PlacementCardsMarqueeSection() {
   return (
-    <div className="mt-12 overflow-hidden px-2 pb-2 md:mt-16 md:px-6">
+    <div className="mt-8 overflow-hidden px-2 pb-2 md:mt-14 md:px-6">
       <style>{`
         @keyframes placementCardsMarquee {
           from {
@@ -45,13 +45,13 @@ export function PlacementCardsMarqueeSection() {
         }
       `}</style>
 
-      <div className="flex w-max animate-placement-cards-marquee gap-6 md:gap-8">
+      <div className="flex w-max animate-placement-cards-marquee gap-4 sm:gap-6 md:gap-8">
         {[...TOP_PLACEMENT_CARDS, ...TOP_PLACEMENT_CARDS].map((card, index) => (
           <article
             key={`${card.name}-${card.year}-${index}`}
-            className="w-56 shrink-0 md:w-64"
+            className="w-48 shrink-0 sm:w-52 md:w-64"
           >
-            <div className="placement-card-shell relative h-80 overflow-hidden md:h-92">
+            <div className="placement-card-shell relative h-72 overflow-hidden sm:h-76 md:h-92">
               <div
                 className={`placement-card-top absolute inset-x-0 top-0 h-[80%] ${card.cardTone}`}
               >
@@ -72,10 +72,8 @@ export function PlacementCardsMarqueeSection() {
                 )}
               </div>
 
-            
-
               <div className="absolute inset-x-0 bottom-0">
-                <div className="rounded-2xl border border-[#2f266d] bg-[#f2f2f2] px-3 py-2.5 text-center text-[0.6rem] font-medium leading-tight text-black md:px-4 md:py-3 md:text-[1.55rem]">
+                <div className="rounded-2xl border border-[#2f266d] bg-[#f2f2f2] px-3 py-2.5 text-center text-[0.65rem] font-medium leading-tight text-black sm:text-xs md:px-4 md:py-3 md:text-sm">
                   {card.name} - {card.packageLabel}
                 </div>
               </div>

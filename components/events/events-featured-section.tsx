@@ -24,7 +24,9 @@ function summary(text: string, maxLength: number) {
   return `${text.slice(0, maxLength - 1).trim()}...`;
 }
 
-export function EventsFeaturedSection({ featuredEvents }: EventsFeaturedSectionProps) {
+export function EventsFeaturedSection({
+  featuredEvents,
+}: EventsFeaturedSectionProps) {
   if (featuredEvents.length === 0) return null;
 
   return (
@@ -43,7 +45,11 @@ export function EventsFeaturedSection({ featuredEvents }: EventsFeaturedSectionP
 
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {featuredEvents.map((event) => (
-            <Link key={event.id} href={`/events/${event.slug}`} className="group block">
+            <Link
+              key={event.id}
+              href={`/events/${event.slug}`}
+              className="group block"
+            >
               <article className="h-full overflow-hidden rounded-2xl border border-[#e7e9ef] bg-[#fbfcff] transition-shadow hover:shadow-md">
                 <div className="relative h-52 w-full overflow-hidden">
                   <Image

@@ -88,7 +88,7 @@ export function PlacementsHeroSection() {
   return (
     <>
       <section className="relative overflow-hidden bg-white">
-        <div className="relative aspect-video min-h-64 w-full sm:min-h-96 md:aspect-16/7 md:min-h-130 lg:min-h-155">
+        <div className="relative aspect-[16/11] min-h-56 w-full sm:aspect-video sm:min-h-80 md:aspect-16/7 md:min-h-130 lg:min-h-155">
           <Image
             src="/assets/img/banner/bannerplace.jpeg"
             alt="SVGOI placements banner"
@@ -101,8 +101,8 @@ export function PlacementsHeroSection() {
         </div>
 
         <div className="mx-auto w-full max-w-7xl px-4 py-4 md:pointer-events-none md:absolute md:inset-0 md:flex md:items-start md:px-6 md:py-0">
-          <div className="w-full md:pointer-events-auto md:pt-24 lg:pt-10">
-            <p className="text-sm font-semibold tracking-wide text-[#1f2937] md:text-sm">
+          <div className="w-full md:pointer-events-auto md:pt-20 lg:pt-10">
+            <p className="text-xs font-semibold tracking-wide text-[#1f2937] sm:text-sm md:text-sm">
               <Link href="/" className="hover:text-[#111827]">
                 Home
               </Link>{" "}
@@ -113,14 +113,14 @@ export function PlacementsHeroSection() {
               <button
                 type="button"
                 onClick={openForm}
-                className="w-full rounded-md bg-[#f7941d] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#d97706] sm:w-auto"
+                className="w-full rounded-md bg-[#f7941d] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#d97706] sm:w-auto sm:px-5"
               >
                 Explore Placement Opportunities
               </button>
               <button
                 type="button"
                 onClick={openForm}
-                className="w-full rounded-md border border-[#111827] bg-white/90 px-4 py-2 text-sm font-semibold text-[#111827] transition hover:bg-white sm:w-auto"
+                className="w-full rounded-md border border-[#111827] bg-white/90 px-4 py-2 text-sm font-semibold text-[#111827] transition hover:bg-white sm:w-auto sm:px-5"
               >
                 Call: +91 94652 33333
               </button>

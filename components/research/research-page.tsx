@@ -12,9 +12,9 @@ import {
 } from "react-icons/fa";
 import { researchData } from "./research-data";
 
-const containerClass = "mx-auto max-w-[1280px] px-6";
-const sectionClass = "py-20 lg:py-24";
-const headerSpacing = "mb-8 lg:mb-10";
+const containerClass = "mx-auto max-w-[1280px] px-4 sm:px-6";
+const sectionClass = "py-10 sm:py-16 lg:py-24";
+const headerSpacing = "mb-5 sm:mb-8 lg:mb-10";
 
 const hero = {
   title: "Research & Innovation at SVGOI",
@@ -662,9 +662,9 @@ const services = [
 
 export function ResearchPageComponent() {
   return (
-    <>
+    <main className="overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-32 pb-32 lg:pb-40 lg:pt-40">
+      <section className="relative overflow-hidden pt-16 pb-16 sm:pt-24 sm:pb-24 lg:pb-40 lg:pt-40">
         <Image
           src="/assets/img/research.jpg"
           alt="Research at SVGOI"
@@ -682,10 +682,10 @@ export function ResearchPageComponent() {
               </Link>{" "}
               / <span className="text-white">Research & Innovation</span>
             </p>
-            <h1 className="mt-8 text-5xl lg:text-6xl font-bold leading-tight text-white">
+            <h1 className="mt-4 text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight text-white sm:mt-8">
               {hero.title}
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-white/90 max-w-xl">
+            <p className="mt-4 text-base leading-relaxed text-white/90 max-w-xl sm:mt-6 sm:text-lg">
               {hero.description}
             </p>
           </div>
@@ -702,13 +702,13 @@ export function ResearchPageComponent() {
             <Link
               key={item.label}
               href={item.href}
-              className="group block rounded-2xl border border-gray-200 bg-white p-8 transition hover:border-[#f7941d]/60 hover:shadow-sm"
+              className="group block rounded-2xl border border-gray-200 bg-white p-5 transition hover:border-[#f7941d]/60 hover:shadow-sm sm:p-8"
             >
-              <p className="text-5xl font-bold text-gray-900">{item.value}</p>
-              <h3 className="mt-3 text-xl font-semibold leading-tight text-gray-800">
+              <p className="text-4xl font-bold text-gray-900 sm:text-5xl">{item.value}</p>
+              <h3 className="mt-2 text-lg font-semibold leading-tight text-gray-800 sm:mt-3 sm:text-xl">
                 {item.label}
               </h3>
-              <span className="mt-5 inline-flex items-center gap-2 text-base font-semibold text-[#f7941d] transition group-hover:gap-3">
+              <span className="mt-4 inline-flex items-center gap-2 text-base font-semibold text-[#f7941d] transition group-hover:gap-3 sm:mt-5">
                 Explore
                 <span aria-hidden="true">›</span>
               </span>
@@ -724,11 +724,11 @@ export function ResearchPageComponent() {
             Research Vision
           </p>
           <h2
-            className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}
+            className={`${headerSpacing} text-2xl font-bold leading-tight text-gray-900 sm:text-3xl lg:text-5xl`}
           >
             About Research at SVGOI
           </h2>
-          <p className="text-lg font-semibold text-gray-700">
+          <p className="text-base font-semibold text-gray-700 sm:text-lg">
             A research ecosystem built for societal and industrial impact.
           </p>
           <p className="mt-6 text-base leading-relaxed text-gray-600">
@@ -743,16 +743,16 @@ export function ResearchPageComponent() {
 
       {/* Research Domains Section */}
       <section className={`${sectionClass} ${containerClass}`}>
-        <div className="mb-12 lg:mb-16">
+        <div className="mb-8 lg:mb-16">
           <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
             Research Areas
           </p>
           <h2
-            className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}
+            className={`${headerSpacing} text-2xl font-bold leading-tight text-gray-900 sm:text-3xl lg:text-5xl`}
           >
             Research Domains
           </h2>
-          <p className="text-lg text-gray-700">
+          <p className="text-sm text-gray-700 sm:text-lg">
             Focused verticals that combine scientific rigor with real-world
             application.
           </p>
@@ -761,7 +761,7 @@ export function ResearchPageComponent() {
           {researchDomains.map((domain) => (
             <article
               key={domain.title}
-              className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 "
+              className="group rounded-2xl border border-gray-100 bg-white p-5 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 sm:p-8"
             >
               <domain.icon className="text-3xl text-[#f7941d] transition group-hover:scale-110" />
               <h3 className="mt-6 text-xl font-semibold text-gray-900">
@@ -776,18 +776,18 @@ export function ResearchPageComponent() {
       </section>
 
       {/* R&D Committee Section */}
-      <section id="committee" className="bg-gray-50 py-20 lg:py-24">
+      <section id="committee" className="bg-gray-50 py-10 sm:py-16 lg:py-24">
         <div className={containerClass}>
-          <div className="mb-12 lg:mb-16">
+          <div className="mb-8 lg:mb-16">
             <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
               Leadership
             </p>
             <h2
-              className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}
+              className={`${headerSpacing} text-2xl font-bold leading-tight text-gray-900 sm:text-3xl lg:text-5xl`}
             >
               R&D Committee
             </h2>
-            <p className="text-lg text-gray-700">
+            <p className="text-sm text-gray-700 sm:text-lg">
               Leadership and members guiding the institute&apos;s research
               direction.
             </p>
@@ -811,18 +811,18 @@ export function ResearchPageComponent() {
       </section>
 
       {/* Innovative Projects Section */}
-      <section id="projects" className="bg-gray-900 py-20 lg:py-24">
+      <section id="projects" className="bg-gray-900 py-10 sm:py-16 lg:py-24">
         <div className={containerClass}>
-          <div className="mb-12 lg:mb-16">
+          <div className="mb-8 lg:mb-16">
             <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
               Achievements
             </p>
             <h2
-              className={`${headerSpacing} text-4xl font-bold leading-tight text-white lg:text-5xl`}
+              className={`${headerSpacing} text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-5xl`}
             >
               Innovative Projects
             </h2>
-            <p className="text-lg text-gray-300">
+            <p className="text-sm text-gray-300 sm:text-lg">
               Student and faculty innovations addressing practical and societal
               needs.
             </p>
@@ -847,16 +847,16 @@ export function ResearchPageComponent() {
 
       {/* Research Publications Section */}
       <section className={`${sectionClass} ${containerClass}`}>
-        <div className="mb-12 lg:mb-16">
+        <div className="mb-8 lg:mb-16">
           <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
             Scholarly Output
           </p>
           <h2
-            className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}
+            className={`${headerSpacing} text-2xl font-bold leading-tight text-gray-900 sm:text-3xl lg:text-5xl`}
           >
             Research Publications
           </h2>
-          <p className="text-lg text-gray-700">
+          <p className="text-sm text-gray-700 sm:text-lg">
             Selected list of publications contributed by SVGOI researchers. The
             institute&apos;s total research output now stands at more than 1200
             research publications.
@@ -909,16 +909,16 @@ export function ResearchPageComponent() {
 
       {/* Patents Section */}
       <section id="patents" className={`${sectionClass} ${containerClass}`}>
-        <div className="mb-12 lg:mb-16">
+        <div className="mb-8 lg:mb-16">
           <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
             IP Portfolio
           </p>
           <h2
-            className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}
+            className={`${headerSpacing} text-2xl font-bold leading-tight text-gray-900 sm:text-3xl lg:text-5xl`}
           >
             Patents
           </h2>
-          <p className="text-lg text-gray-700">
+          <p className="text-sm text-gray-700 sm:text-lg">
             87 patents filed and certification across engineering and technology
             domains.
           </p>
@@ -942,16 +942,16 @@ export function ResearchPageComponent() {
 
       {/* Research Collaborations Section */}
       <section className={`${sectionClass} ${containerClass}`}>
-        <div className="mb-12 lg:mb-16">
+        <div className="mb-8 lg:mb-16">
           <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
             Partnerships
           </p>
           <h2
-            className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}
+            className={`${headerSpacing} text-2xl font-bold leading-tight text-gray-900 sm:text-3xl lg:text-5xl`}
           >
             Research Collaborations
           </h2>
-          <p className="text-lg text-gray-700">
+          <p className="text-sm text-gray-700 sm:text-lg">
             Collaborative partnerships driving shared innovation outcomes.
           </p>
         </div>
@@ -976,7 +976,7 @@ export function ResearchPageComponent() {
               <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
                 Facilities
               </p>
-              <h2 className="mt-2 text-3xl font-bold text-gray-900 lg:text-4xl">
+              <h2 className="mt-2 text-xl font-bold text-gray-900 sm:text-3xl lg:text-4xl">
                 Infrastructure & Facilities
               </h2>
             </div>
@@ -1004,7 +1004,7 @@ export function ResearchPageComponent() {
               <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
                 Publications
               </p>
-              <h2 className="mt-2 text-3xl font-bold text-gray-900 lg:text-4xl">
+              <h2 className="mt-2 text-xl font-bold text-gray-900 sm:text-3xl lg:text-4xl">
                 Books & Edited Chapters
               </h2>
             </div>
@@ -1106,16 +1106,16 @@ export function ResearchPageComponent() {
 
       {/* Research Activities & Services Section */}
       <section className={`${sectionClass} ${containerClass}`}>
-        <div className="mb-12 lg:mb-16">
+        <div className="mb-8 lg:mb-16">
           <p className="text-sm font-semibold uppercase tracking-widest text-[#f7941d]">
             Support Systems
           </p>
           <h2
-            className={`${headerSpacing} text-4xl font-bold leading-tight text-gray-900 lg:text-5xl`}
+            className={`${headerSpacing} text-2xl font-bold leading-tight text-gray-900 sm:text-3xl lg:text-5xl`}
           >
             Research Activities & Services
           </h2>
-          <p className="text-lg text-gray-700">
+          <p className="text-sm text-gray-700 sm:text-lg">
             Institutional support mechanisms that help ideas move from concept
             to impact.
           </p>
@@ -1124,7 +1124,7 @@ export function ResearchPageComponent() {
           {services.map((service) => (
             <article
               key={service.title}
-              className="group rounded-2xl border border-gray-100 bg-white p-8 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 "
+              className="group rounded-2xl border border-gray-100 bg-white p-5 transition duration-300 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5 sm:p-8"
             >
               <service.icon className="text-3xl text-[#f7941d] transition group-hover:scale-110" />
               <h3 className="mt-6 text-xl font-semibold text-gray-900">
@@ -1139,26 +1139,26 @@ export function ResearchPageComponent() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gray-900 py-20 lg:py-24">
+      <section className="bg-gray-900 py-10 sm:py-16 lg:py-24">
         <div className={containerClass}>
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-white lg:text-5xl">
+            <h2 className="text-2xl font-bold text-white sm:text-4xl lg:text-5xl">
               Shape Your Future with Us
             </h2>
-            <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
+            <p className="mt-4 text-base text-gray-300 max-w-2xl mx-auto sm:mt-6 sm:text-lg">
               Join a campus where research, innovation, and entrepreneurship are
               part of everyday learning.
             </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <div className="mt-6 flex flex-wrap justify-center gap-4 sm:mt-10">
               <a
                 href="/admissions"
-                className="inline-block rounded-full bg-[#f7941d] px-8 py-3 font-semibold text-black transition hover:bg-[#df850f]"
+                className="inline-block rounded-full bg-[#f7941d] px-6 py-3 font-semibold text-black transition hover:bg-[#df850f] sm:px-8"
               >
                 Apply Now
               </a>
               <a
                 href="#projects"
-                className="inline-block rounded-full border border-white/40 bg-white/10 px-8 py-3 font-semibold text-white transition hover:bg-white/20"
+                className="inline-block rounded-full border border-white/40 bg-white/10 px-6 py-3 font-semibold text-white transition hover:bg-white/20 sm:px-8"
               >
                 Learn More
               </a>
@@ -1166,6 +1166,6 @@ export function ResearchPageComponent() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }
