@@ -12,9 +12,9 @@ export function InternationalHeroIntroSection() {
             community of over
             <br />
             <span className="">
-              5,500+ international students
+              2000+ international students
               <br />
-              from 75+ countries.
+              from 20+ countries.
             </span>
           </h2>
 
@@ -24,7 +24,7 @@ export function InternationalHeroIntroSection() {
             </h3>
             <p className="mt-4 text-base leading-relaxed text-[#374151] md:text-lg">
               At SVGOI, we pride ourselves on being a melting pot of cultures,
-              ideas, and innovations. With students from 75+ countries, our
+              ideas, and innovations. With students from 20+ countries, our
               campus offers a truly global experience.
             </p>
             <p className="mt-4 text-base leading-relaxed text-[#374151] md:text-lg">

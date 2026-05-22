@@ -217,10 +217,10 @@ const LEADERSHIP_DESK: Leader[] = [
 ];
 
 const CULTURE_STATS = [
-  { value: "28", label: "States" },
-  { value: "75+", label: "Nationalities" },
-  { value: "35,000+", label: "International Students" },
-  { value: "50000+", label: "Students" },
+  { value: "12", label: "States" },
+  { value: "25+", label: "Nationalities" },
+  { value: "2000+", label: "International Students" },
+  { value: "5000+", label: "Students" },
 ];
 
 const INFRASTRUCTURE = [

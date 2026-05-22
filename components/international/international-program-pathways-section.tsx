@@ -13,10 +13,7 @@ const PROGRAM_PATHWAYS = [
     title: "Diploma",
     href: "/program-finder?interest=paramedical",
   },
-  {
-    title: "Doctoral & Post-doctoral Program",
-    href: "/program-finder?interest=education",
-  },
+
   {
     title: "Industry Embedded",
     href: "/program-finder?interest=management",
@@ -24,10 +21,6 @@ const PROGRAM_PATHWAYS = [
   {
     title: "Masters programs",
     href: "/program-finder?interest=management",
-  },
-  {
-    title: "Pathway Program",
-    href: "/program-finder?interest=computer",
   },
 ] as const;
 

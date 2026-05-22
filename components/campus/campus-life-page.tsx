@@ -57,12 +57,12 @@ export function CampusLifeExactPage() {
       >
         {SafeUpcomingEventsSection ? <SafeUpcomingEventsSection /> : null}
       </div>
-      <div
+      {/* <div
         className="mx-auto max-w-7xl scroll-mt-36 md:scroll-mt-44"
         id="campus-bollywood"
       >
         {SafeConcertsSection ? <SafeConcertsSection /> : null}
-      </div>
+      </div> */}
       <div className="mx-auto max-w-7xl">
         {SafeFreshersSection ? <SafeFreshersSection /> : null}
       </div>

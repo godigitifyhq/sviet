@@ -177,7 +177,7 @@ export function PlacementsPageComponent() {
             <div className="relative h-64 bg-[#EEF4FF] sm:h-80 lg:h-96">
               <Image
                 src="/assets/img/college/management/ankur-sir.jpg"
-                alt="Mr. Ankur Gill, Director Operations & Corporate Partnership"
+                alt="Mr. Ankur Gill, Director Operations"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-top"
