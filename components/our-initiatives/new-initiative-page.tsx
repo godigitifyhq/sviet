@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ChevronDown, ChevronRight, Users, HeartHandshake, UserCheck, Handshake } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronRight,
+  Users,
+  HeartHandshake,
+  UserCheck,
+  Handshake,
+} from "lucide-react";
 
 const FEATURE_TABS = [
   "Industry Exposure",
@@ -12,10 +19,10 @@ const FEATURE_TABS = [
 ] as const;
 
 const FOUNDER_PARAS = [
-    "A distinguished instructional management specialist with over a decade of expertise across Academics, Research & Innovation, Administration, Business Strategy, Brand Management, and Corporate Relations.",
-    "Ankur Gill is the proud Founder of UNIQUE ZONE — SVIET's pioneering on-campus IT incubation center — where student ideas are nurtured into real-world solutions.",
-    "Under his transformative leadership, SVIET has built an ecosystem that empowers students to transcend conventional boundaries and turn aspirations into reality.",
-  ] as const;
+  "A distinguished instructional management specialist with over a decade of expertise across Academics, Research & Innovation, Administration, Business Strategy, Brand Management, and Corporate Relations.",
+  "Ankur Gill is the proud Founder of UNIQUE ZONE — SVIET's pioneering on-campus IT incubation center — where student ideas are nurtured into real-world solutions.",
+  "Under his transformative leadership, SVIET has built an ecosystem that empowers students to transcend conventional boundaries and turn aspirations into reality.",
+] as const;
 const FAQS = [
   "What prior experience do I need to join this initiative?",
   "How long does it take to complete the program?",
@@ -109,9 +116,8 @@ export function NewInitiativePage() {
                 About Our Community
               </p>
               <h2 className="mt-4 text-3xl font-black leading-tight tracking-tight text-[#111827] md:text-5xl">
-                The{" "}
-                <span className="text-[#8B1A1A]">Uniques</span>{" "}
-                Community – Learn, Build, and Grow Together.
+                The <span className="text-[#8B1A1A]">Uniques</span> Community –
+                Learn, Build, and Grow Together
               </h2>
               <p className="mt-6 text-base leading-relaxed text-[#374151] md:text-lg">
                 The Uniques Community is a community where everyone is welcome.
@@ -244,8 +250,8 @@ export function NewInitiativePage() {
                 <Image
                   src="/assets/img/infrastructure/labs/lab2.jpg"
                   alt="Learn from Industry Experts"
-                    width={400}
-                    height={300}
+                  width={400}
+                  height={300}
                   className="mt-4 w-full rounded-lg"
                 />
               </div>
@@ -280,63 +286,62 @@ export function NewInitiativePage() {
                   applications, bridging the gap between theory and practice.
                 </p>
               </div>
-           
             </div>
           </div>
         </div>
       </section>
       <section className="relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#f8f4ee_100%)] py-16 md:py-24">
-              <div className="our-initiatives-founder-grid pointer-events-none absolute inset-0 opacity-60" />
-              <div className="relative mx-auto max-w-7xl px-4 md:px-6">
-                <div className="mb-10">
-                  <p className="text-xs font-bold uppercase tracking-[0.45em] text-[#8B1A1A]">
-                    Our Founder
-                  </p>
-                  <h2 className="mt-4 text-3xl font-black tracking-tighter text-[#101828] md:text-5xl">
-                    Visionary Leadership,{" "}
-                    <span className="text-[#003087]">Inspiring Generations.</span>
-                  </h2>
-                </div>
-      
-                <div className="grid gap-8 lg:grid-cols-[360px_1fr] lg:items-start">
-                  <div className="overflow-hidden border border-[#e4d7c6] bg-white shadow-[0_18px_42px_rgba(16,24,40,0.08)]">
-                    <div className="relative aspect-4/5 w-full">
-                      <Image
-                        src="/assets/img/college/management/ankur-sir.jpg"
-                        alt="Ankur Gill — Director of Operations, Founder UNIQUE ZONE"
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 360px"
-                        className="object-cover object-top"
-                      />
-                    </div>
-                  </div>
-      
-                  <div className="flex flex-col justify-center space-y-5">
-                    <div>
-                      <p className="text-2xl font-black text-[#101828] md:text-3xl">
-                        Ankur Gill
-                      </p>
-                      <p className="mt-1 text-sm font-semibold text-[#8B1A1A]">
-                        Director of Operations
-                      </p>
-                    </div>
-                    <div className="space-y-4 text-sm leading-relaxed text-[#475467] md:text-base">
-                      {FOUNDER_PARAS.map((paragraph) => (
-                        <p key={paragraph}>{paragraph}</p>
-                      ))}
-                    </div>
-                    <a
-                      href="https://www.theuniques.in/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex w-fit items-center gap-2 border border-[#003087] bg-[#003087] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#01256b]"
-                    >
-                      Join the Community →
-                    </a>
-                  </div>
-                </div>
+        <div className="our-initiatives-founder-grid pointer-events-none absolute inset-0 opacity-60" />
+        <div className="relative mx-auto max-w-7xl px-4 md:px-6">
+          <div className="mb-10">
+            <p className="text-xs font-bold uppercase tracking-[0.45em] text-[#8B1A1A]">
+              Our Founder
+            </p>
+            <h2 className="mt-4 text-3xl font-black tracking-tighter text-[#101828] md:text-5xl">
+              Visionary Leadership,{" "}
+              <span className="text-[#003087]">Inspiring Generations</span>
+            </h2>
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-[360px_1fr] lg:items-start">
+            <div className="overflow-hidden border border-[#e4d7c6] bg-white shadow-[0_18px_42px_rgba(16,24,40,0.08)]">
+              <div className="relative aspect-4/5 w-full">
+                <Image
+                  src="/assets/img/college/management/ankur-sir.jpg"
+                  alt="Ankur Gill — Director of Operations, Founder UNIQUE ZONE"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 360px"
+                  className="object-cover object-top"
+                />
               </div>
-            </section>
+            </div>
+
+            <div className="flex flex-col justify-center space-y-5">
+              <div>
+                <p className="text-2xl font-black text-[#101828] md:text-3xl">
+                  Ankur Gill
+                </p>
+                <p className="mt-1 text-sm font-semibold text-[#8B1A1A]">
+                  Director of Operations
+                </p>
+              </div>
+              <div className="space-y-4 text-sm leading-relaxed text-[#475467] md:text-base">
+                {FOUNDER_PARAS.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+              <a
+                href="https://www.theuniques.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-fit items-center gap-2 border border-[#003087] bg-[#003087] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#01256b]"
+              >
+                Join the Community →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="bg-[#F6F6F6] py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
@@ -345,7 +350,7 @@ export function NewInitiativePage() {
               Gallery
             </p>
             <h2 className="mt-3 text-3xl font-black tracking-tighter text-[#101828] md:text-5xl">
-              Moments That Define Us.
+              Moments That Define Us
             </h2>
           </div>
 
@@ -353,29 +358,54 @@ export function NewInitiativePage() {
             {/* Left column — 2 stacked */}
             <div className="flex flex-col gap-3 lg:gap-4">
               <div className="group relative h-52 overflow-hidden border border-[#E4DED4] md:h-64">
-                <Image src="/assets/img/uniques/32.JPG" alt="The Uniques community" fill className="object-cover transition duration-500 group-hover:scale-105" />
+                <Image
+                  src="/assets/img/uniques/32.JPG"
+                  alt="The Uniques community"
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
               </div>
               <div className="group relative h-52 overflow-hidden border border-[#E4DED4] md:h-64">
-                <Image src="/assets/img/uniques/IMG_1412.JPG" alt="The Uniques session" fill className="object-cover transition duration-500 group-hover:scale-105" />
+                <Image
+                  src="/assets/img/uniques/IMG_1412.JPG"
+                  alt="The Uniques session"
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
               </div>
             </div>
 
             {/* Center column — tall */}
             <div className="group relative row-span-2 min-h-105 overflow-hidden border border-[#E4DED4]">
-              <Image src="/assets/img/uniques/Screenshot 2025-03-28 001048.png" alt="The Uniques event" fill className="object-cover transition duration-500 group-hover:scale-105" />
+              <Image
+                src="/assets/img/uniques/Screenshot 2025-03-28 001048.png"
+                alt="The Uniques event"
+                fill
+                className="object-cover transition duration-500 group-hover:scale-105"
+              />
               <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
             </div>
 
             {/* Right column — 2 stacked */}
             <div className="flex flex-col gap-3 lg:gap-4">
               <div className="group relative h-52 overflow-hidden border border-[#E4DED4] md:h-64">
-                <Image src="/assets/img/uniques/Screenshot 2025-03-28 001431.png" alt="The Uniques workshop" fill className="object-cover transition duration-500 group-hover:scale-105" />
+                <Image
+                  src="/assets/img/uniques/Screenshot 2025-03-28 001431.png"
+                  alt="The Uniques workshop"
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
               </div>
               <div className="group relative h-52 overflow-hidden border border-[#E4DED4] md:h-64">
-                <Image src="/assets/img/uniques/Screenshot 2025-03-28 001908.png" alt="The Uniques members" fill className="object-cover transition duration-500 group-hover:scale-105" />
+                <Image
+                  src="/assets/img/uniques/Screenshot 2025-03-28 001908.png"
+                  alt="The Uniques members"
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
               </div>
             </div>

@@ -487,20 +487,7 @@ export function ContactPageComponent() {
       </section>
 
       {/* SECTION 7: CTA */}
-      <section className={`${containerClass} py-16`}>
-        <div className="rounded-2xl bg-gray-900 px-8 py-12 text-center md:py-16">
-          <h2 className="text-4xl font-bold text-white">Ready to Apply?</h2>
-          <p className="mt-4 text-white/80">
-            Join thousands of students at SVGOI and start your journey to
-            success.
-          </p>
-          <button
-            className={`${primaryButtonClass} mt-8 bg-white hover:text-white hover:bg-gray-100`}
-          >
-            Start Your Application
-          </button>
-        </div>
-      </section>
+   
     </>
   );
 }

@@ -1,25 +1,28 @@
 "use client";
 
-import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+// use video snippets for student speak slides
+import { ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const STUDENT_SPEAK_SLIDES = [
   {
-    imageSrc: "/assets/img/students/aman-student-speak.jpeg",
-    imageAlt: "Student Speaks card featuring Aman Verma",
+    videoSrc:
+      "/assets/videos/byte/Another success story added to the legacy of SVGOI! Congratulations to our achievers for steppin.mp4",
+    alt: "Student story: Aman Verma",
   },
   {
-    imageSrc: "/assets/img/students/NIKHIL-student-speak.jpeg",
-    imageAlt: "Student Speaks card featuring Nikhil Arora",
+    videoSrc:
+      "/assets/videos/byte/Congratulations to all the students for securing placements in Grazitti Interactive, Step2gen &.mp4",
+    alt: "Student story: Nikhil Arora",
   },
   {
-    imageSrc: "/assets/img/students/riya-student-speak.jpeg",
-    imageAlt: "Student Speaks card featuring Riya Sharma",
+    videoSrc:
+      "/assets/videos/byte/Heartiest congratulations to Aryan, Pharmacy student, on securing his placement as Medical Repre.mp4",
+    alt: "Student story: Riya Sharma",
   },
   {
-    imageSrc: "/assets/img/students/simran-student-speak.jpeg",
-    imageAlt: "Student Speaks card featuring Simran Kaur",
+    videoSrc: "/assets/videos/byte/4.mp4",
+    alt: "Student story: Simran Kaur",
   },
 ] as const;
 
@@ -27,6 +30,7 @@ export function PlacementStudentSpeakSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  const [unmutedIndex, setUnmutedIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -88,6 +92,8 @@ export function PlacementStudentSpeakSection() {
           </button>
         ) : null}
 
+        {/* per-slide mute controls are rendered inside each slide */}
+
         {canScrollRight ? (
           <button
             type="button"
@@ -104,19 +110,43 @@ export function PlacementStudentSpeakSection() {
           className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 pt-1 scroll-smooth sm:px-[6vw] md:gap-4 md:px-[12vw]"
           aria-label="Student stories carousel"
         >
-          {STUDENT_SPEAK_SLIDES.map((slide) => (
+          {STUDENT_SPEAK_SLIDES.map((slide, index) => (
             <article
-              key={slide.imageSrc}
-              className="w-[78vw] shrink-0 snap-center overflow-hidden rounded-2xl border border-[#0b3b8f]/10 sm:w-[62vw] md:w-[42vw] lg:w-[28vw]"
+              key={`${slide.videoSrc}-${index}`}
+              className="w-[78vw] shrink-0 snap-center overflow-hidden rounded-2xl  sm:w-[62vw] md:w-[42vw] lg:w-[24vw]"
             >
               <div className="relative aspect-858/768 w-full">
-                <Image
-                  src={slide.imageSrc}
-                  alt={slide.imageAlt}
-                  fill
-                  sizes="(max-width: 768px) 62vw, (max-width: 1024px) 42vw, 28vw"
-                  className="object-contain"
+                <video
+                  src={encodeURI(slide.videoSrc)}
+                  autoPlay
+                  muted={unmutedIndex !== index}
+                  loop
+                  playsInline
+                  className="h-full w-full object-contain"
+                  aria-label={slide.alt}
                 />
+
+                <div className="absolute right-3 top-3 z-20">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setUnmutedIndex((cur) => (cur === index ? null : index))
+                    }
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 p-2 text-[#111] shadow-md transition hover:bg-white"
+                    aria-pressed={unmutedIndex === index}
+                    aria-label={
+                      unmutedIndex === index
+                        ? "Mute this video"
+                        : "Unmute this video"
+                    }
+                  >
+                    {unmutedIndex === index ? (
+                      <Volume2 className="h-5 w-5" />
+                    ) : (
+                      <VolumeX className="h-5 w-5" />
+                    )}
+                  </button>
+                </div>
               </div>
             </article>
           ))}

@@ -18,19 +18,19 @@ export function S60Page() {
       <section className=" py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-
             {/* Left */}
             <div>
               <p className="text-sm font-black uppercase tracking-widest text-[#111827]">
                 A Community of
               </p>
               <p className="mt-1 text-lg font-black uppercase leading-tight tracking-wide text-[#f7941d] md:text-2xl">
-                Visionaries, Creators and Leaders.
+                Visionaries, Creators and Leaders
               </p>
 
               <blockquote className="mt-6 border-l-4 border-[#f7941d] pl-4 italic text-[#374151]">
                 &ldquo;Step into your potential with Super60 — where learning
-                meets real-world execution and excellence becomes a habit.&rdquo;
+                meets real-world execution and excellence becomes a
+                habit.&rdquo;
               </blockquote>
 
               <div className="mt-10 select-none">
@@ -47,7 +47,6 @@ export function S60Page() {
 
             {/* Right */}
             <div className="relative">
-             
               <div className="relative">
                 <div className="mb-3 flex items-center gap-3">
                   <span className="h-px w-8 bg-[#f7941d]" />
@@ -68,8 +67,6 @@ export function S60Page() {
                   real-world projects and a culture of excellence to rewrite the
                   rules of growth and innovation.
                 </p>
-
-             
               </div>
             </div>
           </div>
@@ -156,34 +153,59 @@ export function S60Page() {
               Gallery
             </p>
             <h2 className="mt-3 text-3xl font-black tracking-tighter text-[#101828] md:text-5xl">
-              Moments That Define Us.
+              Moments That Define Us
             </h2>
           </div>
 
           <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-4">
             <div className="flex flex-col gap-3 lg:gap-4">
               <div className="group relative h-52 overflow-hidden border border-[#E4DED4] md:h-64">
-                <Image src="/assets/img/s60/P_ncagda.jpg" alt="Super 60 batch" fill className="object-cover transition duration-500 group-hover:scale-105" />
+                <Image
+                  src="/assets/img/s60/P_ncagda.jpg"
+                  alt="Super 60 batch"
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
               </div>
               <div className="group relative h-52 overflow-hidden border border-[#E4DED4] md:h-64">
-                <Image src="/assets/img/s60/blog_1765605754312.jpg" alt="Super 60 session" fill className="object-cover transition duration-500 group-hover:scale-105" />
+                <Image
+                  src="/assets/img/s60/blog_1765605754312.jpg"
+                  alt="Super 60 session"
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
               </div>
             </div>
 
             <div className="group relative row-span-2 min-h-105 overflow-hidden border border-[#E4DED4]">
-              <Image src="/assets/img/s60/Third-ChX5EUkj.jpg" alt="Super 60 community" fill className="object-cover transition duration-500 group-hover:scale-105" />
+              <Image
+                src="/assets/img/s60/Third-ChX5EUkj.jpg"
+                alt="Super 60 community"
+                fill
+                className="object-cover transition duration-500 group-hover:scale-105"
+              />
               <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
             </div>
 
             <div className="flex flex-col gap-3 lg:gap-4">
               <div className="group relative h-52 overflow-hidden border border-[#E4DED4] md:h-64">
-                <Image src="/assets/img/s60/batch_8.0_h3ycn5.jpg" alt="Super 60 workshop" fill className="object-cover transition duration-500 group-hover:scale-105" />
+                <Image
+                  src="/assets/img/s60/batch_8.0_h3ycn5.jpg"
+                  alt="Super 60 workshop"
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
               </div>
               <div className="group relative h-52 overflow-hidden border border-[#E4DED4] md:h-64">
-                <Image src="/assets/img/s60/one-DakvQVQ8.jpg" alt="Super 60 members" fill className="object-cover transition duration-500 group-hover:scale-105" />
+                <Image
+                  src="/assets/img/s60/one-DakvQVQ8.jpg"
+                  alt="Super 60 members"
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
               </div>
             </div>
@@ -200,12 +222,11 @@ export function S60Page() {
             </p>
             <h2 className="mt-4 text-3xl font-black tracking-tighter text-[#101828] md:text-5xl">
               Visionary Leadership,{" "}
-              <span className="text-[#003087]">Inspiring Generations.</span>
+              <span className="text-[#003087]">Inspiring Generations</span>
             </h2>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2">
-
             {/* Vishal Garg */}
             <div className="grid gap-0 border border-[#e4d7c6] bg-white shadow-[0_18px_42px_rgba(16,24,40,0.08)] lg:grid-cols-[200px_1fr]">
               <div className="relative min-h-64 overflow-hidden lg:min-h-full">
@@ -223,14 +244,14 @@ export function S60Page() {
                     Vishal Garg
                   </p>
                   <p className="mt-1 text-sm font-semibold text-[#f7941d]">
-                  Director Secretarial and Administration
+                    Director Secretarial and Administration
                   </p>
                 </div>
                 <p className="text-sm leading-relaxed text-[#475467]">
                   A passionate educator and mentor who built Super 60 to bridge
                   the gap between campus learning and industry expectations.
-                  Under his vision, students are trained with real-world
-                  rigour, discipline, and purpose.
+                  Under his vision, students are trained with real-world rigour,
+                  discipline, and purpose.
                 </p>
               </div>
             </div>
@@ -258,12 +279,11 @@ export function S60Page() {
                 <p className="text-sm leading-relaxed text-[#475467]">
                   A distinguished instructional management specialist with over
                   a decade of expertise across Academics, Research &amp;
-                  Innovation, and Corporate Relations. Founder of UNIQUE ZONE
-                  — SVIET&apos;s pioneering on-campus IT incubation center.
+                  Innovation, and Corporate Relations. Founder of UNIQUE ZONE —
+                  SVIET&apos;s pioneering on-campus IT incubation center.
                 </p>
               </div>
             </div>
-
           </div>
         </div>
       </section>

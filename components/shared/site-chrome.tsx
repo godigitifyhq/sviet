@@ -314,14 +314,7 @@ export function TopUtilityBar({
             <FaPhoneAlt className="text-[9px] md:text-[10px]" />
             <span>1800-120-1200</span>
           </span>
-          <button
-            type="button"
-            className="inline-flex items-center gap-1 border border-current/20 px-2 py-1 text-current transition-colors duration-300 ease-out hover:border-[#FEA700] hover:text-[#FEA700]"
-            aria-label="Open search"
-          >
-            <FaSearch className="text-[9px] md:text-[10px]" />
-            <span>Search</span>
-          </button>
+
           <a
             href="https://wa.me/919465233333"
             className="inline-flex items-center gap-1 bg-[#FEA700] px-2 py-1 font-semibold text-[#000000] transition-colors duration-300 ease-out hover:bg-[#FFFFFF]"
@@ -330,8 +323,22 @@ export function TopUtilityBar({
             <FaWhatsapp className="text-[10px]" />
             <span>WhatsApp</span>
           </a>
-          <FaFacebookF className="text-[10px] md:text-sm" />
-          <FaInstagram className="text-[10px] md:text-sm" />
+          <a
+            href="https://www.facebook.com/svietofficial/"
+            className="inline-flex items-center gap-1 border border-current/20 px-2 py-1 text-current transition-colors duration-300 ease-out hover:border-[#FEA700] hover:text-[#FEA700]"
+            aria-label="Follow us on Facebook"
+            target="_blank"
+          >
+            <FaFacebookF className="text-[10px] md:text-sm" />
+          </a>
+          <a
+            href="https://www.instagram.com/svietofficial/"
+            className="inline-flex items-center gap-1 border border-current/20 px-2 py-1 text-current transition-colors duration-300 ease-out hover:border-[#FEA700] hover:text-[#FEA700]"
+            aria-label="Follow us on Instagram"
+            target="_blank"
+          >
+            <FaInstagram className="text-[10px] md:text-sm" />
+          </a>
         </div>
       </div>
     </div>
@@ -642,23 +649,23 @@ export function MainNavbar({
                                   </p>
                                   <div className="mt-3 space-y-1.5">
                                     {groupItems.map((dropdownItem) => {
-                                        const isCurrent =
-                                          pathname === dropdownItem.href;
+                                      const isCurrent =
+                                        pathname === dropdownItem.href;
 
-                                        return (
-                                          <Link
-                                            key={`${groupName}-${dropdownItem.href}-${dropdownItem.label}`}
-                                            href={dropdownItem.href}
-                                            className={`block min-w-0 wrap-break-word border px-3 py-2 text-[12px] font-semibold leading-snug transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
-                                              isCurrent
-                                                ? "border-[#FEA700]/40 bg-[#FEA700]/10 text-[#000000]"
-                                                : "border-transparent text-[#000000]"
-                                            }`}
-                                          >
-                                            {dropdownItem.label}
-                                          </Link>
-                                        );
-                                      })}
+                                      return (
+                                        <Link
+                                          key={`${groupName}-${dropdownItem.href}-${dropdownItem.label}`}
+                                          href={dropdownItem.href}
+                                          className={`block min-w-0 wrap-break-word border px-3 py-2 text-[12px] font-semibold leading-snug transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
+                                            isCurrent
+                                              ? "border-[#FEA700]/40 bg-[#FEA700]/10 text-[#000000]"
+                                              : "border-transparent text-[#000000]"
+                                          }`}
+                                        >
+                                          {dropdownItem.label}
+                                        </Link>
+                                      );
+                                    })}
                                   </div>
                                 </section>
                               ),
@@ -945,15 +952,7 @@ export function SiteFooter() {
             Take the first step towards your dreams. Explore our programs and
             get in touch to begin your journey with us.
           </p>
-          <button
-            type="button"
-            className="mx-auto mt-8 inline-flex items-center gap-3 rounded-full bg-white px-5 py-2 text-sm font-medium text-black transition hover:bg-white/90"
-          >
-            Get in touch
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#f7941d] text-white">
-              ↗
-            </span>
-          </button>
+        
         </div>
 
         <div className="mt-14 border-t border-white/10 pt-14">
@@ -1041,7 +1040,10 @@ export function SiteFooter() {
                   { label: "Research", href: "/research" },
                 ].map((item) => (
                   <li key={item.label}>
-                    <Link href={item.href} className="hover:text-white transition-colors">
+                    <Link
+                      href={item.href}
+                      className="hover:text-white transition-colors"
+                    >
                       {item.label}
                     </Link>
                   </li>
@@ -1061,7 +1063,10 @@ export function SiteFooter() {
                   { label: "ISTE Sviet Chapter", href: "#" },
                 ].map((item) => (
                   <li key={item.label}>
-                    <Link href={item.href} className="hover:text-white transition-colors">
+                    <Link
+                      href={item.href}
+                      className="hover:text-white transition-colors"
+                    >
                       {item.label}
                     </Link>
                   </li>
@@ -1084,7 +1089,10 @@ export function SiteFooter() {
                   { label: "Terms & Conditions", href: "#" },
                 ].map((item) => (
                   <li key={item.label}>
-                    <Link href={item.href} className="hover:text-white transition-colors">
+                    <Link
+                      href={item.href}
+                      className="hover:text-white transition-colors"
+                    >
                       {item.label}
                     </Link>
                   </li>

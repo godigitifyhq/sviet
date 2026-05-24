@@ -223,11 +223,11 @@ export function OurInitiativesPage() {
             Curated student initiatives for innovation and career growth
           </p>
           <h1 className="max-w-5xl text-[clamp(3.2rem,8vw,7rem)] font-black leading-[0.92] tracking-[-0.06em] text-white">
-            Innovation.
+            Innovation
             <br />
-            <span className="text-[#f7941d]">Entrepreneurship.</span>
+            <span className="text-[#f7941d]">Entrepreneurship</span>
             <br />
-            Student Leadership.
+            Student Leadership
           </h1>
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/65 md:text-lg">
             From live startup exposure to elite performance batches —
@@ -275,9 +275,9 @@ export function OurInitiativesPage() {
               <p className="text-xs font-bold uppercase tracking-[0.45em] text-[#f7941d]">
                 What We Offer
               </p>
-              <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] text-[#101828] md:text-5xl">
-                Our Flagship Initiatives
-              </h2>
+              <h3 className="mt-4 text-3xl font-black tracking-[-0.04em] text-[#101828] md:text-5xl">
+                Where ideas become ventures
+              </h3>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-[#475467] md:text-lg">
                 SVIET&apos;s student initiatives are built to bridge the gap
                 between academic learning and the demands of startups,
@@ -383,7 +383,7 @@ export function OurInitiativesPage() {
                           S-Zone
                         </span>
                         <h3 className="mt-4 text-2xl font-black leading-tight text-[#101828] md:text-3xl">
-                          A Community of Visionaries, Creators &amp; Leaders.
+                          A Community of Visionaries, Creators &amp; Leaders
                         </h3>
                       </div>
                       <span className="shrink-0 border border-[#fde7b3] bg-[#fff8e8] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[#8a4f08]">
@@ -575,7 +575,7 @@ export function OurInitiativesPage() {
             </p>
             <h2 className="mt-4 text-3xl font-black tracking-tighter text-[#101828] md:text-5xl">
               Visionary Leadership,{" "}
-              <span className="text-[#003087]">Inspiring Generations.</span>
+              <span className="text-[#003087]">Inspiring Generations</span>
             </h2>
           </div>
 
@@ -635,7 +635,7 @@ export function OurInitiativesPage() {
                 From Classroom
                 <br />
                 <span className="text-[#003087]">
-                  to Confident Professional.
+                  to Confident Professional
                 </span>
               </h2>
               <p className="mt-5 text-base leading-relaxed text-[#475467] md:text-lg">
@@ -707,7 +707,7 @@ export function OurInitiativesPage() {
                 FAQ
               </p>
               <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] text-[#101828] md:text-5xl">
-                Frequently asked questions.
+                Frequently asked questions
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#475467]">
                 Everything you need to know about SVIET&apos;s student
@@ -739,7 +739,7 @@ export function OurInitiativesPage() {
           <h2 className="mt-5 text-4xl font-black leading-tight tracking-tighter text-[#101828] md:text-6xl">
             Start Your Journey
             <br />
-            at SVIET Today.
+            at SVIET Today
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[#475467] md:text-lg">
             Join thousands of students who chose to go beyond — through The
