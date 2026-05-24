@@ -44,7 +44,7 @@ const OTHER_APPROVALS = [
     title: "PCI Recognition",
     description:
       "Pharmacy programs follow standards prescribed for curriculum quality, training, and compliance.",
-    logoSrc: "https://pci.gov.in/static/images/PCI_logo_1.png",
+    logoSrc: "/assets/img/ap_logs/pci.png",
     logoAlt: "PCI approval logo",
   },
   {

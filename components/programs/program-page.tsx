@@ -506,6 +506,18 @@ function getHeroImage(heroImage?: string | null) {
   return heroImage && heroImage.startsWith("/") ? heroImage : null;
 }
 
+function isAutonomousProgram(slug: string) {
+  const s = String(slug).toLowerCase();
+  return (
+    s.includes("btech") ||
+    s.includes("mtech") ||
+    s.includes("master-of-business") ||
+    s.includes("mba") ||
+    s.includes("master-of-computer") ||
+    s.includes("mca")
+  );
+}
+
 function parseEligibility(eligibility?: string | null) {
   if (!eligibility) return [];
   // Normalize common separators to newlines, then split into lines/sentences
@@ -553,6 +565,11 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
       {/* ── Hero ──────────────────────────────────────────────────────────────── */}
       <section className="-mt-30 w-full bg-[#050d1f] pt-30 text-white">
         <div className="relative min-h-125 w-full overflow-hidden md:min-h-145 lg:min-h-170">
+          {isAutonomousProgram(program.slug) && (
+            <div className="absolute left-6 top-6 z-30 rounded-full border border-white/20 bg-white/6 px-4 py-1 text-sm font-semibold text-white/90">
+              Autonomous Institute
+            </div>
+          )}
           {heroImage && (
             <Image
               src={heroImage}
@@ -634,6 +651,12 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
                   { label: "Mode", value: formatMode(program.mode) },
                   { label: "Affiliation", value: "IKGPTU, Jalandhar" },
                   { label: "Approval", value: "AICTE Approved" },
+                  {
+                    label: "Status",
+                    value: isAutonomousProgram(program.slug)
+                      ? "Autonomous Institute"
+                      : null,
+                  },
                 ].map(({ label, value }) => (
                   <div
                     key={label}

@@ -117,8 +117,8 @@ export function CampusLifeHangoutsSportsClubsSection() {
           <p className="text-2xl font-medium md:text-3xl">Sports and games</p>
           <h2 className="mt-3 max-w-5xl text-4xl font-medium leading-tight md:text-5xl">
             Sports & Games -{" "}
-            <span className="font-semibold text-[#1d4ed8]">Play.</span>{" "}
-            <span className="font-semibold text-[#1d4ed8]">Compete.</span>{" "}
+            <span className="font-semibold text-[#1d4ed8]">Play</span>{" "}
+            <span className="font-semibold text-[#1d4ed8]">Compete</span>{" "}
             <span className="font-semibold text-[#f7941d]">Win!</span>
           </h2>
           <p className="mt-5 max-w-5xl text-base leading-relaxed text-[#3e3e3e] md:text-xl">
