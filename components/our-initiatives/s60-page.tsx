@@ -5,12 +5,14 @@ export function S60Page() {
   return (
     <div className="text-foreground">
       <section className="w-full">
-        <div className="relative h-64 w-full overflow-hidden md:h-96 lg:h-screen">
+        <div className="w-full overflow-hidden">
           <Image
             src="/assets/img/banner/s60.jpeg"
             alt="S60 Banner"
-            fill
-            className="object-cover"
+            width={0}
+            height={0}
+            sizes="100vw"
+            className="h-auto w-full"
           />
         </div>
       </section>
@@ -20,10 +22,10 @@ export function S60Page() {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Left */}
             <div>
-              <p className="text-sm font-black uppercase tracking-widest text-[#111827]">
+              <p className="text-sm font-medium uppercase tracking-widest text-[#111827]">
                 A Community of
               </p>
-              <p className="mt-1 text-lg font-black uppercase leading-tight tracking-wide text-[#f7941d] md:text-2xl">
+              <p className="mt-1 text-lg font-medium uppercase leading-tight tracking-wide text-[#f7941d] md:text-2xl">
                 Visionaries, Creators and Leaders
               </p>
 
@@ -55,7 +57,7 @@ export function S60Page() {
                   </p>
                 </div>
 
-                <h2 className="text-3xl font-black leading-tight text-[#111827] md:text-5xl">
+                <h2 className="text-3xl font-medium leading-tight text-[#111827] md:text-5xl">
                   Shaping tomorrow,
                   <br />
                   today
@@ -75,7 +77,7 @@ export function S60Page() {
 
       <section className="bg-white py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
-          <h3 className="text-2xl font-black text-[#111827] md:text-3xl">
+          <h3 className="text-2xl font-medium text-[#111827] md:text-3xl">
             Our Main Focus
           </h3>
 
@@ -152,7 +154,7 @@ export function S60Page() {
             <p className="text-[11px] font-bold uppercase tracking-[0.45em] text-[#f7941d]">
               Gallery
             </p>
-            <h2 className="mt-3 text-3xl font-black tracking-tighter text-[#101828] md:text-5xl">
+            <h2 className="mt-3 text-3xl font-medium tracking-tighter text-[#101828] md:text-5xl">
               Moments That Define Us
             </h2>
           </div>
@@ -220,7 +222,7 @@ export function S60Page() {
             <p className="text-xs font-bold uppercase tracking-[0.45em] text-[#f7941d]">
               The Founders
             </p>
-            <h2 className="mt-4 text-3xl font-black tracking-tighter text-[#101828] md:text-5xl">
+            <h2 className="mt-4 text-3xl font-medium tracking-tighter text-[#101828] md:text-5xl">
               Visionary Leadership,{" "}
               <span className="text-[#003087]">Inspiring Generations</span>
             </h2>
@@ -240,7 +242,7 @@ export function S60Page() {
               </div>
               <div className="flex flex-col justify-center space-y-3 p-6">
                 <div>
-                  <p className="text-xl font-black text-[#101828]">
+                  <p className="text-xl font-medium text-[#101828]">
                     Vishal Garg
                   </p>
                   <p className="mt-1 text-sm font-semibold text-[#f7941d]">
@@ -269,7 +271,7 @@ export function S60Page() {
               </div>
               <div className="flex flex-col justify-center space-y-3 p-6">
                 <div>
-                  <p className="text-xl font-black text-[#101828]">
+                  <p className="text-xl font-medium text-[#101828]">
                     Ankur Gill
                   </p>
                   <p className="mt-1 text-sm font-semibold text-[#f7941d]">
