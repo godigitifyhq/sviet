@@ -166,3 +166,23 @@ export type ProgramFinderSubmission = Prisma.ProgramFinderSubmissionModel
  * 
  */
 export type ContactEnquiry = Prisma.ContactEnquiryModel
+/**
+ * Model PlacementRecord
+ * 
+ */
+export type PlacementRecord = Prisma.PlacementRecordModel
+/**
+ * Model PlacementTrendYear
+ * 
+ */
+export type PlacementTrendYear = Prisma.PlacementTrendYearModel
+/**
+ * Model PlacementHighlightBanner
+ * 
+ */
+export type PlacementHighlightBanner = Prisma.PlacementHighlightBannerModel
+/**
+ * Model PlacementKeyStat
+ * 
+ */
+export type PlacementKeyStat = Prisma.PlacementKeyStatModel

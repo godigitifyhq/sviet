@@ -10,6 +10,7 @@ import {
   LayoutDashboard,
   LogOut,
   Menu,
+  TrendingUp,
   Users,
   X,
   type LucideIcon,
@@ -45,6 +46,7 @@ const NAV_ITEMS: NavItem[] = [
   { href: "/admin/applications", label: "Applications", icon: FileText },
   { href: "/admin/programs", label: "Programs", icon: BookOpen },
   { href: "/admin/events", label: "Events", icon: CalendarDays },
+  { href: "/admin/placements", label: "Placements", icon: TrendingUp },
 ];
 
 function titleFromPathname(pathname: string) {
@@ -65,6 +67,9 @@ function titleFromPathname(pathname: string) {
   }
   if (pathname.startsWith("/admin/events")) {
     return "Events";
+  }
+  if (pathname.startsWith("/admin/placements")) {
+    return "Placements";
   }
   return "Admin";
 }

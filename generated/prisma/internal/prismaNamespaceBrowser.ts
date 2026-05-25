@@ -75,7 +75,11 @@ export const ModelName = {
   LeadNote: 'LeadNote',
   ScholarshipInquiry: 'ScholarshipInquiry',
   ProgramFinderSubmission: 'ProgramFinderSubmission',
-  ContactEnquiry: 'ContactEnquiry'
+  ContactEnquiry: 'ContactEnquiry',
+  PlacementRecord: 'PlacementRecord',
+  PlacementTrendYear: 'PlacementTrendYear',
+  PlacementHighlightBanner: 'PlacementHighlightBanner',
+  PlacementKeyStat: 'PlacementKeyStat'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -480,6 +484,67 @@ export const ContactEnquiryScalarFieldEnum = {
 } as const
 
 export type ContactEnquiryScalarFieldEnum = (typeof ContactEnquiryScalarFieldEnum)[keyof typeof ContactEnquiryScalarFieldEnum]
+
+
+export const PlacementRecordScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  year: 'year',
+  company: 'company',
+  packageValue: 'packageValue',
+  packageLabel: 'packageLabel',
+  imageSrc: 'imageSrc',
+  imageAlt: 'imageAlt',
+  isShowcase: 'isShowcase',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlacementRecordScalarFieldEnum = (typeof PlacementRecordScalarFieldEnum)[keyof typeof PlacementRecordScalarFieldEnum]
+
+
+export const PlacementTrendYearScalarFieldEnum = {
+  id: 'id',
+  year: 'year',
+  companiesVisited: 'companiesVisited',
+  highestPackageLpa: 'highestPackageLpa',
+  averagePackageLpa: 'averagePackageLpa',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlacementTrendYearScalarFieldEnum = (typeof PlacementTrendYearScalarFieldEnum)[keyof typeof PlacementTrendYearScalarFieldEnum]
+
+
+export const PlacementHighlightBannerScalarFieldEnum = {
+  id: 'id',
+  badgeText: 'badgeText',
+  studentName: 'studentName',
+  company: 'company',
+  packageLabel: 'packageLabel',
+  batchYear: 'batchYear',
+  imageSrc: 'imageSrc',
+  imageAlt: 'imageAlt',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlacementHighlightBannerScalarFieldEnum = (typeof PlacementHighlightBannerScalarFieldEnum)[keyof typeof PlacementHighlightBannerScalarFieldEnum]
+
+
+export const PlacementKeyStatScalarFieldEnum = {
+  id: 'id',
+  value: 'value',
+  label: 'label',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlacementKeyStatScalarFieldEnum = (typeof PlacementKeyStatScalarFieldEnum)[keyof typeof PlacementKeyStatScalarFieldEnum]
 
 
 export const SortOrder = {

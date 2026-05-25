@@ -408,7 +408,11 @@ export const ModelName = {
   LeadNote: 'LeadNote',
   ScholarshipInquiry: 'ScholarshipInquiry',
   ProgramFinderSubmission: 'ProgramFinderSubmission',
-  ContactEnquiry: 'ContactEnquiry'
+  ContactEnquiry: 'ContactEnquiry',
+  PlacementRecord: 'PlacementRecord',
+  PlacementTrendYear: 'PlacementTrendYear',
+  PlacementHighlightBanner: 'PlacementHighlightBanner',
+  PlacementKeyStat: 'PlacementKeyStat'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -424,7 +428,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "authSession" | "department" | "specialization" | "program" | "programSpecialization" | "intake" | "lead" | "applicant" | "application" | "applicationFormData" | "applicationStepProgress" | "document" | "applicationStatusHistory" | "activityLog" | "enrollment" | "event" | "eventSpeaker" | "eventRegistration" | "blogPost" | "announcement" | "leadNote" | "scholarshipInquiry" | "programFinderSubmission" | "contactEnquiry"
+    modelProps: "user" | "authSession" | "department" | "specialization" | "program" | "programSpecialization" | "intake" | "lead" | "applicant" | "application" | "applicationFormData" | "applicationStepProgress" | "document" | "applicationStatusHistory" | "activityLog" | "enrollment" | "event" | "eventSpeaker" | "eventRegistration" | "blogPost" | "announcement" | "leadNote" | "scholarshipInquiry" | "programFinderSubmission" | "contactEnquiry" | "placementRecord" | "placementTrendYear" | "placementHighlightBanner" | "placementKeyStat"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2278,6 +2282,302 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PlacementRecord: {
+      payload: Prisma.$PlacementRecordPayload<ExtArgs>
+      fields: Prisma.PlacementRecordFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PlacementRecordFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementRecordPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PlacementRecordFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementRecordPayload>
+        }
+        findFirst: {
+          args: Prisma.PlacementRecordFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementRecordPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PlacementRecordFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementRecordPayload>
+        }
+        findMany: {
+          args: Prisma.PlacementRecordFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementRecordPayload>[]
+        }
+        create: {
+          args: Prisma.PlacementRecordCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementRecordPayload>
+        }
+        createMany: {
+          args: Prisma.PlacementRecordCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PlacementRecordCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementRecordPayload>[]
+        }
+        delete: {
+          args: Prisma.PlacementRecordDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementRecordPayload>
+        }
+        update: {
+          args: Prisma.PlacementRecordUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementRecordPayload>
+        }
+        deleteMany: {
+          args: Prisma.PlacementRecordDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PlacementRecordUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PlacementRecordUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementRecordPayload>[]
+        }
+        upsert: {
+          args: Prisma.PlacementRecordUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementRecordPayload>
+        }
+        aggregate: {
+          args: Prisma.PlacementRecordAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePlacementRecord>
+        }
+        groupBy: {
+          args: Prisma.PlacementRecordGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlacementRecordGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PlacementRecordCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlacementRecordCountAggregateOutputType> | number
+        }
+      }
+    }
+    PlacementTrendYear: {
+      payload: Prisma.$PlacementTrendYearPayload<ExtArgs>
+      fields: Prisma.PlacementTrendYearFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PlacementTrendYearFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementTrendYearPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PlacementTrendYearFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementTrendYearPayload>
+        }
+        findFirst: {
+          args: Prisma.PlacementTrendYearFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementTrendYearPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PlacementTrendYearFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementTrendYearPayload>
+        }
+        findMany: {
+          args: Prisma.PlacementTrendYearFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementTrendYearPayload>[]
+        }
+        create: {
+          args: Prisma.PlacementTrendYearCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementTrendYearPayload>
+        }
+        createMany: {
+          args: Prisma.PlacementTrendYearCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PlacementTrendYearCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementTrendYearPayload>[]
+        }
+        delete: {
+          args: Prisma.PlacementTrendYearDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementTrendYearPayload>
+        }
+        update: {
+          args: Prisma.PlacementTrendYearUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementTrendYearPayload>
+        }
+        deleteMany: {
+          args: Prisma.PlacementTrendYearDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PlacementTrendYearUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PlacementTrendYearUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementTrendYearPayload>[]
+        }
+        upsert: {
+          args: Prisma.PlacementTrendYearUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementTrendYearPayload>
+        }
+        aggregate: {
+          args: Prisma.PlacementTrendYearAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePlacementTrendYear>
+        }
+        groupBy: {
+          args: Prisma.PlacementTrendYearGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlacementTrendYearGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PlacementTrendYearCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlacementTrendYearCountAggregateOutputType> | number
+        }
+      }
+    }
+    PlacementHighlightBanner: {
+      payload: Prisma.$PlacementHighlightBannerPayload<ExtArgs>
+      fields: Prisma.PlacementHighlightBannerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PlacementHighlightBannerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementHighlightBannerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PlacementHighlightBannerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementHighlightBannerPayload>
+        }
+        findFirst: {
+          args: Prisma.PlacementHighlightBannerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementHighlightBannerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PlacementHighlightBannerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementHighlightBannerPayload>
+        }
+        findMany: {
+          args: Prisma.PlacementHighlightBannerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementHighlightBannerPayload>[]
+        }
+        create: {
+          args: Prisma.PlacementHighlightBannerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementHighlightBannerPayload>
+        }
+        createMany: {
+          args: Prisma.PlacementHighlightBannerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PlacementHighlightBannerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementHighlightBannerPayload>[]
+        }
+        delete: {
+          args: Prisma.PlacementHighlightBannerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementHighlightBannerPayload>
+        }
+        update: {
+          args: Prisma.PlacementHighlightBannerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementHighlightBannerPayload>
+        }
+        deleteMany: {
+          args: Prisma.PlacementHighlightBannerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PlacementHighlightBannerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PlacementHighlightBannerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementHighlightBannerPayload>[]
+        }
+        upsert: {
+          args: Prisma.PlacementHighlightBannerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementHighlightBannerPayload>
+        }
+        aggregate: {
+          args: Prisma.PlacementHighlightBannerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePlacementHighlightBanner>
+        }
+        groupBy: {
+          args: Prisma.PlacementHighlightBannerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlacementHighlightBannerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PlacementHighlightBannerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlacementHighlightBannerCountAggregateOutputType> | number
+        }
+      }
+    }
+    PlacementKeyStat: {
+      payload: Prisma.$PlacementKeyStatPayload<ExtArgs>
+      fields: Prisma.PlacementKeyStatFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PlacementKeyStatFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementKeyStatPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PlacementKeyStatFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementKeyStatPayload>
+        }
+        findFirst: {
+          args: Prisma.PlacementKeyStatFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementKeyStatPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PlacementKeyStatFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementKeyStatPayload>
+        }
+        findMany: {
+          args: Prisma.PlacementKeyStatFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementKeyStatPayload>[]
+        }
+        create: {
+          args: Prisma.PlacementKeyStatCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementKeyStatPayload>
+        }
+        createMany: {
+          args: Prisma.PlacementKeyStatCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PlacementKeyStatCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementKeyStatPayload>[]
+        }
+        delete: {
+          args: Prisma.PlacementKeyStatDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementKeyStatPayload>
+        }
+        update: {
+          args: Prisma.PlacementKeyStatUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementKeyStatPayload>
+        }
+        deleteMany: {
+          args: Prisma.PlacementKeyStatDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PlacementKeyStatUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PlacementKeyStatUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementKeyStatPayload>[]
+        }
+        upsert: {
+          args: Prisma.PlacementKeyStatUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementKeyStatPayload>
+        }
+        aggregate: {
+          args: Prisma.PlacementKeyStatAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePlacementKeyStat>
+        }
+        groupBy: {
+          args: Prisma.PlacementKeyStatGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlacementKeyStatGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PlacementKeyStatCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlacementKeyStatCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2703,6 +3003,67 @@ export const ContactEnquiryScalarFieldEnum = {
 } as const
 
 export type ContactEnquiryScalarFieldEnum = (typeof ContactEnquiryScalarFieldEnum)[keyof typeof ContactEnquiryScalarFieldEnum]
+
+
+export const PlacementRecordScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  year: 'year',
+  company: 'company',
+  packageValue: 'packageValue',
+  packageLabel: 'packageLabel',
+  imageSrc: 'imageSrc',
+  imageAlt: 'imageAlt',
+  isShowcase: 'isShowcase',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlacementRecordScalarFieldEnum = (typeof PlacementRecordScalarFieldEnum)[keyof typeof PlacementRecordScalarFieldEnum]
+
+
+export const PlacementTrendYearScalarFieldEnum = {
+  id: 'id',
+  year: 'year',
+  companiesVisited: 'companiesVisited',
+  highestPackageLpa: 'highestPackageLpa',
+  averagePackageLpa: 'averagePackageLpa',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlacementTrendYearScalarFieldEnum = (typeof PlacementTrendYearScalarFieldEnum)[keyof typeof PlacementTrendYearScalarFieldEnum]
+
+
+export const PlacementHighlightBannerScalarFieldEnum = {
+  id: 'id',
+  badgeText: 'badgeText',
+  studentName: 'studentName',
+  company: 'company',
+  packageLabel: 'packageLabel',
+  batchYear: 'batchYear',
+  imageSrc: 'imageSrc',
+  imageAlt: 'imageAlt',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlacementHighlightBannerScalarFieldEnum = (typeof PlacementHighlightBannerScalarFieldEnum)[keyof typeof PlacementHighlightBannerScalarFieldEnum]
+
+
+export const PlacementKeyStatScalarFieldEnum = {
+  id: 'id',
+  value: 'value',
+  label: 'label',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlacementKeyStatScalarFieldEnum = (typeof PlacementKeyStatScalarFieldEnum)[keyof typeof PlacementKeyStatScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -3180,6 +3541,10 @@ export type GlobalOmitConfig = {
   scholarshipInquiry?: Prisma.ScholarshipInquiryOmit
   programFinderSubmission?: Prisma.ProgramFinderSubmissionOmit
   contactEnquiry?: Prisma.ContactEnquiryOmit
+  placementRecord?: Prisma.PlacementRecordOmit
+  placementTrendYear?: Prisma.PlacementTrendYearOmit
+  placementHighlightBanner?: Prisma.PlacementHighlightBannerOmit
+  placementKeyStat?: Prisma.PlacementKeyStatOmit
 }
 
 /* Types for Logging */

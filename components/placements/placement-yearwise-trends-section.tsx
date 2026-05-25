@@ -14,29 +14,11 @@ import {
   YAxis,
 } from "recharts";
 
-const COMPANIES_DATA = [
-  { year: "2022", companies: 260 },
-  { year: "2023", companies: 285 },
-  { year: "2024", companies: 315 },
-  { year: "2025", companies: 320 },
-  { year: "2026", companies: 350 },
-];
+import type { PlacementTrendYearRow } from "@/lib/dal/placements";
 
-const HIGHEST_PACKAGE_DATA = [
-  { year: "2022", lpa: 19 },
-  { year: "2023", lpa: 28 },
-  { year: "2024", lpa: 45 },
-  { year: "2025", lpa: 50 },
-  { year: "2026", lpa: 60 },
-];
-
-const AVERAGE_PACKAGE_DATA = [
-  { year: "2022", lpa: 3.6 },
-  { year: "2023", lpa: 3.5 },
-  { year: "2024", lpa: 4.8 },
-  { year: "2025", lpa: 5.5 },
-  { year: "2026", lpa: 5.8 },
-];
+type Props = {
+  trends: PlacementTrendYearRow[];
+};
 
 const AXIS_STYLE = { fill: "#4B5563", fontSize: 12 };
 
@@ -46,7 +28,21 @@ const TOOLTIP_STYLE = {
   borderRadius: "8px",
 };
 
-export function PlacementYearwiseTrendsSection() {
+export function PlacementYearwiseTrendsSection({ trends }: Props) {
+  const companiesData = trends.map((t) => ({ year: t.year, companies: t.companiesVisited }));
+  const highestPackageData = trends.map((t) => ({ year: t.year, lpa: t.highestPackageLpa }));
+  const averagePackageData = trends.map((t) => ({ year: t.year, lpa: t.averagePackageLpa }));
+
+  const latest = trends[trends.length - 1];
+  const companiesMax = Math.max(...trends.map((t) => t.companiesVisited));
+  const companiesDomain: [number, number] = [
+    Math.floor(Math.min(...trends.map((t) => t.companiesVisited)) * 0.9),
+    Math.ceil(companiesMax * 1.1),
+  ];
+  const highestMax = Math.max(...trends.map((t) => t.highestPackageLpa));
+  const avgMin = Math.floor(Math.min(...trends.map((t) => t.averagePackageLpa)));
+  const avgMax = Math.ceil(Math.max(...trends.map((t) => t.averagePackageLpa)) * 1.1);
+
   return (
     <section className="px-4 py-10 md:px-6 md:py-20">
       <div className="mx-auto max-w-7xl">
@@ -78,30 +74,17 @@ export function PlacementYearwiseTrendsSection() {
             </p>
             <div className="mt-5 h-56 w-full sm:h-64">
               <ResponsiveContainer>
-                <BarChart data={COMPANIES_DATA} barSize={28}>
+                <BarChart data={companiesData} barSize={28}>
                   <defs>
                     <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stopColor="#f7941d" stopOpacity={1} />
-                      <stop
-                        offset="100%"
-                        stopColor="#ffb347"
-                        stopOpacity={0.7}
-                      />
+                      <stop offset="100%" stopColor="#ffb347" stopOpacity={0.7} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid
-                    stroke="#E5E7EB"
-                    strokeDasharray="3 3"
-                    vertical={false}
-                  />
-                  <XAxis
-                    dataKey="year"
-                    tick={AXIS_STYLE}
-                    axisLine={false}
-                    tickLine={false}
-                  />
+                  <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" vertical={false} />
+                  <XAxis dataKey="year" tick={AXIS_STYLE} axisLine={false} tickLine={false} />
                   <YAxis
-                    domain={[200, 400]}
+                    domain={companiesDomain}
                     tick={AXIS_STYLE}
                     axisLine={false}
                     tickLine={false}
@@ -111,11 +94,7 @@ export function PlacementYearwiseTrendsSection() {
                     contentStyle={TOOLTIP_STYLE}
                     formatter={(value) => [`${value} companies`, "Recruiters"]}
                   />
-                  <Bar
-                    dataKey="companies"
-                    fill="url(#barGrad)"
-                    radius={[4, 4, 0, 0]}
-                  />
+                  <Bar dataKey="companies" fill="url(#barGrad)" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -126,21 +105,14 @@ export function PlacementYearwiseTrendsSection() {
             <h3 className="text-base font-semibold text-[#111827]">
               Highest Package
             </h3>
-            <p className="mt-0.5 text-sm text-[#9ca3af]">
-              Peak offer per year (LPA)
-            </p>
+            <p className="mt-0.5 text-sm text-[#9ca3af]">Peak offer per year (LPA)</p>
             <div className="mt-5 h-56 w-full sm:h-64">
               <ResponsiveContainer>
-                <LineChart data={HIGHEST_PACKAGE_DATA}>
+                <LineChart data={highestPackageData}>
                   <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" />
-                  <XAxis
-                    dataKey="year"
-                    tick={AXIS_STYLE}
-                    axisLine={false}
-                    tickLine={false}
-                  />
+                  <XAxis dataKey="year" tick={AXIS_STYLE} axisLine={false} tickLine={false} />
                   <YAxis
-                    domain={[0, 70]}
+                    domain={[0, Math.ceil(highestMax * 1.1)]}
                     tick={AXIS_STYLE}
                     axisLine={false}
                     tickLine={false}
@@ -169,31 +141,20 @@ export function PlacementYearwiseTrendsSection() {
             <h3 className="text-base font-semibold text-[#111827]">
               Average Package
             </h3>
-            <p className="mt-0.5 text-sm text-[#9ca3af]">
-              Mean CTC trend (LPA)
-            </p>
+            <p className="mt-0.5 text-sm text-[#9ca3af]">Mean CTC trend (LPA)</p>
             <div className="mt-5 h-56 w-full sm:h-64">
               <ResponsiveContainer>
-                <AreaChart data={AVERAGE_PACKAGE_DATA}>
+                <AreaChart data={averagePackageData}>
                   <defs>
                     <linearGradient id="avgGrad" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="#2563EB" stopOpacity={0.3} />
-                      <stop
-                        offset="95%"
-                        stopColor="#2563EB"
-                        stopOpacity={0.03}
-                      />
+                      <stop offset="95%" stopColor="#2563EB" stopOpacity={0.03} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" />
-                  <XAxis
-                    dataKey="year"
-                    tick={AXIS_STYLE}
-                    axisLine={false}
-                    tickLine={false}
-                  />
+                  <XAxis dataKey="year" tick={AXIS_STYLE} axisLine={false} tickLine={false} />
                   <YAxis
-                    domain={[2, 7]}
+                    domain={[Math.max(0, avgMin - 1), avgMax]}
                     tick={AXIS_STYLE}
                     axisLine={false}
                     tickLine={false}
@@ -218,27 +179,35 @@ export function PlacementYearwiseTrendsSection() {
           </article>
         </div>
 
-        {/* Summary strip */}
-        <div className="mt-6 grid gap-4 sm:grid-cols-3">
-          <article className="rounded-xl border border-[#DCE7FF] bg-white p-4">
-            <p className="text-sm uppercase tracking-[0.14em] text-[#6B7280]">
-              Companies Visited (2026)
-            </p>
-            <p className="mt-2 text-2xl font-bold text-[#111827]">350+</p>
-          </article>
-          <article className="rounded-xl border border-[#DCE7FF] bg-white p-4">
-            <p className="text-sm uppercase tracking-[0.14em] text-[#6B7280]">
-              Highest Package (2026)
-            </p>
-            <p className="mt-2 text-2xl font-bold text-[#111827]">60 LPA</p>
-          </article>
-          <article className="rounded-xl border border-[#DCE7FF] bg-white p-4">
-            <p className="text-sm uppercase tracking-[0.14em] text-[#6B7280]">
-              Average Package (2026)
-            </p>
-            <p className="mt-2 text-2xl font-bold text-[#111827]">5.8 LPA</p>
-          </article>
-        </div>
+        {/* Summary strip — always reflects latest year in DB */}
+        {latest && (
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            <article className="rounded-xl border border-[#DCE7FF] bg-white p-4">
+              <p className="text-sm uppercase tracking-[0.14em] text-[#6B7280]">
+                Companies Visited ({latest.year})
+              </p>
+              <p className="mt-2 text-2xl font-bold text-[#111827]">
+                {latest.companiesVisited}+
+              </p>
+            </article>
+            <article className="rounded-xl border border-[#DCE7FF] bg-white p-4">
+              <p className="text-sm uppercase tracking-[0.14em] text-[#6B7280]">
+                Highest Package ({latest.year})
+              </p>
+              <p className="mt-2 text-2xl font-bold text-[#111827]">
+                {latest.highestPackageLpa} LPA
+              </p>
+            </article>
+            <article className="rounded-xl border border-[#DCE7FF] bg-white p-4">
+              <p className="text-sm uppercase tracking-[0.14em] text-[#6B7280]">
+                Average Package ({latest.year})
+              </p>
+              <p className="mt-2 text-2xl font-bold text-[#111827]">
+                {latest.averagePackageLpa} LPA
+              </p>
+            </article>
+          </div>
+        )}
       </div>
     </section>
   );

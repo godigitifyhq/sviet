@@ -121,8 +121,8 @@ export function CampusLifeFestsConvocationSection() {
             </p>
             <p className="mt-4 text-base leading-relaxed text-[#2f2f2f] md:text-lg">
               Each year, the Convocation honors a massive graduating cohort with
-              over 12,000 students across diverse disciplines, with nationally
-              and internationally renowned chief guests and guests of honour.
+              over 4000 students across diverse disciplines, with nationally and
+              internationally renowned chief guests and guests of honour.
             </p>
           </div>
 

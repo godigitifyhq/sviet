@@ -12,43 +12,63 @@ import { PlacementYearwiseTrendsSection } from "@/components/placements/placemen
 import { PlacementsHeroSection } from "@/components/placements/placements-hero-section";
 import { SectionHeader } from "@/components/placements/section-header";
 import { SectionWrapper } from "@/components/placements/section-wrapper";
-import {
-  PLACEMENT_KEY_STATS,
-  OVERALL_AVERAGE_PACKAGE,
-} from "@/components/placements/placement-data";
 import { StatCard } from "@/components/placements/stat-card";
 import { TrainingCurriculumSection } from "@/components/placements/training-curriculum-section";
 import { DCATrainingPlacementSection } from "@/components/placements/dca-training-placement-section";
 import { CorporateConnectSection } from "@/components/placements/corporate-connect-section";
+import {
+  getShowcaseCards,
+  getFeaturedPlacements,
+  getPlacementTrends,
+  getHighlightBanner,
+  getPlacementKeyStats,
+  getOverallAveragePackage,
+} from "@/lib/dal/placements";
 
-const FAQ_ITEMS = [
-  {
-    question: "What is the placement process?",
-    answer:
-      "The placement process includes company outreach, eligibility screening, pre-placement talks, tests, interviews, and final offer rollouts coordinated by the training and placement cell.",
-  },
-  {
-    question: "Which companies visit campus?",
-    answer:
-      "SVGOI hosts recruiters from IT, consulting, manufacturing, banking, and service sectors, including national and multinational organizations.",
-  },
-  {
-    question: "What is the average package?",
-    answer: `The average package across the shared placement records is around Rs ${OVERALL_AVERAGE_PACKAGE} LPA, with higher packages depending on role, domain, and student performance.`,
-  },
-  {
-    question: "Are internships provided?",
-    answer:
-      "Yes, students receive internship support through industry partnerships, live projects, and campus-connect initiatives across departments.",
-  },
-  {
-    question: "How does training work?",
-    answer:
-      "Students undergo a structured training pipeline covering aptitude, coding and technical modules, communication, resume building, and mock interviews.",
-  },
-];
+export async function PlacementsPageComponent() {
+  const [
+    showcaseCards,
+    featuredPlacements,
+    trends,
+    banner,
+    keyStats,
+    averagePackage,
+  ] = await Promise.all([
+    getShowcaseCards(),
+    getFeaturedPlacements(2),
+    getPlacementTrends(),
+    getHighlightBanner(),
+    getPlacementKeyStats(),
+    getOverallAveragePackage(),
+  ]);
 
-export function PlacementsPageComponent() {
+  const FAQ_ITEMS = [
+    {
+      question: "What is the placement process?",
+      answer:
+        "The placement process includes company outreach, eligibility screening, pre-placement talks, tests, interviews, and final offer rollouts coordinated by the training and placement cell.",
+    },
+    {
+      question: "Which companies visit campus?",
+      answer:
+        "SVGOI hosts recruiters from IT, consulting, manufacturing, banking, and service sectors, including national and multinational organizations.",
+    },
+    {
+      question: "What is the average package?",
+      answer: `The average package across the shared placement records is around Rs ${averagePackage} LPA, with higher packages depending on role, domain, and student performance.`,
+    },
+    {
+      question: "Are internships provided?",
+      answer:
+        "Yes, students receive internship support through industry partnerships, live projects, and campus-connect initiatives across departments.",
+    },
+    {
+      question: "How does training work?",
+      answer:
+        "Students undergo a structured training pipeline covering aptitude, coding and technical modules, communication, resume building, and mock interviews.",
+    },
+  ];
+
   return (
     <main className="overflow-x-hidden bg-white">
       <PlacementsHeroSection />
@@ -63,7 +83,7 @@ export function PlacementsPageComponent() {
         />
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {PLACEMENT_KEY_STATS.map((item) => (
+          {keyStats.map((item) => (
             <StatCard key={item.label} value={item.value} label={item.label} />
           ))}
         </div>
@@ -73,7 +93,7 @@ export function PlacementsPageComponent() {
         </p>
       </SectionWrapper>
 
-      <PlacementYearwiseTrendsSection />
+      <PlacementYearwiseTrendsSection trends={trends} />
 
       <SectionWrapper aria-labelledby="placements-overview-heading">
         <SectionHeader
@@ -112,7 +132,7 @@ export function PlacementsPageComponent() {
               alt="Training and Placement Cell showcase"
               fill
               priority
-              className="object-cover object-center "
+              className="object-cover object-center"
             />
           </div>
           <figcaption className="flex items-center justify-between gap-4 border-t border-gray-200 bg-white px-4 py-3 text-sm font-medium uppercase tracking-[0.18em] text-gray-500 md:px-6">
@@ -122,13 +142,13 @@ export function PlacementsPageComponent() {
         </figure>
       </SectionWrapper>
 
-      <PlacementSuccessBanner />
+      <PlacementSuccessBanner banner={banner} />
 
-      <PlacementCardsMarqueeSection />
+      <PlacementCardsMarqueeSection cards={showcaseCards} />
 
       <HiringPartners />
 
-      <PlacementSecondaryBanner />
+      <PlacementSecondaryBanner featuredPlacements={featuredPlacements} />
 
       <SectionWrapper
         aria-labelledby="director-message-heading"
@@ -140,7 +160,6 @@ export function PlacementsPageComponent() {
         />
 
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          {/* Director Placements */}
           <article className="overflow-hidden rounded-3xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] shadow-[0_8px_24px_rgba(30,42,120,0.06)]">
             <div className="relative h-64 bg-[#EEF4FF] sm:h-80 lg:h-96">
               <Image
@@ -172,7 +191,6 @@ export function PlacementsPageComponent() {
             </div>
           </article>
 
-          {/* Director Operations & Corporate Partnership */}
           <article className="overflow-hidden rounded-3xl border border-[#DCE7FF] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFF_100%)] shadow-[0_8px_24px_rgba(30,42,120,0.06)]">
             <div className="relative h-64 bg-[#EEF4FF] sm:h-80 lg:h-96">
               <Image
@@ -274,21 +292,6 @@ export function PlacementsPageComponent() {
       <TrainingCurriculumSection />
 
       <PlacementStudentSpeakSection />
-
-      {/* <SectionWrapper aria-labelledby="outcomes-objectives-heading">
-        <SectionHeader id="outcomes-objectives-heading" title="Outcomes & Objectives" />
-
-        <ul className="mt-6 grid gap-3 text-sm text-gray-700 sm:grid-cols-3">
-          <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Professional Skill Development</li>
-          <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Maximum Opportunities</li>
-          <li className="rounded-md border border-gray-200 bg-white px-4 py-3">Employable Graduates</li>
-        </ul>
-
-        <p className="mt-6 max-w-4xl text-base leading-relaxed text-gray-600">
-          We focus on developing industry-ready graduates equipped with practical skills, professional ethics, and the
-          ability to contribute effectively in their chosen careers.
-        </p>
-      </SectionWrapper> */}
 
       <SectionWrapper
         aria-labelledby="placements-faq-heading"

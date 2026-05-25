@@ -1,12 +1,21 @@
 import Image from "next/image";
 
-import { FEATURED_PLACEMENTS } from "@/components/placements/placement-data";
+import type { PlacementHighlightBannerRow, PlacementRecordRow } from "@/lib/dal/placements";
 
-export function PlacementSuccessBanner() {
+type SuccessBannerProps = {
+  banner: PlacementHighlightBannerRow;
+};
+
+type SecondaryBannerProps = {
+  featuredPlacements: PlacementRecordRow[];
+};
+
+export function PlacementSuccessBanner({ banner }: SuccessBannerProps) {
+  const nameParts = banner.studentName.split("\n");
+
   return (
     <section className="w-full bg-[#f8fafc] pt-12 md:pt-16">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
-        {/* Heading */}
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f7941d]">
             Placement Spotlight
@@ -20,7 +29,6 @@ export function PlacementSuccessBanner() {
           </p>
         </div>
 
-        {/* ── 19 LPA banner — prominent ── */}
         <div className="mx-auto mt-10 max-w-7xl md:mt-16">
           <div className="relative overflow-hidden rounded-3xl border-2 border-[#fea700]/40 bg-linear-to-br from-[#0a2f72] to-[#0b3b8f] px-6 py-8 md:h-80 md:px-10 md:py-10">
             <div className="pointer-events-none absolute -right-12 -top-12 h-64 w-64 rounded-full border border-white/10" />
@@ -30,23 +38,26 @@ export function PlacementSuccessBanner() {
             <div className="grid h-full items-center gap-6 md:grid-cols-[1fr_1.3fr_1fr] md:gap-6">
               <div className="relative z-10 flex flex-col justify-center md:pr-2">
                 <span className="inline-block rounded-full bg-[#fea700]/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#fea700]">
-                  Top Placement · 2026
+                  {banner.badgeText}
                 </span>
                 <p className="mt-4 text-[2.4rem] font-extrabold leading-[0.95] tracking-[-0.02em] text-[#fea700] md:text-[3rem]">
-                  Laxmi
-                  <br />
-                  Vaishnavi
+                  {nameParts.map((part, i) => (
+                    <span key={i}>
+                      {part}
+                      {i < nameParts.length - 1 && <br />}
+                    </span>
+                  ))}
                 </p>
                 <p className="mt-3 text-sm font-medium text-white/70">
-                  Caelius Consulting
+                  {banner.company}
                 </p>
               </div>
 
               <div className="relative flex h-64 items-end justify-center overflow-visible md:h-80">
                 <div className="pointer-events-none absolute bottom-0 left-1/2 h-28 w-56 -translate-x-1/2 rounded-full bg-[#fea700]/25 blur-3xl" />
                 <Image
-                  src="/assets/img/students/11.png"
-                  alt="Laxmi and Vaishnavi — 19 LPA placement at Caelius Consulting"
+                  src={banner.imageSrc}
+                  alt={banner.imageAlt}
                   width={640}
                   height={640}
                   priority
@@ -57,14 +68,14 @@ export function PlacementSuccessBanner() {
               <div className="relative z-10 flex flex-col items-center justify-center gap-3 text-center md:items-end md:text-right">
                 <div>
                   <p className="text-base font-semibold leading-tight text-white md:text-lg">
-                    Caelius Consulting
+                    {banner.company}
                   </p>
                   <p className="mt-1 text-sm font-medium uppercase tracking-widest text-white/70">
-                    2026 Batch
+                    {banner.batchYear}
                   </p>
                 </div>
                 <p className="text-6xl font-extrabold leading-none tracking-tight text-[#fea700] md:text-7xl">
-                  19 LPA
+                  {banner.packageLabel}
                 </p>
               </div>
             </div>
@@ -75,8 +86,9 @@ export function PlacementSuccessBanner() {
   );
 }
 
-export function PlacementSecondaryBanner() {
-  const [topPlacement, runnerUpPlacement] = FEATURED_PLACEMENTS;
+export function PlacementSecondaryBanner({ featuredPlacements }: SecondaryBannerProps) {
+  const [top, runnerUp] = featuredPlacements;
+  if (!top) return null;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 md:px-6 md:py-12">
@@ -90,9 +102,13 @@ export function PlacementSecondaryBanner() {
               Our Top Placements
             </p>
             <p className="mt-3 max-w-60 text-[2.1rem] font-extrabold leading-[0.98] tracking-[-0.02em] text-[#fea700] md:max-w-65 md:text-[2.5rem]">
-              {topPlacement.name}
-              <br />
-              {runnerUpPlacement.name}
+              {top.name}
+              {runnerUp && (
+                <>
+                  <br />
+                  {runnerUp.name}
+                </>
+              )}
             </p>
           </div>
 
@@ -100,7 +116,7 @@ export function PlacementSecondaryBanner() {
             <div className="pointer-events-none absolute bottom-0 left-1/2 h-24 w-40 -translate-x-1/2 rounded-full bg-[#fea700]/20 blur-3xl md:h-28 md:w-52" />
             <Image
               src="/assets/img/students/taks.png"
-              alt="Top placement highlight for the latest 12 LPA achievers"
+              alt="Top placement highlight"
               width={560}
               height={560}
               className="absolute bottom-2! z-20 h-64 w-auto max-w-none object-contain object-bottom md:-bottom-10 md:h-96"
@@ -110,14 +126,14 @@ export function PlacementSecondaryBanner() {
           <div className="relative z-10 flex flex-col items-center justify-center gap-2 text-center md:items-end md:text-right">
             <div>
               <p className="text-sm font-semibold leading-tight text-white md:text-[1.05rem]">
-                {topPlacement.company}
+                {top.company}
               </p>
               <p className="mt-1 text-sm font-medium uppercase tracking-[0.14em] text-white/80">
-                2027 Batch
+                {top.year} Batch
               </p>
             </div>
             <p className="text-5xl font-extrabold leading-none tracking-tight text-white md:text-6xl">
-              {topPlacement.packageLabel}
+              {top.packageLabel}
             </p>
           </div>
         </div>

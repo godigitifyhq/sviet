@@ -566,3 +566,57 @@ model ContactEnquiry {
   lead        Lead      @relation(fields: [leadId], references: [id], onDelete: Cascade)
   repliedBy   User?     @relation("ContactEnquiryRepliedBy", fields: [repliedById], references: [id], onDelete: SetNull)
 }
+
+model PlacementRecord {
+  id           String   @id @default(uuid())
+  name         String
+  year         Int
+  company      String
+  packageValue Float
+  packageLabel String
+  imageSrc     String?
+  imageAlt     String?
+  isShowcase   Boolean  @default(false)
+  sortOrder    Int      @default(0)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([isActive, year, packageValue])
+  @@index([isShowcase, sortOrder])
+}
+
+model PlacementTrendYear {
+  id                String   @id @default(uuid())
+  year              String   @unique
+  companiesVisited  Int
+  highestPackageLpa Float
+  averagePackageLpa Float
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model PlacementHighlightBanner {
+  id           String   @id @default(uuid())
+  badgeText    String
+  studentName  String
+  company      String
+  packageLabel String
+  batchYear    String
+  imageSrc     String
+  imageAlt     String
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model PlacementKeyStat {
+  id        String   @id @default(uuid())
+  value     String
+  label     String
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([sortOrder])
+}

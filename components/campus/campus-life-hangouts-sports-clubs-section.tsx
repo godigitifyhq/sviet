@@ -1,6 +1,34 @@
 import Image from "next/image";
 import { Dumbbell, Medal, Trophy } from "lucide-react";
 
+const CLUBS = [
+  {
+    name: "Google Developer Groups on Campus",
+    tagline: "Build for everyone with Google technologies.",
+    logo: "/assets/img/club/GDGC.png",
+  },
+  {
+    name: "Microsoft Learn Student Ambassadors",
+    tagline: "Lead, learn, and connect with Microsoft tools.",
+    logo: "/assets/img/club/mlsa.webp",
+  },
+  {
+    name: "GeeksForGeeks Campus Chapter",
+    tagline: "Master DSA and competitive programming.",
+    logo: "/assets/img/club/gfg.jpg",
+  },
+  {
+    name: "CodeChef Campus Chapter",
+    tagline: "Compete, grow, and code at every level.",
+    logo: "/assets/img/club/cc.png",
+  },
+  {
+    name: "IEEE Student Branch",
+    tagline: "Advancing technology for humanity.",
+    logo: "/assets/img/club/IEEE.jpg",
+  },
+] as const;
+
 const HANGOUTS_CARDS = [
   {
     title: "Fest Evenings & Celebrations ",
@@ -168,8 +196,8 @@ export function CampusLifeHangoutsSportsClubsSection() {
               </span>
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-[#3e3e3e] md:text-xl">
-              Join 50+ student clubs that cater to diverse interests, from
-              dance, music, photography, and debate to coding.
+              Join student clubs that cater to diverse interests, from dance,
+              music, photography, and debate to coding.
             </p>
             <p className="mt-3 max-w-3xl text-base leading-relaxed text-[#3e3e3e] md:text-xl">
               Be a part of something bigger and unleash your creativity! Each
@@ -177,27 +205,108 @@ export function CampusLifeHangoutsSportsClubsSection() {
               energy flowing.
             </p>
           </div>
-          {/* 
-          <div className="grid grid-cols-2 gap-3 self-end">
-            <div className="relative h-44 overflow-hidden rounded-xl md:h-56">
-              <Image
-                src="/assets/img/campus-life/r3c1.png"
-                alt="Student clubs activity"
-                fill
-                sizes="170px"
-                className="object-cover"
-              />
+
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {/* The Uniques */}
+            <div className="flex flex-col overflow-hidden rounded-2xl border border-[#e0e7ff] bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
+              <div className="relative h-72 overflow-hidden md:h-80">
+                <Image
+                  src="/assets/img/college/lab.jpeg"
+                  alt="The Uniques — lab"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                  className="object-cover transition duration-500 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
+                <div className="absolute bottom-4 left-5">
+                  <Image
+                    src="/assets/img/uniques_logo.png"
+                    alt="The Uniques logo"
+                    width={120}
+                    height={48}
+                    className="object-contain brightness-0 invert"
+                  />
+                </div>
+              </div>
+              <div className="border-t border-[#e0e7ff] p-6">
+                <h3 className="text-lg font-bold leading-snug text-[#111827]">
+                  The Uniques Community
+                </h3>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-[#1d4ed8]">
+                  Learn, Build, and Grow Together
+                </p>
+                <p className="mt-2.5 text-sm leading-relaxed text-[#6b7280]">
+                  A community where everyone is welcome. We help students bridge
+                  the gap between theory and practice through peer-to-peer
+                  learning, workshops, study jams, and building solutions for
+                  local businesses.
+                </p>
+              </div>
             </div>
-            <div className="relative h-44 overflow-hidden rounded-xl md:h-56">
-              <Image
-                src="/assets/img/campus-life/r3c2.png"
-                alt="Creative club session"
-                fill
-                sizes="170px"
-                className="object-cover"
-              />
+
+            {/* Super60 */}
+            <div className="flex flex-col overflow-hidden rounded-2xl border border-[#e0e7ff] bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
+              <div className="relative h-72 overflow-hidden md:h-80">
+                <Image
+                  src="/assets/img/s60.jpg"
+                  alt="Super60 batch"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                  className="object-cover object-top transition duration-500 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
+                <div className="absolute bottom-4 left-5">
+                  <Image
+                    src="/assets/img/s60.png"
+                    alt="Super60 logo"
+                    width={120}
+                    height={48}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+              <div className="border-t border-[#e0e7ff] p-6">
+                <h3 className="text-lg font-bold leading-snug text-[#111827]">
+                  Super60 — Elite CSE Batch
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#6b7280]">
+                  30–60 first-year CSE students selected annually for enriched
+                  learning — reasoning, quant, communication, personality
+                  development, and cutting-edge tech — guaranteeing 100% campus
+                  placement.
+                </p>
+              </div>
             </div>
-          </div> */}
+          </div>
+
+          <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+            {CLUBS.map((club) => (
+              <div
+                key={club.name}
+                className="flex flex-col overflow-hidden rounded-2xl border border-[#e0e7ff] bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
+              >
+                <div className="flex h-32 items-center justify-center bg-white p-6">
+                  <div className="relative h-full w-full">
+                    <Image
+                      src={club.logo}
+                      alt={`${club.name} logo`}
+                      fill
+                      sizes="(max-width: 640px) 50vw, 20vw"
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+                <div className="border-t border-[#e0e7ff] p-4">
+                  <h3 className="text-sm font-bold leading-snug text-[#111827]">
+                    {club.name}
+                  </h3>
+                  <p className="mt-1 text-sm leading-relaxed text-[#6b7280]">
+                    {club.tagline}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
