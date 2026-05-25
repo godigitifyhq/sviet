@@ -78,7 +78,7 @@ function SectionHeading({
         {eyebrow}
       </p>
       <h2
-        className={`mt-4 text-3xl font-black tracking-tighter md:text-5xl ${light ? "text-white" : "text-[#101828]"}`}
+        className={`mt-4 text-3xl font-medium tracking-tighter md:text-5xl ${light ? "text-white" : "text-[#101828]"}`}
       >
         {title}
       </h2>
@@ -97,12 +97,14 @@ export function NewInitiativePage() {
   return (
     <div className=" text-foreground">
       <section className="w-full pt-2 md:pt-3">
-        <div className="relative h-127.5 w-full overflow-hidden rounded-[15px] md:h-screen">
+        <div className="w-full overflow-hidden rounded-[15px]">
           <Image
             src="/assets/img/banner/uniq11.jpg"
             alt="Our Initiatives"
-            fill
-            className="object-cover"
+            width={0}
+            height={0}
+            sizes="100vw"
+            className="h-auto w-full"
             priority
           />
         </div>
@@ -115,7 +117,7 @@ export function NewInitiativePage() {
               <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#374151]">
                 About Our Community
               </p>
-              <h2 className="mt-4 text-3xl font-black leading-tight tracking-tight text-[#111827] md:text-5xl">
+              <h2 className="mt-4 text-3xl font-medium leading-tight tracking-tight text-[#111827] md:text-5xl">
                 The <span className="text-[#8B1A1A]">Uniques</span> Community –
                 Learn, Build, and Grow Together
               </h2>
@@ -138,7 +140,7 @@ export function NewInitiativePage() {
             </div>
           </div>
 
-          <h3 className="mt-14 text-2xl font-black text-[#111827] md:text-3xl">
+          <h3 className="mt-14 text-2xl font-medium text-[#111827] md:text-3xl">
             Our Main Focus
           </h3>
 
@@ -212,7 +214,7 @@ export function NewInitiativePage() {
             <p className="text-[11px] font-bold uppercase tracking-[0.45em] text-[#8B1A1A]">
               How We Work
             </p>
-            <h2 className="mt-4 text-3xl font-black tracking-tighter text-[#101828] md:text-5xl">
+            <h2 className="mt-4 text-3xl font-medium tracking-tighter text-[#101828] md:text-5xl">
               Our Working Model
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[#667085] md:text-base">
@@ -231,7 +233,7 @@ export function NewInitiativePage() {
                   <p className="mt-4 text-sm font-bold text-[#8B1A1A]">
                     Step One
                   </p>
-                  <h3 className="mt-2 text-xl font-black text-[#101828] md:text-2xl">
+                  <h3 className="mt-2 text-xl font-medium text-[#101828] md:text-2xl">
                     Learn from Industry Experts
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-[#667085]">
@@ -297,7 +299,7 @@ export function NewInitiativePage() {
             <p className="text-xs font-bold uppercase tracking-[0.45em] text-[#8B1A1A]">
               Our Founder
             </p>
-            <h2 className="mt-4 text-3xl font-black tracking-tighter text-[#101828] md:text-5xl">
+            <h2 className="mt-4 text-3xl font-medium tracking-tighter text-[#101828] md:text-5xl">
               Visionary Leadership,{" "}
               <span className="text-[#003087]">Inspiring Generations</span>
             </h2>
@@ -318,7 +320,7 @@ export function NewInitiativePage() {
 
             <div className="flex flex-col justify-center space-y-5">
               <div>
-                <p className="text-2xl font-black text-[#101828] md:text-3xl">
+                <p className="text-2xl font-medium text-[#101828] md:text-3xl">
                   Ankur Gill
                 </p>
                 <p className="mt-1 text-sm font-semibold text-[#8B1A1A]">
@@ -349,7 +351,7 @@ export function NewInitiativePage() {
             <p className="text-[11px] font-bold uppercase tracking-[0.45em] text-[#8B1A1A]">
               Gallery
             </p>
-            <h2 className="mt-3 text-3xl font-black tracking-tighter text-[#101828] md:text-5xl">
+            <h2 className="mt-3 text-3xl font-medium tracking-tighter text-[#101828] md:text-5xl">
               Moments That Define Us
             </h2>
           </div>
