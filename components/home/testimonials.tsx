@@ -21,19 +21,20 @@ const testimonials = [
   {
     id: 3,
     name: "Juhi Lakhani",
-    title: '"As a Pharma D. student at SVGOI, I found the space to grow creatively"',
+    title:
+      '"As a Pharma D. student at SVGOI, I found the space to grow creatively"',
     image: "/assets/img/students/stu3.png",
   },
   {
     id: 4,
-    name: "Kunal",
+    name: "Akash Tyagi",
     title:
       '"SVGOI strengthened my learning and helped me build real confidence"',
     image: "/assets/img/students/stu4.png",
   },
   {
     id: 5,
-    name: "Rahul Sharma",
+    name: "Harshit Raj",
     title: '"SVGOI shaped my career path and prepared me for what came next"',
     image: "/assets/img/students/stu5.png",
   },

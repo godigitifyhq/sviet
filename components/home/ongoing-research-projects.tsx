@@ -278,33 +278,33 @@ const DOMAIN_STYLE: Record<
   { accent: string; badge: string; active: string }
 > = {
   All: {
-    accent: "border-[#f7941d]",
-    badge: "bg-[#fff7ed] text-[#f7941d] border-[#fed7aa]",
+    accent: "border-black",
+    badge: "bg-white text-black border-black",
     active: "bg-[#f7941d] text-white border-[#f7941d]",
   },
   "Pharma & Drug Discovery": {
-    accent: "border-[#db2777]",
-    badge: "bg-[#fdf2f8] text-[#db2777] border-[#fbcfe8]",
+    accent: "border-black",
+    badge: "bg-white text-black border-black",
     active: "bg-[#db2777] text-white border-[#db2777]",
   },
   "Healthcare & Biomedical": {
-    accent: "border-[#059669]",
-    badge: "bg-[#ecfdf5] text-[#059669] border-[#a7f3d0]",
+    accent: "border-black",
+    badge: "bg-white text-black border-black",
     active: "bg-[#059669] text-white border-[#059669]",
   },
   "Engineering & Materials": {
-    accent: "border-[#d97706]",
-    badge: "bg-[#fffbeb] text-[#d97706] border-[#fde68a]",
+    accent: "border-black",
+    badge: "bg-white text-black border-black",
     active: "bg-[#d97706] text-white border-[#d97706]",
   },
   "CS & AI": {
-    accent: "border-[#2563eb]",
-    badge: "bg-[#eff6ff] text-[#2563eb] border-[#bfdbfe]",
+    accent: "border-black",
+    badge: "bg-white text-black border-black",
     active: "bg-[#2563eb] text-white border-[#2563eb]",
   },
   "Environment & Sustainability": {
-    accent: "border-[#16a34a]",
-    badge: "bg-[#f0fdf4] text-[#16a34a] border-[#bbf7d0]",
+    accent: "border-black",
+    badge: "bg-white text-black border-black",
     active: "bg-[#16a34a] text-white border-[#16a34a]",
   },
 };

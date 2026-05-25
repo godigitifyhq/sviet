@@ -14,11 +14,9 @@ export function GlobalEnquiryModal() {
     return () => window.removeEventListener("open-enquiry-modal", handler);
   }, []);
 
-  if (!open) return null;
-
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 px-4"
+      className={`fixed inset-0 z-9999 items-center justify-center bg-black/60 px-4 ${open ? "flex" : "hidden"}`}
       onClick={() => setOpen(false)}
     >
       <div

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Dumbbell, Medal, Trophy } from "lucide-react";
 
 const CLUBS = [
@@ -241,6 +242,14 @@ export function CampusLifeHangoutsSportsClubsSection() {
                   learning, workshops, study jams, and building solutions for
                   local businesses.
                 </p>
+                <Link
+                  href="https://www.theuniques.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#1d4ed8] transition hover:text-[#f7941d]"
+                >
+                  Visit Website →
+                </Link>
               </div>
             </div>
 
@@ -275,6 +284,14 @@ export function CampusLifeHangoutsSportsClubsSection() {
                   development, and cutting-edge tech — guaranteeing 100% campus
                   placement.
                 </p>
+                <Link
+                  href="https://www.supersixty.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#1d4ed8] transition hover:text-[#f7941d]"
+                >
+                  Visit Website →
+                </Link>
               </div>
             </div>
           </div>
