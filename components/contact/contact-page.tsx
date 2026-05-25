@@ -4,8 +4,6 @@ import Image from "next/image";
 import { useState } from "react";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
-import { postJson } from "@/lib/form-utils";
-
 const containerClass = "mx-auto max-w-[1280px] px-6";
 const inputClass =
   "w-full rounded-lg bg-gray-100 px-4 py-3 text-sm text-gray-700 outline-none";
@@ -66,14 +64,6 @@ type ContactFormErrors = Partial<
 
 const indianMobilePattern = /^[6-9]\d{9}$/;
 
-function splitFullName(name: string) {
-  const parts = name.trim().split(/\s+/).filter(Boolean);
-  const firstName = parts[0] ?? "";
-  const lastName = parts.slice(1).join(" ") || ".";
-
-  return { firstName, lastName };
-}
-
 export function ContactPageComponent() {
   const [formData, setFormData] = useState({
     name: "",
@@ -82,9 +72,6 @@ export function ContactPageComponent() {
     subject: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
   const [errors, setErrors] = useState<ContactFormErrors>({});
 
   const handleInputChange = (
@@ -93,7 +80,6 @@ export function ContactPageComponent() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     setErrors((prev) => ({ ...prev, [name]: "" }));
-    setSubmitError("");
   };
 
   const validateForm = () => {
@@ -125,45 +111,10 @@ export function ContactPageComponent() {
     return Object.keys(nextErrors).length === 0;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitError("");
-
-    try {
-      const { firstName, lastName } = splitFullName(formData.name);
-      const response = await postJson<{ leadId: string; message: string }>(
-        "/api/leads/contact",
-        {
-          firstName,
-          lastName,
-          email: formData.email.trim(),
-          phone: formData.phone.trim(),
-          subject: formData.subject.trim(),
-          message: formData.message.trim(),
-        },
-      );
-
-      const isSuccessful =
-        response.success === true || (response as { ok?: boolean }).ok === true;
-      if (!isSuccessful) {
-        setSubmitError(
-          response.error?.message ?? "Unable to send your message right now.",
-        );
-        return;
-      }
-
-      setIsSuccess(true);
-    } catch {
-      setSubmitError("Unable to send your message right now.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    if (!validateForm()) return;
+    window.open("https://admission.sviet.ac.in", "_blank");
   };
 
   return (
@@ -197,12 +148,7 @@ export function ContactPageComponent() {
             <h2 className="text-4xl font-bold text-gray-900">
               Send us a Message
             </h2>
-            {isSuccess ? (
-              <div className="mt-8 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 text-emerald-700">
-                ✓ Message sent! We&apos;ll get back to you within 24 hours.
-              </div>
-            ) : (
-              <form
+            <form
                 onSubmit={handleSubmit}
                 className="mt-8 flex flex-col gap-4"
               >
@@ -316,16 +262,11 @@ export function ContactPageComponent() {
                 </div>
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className={`${primaryButtonClass} w-full md:w-auto text-white disabled:opacity-50`}
+                  className={`${primaryButtonClass} w-full md:w-auto text-white`}
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  Send Message
                 </button>
-                {submitError ? (
-                  <p className="text-sm text-red-600">{submitError}</p>
-                ) : null}
               </form>
-            )}
           </div>
 
           {/* RIGHT: CONTACT DETAILS */}

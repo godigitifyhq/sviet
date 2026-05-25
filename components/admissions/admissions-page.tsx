@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { AdmissionsHeroSection } from "@/components/admissions/admissions-hero-section";
 import { AdmissionsRelatedLinksSection } from "@/components/admissions/admissions-related-links-section";
@@ -12,16 +11,13 @@ import { AdmissionsRecognitionsSection } from "@/components/admissions/admission
 import { AdmissionsEnrichingWaysSection } from "@/components/admissions/admissions-enriching-ways-section";
 import { AdmissionsHowToApplySection } from "@/components/admissions/admissions-how-to-apply-section";
 import { InternationalOpportunitiesSection } from "@/components/international/international-opportunities-section";
+import { AdmissionsFinalCtaSection } from "@/components/admissions/admissions-final-cta-section";
 import {
   type ProgramOption,
   type ProgramsApiResponse,
 } from "@/components/admissions/types";
-import { useApplyLeadForm } from "@/components/admissions/use-apply-lead-form";
-import { AdmissionsEntranceEligibilitySection } from "@/components/admissions/admissions-entrance-eligibility-section";
-import { AdmissionsFinalCtaSection } from "@/components/admissions/admissions-final-cta-section";
 
 export default function AdmissionsPage() {
-  const searchParams = useSearchParams();
   const [programs, setPrograms] = useState<ProgramOption[]>([]);
 
   useEffect(() => {
@@ -32,9 +28,7 @@ export default function AdmissionsPage() {
         const response = await fetch("/api/programs", { cache: "no-store" });
         const payload = (await response.json()) as ProgramsApiResponse;
 
-        if (!active) {
-          return;
-        }
+        if (!active) return;
 
         if (!response.ok || !payload.success || !Array.isArray(payload.data)) {
           setPrograms([]);
@@ -43,49 +37,20 @@ export default function AdmissionsPage() {
 
         setPrograms(payload.data);
       } catch {
-        if (active) {
-          setPrograms([]);
-        }
+        if (active) setPrograms([]);
       }
     };
 
     loadPrograms();
-
-    return () => {
-      active = false;
-    };
+    return () => { active = false; };
   }, []);
-
-  const initialProgramSlug = useMemo(
-    () => searchParams.get("program"),
-    [searchParams],
-  );
-  const {
-    form,
-    errors,
-    isSubmitting,
-    submitError,
-    isSuccess,
-    handleFieldChange,
-    handleSubmit,
-  } = useApplyLeadForm(programs, initialProgramSlug);
 
   return (
     <div className="bg-white text-[#111]">
-      <AdmissionsHeroSection
-        form={form}
-        errors={errors}
-        programs={programs}
-        isSubmitting={isSubmitting}
-        submitError={submitError}
-        isSuccess={isSuccess}
-        onFieldChange={handleFieldChange}
-        onSubmit={handleSubmit}
-      />
+      <AdmissionsHeroSection />
       <div className="mt-20"></div>
       <AdmissionsRecognitionsSection />
       <AdmissionsStudyOverviewSection />
-      {/* <AdmissionsEntranceEligibilitySection /> */}
       <AdmissionsHowToApplySection />
       <AdmissionsCareerProgramsSection programs={programs} />
       <AdmissionsValueGridSection />

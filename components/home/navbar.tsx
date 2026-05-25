@@ -45,7 +45,11 @@ export function HomeNavbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <button className="rounded-full bg-[#F97316] px-4 py-2 text-sm font-bold text-white transition duration-200 hover:scale-105">
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event("open-enquiry-modal"))}
+            className="rounded-full bg-[#F97316] px-4 py-2 text-sm font-bold text-white transition duration-200 hover:scale-105"
+          >
             Apply Now
           </button>
           <span className="hidden text-lg text-foreground md:inline">◦◦</span>

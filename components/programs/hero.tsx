@@ -108,12 +108,14 @@ export function ProgramHeroSection({
               Filling Fast
             </span>
           </p>
-          <Link
-            href={`/admissions?program=${slug}`}
+          <a
+            href="https://admission.sviet.ac.in"
+            target="_blank"
+            rel="noopener noreferrer"
             className="block w-full rounded bg-[#f7941d] px-4 py-2.5 text-center font-semibold text-white"
           >
             Apply Now
-          </Link>
+          </a>
           <button className="w-full rounded border border-[#f7941d] px-4 py-2.5 font-semibold text-[#f7941d]">
             Download Brochure
           </button>

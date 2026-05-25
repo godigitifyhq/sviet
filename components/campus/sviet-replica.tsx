@@ -183,9 +183,14 @@ function HomeHero() {
               </div>
             </div>
             <div className="mt-5 flex gap-3">
-              <button className="rounded-lg bg-[#f7941d] px-6 py-3 text-sm font-semibold text-white md:text-base">
+              <a
+                href="https://admission.sviet.ac.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg bg-[#f7941d] px-6 py-3 text-sm font-semibold text-white md:text-base"
+              >
                 Apply Now ↗
-              </button>
+              </a>
               <button className="rounded-lg border border-white/60 bg-black/45 px-6 py-3 text-sm font-semibold text-white md:text-base">
                 Talk To Counselor ↗
               </button>
@@ -505,9 +510,14 @@ function CampusLifeSection() {
       <div className="mt-7 rounded-xl bg-black px-6 py-5 text-white">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="text-2xl font-semibold">APPLY NOW FOR SVGOIEE - 2026</p>
-          <button className="rounded border border-white/30 px-4 py-2 text-sm font-semibold">
+          <a
+            href="https://admission.sviet.ac.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded border border-white/30 px-4 py-2 text-sm font-semibold"
+          >
             Apply Now ↗
-          </button>
+          </a>
         </div>
       </div>
     </section>

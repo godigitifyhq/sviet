@@ -1151,7 +1151,9 @@ export function ResearchPageComponent() {
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-4 sm:mt-10">
               <a
-                href="/admissions"
+                href="https://admission.sviet.ac.in"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block rounded-full bg-[#f7941d] px-6 py-3 font-semibold text-black transition hover:bg-[#df850f] sm:px-8"
               >
                 Apply Now
