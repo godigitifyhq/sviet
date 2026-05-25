@@ -395,9 +395,7 @@ export function ProgramFinderForm({
               <StepFour
                 key="step-4"
                 selectedLocation={selections.location}
-                selectedBudget={selections.budget}
                 onSelectLocation={(value) => handleSelection("location", value)}
-                onSelectBudget={(value) => handleSelection("budget", value)}
                 onNext={nextStep}
                 onBack={prevStep}
                 onSkip={skip}

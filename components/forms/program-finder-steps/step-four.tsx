@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, DollarSign, ArrowLeft } from "lucide-react";
+import { MapPin, ArrowLeft } from "lucide-react";
 
 const locations = [
   {
@@ -11,18 +11,9 @@ const locations = [
   { id: "hybrid", label: "Hybrid", desc: "Mix of both worlds" },
 ];
 
-const budgets = [
-  { id: "low", label: "Budget-Friendly", range: "Under $15k/year" },
-  { id: "mid", label: "Moderate", range: "$15k - $30k/year" },
-  { id: "high", label: "Premium", range: "$30k+/year" },
-  { id: "flexible", label: "Flexible", range: "Scholarships available" },
-];
-
 interface StepFourProps {
   selectedLocation?: string;
-  selectedBudget?: string;
   onSelectLocation: (value: string) => void;
-  onSelectBudget: (value: string) => void;
   onNext: () => void;
   onBack: () => void;
   onSkip: () => void;
@@ -30,14 +21,12 @@ interface StepFourProps {
 
 export function StepFour({
   selectedLocation,
-  selectedBudget,
   onSelectLocation,
-  onSelectBudget,
   onNext,
   onBack,
   onSkip,
 }: StepFourProps) {
-  const canProceed = selectedLocation && selectedBudget;
+  const canProceed = Boolean(selectedLocation);
 
   const handleNext = () => {
     if (canProceed) {
@@ -62,7 +51,7 @@ export function StepFour({
 
       <div className="flex items-start justify-between mb-3">
         <h2 className="text-lg md:text-xl font-light text-gray-900">
-          Location & budget
+          Learning Environment
         </h2>
         <button
           onClick={onSkip}
@@ -110,56 +99,6 @@ export function StepFour({
                     {location.label}
                   </h4>
                   <p className="text-sm text-gray-600">{location.desc}</p>
-                  {isSelected && (
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      className="mt-3 inline-flex items-center gap-1 text-sm text-[#FF6A00] font-medium"
-                    >
-                      <span className="w-1.5 h-1.5 bg-[#FF6A00] rounded-full" />
-                      Selected
-                    </motion.div>
-                  )}
-                </motion.button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Budget Selection */}
-        <div>
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-[#FF6A00]/10 rounded-lg">
-              <DollarSign className="w-5 h-5 text-[#FF6A00]" />
-            </div>
-            <h3 className="text-base font-medium text-gray-900">
-              Budget Range
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {budgets.map((budget, index) => {
-              const isSelected = selectedBudget === budget.id;
-
-              return (
-                <motion.button
-                  key={budget.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={() => onSelectBudget(budget.id)}
-                  className={`p-5 rounded-xl border-2 transition-all duration-300 text-left ${
-                    isSelected
-                      ? "border-[#FF6A00] bg-[#FF6A00]/5 shadow-lg shadow-[#FF6A00]/10"
-                      : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-md"
-                  }`}
-                >
-                  <h4 className="font-medium mb-1 text-gray-900">
-                    {budget.label}
-                  </h4>
-                  <p className="text-sm text-gray-600">{budget.range}</p>
                   {isSelected && (
                     <motion.div
                       initial={{ scale: 0 }}
