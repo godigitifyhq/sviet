@@ -44,7 +44,6 @@ export function ScholarshipSection() {
       [field]: value as ScholarshipFormState[keyof ScholarshipFormState],
     }));
     setErrors((prev) => ({ ...prev, [field]: "" }));
-    setSubmitError("");
   };
 
   const validate = () => {
@@ -110,202 +109,202 @@ export function ScholarshipSection() {
         </div>
 
         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-            <form
-              className="flex w-full max-w-md flex-col gap-6"
-              onSubmit={handleSubmit}
-            >
-              <div>
-                <label
-                  className="mb-2 block text-sm font-semibold text-[#6B7280]"
-                  htmlFor="scholarship-name"
-                >
-                  Full Name
-                </label>
-                <input
-                  id="scholarship-name"
-                  name="name"
-                  type="text"
-                  placeholder="Enter your full name"
-                  value={form.name}
-                  onChange={(event) =>
-                    handleFieldChange("name", event.target.value)
-                  }
-                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
-                />
-                {errors.name ? (
-                  <p className="mt-1 text-sm text-red-600">{errors.name}</p>
-                ) : null}
-              </div>
-
-              <div>
-                <label
-                  className="mb-2 block text-sm font-semibold text-[#6B7280]"
-                  htmlFor="scholarship-phone"
-                >
-                  Phone Number
-                </label>
-                <input
-                  id="scholarship-phone"
-                  name="phone"
-                  type="tel"
-                  placeholder="Enter your 10-digit phone number"
-                  value={form.phone}
-                  onChange={(event) =>
-                    handleFieldChange("phone", event.target.value)
-                  }
-                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
-                />
-                {errors.phone ? (
-                  <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
-                ) : null}
-              </div>
-
-              <div>
-                <label
-                  className="mb-2 block text-sm font-semibold text-[#6B7280]"
-                  htmlFor="scholarship-email"
-                >
-                  Email Address
-                </label>
-                <input
-                  id="scholarship-email"
-                  name="email"
-                  type="email"
-                  placeholder="Enter your email"
-                  value={form.email}
-                  onChange={(event) =>
-                    handleFieldChange("email", event.target.value)
-                  }
-                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
-                />
-                {errors.email ? (
-                  <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-                ) : null}
-              </div>
-
-              <div>
-                <label
-                  className="mb-2 block text-sm font-semibold text-[#6B7280]"
-                  htmlFor="scholarship-course"
-                >
-                  Select Your Course
-                </label>
-                <select
-                  id="scholarship-course"
-                  name="course"
-                  value={form.course}
-                  onChange={(event) =>
-                    handleFieldChange("course", event.target.value)
-                  }
-                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
-                >
-                  <option value="" disabled>
-                    Select your course
-                  </option>
-                  <option value="btech">B.Tech</option>
-                  <option value="mtech">M.Tech</option>
-                  <option value="mba">MBA</option>
-                  <option value="bca">BCA</option>
-                  <option value="mca">MCA</option>
-                  <option value="bpharm">B.Pharm</option>
-                  <option value="bba">BBA</option>
-                  <option value="bhmct">BHMCT</option>
-                  <option value="polytechnic">Polytechnic</option>
-                </select>
-                {errors.course ? (
-                  <p className="mt-1 text-sm text-red-600">{errors.course}</p>
-                ) : null}
-              </div>
-
-              <div>
-                <label
-                  className="mb-2 block text-sm font-semibold text-[#6B7280]"
-                  htmlFor="scholarship-academic-score"
-                >
-                  Academic Score (%)
-                </label>
-                <input
-                  id="scholarship-academic-score"
-                  name="academicScore"
-                  type="number"
-                  min={0}
-                  max={100}
-                  placeholder="Enter percentage (0-100)"
-                  value={form.academicScore}
-                  onChange={(event) =>
-                    handleFieldChange("academicScore", event.target.value)
-                  }
-                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
-                />
-                {errors.academicScore ? (
-                  <p className="mt-1 text-sm text-red-600">
-                    {errors.academicScore}
-                  </p>
-                ) : null}
-              </div>
-
-              <div>
-                <label
-                  className="mb-2 block text-sm font-semibold text-[#6B7280]"
-                  htmlFor="scholarship-family-income"
-                >
-                  Family Annual Income (LPA)
-                </label>
-                <input
-                  id="scholarship-family-income"
-                  name="familyIncomeLPA"
-                  type="number"
-                  min={0}
-                  placeholder="Enter family income in lakhs"
-                  value={form.familyIncomeLPA}
-                  onChange={(event) =>
-                    handleFieldChange("familyIncomeLPA", event.target.value)
-                  }
-                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
-                />
-                {errors.familyIncomeLPA ? (
-                  <p className="mt-1 text-sm text-red-600">
-                    {errors.familyIncomeLPA}
-                  </p>
-                ) : null}
-              </div>
-
-              <div>
-                <label
-                  className="mb-2 block text-sm font-semibold text-[#6B7280]"
-                  htmlFor="scholarship-category"
-                >
-                  Category
-                </label>
-                <select
-                  id="scholarship-category"
-                  name="category"
-                  value={form.category}
-                  onChange={(event) =>
-                    handleFieldChange("category", event.target.value)
-                  }
-                  className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
-                >
-                  <option value="" disabled>
-                    Select your category
-                  </option>
-                  <option value="GENERAL">GENERAL</option>
-                  <option value="OBC">OBC</option>
-                  <option value="SC">SC</option>
-                  <option value="ST">ST</option>
-                </select>
-                {errors.category ? (
-                  <p className="mt-1 text-sm text-red-600">{errors.category}</p>
-                ) : null}
-              </div>
-
-              <button
-                type="submit"
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#f7941d] px-6 py-3 font-semibold text-white transition hover:bg-[#2563EB]"
+          <form
+            className="flex w-full max-w-md flex-col gap-6"
+            onSubmit={handleSubmit}
+          >
+            <div>
+              <label
+                className="mb-2 block text-sm font-semibold text-[#6B7280]"
+                htmlFor="scholarship-name"
               >
-                Check My Eligibility
-              </button>
-            </form>
+                Full Name
+              </label>
+              <input
+                id="scholarship-name"
+                name="name"
+                type="text"
+                placeholder="Enter your full name"
+                value={form.name}
+                onChange={(event) =>
+                  handleFieldChange("name", event.target.value)
+                }
+                className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
+              />
+              {errors.name ? (
+                <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+              ) : null}
+            </div>
+
+            <div>
+              <label
+                className="mb-2 block text-sm font-semibold text-[#6B7280]"
+                htmlFor="scholarship-phone"
+              >
+                Phone Number
+              </label>
+              <input
+                id="scholarship-phone"
+                name="phone"
+                type="tel"
+                placeholder="Enter your 10-digit phone number"
+                value={form.phone}
+                onChange={(event) =>
+                  handleFieldChange("phone", event.target.value)
+                }
+                className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
+              />
+              {errors.phone ? (
+                <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+              ) : null}
+            </div>
+
+            <div>
+              <label
+                className="mb-2 block text-sm font-semibold text-[#6B7280]"
+                htmlFor="scholarship-email"
+              >
+                Email Address
+              </label>
+              <input
+                id="scholarship-email"
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                value={form.email}
+                onChange={(event) =>
+                  handleFieldChange("email", event.target.value)
+                }
+                className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
+              />
+              {errors.email ? (
+                <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+              ) : null}
+            </div>
+
+            <div>
+              <label
+                className="mb-2 block text-sm font-semibold text-[#6B7280]"
+                htmlFor="scholarship-course"
+              >
+                Select Your Course
+              </label>
+              <select
+                id="scholarship-course"
+                name="course"
+                value={form.course}
+                onChange={(event) =>
+                  handleFieldChange("course", event.target.value)
+                }
+                className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
+              >
+                <option value="" disabled>
+                  Select your course
+                </option>
+                <option value="btech">B.Tech</option>
+                <option value="mtech">M.Tech</option>
+                <option value="mba">MBA</option>
+                <option value="bca">BCA</option>
+                <option value="mca">MCA</option>
+                <option value="bpharm">B.Pharm</option>
+                <option value="bba">BBA</option>
+                <option value="bhmct">BHMCT</option>
+                <option value="polytechnic">Polytechnic</option>
+              </select>
+              {errors.course ? (
+                <p className="mt-1 text-sm text-red-600">{errors.course}</p>
+              ) : null}
+            </div>
+
+            <div>
+              <label
+                className="mb-2 block text-sm font-semibold text-[#6B7280]"
+                htmlFor="scholarship-academic-score"
+              >
+                Academic Score (%)
+              </label>
+              <input
+                id="scholarship-academic-score"
+                name="academicScore"
+                type="number"
+                min={0}
+                max={100}
+                placeholder="Enter percentage (0-100)"
+                value={form.academicScore}
+                onChange={(event) =>
+                  handleFieldChange("academicScore", event.target.value)
+                }
+                className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
+              />
+              {errors.academicScore ? (
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.academicScore}
+                </p>
+              ) : null}
+            </div>
+
+            <div>
+              <label
+                className="mb-2 block text-sm font-semibold text-[#6B7280]"
+                htmlFor="scholarship-family-income"
+              >
+                Family Annual Income (LPA)
+              </label>
+              <input
+                id="scholarship-family-income"
+                name="familyIncomeLPA"
+                type="number"
+                min={0}
+                placeholder="Enter family income in lakhs"
+                value={form.familyIncomeLPA}
+                onChange={(event) =>
+                  handleFieldChange("familyIncomeLPA", event.target.value)
+                }
+                className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
+              />
+              {errors.familyIncomeLPA ? (
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.familyIncomeLPA}
+                </p>
+              ) : null}
+            </div>
+
+            <div>
+              <label
+                className="mb-2 block text-sm font-semibold text-[#6B7280]"
+                htmlFor="scholarship-category"
+              >
+                Category
+              </label>
+              <select
+                id="scholarship-category"
+                name="category"
+                value={form.category}
+                onChange={(event) =>
+                  handleFieldChange("category", event.target.value)
+                }
+                className="w-full rounded-lg border border-[#D1D5DB] bg-[#FFFFFF] px-4 py-3 text-sm text-[#111827] outline-none transition focus:border-[#f7941d] focus:ring-2 focus:ring-[#f7941d]/10"
+              >
+                <option value="" disabled>
+                  Select your category
+                </option>
+                <option value="GENERAL">GENERAL</option>
+                <option value="OBC">OBC</option>
+                <option value="SC">SC</option>
+                <option value="ST">ST</option>
+              </select>
+              {errors.category ? (
+                <p className="mt-1 text-sm text-red-600">{errors.category}</p>
+              ) : null}
+            </div>
+
+            <button
+              type="submit"
+              className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#f7941d] px-6 py-3 font-semibold text-white transition hover:bg-[#2563EB]"
+            >
+              Check My Eligibility
+            </button>
+          </form>
 
           <div className="flex flex-col gap-6">
             <div>
