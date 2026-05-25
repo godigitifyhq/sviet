@@ -7,6 +7,7 @@
   --color-foreground: #111111;
   --font-sans: var(--font-sans);
   --font-display: var(--font-display);
+  --z-9999: 9999;
 }
 
 body {
