@@ -2,12 +2,12 @@ const TRUST_STATS = [
   {
     title: "25+ Acres",
     description: "Spacious & modern campus",
-    tone: "from-[#0b3b8f] to-[#133f92]",
+    tone: "from-[#0a1f5c] to-[#1d4ed8]",
   },
   {
     title: "250+ Faculty Members",
     description: "Academic and industry expertise",
-    tone: "from-[#2563EB] to-[#1d4ed8]",
+    tone: "from-[#f7941d] to-[#d97706]",
   },
   {
     title: "25,000+ Alumni Network",
@@ -17,27 +17,27 @@ const TRUST_STATS = [
   {
     title: "1000+ International Students",
     description: "Diverse learning environment",
-    tone: "from-[#0f766e] to-[#0d9488]",
+    tone: "from-[#1d4ed8] to-[#1e3a8a]",
   },
   {
     title: "350+ Companies Visit Every Year",
     description: "Strong industry connections",
-    tone: "from-[#f7941d] to-[#d97706]",
+    tone: "from-[#f7941d] to-[#b45309]",
   },
   {
     title: "5000+ Students Placed",
     description: "Career-focused outcomes",
-    tone: "from-[#7c3aed] to-[#5b21b6]",
+    tone: "from-[#003087] to-[#0a1f5c]",
   },
   {
     title: "Scholarships Available Across Programs",
     description: "Financial support opportunities",
-    tone: "from-[#0b3b8f] to-[#1d4ed8]",
+    tone: "from-[#1d4ed8] to-[#003087]",
   },
   {
     title: "₹2.5 Cr+ Startup Support",
     description: "Entrepreneurship ecosystem",
-    tone: "from-[#374151] to-[#111827]",
+    tone: "from-[#1f2937] to-[#111827]",
   },
 ] as const;
 
