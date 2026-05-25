@@ -478,6 +478,175 @@ const EVENTS: EventSeedInput[] = [
 
 // ─── End event seed data ──────────────────────────────────────────────────────
 
+// ─── Placement seed data ──────────────────────────────────────────────────────
+
+type PlacementRecordSeed = {
+  name: string;
+  year: number;
+  company: string;
+  packageValue: number;
+  packageLabel: string;
+  imageSrc?: string;
+  isShowcase?: boolean;
+  sortOrder?: number;
+};
+
+const PLACEMENT_RECORDS_SEED: PlacementRecordSeed[] = [
+  // 2027
+  { name: "Taniya Singh", year: 2027, company: "Caelius Consulting", packageValue: 12, packageLabel: "12 LPA", imageSrc: "/assets/img/stu/Taniya.png", isShowcase: true, sortOrder: 0 },
+  { name: "Kshitij Raj", year: 2027, company: "Caelius Consulting", packageValue: 12, packageLabel: "12 LPA" },
+  // 2026
+  { name: "Himachal Kumar", year: 2026, company: "75 ways Technologies", packageValue: 3.3, packageLabel: "3.3 LPA" },
+  { name: "Aman Kumar", year: 2026, company: "Deftsoft", packageValue: 3.2, packageLabel: "3.2 LPA" },
+  { name: "Ashwini Mani", year: 2026, company: "Deftsoft", packageValue: 3.2, packageLabel: "3.2 LPA" },
+  { name: "Hassain Akhtar", year: 2026, company: "Deftsoft", packageValue: 3.2, packageLabel: "3.2 LPA" },
+  { name: "Abhishek Saini", year: 2026, company: "Deftsoft", packageValue: 3.2, packageLabel: "3.2 LPA" },
+  { name: "Deepali Chauhan", year: 2026, company: "Deftsoft", packageValue: 3.2, packageLabel: "3.2 LPA" },
+  { name: "Manpreet Singh", year: 2026, company: "Deftsoft", packageValue: 3.2, packageLabel: "3.2 LPA" },
+  { name: "Rahul Kumar Pandit", year: 2026, company: "Revocept Solutions", packageValue: 2.7, packageLabel: "2.7 LPA" },
+  { name: "Avinash Kumar", year: 2026, company: "Revocept Solutions", packageValue: 2.7, packageLabel: "2.7 LPA" },
+  { name: "Muskan Kumari", year: 2026, company: "Learing Routes", packageValue: 5.7, packageLabel: "5.7 LPA" },
+  { name: "Afnan Mir", year: 2026, company: "Hanu Ai", packageValue: 3.5, packageLabel: "3.5 LPA" },
+  { name: "Minisha Singh", year: 2026, company: "Hanu Ai", packageValue: 3.5, packageLabel: "3.5 LPA" },
+  { name: "Annu Kumari", year: 2026, company: "Hanu Ai", packageValue: 3.5, packageLabel: "3.5 LPA" },
+  { name: "Avinash Kumar", year: 2026, company: "Hanu Ai", packageValue: 3.5, packageLabel: "3.5 LPA" },
+  // 2025
+  { name: "Ankit Kumar", year: 2025, company: "Hanu Ai", packageValue: 5, packageLabel: "5 LPA" },
+  { name: "Eshaan Singh", year: 2025, company: "Grazitti Interactive", packageValue: 3.1, packageLabel: "3.1 LPA" },
+  { name: "Shruti", year: 2025, company: "Grazitti Interactive", packageValue: 3.1, packageLabel: "3.1 LPA" },
+  { name: "Akash Singh", year: 2025, company: "Oriental Outsourcing", packageValue: 5, packageLabel: "5 LPA" },
+  { name: "Nikhil Chaudhary", year: 2025, company: "Codeation", packageValue: 5, packageLabel: "5 LPA" },
+  { name: "Aman Kapri", year: 2025, company: "Movidu", packageValue: 6, packageLabel: "6 LPA" },
+  { name: "Vikramjeet", year: 2025, company: "Movidu", packageValue: 6, packageLabel: "6 LPA" },
+  { name: "Wahiduzzama Azad", year: 2025, company: "Movidu", packageValue: 6, packageLabel: "6 LPA" },
+  { name: "Abhishek Saini", year: 2025, company: "Movidu", packageValue: 6, packageLabel: "6 LPA" },
+  { name: "Anil Kumar Sah", year: 2025, company: "Goteso LLP", packageValue: 3, packageLabel: "3 LPA" },
+  { name: "Abhishek Kumar", year: 2025, company: "Skill Intern", packageValue: 3, packageLabel: "3 LPA" },
+  { name: "Ankit Kumar", year: 2025, company: "Skill Intern", packageValue: 3, packageLabel: "3 LPA" },
+  { name: "Vishwajeet Kumar", year: 2025, company: "Skill Intern", packageValue: 3, packageLabel: "3 LPA" },
+  { name: "Sriniwash Saw", year: 2025, company: "Skill Intern", packageValue: 3, packageLabel: "3 LPA" },
+  { name: "Manoj Kumar", year: 2025, company: "Skill Intern", packageValue: 3, packageLabel: "3 LPA" },
+  { name: "Aman Kapri", year: 2025, company: "Skill Intern", packageValue: 3, packageLabel: "3 LPA" },
+  { name: "Manisha Singh", year: 2025, company: "Skill Intern", packageValue: 3, packageLabel: "3 LPA" },
+  { name: "Atul Pratab Singh", year: 2025, company: "Off Beat", packageValue: 3, packageLabel: "3 LPA" },
+  { name: "Anam Rashid", year: 2025, company: "Skillkart / Ucertify / Dentsu", packageValue: 12, packageLabel: "12 LPA", imageSrc: "/assets/img/stu/Anam.png", isShowcase: true, sortOrder: 2 },
+  { name: "Naveen Jaiswal", year: 2025, company: "Entab Infotech Pvt Ltd", packageValue: 12, packageLabel: "12 LPA", imageSrc: "/assets/img/stu/Naveen.png", isShowcase: true, sortOrder: 4 },
+  { name: "Priyanshi Sharma", year: 2025, company: "Caelius Consulting", packageValue: 12, packageLabel: "12 LPA", imageSrc: "/assets/img/stu/Priyanshi.png", isShowcase: true, sortOrder: 5 },
+  // 2024
+  { name: "Doulat Ram", year: 2024, company: "Ellocent Lab", packageValue: 2.5, packageLabel: "2.5 LPA" },
+  { name: "Raushan Kumar", year: 2024, company: "Aspire Fox", packageValue: 3.2, packageLabel: "3.2 LPA" },
+  { name: "Mukul Anand", year: 2024, company: "Shine Dezign", packageValue: 4.2, packageLabel: "4.2 LPA" },
+  { name: "Amit Kumar", year: 2024, company: "Shine Dezign", packageValue: 4.2, packageLabel: "4.2 LPA" },
+  { name: "Harikrishna Kumar Karsh", year: 2024, company: "Aspire Fox", packageValue: 3.2, packageLabel: "3.2 LPA" },
+  { name: "Piyushi Kumari", year: 2024, company: "Shine Dezign", packageValue: 4.2, packageLabel: "4.2 LPA" },
+  { name: "Mohit Kumar", year: 2024, company: "Shine Dezign", packageValue: 4.2, packageLabel: "4.2 LPA" },
+  { name: "Rishav Kumar", year: 2024, company: "Shine Dezign", packageValue: 4.2, packageLabel: "4.2 LPA" },
+  { name: "Isha Kumari", year: 2024, company: "Ellocent Lab", packageValue: 2.5, packageLabel: "2.5 LPA" },
+  { name: "Mohan Kumar", year: 2024, company: "Shine Dezign", packageValue: 4.2, packageLabel: "4.2 LPA" },
+  { name: "Raushan Kumar", year: 2024, company: "Omninos", packageValue: 3, packageLabel: "3.0 LPA" },
+  { name: "Tarique Anwar Seikh", year: 2024, company: "Shine Dezign", packageValue: 4.2, packageLabel: "4.2 LPA" },
+  { name: "Arjun Katoch", year: 2024, company: "Shine Dezign", packageValue: 4.2, packageLabel: "4.2 LPA" },
+  { name: "Waqquas Ahmad", year: 2024, company: "Shine Dezign", packageValue: 4.2, packageLabel: "4.2 LPA" },
+  { name: "Somya Sinha", year: 2024, company: "Shine Dezign", packageValue: 4.2, packageLabel: "4.2 LPA" },
+  { name: "Rupali Sharma", year: 2024, company: "Omninos", packageValue: 3, packageLabel: "3.0 LPA" },
+  { name: "Prince Punday", year: 2024, company: "Shine Dezign", packageValue: 4.2, packageLabel: "4.2 LPA" },
+  { name: "Mohit Kumar", year: 2024, company: "Omninos", packageValue: 3, packageLabel: "3.0 LPA" },
+  // 2023
+  { name: "Mona Kumari", year: 2023, company: "Gpcoders", packageValue: 1.8, packageLabel: "1.8 LPA" },
+  { name: "Manish Kumar", year: 2023, company: "Idea Foundation", packageValue: 2.4, packageLabel: "2.4 LPA" },
+  { name: "Anku Kumar", year: 2023, company: "Appwrk IT solution", packageValue: 4, packageLabel: "4 LPA" },
+  { name: "Pitush Kumar", year: 2023, company: "Appwrk IT solution", packageValue: 4, packageLabel: "4 LPA" },
+  { name: "Sashi Ranjan Sinha", year: 2023, company: "TCS", packageValue: 3.36, packageLabel: "3.36 LPA" },
+  { name: "Navleen Kaur", year: 2023, company: "Escalon Done Business Pvt Ltd", packageValue: 6, packageLabel: "6 LPA" },
+  { name: "Atul Prakash", year: 2023, company: "Grazitti Interactive", packageValue: 3.2, packageLabel: "3.2 LPA" },
+  { name: "Ayush Kumar", year: 2023, company: "Grazitti Interactive", packageValue: 3.2, packageLabel: "3.2 LPA" },
+  { name: "Ritika Mittal", year: 2023, company: "Grazitti Interactive", packageValue: 3.2, packageLabel: "3.2 LPA" },
+  { name: "Shrishtee", year: 2023, company: "Grazitti Interactive", packageValue: 3.2, packageLabel: "3.2 LPA" },
+  // 2022
+  { name: "Prateek Kumar", year: 2022, company: "Byju's", packageValue: 8.2, packageLabel: "8.2 LPA", imageSrc: "/assets/img/stu/Prateek.png", isShowcase: true, sortOrder: 7 },
+  { name: "Kumari Anjali", year: 2022, company: "Bebo Technologies", packageValue: 4.3, packageLabel: "4.3 LPA" },
+  { name: "Chandam Kumar", year: 2022, company: "Bebo Technologies", packageValue: 4.3, packageLabel: "4.3 LPA" },
+  { name: "Deepak Kumar Jha", year: 2022, company: "Wipro", packageValue: 6.5, packageLabel: "6.5 LPA" },
+  { name: "Ritu Koal", year: 2022, company: "Sun Media", packageValue: 2, packageLabel: "2 LPA" },
+  { name: "Prince Kumar", year: 2022, company: "Infosys", packageValue: 3.6, packageLabel: "3.6 LPA" },
+  { name: "Kumar Divyashank Gaurav", year: 2022, company: "Nagrarro", packageValue: 4.5, packageLabel: "4.5 LPA" },
+  { name: "Akansha Chaudhary", year: 2022, company: "Learing Routes", packageValue: 5.7, packageLabel: "5.70 LPA" },
+  // Showcase-only entries (visible in marquee)
+  { name: "Utkarsh Kumar", year: 2022, company: "Byju's", packageValue: 11, packageLabel: "11 LPA", imageSrc: "/assets/img/stu/Utkarsh.png", isShowcase: true, sortOrder: 1 },
+  { name: "Pallavi Sharma", year: 2021, company: "Extra Marks", packageValue: 7.2, packageLabel: "7.2 LPA", imageSrc: "/assets/img/stu/Pallavi.png", isShowcase: true, sortOrder: 3 },
+  { name: "Shikhsa Singh", year: 2022, company: "Byju's", packageValue: 10, packageLabel: "10 LPA", imageSrc: "/assets/img/stu/Shikha.png", isShowcase: true, sortOrder: 6 },
+  { name: "Parvesh Sharma", year: 2022, company: "Byju's", packageValue: 10, packageLabel: "10 LPA", imageSrc: "/assets/img/stu/Parvesh.png", isShowcase: true, sortOrder: 8 },
+];
+
+const PLACEMENT_TRENDS_SEED = [
+  { year: "2022", companiesVisited: 260, highestPackageLpa: 19, averagePackageLpa: 3.6 },
+  { year: "2023", companiesVisited: 285, highestPackageLpa: 28, averagePackageLpa: 3.5 },
+  { year: "2024", companiesVisited: 315, highestPackageLpa: 45, averagePackageLpa: 4.8 },
+  { year: "2025", companiesVisited: 320, highestPackageLpa: 50, averagePackageLpa: 5.5 },
+  { year: "2026", companiesVisited: 350, highestPackageLpa: 60, averagePackageLpa: 5.8 },
+];
+
+const PLACEMENT_KEY_STATS_SEED = [
+  { value: "60 LPA", label: "Highest Package", sortOrder: 0 },
+  { value: "2,200+", label: "Recruiting Companies", sortOrder: 1 },
+];
+
+const PLACEMENT_BANNER_SEED = {
+  badgeText: "Top Placement · 2026",
+  studentName: "Laxmi\nVaishnavi",
+  company: "Caelius Consulting",
+  packageLabel: "19 LPA",
+  batchYear: "2026 Batch",
+  imageSrc: "/assets/img/students/11.png",
+  imageAlt: "Laxmi and Vaishnavi — 19 LPA placement at Caelius Consulting",
+  isActive: true,
+};
+
+async function seedPlacements() {
+  // Upsert records (use name+year+company as unique key)
+  for (const record of PLACEMENT_RECORDS_SEED) {
+    const existing = await prisma.placementRecord.findFirst({
+      where: { name: record.name, year: record.year, company: record.company },
+    });
+
+    if (!existing) {
+      await prisma.placementRecord.create({
+        data: {
+          name: record.name,
+          year: record.year,
+          company: record.company,
+          packageValue: record.packageValue,
+          packageLabel: record.packageLabel,
+          imageSrc: record.imageSrc ?? null,
+          isShowcase: record.isShowcase ?? false,
+          sortOrder: record.sortOrder ?? 0,
+        },
+      });
+    }
+  }
+
+  // Upsert trend years
+  for (const trend of PLACEMENT_TRENDS_SEED) {
+    await prisma.placementTrendYear.upsert({
+      where: { year: trend.year },
+      update: trend,
+      create: trend,
+    });
+  }
+
+  // Upsert key stats (replace all)
+  await prisma.placementKeyStat.deleteMany();
+  await prisma.placementKeyStat.createMany({ data: PLACEMENT_KEY_STATS_SEED });
+
+  // Seed highlight banner if none exists
+  const bannerCount = await prisma.placementHighlightBanner.count();
+  if (bannerCount === 0) {
+    await prisma.placementHighlightBanner.create({ data: PLACEMENT_BANNER_SEED });
+  }
+}
+
+// ─── End placement seed data ──────────────────────────────────────────────────
+
 type NormalizedCourse = {
   slug: string;
   title: string;
@@ -715,6 +884,9 @@ async function main() {
     }
   }
 
+  // ── Seed placements ────────────────────────────────────────────────────────
+  await seedPlacements();
+
   if (!process.env.CRM_SEED_USER_PASSWORD) {
     console.warn(
       "CRM seed user created with default password. Set CRM_SEED_USER_PASSWORD in your environment before shared or production usage.",
@@ -723,7 +895,7 @@ async function main() {
 
   console.log(`CRM seed user ready: ${CRM_SEED_EMAIL} (${CRM_SEED_ROLE})`);
   console.log(
-    `Seed complete: upserted ${COURSES.length} courses, ${EVENTS.length} events.`,
+    `Seed complete: upserted ${COURSES.length} courses, ${EVENTS.length} events, ${PLACEMENT_RECORDS_SEED.length} placement records.`,
   );
 }
 
