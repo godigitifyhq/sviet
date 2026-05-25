@@ -27,7 +27,7 @@ export default function InternationalPage() {
               className="object-contain"
               draggable={false}
             />
-            <div className="relative mx-auto flex max-w-7xl justify-end px-4 py-16 md:px-6 md:py-20 lg:py-24">
+            {/* <div className="relative mx-auto flex max-w-7xl justify-end px-4 py-16 md:px-6 md:py-20 lg:py-24">
               <aside className="w-full max-w-md border border-black/10 bg-white p-6 text-black shadow-[0_20px_35px_rgba(0,0,0,0.2)]">
                 <h2 className="text-2xl font-bold md:text-3xl">
                   Want to know more?
@@ -82,7 +82,7 @@ export default function InternationalPage() {
                   </button>
                 </form>
               </aside>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
