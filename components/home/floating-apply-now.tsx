@@ -47,9 +47,7 @@ export function FloatingApplyNow() {
   }, []);
 
   const handleClick = () => {
-    const heroSection = document.getElementById("home-hero");
-    heroSection?.scrollIntoView({ behavior: "smooth", block: "start" });
-    window.dispatchEvent(new Event("open-hero-apply-form"));
+    window.dispatchEvent(new Event("open-enquiry-modal"));
   };
 
   const shouldHide = heroInView && activeSlide === 0;

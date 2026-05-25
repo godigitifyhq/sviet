@@ -602,13 +602,15 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
 
               {/* 3 CTA buttons */}
               <div className="mt-7 flex flex-wrap gap-3">
-                <Link
-                  href={`/admissions?program=${program.slug}`}
+                <a
+                  href="https://admission.sviet.ac.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-[#f7941d] px-7 py-3 text-sm font-bold text-white transition hover:bg-[#e07b12]"
                 >
                   <GraduationCap className="h-4 w-4" />
                   Apply Now
-                </Link>
+                </a>
                 <a
                   href={DOCS.brochure}
                   target="_blank"
@@ -754,12 +756,14 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
                 <p className="mt-2 text-sm text-gray-700">
                   Apply online or visit campus. Admissions open for 2026-27.
                 </p>
-                <Link
-                  href={`/admissions?program=${program.slug}`}
+                <a
+                  href="https://admission.sviet.ac.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-[#f7941d] hover:underline"
                 >
                   Apply Now →
-                </Link>
+                </a>
               </div>
             </div>
           </div>
@@ -1114,12 +1118,14 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
             >
               Placement Report
             </a>
-            <Link
-              href={`/admissions?program=${program.slug}`}
+            <a
+              href="https://admission.sviet.ac.in"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-[#f7941d] px-7 py-2.5 text-sm font-bold text-white transition hover:bg-[#e07b12]"
             >
               Apply Now →
-            </Link>
+            </a>
           </div>
         </div>
       </section>

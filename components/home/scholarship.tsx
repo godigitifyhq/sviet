@@ -3,8 +3,6 @@
 import Image from "next/image";
 import { useState } from "react";
 
-import { postJson } from "@/lib/form-utils";
-
 type ScholarshipFormState = {
   name: string;
   phone: string;
@@ -19,13 +17,6 @@ type ScholarshipFormErrors = Partial<
   Record<keyof ScholarshipFormState, string>
 >;
 
-type ScholarshipEligibility = {
-  eligible: boolean;
-  percentage: number;
-  reason: string;
-  conditions: string[];
-};
-
 const initialScholarshipForm: ScholarshipFormState = {
   name: "",
   phone: "",
@@ -38,24 +29,11 @@ const initialScholarshipForm: ScholarshipFormState = {
 
 const indianMobilePattern = /^[6-9]\d{9}$/;
 
-function splitNameForScholarship(name: string) {
-  const parts = name.trim().split(/\s+/).filter(Boolean);
-  const firstName = parts[0] ?? "";
-  const lastName = parts.slice(1).join(" ") || ".";
-
-  return { firstName, lastName };
-}
-
 export function ScholarshipSection() {
   const [form, setForm] = useState<ScholarshipFormState>(
     initialScholarshipForm,
   );
   const [errors, setErrors] = useState<ScholarshipFormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [eligibilityResult, setEligibilityResult] =
-    useState<ScholarshipEligibility | null>(null);
 
   const handleFieldChange = (
     field: keyof ScholarshipFormState,
@@ -112,62 +90,10 @@ export function ScholarshipSection() {
     return Object.keys(nextErrors).length === 0;
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    if (!validate()) {
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitError("");
-
-    try {
-      const { firstName, lastName } = splitNameForScholarship(form.name);
-      const response = await postJson<{
-        leadId: string;
-        eligibility: ScholarshipEligibility;
-      }>("/api/leads/scholarship", {
-        firstName,
-        lastName,
-        email: form.email.trim(),
-        phone: form.phone.trim(),
-        course: form.course,
-        familyIncomeLPA: Number(form.familyIncomeLPA),
-        academicScore: Number(form.academicScore),
-        category: form.category,
-      });
-
-      const isSuccessful =
-        response.success === true || (response as { ok?: boolean }).ok === true;
-      if (!isSuccessful || !response.data?.eligibility) {
-        setSubmitError(
-          response.error?.message ?? "Unable to check eligibility right now.",
-        );
-        return;
-      }
-
-      setEligibilityResult(response.data.eligibility);
-      setIsSuccess(true);
-    } catch {
-      setSubmitError("Unable to check eligibility right now.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    window.open("https://admission.sviet.ac.in", "_blank");
   };
-
-  const percentage = eligibilityResult?.percentage ?? 0;
-  const isPartiallyEligible =
-    (eligibilityResult?.eligible ?? false) &&
-    percentage >= 30 &&
-    percentage < 60;
-  const eligibilityTone = !eligibilityResult
-    ? ""
-    : !eligibilityResult.eligible
-      ? "border-red-200 bg-red-50 text-red-800"
-      : isPartiallyEligible
-        ? "border-amber-200 bg-amber-50 text-amber-800"
-        : "border-emerald-200 bg-emerald-50 text-emerald-800";
 
   return (
     <section className="bg-[#FFFFFF] py-16 md:py-24">
@@ -184,35 +110,6 @@ export function ScholarshipSection() {
         </div>
 
         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-          {isSuccess && eligibilityResult ? (
-            <div
-              className={`w-full max-w-md rounded-2xl border-2 p-8 ${
-                !eligibilityResult.eligible
-                  ? "border-red-300 bg-red-50 text-red-800"
-                  : isPartiallyEligible
-                    ? "border-yellow-300 bg-yellow-50 text-yellow-800"
-                    : "border-[#f7941d] bg-blue-50 text-[#1E40AF]"
-              }`}
-            >
-              <p className="font-semibold">Scholarship Eligibility</p>
-              <p className="mt-4 text-5xl font-bold">
-                {eligibilityResult.percentage}%
-              </p>
-              <p className="mt-4 text-sm leading-relaxed">
-                {eligibilityResult.reason}
-              </p>
-              {eligibilityResult.conditions.length > 0 ? (
-                <ul className="mt-4 space-y-2">
-                  {eligibilityResult.conditions.map((condition) => (
-                    <li key={condition} className="flex gap-2 text-sm">
-                      <span>✓</span>
-                      <span>{condition}</span>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-            </div>
-          ) : (
             <form
               className="flex w-full max-w-md flex-col gap-6"
               onSubmit={handleSubmit}
@@ -404,20 +301,11 @@ export function ScholarshipSection() {
 
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#f7941d] px-6 py-3 font-semibold text-white transition hover:bg-[#2563EB] disabled:opacity-60"
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#f7941d] px-6 py-3 font-semibold text-white transition hover:bg-[#2563EB]"
               >
-                <span>
-                  {isSubmitting
-                    ? "Checking Eligibility..."
-                    : "Check My Eligibility"}
-                </span>
+                Check My Eligibility
               </button>
-              {submitError && (
-                <p className="text-sm text-red-600">{submitError}</p>
-              )}
             </form>
-          )}
 
           <div className="flex flex-col gap-6">
             <div>

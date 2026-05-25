@@ -348,12 +348,14 @@ export function Results({
                     </div>
                   </div>
 
-                  <Link
-                    href={`/admissions?program=${program.slug}`}
+                  <a
+                    href="https://admission.sviet.ac.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#FF6A00] px-6 py-3 text-sm font-medium text-white transition-all shadow-lg hover:bg-[#E55A00] hover:shadow-xl"
                   >
                     Apply Now
-                  </Link>
+                  </a>
                 </div>
               </motion.div>
             ))}

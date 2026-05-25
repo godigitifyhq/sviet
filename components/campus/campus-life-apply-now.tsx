@@ -7,10 +7,15 @@ export function CampusLifeApplyNowStrip() {
         <p className="text-sm font-medium tracking-wide md:text-[22px] md:font-semibold">
           APPLY NOW FOR SVGOIEEE - 2026
         </p>
-        <button className="inline-flex items-center gap-2 rounded-none bg-transparent p-0 text-[10px] font-semibold md:text-[17px]">
+        <a
+          href="https://admission.sviet.ac.in"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-none bg-transparent p-0 text-[10px] font-semibold md:text-[17px]"
+        >
           Apply Now
           <FaArrowRight className="text-[10px] md:text-[14px]" />
-        </button>
+        </a>
       </div>
     </section>
   );

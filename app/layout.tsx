@@ -29,6 +29,32 @@ export const metadata: Metadata = {
     "MBA college Punjab",
     "SVGOI Banur",
   ],
+  icons: {
+    icon: "/Logo.png",
+    shortcut: "/Logo.png",
+    apple: "/Logo.png",
+  },
+  openGraph: {
+    title: "SVGOI | Swami Vivekanand Group of Institutes",
+    description: "Premier engineering and management college group in Punjab, India.",
+    url: "https://sviet.ac.in",
+    siteName: "SVGOI",
+    images: [
+      {
+        url: "/Logo.png",
+        width: 800,
+        height: 600,
+        alt: "SVGOI Logo",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SVGOI | Swami Vivekanand Group of Institutes",
+    description: "Premier engineering and management college group in Punjab, India.",
+    images: ["/Logo.png"],
+  },
 };
 
 export default function RootLayout({
