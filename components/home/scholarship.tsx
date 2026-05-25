@@ -44,7 +44,6 @@ export function ScholarshipSection() {
       [field]: value as ScholarshipFormState[keyof ScholarshipFormState],
     }));
     setErrors((prev) => ({ ...prev, [field]: "" }));
-    setSubmitError("");
   };
 
   const validate = () => {
