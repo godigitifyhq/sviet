@@ -952,7 +952,6 @@ export function SiteFooter() {
             Take the first step towards your dreams. Explore our programs and
             get in touch to begin your journey with us.
           </p>
-        
         </div>
 
         <div className="mt-14 border-t border-white/10 pt-14">
@@ -971,35 +970,28 @@ export function SiteFooter() {
 
               <div className="mt-6 flex items-center gap-2">
                 <a
-                  href="#"
+                  href="https://www.facebook.com/svietofficial/"
                   aria-label="Facebook"
                   className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25"
                 >
                   <FaFacebookF />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/svietofficial/"
                   aria-label="Instagram"
                   className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25"
                 >
                   <FaInstagram />
                 </a>
                 <a
-                  href="#"
+                  href="https://in.linkedin.com/company/svgoichandigarh"
                   aria-label="LinkedIn"
                   className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25"
                 >
                   <FaLinkedinIn />
                 </a>
                 <a
-                  href="#"
-                  aria-label="X"
-                  className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-base font-semibold text-white transition hover:bg-white/25"
-                >
-                  X
-                </a>
-                <a
-                  href="#"
+                  href="https://www.youtube.com/@svietchandigarh3067"
                   aria-label="YouTube"
                   className="inline-flex h-10 w-10 items-center justify-center bg-white/15 text-white transition hover:bg-white/25"
                 >
@@ -1030,13 +1022,28 @@ export function SiteFooter() {
               <h4 className="text-lg font-semibold uppercase">Quick Links</h4>
               <ul className="mt-5 space-y-3 text-sm text-white/85">
                 {[
-                  { label: "Student ERP Login", href: "#" },
-                  { label: "Faculty ERP Login", href: "#" },
-                  { label: "SVGOI in your town", href: "#" },
-                  { label: "E-Brochure", href: "#" },
-                  { label: "How to Apply", href: "#" },
-                  { label: "SVIET - ITI", href: "#" },
-                  { label: "Careers", href: "#" },
+                  {
+                    label: "Student ERP Login",
+                    href: "https://uj.servergi.com:8079/ISIMSVIET/login",
+                  },
+                  {
+                    label: "Faculty ERP Login",
+                    href: "https://uj.servergi.com:8079/SIMWEBSVIET/Login",
+                  },
+                  { label: "SVGOI in your town", href: "/svgoi-in-town" },
+                  {
+                    label: "E-Brochure",
+                    href: "/assets/docs/SVIET-Brochure-2025.pdf",
+                  },
+                  {
+                    label: "How to Apply",
+                    href: "https://admission.sviet.ac.in/",
+                  },
+                  {
+                    label: "SVIET - ITI",
+                    href: "http://svietiti.in/index.html",
+                  },
+                  { label: "Careers", href: "/careers" },
                   { label: "Research", href: "/research" },
                 ].map((item) => (
                   <li key={item.label}>
@@ -1055,12 +1062,15 @@ export function SiteFooter() {
               <h4 className="text-lg font-semibold uppercase">Quick Links</h4>
               <ul className="mt-5 space-y-3 text-sm text-white/85">
                 {[
-                  { label: "Placement Overview", href: "#" },
-                  { label: "Photo Gallery", href: "#" },
-                  { label: "Grievances/Enquiry", href: "#" },
-                  { label: "Final Year 2023 Group Pictures", href: "#" },
-                  { label: "NAAC", href: "#" },
-                  { label: "ISTE Sviet Chapter", href: "#" },
+                  { label: "Placement Overview", href: "/placement" },
+                  { label: "Photo Gallery", href: "/gallery" },
+                  { label: "Grievances/Enquiry", href: "/contact-us" },
+                  {
+                    label: "Final Year 2023 Group Pictures",
+                    href: "https://drive.google.com/drive/folders/1zn_0Wid35r5DyfnCOsxcTrd0ZcZJ2FP1",
+                  },
+                  { label: "NAAC", href: "https://www.sviet.org.in" },
+                  { label: "ISTE Sviet Chapter", href: "/iste" },
                 ].map((item) => (
                   <li key={item.label}>
                     <Link
@@ -1079,14 +1089,20 @@ export function SiteFooter() {
               <ul className="mt-5 space-y-3 text-sm text-white/85">
                 {[
                   { label: "NCC Registration", href: "#" },
-                  { label: "SVGOI Advantages", href: "#" },
-                  { label: "RNR Scholarship", href: "#" },
-                  { label: "Contact-us", href: "/contact" },
-                  { label: "Scholarship", href: "#" },
-                  { label: "Refund Policy", href: "#" },
-                  { label: "ERP APP", href: "#" },
-                  { label: "Privacy Policy", href: "#" },
-                  { label: "Terms & Conditions", href: "#" },
+                  { label: "SVGOI Advantages", href: "/advantages" },
+                  {
+                    label: "RNR Scholarship",
+                    href: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumXRxmHO2YwQAC3BxfPnoR46m9tK5uUkNerSOE",
+                  },
+                  { label: "Contact-us", href: "/contact-us" },
+                  { label: "Scholarship", href: "/admissions" },
+                  { label: "Refund Policy", href: "/refund-policy" },
+                  {
+                    label: "ERP APP",
+                    href: "https://play.google.com/store/apps/details?id=com.giindia.www.g5myconnect&hl=en_IN",
+                  },
+                  { label: "Privacy Policy", href: "/privacypolicy" },
+                  { label: "Terms & Conditions", href: "/terms&conditions" },
                 ].map((item) => (
                   <li key={item.label}>
                     <Link

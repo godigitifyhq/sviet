@@ -66,7 +66,7 @@ export function YouTubeChannelSection() {
             </ul>
 
             <a
-              href="https://www.youtube.com/@SVGOIOfficial"
+              href="https://www.youtube.com/@svietchandigarh3067"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center gap-2 bg-[#FF0000] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#cc0000]"
