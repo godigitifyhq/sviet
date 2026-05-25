@@ -1,3 +1,4 @@
+import Script from "next/script";
 import { SiteFooter, SiteHeader } from "@/components/shared/site-chrome";
 import { NpfTrackingScript } from "@/components/shared/npf-tracking-script";
 import { GlobalEnquiryModal } from "@/components/shared/global-enquiry-modal";
@@ -12,6 +13,10 @@ export default function SiteLayout({
   return (
     <>
       <NpfTrackingScript />
+      <Script
+        src="https://widgets.in5.nopaperforms.com/emwgts.js"
+        strategy="afterInteractive"
+      />
       <GlobalEnquiryModal />
       <SiteHeader />
       <main className="site-main bg-white">{children}</main>
