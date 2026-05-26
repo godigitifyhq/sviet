@@ -1102,7 +1102,10 @@ export function SiteFooter() {
                     href: "https://play.google.com/store/apps/details?id=com.giindia.www.g5myconnect&hl=en_IN",
                   },
                   { label: "Privacy Policy", href: "/privacy-policy" },
-                  { label: "Terms & Conditions", href: "/terms-and-conditions" },
+                  {
+                    label: "Terms & Conditions",
+                    href: "/terms-and-conditions",
+                  },
                 ].map((item) => (
                   <li key={item.label}>
                     <Link
