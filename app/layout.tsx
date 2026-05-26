@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     "SVGOI Banur",
   ],
   icons: {
-    icon: "/Logo.png",
-    shortcut: "/Logo.png",
-    apple: "/Logo.png",
+    icon: "/Logo.ico",
+    shortcut: "/Logo.ico",
+    apple: "/Logo.ico",
   },
   openGraph: {
     title: "SVGOI | Swami Vivekanand Group of Institutes",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     siteName: "SVGOI",
     images: [
       {
-        url: "/Logo.png",
+        url: "/Logo.ico",
         width: 800,
         height: 600,
         alt: "SVGOI Logo",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SVGOI | Swami Vivekanand Group of Institutes",
     description: "Premier engineering and management college group in Punjab, India.",
-    images: ["/Logo.png"],
+    images: ["/Logo.ico"],
   },
 };
 
