@@ -41,8 +41,8 @@ const INSTITUTION_DEFINITIONS: InstitutionDefinition[] = [
   {
     id: "sviet",
     name: "Swami Vivekanand Institute of Engineering & Technology",
-    description: "Engineering and technology programs",
-    departmentSlugs: ["engineering"],
+    description: "Engineering, technology, and post-graduate management programs",
+    departmentSlugs: ["engineering", "management-sviet", "computer-applications-sviet"],
   },
   {
     id: "svcp",
@@ -51,27 +51,34 @@ const INSTITUTION_DEFINITIONS: InstitutionDefinition[] = [
     departmentSlugs: ["pharmacy"],
   },
   {
+    id: "svip",
+    name: "Swami Vivekanand Institute of Pharmacy",
+    description: "Pharmacy programs and diploma courses",
+    departmentSlugs: ["svip-programs"],
+  },
+  {
     id: "svfitbm",
     name: "Swami Vivekanand Faculty of Information Technology & Business Management",
-    description: "Business, IT, science, and commerce pathways",
+    description: "Business, IT, science, commerce, and arts pathways",
     departmentSlugs: [
       "management",
       "computer-applications",
       "science",
       "commerce",
+      "svfitbm-arts",
     ],
   },
   {
     id: "svftm",
     name: "Swami Vivekanand Faculty of Technology & Management",
-    description: "Hotel management and interdisciplinary programs",
-    departmentSlugs: ["hotel-management"],
+    description: "Hotel management, allied health, and interdisciplinary programs",
+    departmentSlugs: ["hotel-management", "svftm-programs", "svftm-science"],
   },
   {
     id: "svcmt",
     name: "Swami Vivekanand College of Management & Technology",
-    description: "Medical sciences and allied health programs",
-    departmentSlugs: ["medical-sciences-allied-health"],
+    description: "Medical sciences, allied health, management, and technology programs",
+    departmentSlugs: ["medical-sciences-allied-health", "svcmt-programs"],
   },
   {
     id: "svce",

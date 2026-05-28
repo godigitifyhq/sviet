@@ -456,8 +456,8 @@
     "slug": "diploma-in-pharmacy",
     "title": "Diploma in Pharmacy",
     "department": {
-      "name": "Diploma",
-      "slug": "diploma"
+      "name": "Pharmacy",
+      "slug": "pharmacy"
     },
     "level": "DIPLOMA",
     "specializations": [],
@@ -604,8 +604,8 @@
     "slug": "diploma-in-mechanical-engineering",
     "title": "Diploma in Mechanical Engineering",
     "department": {
-      "name": "Diploma",
-      "slug": "diploma"
+      "name": "Engineering",
+      "slug": "engineering"
     },
     "level": "DIPLOMA",
     "specializations": [],
@@ -743,8 +743,8 @@
     "slug": "diploma-in-civil-engineering",
     "title": "Diploma in Civil Engineering",
     "department": {
-      "name": "Diploma",
-      "slug": "diploma"
+      "name": "Engineering",
+      "slug": "engineering"
     },
     "level": "DIPLOMA",
     "specializations": [],
@@ -2734,8 +2734,8 @@
     "slug": "master-of-computer-applications",
     "title": "Master of Computer Applications",
     "department": {
-      "name": "Computer Applications",
-      "slug": "computer-applications"
+      "name": "Computer Applications (SVIET)",
+      "slug": "computer-applications-sviet"
     },
     "level": "PG",
     "specializations": [],
@@ -2908,8 +2908,8 @@
     "slug": "post-graduate-diploma-in-computer-application",
     "title": "Post Graduate Diploma in Computer Application",
     "department": {
-      "name": "Computer Applications",
-      "slug": "computer-applications"
+      "name": "SVFTM Programs",
+      "slug": "svftm-programs"
     },
     "level": "DIPLOMA",
     "specializations": [],
@@ -3020,8 +3020,8 @@
     "slug": "bsc-information-technology",
     "title": "B.Sc Information Technology",
     "department": {
-      "name": "Computer Applications",
-      "slug": "computer-applications"
+      "name": "SVCMT Programs",
+      "slug": "svcmt-programs"
     },
     "level": "UG",
     "specializations": [],
@@ -3130,8 +3130,8 @@
     "slug": "bachelor-of-arts-computer-science",
     "title": "Bachelor of Arts (Computer Science)",
     "department": {
-      "name": "Computer Applications",
-      "slug": "computer-applications"
+      "name": "SVCMT Programs",
+      "slug": "svcmt-programs"
     },
     "level": "UG",
     "specializations": [
@@ -3242,8 +3242,8 @@
     "slug": "master-of-business-administration",
     "title": "Master of Business Administration",
     "department": {
-      "name": "Management",
-      "slug": "management"
+      "name": "Management (SVIET)",
+      "slug": "management-sviet"
     },
     "level": "PG",
     "specializations": [],
@@ -4043,7 +4043,7 @@
   },
   {
     "slug": "bsc-medical-lab-sciences",
-    "title": "B.Sc Medical Lab Sciences",
+    "title": "B.Sc. (Hons.) Medical Lab Science",
     "department": {
       "name": "Medical Sciences & Allied Health",
       "slug": "medical-sciences-allied-health"
@@ -4139,7 +4139,7 @@
   },
   {
     "slug": "bsc-radiology-imaging-technology",
-    "title": "B.Sc Radiology & Imaging Technology",
+    "title": "B.Sc. (Hons.) Radio Medical Imaging Technology",
     "department": {
       "name": "Medical Sciences & Allied Health",
       "slug": "medical-sciences-allied-health"
@@ -4243,8 +4243,8 @@
     "slug": "bsc-cardiac-care-technology",
     "title": "B.Sc Cardiac Care Technology",
     "department": {
-      "name": "Medical Sciences & Allied Health",
-      "slug": "medical-sciences-allied-health"
+      "name": "SVFTM Programs",
+      "slug": "svftm-programs"
     },
     "level": "UG",
     "specializations": [],
@@ -4340,7 +4340,7 @@
   },
   {
     "slug": "bsc-hons-operation-theatre-technology",
-    "title": "B.Sc Operation Theatre Technology",
+    "title": "B.Sc. (Hons.) Operation Theater Technology",
     "department": {
       "name": "Medical Sciences & Allied Health",
       "slug": "medical-sciences-allied-health"
@@ -5037,8 +5037,8 @@
     "slug": "msc-medical-microbiology",
     "title": "M.Sc (Medical Microbiology)",
     "department": {
-      "name": "Medical Sciences & Allied Health",
-      "slug": "medical-sciences-allied-health"
+      "name": "SVFTM Programs",
+      "slug": "svftm-programs"
     },
     "level": "PG",
     "specializations": [
@@ -5149,8 +5149,8 @@
     "slug": "msc-radiology-and-imaging-technology",
     "title": "M.Sc (Radiology and Imaging Technology)",
     "department": {
-      "name": "Medical Sciences & Allied Health",
-      "slug": "medical-sciences-allied-health"
+      "name": "SVFTM Programs",
+      "slug": "svftm-programs"
     },
     "level": "PG",
     "specializations": [
@@ -5261,8 +5261,8 @@
     "slug": "bachelor-in-hospital-administration",
     "title": "Bachelor in Hospital Administration",
     "department": {
-      "name": "Medical Sciences & Allied Health",
-      "slug": "medical-sciences-allied-health"
+      "name": "SVFTM Programs",
+      "slug": "svftm-programs"
     },
     "level": "UG",
     "specializations": [],
@@ -5490,8 +5490,8 @@
     "slug": "msc-physics",
     "title": "M.Sc Physics",
     "department": {
-      "name": "Science",
-      "slug": "science"
+      "name": "SVFTM Science",
+      "slug": "svftm-science"
     },
     "level": "PG",
     "specializations": [],
@@ -5586,8 +5586,8 @@
     "slug": "msc-math",
     "title": "M.Sc Math",
     "department": {
-      "name": "Science",
-      "slug": "science"
+      "name": "SVFTM Science",
+      "slug": "svftm-science"
     },
     "level": "PG",
     "specializations": [],
@@ -5681,8 +5681,8 @@
     "slug": "msc-chemistry",
     "title": "M.Sc Chemistry",
     "department": {
-      "name": "Science",
-      "slug": "science"
+      "name": "SVCMT Programs",
+      "slug": "svcmt-programs"
     },
     "level": "PG",
     "specializations": [],
@@ -5881,8 +5881,8 @@
     "slug": "master-of-commerce",
     "title": "Master of Commerce",
     "department": {
-      "name": "Commerce",
-      "slug": "commerce"
+      "name": "SVFTM Programs",
+      "slug": "svftm-programs"
     },
     "level": "PG",
     "specializations": [],
@@ -6028,8 +6028,8 @@
     "slug": "bachelor-of-arts",
     "title": "Bachelor of Arts",
     "department": {
-      "name": "Arts & Education",
-      "slug": "arts-education"
+      "name": "SVFITBM Arts",
+      "slug": "svfitbm-arts"
     },
     "level": "UG",
     "specializations": [],
@@ -6135,8 +6135,8 @@
     "slug": "ba-journalism-and-mass-communication",
     "title": "B.A. (Journalism and Mass Communication)",
     "department": {
-      "name": "Arts & Education",
-      "slug": "arts-education"
+      "name": "SVFTM Programs",
+      "slug": "svftm-programs"
     },
     "level": "UG",
     "specializations": [
@@ -7132,6 +7132,207 @@
         }
       ]
     },
+    "isFeatured": false
+  },
+  {
+    "slug": "bachelor-of-business-administration-svftm",
+    "title": "Bachelor of Business Administration",
+    "department": {
+      "name": "SVFTM Programs",
+      "slug": "svftm-programs"
+    },
+    "level": "UG",
+    "specializations": [],
+    "shortDescription": "DEVELOPING BUSINESS ACUMEN",
+    "fullDescription": "BBA under SVFTM is a 3-year professional undergraduate program that deals with Business Management. BBA course covers management and business principles and also highlights the importance of internships during the final semester of the course. BBA syllabus aims to impart knowledge through practical experience in the form of case studies, projects, presentations, industrial visits, and interaction with experts from the industry.",
+    "durationMonths": 36,
+    "tuitionCents": null,
+    "mode": null,
+    "eligibility": "To be eligible for the BBA program, candidates must have completed their 10+2 or equivalent examination from a recognized board.",
+    "highlights": [
+      "Professional undergraduate program in Business Management",
+      "Covers management and business principles",
+      "Emphasizes practical experience through internships, case studies, and projects",
+      "Three-year duration with a focus on practical learning"
+    ],
+    "outcomes": [],
+    "facilities": [],
+    "curriculum": null,
+    "faqs": null,
+    "seoTitle": "Bachelor of Business Administration (BBA) — SVFTM",
+    "seoDescription": null,
+    "metadata": null,
+    "isFeatured": false
+  },
+  {
+    "slug": "bachelor-of-computer-applications-svftm",
+    "title": "Bachelor of Computer Applications",
+    "department": {
+      "name": "SVFTM Programs",
+      "slug": "svftm-programs"
+    },
+    "level": "UG",
+    "specializations": [],
+    "shortDescription": "BUILDING DIGITAL FUTURES",
+    "fullDescription": "Bachelor of Computer Application (BCA) is an undergraduate degree course that offers a blend of theoretical and practical knowledge in computer applications. This program provides students with in-depth understanding and extensive knowledge about various aspects of computer applications, making them proficient in IT sector roles such as programmer or software developer.",
+    "durationMonths": 36,
+    "tuitionCents": null,
+    "mode": null,
+    "eligibility": "10+2 with at least 45% and for reserved category minimum 40%",
+    "highlights": [
+      "Blend of theoretical and practical knowledge",
+      "Industry-relevant skills in computer applications",
+      "Three-year duration"
+    ],
+    "outcomes": [],
+    "facilities": [],
+    "curriculum": null,
+    "faqs": null,
+    "seoTitle": "Bachelor of Computer Applications (BCA) — SVFTM",
+    "seoDescription": null,
+    "metadata": null,
+    "isFeatured": false
+  },
+  {
+    "slug": "bsc-medical-lab-sciences-svftm",
+    "title": "B.Sc Medical Lab Sciences",
+    "department": {
+      "name": "SVFTM Programs",
+      "slug": "svftm-programs"
+    },
+    "level": "UG",
+    "specializations": [],
+    "shortDescription": "PREPARING HEALTHCARE LABORATORY PROFESSIONALS",
+    "fullDescription": "B.Sc Medical Laboratory Science is a 3-year undergraduate program in healthcare professional course. The aim is to teach students about Lab science and make them professionals in the field.",
+    "durationMonths": 36,
+    "tuitionCents": null,
+    "mode": null,
+    "eligibility": "Passing of 10+2 examination with Physics & Chemistry as compulsory subjects and either Mathematics or Biology as one of the subjects from recognized Board.",
+    "highlights": [
+      "Extensive hands-on training in laboratory techniques",
+      "Practical experience in real healthcare settings"
+    ],
+    "outcomes": [],
+    "facilities": [],
+    "curriculum": null,
+    "faqs": null,
+    "seoTitle": "B.Sc Medical Lab Sciences — SVFTM",
+    "seoDescription": null,
+    "metadata": null,
+    "isFeatured": false
+  },
+  {
+    "slug": "bsc-operation-theatre-technology-svftm",
+    "title": "B.Sc Operation Theatre Technology",
+    "department": {
+      "name": "SVFTM Programs",
+      "slug": "svftm-programs"
+    },
+    "level": "UG",
+    "specializations": [],
+    "shortDescription": "TRAINING OPERATION THEATRE PROFESSIONALS",
+    "fullDescription": "B.Sc Operation Theatre Technology is an undergraduate program that trains students in the techniques and protocols of modern operation theatres, including anaesthesia, sterilization, and surgical assistance.",
+    "durationMonths": 36,
+    "tuitionCents": null,
+    "mode": null,
+    "eligibility": "Passing of 10+2 examination with Physics & Chemistry as compulsory subjects and either Mathematics or Biology from a recognized Board.",
+    "highlights": [
+      "Hands-on training in operation theatre protocols",
+      "Exposure to modern surgical environments"
+    ],
+    "outcomes": [],
+    "facilities": [],
+    "curriculum": null,
+    "faqs": null,
+    "seoTitle": "B.Sc Operation Theatre Technology — SVFTM",
+    "seoDescription": null,
+    "metadata": null,
+    "isFeatured": false
+  },
+  {
+    "slug": "bsc-radiology-svftm",
+    "title": "B.Sc Radiology & Imaging Technology",
+    "department": {
+      "name": "SVFTM Programs",
+      "slug": "svftm-programs"
+    },
+    "level": "UG",
+    "specializations": [],
+    "shortDescription": "IMAGING THE FUTURE OF HEALTHCARE",
+    "fullDescription": "B.Sc Radiology & Imaging Technology is an undergraduate program that trains students in diagnostic imaging techniques including X-ray, CT scan, MRI, and ultrasonography used in modern healthcare settings.",
+    "durationMonths": 36,
+    "tuitionCents": null,
+    "mode": null,
+    "eligibility": "Passing of 10+2 examination with Physics & Chemistry as compulsory subjects and either Mathematics or Biology from a recognized Board.",
+    "highlights": [
+      "Training in modern diagnostic imaging equipment",
+      "Exposure to real clinical environments"
+    ],
+    "outcomes": [],
+    "facilities": [],
+    "curriculum": null,
+    "faqs": null,
+    "seoTitle": "B.Sc Radiology & Imaging Technology — SVFTM",
+    "seoDescription": null,
+    "metadata": null,
+    "isFeatured": false
+  },
+  {
+    "slug": "bachelor-of-business-administration-svcmt",
+    "title": "Bachelor of Business Administration",
+    "department": {
+      "name": "SVCMT Programs",
+      "slug": "svcmt-programs"
+    },
+    "level": "UG",
+    "specializations": [],
+    "shortDescription": "DEVELOPING BUSINESS ACUMEN",
+    "fullDescription": "BBA under SVCMT is a 3-year professional undergraduate program that deals with Business Management. BBA course covers management and business principles and also highlights the importance of internships during the final semester of the course.",
+    "durationMonths": 36,
+    "tuitionCents": null,
+    "mode": null,
+    "eligibility": "To be eligible for the BBA program, candidates must have completed their 10+2 or equivalent examination from a recognized board.",
+    "highlights": [
+      "Professional undergraduate program in Business Management",
+      "Covers management and business principles",
+      "Three-year duration with a focus on practical learning"
+    ],
+    "outcomes": [],
+    "facilities": [],
+    "curriculum": null,
+    "faqs": null,
+    "seoTitle": "Bachelor of Business Administration (BBA) — SVCMT",
+    "seoDescription": null,
+    "metadata": null,
+    "isFeatured": false
+  },
+  {
+    "slug": "bachelor-of-computer-applications-svcmt",
+    "title": "Bachelor of Computer Applications",
+    "department": {
+      "name": "SVCMT Programs",
+      "slug": "svcmt-programs"
+    },
+    "level": "UG",
+    "specializations": [],
+    "shortDescription": "BUILDING DIGITAL FUTURES",
+    "fullDescription": "Bachelor of Computer Application (BCA) under SVCMT is an undergraduate degree course that offers a blend of theoretical and practical knowledge in computer applications.",
+    "durationMonths": 36,
+    "tuitionCents": null,
+    "mode": null,
+    "eligibility": "10+2 with at least 45% and for reserved category minimum 40%",
+    "highlights": [
+      "Blend of theoretical and practical knowledge",
+      "Industry-relevant skills in computer applications",
+      "Three-year duration"
+    ],
+    "outcomes": [],
+    "facilities": [],
+    "curriculum": null,
+    "faqs": null,
+    "seoTitle": "Bachelor of Computer Applications (BCA) — SVCMT",
+    "seoDescription": null,
+    "metadata": null,
     "isFeatured": false
   }
 ]
