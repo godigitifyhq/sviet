@@ -54,7 +54,7 @@ const faqItems = [
   {
     question: "What is the placement record?",
     answer:
-      "SVGOI has a near 100% placement record with a highest package of 45 LPA. 500+ companies visit campus annually including Amazon, TCS, Infosys, Wipro, and Deloitte.",
+      "SVGOI has a near 95% placement record with a highest package of 60 LPA. 2,200+ companies visit campus annually including Amazon, TCS, Infosys, Wipro, and Deloitte.",
   },
 ];
 
