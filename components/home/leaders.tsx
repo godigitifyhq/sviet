@@ -122,8 +122,8 @@ export function DistinguishedLeadersSection() {
                 <SwiperSlide key={`${leader.name}-${index}`} className="h-full">
                   <article className="flex h-full flex-col items-start md:min-h-[320px] md:items-stretch md:flex-row">
                     {/* Left Side - Image */}
-                    <div className="w-[400px] overflow-hidden md:w-[45%]">
-                      <div className="h-[400px] w-full overflow-hidden">
+                    <div className="w-full overflow-hidden md:w-[45%]">
+                      <div className="h-64 w-full overflow-hidden md:h-100">
                         <Image
                           src={leader.image}
                           alt={leader.name}

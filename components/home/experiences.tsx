@@ -125,8 +125,8 @@ export function ExperiencesSection() {
         {/* Milestone Placements Carousel */}
         <div className="mt-16 space-y-8">
           {/* Carousel Card */}
-          <div className="h-80 overflow-hidden rounded-2xl bg-[#F5F7FB] p-4 md:p-8">
-            <div className="grid h-full gap-8 md:grid-cols-[1fr_1fr]">
+          <div className="overflow-hidden rounded-2xl bg-[#F5F7FB] p-4 md:p-8">
+            <div className="grid gap-4 md:h-72 md:gap-8 md:grid-cols-[1fr_1fr]">
               {/* Left Content */}
               <div className="space-y-3 flex flex-col justify-center md:pr-4">
                 <div>
@@ -173,8 +173,8 @@ export function ExperiencesSection() {
                 </div>
               </div>
 
-              {/* Right Side - Student Profile */}
-              <div className="relative flex items-end justify-between">
+              {/* Right Side - Student Profile: hidden on mobile */}
+              <div className="relative hidden items-end justify-between md:flex">
                 <div className="relative shrink-0">
                   <div className="relative h-56 w-70">
                     <div className="relative z-10 top-4 md:top-8 h-full w-full overflow-hidden">
@@ -212,6 +212,24 @@ export function ExperiencesSection() {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Mobile-only: compact student/company info */}
+            <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-200 md:hidden">
+              {currentSlide === 0 ? (
+                <div className="relative h-8 w-24">
+                  <Image
+                    src={placement.companyLogo}
+                    alt={placement.company}
+                    fill
+                    className="object-contain object-left"
+                  />
+                </div>
+              ) : <div />}
+              <div className="ml-auto text-right">
+                <p className="text-sm font-semibold text-[#111827]">{placement.studentName}</p>
+                <p className="text-xs text-[#6B7280]">{placement.company}</p>
               </div>
             </div>
           </div>

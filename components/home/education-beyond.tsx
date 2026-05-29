@@ -28,8 +28,8 @@ const audienceCards = [
 
 export function EducationBeyondSection() {
   return (
-    <section className=" bg-[#ffffff] py-14 md:py-18">
-      <div className="mx-auto max-w-7xl">
+    <section className="bg-[#ffffff] py-14 md:py-18">
+      <div className="mx-auto max-w-7xl px-4 md:px-6">
         <p className="text-xl font-medium leading-tight text-[#6B7280] md:text-2xl">
           Career Starts Here
         </p>
