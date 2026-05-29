@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const quickLinks = [
   "Admissions",
   "Scholarships",
@@ -6,12 +8,12 @@ const quickLinks = [
   "Events",
 ];
 const navLinks = [
-  "About",
-  "Programs",
-  "Admissions",
-  "Campus",
-  "Careers",
-  "Contact",
+  { label: "About", href: "/about" },
+  { label: "Programs", href: "/programs" },
+  { label: "Admissions", href: "/admissions" },
+  { label: "Campus Life", href: "/campus-life" },
+  { label: "Careers", href: "/careers" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function HomeFooter() {
@@ -72,8 +74,13 @@ export function HomeFooter() {
             <h3 className="text-lg font-bold">Navigation</h3>
             <ul className="mt-4 grid gap-3">
               {navLinks.map((item) => (
-                <li key={item} className="text-sm font-medium text-white/80">
-                  {item}
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-sm font-medium text-white/80 hover:text-white transition-colors"
+                  >
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -81,6 +88,20 @@ export function HomeFooter() {
         </div>
 
         <div className="mt-10 border-t border-white/15 pt-6">
+          <div className="mb-4 flex flex-wrap gap-4 text-xs text-white/50">
+            <Link href="/svgoi-in-town" className="hover:text-white/80">
+              SVGOI In Your Town
+            </Link>
+            <Link href="/privacy-policy" className="hover:text-white/80">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-and-conditions" className="hover:text-white/80">
+              Terms &amp; Conditions
+            </Link>
+            <Link href="/refund-policy" className="hover:text-white/80">
+              Refund &amp; Cancellation Policy
+            </Link>
+          </div>
           <div className="flex items-center gap-3">
             <a
               href="#"

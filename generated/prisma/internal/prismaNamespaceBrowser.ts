@@ -79,7 +79,8 @@ export const ModelName = {
   PlacementRecord: 'PlacementRecord',
   PlacementTrendYear: 'PlacementTrendYear',
   PlacementHighlightBanner: 'PlacementHighlightBanner',
-  PlacementKeyStat: 'PlacementKeyStat'
+  PlacementKeyStat: 'PlacementKeyStat',
+  CareerApplication: 'CareerApplication'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -545,6 +546,19 @@ export const PlacementKeyStatScalarFieldEnum = {
 } as const
 
 export type PlacementKeyStatScalarFieldEnum = (typeof PlacementKeyStatScalarFieldEnum)[keyof typeof PlacementKeyStatScalarFieldEnum]
+
+
+export const CareerApplicationScalarFieldEnum = {
+  id: 'id',
+  leadId: 'leadId',
+  position: 'position',
+  qualifications: 'qualifications',
+  yearsExperience: 'yearsExperience',
+  coverLetter: 'coverLetter',
+  createdAt: 'createdAt'
+} as const
+
+export type CareerApplicationScalarFieldEnum = (typeof CareerApplicationScalarFieldEnum)[keyof typeof CareerApplicationScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -292,6 +292,7 @@ export type LeadWhereInput = {
   scholarship?: Prisma.XOR<Prisma.ScholarshipInquiryNullableScalarRelationFilter, Prisma.ScholarshipInquiryWhereInput> | null
   programFinder?: Prisma.XOR<Prisma.ProgramFinderSubmissionNullableScalarRelationFilter, Prisma.ProgramFinderSubmissionWhereInput> | null
   contactEnquiry?: Prisma.XOR<Prisma.ContactEnquiryNullableScalarRelationFilter, Prisma.ContactEnquiryWhereInput> | null
+  careerApplication?: Prisma.XOR<Prisma.CareerApplicationNullableScalarRelationFilter, Prisma.CareerApplicationWhereInput> | null
   intendedProgram?: Prisma.XOR<Prisma.ProgramNullableScalarRelationFilter, Prisma.ProgramWhereInput> | null
   ownerCounselor?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   applicant?: Prisma.XOR<Prisma.ApplicantNullableScalarRelationFilter, Prisma.ApplicantWhereInput> | null
@@ -317,6 +318,7 @@ export type LeadOrderByWithRelationInput = {
   scholarship?: Prisma.ScholarshipInquiryOrderByWithRelationInput
   programFinder?: Prisma.ProgramFinderSubmissionOrderByWithRelationInput
   contactEnquiry?: Prisma.ContactEnquiryOrderByWithRelationInput
+  careerApplication?: Prisma.CareerApplicationOrderByWithRelationInput
   intendedProgram?: Prisma.ProgramOrderByWithRelationInput
   ownerCounselor?: Prisma.UserOrderByWithRelationInput
   applicant?: Prisma.ApplicantOrderByWithRelationInput
@@ -345,6 +347,7 @@ export type LeadWhereUniqueInput = Prisma.AtLeast<{
   scholarship?: Prisma.XOR<Prisma.ScholarshipInquiryNullableScalarRelationFilter, Prisma.ScholarshipInquiryWhereInput> | null
   programFinder?: Prisma.XOR<Prisma.ProgramFinderSubmissionNullableScalarRelationFilter, Prisma.ProgramFinderSubmissionWhereInput> | null
   contactEnquiry?: Prisma.XOR<Prisma.ContactEnquiryNullableScalarRelationFilter, Prisma.ContactEnquiryWhereInput> | null
+  careerApplication?: Prisma.XOR<Prisma.CareerApplicationNullableScalarRelationFilter, Prisma.CareerApplicationWhereInput> | null
   intendedProgram?: Prisma.XOR<Prisma.ProgramNullableScalarRelationFilter, Prisma.ProgramWhereInput> | null
   ownerCounselor?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   applicant?: Prisma.XOR<Prisma.ApplicantNullableScalarRelationFilter, Prisma.ApplicantWhereInput> | null
@@ -410,6 +413,7 @@ export type LeadCreateInput = {
   scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationCreateNestedOneWithoutLeadInput
   intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
   ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
   applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
@@ -435,6 +439,7 @@ export type LeadUncheckedCreateInput = {
   scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationUncheckedCreateNestedOneWithoutLeadInput
   applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
 }
@@ -456,6 +461,7 @@ export type LeadUpdateInput = {
   scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUpdateOneWithoutLeadNestedInput
   intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
   ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
   applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
@@ -481,6 +487,7 @@ export type LeadUncheckedUpdateInput = {
   scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUncheckedUpdateOneWithoutLeadNestedInput
   applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
 }
@@ -791,6 +798,20 @@ export type LeadUpdateOneRequiredWithoutContactEnquiryNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.LeadUpdateToOneWithWhereWithoutContactEnquiryInput, Prisma.LeadUpdateWithoutContactEnquiryInput>, Prisma.LeadUncheckedUpdateWithoutContactEnquiryInput>
 }
 
+export type LeadCreateNestedOneWithoutCareerApplicationInput = {
+  create?: Prisma.XOR<Prisma.LeadCreateWithoutCareerApplicationInput, Prisma.LeadUncheckedCreateWithoutCareerApplicationInput>
+  connectOrCreate?: Prisma.LeadCreateOrConnectWithoutCareerApplicationInput
+  connect?: Prisma.LeadWhereUniqueInput
+}
+
+export type LeadUpdateOneRequiredWithoutCareerApplicationNestedInput = {
+  create?: Prisma.XOR<Prisma.LeadCreateWithoutCareerApplicationInput, Prisma.LeadUncheckedCreateWithoutCareerApplicationInput>
+  connectOrCreate?: Prisma.LeadCreateOrConnectWithoutCareerApplicationInput
+  upsert?: Prisma.LeadUpsertWithoutCareerApplicationInput
+  connect?: Prisma.LeadWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.LeadUpdateToOneWithWhereWithoutCareerApplicationInput, Prisma.LeadUpdateWithoutCareerApplicationInput>, Prisma.LeadUncheckedUpdateWithoutCareerApplicationInput>
+}
+
 export type LeadCreateWithoutOwnerCounselorInput = {
   id?: string
   firstName: string
@@ -808,6 +829,7 @@ export type LeadCreateWithoutOwnerCounselorInput = {
   scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationCreateNestedOneWithoutLeadInput
   intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
   applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutLeadInput
@@ -831,6 +853,7 @@ export type LeadUncheckedCreateWithoutOwnerCounselorInput = {
   scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationUncheckedCreateNestedOneWithoutLeadInput
   applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
 }
@@ -898,6 +921,7 @@ export type LeadCreateWithoutIntendedProgramInput = {
   scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationCreateNestedOneWithoutLeadInput
   ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
   applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutLeadInput
@@ -921,6 +945,7 @@ export type LeadUncheckedCreateWithoutIntendedProgramInput = {
   scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationUncheckedCreateNestedOneWithoutLeadInput
   applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
 }
@@ -968,6 +993,7 @@ export type LeadCreateWithoutApplicantInput = {
   scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationCreateNestedOneWithoutLeadInput
   intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
   ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutLeadInput
@@ -992,6 +1018,7 @@ export type LeadUncheckedCreateWithoutApplicantInput = {
   scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationUncheckedCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
 }
 
@@ -1028,6 +1055,7 @@ export type LeadUpdateWithoutApplicantInput = {
   scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUpdateOneWithoutLeadNestedInput
   intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
   ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutLeadNestedInput
@@ -1052,6 +1080,7 @@ export type LeadUncheckedUpdateWithoutApplicantInput = {
   scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUncheckedUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
 }
 
@@ -1072,6 +1101,7 @@ export type LeadCreateWithoutApplicationsInput = {
   scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationCreateNestedOneWithoutLeadInput
   intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
   ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
   applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
@@ -1096,6 +1126,7 @@ export type LeadUncheckedCreateWithoutApplicationsInput = {
   scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationUncheckedCreateNestedOneWithoutLeadInput
   applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
 }
 
@@ -1132,6 +1163,7 @@ export type LeadUpdateWithoutApplicationsInput = {
   scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUpdateOneWithoutLeadNestedInput
   intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
   ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
   applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
@@ -1156,6 +1188,7 @@ export type LeadUncheckedUpdateWithoutApplicationsInput = {
   scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUncheckedUpdateOneWithoutLeadNestedInput
   applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
 }
 
@@ -1175,6 +1208,7 @@ export type LeadCreateWithoutNotesInput = {
   scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationCreateNestedOneWithoutLeadInput
   intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
   ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
   applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
@@ -1199,6 +1233,7 @@ export type LeadUncheckedCreateWithoutNotesInput = {
   scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationUncheckedCreateNestedOneWithoutLeadInput
   applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
 }
@@ -1235,6 +1270,7 @@ export type LeadUpdateWithoutNotesInput = {
   scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUpdateOneWithoutLeadNestedInput
   intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
   ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
   applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
@@ -1259,6 +1295,7 @@ export type LeadUncheckedUpdateWithoutNotesInput = {
   scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUncheckedUpdateOneWithoutLeadNestedInput
   applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
 }
@@ -1279,6 +1316,7 @@ export type LeadCreateWithoutScholarshipInput = {
   notes?: Prisma.LeadNoteCreateNestedManyWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationCreateNestedOneWithoutLeadInput
   intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
   ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
   applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
@@ -1303,6 +1341,7 @@ export type LeadUncheckedCreateWithoutScholarshipInput = {
   notes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationUncheckedCreateNestedOneWithoutLeadInput
   applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
 }
@@ -1339,6 +1378,7 @@ export type LeadUpdateWithoutScholarshipInput = {
   notes?: Prisma.LeadNoteUpdateManyWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUpdateOneWithoutLeadNestedInput
   intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
   ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
   applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
@@ -1363,6 +1403,7 @@ export type LeadUncheckedUpdateWithoutScholarshipInput = {
   notes?: Prisma.LeadNoteUncheckedUpdateManyWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUncheckedUpdateOneWithoutLeadNestedInput
   applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
 }
@@ -1383,6 +1424,7 @@ export type LeadCreateWithoutProgramFinderInput = {
   notes?: Prisma.LeadNoteCreateNestedManyWithoutLeadInput
   scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationCreateNestedOneWithoutLeadInput
   intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
   ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
   applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
@@ -1407,6 +1449,7 @@ export type LeadUncheckedCreateWithoutProgramFinderInput = {
   notes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutLeadInput
   scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationUncheckedCreateNestedOneWithoutLeadInput
   applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
 }
@@ -1443,6 +1486,7 @@ export type LeadUpdateWithoutProgramFinderInput = {
   notes?: Prisma.LeadNoteUpdateManyWithoutLeadNestedInput
   scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUpdateOneWithoutLeadNestedInput
   intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
   ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
   applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
@@ -1467,6 +1511,7 @@ export type LeadUncheckedUpdateWithoutProgramFinderInput = {
   notes?: Prisma.LeadNoteUncheckedUpdateManyWithoutLeadNestedInput
   scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUncheckedUpdateOneWithoutLeadNestedInput
   applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
 }
@@ -1487,6 +1532,7 @@ export type LeadCreateWithoutContactEnquiryInput = {
   notes?: Prisma.LeadNoteCreateNestedManyWithoutLeadInput
   scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationCreateNestedOneWithoutLeadInput
   intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
   ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
   applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
@@ -1511,6 +1557,7 @@ export type LeadUncheckedCreateWithoutContactEnquiryInput = {
   notes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutLeadInput
   scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
+  careerApplication?: Prisma.CareerApplicationUncheckedCreateNestedOneWithoutLeadInput
   applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
 }
@@ -1547,6 +1594,7 @@ export type LeadUpdateWithoutContactEnquiryInput = {
   notes?: Prisma.LeadNoteUpdateManyWithoutLeadNestedInput
   scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUpdateOneWithoutLeadNestedInput
   intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
   ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
   applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
@@ -1571,6 +1619,115 @@ export type LeadUncheckedUpdateWithoutContactEnquiryInput = {
   notes?: Prisma.LeadNoteUncheckedUpdateManyWithoutLeadNestedInput
   scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUncheckedUpdateOneWithoutLeadNestedInput
+  applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
+}
+
+export type LeadCreateWithoutCareerApplicationInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  email: string
+  phone?: string | null
+  source: $Enums.LeadSource
+  status?: $Enums.LeadStatus
+  aiScore?: number | null
+  nextFollowUpAt?: Date | string | null
+  convertedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notes?: Prisma.LeadNoteCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryCreateNestedOneWithoutLeadInput
+  intendedProgram?: Prisma.ProgramCreateNestedOneWithoutLeadsInput
+  ownerCounselor?: Prisma.UserCreateNestedOneWithoutLeadsOwnedInput
+  applicant?: Prisma.ApplicantCreateNestedOneWithoutLeadInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutLeadInput
+}
+
+export type LeadUncheckedCreateWithoutCareerApplicationInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  email: string
+  phone?: string | null
+  source: $Enums.LeadSource
+  status?: $Enums.LeadStatus
+  intendedProgramId?: string | null
+  ownerCounselorId?: string | null
+  aiScore?: number | null
+  nextFollowUpAt?: Date | string | null
+  convertedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notes?: Prisma.LeadNoteUncheckedCreateNestedManyWithoutLeadInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedCreateNestedOneWithoutLeadInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedCreateNestedOneWithoutLeadInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedCreateNestedOneWithoutLeadInput
+  applicant?: Prisma.ApplicantUncheckedCreateNestedOneWithoutLeadInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutLeadInput
+}
+
+export type LeadCreateOrConnectWithoutCareerApplicationInput = {
+  where: Prisma.LeadWhereUniqueInput
+  create: Prisma.XOR<Prisma.LeadCreateWithoutCareerApplicationInput, Prisma.LeadUncheckedCreateWithoutCareerApplicationInput>
+}
+
+export type LeadUpsertWithoutCareerApplicationInput = {
+  update: Prisma.XOR<Prisma.LeadUpdateWithoutCareerApplicationInput, Prisma.LeadUncheckedUpdateWithoutCareerApplicationInput>
+  create: Prisma.XOR<Prisma.LeadCreateWithoutCareerApplicationInput, Prisma.LeadUncheckedCreateWithoutCareerApplicationInput>
+  where?: Prisma.LeadWhereInput
+}
+
+export type LeadUpdateToOneWithWhereWithoutCareerApplicationInput = {
+  where?: Prisma.LeadWhereInput
+  data: Prisma.XOR<Prisma.LeadUpdateWithoutCareerApplicationInput, Prisma.LeadUncheckedUpdateWithoutCareerApplicationInput>
+}
+
+export type LeadUpdateWithoutCareerApplicationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
+  status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
+  intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
+  ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
+  applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutLeadNestedInput
+}
+
+export type LeadUncheckedUpdateWithoutCareerApplicationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumLeadSourceFieldUpdateOperationsInput | $Enums.LeadSource
+  status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  intendedProgramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ownerCounselorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  nextFollowUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notes?: Prisma.LeadNoteUncheckedUpdateManyWithoutLeadNestedInput
+  scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
+  programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
+  contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
   applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
 }
@@ -1608,6 +1765,7 @@ export type LeadUpdateWithoutOwnerCounselorInput = {
   scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUpdateOneWithoutLeadNestedInput
   intendedProgram?: Prisma.ProgramUpdateOneWithoutLeadsNestedInput
   applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutLeadNestedInput
@@ -1631,6 +1789,7 @@ export type LeadUncheckedUpdateWithoutOwnerCounselorInput = {
   scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUncheckedUpdateOneWithoutLeadNestedInput
   applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
 }
@@ -1684,6 +1843,7 @@ export type LeadUpdateWithoutIntendedProgramInput = {
   scholarship?: Prisma.ScholarshipInquiryUpdateOneWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUpdateOneWithoutLeadNestedInput
   ownerCounselor?: Prisma.UserUpdateOneWithoutLeadsOwnedNestedInput
   applicant?: Prisma.ApplicantUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutLeadNestedInput
@@ -1707,6 +1867,7 @@ export type LeadUncheckedUpdateWithoutIntendedProgramInput = {
   scholarship?: Prisma.ScholarshipInquiryUncheckedUpdateOneWithoutLeadNestedInput
   programFinder?: Prisma.ProgramFinderSubmissionUncheckedUpdateOneWithoutLeadNestedInput
   contactEnquiry?: Prisma.ContactEnquiryUncheckedUpdateOneWithoutLeadNestedInput
+  careerApplication?: Prisma.CareerApplicationUncheckedUpdateOneWithoutLeadNestedInput
   applicant?: Prisma.ApplicantUncheckedUpdateOneWithoutLeadNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutLeadNestedInput
 }
@@ -1786,6 +1947,7 @@ export type LeadSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   scholarship?: boolean | Prisma.Lead$scholarshipArgs<ExtArgs>
   programFinder?: boolean | Prisma.Lead$programFinderArgs<ExtArgs>
   contactEnquiry?: boolean | Prisma.Lead$contactEnquiryArgs<ExtArgs>
+  careerApplication?: boolean | Prisma.Lead$careerApplicationArgs<ExtArgs>
   intendedProgram?: boolean | Prisma.Lead$intendedProgramArgs<ExtArgs>
   ownerCounselor?: boolean | Prisma.Lead$ownerCounselorArgs<ExtArgs>
   applicant?: boolean | Prisma.Lead$applicantArgs<ExtArgs>
@@ -1854,6 +2016,7 @@ export type LeadInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   scholarship?: boolean | Prisma.Lead$scholarshipArgs<ExtArgs>
   programFinder?: boolean | Prisma.Lead$programFinderArgs<ExtArgs>
   contactEnquiry?: boolean | Prisma.Lead$contactEnquiryArgs<ExtArgs>
+  careerApplication?: boolean | Prisma.Lead$careerApplicationArgs<ExtArgs>
   intendedProgram?: boolean | Prisma.Lead$intendedProgramArgs<ExtArgs>
   ownerCounselor?: boolean | Prisma.Lead$ownerCounselorArgs<ExtArgs>
   applicant?: boolean | Prisma.Lead$applicantArgs<ExtArgs>
@@ -1876,6 +2039,7 @@ export type $LeadPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     scholarship: Prisma.$ScholarshipInquiryPayload<ExtArgs> | null
     programFinder: Prisma.$ProgramFinderSubmissionPayload<ExtArgs> | null
     contactEnquiry: Prisma.$ContactEnquiryPayload<ExtArgs> | null
+    careerApplication: Prisma.$CareerApplicationPayload<ExtArgs> | null
     intendedProgram: Prisma.$ProgramPayload<ExtArgs> | null
     ownerCounselor: Prisma.$UserPayload<ExtArgs> | null
     applicant: Prisma.$ApplicantPayload<ExtArgs> | null
@@ -2294,6 +2458,7 @@ export interface Prisma__LeadClient<T, Null = never, ExtArgs extends runtime.Typ
   scholarship<T extends Prisma.Lead$scholarshipArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Lead$scholarshipArgs<ExtArgs>>): Prisma.Prisma__ScholarshipInquiryClient<runtime.Types.Result.GetResult<Prisma.$ScholarshipInquiryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   programFinder<T extends Prisma.Lead$programFinderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Lead$programFinderArgs<ExtArgs>>): Prisma.Prisma__ProgramFinderSubmissionClient<runtime.Types.Result.GetResult<Prisma.$ProgramFinderSubmissionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   contactEnquiry<T extends Prisma.Lead$contactEnquiryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Lead$contactEnquiryArgs<ExtArgs>>): Prisma.Prisma__ContactEnquiryClient<runtime.Types.Result.GetResult<Prisma.$ContactEnquiryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  careerApplication<T extends Prisma.Lead$careerApplicationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Lead$careerApplicationArgs<ExtArgs>>): Prisma.Prisma__CareerApplicationClient<runtime.Types.Result.GetResult<Prisma.$CareerApplicationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   intendedProgram<T extends Prisma.Lead$intendedProgramArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Lead$intendedProgramArgs<ExtArgs>>): Prisma.Prisma__ProgramClient<runtime.Types.Result.GetResult<Prisma.$ProgramPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   ownerCounselor<T extends Prisma.Lead$ownerCounselorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Lead$ownerCounselorArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   applicant<T extends Prisma.Lead$applicantArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Lead$applicantArgs<ExtArgs>>): Prisma.Prisma__ApplicantClient<runtime.Types.Result.GetResult<Prisma.$ApplicantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -2820,6 +2985,25 @@ export type Lead$contactEnquiryArgs<ExtArgs extends runtime.Types.Extensions.Int
    */
   include?: Prisma.ContactEnquiryInclude<ExtArgs> | null
   where?: Prisma.ContactEnquiryWhereInput
+}
+
+/**
+ * Lead.careerApplication
+ */
+export type Lead$careerApplicationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CareerApplication
+   */
+  select?: Prisma.CareerApplicationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CareerApplication
+   */
+  omit?: Prisma.CareerApplicationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CareerApplicationInclude<ExtArgs> | null
+  where?: Prisma.CareerApplicationWhereInput
 }
 
 /**
