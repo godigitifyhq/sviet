@@ -230,9 +230,7 @@ export function NewInitiativePage() {
                   <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E7EB] bg-[#F8F7F3] text-sm font-bold text-[#101828]">
                     1
                   </span>
-                  <p className="mt-4 text-sm font-bold text-[#8B1A1A]">
-                    Step One
-                  </p>
+
                   <h3 className="mt-2 text-xl font-medium text-[#101828] md:text-2xl">
                     Learn from Industry Experts
                   </h3>
