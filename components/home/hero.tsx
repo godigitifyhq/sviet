@@ -59,8 +59,8 @@ export function HeroSection({
     >
       <div className="relative w-full overflow-hidden">
         {/* Mobile Layout */}
-        <div className="md:hidden flex flex-col items-center gap-6 px-4 py-8">
-          <div className="relative w-full h-80 overflow-hidden rounded-lg">
+        <div className="md:hidden">
+          <div className="relative w-full h-[min(56vw,420px)] min-h-65 overflow-hidden">
             {heroSlides.map((slide, index) =>
               slide.videoSrc ? (
                 <video
