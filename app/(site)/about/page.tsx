@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { AboutOverviewPage } from "@/components/about/about-overview-page";
 import type { InstitutionCoursesData } from "@/components/about/institutions-courses-section";
 import { prisma } from "@/lib/prisma";
+import { COURSE_CATALOG, toSlug } from "@/lib/course-catalog";
 
 type ProgramLevel =
   | "UG"
@@ -36,6 +37,64 @@ const LEVEL_ORDER: ProgramLevel[] = [
   "VOCATIONAL",
   "CERTIFICATE",
 ];
+
+/**
+ * Manual overrides applied on top of database-backed programs.
+ * This allows the About page to show add/remove/rename requests
+ * without modifying the canonical program records in the DB.
+ */
+const INSTITUTION_OVERRIDES: Record<
+  string,
+  {
+    add?: string[];
+    remove?: string[];
+    rename?: Record<string, string>;
+  }
+> = {
+  sviet: {
+    add: [
+      "Master of Business Administration",
+      "Diploma in Civil Engineering",
+      "Diploma in Mechanical Engineering",
+      "Master of Computer Applications",
+    ],
+  },
+  svfitbm: {
+    add: ["Bachelor of Arts"],
+    remove: [
+      "B.Sc Information Technology",
+      "M.Sc Chemistry",
+      "M.Sc Math",
+      "M.Sc Physics",
+      "Master of Business Administration",
+      "Master of Commerce",
+      "Master of Computer Applications",
+      "Bachelor of Arts (Computer Science)",
+      "Post Graduate Diploma in Computer Application",
+    ],
+  },
+  svcmt: {
+    add: [
+      "Bachelor of Business Administration",
+      "Bachelor of Computer Applications",
+      "M.Sc (Chemistry)",
+      "B.A. (Computer science)",
+      "B.Sc Information Technology",
+    ],
+    remove: [
+      "B.Sc Cardiac Care Technology",
+      "Bachelor in Hospital Administration",
+      "M.Sc (medical Microbiology)",
+      "M.Sc (Radiology and Imaging Technology)",
+    ],
+    rename: {
+      "B.Sc (Cardiac Care Technology)": "B.Sc Cardiac Care Technology",
+    },
+  },
+  svcp: {
+    add: ["Diploma in Pharmacy"],
+  },
+};
 
 const INSTITUTION_DEFINITIONS: InstitutionDefinition[] = [
   {
