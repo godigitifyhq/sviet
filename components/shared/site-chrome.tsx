@@ -19,6 +19,7 @@ import {
 import { useEffect, useState } from "react";
 
 import { ABOUT_DROPDOWN_ITEMS } from "@/lib/config/about-nav";
+import { NccRegistrationButton } from "@/components/shared/ncc-registration-button";
 
 const NAV_ITEMS = [
   { label: "About", href: "/about" },
@@ -1087,8 +1088,8 @@ export function SiteFooter() {
             <section>
               <h4 className="text-lg font-semibold uppercase">Quick Links</h4>
               <ul className="mt-5 space-y-3 text-sm text-white/85">
+                <li><NccRegistrationButton /></li>
                 {[
-                  { label: "NCC Registration", href: "#" },
                   {
                     label: "RNR Scholarship",
                     href: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumXRxmHO2YwQAC3BxfPnoR46m9tK5uUkNerSOE",
