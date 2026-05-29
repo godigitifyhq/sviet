@@ -61,7 +61,7 @@ export function AdmissionsCareerProgramsSection({
 }: AdmissionsCareerProgramsSectionProps) {
   const [keyword, setKeyword] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("All levels");
-  const [selectedFaculty, setSelectedFaculty] = useState("All faculties");
+  const [selectedFaculty, setSelectedFaculty] = useState("All Programs");
   const [expanded, setExpanded] = useState(false);
 
   const levels = useMemo(() => {
@@ -78,7 +78,7 @@ export function AdmissionsCareerProgramsSection({
         .filter((value): value is string => Boolean(value && value.length > 0)),
     );
 
-    return ["All faculties", ...Array.from(values)];
+    return ["All Programs", ...Array.from(values)];
   }, [programs]);
 
   const visiblePrograms = useMemo(() => {
@@ -96,7 +96,7 @@ export function AdmissionsCareerProgramsSection({
         selectedLevel === "All levels" ||
         formatLevel(program.level, program.title) === selectedLevel;
       const matchesFaculty =
-        selectedFaculty === "All faculties" ||
+        selectedFaculty === "All Programs" ||
         (program.department || "Unassigned").trim() === selectedFaculty;
 
       return matchesKeyword && matchesLevel && matchesFaculty;
