@@ -33,6 +33,7 @@ enum LeadSource {
   SOCIAL
   WEBSITE
   EVENT
+  CAREER_APPLICATION
 }
 
 enum LeadStatus {
@@ -273,9 +274,10 @@ model Lead {
   ownerCounselorId  String?
   notes             LeadNote[]
   aiScore           Int?
-  scholarship       ScholarshipInquiry?
-  programFinder     ProgramFinderSubmission?
-  contactEnquiry    ContactEnquiry?
+  scholarship          ScholarshipInquiry?
+  programFinder        ProgramFinderSubmission?
+  contactEnquiry       ContactEnquiry?
+  careerApplication    CareerApplication?
   nextFollowUpAt    DateTime?
   convertedAt       DateTime?
   createdAt         DateTime    @default(now())
@@ -619,4 +621,17 @@ model PlacementKeyStat {
   updatedAt DateTime @updatedAt
 
   @@index([sortOrder])
+}
+
+model CareerApplication {
+  id              String   @id @default(uuid())
+  leadId          String   @unique
+  position        String
+  qualifications  String
+  yearsExperience Int
+  coverLetter     String?
+  createdAt       DateTime @default(now())
+  lead            Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@index([createdAt])
 }

@@ -1062,9 +1062,9 @@ export function SiteFooter() {
               <h4 className="text-lg font-semibold uppercase">Quick Links</h4>
               <ul className="mt-5 space-y-3 text-sm text-white/85">
                 {[
-                  { label: "Placement Overview", href: "/placement" },
+                  { label: "Placement Overview", href: "/placements" },
                   { label: "Photo Gallery", href: "/gallery" },
-                  { label: "Grievances/Enquiry", href: "/contact-us" },
+                  { label: "Grievances/Enquiry", href: "/contact" },
                   {
                     label: "Final Year 2023 Group Pictures",
                     href: "https://drive.google.com/drive/folders/1zn_0Wid35r5DyfnCOsxcTrd0ZcZJ2FP1",
@@ -1089,12 +1089,11 @@ export function SiteFooter() {
               <ul className="mt-5 space-y-3 text-sm text-white/85">
                 {[
                   { label: "NCC Registration", href: "#" },
-                  { label: "SVGOI Advantages", href: "/advantages" },
                   {
                     label: "RNR Scholarship",
                     href: "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumXRxmHO2YwQAC3BxfPnoR46m9tK5uUkNerSOE",
                   },
-                  { label: "Contact-us", href: "/contact-us" },
+                  { label: "Contact-us", href: "/contact" },
                   { label: "Scholarship", href: "/admissions" },
                   { label: "Refund Policy", href: "/refund-policy" },
                   {

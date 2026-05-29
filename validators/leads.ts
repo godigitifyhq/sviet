@@ -43,6 +43,13 @@ export const EventRegistrationSchema = BaseLeadSchema.extend({
   eventId: z.string().uuid(),
 });
 
+export const CareerApplicationSchema = BaseLeadSchema.extend({
+  position: z.string().min(2).max(200),
+  qualifications: z.string().min(2).max(500),
+  yearsExperience: z.coerce.number().int().min(0).max(60),
+  coverLetter: z.string().max(3000).optional(),
+});
+
 export const createLeadSchema = BaseLeadSchema.extend({
   source: z.enum([
     "APPLY_NOW",
@@ -57,6 +64,7 @@ export const createLeadSchema = BaseLeadSchema.extend({
     "SOCIAL",
     "WEBSITE",
     "EVENT",
+    "CAREER_APPLICATION",
   ]),
   intendedProgramId: z.string().uuid().optional(),
   notes: z.string().trim().max(1000).optional(),

@@ -162,3 +162,8 @@ export type PlacementHighlightBanner = Prisma.PlacementHighlightBannerModel
  * 
  */
 export type PlacementKeyStat = Prisma.PlacementKeyStatModel
+/**
+ * Model CareerApplication
+ * 
+ */
+export type CareerApplication = Prisma.CareerApplicationModel

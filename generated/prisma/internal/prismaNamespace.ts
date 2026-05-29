@@ -412,7 +412,8 @@ export const ModelName = {
   PlacementRecord: 'PlacementRecord',
   PlacementTrendYear: 'PlacementTrendYear',
   PlacementHighlightBanner: 'PlacementHighlightBanner',
-  PlacementKeyStat: 'PlacementKeyStat'
+  PlacementKeyStat: 'PlacementKeyStat',
+  CareerApplication: 'CareerApplication'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -428,7 +429,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "authSession" | "department" | "specialization" | "program" | "programSpecialization" | "intake" | "lead" | "applicant" | "application" | "applicationFormData" | "applicationStepProgress" | "document" | "applicationStatusHistory" | "activityLog" | "enrollment" | "event" | "eventSpeaker" | "eventRegistration" | "blogPost" | "announcement" | "leadNote" | "scholarshipInquiry" | "programFinderSubmission" | "contactEnquiry" | "placementRecord" | "placementTrendYear" | "placementHighlightBanner" | "placementKeyStat"
+    modelProps: "user" | "authSession" | "department" | "specialization" | "program" | "programSpecialization" | "intake" | "lead" | "applicant" | "application" | "applicationFormData" | "applicationStepProgress" | "document" | "applicationStatusHistory" | "activityLog" | "enrollment" | "event" | "eventSpeaker" | "eventRegistration" | "blogPost" | "announcement" | "leadNote" | "scholarshipInquiry" | "programFinderSubmission" | "contactEnquiry" | "placementRecord" | "placementTrendYear" | "placementHighlightBanner" | "placementKeyStat" | "careerApplication"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2578,6 +2579,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    CareerApplication: {
+      payload: Prisma.$CareerApplicationPayload<ExtArgs>
+      fields: Prisma.CareerApplicationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CareerApplicationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CareerApplicationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CareerApplicationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CareerApplicationPayload>
+        }
+        findFirst: {
+          args: Prisma.CareerApplicationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CareerApplicationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CareerApplicationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CareerApplicationPayload>
+        }
+        findMany: {
+          args: Prisma.CareerApplicationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CareerApplicationPayload>[]
+        }
+        create: {
+          args: Prisma.CareerApplicationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CareerApplicationPayload>
+        }
+        createMany: {
+          args: Prisma.CareerApplicationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CareerApplicationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CareerApplicationPayload>[]
+        }
+        delete: {
+          args: Prisma.CareerApplicationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CareerApplicationPayload>
+        }
+        update: {
+          args: Prisma.CareerApplicationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CareerApplicationPayload>
+        }
+        deleteMany: {
+          args: Prisma.CareerApplicationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CareerApplicationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CareerApplicationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CareerApplicationPayload>[]
+        }
+        upsert: {
+          args: Prisma.CareerApplicationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CareerApplicationPayload>
+        }
+        aggregate: {
+          args: Prisma.CareerApplicationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCareerApplication>
+        }
+        groupBy: {
+          args: Prisma.CareerApplicationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerApplicationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CareerApplicationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerApplicationCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -3066,6 +3141,19 @@ export const PlacementKeyStatScalarFieldEnum = {
 export type PlacementKeyStatScalarFieldEnum = (typeof PlacementKeyStatScalarFieldEnum)[keyof typeof PlacementKeyStatScalarFieldEnum]
 
 
+export const CareerApplicationScalarFieldEnum = {
+  id: 'id',
+  leadId: 'leadId',
+  position: 'position',
+  qualifications: 'qualifications',
+  yearsExperience: 'yearsExperience',
+  coverLetter: 'coverLetter',
+  createdAt: 'createdAt'
+} as const
+
+export type CareerApplicationScalarFieldEnum = (typeof CareerApplicationScalarFieldEnum)[keyof typeof CareerApplicationScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -3545,6 +3633,7 @@ export type GlobalOmitConfig = {
   placementTrendYear?: Prisma.PlacementTrendYearOmit
   placementHighlightBanner?: Prisma.PlacementHighlightBannerOmit
   placementKeyStat?: Prisma.PlacementKeyStatOmit
+  careerApplication?: Prisma.CareerApplicationOmit
 }
 
 /* Types for Logging */

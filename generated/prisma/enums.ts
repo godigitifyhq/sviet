@@ -40,7 +40,8 @@ export const LeadSource = {
   WALK_IN: 'WALK_IN',
   SOCIAL: 'SOCIAL',
   WEBSITE: 'WEBSITE',
-  EVENT: 'EVENT'
+  EVENT: 'EVENT',
+  CAREER_APPLICATION: 'CAREER_APPLICATION'
 } as const
 
 export type LeadSource = (typeof LeadSource)[keyof typeof LeadSource]
