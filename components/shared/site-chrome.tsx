@@ -1060,7 +1060,6 @@ export function SiteFooter() {
             </section>
 
             <section>
-              <h4 className="text-lg font-semibold uppercase">Quick Links</h4>
               <ul className="mt-5 space-y-3 text-sm text-white/85">
                 {[
                   { label: "Placement Overview", href: "/placements" },
@@ -1086,11 +1085,10 @@ export function SiteFooter() {
             </section>
 
             <section>
-              <h4 className="text-lg font-semibold uppercase">Quick Links</h4>
               <ul className="mt-5 space-y-3 text-sm text-white/85">
-                <li>
+                {/* <li>
                   <NccRegistrationButton />
-                </li>
+                </li> */}
                 {[
                   {
                     label: "RNR Scholarship",
