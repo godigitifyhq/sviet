@@ -20,6 +20,17 @@ type InstitutionDefinition = {
   departmentSlugs: string[];
 };
 
+type ProgramRecord = {
+  id: string;
+  slug: string;
+  title: string;
+  durationMonths: number;
+  level: ProgramLevel;
+  department?: {
+    slug: string;
+  } | null;
+};
+
 const LEVEL_LABELS: Record<ProgramLevel, string> = {
   UG: "Undergraduate",
   PG: "Postgraduate",
@@ -94,6 +105,9 @@ const INSTITUTION_OVERRIDES: Record<
   svcp: {
     add: ["Diploma in Pharmacy"],
   },
+  svip: {
+    add: ["B.Pharmacy"],
+  },
 };
 
 const INSTITUTION_DEFINITIONS: InstitutionDefinition[] = [
@@ -165,9 +179,90 @@ const INSTITUTION_DEFINITIONS: InstitutionDefinition[] = [
   },
 ];
 
+const COURSE_CATALOG_BY_TITLE = new Map(
+  COURSE_CATALOG.map((course) => [course.title.trim().toLowerCase(), course]),
+);
+
+function normalizeProgramTitle(title: string) {
+  return title.trim().toLowerCase();
+}
+
+function buildInstitutionCourses(
+  institution: InstitutionDefinition,
+  programs: ProgramRecord[],
+): InstitutionCoursesData {
+  const override = INSTITUTION_OVERRIDES[institution.id];
+  const removedTitles = new Set(
+    (override?.remove ?? []).map(normalizeProgramTitle),
+  );
+  const renameMap = new Map(
+    Object.entries(override?.rename ?? {}).map(([from, to]) => [
+      normalizeProgramTitle(from),
+      to,
+    ]),
+  );
+
+  const institutionCourses = programs
+    .filter((program) => {
+      const departmentSlug = program.department?.slug;
+      return Boolean(
+        departmentSlug && institution.departmentSlugs.includes(departmentSlug),
+      );
+    })
+    .filter((program) => !removedTitles.has(normalizeProgramTitle(program.title)))
+    .map((program) => {
+      const renamedTitle = renameMap.get(normalizeProgramTitle(program.title));
+
+      return renamedTitle ? { ...program, title: renamedTitle } : program;
+    });
+
+  const existingTitles = new Set(
+    institutionCourses.map((program) => normalizeProgramTitle(program.title)),
+  );
+
+  for (const title of override?.add ?? []) {
+    const normalizedTitle = normalizeProgramTitle(title);
+
+    if (existingTitles.has(normalizedTitle)) {
+      continue;
+    }
+
+    const catalogCourse = COURSE_CATALOG_BY_TITLE.get(normalizedTitle);
+    if (!catalogCourse) {
+      continue;
+    }
+
+    institutionCourses.push({
+      id: `manual-${institution.id}-${toSlug(catalogCourse.title)}`,
+      slug: toSlug(catalogCourse.title),
+      title: catalogCourse.title,
+      durationMonths: catalogCourse.durationMonths,
+      level: catalogCourse.level,
+      department: null,
+    });
+    existingTitles.add(normalizedTitle);
+  }
+
+  const coursesByCategory = LEVEL_ORDER.map((level) => {
+    const levelCourses = institutionCourses.filter((course) => course.level === level);
+
+    return {
+      category: LEVEL_LABELS[level],
+      courses: levelCourses,
+    };
+  }).filter((entry) => entry.courses.length > 0);
+
+  return {
+    id: institution.id,
+    name: institution.name,
+    description: institution.description,
+    coursesByCategory,
+  };
+}
+
 async function getInstitutionCourses(): Promise<InstitutionCoursesData[]> {
   try {
-    const programs = await prisma.program.findMany({
+    const programs: ProgramRecord[] = await prisma.program.findMany({
       where: { isActive: true, department: { isActive: true } },
       orderBy: [{ title: "asc" }],
       select: {
@@ -182,42 +277,15 @@ async function getInstitutionCourses(): Promise<InstitutionCoursesData[]> {
       },
     });
 
-    return INSTITUTION_DEFINITIONS.map((institution) => {
-      const institutionCourses = programs.filter((program) => {
-        const departmentSlug = program.department?.slug;
-        return Boolean(
-          departmentSlug &&
-          institution.departmentSlugs.includes(departmentSlug),
-        );
-      });
-
-      const coursesByCategory = LEVEL_ORDER.map((level) => {
-        const levelCourses = institutionCourses.filter(
-          (course) => course.level === level,
-        );
-
-        return {
-          category: LEVEL_LABELS[level],
-          courses: levelCourses,
-        };
-      }).filter((entry) => entry.courses.length > 0);
-
-      return {
-        id: institution.id,
-        name: institution.name,
-        description: institution.description,
-        coursesByCategory,
-      };
-    });
+    return INSTITUTION_DEFINITIONS.map((institution) =>
+      buildInstitutionCourses(institution, programs),
+    );
   } catch (error) {
     console.warn("Unable to load institution courses for About page", error);
 
-    return INSTITUTION_DEFINITIONS.map((institution) => ({
-      id: institution.id,
-      name: institution.name,
-      description: institution.description,
-      coursesByCategory: [],
-    }));
+    return INSTITUTION_DEFINITIONS.map((institution) =>
+      buildInstitutionCourses(institution, []),
+    );
   }
 }
 

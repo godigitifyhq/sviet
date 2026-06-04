@@ -1088,7 +1088,9 @@ export function SiteFooter() {
             <section>
               <h4 className="text-lg font-semibold uppercase">Quick Links</h4>
               <ul className="mt-5 space-y-3 text-sm text-white/85">
-                <li><NccRegistrationButton /></li>
+                <li>
+                  <NccRegistrationButton />
+                </li>
                 {[
                   {
                     label: "RNR Scholarship",
@@ -1097,10 +1099,6 @@ export function SiteFooter() {
                   { label: "Contact-us", href: "/contact" },
                   { label: "Scholarship", href: "/admissions" },
                   { label: "Refund Policy", href: "/refund-policy" },
-                  {
-                    label: "ERP APP",
-                    href: "https://play.google.com/store/apps/details?id=com.giindia.www.g5myconnect&hl=en_IN",
-                  },
                   { label: "Privacy Policy", href: "/privacy-policy" },
                   {
                     label: "Terms & Conditions",
