@@ -12,28 +12,28 @@ const ACCREDITATIONS = [
     title: "NAAC Accreditation",
     description:
       "Recognized with NAAC B++ Grade (2.94 Score, 2024), reflecting institutional focus on quality learning and continuous improvement.",
-    logoSrc: "http://naac.gov.in/templates/naac/images/header.png",
+    logoSrc: "/assets/img/NAAC-Logo.jpg",
     logoAlt: "NAAC accreditation logo",
   },
   {
     title: "Program Quality Assurance",
     description:
       "Program delivery is aligned with applicable national quality frameworks and outcome-based academic practices.",
-    logoSrc: "",
+    logoSrc: "/assets/img/vl.jpeg",
     logoAlt: "Program quality assurance logo",
   },
   {
-    title: "UGC Compliance",
+    title: "UGC Recognition",
     description:
       "Institutional operations and academic standards are maintained in line with relevant UGC norms and expectations.",
-    logoSrc: "",
+    logoSrc: "/assets/img/UGC_India_Logo.png",
     logoAlt: "UGC approval logo",
   },
 ];
 
 const OTHER_APPROVALS = [
   {
-    title: "AICTE Alignment",
+    title: "AICTE Approved",
     description:
       "Technical and professional programs are structured in accordance with applicable regulatory expectations.",
     logoSrc:
@@ -51,7 +51,7 @@ const OTHER_APPROVALS = [
     title: "NCTE Recognition",
     description:
       "Teacher education pathways are maintained with required academic and regulatory safeguards.",
-    logoSrc: "",
+    logoSrc: "/assets/img/ap_logs/NCTE.jpg",
     logoAlt: "NCTE approval logo",
   },
   {
@@ -62,51 +62,45 @@ const OTHER_APPROVALS = [
       "https://www.barcouncilofindia.org/d4a265c3a0597b581f64e74c22b87d2f.svg",
     logoAlt: "Bar Council of India logo",
   },
-  {
-    title: "State-Level Recognition",
-    description:
-      "Institutional operations continue under valid state-level recognition and compliance mechanisms.",
-    logoSrc: "",
-    logoAlt: "State government recognition logo",
-  },
+  // {
+  //   title: "State-Level Recognition",
+  //   description:
+  //     "Institutional operations continue under valid state-level recognition and compliance mechanisms.",
+  //   logoSrc: "",
+  //   logoAlt: "State government recognition logo",
+  // },
 ];
 
 const MEMBERSHIPS = [
   {
-    name: "Association of Indian Universities (AIU)",
-    description:
-      "Membership strengthens academic collaboration, institutional benchmarking, and best-practice sharing.",
-    logoSrc: "",
-    logoAlt: "AIU membership logo",
+    logoSrc: "/assets/img/affliation/IKGPTU.webp",
+    logoAlt: "IKGPTU affiliation logo",
   },
   {
-    name: "Innovation & Academic Networks",
-    description:
-      "Collaborative platforms support innovation-led learning, faculty development, and student exposure.",
-    logoSrc: "",
-    logoAlt: "Innovation and academic networks logo",
+    logoSrc: "/assets/img/affliation/MRSPTU.webp",
+    logoAlt: "MRSPTU affiliation logo",
   },
   {
-    name: "Professional Bodies",
-    description:
-      "Engagement with professional bodies helps keep curriculum and practice aligned with industry evolution.",
-    logoSrc: "",
-    logoAlt: "Professional bodies membership logo",
+    logoSrc: "/assets/img/affliation/NCVT.webp",
+    logoAlt: "NCVT affiliation logo",
   },
   {
-    name: "Quality Assurance Alliances",
-    description:
-      "Institutional participation in quality-focused alliances supports transparent review and continuous improvement.",
-    logoSrc: "",
-    logoAlt: "Quality assurance alliances membership logo",
+    logoSrc: "/assets/img/affliation/PSBTE.png",
+    logoAlt: "PSBTE affiliation logo",
+  },
+  {
+    logoSrc: "/assets/img/affliation/Punjabi_University.avif",
+    logoAlt: "Punjabi University affiliation logo",
   },
 ];
 
 const AP_LOGO_MARQUEE = [
+  { src: "/assets/img/UGC_India_Logo.png", alt: "UGC logo" },
   { src: "/assets/img/ap_logs/NAAC.png", alt: "NAAC logo" },
   { src: "/assets/img/ap_logs/pci.png", alt: "Pharmacy Council of India logo" },
   { src: "/assets/img/ap_logs/bci.png", alt: "Bar Council of India logo" },
   { src: "/assets/img/ap_logs/iste.jpg", alt: "ISTE logo" },
+  { src: "/assets/img/vl.jpeg", alt: "virtual labs logo" },
   { src: "/assets/img/ap_logs/1.png", alt: "Approval logo one" },
   { src: "/assets/img/ap_logs/4.png", alt: "Approval logo four" },
   { src: "/assets/img/ap_logs/8.png", alt: "Approval logo eight" },
@@ -288,15 +282,13 @@ export function AccreditationsPage() {
       >
         <SectionHeader
           id="memberships-heading"
-          title="Institutional Memberships"
+          title="Institutional Affiliations"
         />
 
-        <div className="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-18 flex flex-wrap items-center justify-center gap-6">
           {MEMBERSHIPS.map((item) => (
             <MembershipCard
-              key={item.name}
-              name={item.name}
-              description={item.description}
+              key={item.logoSrc}
               logoSrc={item.logoSrc}
               logoAlt={item.logoAlt}
             />
