@@ -51,7 +51,7 @@ const OTHER_APPROVALS = [
     title: "NCTE Recognition",
     description:
       "Teacher education pathways are maintained with required academic and regulatory safeguards.",
-    logoSrc: "/assets/img/ap_logs/NCTE.jpg",
+    logoSrc: "/assets/img/NCTE.jpg",
     logoAlt: "NCTE approval logo",
   },
   {
