@@ -1066,8 +1066,8 @@ export function SiteFooter() {
                   { label: "Photo Gallery", href: "/gallery" },
                   { label: "Grievances/Enquiry", href: "/contact" },
                   {
-                    label: "Final Year 2023 Group Pictures",
-                    href: "https://drive.google.com/drive/folders/1zn_0Wid35r5DyfnCOsxcTrd0ZcZJ2FP1",
+                    label: "Final Year 2026 Group Pictures",
+                    href: "https://drive.google.com/drive/folders/1nYNpfNbd1QNf8suyNeGJdM3uoAidO-Dx?usp=drive_link",
                   },
                   { label: "NAAC", href: "https://www.sviet.org.in" },
                   { label: "ISTE Sviet Chapter", href: "/iste" },

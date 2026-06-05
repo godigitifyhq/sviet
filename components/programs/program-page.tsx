@@ -565,11 +565,6 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
       {/* ── Hero ──────────────────────────────────────────────────────────────── */}
       <section className="-mt-30 w-full bg-[#050d1f] pt-30 text-white">
         <div className="relative min-h-125 w-full overflow-hidden md:min-h-145 lg:min-h-170">
-          {isAutonomousProgram(program.slug) && (
-            <div className="absolute left-6 top-6 z-30 rounded-full border border-white/20 bg-white/6 px-4 py-1 text-sm font-semibold text-white/90">
-              Autonomous Institute
-            </div>
-          )}
           {heroImage && (
             <Image
               src={heroImage}
@@ -636,6 +631,9 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
                 <span>⏱ {formatDuration(program.durationMonths)}</span>
                 <span>✓ AICTE Approved</span>
                 <span>🏛 IKGPTU Affiliated</span>
+                {isAutonomousProgram(program.slug) && (
+                  <span>Autonomous Institute</span>
+                )}
               </div>
             </div>
 
