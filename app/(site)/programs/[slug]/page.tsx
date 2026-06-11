@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import programCatalog from "@/data/data/data";
 import { ProgramDetailPage } from "@/components/programs/program-page";
@@ -337,6 +337,18 @@ function normalizeFaqItems(value: unknown) {
   return parseFaqEntries(value);
 }
 
+// Variant programs (institution-specific copies) redirect to their canonical page
+// so users always see one unified page with all affiliations shown.
+const SLUG_REDIRECTS: Record<string, string> = {
+  "bachelor-of-computer-applications-svftm": "bachelor-of-computer-applications",
+  "bachelor-of-computer-applications-svcmt": "bachelor-of-computer-applications",
+  "bachelor-of-business-administration-svftm": "bachelor-of-business-administration",
+  "bachelor-of-business-administration-svcmt": "bachelor-of-business-administration",
+  "bsc-medical-lab-sciences-svftm": "bsc-medical-lab-sciences",
+  "bsc-operation-theatre-technology-svftm": "bsc-hons-operation-theatre-technology",
+  "bsc-radiology-svftm": "bsc-radiology-imaging-technology",
+};
+
 const PROGRAM_HERO_IMAGES: Record<string, string> = {
   // Pharmacy
   bpharmacy: "/assets/programs/pharmacy/pharm/Bpharma.jpg",
@@ -516,6 +528,8 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
 
+  if (SLUG_REDIRECTS[slug]) return {};
+
   const program = await prisma.program.findUnique({ where: { slug } });
 
   if (!program) {
@@ -551,6 +565,11 @@ export async function generateStaticParams() {
 
 export default async function ProgramSlugPage({ params }: PageProps) {
   const { slug } = await params;
+
+  const canonicalSlug = SLUG_REDIRECTS[slug];
+  if (canonicalSlug) {
+    redirect(`/programs/${canonicalSlug}`);
+  }
 
   const program = await prisma.program.findUnique({
     where: { slug },

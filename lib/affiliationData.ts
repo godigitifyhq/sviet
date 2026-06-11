@@ -4,7 +4,7 @@
 
 export const PROGRAM_AFFILIATIONS_BY_SLUG: Record<string, string[]> = {
   // ── Pharmacy ────────────────────────────────────────────────────────────────
-  bpharmacy: ["IKGPTU", "MRSPTU", "PSBTE & IT"],
+  bpharmacy: ["IKGPTU", "MRSPTU"],
   pharmad: ["IKGPTU"],
   "mpharmacy-pharmaceutics": ["IKGPTU"],
   "mpharmacy-pharmacology": ["IKGPTU"],
@@ -40,16 +40,16 @@ export const PROGRAM_AFFILIATIONS_BY_SLUG: Record<string, string[]> = {
   "msc-radiology-and-imaging-technology": ["IKGPTU"],
   "bsc-honors-in-nutrition-and-dietetics": ["IKGPTU"],
 
-  // ── Health Sciences (SVFTM — IKGPTU variants) ───────────────────────────────
-  "bsc-medical-lab-sciences": ["IKGPTU"],
-  "bsc-radiology-imaging-technology": ["IKGPTU"],
-  "bsc-operation-theater-technology": ["IKGPTU"],
+  // ── Health Sciences (dual-university programs per affiliation table) ─────────
+  "bsc-medical-lab-sciences": ["IKGPTU", "MRSPTU"],
+  "bsc-radiology-imaging-technology": ["IKGPTU", "MRSPTU"],
+  "bsc-hons-operation-theatre-technology": ["IKGPTU", "MRSPTU"],
   "bsc-cardiac-care-technology": ["IKGPTU"],
+  "bachelor-in-hospital-administration": ["IKGPTU"],
 
-  // ── Health Sciences (SVCMT — MRSPTU variants) ──────────────────────────────
+  // ── Health Sciences (SVCMT — MRSPTU) ───────────────────────────────────────
   "msc-chemistry": ["MRSPTU"],
   "bsc-hons-radiology-imaging-technology": ["MRSPTU"],
-  "bsc-hons-operation-theatre-technology": ["MRSPTU"],
   "bsc-hons-anesthesia-technology": ["MRSPTU"],
   "bsc-hons-medical-lab-science": ["MRSPTU"],
   "bsc-hons-optometry": ["MRSPTU"],
@@ -90,16 +90,14 @@ export const PROGRAM_AFFILIATIONS_BY_SLUG: Record<string, string[]> = {
   "b-a-l-l-b": ["PUNJABI UNIVERSITY"],
   "ba-llb": ["PUNJABI UNIVERSITY"],
 
-  // ── SVFTM variants (IKGPTU) ─────────────────────────────────────────────────
-  "bachelor-of-computer-applications-svftm": ["IKGPTU"],
-  "bachelor-of-business-administration-svftm": ["IKGPTU"],
-  "bsc-medical-lab-sciences-svftm": ["IKGPTU"],
-  "bsc-operation-theatre-technology-svftm": ["IKGPTU"],
-  "bsc-radiology-svftm": ["IKGPTU"],
-
-  // ── SVCMT variants (MRSPTU) ─────────────────────────────────────────────────
-  "bachelor-of-computer-applications-svcmt": ["MRSPTU"],
-  "bachelor-of-business-administration-svcmt": ["MRSPTU"],
+  // ── SVFTM / SVCMT variants (redirect to canonical — affiliations mirror canonical) ──
+  "bachelor-of-computer-applications-svftm": ["IKGPTU", "MRSPTU", "PUNJABI UNIVERSITY"],
+  "bachelor-of-business-administration-svftm": ["IKGPTU", "MRSPTU", "PUNJABI UNIVERSITY"],
+  "bsc-medical-lab-sciences-svftm": ["IKGPTU", "MRSPTU"],
+  "bsc-operation-theatre-technology-svftm": ["IKGPTU", "MRSPTU"],
+  "bsc-radiology-svftm": ["IKGPTU", "MRSPTU"],
+  "bachelor-of-computer-applications-svcmt": ["IKGPTU", "MRSPTU", "PUNJABI UNIVERSITY"],
+  "bachelor-of-business-administration-svcmt": ["IKGPTU", "MRSPTU", "PUNJABI UNIVERSITY"],
 };
 
 // Keyed by the institution's full name (must match INSTITUTION_DEFINITIONS[].name in about/page.tsx).
