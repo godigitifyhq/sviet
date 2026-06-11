@@ -150,12 +150,11 @@ const CATEGORY_GROUPS: CategoryGroup[] = [
         sublabel: "Undergraduate Programs",
         programTitles: [
           "B.Sc (Hons.) Anesthesia Technology",
-          "B.Sc (Hons.) Operation Theatre Technology",
+          "B.Sc. (Hons.) Operation Theater Technology",
           "B.Sc (Hons.) Optometry",
-          "B.Sc (Operation Theater Technology)",
           "B.Sc Cardiac Care Technology",
-          "B.Sc Medical Lab Sciences",
-          "B.Sc Radiology & Imaging Technology",
+          "B.Sc. (Hons.) Medical Lab Science",
+          "B.Sc. (Hons.) Radio Medical Imaging Technology",
           "Bachelor of Physiotherapy",
           "Diploma In Nursing Assistant",
         ],
@@ -532,11 +531,15 @@ export function MainNavbar({
     };
   }, []);
 
+  // Variant programs (-svftm / -svcmt) share titles with their canonical counterparts.
+  // Process variants first so canonical entries overwrite them in the Map.
+  const sorted = [...dynamicPrograms].sort((a, b) => {
+    const aV = a.slug.endsWith("-svftm") || a.slug.endsWith("-svcmt") ? 0 : 1;
+    const bV = b.slug.endsWith("-svftm") || b.slug.endsWith("-svcmt") ? 0 : 1;
+    return aV - bV;
+  });
   const programByTitle = new Map<string, { label: string; href: string }>(
-    dynamicPrograms.map((p) => [
-      p.title,
-      { label: p.title, href: `/programs/${p.slug}` },
-    ]),
+    sorted.map((p) => [p.title, { label: p.title, href: `/programs/${p.slug}` }]),
   );
 
   type ResolvedSubgroup = {

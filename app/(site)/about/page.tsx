@@ -126,7 +126,7 @@ const INSTITUTION_DEFINITIONS: InstitutionDefinition[] = [
   {
     id: "svip",
     name: "Swami Vivekanand Institute of Pharmacy",
-    description: "Pharmacy programs and diploma courses",
+    description: "Pharmacy Program",
     departmentSlugs: ["svip-programs"],
   },
   {

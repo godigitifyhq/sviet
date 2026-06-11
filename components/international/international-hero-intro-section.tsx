@@ -1,6 +1,31 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const FLAGS = [
+  { src: "/assets/img/flags/Flag-Cameroon.webp", country: "Cameroon" },
+  { src: "/assets/img/flags/Flag-Cote-dIvoire.webp", country: "Côte d'Ivoire" },
+  { src: "/assets/img/flags/Flag-Guinea.webp", country: "Guinea" },
+  { src: "/assets/img/flags/Flag-Malawi.webp", country: "Malawi" },
+  { src: "/assets/img/flags/Flag-Zimbabwe.webp", country: "Zimbabwe" },
+  { src: "/assets/img/flags/Flag_of_Austria.webp", country: "Austria" },
+  { src: "/assets/img/flags/Flag_of_Egypt.svg", country: "Egypt" },
+  { src: "/assets/img/flags/Flag_of_Ghana.svg", country: "Ghana" },
+  { src: "/assets/img/flags/Flag_of_Kenya.webp", country: "Kenya" },
+  { src: "/assets/img/flags/Flag_of_Lesotho.png", country: "Lesotho" },
+  { src: "/assets/img/flags/Flag_of_Liberia.png", country: "Liberia" },
+  { src: "/assets/img/flags/Flag_of_Mali.png", country: "Mali" },
+  { src: "/assets/img/flags/Flag_of_Mozambique.svg", country: "Mozambique" },
+  { src: "/assets/img/flags/Flag_of_Nigeria.png", country: "Nigeria" },
+  { src: "/assets/img/flags/Flag_of_Rwanda.png", country: "Rwanda" },
+  { src: "/assets/img/flags/Flag_of_South_Sudan.png", country: "South Sudan" },
+  { src: "/assets/img/flags/Flag_of_Sudan.png", country: "Sudan" },
+  { src: "/assets/img/flags/Flag_of_Tanzania.webp", country: "Tanzania" },
+  { src: "/assets/img/flags/Flag_of_Thailand_(CMYK).png", country: "Thailand" },
+  { src: "/assets/img/flags/Flag_of_Uganda.png", country: "Uganda" },
+  { src: "/assets/img/flags/Flag_of_Yemen.png", country: "Yemen" },
+  { src: "/assets/img/flags/Flag_of_Zambia.png", country: "Zambia" },
+];
+
 export function InternationalHeroIntroSection() {
   return (
     <section className="bg-background py-12 md:py-16">
@@ -58,6 +83,32 @@ export function InternationalHeroIntroSection() {
                 Apply now
               </Link>
             </div>
+          </div>
+        </div>
+
+        {/* Flags row */}
+        <div className="mt-16">
+          <h3 className="text-center text-lg font-bold text-[#111827] md:text-xl">
+            Students from Around the World
+          </h3>
+          <div className="mt-6 flex gap-5 overflow-x-auto pb-3 md:flex-wrap md:justify-center md:overflow-x-visible">
+            {FLAGS.map((flag) => (
+              <div
+                key={flag.country}
+                className="flex shrink-0 flex-col items-center gap-2"
+              >
+                <div className="relative h-14 w-14 overflow-hidden rounded-full shadow-md ring-2 ring-gray-100">
+                  <Image
+                    src={flag.src}
+                    alt={`${flag.country} flag`}
+                    fill
+                    sizes="56px"
+                    className="object-cover"
+                  />
+                </div>
+                <span className="text-xs text-gray-500">{flag.country}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

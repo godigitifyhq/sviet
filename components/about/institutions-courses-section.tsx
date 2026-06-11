@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
 import { SectionHeader } from "@/components/about/section-header";
+import { getCollegeAffiliations } from "@/lib/affiliationData";
 
 type CourseLevel =
   | "UG"
@@ -108,6 +109,27 @@ export function InstitutionsCoursesSection({
           <p className="mt-2 text-sm text-[#6B7280]">
             {activeInstitution.description}
           </p>
+
+          {/* College affiliation badges */}
+          {(() => {
+            const unis = getCollegeAffiliations(activeInstitution.name);
+            if (unis.length === 0) return null;
+            return (
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <span className="text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
+                  Affiliated to:
+                </span>
+                {unis.map((uni) => (
+                  <span
+                    key={uni}
+                    className="rounded border border-[#BFDBFE] bg-[#EEF4FF] px-2.5 py-1 text-xs font-semibold text-[#1D4ED8]"
+                  >
+                    {uni}
+                  </span>
+                ))}
+              </div>
+            );
+          })()}
 
           {activeInstitution.coursesByCategory.length === 0 ? (
             <p className="mt-6 border border-dashed border-[#D1D5DB] bg-[#F9FAFB] px-4 py-3 text-sm text-[#6B7280]">
