@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git push *)",
+      "Bash(ffmpeg -y -i \"INTERNATIONAL GLIMPSE 3 MIN.mp4\" -vf scale=1280:720 -c:v libx264 -crf 28 -preset fast -c:a aac -b:a 128k \"INTERNATIONAL GLIMPSE 3 MIN_compressed.mp4\")",
+      "Bash(ffmpeg -y -i \"GLOBAL SEED AFRO.mp4\" -vf scale=1280:720 -c:v libx264 -crf 28 -preset fast -c:a aac -b:a 128k \"GLOBAL SEED AFRO_compressed.mp4\")",
+      "Bash(ffmpeg -y -i \"GLOBAL SEED SALOON.mp4\" -vf scale=1280:720 -c:v libx264 -crf 28 -preset fast -c:a aac -b:a 128k \"GLOBAL SEED SALOON_compressed.mp4\")",
+      "Bash(ffmpeg -y -i \"LORENZ INTERN.mp4\" -vf scale=1280:720 -c:v libx264 -crf 28 -preset fast -c:a aac -b:a 128k \"LORENZ INTERN_compressed.mp4\")",
+      "Bash(mv -f \"INTERNATIONAL GLIMPSE 3 MIN_compressed.mp4\" \"INTERNATIONAL GLIMPSE 3 MIN.mp4\")",
+      "Bash(mv -f \"03 Entrepreneurship & Startup Support/01 Global Seed/3,A \\(Afro Masala\\)/GLOBAL SEED AFRO_compressed.mp4\" \"03 Entrepreneurship & Startup Support/01 Global Seed/3,A \\(Afro Masala\\)/GLOBAL SEED AFRO.mp4\")",
+      "Bash(mv -f \"03 Entrepreneurship & Startup Support/01 Global Seed/3,B \\(Salon\\)/GLOBAL SEED SALOON_compressed.mp4\" \"03 Entrepreneurship & Startup Support/01 Global Seed/3,B \\(Salon\\)/GLOBAL SEED SALOON.mp4\")",
+      "Bash(mv -f \"03 Entrepreneurship & Startup Support/04 Faculty Exchange Program/LORENZ INTERN_compressed.mp4\" \"03 Entrepreneurship & Startup Support/04 Faculty Exchange Program/LORENZ INTERN.mp4\")",
+      "Bash(rm -f \"INTERNATIONAL GLIMPSE 3 MIN.mp4\")",
+      "Bash(mv \"INTERNATIONAL GLIMPSE 3 MIN_compressed.mp4\" \"INTERNATIONAL GLIMPSE 3 MIN.mp4\")",
+      "Bash(rm -f \"03 Entrepreneurship & Startup Support/01 Global Seed/3,A \\(Afro Masala\\)/GLOBAL SEED AFRO.mp4\")",
+      "Bash(mv \"03 Entrepreneurship & Startup Support/01 Global Seed/3,A \\(Afro Masala\\)/GLOBAL SEED AFRO_compressed.mp4\" \"03 Entrepreneurship & Startup Support/01 Global Seed/3,A \\(Afro Masala\\)/GLOBAL SEED AFRO.mp4\")",
+      "Bash(rm -f \"03 Entrepreneurship & Startup Support/01 Global Seed/3,B \\(Salon\\)/GLOBAL SEED SALOON.mp4\")",
+      "Bash(git commit -m ' *)"
+    ]
+  }
+}
