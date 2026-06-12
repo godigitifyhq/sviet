@@ -77,7 +77,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/pharmacy/pharm/Bpharma.jpg"
+      }
+    ],
     "seoTitle": "B.Pharmacy",
     "seoDescription": null,
     "metadata": {
@@ -160,7 +165,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/pharmacy/pharmD/pharmd.jpg"
+      }
+    ],
     "seoTitle": "Pharm.D",
     "seoDescription": "The Doctor of Pharmacy program is a research oriented study of various significant areas of pharmacy which are designed to provide an in-depth and comprehensive understanding of these areas. The Faculty of Pharmacy offers a six year Doctorate Degree program in Pharmacy which seeks to impart within the students a specialised research based understanding of pharmaceutical medicine and explore other avenues in the field. The scope of this program includes the purpose of diagnosing the various causes of diseases and the manner and methods through which they can be treated. Beyond merely the treatment protocols and procedure, the field of pharmacy also explores various forms of practical research which can be utilised as a way of eradicating disease causing virus and curbing their spread for the welfare of humanity. As a way of providing the highest form of practical training to the students, the Faculty of Pharmacy is equipped with state of the art facilities and laboratories for research and novel innovations. The program provides a comprehensive approach to the study of pharmacy which provides a platform for the students and faculties to innovate and patent novel treatment modalities. The program goes on to develop and nurture the research skills and abilities of the students as a way of producing a reliable and credible knowledge base in the scope of pharmacy.",
     "metadata": {
@@ -329,7 +339,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/pharmacy/Mpharma/Mpharma.jpg"
+      }
+    ],
     "seoTitle": "M.Pharmacy (Pharmaceutics)",
     "seoDescription": null,
     "metadata": {
@@ -432,7 +447,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/pharmacy/Mpharma/Mpharma.jpg"
+      }
+    ],
     "seoTitle": "M.Pharmacy (Pharmacology)",
     "seoDescription": null,
     "metadata": {
@@ -518,7 +538,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/pharmacy/diploma/Diploma.jpg"
+      }
+    ],
     "seoTitle": "Diploma in Pharmacy",
     "seoDescription": "The 2-year Diploma in Pharmacy program under Swami Vivekanand College of Pharmacy is a comprehensive and compact qualification for understanding the basics of Human Physiology, Disease, Therapeutic Compounds & drugs in use, their pharmacology & formulations, drug store management and Pharmaceutical Jurisprudence. The course provides the minimum essential qualification to get registered as a Pharmacist in India & operate Retail/Wholesale & Community Pharmacy and to get employed as Hospital Pharmacist.",
     "metadata": {
@@ -661,7 +686,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/diploma/me/me.jpg"
+      }
+    ],
     "seoTitle": "Diploma in Mechanical Engineering",
     "seoDescription": "A Diploma in Mechanical Engineering is a program that provides students with a comprehensive understanding of mechanical principles and engineering concepts. It covers subjects such as mechanics, thermodynamics, fluid mechanics, materials science, manufacturing processes, and machine design. During the program, students gain practical skills through laboratory work, projects, and internships. They learn to design, analyze, and maintain mechanical systems and components, as well as use computer-aided design (CAD) software and simulation tools. The diploma prepares graduates for entry-level positions in industries such as manufacturing, automotive, aerospace, energy, and robotics. They can work as mechanical technicians, design assistants, quality control inspectors, or pursue further studies in mechanical engineering. Overall, a Diploma in Mechanical Engineering equips students with the knowledge and skills needed to work with machines, analyze mechanical systems, and contribute to the design, development, and maintenance of mechanical projects. It offers a pathway to a rewarding career in the field of mechanical engineering.",
     "metadata": {
@@ -800,7 +830,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/diploma/civil/civilheader.jpg"
+      }
+    ],
     "seoTitle": "Diploma in Civil Engineering",
     "seoDescription": "A Diploma in Civil Engineering is a program that provides students with a fundamental understanding of civil engineering principles and concepts. It covers subjects such as structural analysis, construction materials, surveying, geotechnical engineering, transportation engineering, and project management. During the program, students gain practical skills through laboratory work, field surveys, and internships. They learn to design and construct various civil engineering projects, such as buildings, roads, bridges, and infrastructure systems. They also develop skills in using computer-aided design (CAD) software and other relevant tools. Overall, a Diploma in Civil Engineering equips students with the knowledge and skills needed to contribute to the planning, design, construction, and maintenance of civil engineering projects. It offers a pathway to a fulfilling career in the field of civil engineering, playing a crucial role in shaping the built environment.",
     "metadata": {
@@ -939,7 +974,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/diploma/ee/ee.jpg"
+      }
+    ],
     "seoTitle": "Diploma in Electrical Engineering",
     "seoDescription": "A Diploma in Electrical Engineering (EE) is an undergraduate engineering program that focuses on the study of electrical systems, devices, and power generation, transmission, and distribution. The curriculum typically includes subjects such as circuit theory, power systems, control systems, electronics, electromagnetic, digital systems, and communication systems. Students pursuing a diploma in EE gain a strong foundation in electrical engineering principles, mathematical analysis, and problem-solving skills. They learn to design and analyze electrical circuits, develop control systems, and understand the generation and distribution of electrical power. Overall, a diploma in EE equips students with the knowledge and skills to contribute to the design, development, and management of electrical systems, making them valuable professionals in the field of electrical engineering.",
     "metadata": {
@@ -1079,7 +1119,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/diploma/cse/cse.jpg"
+      }
+    ],
     "seoTitle": "Diploma in Computer Science Engineering",
     "seoDescription": "A Diploma in Computer Science and Engineering (CSE) is a short-term academic program that focuses on the fundamentals of computer science and engineering. It provides students with practical knowledge and skills related to software development, programming, networking, database management, and computer hardware. During the diploma program, students learn about various programming languages, algorithms, data structures, computer architecture, operating systems, and software engineering principles. They gain hands-on experience through practical labs, projects, and internships. The diploma in CSE prepares students for entry-level positions in the IT industry. Graduates can work as software developers, system analysts, database administrators, network administrators, and technical support specialists. They can also pursue higher education or certifications to further specialize in specific areas of computer science and engineering. Overall, a diploma in CSE provides a foundation for students to understand and apply the principles of computer science and engineering in various technology-driven fields.",
     "metadata": {
@@ -1203,7 +1248,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/DMLT/header.avif"
+      }
+    ],
     "seoTitle": "Diploma in Medical Laboratory Technology",
     "seoDescription": "Diploma in Medical Laboratory Technology is a 3-year program designed to impart experiential learning to students to develop the desired workforce to combat the ever-increasing demand for medical lab technicians in the healthcare sector. The program is designed with specific inputs from industry experts, based on the latest technologies available and in practice, for individuals interested in entering the field of clinical laboratory science. It covers all aspects of clinical lab analysis including analysis of body matter, Hematology, Biochemistry, Pathology, Microbiology, Serology, and Blood Banking, etc. Students will also learn operations of advanced lab equipment used for providing various laboratory test reports. Diploma holders in medical lab technology would typically be recruited as medical lab technicians, technologists, lab information system analysts, healthcare administrators, and hospital outreach assistant coordinators.",
     "metadata": {
@@ -1331,7 +1381,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/BTech/civil/CivilHeader.jpg"
+      }
+    ],
     "seoTitle": "B.Tech Civil Engineering  (B.Tech Civil)",
     "seoDescription": "B.Tech Civil Engineering is an undergraduate degree program that focuses on the study of designing, constructing, and maintaining physical infrastructure such as buildings, roads, bridges, dams, and water supply systems. It combines theoretical knowledge with practical skills to equip students with the necessary expertise to plan, analyze, and execute civil engineering projects. During the course, students learn about various aspects of civil engineering, including structural analysis, construction materials, geotechnical engineering, transportation engineering, environmental engineering, and hydraulic engineering. They also gain hands-on experience through practical sessions, laboratory work, and site visits. The goal of a B.Tech Civil Engineering program is to train professionals who can contribute to the development and maintenance of sustainable and resilient infrastructure. Graduates can pursue careers in government agencies, engineering firms, construction companies, research institutions, and consulting firms. They play a vital role in designing safe and efficient structures, managing construction projects, ensuring compliance with regulations, and implementing innovative solutions for infrastructure development.Choose to Join the Elite League of Tech Visionaries",
     "metadata": {
@@ -1479,7 +1534,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/BTech/cse/CSEheader.jpg"
+      }
+    ],
     "seoTitle": "B.Tech Computer Science Engineering (B.Tech CSE)",
     "seoDescription": "One of the most important components of development in the many commercial, technological, and administrative organisations is now computer science. Information gathering in computer science exposes users to a wide range of trends' capabilities. A four-year bachelor's degree programme in Computer Science & Engineering is offered by the Department of Computer Engineering at the Faculty of Engineering. The curriculum is purposefully created to give students a solid foundation in the subject, as well as analysis and in-depth knowledge. The department is outfitted with computer facilities and laboratories that enable students to be engaged on a personal level and in the real-time processing of the technological processes involved in order to expose them to in-depth.",
     "metadata": {
@@ -1627,7 +1687,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/BTech/ee/EEheader.jpg"
+      }
+    ],
     "seoTitle": "B.Tech Electrical Engineering (B.Tech EE)",
     "seoDescription": "B.Tech EE stands for Bachelor of Technology in Electrical Engineering. It is an undergraduate engineering program that focuses on the study of electrical systems, devices, and power generation, transmission, and distribution. B.Tech EE curriculum typically includes subjects such as circuit theory, power systems, control systems, electronics, electromagnetics, digital systems, and communication systems. Students pursuing B.Tech EE gain a strong foundation in electrical engineering principles, mathematical analysis, and problem-solving skills. They learn to design and analyze electrical circuits, develop control systems, and understand the generation and distribution of electrical power. Overall, B.Tech EE equips students with the knowledge and skills to contribute to the design, development, and management of electrical systems, making them valuable professionals in the field of electrical engineering.",
     "metadata": {
@@ -1775,7 +1840,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/BTech/ece/Header.jpg"
+      }
+    ],
     "seoTitle": "B.Tech Electronics & Communication Engineering  (B.Tech ECE)",
     "seoDescription": "B.Tech ECE stands for Bachelor of Technology in Electronics and Communication Engineering. It is a four-year undergraduate degree program that focuses on the design, development, and application of electronic and communication systems. B.Tech ECE covers a wide range of subjects, including electronic circuits, digital systems, signal processing, communication systems, microprocessors, embedded systems, control systems, and telecommunications. Students learn about the principles, theories, and practices behind various electronic devices, communication networks, and technologies. During the course, students gain hands-on experience through laboratory work, projects, and internships. They learn to design, analyze, and troubleshoot electronic circuits, develop communication systems, and utilize modern tools and software for system development. B.Tech ECE is a dynamic field that keeps evolving with advancements in technology. It equips students with the knowledge and skills to contribute to the development of innovative electronic and communication systems, shaping the future of technology.",
     "metadata": {
@@ -1926,7 +1996,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/BTech/me/MEheader.jpg"
+      }
+    ],
     "seoTitle": "B.Tech Mechanical Engineering (B.Tech ME)",
     "seoDescription": "B.Tech ME refers to Bachelor of Technology in Mechanical Engineering. It is an undergraduate degree program that focuses on the study of various aspects of mechanical systems, their design, manufacturing, and operation. Students pursuing B.Tech ME gain a comprehensive understanding of core engineering principles, mathematics, and physics, along with specialized knowledge in areas such as thermodynamics, fluid mechanics, materials science, mechanics, and machine design. The program equips students with the skills required to design, analyze, and develop mechanical systems, ranging from engines and machinery to power plants and robotics. It emphasizes problem-solving, critical thinking, and hands-on experience through laboratory work, projects, and internships. Students learn how to apply engineering principles to address real-world challenges, optimize performance, and enhance efficiency. Throughout the B.Tech ME program, students also develop strong computational and analytical skills, using software tools and simulations to model and analyze mechanical systems. They gain practical knowledge through workshops, industrial visits, and industry collaborations, fostering a deeper understanding of industry practices and standards Overall, B.Tech ME provides a solid foundation in mechanical engineering principles and prepares students for a wide range of career opportunities in the dynamic field of engineering and technology.",
     "metadata": {
@@ -2073,7 +2148,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/BTech/cse/CSEheader.jpg"
+      }
+    ],
     "seoTitle": "B.Tech Artificial Intelligence",
     "seoDescription": "B.Tech in Artificial Intelligence is a futuristic program designed to prepare students to build intelligent systems that mimic human thinking. The course emphasizes core areas such as knowledge representation, reasoning, cognitive computing, perception, and robotics. With a strong computational foundation, this 4-year undergraduate program blends theory with real-world problem-solving through project-based learning and industrial exposure. Students are trained to think critically and develop AI-based applications that impact sectors like healthcare, finance, education, and automation.",
     "metadata": {
@@ -2219,7 +2299,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/MTech/cse/Header.jpg"
+      }
+    ],
     "seoTitle": "M.Tech in Computer Science and Engineering (M.Tech CSE)",
     "seoDescription": "M.Tech in Computer Science and Engineering (CSE) is a postgraduate program that offers advanced education and specialization in the field of computer science and engineering. It is designed to provide students with a deeper understanding of the theoretical and practical aspects of computer science, as well as specialized knowledge in areas such as algorithms, data structures, software engineering, artificial intelligence, machine learning, and more. The M.Tech CSE program is suitable for individuals who have a strong foundation in computer science and wish to enhance their expertise in specific areas or pursue research and development opportunities. It equips students with the necessary skills and knowledge to tackle complex challenges in the field of computer science and contribute to advancements in technology. The curriculum of an M.Tech CSE program typically includes a combination of core courses, elective courses, and a research or thesis component. Core courses cover fundamental topics in computer science and engineering, while elective courses allow students to specialize in specific areas based on their interests and career goals. The research or thesis component gives students the opportunity to conduct in-depth research in a chosen area and make original contributions to the field.",
     "metadata": {
@@ -2366,7 +2451,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/BTech/me/MEheader.jpg"
+      }
+    ],
     "seoTitle": "M.Tech in Mechanical Engineering (M.Tech ME)",
     "seoDescription": "M.Tech in ME refers to Master of Technology in Mechanical Engineering. It is a postgraduate degree program that focuses on the advanced study of mechanical systems, their design, analysis, and optimization. Students pursuing M.Tech ME gain an in-depth understanding of core engineering principles, mathematics, and physics, along with specialized knowledge in areas such as advanced thermodynamics, computational fluid dynamics, advanced materials science, mechanics, and machine design. The program equips students with the skills required to design, analyze, and develop complex mechanical systems, ranging from engines and machinery to power plants and robotics. It emphasizes advanced problem-solving, critical thinking, and hands-on experience through laboratory work, research projects, and internships. Students learn how to apply engineering principles to address complex real-world challenges, optimize performance, and enhance efficiency. Throughout the M.Tech ME program, students also develop strong computational and analytical skills, using advanced software tools and simulations to model and analyze mechanical systems. They gain practical knowledge through workshops, industrial visits, and industry collaborations, fostering a deeper understanding of industry practices and standards. Overall, M.Tech ME provides a solid foundation in advanced mechanical engineering principles and prepares students for a wide range of career opportunities in the dynamic field of engineering and technology.",
     "metadata": {
@@ -2511,7 +2601,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/MTech/ee/Header.jpg"
+      }
+    ],
     "seoTitle": "M.Tech in Electronics & Communication Engineering (M.Tech ECE)",
     "seoDescription": "M.Tech in ECE refers to a Master of Technology in Electronics and Communication Engineering. It is a postgraduate program that provides advanced knowledge and skills in the field of electronics and communication. The M.Tech ECE program typically covers a wide range of subjects such as digital signal processing, microelectronics, VLSI design, communication systems, microwave engineering, embedded systems, and more. The coursework combines theoretical study, practical laboratory work, and research projects. During the program, students gain a deeper understanding of the principles, concepts, and applications of electronics and communication engineering. They learn about advanced technologies, design methodologies, and tools used in the industry. The curriculum also focuses on problem-solving, critical thinking, and research skills. Overall, M.Tech ECE equips students with the knowledge and expertise to pursue careers in the rapidly advancing field of electronics and communication engineering and contribute to technological advancements and innovation.",
     "metadata": {
@@ -2652,7 +2747,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/MTech/civil/header.avif"
+      }
+    ],
     "seoTitle": "M.Tech in Civil Engineering (M.Tech Civil)",
     "seoDescription": "M.Tech in Civil Engineering is a postgraduate program that offers specialized education and training in various fields of civil engineering. It focuses on advanced concepts and techniques related to the planning, design, construction, and maintenance of infrastructure projects such as buildings, bridges, roads, dams, and water supply systems. The curriculum covers a wide range of subjects including structural engineering, geotechnical engineering, transportation engineering, environmental engineering, and construction management. Students gain practical experience through laboratory work, field visits, and project assignments. The program emphasizes the application of engineering principles, mathematical analysis, and modern tools and technologies to solve complex problems in civil engineering. Graduates of M.Tech Civil Engineering are equipped with the knowledge and skills to address current and future challenges in the field, contribute to sustainable development, and make significant contributions to society.",
     "metadata": {
@@ -2787,7 +2887,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/ComputerApp/MCA/software.avif"
+      }
+    ],
     "seoTitle": "Master of Computer Applications",
     "seoDescription": null,
     "metadata": {
@@ -2884,7 +2989,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/ComputerApp/BCA/data.jpg"
+      }
+    ],
     "seoTitle": "Bachelor of Computer Applications",
     "seoDescription": null,
     "metadata": {
@@ -2951,7 +3061,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/ComputerApp/pgdca/programmer.avif"
+      }
+    ],
     "seoTitle": "PGDCA",
     "seoDescription": "The Post Graduate Diploma in Computer Applications (PGDCA) is designed for graduate students interested in developing computer applications in fields like banking, insurance, and accounting. This diploma program equips candidates with the necessary skills to thrive in the professional world and secure well-paying jobs. PGDCA offers a smarter choice for undergraduate candidates due to its lower saturation level compared to other professional degree courses like M.Tech, MCA, or MBA.",
     "metadata": {
@@ -3063,7 +3178,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/ComputerApp/BscIt/software.jpg"
+      }
+    ],
     "seoTitle": "B.Sc Information Technology",
     "seoDescription": "B.Sc. IT (B.Sc. in Information Technology) is an undergraduate degree program that focuses on various aspects of information technology, including computer science, software development, database management, networking, and computer hardware. This program provides students with a strong foundation in computer science and information technology principles, along with practical skills that are highly demanded in the IT industry.",
     "metadata": {
@@ -3177,7 +3297,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Education/Arts/tech.avif"
+      }
+    ],
     "seoTitle": "Bachelor of Arts (Computer Science)",
     "seoDescription": "Bachelor of Arts in Computer Science is a 3-year undergraduate program that blends computer science fundamentals with arts and social science subjects. The course focuses on computing concepts such as programming, systems, and data along with communication skills, history, and social understanding. It helps students develop problem-solving abilities for both technological and societal challenges while nurturing creativity and overall personality development. This interdisciplinary approach prepares students for diverse roles in IT, analytics, and digital services.",
     "metadata": {
@@ -3285,7 +3410,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Business/MBA/mba.jpg"
+      }
+    ],
     "seoTitle": "Masters of Business Administration (MBA)",
     "seoDescription": "MBA stands for Master of Business Administration, which is a graduate degree that focuses on developing the knowledge and skills required to succeed in a business or management career. The MBA degree is one of the most popular and widely recognized graduate degrees globally, and it is designed to provide students with a broad understanding of business and management practices. The MBA program typically covers a range of topics, including accounting, finance, marketing, management, organizational behavior, economics, and operations management. The curriculum may also include specialized courses in areas such as entrepreneurship, international business, healthcare management, or sustainability. An MBA degree can lead to a wide range of career opportunities, including management positions in various industries such as finance, consulting, marketing, healthcare, and technology. It can also provide individuals with the skills and knowledge needed to start their own businesses or pursue entrepreneurial ventures. In summary, an MBA degree is a versatile and valuable credential that can open doors to a wide range of career opportunities and provide individuals with the knowledge and skills needed to succeed in the business world.",
     "metadata": {
@@ -3393,7 +3523,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Business/BBA/bbaHeader.jpg"
+      }
+    ],
     "seoTitle": "Bachelor of Business Administration (BBA)",
     "seoDescription": "BBA under SVFTM is a 3-year professional undergraduate program that deals with Business Management. BBA course covers management and business principles and also highlights the importance of internships during the final semester of the course. BBA syllabus aims to impart knowledge through practical experience in the form of case studies, projects, presentations, industrial visits, and interaction with experts from the industry.\n\nAfter doing BBA, depending upon your aptitude, interest, and skill set, you can work in the following areas:\n\n- Entrepreneurship\n- Finance & Accounting Management\n- HR Management\n- Marketing Management\n- Supply Chain Management\n- Tourism Management",
     "metadata": {
@@ -3524,7 +3659,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/HM/catering/catering.jpg"
+      }
+    ],
     "seoTitle": "Bachelor of Hotel Management and Catering Technology (BHMCT)",
     "seoDescription": "BHMCT (Bachelor of Hotel Management and Catering Technology) is an undergraduate degree program that focuses on preparing students for a career in the hospitality industry. The program combines theoretical knowledge with practical training in various aspects of hotel management, food and beverage management, and catering technology. The duration of the BHMCT course is typically four years, and it is divided into eight semesters. The course curriculum covers a range of subjects, including food and beverage management, hotel operations, front office management, housekeeping, human resource management, marketing, accounting, and finance.The BHMCT course also includes practical training in various areas of the hospitality industry. This includes mandatory internships and industry-based training, which provide students with hands-on experience in real-world situations. Students may also have the opportunity to work in the hotel industry as part of their training. Overall, the BHMCT course is a comprehensive program that equips students with the knowledge, skills, and practical experience necessary to succeed in the hospitality industry.",
     "metadata": {
@@ -3537,7 +3677,9 @@
         "background_image": "/assets/programs/HM/catering/catering.jpg"
       },
       "affiliation": {
-        "affiliated_to": ["IKGPTU, Jalandhar"],
+        "affiliated_to": [
+          "IKGPTU, Jalandhar"
+        ],
         "approved_by": "Approved by AICTE"
       },
       "modeOfAdmission": "Admission is typically based on merit or entrance exams conducted by the institution. Candidates must apply through the designated admission portal.",
@@ -3670,7 +3812,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/HM/mhmct/Mhmct.jpg"
+      }
+    ],
     "seoTitle": "Master of Hotel Management & Catering Technology (MHMCT)",
     "seoDescription": "The Master of Hotel Management & Catering Technology (MHMCT), is a two years postgraduate Hospitality Management Degree course in India. It’s a service-oriented course, which develops the human service resource to fulfill the requirements of the Hospitality Industry. This postgraduate course is designed to enhance the professional management tactics used in the hospitality sector. It also inculcates the necessary entrepreneurship skills in candidates so that they can run their own business in the near future in case any candidate decides to go the other way rather than working on a job. The course is suitable for those candidates who want to increase their knowledge for accelerating their career by exploring and acquiring a critical understanding of the Hospitality Industry. The course is designed to provide managerial positions to the students.",
     "metadata": {
@@ -3817,7 +3964,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/HM/BVoc/Bvoc.jpg"
+      }
+    ],
     "seoTitle": "B.Voc in Hospitality and Catering Management",
     "seoDescription": "B.Voc in Hospitality and Catering Management is a three-year job-oriented vocational training program in the hotel management domain. The program imparts skills and knowledge related to hotel management. Hotel management is a field of education which deals with all the administrative and managerial tasks of any hospitality centre, hotel, restaurant or any seminar organization. Since the tourism industry is growing rapidly, the demand for good hotel managers has also increased. Hotels and restaurants are looking for skilled professionals who can handle all their activities and help them increase their sales. The three-year B.Voc in Hospitality and Catering Management program will cover many important topics such as housekeeping, accounting, business management, business law, financial management, HR management and entrepreneurship skills. The program also has a six-month training program which will allow the candidates to complete an internship at a reputed hotel in the country. Candidates who are looking for admission to B.Voc in Hotel Management must have some skills such as leadership skills, managerial skills, management skills, pleasing personality and good communication skills.",
     "metadata": {
@@ -3962,7 +4114,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/HM/Bsc/header.jpg"
+      }
+    ],
     "seoTitle": "B.Sc in Nutrition and Dietetics",
     "seoDescription": "B.Sc in Nutrition and Dietetics is a three-year undergraduate program that focuses on the study of nutrition, dietetics, and their impact on human health. This program covers various aspects of food science, human physiology, biochemistry, and psychology to provide students with a comprehensive understanding of nutrition and dietary habits. Students learn about the role of nutrients in the body, dietary requirements for different age groups and populations, and the principles of therapeutic nutrition. The curriculum also includes practical training in meal planning, food service management, and nutrition counseling. Graduates of B.Sc in Nutrition and Dietetics can pursue careers as nutritionists, dieticians, food consultants, clinical nutritionists, and wellness coaches in various healthcare settings, food industry, research institutions, and community organizations.",
     "metadata": {
@@ -4082,7 +4239,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/Lab/header.avif"
+      }
+    ],
     "seoTitle": "B.Sc. in Medical Laboratory Science",
     "seoDescription": "B.Sc Medical Laboratory Science is a 3-year undergraduate program in healthcare professional course. The aim is to teach students about Lab science and make them professionals in the field. Working as a lab scientist requires professional skills, and our research-based program provides extensive training to students in all required skills. This course covers areas of diagnosis, treatment, and prevention of disease through the use of Laboratory science. Experienced faculty members impart professional skills to students to work proficiently in challenging situations. The college has established world-class infrastructure equipped with modern equipment and laboratories, ranked as the best in North India. The paramedical college is also ranked as number one in placement in North India. Graduates of B.Sc Medical Laboratory Science can work as professional laboratory scientists in medical colleges/hospitals, and can also become managerial supervisors or teachers.",
     "metadata": {
@@ -4183,7 +4345,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/Radiology/radiology.jpg"
+      }
+    ],
     "seoTitle": "B.Sc. in Radio Imaging Technology",
     "seoDescription": "B.Sc. in Radio Imaging Technology is a 3-year undergraduate program designed to train students to work as radiology technicians. The course aims to provide students with top skills to handle work in the field of radiology. Students learn the principles of radiology and gain extensive training to handle the work pressure in hospitals, institutes, and clinics. Experienced teachers facilitate learning with clarity and practical advancements in education. The curriculum is research-based and includes training in handling X-ray equipment, developing exposed X-ray films, Sonography, CT Scan, MRI, and other imaging modalities. Special training in documentation and research in the field of radio imaging technology is provided. Graduates become competent to work in radiology departments of hospitals, diagnostic centers, and clinics.",
     "metadata": {
@@ -4200,7 +4367,10 @@
         "approved_by": "IKGPTU/MRSPTU"
       },
       "modeOfAdmission": "For admissions, visit the portal to register/login and proceed with the admission application.",
-      "majorTracks": ["Radiology Technician", "Imaging Specialist"],
+      "majorTracks": [
+        "Radiology Technician",
+        "Imaging Specialist"
+      ],
       "durationLabel": "4 Years (Semester System)",
       "feeLabel": "45,000/- INR Per Semester",
       "eligibilityCriteria": {
@@ -4280,7 +4450,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/Cardiac/header.avif"
+      }
+    ],
     "seoTitle": "B.Sc. in Cardiac Care Technology",
     "seoDescription": "The B.Sc. in Cardiac Care Technology is an undergraduate program designed to train students in the field of cardiac care and technology. This program equips students with the knowledge and skills required to work in various healthcare settings, particularly in the diagnosis, treatment, and management of cardiovascular diseases. Students enrolled in BSc Cardiac Care Technology gain a comprehensive understanding of the cardiovascular system, cardiac pathologies, and various diagnostic procedures used in assessing heart conditions. They also learn about cardiac pharmacology, electrocardiography, echocardiography, cardiac catheterization, and other advanced cardiac imaging techniques. The curriculum typically includes both theoretical coursework and practical training, enabling students to develop proficiency in conducting tests, analyzing results, and assisting in cardiac procedures. They learn to use sophisticated medical equipment and technology to monitor patients, interpret data, and provide necessary interventions under the guidance of healthcare professionals. Additionally, the program emphasizes patient care and effective communication skills, as cardiac care technologists often interact closely with patients and their families. Students also learn about medical ethics, healthcare laws, and the importance of maintaining a compassionate and professional approach in their work. Upon completion of the BSc Cardiac Care Technology program, graduates can pursue careers as cardiac care technologists, cardiac technicians, or cardiovascular technologists in hospitals, clinics, diagnostic laboratories, and cardiac rehabilitation centers.",
     "metadata": {
@@ -4379,7 +4554,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/OT/ot.jpg"
+      }
+    ],
     "seoTitle": "B.Sc. in Operation Theatre Technology",
     "seoDescription": "B.Sc. in Operation Theatre Technology is a 3-year undergraduate program designed to train students to work as technicians in operation theaters. The course aims to provide students with management skills to handle work in emergency situations and manage the pressure of operation theaters. Students learn technical abilities and superior management skills required for working in operation theaters. Graduates can work in hospitals, conduct research in institutes, or manage operation work in clinics. The curriculum is designed to incorporate practical advancements in education and is research-based. World-class medical labs are available on campus for practical training, and experienced faculty at Swami Vivekanand Paramedical College teach the program through interactive classes.",
     "metadata": {
@@ -4484,7 +4664,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/Anesthesia/anestehsia.jpg"
+      }
+    ],
     "seoTitle": "B.Sc (Hons.) Anesthesia Technology",
     "seoDescription": null,
     "metadata": {
@@ -4550,7 +4735,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/Optometry/header.avif"
+      }
+    ],
     "seoTitle": "B.Sc. in Optometry",
     "seoDescription": "B.Sc Optometry is a 3-year undergraduate degree program offered by Swami Vivekanand Paramedical College. It focuses on the science of vision and eye equipment. Students interested in healthcare professions involving examination, diagnosis, treatment, and management of eye diseases can opt for this program. The aim is to teach students about eye equipment such as lenses and spectacles. Experienced faculty members impart professional skills to students to work proficiently in challenging situations. The college has state-of-the-art infrastructure with modern equipment and laboratories, ranked as the best in North India. The paramedical college also boasts the highest placement rate in North India. Graduates of B.Sc Optometry can pursue careers as Opticians, Optometrists, Refractionists, and Ophthalmic Assistants.",
     "metadata": {
@@ -4662,7 +4852,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/MLS/mls.jpg"
+      }
+    ],
     "seoTitle": "M.Sc in Medical Laboratory Science - Clinical Biochemistry",
     "seoDescription": "Masters in Medical Lab Science is a master’s degree level course in Lab science. This program allows students to level up their skills and gain advanced skills in medical lab science to elevate their career and become leaders in the medical laboratory profession as clinical scientists. The program is designed to provide students with all the elements of medical laboratory science required for their profession. It is based on research methodology, supported by world-class advanced medical labs situated on campus. Swami Vivekanand Paramedical College houses all the advanced equipment required for study and research. After completing this program, students can pursue a Ph.D. or start their career as clinical practitioners, or join institutes as part of research facilities.",
     "metadata": {
@@ -4679,7 +4874,10 @@
         "approved_by": "Approved by AICTE"
       },
       "modeOfAdmission": "For admissions, visit the portal to register/login and proceed with the admission application.",
-      "majorTracks": ["Clinical Research", "Diagnostic Sciences"],
+      "majorTracks": [
+        "Clinical Research",
+        "Diagnostic Sciences"
+      ],
       "durationLabel": "2 Years (Semester System)",
       "feeLabel": "32,000/- INR Per Semester",
       "eligibilityCriteria": {
@@ -4764,7 +4962,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/Anasthesia/anasthesia.jpg"
+      }
+    ],
     "seoTitle": "M.Sc in Anesthesia and Operation Theatre Technology",
     "seoDescription": "Master of Science in Anesthesia and Operation Theatre Technology is a master’s degree level course in Operation Theatre technology. This course equips students with high-level skills to handle operation theatre preparation in case of emergencies. It is designed to provide advanced skills to assist and handle the preparation of operation theatres, enabling students to become experienced anesthesiologists. Experienced teachers facilitate learning, ensuring clear understanding of concepts. The course is based on research methodology, supported by world-class advanced medical labs situated on campus at Swami Vivekanand Paramedical College. After completing this program, students can work professionally as anesthesiologists and handle responsibilities as assistants in emergency situations.",
     "metadata": {
@@ -4781,7 +4984,10 @@
         "approved_by": "Approved by AICTE"
       },
       "modeOfAdmission": "For admissions, visit the portal to register/login and proceed with the admission application.",
-      "majorTracks": ["Emergency Anesthesia", "Operation Theatre Management"],
+      "majorTracks": [
+        "Emergency Anesthesia",
+        "Operation Theatre Management"
+      ],
       "durationLabel": "2 Years (Semester System)",
       "feeLabel": "32,000/- INR Per Semester",
       "eligibilityCriteria": {
@@ -4865,7 +5071,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/Physiotherapy/header.avif"
+      }
+    ],
     "seoTitle": "B.Sc. in Physiotherapy",
     "seoDescription": "B.Sc Physiotherapy is an undergraduate degree program that focuses on the study of human movement, physical rehabilitation, and the prevention and treatment of physical impairments. It combines theoretical knowledge with practical skills to equip students with the necessary expertise to assess, diagnose, and treat various musculoskeletal, neurological, and cardiopulmonary conditions. During the course, students learn about anatomy, physiology, biomechanics, exercise therapy, electrotherapy, and manual therapy techniques. They also gain clinical experience through internships and practical training, where they work under the supervision of experienced physiotherapists in hospitals, rehabilitation centers, sports clinics, and other healthcare settings. The goal of a B.Sc Physiotherapy program is to train professionals who can help individuals improve their mobility, manage pain, regain function, and enhance their overall well-being. Graduates can pursue careers as physiotherapists in hospitals, private clinics, sports organizations, and research institutions. They play a crucial role in promoting physical health, preventing injuries, and aiding in the recovery of patients with physical disabilities or limitations.",
     "metadata": {
@@ -4972,7 +5183,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/Cardiac/header.avif"
+      }
+    ],
     "seoTitle": "M.Sc. in Cardiac Care Technology",
     "seoDescription": "M.Sc. CCT - Cardiac Care Technology is a 2-year postgraduate degree program offered by Swami Vivekanand Paramedical College. This program focuses on advanced cardiac care, including diagnosis, treatment, and management of heart diseases. Students interested in cardiac diagnostics, interventional cardiology, and cardiac rehabilitation will find this program highly beneficial. The curriculum includes both theoretical knowledge and practical skills essential for proficiency in cardiac care technology. With access to state-of-the-art infrastructure and laboratories, students gain hands-on experience in modern cardiac diagnostic techniques. Swami Vivekanand Paramedical College, renowned for its top-tier infrastructure and highest placement rate in North India, ensures graduates are well-prepared for careers in cardiac care units, research institutions, and healthcare settings.",
     "metadata": {
@@ -5084,7 +5300,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/Lab/header.avif"
+      }
+    ],
     "seoTitle": "M.Sc in Medical Laboratory Science - Medical Microbiology",
     "seoDescription": "M.Sc. MLS - Medical Microbiology is a 2-year postgraduate degree program offered by Swami Vivekanand Paramedical College. This program delves into the advanced study of microorganisms and their impact on human health. Students interested in diagnostic microbiology, infectious diseases, and laboratory management will find this program highly beneficial. The curriculum encompasses theoretical knowledge and practical skills essential for proficiency in medical microbiology. With access to state-of-the-art infrastructure and laboratories, students gain hands-on experience in modern diagnostic techniques. Swami Vivekanand Paramedical College, renowned for its top-tier infrastructure and highest placement rate in North India, ensures graduates are well-prepared for careers in clinical laboratories, research institutions, and healthcare settings.",
     "metadata": {
@@ -5196,7 +5417,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/Radiology/radiology.jpg"
+      }
+    ],
     "seoTitle": "M.Sc. in Radio Imaging Technology",
     "seoDescription": "M.Sc. in Radio Imaging Technology is a 2-year postgraduate degree program offered by Swami Vivekanand Paramedical College. This course provides advanced education and training in medical imaging techniques, preparing students for professional roles in radiology departments. The program covers various imaging modalities including X-ray, MRI, CT scan, and ultrasound. The curriculum is designed to provide both theoretical knowledge and practical skills essential for excellence in the field of radiology. Swami Vivekanand Paramedical College is equipped with state-of-the-art infrastructure and modern laboratories, making it the best choice for aspiring radiology professionals in North India. The college boasts the highest placement rate in the region, ensuring successful career prospects for graduates.",
     "metadata": {
@@ -5338,7 +5564,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/Lab/header.avif"
+      }
+    ],
     "seoTitle": "Bachelor in Hospital Administration",
     "seoDescription": null,
     "metadata": {
@@ -5415,7 +5646,12 @@
       }
     ],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/Lab/header.avif"
+      }
+    ],
     "seoTitle": "Diploma in Nursing",
     "seoDescription": "SVGOI's Diploma in Nursing program aims to prepare compassionate and skilled healthcare professionals for the nursing sector. This diploma program covers essential topics in nursing, including patient care, medical procedures, and healthcare ethics. Students gain hands-on training through clinical rotations and internships in hospitals and healthcare facilities. The curriculum emphasizes practical skills development, critical thinking, and professional ethics to ensure graduates are well-prepared for the challenges of the healthcare industry.",
     "metadata": {
@@ -5526,7 +5762,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Science/Physics/header.avif"
+      }
+    ],
     "seoTitle": "M.Sc. in Physics",
     "seoDescription": "The Master of Science (M.Sc.) in Physics program is designed to prepare students for a research career in academia or industry by introducing advanced ideas and techniques applicable in various research areas. Emphasis is placed on developing a deep understanding of physics principles and concepts, along with proficiency in experimentation to explore both theoretical and experimental dimensions of physics. The program aims to equip students with high-level theoretical knowledge to tackle complex problems in industrial fields and pursue further academic achievements through research.",
     "metadata": {
@@ -5622,7 +5863,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Science/Maths/header.avif"
+      }
+    ],
     "seoTitle": "M.Sc. in Mathematics",
     "seoDescription": "Master of Science (M.Sc.) in Mathematics offers a comprehensive study of various branches of mathematics including Pure Mathematics, Applied Mathematics, Mathematical Modeling, and Computational Mathematics. The program is designed to provide students with a deep understanding of mathematical theories, methods, and applications. Expert faculty members guide students through advanced topics and help them develop problem-solving skills. Students have the opportunity to engage in research projects, seminars, and practical applications to explore the diverse applications of mathematics in various fields.",
     "metadata": {
@@ -5717,7 +5963,12 @@
     ],
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Science/Chemistry/header.avif"
+      }
+    ],
     "seoTitle": "M.Sc. in Chemistry",
     "seoDescription": "Master of Science (M.Sc.) in Chemistry offers a wide range of courses including Inorganic Chemistry, Organic Chemistry, Medicinal Chemistry, Supramolecular Chemistry, etc. Experts from Pure and Applied Chemistry domain will teach the courses, and students will develop a thorough understanding of fundamentals and experimental concepts of Chemistry. There will be opportunity for the students to participate in an extensive and varied seminar programme and gain experience in a large variety of projects.",
     "metadata": {
@@ -5817,7 +6068,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Science/Non-medical/header.avif"
+      }
+    ],
     "seoTitle": "B.Sc. in Non-Medical",
     "seoDescription": "The B.Sc. (B.Sc.) in Non-Medical is a 3-year undergraduate program focusing on specialized study of computer applications and services. It emphasizes the technological implementation of computer systems and aims to create quality professionals and research fellows needed across various sectors. The curriculum covers subjects such as Microbiology, Environmental Science & Health, Physics, Mathematics, Chemistry, Computer Science, and Computer Applications.",
     "metadata": {
@@ -5924,7 +6180,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Business/commerce/mcom.jpg"
+      }
+    ],
     "seoTitle": "Master of Commerce (M.Com)",
     "seoDescription": "M.Com, Master of Commerce, is a postgraduate course in accounting with a duration of 2 years divided into 4 semesters. The main aim of the course is to provide in-depth knowledge to students in advanced accounting and commerce and prepare them for better future prospects. Students opting for M.Com are taught professional skills that help them land better placement opportunities. M.Com graduates can explore careers in the BFSI sector, start a career in teaching as a commerce teacher, or pursue further studies such as a PhD to become college lecturers. M.Com graduates also have numerous corporate job opportunities and government job opportunities.",
     "metadata": {
@@ -6004,7 +6265,12 @@
     "outcomes": null,
     "facilities": null,
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Business/commerce/commerce.jpg"
+      }
+    ],
     "seoTitle": "Bachelor of Commerce",
     "seoDescription": null,
     "metadata": {
@@ -6070,7 +6336,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Education/BA/cultural.avif"
+      }
+    ],
     "seoTitle": "Bachelor of Arts (B.A.)",
     "seoDescription": "Bachelor of Arts (B.A.) programs typically focus on the liberal arts, humanities, and social science subjects, as opposed to B.Sc. programs, which focus on subjects related to math, science, and technology. Bachelor of Arts programs are sometimes confused with Bachelor of Fine Arts programs, which include fine arts majors such as dance, theater, painting, sculpture, and acting. B.A. programs typically take three years to complete and may be offered in a variety of formats including on-campus, online, hybrid, and distance learning. The large scope of employment for all aspirants of BA course is reflected in a large number of sectors of interest for BA courses graduates as is enlisted below: Advertising, Law, Advertising, Broadcast, Library and Information Science, Business Process Outsourcing Units, Policing, Civil Services, Professional Writing, Community Service, and Public Administration.",
     "metadata": {
@@ -6182,7 +6453,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Education/BA/comms.avif"
+      }
+    ],
     "seoTitle": "B.Sc Mass Communication & Journalism",
     "seoDescription": "B.Sc Mass Communication & Journalism is a 3-year undergraduate program that focuses on media studies, journalism practices, and communication theories. The course equips students with technical and creative skills in reporting, content creation, digital media, video production, and broadcasting. It prepares students to work across print, electronic, and digital media platforms while developing ethical journalism practices and effective communication abilities.",
     "metadata": {
@@ -6289,7 +6565,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Education/Bachelor/research.jpg"
+      }
+    ],
     "seoTitle": "Bachelor of Education (B.Ed)",
     "seoDescription": "This course has been designed for those aspirants who are interested in pursuing a career in teaching and other related fields. For teaching in high schools and higher primary schools, a B.Ed degree is a must in India. At present, the need for trained teachers is very high as a lot of schools are building day-by-day. To become a successful professional in the teaching field, one should have a minimum qualification in Bachelor of Education (B.Ed). After completing B.Ed., you have a huge scope to get a job in private as well as government schools with a good salary package. The salary depends upon the post you are holding in the school. Interested candidates can also pursue higher studies in this field. Master of Education (M.Ed.) is the postgraduate higher specialized course that students can pursue after the completion of B.Ed. You can also do a Ph.D. after the completion of M.Ed.",
     "metadata": {
@@ -6396,7 +6677,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Education/Masters/header.avif"
+      }
+    ],
     "seoTitle": "Master of Arts in Education",
     "seoDescription": "M.A. in Education is a postgraduate course that deals with the fundamental aspects of education and its related factors. M.A. in Education hones students’ skills needed in analyses and discussions of education-related theories for application to real-world experiences along with providing competency in educational leadership. The job prospects for students after completing the course of M.A. in Education are listed below. They can also work in coaching centers, education consultancies, publishing houses, education departments, research and offer home tuitions.",
     "metadata": {
@@ -6503,7 +6789,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Education/Masters/header.avif"
+      }
+    ],
     "seoTitle": "Master of Education (M.Ed.)",
     "seoDescription": "The M.Ed or Master of Education is a 2-year post-graduate educational degree that can be completed within a maximum time span of 4 years. The M.Ed course structure is designed for potential educators and provides in-depth knowledge in the field of education and teaching. The candidates can go for a job as a professor or a teacher in higher-level education after completing a degree in M.Ed. Apart from it, the students can also opt for higher studies after M.Ed which will open more career opportunities for them with high paying jobs.",
     "metadata": {
@@ -6609,7 +6900,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Law/LLB/header.avif"
+      }
+    ],
     "seoTitle": "Bachelor of Law",
     "seoDescription": "The Bachelor of Law program produces and develops capable individuals who are nurtured in the art of justice delivery and who apply the principles of law for the welfare of the society. The Faculty of Law endeavours to provide the fundamental understanding of legal education by equipping students with the relevant skillsets and abilities which are vital for ensuring the prevalence of law and order within the nation. For students to pursue this three year unitary program, they need to have pursued a graduation in any of the related fields of study. The program is strategically designed to impart within the students a comprehensive understanding of the theoretical and practical philosophies of law. As part of the curriculum, this program exposes students to various forms of practical training exercises such as moot court competitions, parliamentary debates, drafting, and legal aid clinics. The curriculum explores subjects such as jurisprudence and legal theory, law of torts, constitutional law, criminal procedure code and civil procedure code amongst others. The program is conducted by highly trained and skilled faculties as well as expert legal resources who train students on the fundamentals of legal education in preparation of their careers as legal practitioners.",
     "metadata": {
@@ -6715,7 +7011,12 @@
     ],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Law/Bachelors/header.avif"
+      }
+    ],
     "seoTitle": "Bachelor of Arts + Bachelor of Law",
     "seoDescription": "The Bachelor of Arts + Bachelor of Law is a five-year law program which seeks to develop the student's understanding of Arts related subjects while pursuing law. The Faculty of Law produces and develops capable individuals who are nurtured in the art of justice delivery and who apply the principles of law for the welfare of the society. The Faculty endeavours to provide the fundamental understanding of legal education by equipping students with the relevant skillsets and abilities which are vital for ensuring the prevalence of law and order within the nation. While pursuing this program, students will be exposed to various aspects of the Field of Arts while at the same time studying law. They will study arts fundamentals such as Political Science, Economics and International Relations, amongst others. The program is strategically designed to impart within the students a comprehensive understanding of the theoretical and practical philosophies of law. As part of the curriculum, this program exposes students to various forms of practical training exercises such as moot court competitions, parliamentary debates, drafting and legal aid clinics. The curriculum explores subjects such as jurisprudence and legal theory, law of torts, constitutional law, criminal procedure code and civil procedure code amongst others. The program is conducted by highly trained skilled faculties and expert legal resources who train students on the fundamentals of legal education in preparation of their careers as legal practitioners.",
     "metadata": {
@@ -6850,7 +7151,11 @@
         "approved_by": "Approved by PSBTE & IT"
       },
       "modeOfAdmission": "Admission criteria may vary by institution. Interested candidates should contact the admission office for details.",
-      "majorTracks": ["MIG Welding", "TIG Welding", "Stick Welding"],
+      "majorTracks": [
+        "MIG Welding",
+        "TIG Welding",
+        "Stick Welding"
+      ],
       "durationLabel": "6 months",
       "feeLabel": "Varies depending on institution",
       "eligibilityCriteria": {
@@ -7158,7 +7463,12 @@
     "outcomes": [],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Business/BBA/bbaHeader.jpg"
+      }
+    ],
     "seoTitle": "Bachelor of Business Administration (BBA) — SVFTM",
     "seoDescription": null,
     "metadata": null,
@@ -7187,7 +7497,12 @@
     "outcomes": [],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/ComputerApp/BCA/data.jpg"
+      }
+    ],
     "seoTitle": "Bachelor of Computer Applications (BCA) — SVFTM",
     "seoDescription": null,
     "metadata": null,
@@ -7215,7 +7530,12 @@
     "outcomes": [],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/Lab/header.avif"
+      }
+    ],
     "seoTitle": "B.Sc Medical Lab Sciences — SVFTM",
     "seoDescription": null,
     "metadata": null,
@@ -7243,7 +7563,12 @@
     "outcomes": [],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/OT/ot.jpg"
+      }
+    ],
     "seoTitle": "B.Sc Operation Theatre Technology — SVFTM",
     "seoDescription": null,
     "metadata": null,
@@ -7271,7 +7596,12 @@
     "outcomes": [],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/paramedical/Radiology/radiology.jpg"
+      }
+    ],
     "seoTitle": "B.Sc Radiology & Imaging Technology — SVFTM",
     "seoDescription": null,
     "metadata": null,
@@ -7300,7 +7630,12 @@
     "outcomes": [],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/Business/BBA/bbaHeader.jpg"
+      }
+    ],
     "seoTitle": "Bachelor of Business Administration (BBA) — SVCMT",
     "seoDescription": null,
     "metadata": null,
@@ -7329,7 +7664,12 @@
     "outcomes": [],
     "facilities": [],
     "curriculum": null,
-    "faqs": null,
+    "faqs": [
+      {
+        "q": "heroImage",
+        "a": "/assets/programs/ComputerApp/BCA/data.jpg"
+      }
+    ],
     "seoTitle": "Bachelor of Computer Applications (BCA) — SVCMT",
     "seoDescription": null,
     "metadata": null,

@@ -184,7 +184,7 @@ export function AccreditationsPage() {
           <div className="flex items-center justify-start lg:justify-end">
             <div className="relative h-24 w-60">
               <Image
-                src="http://naac.gov.in/templates/naac/images/header.png"
+                src="/assets/img/NAAC-Logo.jpg"
                 alt="SVGOI accreditation logo"
                 fill
                 unoptimized

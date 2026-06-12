@@ -50,13 +50,151 @@ const NAV_LINK_IMAGES = [
   },
 ];
 
-const PROGRAM_DROPDOWN_ITEMS = [
-  { label: "Program Finder", href: "/program-finder" },
+type CategorySubgroup = {
+  sublabel: string;
+  programTitles: string[];
+};
+
+type CategoryGroup = {
+  category: string;
+  programTitles?: string[];
+  subgroups?: CategorySubgroup[];
+};
+
+const CATEGORY_GROUPS: CategoryGroup[] = [
+  {
+    category: "Engineering",
+    subgroups: [
+      {
+        sublabel: "B.Tech Programs",
+        programTitles: [
+          "B.Tech Artificial Intelligence",
+          "B.Tech Civil Engineering",
+          "B.Tech Computer Science & Engineering",
+          "B.Tech Electrical Engineering",
+          "B.Tech Electronics & Communication Engineering",
+          "B.Tech Mechanical Engineering",
+        ],
+      },
+      {
+        sublabel: "M.Tech Programs",
+        programTitles: [
+          "M.Tech Civil Engineering",
+          "M.Tech Computer Science Engineering",
+          "M.Tech Electronics & Communication Engineering",
+          "M.Tech Mechanical Engineering",
+        ],
+      },
+    ],
+  },
+  {
+    category: "Pharmacy",
+    programTitles: [
+      "B.Pharmacy",
+      "M.Pharmacy (Pharmaceutics)",
+      "M.Pharmacy (Pharmacology)",
+      "Pharma.D",
+    ],
+  },
+  { category: "Arts & Education", programTitles: ["Bachelor of Arts"] },
+  {
+    category: "Commerce",
+    programTitles: ["Bachelor of Commerce", "Master of Commerce"],
+  },
+  {
+    category: "Computer Applications",
+    programTitles: [
+      "B.Sc Information Technology",
+      "Bachelor of Computer Applications",
+      "Master of Computer Applications",
+      "Post Graduate Diploma in Computer Application",
+    ],
+  },
+  {
+    category: "Diploma",
+    programTitles: [
+      "Diploma Computer Science Engineering",
+      "Diploma in Civil Engineering",
+      "Diploma in Electrical Engineering",
+      "Diploma in Mechanical Engineering",
+      "Diploma in Medical Lab Technology",
+      "Diploma in Pharmacy",
+    ],
+  },
+  {
+    category: "Education",
+    programTitles: ["Bachelor in Education", "M.A Education", "Masters in Education"],
+  },
+ 
+  {
+    category: "Hotel Management",
+    programTitles: [
+      "B.Voc (Hotel Management & Catering)",
+      "Bachelor of Hotel Management & Catering Technology",
+      "Master of Hotel Management & Catering Technology",
+      "B.Sc Honors in Nutrition and Dietetics",
+    ],
+  },
+  { category: "Law", programTitles: ["B.A L.L.B", "LLB"] },
+  {
+    category: "Management",
+    programTitles: [
+      "Bachelor of Business Administration",
+      "Master of Business Administration",
+    ],
+  },
+  {
+    category: "Medical Sciences & Allied Health",
+    subgroups: [
+      {
+        sublabel: "Undergraduate Programs",
+        programTitles: [
+          "B.Sc (Hons.) Anesthesia Technology",
+          "B.Sc. (Hons.) Operation Theater Technology",
+          "B.Sc (Hons.) Optometry",
+          "B.Sc Cardiac Care Technology",
+          "B.Sc. (Hons.) Medical Lab Science",
+          "B.Sc. (Hons.) Radio Medical Imaging Technology",
+          "Bachelor of Physiotherapy",
+          "Diploma In Nursing Assistant",
+        ],
+      },
+      {
+        sublabel: "Postgraduate Programs",
+        programTitles: [
+          "M.Sc (Medical Microbiology)",
+          "M.Sc (Radiology and Imaging Technology)",
+          "M.Sc Anesthesia & Operation Theater Technology",
+          "M.Sc Cardiac Care Technology",
+          "M.Sc Medical Lab Science (Clinical Biochemistry)",
+        ],
+      },
+    ],
+  },
+
+  {
+    category: "Science",
+    programTitles: [
+      "B.Sc Non-Medical",
+      "M.Sc Chemistry",
+      "M.Sc Math",
+      "M.Sc Physics",
+    ],
+  },
+  {
+    category: "Vocational & ITI",
+    programTitles: ["COPA", "Plumber", "Welder(G&E)"],
+  },
 ];
 
 const INITIATIVES_DROPDOWN_ITEMS = [
   { label: "The Uniques", href: "/our-initiatives/the-uniques" },
   { label: "S60", href: "/our-initiatives/s60" },
+] as const;
+
+const INTERNATIONAL_DROPDOWN_ITEMS = [
+  { label: "Our Services", href: "/international/our-services" },
+  { label: "Entrepreneurship & Startup Support", href: "/international/entrepreneurship" },
 ] as const;
 
 const ABOUT_PANEL_GROUPS = [
@@ -329,6 +467,7 @@ export function TopUtilityBar({
             className="inline-flex items-center gap-1 border border-current/20 px-2 py-1 text-current transition-colors duration-300 ease-out hover:border-[#FEA700] hover:text-[#FEA700]"
             aria-label="Follow us on Facebook"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <FaFacebookF className="text-[10px] md:text-sm" />
           </a>
@@ -337,6 +476,7 @@ export function TopUtilityBar({
             className="inline-flex items-center gap-1 border border-current/20 px-2 py-1 text-current transition-colors duration-300 ease-out hover:border-[#FEA700] hover:text-[#FEA700]"
             aria-label="Follow us on Instagram"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <FaInstagram className="text-[10px] md:text-sm" />
           </a>
@@ -356,6 +496,7 @@ export function MainNavbar({
   const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false);
   const [isMobileProgramsOpen, setIsMobileProgramsOpen] = useState(false);
   const [isMobileInitiativesOpen, setIsMobileInitiativesOpen] = useState(false);
+  const [isMobileInternationalOpen, setIsMobileInternationalOpen] = useState(false);
   const [dynamicPrograms, setDynamicPrograms] = useState<ProgramDropdownItem[]>(
     [],
   );
@@ -398,43 +539,52 @@ export function MainNavbar({
     };
   }, []);
 
-  const programDropdownItems: Array<{
-    label: string;
-    href: string;
-    department?: string;
-  }> = [
-    ...PROGRAM_DROPDOWN_ITEMS,
-    ...dynamicPrograms.map((program) => ({
-      label: program.title,
-      href: `/programs/${program.slug}`,
-      department: program.department ?? "Programs",
-    })),
-  ];
+  // Variant programs (-svftm / -svcmt) share titles with their canonical counterparts.
+  // Process variants first so canonical entries overwrite them in the Map.
+  const sorted = [...dynamicPrograms].sort((a, b) => {
+    const aV = a.slug.endsWith("-svftm") || a.slug.endsWith("-svcmt") ? 0 : 1;
+    const bV = b.slug.endsWith("-svftm") || b.slug.endsWith("-svcmt") ? 0 : 1;
+    return aV - bV;
+  });
+  const programByTitle = new Map<string, { label: string; href: string }>(
+    sorted.map((p) => [p.title, { label: p.title, href: `/programs/${p.slug}` }]),
+  );
 
-  const groupedProgramItems = programDropdownItems.reduce<
-    Record<string, { label: string; href: string }[]>
-  >((accumulator, item) => {
-    const group = item.department ? item.department : "Explore";
-
-    if (!accumulator[group]) {
-      accumulator[group] = [];
-    }
-
-    accumulator[group].push({ label: item.label, href: item.href });
-    return accumulator;
-  }, {});
-
-  const DEPARTMENT_ORDER: Record<string, number> = {
-    Explore: 0,
-    Engineering: 1,
+  type ResolvedSubgroup = {
+    sublabel: string;
+    items: { label: string; href: string }[];
+  };
+  type ResolvedCategory = {
+    category: string;
+    items?: { label: string; href: string }[];
+    subgroups?: ResolvedSubgroup[];
   };
 
-  const orderedProgramGroups = Object.entries(groupedProgramItems).sort(
-    ([left], [right]) => {
-      const leftOrder = DEPARTMENT_ORDER[left] ?? 99;
-      const rightOrder = DEPARTMENT_ORDER[right] ?? 99;
-      if (leftOrder !== rightOrder) return leftOrder - rightOrder;
-      return left.localeCompare(right);
+  const resolvedCategories: ResolvedCategory[] = CATEGORY_GROUPS.flatMap(
+    (group): ResolvedCategory[] => {
+      if (group.subgroups) {
+        const resolvedSubgroups = group.subgroups
+          .map((sg) => ({
+            sublabel: sg.sublabel,
+            items: sg.programTitles
+              .map((title) => programByTitle.get(title))
+              .filter(
+                (item): item is { label: string; href: string } =>
+                  item !== undefined,
+              ),
+          }))
+          .filter((sg) => sg.items.length > 0);
+        if (resolvedSubgroups.length === 0) return [];
+        return [{ category: group.category, subgroups: resolvedSubgroups }];
+      }
+      const items = (group.programTitles ?? [])
+        .map((title) => programByTitle.get(title))
+        .filter(
+          (item): item is { label: string; href: string } =>
+            item !== undefined,
+        );
+      if (items.length === 0) return [];
+      return [{ category: group.category, items }];
     },
   );
 
@@ -447,23 +597,34 @@ export function MainNavbar({
     setIsMobileAboutOpen(false);
     setIsMobileProgramsOpen(false);
     setIsMobileInitiativesOpen(false);
+    setIsMobileInternationalOpen(false);
   };
 
   const toggleMobileAbout = () => {
     setIsMobileAboutOpen((prev) => !prev);
     setIsMobileProgramsOpen(false);
+    setIsMobileInternationalOpen(false);
   };
 
   const toggleMobilePrograms = () => {
     setIsMobileProgramsOpen((prev) => !prev);
     setIsMobileAboutOpen(false);
     setIsMobileInitiativesOpen(false);
+    setIsMobileInternationalOpen(false);
   };
 
   const toggleMobileInitiatives = () => {
     setIsMobileInitiativesOpen((prev) => !prev);
     setIsMobileAboutOpen(false);
     setIsMobileProgramsOpen(false);
+    setIsMobileInternationalOpen(false);
+  };
+
+  const toggleMobileInternational = () => {
+    setIsMobileInternationalOpen((prev) => !prev);
+    setIsMobileAboutOpen(false);
+    setIsMobileProgramsOpen(false);
+    setIsMobileInitiativesOpen(false);
   };
 
   return (
@@ -639,38 +800,63 @@ export function MainNavbar({
                               </p>
                             </Link>
 
-                            {orderedProgramGroups.map(
-                              ([groupName, groupItems]) => (
-                                <section
-                                  key={groupName}
-                                  className="min-w-0 border border-black/10 bg-[#FFFFFF] p-4"
-                                >
-                                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">
-                                    {groupName}
-                                  </p>
+                            {resolvedCategories.map((resolved) => (
+                              <section
+                                key={resolved.category}
+                                className="min-w-0 border border-black/10 bg-[#FFFFFF] p-4"
+                              >
+                                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FEA700]">
+                                  {resolved.category}
+                                </p>
+                                {resolved.subgroups ? (
+                                  resolved.subgroups.map((sg) => (
+                                    <div key={sg.sublabel} className="mt-3">
+                                      <p className="mb-1.5 text-[9px] font-bold uppercase tracking-[0.15em] text-black/50">
+                                        {sg.sublabel}
+                                      </p>
+                                      <div className="space-y-1.5">
+                                        {sg.items.map((item) => {
+                                          const isCurrent =
+                                            pathname === item.href;
+                                          return (
+                                            <Link
+                                              key={`${resolved.category}-${sg.sublabel}-${item.href}`}
+                                              href={item.href}
+                                              className={`block min-w-0 wrap-break-word border px-3 py-2 text-[12px] font-semibold leading-snug transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
+                                                isCurrent
+                                                  ? "border-[#FEA700]/40 bg-[#FEA700]/10 text-[#000000]"
+                                                  : "border-transparent text-[#000000]"
+                                              }`}
+                                            >
+                                              {item.label}
+                                            </Link>
+                                          );
+                                        })}
+                                      </div>
+                                    </div>
+                                  ))
+                                ) : (
                                   <div className="mt-3 space-y-1.5">
-                                    {groupItems.map((dropdownItem) => {
-                                      const isCurrent =
-                                        pathname === dropdownItem.href;
-
+                                    {(resolved.items ?? []).map((item) => {
+                                      const isCurrent = pathname === item.href;
                                       return (
                                         <Link
-                                          key={`${groupName}-${dropdownItem.href}-${dropdownItem.label}`}
-                                          href={dropdownItem.href}
+                                          key={`${resolved.category}-${item.href}`}
+                                          href={item.href}
                                           className={`block min-w-0 wrap-break-word border px-3 py-2 text-[12px] font-semibold leading-snug transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
                                             isCurrent
                                               ? "border-[#FEA700]/40 bg-[#FEA700]/10 text-[#000000]"
                                               : "border-transparent text-[#000000]"
                                           }`}
                                         >
-                                          {dropdownItem.label}
+                                          {item.label}
                                         </Link>
                                       );
                                     })}
                                   </div>
-                                </section>
-                              ),
-                            )}
+                                )}
+                              </section>
+                            ))}
                           </div>
                         </div>
                       </div>
@@ -737,6 +923,38 @@ export function MainNavbar({
                           }`}
                         >
                           <span>{initiative.label}</span>
+                          <span className="text-[10px] opacity-60">↗</span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            ) : item.label === "International" ? (
+              <div key={item.label} className="group relative">
+                <Link
+                  href={item.href}
+                  className="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-300 ease-out hover:text-[#FEA700]"
+                >
+                  {item.label}
+                  <span className="text-[10px]">▾</span>
+                </Link>
+
+                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-64 -translate-x-1/2 whitespace-normal opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+                  <div className="border border-black/10 bg-[#FFFFFF] shadow-[0_16px_45px_rgba(0,0,0,0.1)]">
+                    {INTERNATIONAL_DROPDOWN_ITEMS.map((interItem) => {
+                      const isActive = pathname === interItem.href;
+                      return (
+                        <Link
+                          key={interItem.href}
+                          href={interItem.href}
+                          className={`flex items-center justify-between border-b border-black/5 px-4 py-3 text-[12px] font-semibold transition-colors duration-300 ease-out last:border-b-0 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
+                            isActive
+                              ? "bg-[#FEA700]/10 text-[#000000]"
+                              : "text-[#000000]"
+                          }`}
+                        >
+                          <span>{interItem.label}</span>
                           <span className="text-[10px] opacity-60">↗</span>
                         </Link>
                       );
@@ -845,32 +1063,64 @@ export function MainNavbar({
 
                     {isMobileProgramsOpen ? (
                       <div className="mt-1 flex max-h-[70vh] flex-col gap-3 overflow-y-auto px-2 pb-2">
-                        {orderedProgramGroups.map(([groupName, groupItems]) => (
+                        <div
+                          className={`border p-2 ${isTransparent ? "border-white/20 bg-black/50" : "border-black/10 bg-[#FFFFFF]"}`}
+                        >
+                          <Link
+                            href="/program-finder"
+                            onClick={closeMobileMenu}
+                            className="block px-3 py-2 text-sm font-semibold text-[#FEA700] transition-colors duration-300 ease-out hover:text-[#FEA700]"
+                          >
+                            Program Finder
+                          </Link>
+                        </div>
+                        {resolvedCategories.map((resolved) => (
                           <div
-                            key={`mobile-group-${groupName}`}
+                            key={`mobile-cat-${resolved.category}`}
                             className={`border p-2 ${isTransparent ? "border-white/20 bg-black/50" : "border-black/10 bg-[#FFFFFF]"}`}
                           >
                             <p className="px-1 pb-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[#FEA700]">
-                              {groupName}
+                              {resolved.category}
                             </p>
-                            <div className="space-y-1">
-                              {groupItems.map((programItem, index) => (
-                                <Link
-                                  key={`mobile-program-${groupName}-${programItem.href}-${programItem.label}`}
-                                  href={programItem.href}
-                                  onClick={closeMobileMenu}
-                                  className={`block px-3 py-2 text-sm transition-colors duration-300 ease-out hover:text-[#FEA700] ${
-                                    groupName === "Explore" && index === 0
-                                      ? "bg-[#FEA700]/10 text-[#FEA700]"
-                                      : isTransparent
-                                        ? "text-[#FFFFFF]"
-                                        : "text-[#000000]"
-                                  }`}
+                            {resolved.subgroups ? (
+                              resolved.subgroups.map((sg) => (
+                                <div
+                                  key={`mobile-sg-${resolved.category}-${sg.sublabel}`}
+                                  className="mt-1.5"
                                 >
-                                  {programItem.label}
-                                </Link>
-                              ))}
-                            </div>
+                                  <p
+                                    className={`px-1 pb-1 text-[9px] font-bold uppercase tracking-[0.08em] ${isTransparent ? "text-white/50" : "text-black/40"}`}
+                                  >
+                                    {sg.sublabel}
+                                  </p>
+                                  <div className="space-y-1">
+                                    {sg.items.map((item) => (
+                                      <Link
+                                        key={`mobile-program-${resolved.category}-${sg.sublabel}-${item.href}`}
+                                        href={item.href}
+                                        onClick={closeMobileMenu}
+                                        className={`block px-3 py-2 text-sm transition-colors duration-300 ease-out hover:text-[#FEA700] ${isTransparent ? "text-[#FFFFFF]" : "text-[#000000]"}`}
+                                      >
+                                        {item.label}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              ))
+                            ) : (
+                              <div className="space-y-1">
+                                {(resolved.items ?? []).map((item) => (
+                                  <Link
+                                    key={`mobile-program-${resolved.category}-${item.href}`}
+                                    href={item.href}
+                                    onClick={closeMobileMenu}
+                                    className={`block px-3 py-2 text-sm transition-colors duration-300 ease-out hover:text-[#FEA700] ${isTransparent ? "text-[#FFFFFF]" : "text-[#000000]"}`}
+                                  >
+                                    {item.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
                           </div>
                         ))}
                       </div>
@@ -912,6 +1162,48 @@ export function MainNavbar({
                               }`}
                             >
                               {initiative.label}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    ) : null}
+                  </div>
+                ) : item.label === "International" ? (
+                  <div
+                    key="mobile-international-dropdown"
+                    className={`border p-1 ${isTransparent ? "border-white/20 bg-black/60" : "border-black/10 bg-[#FFFFFF]"}`}
+                  >
+                    <button
+                      type="button"
+                      onClick={toggleMobileInternational}
+                      className="flex w-full items-center justify-between px-3 py-2 text-left transition-colors duration-300 ease-out hover:text-[#FEA700]"
+                    >
+                      <span>{item.label}</span>
+                      <span
+                        className={`text-sm transition ${isMobileInternationalOpen ? "rotate-180" : "rotate-0"}`}
+                      >
+                        ▾
+                      </span>
+                    </button>
+
+                    {isMobileInternationalOpen ? (
+                      <div className="mt-1 grid gap-1 px-2 pb-2">
+                        {INTERNATIONAL_DROPDOWN_ITEMS.map((interItem) => {
+                          const isActive = pathname === interItem.href;
+                          return (
+                            <Link
+                              key={`mobile-international-${interItem.href}`}
+                              href={interItem.href}
+                              onClick={closeMobileMenu}
+                              className={`block border px-3 py-2 text-sm transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#FEA700] ${
+                                isActive
+                                  ? "border-[#FEA700]/40 bg-[#FEA700]/10 text-[#FEA700]"
+                                  : isTransparent
+                                    ? "border-white/20 text-[#FFFFFF]"
+                                    : "border-black/10 text-[#000000]"
+                              }`}
+                            >
+                              {interItem.label}
                             </Link>
                           );
                         })}

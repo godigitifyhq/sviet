@@ -10,6 +10,8 @@ import {
   Phone,
 } from "lucide-react";
 
+import { getProgramAffiliations } from "@/lib/affiliationData";
+
 import type { ProgramFacilityItem } from "@/components/programs/facilities";
 import type { ProgramOutcomeItem } from "@/components/programs/outcomes";
 import type { ProgramHighlightItem } from "@/components/programs/highlights";
@@ -553,6 +555,8 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
   const heroImage = getHeroImage(program.heroImage);
   const students = getPlacementData(program.slug);
   const activityPool = getActivities(program.slug);
+  const approvalBody = program.slug === "bpharmacy" ? "PCI" : "AICTE";
+  const affiliations = getProgramAffiliations(program.slug);
   const overviewCopy =
     program.fullDescription ?? program.shortDescription ?? "";
   const majorTracks = program.outcomes
@@ -629,8 +633,12 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
               {/* Quick facts */}
               <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-t border-white/10 pt-6 text-sm text-white/55">
                 <span>⏱ {formatDuration(program.durationMonths)}</span>
-                <span>✓ AICTE Approved</span>
-                <span>🏛 IKGPTU Affiliated</span>
+                <span>✓ {approvalBody} Approved</span>
+                {affiliations.length > 0
+                  ? affiliations.map((uni) => (
+                      <span key={uni}>🏛 {uni} Affiliated</span>
+                    ))
+                  : <span>🏛 Affiliation info not available</span>}
                 {isAutonomousProgram(program.slug) && (
                   <span>Autonomous Institute</span>
                 )}
@@ -643,29 +651,49 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
                 Program Details
               </p>
               <dl className="space-y-3 text-sm">
-                {[
-                  {
-                    label: "Duration",
-                    value: formatDuration(program.durationMonths),
-                  },
-                  { label: "Mode", value: formatMode(program.mode) },
-                  { label: "Affiliation", value: "IKGPTU, Jalandhar" },
-                  { label: "Approval", value: "AICTE Approved" },
-                  {
-                    label: "Status",
-                    value: isAutonomousProgram(program.slug)
-                      ? "Autonomous Institute"
-                      : null,
-                  },
-                ].map(({ label, value }) => (
-                  <div
-                    key={label}
-                    className="flex items-center justify-between border-b border-white/8 pb-3 last:border-0 last:pb-0"
-                  >
-                    <dt className="text-white/48">{label}</dt>
-                    <dd className="font-semibold text-white">{value}</dd>
+                <div className="flex items-center justify-between border-b border-white/8 pb-3">
+                  <dt className="text-white/48">Duration</dt>
+                  <dd className="font-semibold text-white">
+                    {formatDuration(program.durationMonths)}
+                  </dd>
+                </div>
+                <div className="flex items-center justify-between border-b border-white/8 pb-3">
+                  <dt className="text-white/48">Mode</dt>
+                  <dd className="font-semibold text-white">
+                    {formatMode(program.mode)}
+                  </dd>
+                </div>
+                <div className="flex items-start justify-between gap-2 border-b border-white/8 pb-3">
+                  <dt className="shrink-0 text-white/48">Affiliation</dt>
+                  <dd className="flex flex-wrap justify-end gap-1">
+                    {affiliations.length > 0
+                      ? affiliations.map((uni) => (
+                          <span
+                            key={uni}
+                            className="rounded bg-white/10 px-2 py-0.5 text-xs font-semibold text-white"
+                          >
+                            {uni}
+                          </span>
+                        ))
+                      : <span className="text-xs font-semibold text-white/60">
+                          Affiliation info not available
+                        </span>}
+                  </dd>
+                </div>
+                <div className="flex items-center justify-between border-b border-white/8 pb-3">
+                  <dt className="text-white/48">Approval</dt>
+                  <dd className="font-semibold text-white">
+                    {approvalBody} Approved
+                  </dd>
+                </div>
+                {isAutonomousProgram(program.slug) && (
+                  <div className="flex items-center justify-between">
+                    <dt className="text-white/48">Status</dt>
+                    <dd className="font-semibold text-white">
+                      Autonomous Institute
+                    </dd>
                   </div>
-                ))}
+                )}
               </dl>
               <Link
                 href={`/admissions?program=${program.slug}`}
@@ -743,8 +771,12 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
                   Affiliations &amp; Approval
                 </p>
                 <div className="mt-2 space-y-1 text-sm font-medium text-gray-700">
-                  <p>Affiliated to IKGPTU, Jalandhar</p>
-                  <p>Approved by AICTE</p>
+                  {affiliations.length > 0
+                    ? affiliations.map((uni) => (
+                        <p key={uni}>Affiliated to {uni}</p>
+                      ))
+                    : <p>Affiliation info not available</p>}
+                  <p>Approved by {approvalBody}</p>
                 </div>
               </div>
               <div className="rounded-2xl border border-gray-200 bg-gray-50 p-5">

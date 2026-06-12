@@ -28,6 +28,13 @@ const CATEGORY_LABELS: Record<EventCategory, string> = {
   sports: "Sports",
 };
 
+const CATEGORY_FALLBACK_IMAGES: Record<EventCategory, string> = {
+  tech: "/assets/img/section_card/BharatTech.JPG.jpeg",
+  summit: "/assets/img/section_card/GFS.JPG",
+  cultural: "/assets/img/section_card/Spont.jpeg",
+  sports: "/assets/img/section_card/Sportsmania.jpeg",
+};
+
 const CATEGORY_MATCHERS: Record<EventCategory, RegExp[]> = {
   tech: [/techxperience/i, /devfest/i, /techathon/i],
   summit: [/tedx/i, /global futures summit/i],
@@ -157,9 +164,7 @@ export function InternationalIconsSection() {
                     <div className="relative mb-5 h-40 overflow-hidden rounded-2xl border border-white/15 bg-white/10 md:h-44">
                       <Image
                         src={
-                          group.category === "sports"
-                            ? "/assets/img/section_card/Sportsmania.jpeg"
-                            : featuredEvent.image
+                          CATEGORY_FALLBACK_IMAGES[group.category]
                         }
                         alt={featuredEvent.title}
                         fill

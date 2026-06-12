@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import programCatalog from "@/data/data/data";
 import { ProgramDetailPage } from "@/components/programs/program-page";
@@ -337,6 +337,18 @@ function normalizeFaqItems(value: unknown) {
   return parseFaqEntries(value);
 }
 
+// Variant programs (institution-specific copies) redirect to their canonical page
+// so users always see one unified page with all affiliations shown.
+const SLUG_REDIRECTS: Record<string, string> = {
+  "bachelor-of-computer-applications-svftm": "bachelor-of-computer-applications",
+  "bachelor-of-computer-applications-svcmt": "bachelor-of-computer-applications",
+  "bachelor-of-business-administration-svftm": "bachelor-of-business-administration",
+  "bachelor-of-business-administration-svcmt": "bachelor-of-business-administration",
+  "bsc-medical-lab-sciences-svftm": "bsc-medical-lab-sciences",
+  "bsc-operation-theatre-technology-svftm": "bsc-hons-operation-theatre-technology",
+  "bsc-radiology-svftm": "bsc-radiology-imaging-technology",
+};
+
 const PROGRAM_HERO_IMAGES: Record<string, string> = {
   // Pharmacy
   bpharmacy: "/assets/programs/pharmacy/pharm/Bpharma.jpg",
@@ -435,12 +447,88 @@ const PROGRAM_HERO_IMAGES: Record<string, string> = {
   // Law
   llb: "/assets/programs/Law/LLB/header.avif",
   "b-a-l-l-b": "/assets/programs/Law/Bachelors/header.avif",
+  "ba-llb": "/assets/programs/Law/Bachelors/header.avif",
+  // SVFTM variants (same images as main programs)
+  "bachelor-of-computer-applications-svftm":
+    "/assets/programs/ComputerApp/BCA/data.jpg",
+  "bachelor-of-business-administration-svftm":
+    "/assets/programs/Business/BBA/bbaHeader.jpg",
+  "bsc-medical-lab-sciences-svftm":
+    "/assets/programs/paramedical/Lab/header.avif",
+  "bsc-operation-theatre-technology-svftm":
+    "/assets/programs/paramedical/OT/ot.jpg",
+  "bsc-radiology-svftm":
+    "/assets/programs/paramedical/Radiology/radiology.jpg",
+  // SVCMT variants (same images as main programs)
+  "bachelor-of-computer-applications-svcmt":
+    "/assets/programs/ComputerApp/BCA/data.jpg",
+  "bachelor-of-business-administration-svcmt":
+    "/assets/programs/Business/BBA/bbaHeader.jpg",
+};
+
+// ─── Per-program content overrides ───────────────────────────────────────────
+// Used to supply or correct content that is wrong/missing/truncated in the DB.
+
+type ProgramContentOverride = {
+  shortDescription?: string;
+  fullDescription?: string;
+  eligibility?: string;
+  outcomes?: ProgramOutcomeItem[];
+};
+
+const PROGRAM_CONTENT_OVERRIDES: Record<string, ProgramContentOverride> = {
+  "bachelor-of-computer-applications": {
+    shortDescription:
+      "Bachelor of Computer Application (BCA) is an undergraduate degree course that offers a blend of theoretical and practical knowledge in computer applications.",
+    fullDescription:
+      "Bachelor of Computer Application (BCA) is an undergraduate degree course that offers a blend of theoretical and practical knowledge in computer applications. This program provides students with in-depth understanding and extensive knowledge about various aspects of computer applications, software development, and IT infrastructure.\n\nThe BCA program covers core subjects including programming languages (C, C++, Java, Python), database management systems, data structures, web technologies, networking, and software engineering. Students also gain hands-on experience through lab sessions and project work.\n\nUpon completing BCA, graduates can pursue careers as software developers, web developers, system analysts, database administrators, and IT consultants. They can also opt for higher studies such as MCA or MBA (IT).",
+  },
+  "bachelor-of-commerce": {
+    shortDescription:
+      "Bachelor of Commerce [B.Com (H)] is a three-year undergraduate program that provides comprehensive knowledge of commerce, accounting, finance, taxation, and business management.",
+    fullDescription:
+      "Bachelor of Commerce [B.Com (H)] is a three-year undergraduate program that provides comprehensive knowledge of commerce, accounting, finance, taxation, and business management. The program is designed to equip students with strong analytical and financial skills required for careers in banking, finance, accounting, and corporate management.\n\nCore subjects include Financial Accounting, Business Economics, Corporate Law, Income Tax, Cost Accounting, Auditing, Business Statistics, and Entrepreneurship Development.\n\nGraduates of B.Com (H) are eligible for careers as Chartered Accountants (CA), Company Secretaries (CS), Cost Accountants (CMA), tax consultants, financial analysts, and banking professionals. The degree also serves as a foundation for MBA (Finance) and other postgraduate programs.",
+    eligibility:
+      "Passed 10+2 (or equivalent) from a recognized board\nMust have studied Commerce/any stream with English as a subject\nMinimum 45% aggregate marks (relaxation for SC/ST as per norms)\nAdmission through merit or entrance test as per university guidelines",
+  },
+  "bachelor-in-hospital-administration": {
+    shortDescription:
+      "Bachelor in Hospital Administration (BHA) is a three-year undergraduate program that trains students in the management and administration of hospitals, clinics, and other healthcare institutions.",
+    fullDescription:
+      "Bachelor in Hospital Administration (BHA) is a three-year undergraduate program that trains students in the management and administration of hospitals, clinics, and other healthcare institutions. The program bridges the gap between healthcare services and management principles, producing professionals who can efficiently run medical establishments.\n\nThe curriculum covers Hospital Management, Healthcare Finance, Medical Ethics, Health Laws & Regulations, Human Resource Management in Healthcare, Medical Terminology, Pharmaceutical Management, Patient Care Administration, and Health Information Systems.\n\nGraduates of BHA are in high demand across corporate hospitals, government health departments, NGOs, insurance companies, and healthcare consulting firms.",
+    eligibility:
+      "Passed 10+2 (or equivalent) from a recognized board\nScience stream preferred, Commerce/Arts students also eligible at some institutions\nMinimum 45% aggregate marks\nAdmission through merit or entrance test as per IKGPTU/university guidelines",
+    outcomes: [
+      {
+        title: "Hospital Operations Management",
+        description:
+          "Lead and manage day-to-day operations in hospitals and healthcare facilities.",
+      },
+      {
+        title: "Healthcare Finance & Billing",
+        description:
+          "Handle financial management, billing systems, and budgeting in healthcare organizations.",
+      },
+      {
+        title: "Patient Care Administration",
+        description:
+          "Oversee patient services, admissions, and care coordination across departments.",
+      },
+      {
+        title: "Health Information Systems",
+        description:
+          "Manage health records, digital health data, and hospital information systems.",
+      },
+    ],
+  },
 };
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+
+  if (SLUG_REDIRECTS[slug]) return {};
 
   const program = await prisma.program.findUnique({ where: { slug } });
 
@@ -478,6 +566,11 @@ export async function generateStaticParams() {
 export default async function ProgramSlugPage({ params }: PageProps) {
   const { slug } = await params;
 
+  const canonicalSlug = SLUG_REDIRECTS[slug];
+  if (canonicalSlug) {
+    redirect(`/programs/${canonicalSlug}`);
+  }
+
   const program = await prisma.program.findUnique({
     where: { slug },
     select: {
@@ -509,6 +602,8 @@ export default async function ProgramSlugPage({ params }: PageProps) {
     notFound();
   }
 
+  const contentOverride = PROGRAM_CONTENT_OVERRIDES[slug];
+
   const catalogProgram = programCatalog
     .map((item) => ({
       ...(item as ProgramCatalogEntry),
@@ -524,10 +619,17 @@ export default async function ProgramSlugPage({ params }: PageProps) {
     tuitionCents: program.tuitionCents,
     mode: program.mode,
     shortDescription:
-      program.shortDescription ?? catalogProgram?.program_description ?? null,
+      contentOverride?.shortDescription ??
+      program.shortDescription ??
+      catalogProgram?.program_description ??
+      null,
     fullDescription:
-      program.fullDescription ?? catalogProgram?.program_description ?? null,
+      contentOverride?.fullDescription ??
+      program.fullDescription ??
+      catalogProgram?.program_description ??
+      null,
     eligibility:
+      contentOverride?.eligibility ??
       program.eligibility ??
       (catalogProgram?.eligibility_criteria &&
       typeof catalogProgram.eligibility_criteria === "object"
@@ -539,9 +641,12 @@ export default async function ProgramSlugPage({ params }: PageProps) {
       catalogProgram?.program_highlights ?? program.highlights,
     ),
     curriculum: parseCurriculum(program.curriculum),
-    outcomes: normalizeOutcomeItems(
-      catalogProgram?.program_outcomes ?? program.outcomes,
-    ),
+    outcomes:
+      contentOverride?.outcomes !== undefined
+        ? contentOverride.outcomes
+        : normalizeOutcomeItems(
+            catalogProgram?.program_outcomes ?? program.outcomes,
+          ),
     facilities: normalizeFacilityItems(
       catalogProgram?.labs ?? program.facilities,
     ),
