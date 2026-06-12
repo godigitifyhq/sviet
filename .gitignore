@@ -43,9 +43,3 @@ next-env.d.ts
 /app/generated/prisma
 
 .vercel
-
-# Large video files — too big for GitHub (host on CDN instead)
-public/assets/img/inter/INTERNATIONAL GLIMPSE 3 MIN.mp4
-public/assets/img/inter/03 Entrepreneurship & Startup Support/01 Global Seed/3,A (Afro Masala)/GLOBAL SEED AFRO.mp4
-public/assets/img/inter/03 Entrepreneurship & Startup Support/01 Global Seed/3,B (Salon)/GLOBAL SEED SALOON.mp4
-public/assets/img/inter/03 Entrepreneurship & Startup Support/04 Faculty Exchange Program/LORENZ INTERN.mp4
