@@ -1,6 +1,21 @@
 "use client";
 import { useEffect, useState } from "react";
 
+const VIDEO_TESTIMONIALS = [
+  {
+    src: "/assets/img/inter/Testimonies/WhatsApp%20Video%202026-06-08%20at%2011.13.59%20AM.mp4",
+    label: "International Student Testimonial",
+  },
+  {
+    src: "/assets/img/inter/Testimonies/WhatsApp%20Video%202026-06-08%20at%2011.14.14%20AM.mp4",
+    label: "International Student Testimonial",
+  },
+  {
+    src: "/assets/img/inter/Testimonies/WhatsApp%20Video%202026-06-08%20at%2011.15.05%20AM.mp4",
+    label: "International Student Testimonial",
+  },
+] as const;
+
 const TESTIMONIALS = [
   {
     title: "SVGOI gave me confidence and global exposure to shape my future.",
@@ -71,15 +86,48 @@ export function InternationalStudentTestimonialsSection() {
         <h2 className="text-3xl font-semibold leading-tight text-[#111827] md:text-5xl">
           Here Is What Our
           <br />
-          <span className="">International Students Have To Say</span>
+          <span>International Students Have To Say</span>
         </h2>
 
-        <div className="mt-8 relative">
+        {/* Video testimonials */}
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          {VIDEO_TESTIMONIALS.map((video, index) => (
+            <div
+              key={index}
+              className="overflow-hidden border border-black/10 bg-white shadow-sm"
+            >
+              <div className="relative aspect-9/16 w-full bg-black">
+                <video
+                  src={video.src}
+                  controls
+                  preload="metadata"
+                  playsInline
+                  className="absolute inset-0 h-full w-full object-cover"
+                  aria-label={video.label}
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div className="px-4 py-3">
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#f7941d]">
+                  Student Story
+                </p>
+                <p className="mt-1 text-sm font-semibold text-[#111827]">
+                  {video.label}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Text testimonials */}
+        <div className="mt-10 relative">
           <div className="flex items-center gap-4">
             <button
+              type="button"
               aria-label="Previous testimonials"
               onClick={prev}
-              className="rounded bg-white/90 p-2 text-xl shadow hover:bg-white"
+              className="shrink-0 bg-white/90 p-2 text-xl shadow hover:bg-white"
               disabled={page === 0}
             >
               ‹
@@ -89,7 +137,7 @@ export function InternationalStudentTestimonialsSection() {
               {visible.map((testimonial) => (
                 <article
                   key={testimonial.name}
-                  className="flex h-80 flex-col justify-between overflow-hidden rounded-2xl border border-black/10 bg-white p-6"
+                  className="flex h-80 flex-col justify-between overflow-hidden border border-black/10 bg-white p-6"
                 >
                   <div>
                     <div className="text-4xl font-bold text-[#f7941d]">
@@ -110,9 +158,10 @@ export function InternationalStudentTestimonialsSection() {
             </div>
 
             <button
+              type="button"
               aria-label="Next testimonials"
               onClick={next}
-              className="rounded bg-white/90 p-2 text-xl shadow hover:bg-white"
+              className="shrink-0 bg-white/90 p-2 text-xl shadow hover:bg-white"
               disabled={page >= pageCount - 1}
             >
               ›
@@ -122,10 +171,11 @@ export function InternationalStudentTestimonialsSection() {
           <div className="mt-4 flex items-center justify-center gap-2">
             {Array.from({ length: pageCount }).map((_, i) => (
               <button
+                type="button"
                 key={i}
                 aria-label={`Go to page ${i + 1}`}
                 onClick={() => setPage(i)}
-                className={`h-2 w-8 rounded-full ${i === page ? "bg-[#f7941d]" : "bg-[#D1D5DB]"}`}
+                className={`h-2 w-8 ${i === page ? "bg-[#f7941d]" : "bg-[#D1D5DB]"}`}
               />
             ))}
           </div>

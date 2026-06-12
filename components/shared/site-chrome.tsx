@@ -192,6 +192,11 @@ const INITIATIVES_DROPDOWN_ITEMS = [
   { label: "S60", href: "/our-initiatives/s60" },
 ] as const;
 
+const INTERNATIONAL_DROPDOWN_ITEMS = [
+  { label: "Our Services", href: "/international/our-services" },
+  { label: "Entrepreneurship & Startup Support", href: "/international/entrepreneurship" },
+] as const;
+
 const ABOUT_PANEL_GROUPS = [
   {
     title: "Discover SVGOI",
@@ -462,6 +467,7 @@ export function TopUtilityBar({
             className="inline-flex items-center gap-1 border border-current/20 px-2 py-1 text-current transition-colors duration-300 ease-out hover:border-[#FEA700] hover:text-[#FEA700]"
             aria-label="Follow us on Facebook"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <FaFacebookF className="text-[10px] md:text-sm" />
           </a>
@@ -470,6 +476,7 @@ export function TopUtilityBar({
             className="inline-flex items-center gap-1 border border-current/20 px-2 py-1 text-current transition-colors duration-300 ease-out hover:border-[#FEA700] hover:text-[#FEA700]"
             aria-label="Follow us on Instagram"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <FaInstagram className="text-[10px] md:text-sm" />
           </a>
@@ -489,6 +496,7 @@ export function MainNavbar({
   const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false);
   const [isMobileProgramsOpen, setIsMobileProgramsOpen] = useState(false);
   const [isMobileInitiativesOpen, setIsMobileInitiativesOpen] = useState(false);
+  const [isMobileInternationalOpen, setIsMobileInternationalOpen] = useState(false);
   const [dynamicPrograms, setDynamicPrograms] = useState<ProgramDropdownItem[]>(
     [],
   );
@@ -589,23 +597,34 @@ export function MainNavbar({
     setIsMobileAboutOpen(false);
     setIsMobileProgramsOpen(false);
     setIsMobileInitiativesOpen(false);
+    setIsMobileInternationalOpen(false);
   };
 
   const toggleMobileAbout = () => {
     setIsMobileAboutOpen((prev) => !prev);
     setIsMobileProgramsOpen(false);
+    setIsMobileInternationalOpen(false);
   };
 
   const toggleMobilePrograms = () => {
     setIsMobileProgramsOpen((prev) => !prev);
     setIsMobileAboutOpen(false);
     setIsMobileInitiativesOpen(false);
+    setIsMobileInternationalOpen(false);
   };
 
   const toggleMobileInitiatives = () => {
     setIsMobileInitiativesOpen((prev) => !prev);
     setIsMobileAboutOpen(false);
     setIsMobileProgramsOpen(false);
+    setIsMobileInternationalOpen(false);
+  };
+
+  const toggleMobileInternational = () => {
+    setIsMobileInternationalOpen((prev) => !prev);
+    setIsMobileAboutOpen(false);
+    setIsMobileProgramsOpen(false);
+    setIsMobileInitiativesOpen(false);
   };
 
   return (
@@ -911,6 +930,38 @@ export function MainNavbar({
                   </div>
                 </div>
               </div>
+            ) : item.label === "International" ? (
+              <div key={item.label} className="group relative">
+                <Link
+                  href={item.href}
+                  className="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-300 ease-out hover:text-[#FEA700]"
+                >
+                  {item.label}
+                  <span className="text-[10px]">▾</span>
+                </Link>
+
+                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-64 -translate-x-1/2 whitespace-normal opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+                  <div className="border border-black/10 bg-[#FFFFFF] shadow-[0_16px_45px_rgba(0,0,0,0.1)]">
+                    {INTERNATIONAL_DROPDOWN_ITEMS.map((interItem) => {
+                      const isActive = pathname === interItem.href;
+                      return (
+                        <Link
+                          key={interItem.href}
+                          href={interItem.href}
+                          className={`flex items-center justify-between border-b border-black/5 px-4 py-3 text-[12px] font-semibold transition-colors duration-300 ease-out last:border-b-0 hover:bg-[#FEA700]/10 hover:text-[#000000] ${
+                            isActive
+                              ? "bg-[#FEA700]/10 text-[#000000]"
+                              : "text-[#000000]"
+                          }`}
+                        >
+                          <span>{interItem.label}</span>
+                          <span className="text-[10px] opacity-60">↗</span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
             ) : (
               <Link
                 key={item.label}
@@ -1111,6 +1162,48 @@ export function MainNavbar({
                               }`}
                             >
                               {initiative.label}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    ) : null}
+                  </div>
+                ) : item.label === "International" ? (
+                  <div
+                    key="mobile-international-dropdown"
+                    className={`border p-1 ${isTransparent ? "border-white/20 bg-black/60" : "border-black/10 bg-[#FFFFFF]"}`}
+                  >
+                    <button
+                      type="button"
+                      onClick={toggleMobileInternational}
+                      className="flex w-full items-center justify-between px-3 py-2 text-left transition-colors duration-300 ease-out hover:text-[#FEA700]"
+                    >
+                      <span>{item.label}</span>
+                      <span
+                        className={`text-sm transition ${isMobileInternationalOpen ? "rotate-180" : "rotate-0"}`}
+                      >
+                        ▾
+                      </span>
+                    </button>
+
+                    {isMobileInternationalOpen ? (
+                      <div className="mt-1 grid gap-1 px-2 pb-2">
+                        {INTERNATIONAL_DROPDOWN_ITEMS.map((interItem) => {
+                          const isActive = pathname === interItem.href;
+                          return (
+                            <Link
+                              key={`mobile-international-${interItem.href}`}
+                              href={interItem.href}
+                              onClick={closeMobileMenu}
+                              className={`block border px-3 py-2 text-sm transition-colors duration-300 ease-out hover:border-[#FEA700]/40 hover:bg-[#FEA700]/10 hover:text-[#FEA700] ${
+                                isActive
+                                  ? "border-[#FEA700]/40 bg-[#FEA700]/10 text-[#FEA700]"
+                                  : isTransparent
+                                    ? "border-white/20 text-[#FFFFFF]"
+                                    : "border-black/10 text-[#000000]"
+                              }`}
+                            >
+                              {interItem.label}
                             </Link>
                           );
                         })}

@@ -30,13 +30,14 @@ export function InternationalHeroIntroSection() {
   return (
     <section className="bg-background py-12 md:py-16">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
+        {/* Welcome text */}
         <div className="grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-10">
           <h2 className="text-3xl font-semibold leading-tight text-[#111827] md:text-5xl">
             Welcome to a vibrant
             <br />
             community of over
             <br />
-            <span className="">
+            <span>
               2000+ international students
               <br />
               from 20+ countries.
@@ -59,39 +60,13 @@ export function InternationalHeroIntroSection() {
           </div>
         </div>
 
-        <div className="relative mt-32 overflow-visible rounded-2xl bg-[#f5e2bf] px-6 py-8 md:px-10 md:py-10">
-          <div className="grid items-end gap-6 md:grid-cols-[1fr_1fr]">
-            <div className="relative min-h-40 md:min-h-40">
-              {/* <div className="absolute bottom-0 left-4 h-48 w-48 rounded-t-full bg-[#f7b56b] md:h-56 md:w-56" /> */}
-              <Image
-                src="https://www.paruluniversity.ac.in/wp-content/uploads/2025/03/mid-banner.svg"
-                alt="International student"
-                fill
-                sizes="(max-width: 968px) 100vw, 45vw"
-                className="object-contain object-bottom scale-200 -translate-y-10 md:-translate-y-10"
-              />
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold leading-tight text-[#111827] md:text-4xl">
-                Ready to Join the Global Learning Community At SVGOI?
-              </h3>
-              <Link
-                href="/admissions"
-                className="mt-6 inline-flex items-center rounded-lg bg-[#f7941d] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#d97706]"
-              >
-                Apply now
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Flags row */}
-        <div className="mt-16">
+        {/* Country flags — immediately below welcome text */}
+        <div className="mt-10 md:mt-12">
           <h3 className="text-center text-lg font-bold text-[#111827] md:text-xl">
             Students from Around the World
           </h3>
-          <div className="mt-6 flex gap-5 overflow-x-auto pb-3 md:flex-wrap md:justify-center md:overflow-x-visible">
+          {/* Mobile: horizontal scroll. md+: 11-column grid → exactly 2 symmetric rows of 11 */}
+          <div className="mt-6 flex gap-5 overflow-x-auto pb-3 md:hidden">
             {FLAGS.map((flag) => (
               <div
                 key={flag.country}
@@ -109,6 +84,56 @@ export function InternationalHeroIntroSection() {
                 <span className="text-xs text-gray-500">{flag.country}</span>
               </div>
             ))}
+          </div>
+          <div className="mt-6 hidden md:grid md:grid-cols-11 md:gap-x-4 md:gap-y-5">
+            {FLAGS.map((flag) => (
+              <div
+                key={flag.country}
+                className="flex flex-col items-center gap-2"
+              >
+                <div className="relative h-14 w-14 overflow-hidden rounded-full shadow-md ring-2 ring-gray-100">
+                  <Image
+                    src={flag.src}
+                    alt={`${flag.country} flag`}
+                    fill
+                    sizes="56px"
+                    className="object-cover"
+                  />
+                </div>
+                <span className="text-center text-xs text-gray-500">
+                  {flag.country}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Ready to Join — banner image replaces external SVG */}
+        <div className="relative mt-14 overflow-hidden bg-[#f5e2bf] px-6 py-8 md:px-10 md:py-10">
+          <div className="grid items-center gap-6 md:grid-cols-[1fr_1fr]">
+            <div className="relative min-h-52 overflow-hidden md:min-h-64">
+              <Image
+                src="/assets/img/banner/international.jpeg"
+                alt="International students at SVGOI campus"
+                fill
+                sizes="(max-width: 968px) 100vw, 45vw"
+                className="object-cover object-center"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-[#f5e2bf]/15" />
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-bold leading-tight text-[#111827] md:text-4xl">
+                Ready to Join the Global Learning Community At SVGOI?
+              </h3>
+              <Link
+                href="/admissions"
+                className="mt-6 inline-flex items-center bg-[#f7941d] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#d97706]"
+              >
+                Apply now
+              </Link>
+            </div>
           </div>
         </div>
       </div>
